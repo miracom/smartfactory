@@ -1,0 +1,50 @@
+.x-menu-item-icon{background:url('../image/iconset16.png') no-repeat;}
+.x-menu-item-icon.icon1_16{background-position: 0 0;}
+.x-menu-item-icon.icon2_16{background-position: 27% 0;}
+.x-menu-item-icon.icon3_16{background-position: 52% 0;}
+.x-menu-item-icon.icon4_16{background-position: 75% 0;}
+.x-menu-item-icon.icon5_16{background-position: 100% 0;}
+
+.x-btn-default-toolbar-small-icon .x-btn-icon{background:url('../image/iconset16.png') no-repeat;}
+.x-btn-default-toolbar-small-icon .x-btn-icon.icon1_32{background-position:0 0;}
+.x-btn-default-toolbar-small-icon .x-btn-icon.icon2_32{background-position:27% 0;}
+.x-btn-default-toolbar-small-icon .x-btn-icon.icon3_32{background-position:52% 0;}
+.x-btn-default-toolbar-small-icon .x-btn-icon.icon4_32{background-position:75% 0;}
+.x-btn-default-toolbar-small-icon .x-btn-icon.icon5_32{background-position:100% 0;}
+
+.x-btn-default-toolbar-large-icon .x-btn-icon{background:url('../image/iconset32.png') no-repeat;}
+.x-btn-default-toolbar-large-icon .x-btn-icon.icon1_32{background-position:0 0;}
+.x-btn-default-toolbar-large-icon .x-btn-icon.icon2_32{background-position:26% 0;}
+.x-btn-default-toolbar-large-icon .x-btn-icon.icon3_32{background-position:51% 0;}
+.x-btn-default-toolbar-large-icon .x-btn-icon.icon4_32{background-position:76% 0;}
+.x-btn-default-toolbar-large-icon .x-btn-icon.icon5_32{background-position:100% 0;}
+
+.operation-list-item {
+    margin-top: 3px;
+    padding-left: 20px;
+    font-size: 11px;
+    line-height: 20px;
+    cursor: pointer;
+    background:url('../image/operation16.png') 1px 2px no-repeat;
+    border: 1px solid #fff;
+		border-bottom: 1px dotted #A3BAE9;
+}
+.resource-list-item {
+    margin-top: 3px;
+    padding-left: 20px;
+    font-size: 11px;
+    line-height: 20px;
+    cursor: pointer;
+    background:url('../image/resource16.png') 1px 2px no-repeat;
+    border: 1px solid #fff;
+		border-bottom: 1px dotted #A3BAE9;
+}
+.operation-list,.resource-list{padding: 0 3px 0 3px;}
+.operation-list .x-item-selected,.resource-list .x-item-selected{font-weight: bold;color: #15428B;background-color: #DFE8F6;border: 1px dotted #A3BAE9;}
+.operation-list-item-hover,.resource-list-item-hover{background-color: #eee;}
+
+.iconsetDockMenu{background:url('../image/iconMenu.png') 0 1px no-repeat !important;}
+.iconsetDockFavor{background:url('../image/iconFavor.png') 0 1px no-repeat;}
+.iconsetDockResource{background:url('../image/resource16.png') 0 1px no-repeat;}
+.iconsetDockOperation{background:url('../image/operation16.png') 0 1px no-repeat;}
+.x-tab em{padding-top:1px;}

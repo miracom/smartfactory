@@ -1,0 +1,7 @@
+[
+{ "oper_id": "1000", "desc": "Cleaning", "type":"P" },
+{ "oper_id": "2000", "desc": "Cleaning", "type":"P" },
+{ "oper_id": "3000", "desc": "Cleaning", "type":"P" },
+{ "oper_id": "4000", "desc": "Cleaning", "type":"P" },
+{ "oper_id": "5000", "desc": "Cleaning", "type":"P" }
+]

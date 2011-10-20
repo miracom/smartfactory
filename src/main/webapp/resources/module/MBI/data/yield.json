@@ -1,0 +1,9 @@
+{ 
+	"success" : true,
+	"data" : {
+		"factory_id": "FAB100", 
+		"product_id": "PROD100", 
+		"desc": "Yield Report", 
+		"yield": 0.99
+	}
+}

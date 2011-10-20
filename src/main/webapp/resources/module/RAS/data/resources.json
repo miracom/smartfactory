@@ -1,0 +1,7 @@
+[
+{ "resource_id": "EQ1000", "desc": "Cleaning Machine", "type":"P" },
+{ "resource_id": "EQ2000", "desc": "Cleaning Machine", "type":"P" },
+{ "resource_id": "EQ3000", "desc": "Cleaning Machine", "type":"P" },
+{ "resource_id": "EQ4000", "desc": "Cleaning Machine", "type":"P" },
+{ "resource_id": "EQ5000", "desc": "Cleaning Machine", "type":"P" }
+]

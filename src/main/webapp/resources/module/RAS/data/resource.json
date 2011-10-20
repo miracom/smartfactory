@@ -1,0 +1,20 @@
+{ 
+	"success" : true,
+	"data" : {
+		"resource_id": "EQ1000", 
+		"desc": "Cleaning Machine", 
+		"type": "P",
+		"owner": "shnam",
+		"status_1": "DOWN",
+		"status_2": "DOWN",
+		"status_3": "DOWN",
+		"status_4": "DOWN",
+		"status_5": "DOWN",
+		"status_6": "DOWN",
+		"status_7": "DOWN",
+		"status_8": "DOWN",
+		"status_9": "DOWN",
+		"created_at": "",
+		"updated_at": ""
+	}
+}
