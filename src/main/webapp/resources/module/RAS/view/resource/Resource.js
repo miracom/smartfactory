@@ -63,20 +63,29 @@ Ext.define('RAS.view.resource.Resource', {
 	
 	loadData: function(resource_id) {
 		var resource_id = resource_id || (this.data && this.data.get('resource_id'));
+		console.log(resource_id);
 
 		if(resource_id){
-			this.load({
-				url: 'module/RAS/data/resource.json',
-				method: 'GET',
-				type: 'rest',
-				params: {resource_id:resource_id},
-				waitMsg: 'Loading...',
-				failure: function(form, action) {
-					console.log(action.failureType);
-					// Ext.example.msg('Failure', action.failureType);
-					form.reset();
+			var store = Ext.data.StoreManager.lookup('RAS.store.ResourceStore');
+			store.load({
+				scope: this,
+				params: { resource_id: resource_id },
+				callback: function(records, operation, success) {
+					this.loadRecord(records[0]);
 				}
-			})
+			});
+//			this.load({
+//				url: 'module/RAS/data/resource.json',
+//				method: 'GET',
+//				type: 'rest',
+//				params: {resource_id:resource_id},
+//				waitMsg: 'Loading...',
+//				failure: function(form, action) {
+//					console.log(action.failureType);
+//					// Ext.example.msg('Failure', action.failureType);
+//					form.reset();
+//				}
+//			})
 		}
 	}
 });

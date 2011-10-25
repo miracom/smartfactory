@@ -1,4 +1,4 @@
-package com.mesplus.smartfactory.model;
+package com.mesplus.RAS.model;
 
 public class Resource {
 	private String factory_id; 
@@ -17,12 +17,6 @@ public class Resource {
 	private String status_9;
 	private String created_at;
 	private String updated_at;
-	
-	public Resource(String resource_id, String desc, String factory_id) {
-		this.resource_id = resource_id;
-		this.desc = desc;
-		this.factory_id = factory_id;
-	}
 	
 	public String getFactory_id() {
 		return factory_id;

@@ -1,7 +1,7 @@
 Ext.define('RAS.view.NavResource', {
 	extend: 'Ext.view.View',
 	
-	store: 'RAS.store.ResourceStore',
+	store: 'RAS.store.ResourceListStore',
 	itemSelector: 'li',
 	
 	listeners: {

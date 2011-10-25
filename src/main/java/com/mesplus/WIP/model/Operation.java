@@ -1,4 +1,4 @@
-package com.mesplus.smartfactory.model;
+package com.mesplus.WIP.model;
 
 import java.util.Date;
 
@@ -12,18 +12,6 @@ public class Operation {
 	private String unit_3;
 	private Date created_at;
 
-	public Operation(String oper_id, String desc, String factory_id) {
-		super();
-		this.oper_id = oper_id;
-		this.desc = desc;
-		this.type = "P";
-		this.factory_id = factory_id;
-		this.unit_1 = "WAFER";
-		this.unit_2 = "DIE";
-		this.unit_3 = "";
-		this.created_at = new Date();
-		this.updated_at = new Date();
-	}
 
 	public String getOper_id() {
 		return oper_id;

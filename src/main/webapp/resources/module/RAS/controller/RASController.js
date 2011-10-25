@@ -1,7 +1,7 @@
 Ext.define('RAS.controller.RASController', {
 	extend: 'Ext.app.Controller',
 	
-	stores: ['RAS.store.ResourceStore'],
+	stores: ['RAS.store.ResourceListStore', 'RAS.store.ResourceStore'],
 	models: ['RAS.model.Resource'],
 	views: ['RAS.view.resource.Resource'],
 	

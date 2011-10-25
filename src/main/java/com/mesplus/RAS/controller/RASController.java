@@ -1,38 +1,43 @@
-package com.mesplus.smartfactory;
+package com.mesplus.RAS.controller;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mesplus.smartfactory.model.Resource;
+import com.mesplus.RAS.dao.ResourceDao;
+import com.mesplus.RAS.model.Resource;
+import com.mesplus.smartfactory.HomeController;
 
 @Controller
 public class RASController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
+	
+	private ResourceDao resourceDao;
+	
+	@Autowired
+	public void setResourceDao(ResourceDao resourceDao) {
+		this.resourceDao = resourceDao;
+	}
 
 	@RequestMapping(value = "module/RAS/data/resources.json", method = RequestMethod.GET)
 	public @ResponseBody
-	Resource[] resources(HttpServletRequest request,
+	List<Resource> resources(HttpServletRequest request,
 			HttpServletResponse response) {
 		String factory_id = request.getParameter("factory_id");
 
-		logger.info("factory_id : " + request.getParameter("factory_id"));
-		return new Resource[] {
-				new Resource("1000", "resource 1000", factory_id),
-				new Resource("1000", "resource 1000", factory_id),
-				new Resource("1000", "resource 1000", factory_id),
-				new Resource("1000", "resource 1000", factory_id),
-				new Resource("1000", "resource 1000", factory_id),
-				new Resource("1000", "resource 1000", factory_id),
-				new Resource("1000", "resource 1000", factory_id),
-				new Resource("1000", "resource 1000", factory_id) };
+		logger.info("factory_id : " + factory_id);
+		
+		return resourceDao.selectResources();
 	}
 
 	@RequestMapping(value = "module/RAS/data/resource.json", method = RequestMethod.GET)
@@ -45,6 +50,7 @@ public class RASController {
 		logger.info("factory_id : " + factory_id);
 		logger.info("resource_id : " + resource_id);
 		
-		return 	new Resource(resource_id, "Resource " + resource_id, factory_id);
+		Resource ret = 	resourceDao.findResource(resource_id);
+		return ret;
 	}
 }

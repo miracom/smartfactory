@@ -3,15 +3,19 @@ Ext.define('RAS.store.ResourceStore', {
 	
 	storeId: 'ras.resource_store',
 	
-	autoLoad: true,
+	autoLoad: false,
 	
 	model: 'RAS.model.Resource',
+	
+//	baseParams: {
+//		resource_id: ''
+//	},
 
-  proxy: {
+	proxy: {
 		type: 'ajax',
-		url : 'module/RAS/data/resources.json',
+		url : 'module/RAS/data/resource.json',
 		reader: {
 			type: 'json'
 		}
-  }
+	}
 });

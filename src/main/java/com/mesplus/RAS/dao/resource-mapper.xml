@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mesplus.RAS.dao.ResourceDao">
+
+	<resultMap id="ResourceMap" type="com.mesplus.RAS.model.Resource">
+		<result property="factory_id" column="factory"></result>
+		<result property="resource_id" column="res_id"></result>
+		<result property="desc" column="res_desc"></result>
+		<result property="type" column="res_type"></result>
+		<result property="status_1" column="res_sts_1"></result>
+		<result property="status_2" column="res_sts_2"></result>
+		<result property="status_3" column="res_sts_3"></result>
+		<result property="status_4" column="res_sts_4"></result>
+		<result property="status_5" column="res_sts_5"></result>
+		<result property="status_6" column="res_sts_6"></result>
+		<result property="status_7" column="res_sts_7"></result>
+		<result property="status_8" column="res_sts_8"></result>
+		<result property="status_9" column="res_sts_9"></result>
+		<result property="created_at" column="create_time"></result>
+		<result property="updated_at" column="update_time"></result>
+	</resultMap>
+		
+	<select id="selectResources" resultMap="ResourceMap">
+	SELECT factory, res_id, res_desc from mrasresdef
+	</select>
+
+	<select id="findResource" parameterType="string" resultMap="ResourceMap">
+	SELECT factory, res_id, res_desc FROM mrasresdef WHERE res_id = #{resource_id}
+	</select>
+</mapper>
