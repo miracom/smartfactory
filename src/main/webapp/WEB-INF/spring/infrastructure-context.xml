@@ -38,6 +38,10 @@
 	</bean>	
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.mesplus.CMN" />
+    </bean>	
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.mesplus.WIP" />
     </bean>	
 
