@@ -8,7 +8,8 @@ Ext.define('SmartFactory.view.viewport.North', {
 	
 	items: [
 	Ext.create('SmartFactory.view.common.Menu', {
-		height: 25
+		store: Ext.data.StoreManager.lookup('common.MenuStore'),
+		height: 28
 	}),
 	Ext.create('SmartFactory.view.common.Toolbar', {
 		flex: 1

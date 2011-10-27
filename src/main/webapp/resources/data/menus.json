@@ -1,8 +1,167 @@
 [
-	{ text: "detention", leaf: true },
-	{ text: "homework", expanded: true, children: [
-		{ text: "book report", leaf: true },
-		{ text: "alegrbra", leaf: true}
-	] },
-	{ text: "buy lottery tickets", leaf: true }
+	{
+		text: 'Setup',
+		children: [
+			{ text: "WIP", children: [
+				{
+					text: 'Setup Factory',
+					tooltip: 'Setup Factory', 
+					leaf: true
+				},
+				{
+					text: 'Operation',
+					viewModel: 'WIP.view.oper.Operation',
+					tooltip: 'View Operation', 
+					leaf: true
+				},
+				{
+					text: 'Flow', 
+					leaf: true
+				},
+				{
+					text: 'Adapt', 
+					leaf: true
+				},
+				{
+					text: 'User', 
+					leaf: true
+				}
+			] },
+			{ text: "RAS", children: [
+				{
+					text: 'Setup Factory',
+					tooltip: 'Setup Factory', 
+					leaf: true
+				},
+				{
+					text: 'Operation',
+					viewModel: 'WIP.view.oper.Operation',
+					tooltip: 'View Operation', 
+					leaf: true
+				},
+				{
+					text: 'Flow', 
+					leaf: true
+				},
+				{
+					text: 'Adapt', 
+					leaf: true
+				},
+				{
+					text: 'User', 
+					leaf: true
+				}
+			] }
+		]
+	},
+	{
+		text: 'Transaction',
+		children: [
+			{ text: "WIP", children: [
+				{
+					text: 'Setup Factory',
+					tooltip: 'Setup Factory', 
+					leaf: true
+				},
+				{
+					text: 'Operation',
+					viewModel: 'WIP.view.oper.Operation',
+					tooltip: 'View Operation', 
+					leaf: true
+				},
+				{
+					text: 'Flow', 
+					leaf: true
+				},
+				{
+					text: 'Adapt', 
+					leaf: true
+				},
+				{
+					text: 'User', 
+					leaf: true
+				}
+			] },
+			{ text: "RAS", children: [
+				{
+					text: 'Setup Factory',
+					tooltip: 'Setup Factory', 
+					leaf: true
+				},
+				{
+					text: 'Operation',
+					viewModel: 'WIP.view.oper.Operation',
+					tooltip: 'View Operation', 
+					leaf: true
+				},
+				{
+					text: 'Flow', 
+					leaf: true
+				},
+				{
+					text: 'Adapt', 
+					leaf: true
+				},
+				{
+					text: 'User', 
+					leaf: true
+				}
+			] }
+		]
+	},
+	{
+		text: 'Inquiry',
+		children: [
+			{ text: "WIP", children: [
+				{
+					text: 'Setup Factory',
+					tooltip: 'Setup Factory', 
+					leaf: true
+				},
+				{
+					text: 'Operation',
+					viewModel: 'WIP.view.oper.Operation',
+					tooltip: 'View Operation', 
+					leaf: true
+				},
+				{
+					text: 'Flow', 
+					leaf: true
+				},
+				{
+					text: 'Adapt', 
+					leaf: true
+				},
+				{
+					text: 'User', 
+					leaf: true
+				}
+			] },
+			{ text: "RAS", children: [
+				{
+					text: 'Setup Factory',
+					tooltip: 'Setup Factory', 
+					leaf: true
+				},
+				{
+					text: 'Operation',
+					viewModel: 'WIP.view.oper.Operation',
+					tooltip: 'View Operation', 
+					leaf: true
+				},
+				{
+					text: 'Flow', 
+					leaf: true
+				},
+				{
+					text: 'Adapt', 
+					leaf: true
+				},
+				{
+					text: 'User', 
+					leaf: true
+				}
+			] }
+		]
+	}
 ]

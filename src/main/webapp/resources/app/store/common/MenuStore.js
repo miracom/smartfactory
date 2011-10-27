@@ -1,8 +1,6 @@
 Ext.define('SmartFactory.store.common.MenuStore', {
 	extend: 'Ext.data.TreeStore',
 	
-	storeId: 'common.menu_store',
-	
 	autoLoad: true,
 	
   root: {
