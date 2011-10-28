@@ -20,6 +20,12 @@ public class Menu {
 	
 	private List<Menu> children;
 	
+	public void add(Menu child) {
+		if(children == null)
+			children = new LinkedList<Menu>();
+		children.add(child);
+	}
+	
 	public static List<Menu> buildHierarchy(List<Menu> menus) {
 		Stack<Menu> parents = new Stack<Menu>();
 		Menu root = new Menu();
@@ -39,7 +45,7 @@ public class Menu {
 					if(compared == 0) {
 						try {
 							Menu last = parents.pop();
-							parents.peek().getChildren().add(last);
+							parents.peek().add(last);
 						} catch(EmptyStackException e) {
 						}
 						break;
@@ -47,7 +53,7 @@ public class Menu {
 						try {
 							Menu last = parents.pop();
 							parent = parents.peek();
-							parent.getChildren().add(last);
+							parent.add(last);
 						} catch(EmptyStackException e) {
 						}
 						continue;
@@ -60,7 +66,7 @@ public class Menu {
 			} else {
 				//case menu.func_type_flag == "F"
 				if(parent != null)
-					parent.getChildren().add(menu);
+					parent.add(menu);
 			}
 		}
 		
@@ -68,7 +74,7 @@ public class Menu {
 	}
 	
 	public boolean isLeaf() {
-		return func_type_flag == "M";
+		return func_type_flag.equals("F");
 	}
 
 	public String getText() {
@@ -76,8 +82,6 @@ public class Menu {
 	}
 
 	public List<Menu> getChildren() {
-		if(children == null)
-			children = new LinkedList<Menu>();
 		return children;
 	}
 

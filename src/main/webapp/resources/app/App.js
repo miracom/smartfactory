@@ -23,15 +23,16 @@ Ext.define('SmartFactory.App', {
 					title : menu.text,
 					tabConfig : {
 						tooltip: menu.tooltip
-					}
+					},
+					closable: true
 				}));
-			})
+			});
 		} else {
 			SmartFactory.setStatus({
-          text: 'View Not Found!',
-          iconCls: 'x-status-error',
-          clear: true // auto-clear after a set interval
-      })
+				text: 'View Not Found!',
+				iconCls: 'x-status-error',
+				clear: true // auto-clear after a set interval
+			});
 		}
 	}
 });

@@ -46,9 +46,9 @@ Ext.define('SmartFactory.view.common.Menu', {
 		return children.map(function(child){
 			var menu = self_function(child);
 			var ret = {
-				text: child.data.text
+				text: child.get('text')
 			};
-			if(child.data.separator === 'Y') {
+			if(child.raw.separator === 'Y') {
 				ret.xtype = 'menuseparator';
 			}
 			
@@ -59,6 +59,7 @@ Ext.define('SmartFactory.view.common.Menu', {
 			} else {
 				ret.viewModel = 'RAS.view.resource.Resource';
 				ret.handler = SmartFactory.doMenu;
+				ret.tooltip = child.raw.func_name;
 			}
 			return ret;
 		});
