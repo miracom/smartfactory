@@ -29,24 +29,10 @@ Ext.define('SmartFactory.view.common.Menu', {
 		
 		//Get first level children from treestore
 		var root = this.store.getRootNode();
-		var children = root.childNodes;
-
-		for(var idx in children) {
-			var child = children[idx];
-			var	menu = this.loadMenu(child);
-
-			var x = {
-				text: child.data.text
-			};
-			
-			if(menu) {
-				x.menu = {
-					items: menu
-				}
-			}
-
-			this.add(x);
-		}
+		
+		this.loadMenu(root).every(function(menu) {
+			return this.add(menu);
+		}, this);
 	},
 	
 	loadMenu: function(node) {
@@ -57,15 +43,24 @@ Ext.define('SmartFactory.view.common.Menu', {
 		}
 
 		self_function = arguments.callee;
-		var x = children.map(function(child){
-			return {
-				text: child.data.text,
-				menu: {
-					items: self_function(child)
-				}
+		return children.map(function(child){
+			var menu = self_function(child);
+			var ret = {
+				text: child.data.text
+			};
+			if(child.data.separator === 'Y') {
+				ret.xtype = 'menuseparator';
 			}
+			
+			if(menu) {
+				ret.menu = {
+					items: menu
+				};
+			} else {
+				ret.viewModel = 'RAS.view.resource.Resource';
+				ret.handler = SmartFactory.doMenu;
+			}
+			return ret;
 		});
-		
-		return x;
 	}
 });

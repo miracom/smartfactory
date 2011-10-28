@@ -1,5 +1,10 @@
 package com.mesplus.CMN.model;
 
+import java.util.EmptyStackException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
+
 public class Menu {
 	private String func_name;
 	private String func_desc;
@@ -11,9 +16,71 @@ public class Menu {
 	private String icon_index;
 	private String disp_level;
 	private String separator;
-//	private String short_cut;
 	private String add_tool_bar;
 	
+	private List<Menu> children;
+	
+	public static List<Menu> buildHierarchy(List<Menu> menus) {
+		Stack<Menu> parents = new Stack<Menu>();
+		Menu root = new Menu();
+		parents.push(root);
+		
+		for(Menu menu : menus) {
+			Menu parent = null;
+			
+			try {
+				parent = parents.peek();
+			} catch(EmptyStackException e) {
+			}
+
+			if(menu.func_type_flag.startsWith("M")) {
+				while(parent != root) {
+					int compared = menu.disp_level.length() - parent.disp_level.length();
+					if(compared == 0) {
+						try {
+							Menu last = parents.pop();
+							parents.peek().getChildren().add(last);
+						} catch(EmptyStackException e) {
+						}
+						break;
+					} else if(compared < 0){
+						try {
+							Menu last = parents.pop();
+							parent = parents.peek();
+							parent.getChildren().add(last);
+						} catch(EmptyStackException e) {
+						}
+						continue;
+					} else {
+						break;
+					}
+				}
+				
+				parents.push(menu);
+			} else {
+				//case menu.func_type_flag == "F"
+				if(parent != null)
+					parent.getChildren().add(menu);
+			}
+		}
+		
+		return parents.firstElement().children;
+	}
+	
+	public boolean isLeaf() {
+		return func_type_flag == "M";
+	}
+
+	public String getText() {
+		return func_desc;
+	}
+
+	public List<Menu> getChildren() {
+		if(children == null)
+			children = new LinkedList<Menu>();
+		return children;
+	}
+
 	public String getFunc_name() {
 		return func_name;
 	}

@@ -37,7 +37,7 @@ public class CMNController {
 
 		logger.info("factory_id : " + factory_id);
 		
-		return menuDao.selectMenus();
+		return Menu.buildHierarchy(menuDao.selectMenus());
 	}
 
 }

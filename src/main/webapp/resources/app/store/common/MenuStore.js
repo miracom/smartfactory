@@ -10,7 +10,7 @@ Ext.define('SmartFactory.store.common.MenuStore', {
 	
   proxy: {
 		type: 'ajax',
-		url : 'data/menus.json',
+		url : 'module/CMN/data/menus.json',
 		reader: {
 			type: 'json'
 		}
