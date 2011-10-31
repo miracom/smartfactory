@@ -8,7 +8,7 @@
 		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/**/*" access="hasRole('ROLE_USER')" />
 		<form-login login-page="/login" />
-		<remember-me key="smartfactory" />
+		<remember-me key="smartfactory" token-validity-seconds="3600" />
 		<logout invalidate-session="true" success-handler-ref="myLogoutSuccessHandler"
 			logout-url="/logout" />
 	</http>
