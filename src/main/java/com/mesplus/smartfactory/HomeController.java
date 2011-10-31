@@ -3,7 +3,6 @@ package com.mesplus.smartfactory;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,8 +29,8 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(Locale locale, Model model) {
 		logger.info("Welcome home! the client locale is "+ locale.toString());
 		
 		Date date = new Date();
@@ -41,7 +40,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "test";
 	}
 
 	/**
