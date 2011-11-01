@@ -1,20 +1,20 @@
 Ext.define('SmartFactory.App', {
 	addDockingNav : function(view) {
-		Ext.getCmp('viewport.west').add(view);
+		Ext.getCmp('docked_nav').add(view);
 	},
 	addContentView : function(view) {
 		this.showBusy();
-		Ext.getCmp('viewport.center').add(view).show();
+		Ext.getCmp('content').add(view).show();
 		this.clearStatus();
 	},
 	setStatus : function(state) {
-		Ext.getCmp('viewport.south').setStatus(state);
+		Ext.getCmp('statusbar').setStatus(state);
 	},
 	showBusy : function(o) {
-		Ext.getCmp('viewport.south').showBusy(o);
+		Ext.getCmp('statusbar').showBusy(o);
 	},
 	clearStatus : function() {
-		Ext.getCmp('viewport.south').clearStatus();
+		Ext.getCmp('statusbar').clearStatus();
 	},
 	doMenu : function(menu) {
 		if(menu.viewModel) {

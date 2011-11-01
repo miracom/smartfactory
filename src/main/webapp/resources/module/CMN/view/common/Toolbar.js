@@ -1,4 +1,4 @@
-Ext.define('SmartFactory.view.common.Toolbar', {
+Ext.define('CMN.view.common.Toolbar', {
 	extend: 'Ext.toolbar.Toolbar',
 	
 	items: [

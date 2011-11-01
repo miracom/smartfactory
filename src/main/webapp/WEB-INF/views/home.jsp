@@ -10,6 +10,7 @@
 		
 		<script src="js/ext-js/bootstrap.js"></script>
 		
+		<script src="module/CMN/module.js"></script>
 		<script src="module/RPT/module.js"></script>
 		<script src="module/WIP/module.js"></script>
 		<script src="module/RAS/module.js"></script>
