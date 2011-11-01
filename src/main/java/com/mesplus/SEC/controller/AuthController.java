@@ -34,7 +34,7 @@ public class AuthController {
 		}
 		changePasswordDao.changePassword(username, newPassword);
 		SecurityContextHolder.clearContext();
-		return "redirect:main";
+		return "redirect:/home";
 	}
 		
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
