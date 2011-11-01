@@ -1,0 +1,7 @@
+[
+   { "report_id": "EQ1000", "desc": "Cleaning Machine", "type":"P" },
+   { "report_id": "EQ2000", "desc": "Cleaning Machine", "type":"P" },
+   { "report_id": "EQ3000", "desc": "Cleaning Machine", "type":"P" },
+   { "report_id": "EQ4000", "desc": "Cleaning Machine", "type":"P" },
+   { "report_id": "EQ5000", "desc": "Cleaning Machine", "type":"P" }
+]
