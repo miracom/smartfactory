@@ -19,14 +19,14 @@ public class SmartFactoryController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		return "home";
+		return "redirect:home";
 	}
 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
-		return "main";
+		return "home";
 	}
 }
