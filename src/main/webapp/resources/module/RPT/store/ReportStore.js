@@ -1,9 +1,9 @@
 Ext.define('RPT.store.ReportStore', {
 	extend : 'Ext.data.Store',
 
-	storeId : 'rpt.report_store',
+	id : 'rpt.report_store',
 
-	autoLoad : false,
+	autoLoad : true,
 
 	model : 'RPT.model.ReportChart',
 

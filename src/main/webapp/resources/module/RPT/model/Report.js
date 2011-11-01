@@ -5,6 +5,7 @@ Ext.define('RPT.model.Report', {
 		{ name: 'report_id', type: 'string'},
 		{ name: 'desc', type: 'string' },
 		{ name: 'type', type: 'string' },
-		{ name: 'owner', type: 'string' }
+		{ name: 'owner', type: 'string' },
+		{ name: 'xtype', type: 'string '}
   ]
 });
