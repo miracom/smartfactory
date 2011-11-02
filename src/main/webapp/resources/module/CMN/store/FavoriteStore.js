@@ -1,7 +1,7 @@
-Ext.define('SmartFactory.store.common.FavoriteStore', {
+Ext.define('CMN.store.FavoriteStore', {
 	extend: 'Ext.data.Store',
 	
-	storeId: 'common.favorite_store',
+	storeId: 'cmn.favorite_store',
 	
 	autoLoad: true,
 	
@@ -11,7 +11,7 @@ Ext.define('SmartFactory.store.common.FavoriteStore', {
 	
   proxy: {
 		type: 'ajax',
-		url : 'data/favorites.json',
+		url : 'module/CMN/data/favorites.json',
 		reader: {
 			type: 'json'
 		}
