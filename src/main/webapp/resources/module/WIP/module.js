@@ -1,5 +1,3 @@
 Ext.onReady(function() {
-	Ext.Loader.setPath('WIP', 'module/WIP');
-
-	modules.push('WIP.controller.WIPController');
+	Miracom.MESplus.register('WIP', [ 'WIP.controller.WIPController' ]);
 });

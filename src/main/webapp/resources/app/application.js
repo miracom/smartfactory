@@ -5,15 +5,46 @@ Ext.Loader.setConfig({
 	}
 });
 
-modules = [];
+var Miracom = Miracom || {};
+Miracom.MESplus = Miracom.MESplus || (function(){
+	var modules_order = [];
+	var modules = {};
+	
+	function getModules() {
+		return modules;
+	};
+	
+	function registerModule(module_name, controllers) {
+		if(modules[module_name])
+			return;
+		
+		modules[module_name] = controllers;
+		modules_order.push(module_name);
+		
+		Ext.Loader.setPath(module_name, 'module/' + module_name);
+	};
+	
+	function getAllControllers() {
+		return modules_order.reduce(function(joined, module){
+			return joined.concat(modules[module]);
+		}, []);
+	}
+	
+	return {
+		modules : getModules,
+		register : registerModule,
+		controllers : getAllControllers
+	};
+})();
 
 Ext.onReady(function() {
+
 	Ext.application({
 		name : 'SmartFactory',
 		autoCreateViewport : false,
 
 		controllers : [ 'SmartFactory.controller.ApplicationController' ]
-				.concat(modules),
+				.concat(Miracom.MESplus.controllers()),
 
 		launch : function() {
 			// Login 등등.. 여기서
