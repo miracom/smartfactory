@@ -1,4 +1,4 @@
-Ext.define('SmartFactory.view.common.NavMenu', {
+Ext.define('CMN.view.common.NavMenu', {
 	extend: 'Ext.tree.Panel',
 	
 	rootVisible: false,
@@ -10,7 +10,7 @@ Ext.define('SmartFactory.view.common.NavMenu', {
 					xtype: 'ras.resource.resource',
 					title: record.get('text'),
 					tabConfig : {
-						tooltip: record.raw.func_name,
+						tooltip: record.get('func_name'),
 					},
 					data: null,
 					closable: true
@@ -19,5 +19,5 @@ Ext.define('SmartFactory.view.common.NavMenu', {
 		}
 	},
 		
-	store: 'common.MenuStore'
+	store: 'CMN.store.MenuStore'
 });

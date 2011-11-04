@@ -1,8 +1,8 @@
-Ext.define('SmartFactory.view.common.Menu', {
+Ext.define('CMN.view.common.Menu', {
 	extend: 'Ext.toolbar.Toolbar',
 	
 	constructor: function(config) {
-		SmartFactory.view.common.Menu.superclass.constructor.apply(this, arguments);
+		CMN.view.common.Menu.superclass.constructor.apply(this, arguments);
 		
 		// this.on('beforerender', this.beforeRender, this);
 		this.store.on('load', this.beforeRender, this);
@@ -48,7 +48,7 @@ Ext.define('SmartFactory.view.common.Menu', {
 			var ret = {
 				text: child.get('text')
 			};
-			if(child.raw.separator === 'Y') {
+			if(child.get('separator') === 'Y') {
 				ret.xtype = 'menuseparator';
 			}
 			
@@ -59,7 +59,7 @@ Ext.define('SmartFactory.view.common.Menu', {
 			} else {
 				ret.viewModel = 'RAS.view.resource.Resource';
 				ret.handler = SmartFactory.doMenu;
-				ret.tooltip = child.raw.func_name;
+				ret.tooltip = child.get('func_name');
 			}
 			return ret;
 		});

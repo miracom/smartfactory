@@ -2,13 +2,13 @@ Ext.define('RPT.view.NavReport', {
 	extend: 'Ext.view.View',
 	
 	store: 'RPT.store.ReportListStore',
+	itemSelector: 'li',
 	
 	listeners: {
 		itemclick: function(view, record, item, index, e, opt) {
-			console.log(record);
 			SmartFactory.addContentView({
 				xtype: record.get('xtype'),
-				title: 'Report-' + record.get('report_id'),
+				title: 'Report-' + record.get('desc'),
 				data: record,
 				closable: true
 			});

@@ -14,7 +14,7 @@
 		<org.slf4j-version>1.5.10</org.slf4j-version>
 		<json-simple-version>1.1</json-simple-version>
 	</properties>
-	
+
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -26,7 +26,7 @@
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
-				 </exclusion>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -34,14 +34,14 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+
 		<!-- Spring JDBC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+
 		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -73,14 +73,14 @@
 			<version>${org.springframework-version}</version>
 			<scope>compile</scope>
 		</dependency>
-				
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
-		
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -130,20 +130,20 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-				
+
 		<!-- Servlet -->
 		<dependency>
-		    <groupId>javax</groupId>
-		    <artifactId>javaee-api</artifactId>
-		    <version>6.0</version>
-		    <scope>provided</scope>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<!-- Spring-Mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -162,26 +162,28 @@
 			<artifactId>tiles-jsp</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-		
+
 		<!-- JSON Simple & Jackson Library -->
-		<!--
- 		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>${json-simple-version}</version>
-		</dependency>
- 		-->          
+		<!-- <dependency> <groupId>com.googlecode.json-simple</groupId> <artifactId>json-simple</artifactId> 
+			<version>${json-simple-version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.6.4</version>
 		</dependency>
-		
+
 		<!-- Oracle JDBC -->
-		<dependency> 
-			<groupId>com.oracle</groupId> 
-			<artifactId>ojdbc6</artifactId> 
-			<version>11.2.0.3.0</version> 
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3.0</version>
+		</dependency>
+
+		<!-- HSQL DB Driver -->
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.1</version>
 		</dependency>
 
 		<!-- Commons DBCP -->
@@ -198,7 +200,7 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -229,7 +231,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>			
+			</plugin>
 		</plugins>
 	</build>
 </project>

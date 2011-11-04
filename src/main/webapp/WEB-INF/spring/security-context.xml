@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/jdbc
+		http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
-	<http auto-config="true" use-expressions="true" >
+	<http auto-config="true" use-expressions="true">
 		<!-- access-decision-manager-ref="unanimousBased"> -->
 		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/**/*" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/secure/**/*" access="hasRole('ROLE_MANAGER') and fullyAuthenticated" />
+		<intercept-url pattern="/secure/**/*"
+			access="hasRole('ROLE_MANAGER') and fullyAuthenticated" />
 		<form-login login-page="/login" />
-		<remember-me key="smartfactory" token-validity-seconds="3600" />
+		<remember-me key="smartfactory" services-ref="iPTokenBasedRememberMeServicesBean" />
 		<logout invalidate-session="true" success-handler-ref="myLogoutSuccessHandler"
 			logout-url="/logout" />
 	</http>
@@ -32,11 +36,18 @@
 
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
-			<user-service>
-				<user authorities="ROLE_USER" name="guest" password="guest" />
-			</user-service>
+			<jdbc-user-service data-source-ref="securityDataSource"/>
 		</authentication-provider>
 	</authentication-manager>
+
+	<beans:bean id="userService"
+		class="com.mesplus.SEC.dao.InMemoryChangePasswordDaoImpl">
+		<beans:property name="userProperties">
+			<beans:props>
+				<beans:prop key="guest">guest,ROLE_USER</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
 
 	<beans:bean id="myLogoutSuccessHandler"
 		class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
@@ -44,4 +55,18 @@
 		<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
 	</beans:bean>
 
+	<beans:bean class="com.mesplus.SEC.service.IPTokenBasedRememberMeServices"
+		id="iPTokenBasedRememberMeServicesBean">
+		<beans:property name="key">
+			<beans:value>smartfactory</beans:value>
+		</beans:property>
+		<beans:property name="userDetailsService" ref="userService" />
+		<beans:property name="parameter" value="_remember_me" />
+		<beans:property name="cookieName" value="REMEMBER_ME" />
+	</beans:bean>
+
+	<jdbc:embedded-database id="securityDataSource" type="HSQL">
+		<jdbc:script location="classpath:security-schema.sql" />
+		<jdbc:script location="classpath:test-data.sql" />
+	</jdbc:embedded-database>
 </beans:beans>
