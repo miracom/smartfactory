@@ -10,8 +10,8 @@
 		<result property="oper_id" column="oper"></result>
 		<result property="desc" column="oper_desc"></result>
 	</resultMap>
-	
+
 	<select id="selectOperations" resultMap="OperMap">
-	SELECT factory, oper, oper_desc from mwipoprdef
+		SELECT factory, oper, oper_desc from mwipoprdef
 	</select>
 </mapper>

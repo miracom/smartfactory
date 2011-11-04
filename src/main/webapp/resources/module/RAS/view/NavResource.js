@@ -2,7 +2,6 @@ Ext.define('RAS.view.NavResource', {
 	extend: 'Ext.view.View',
 	
 	store: 'RAS.store.ResourceListStore',
-	itemSelector: 'li',
 	
 	listeners: {
 		itemclick: function(view, record, item, index, e, opt) {

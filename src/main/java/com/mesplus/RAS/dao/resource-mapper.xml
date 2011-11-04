@@ -6,7 +6,7 @@
 <mapper namespace="com.mesplus.RAS.dao.ResourceDao">
 
 	<resultMap id="ResourceMap" type="com.mesplus.RAS.model.Resource">
-		<result property="factory_id" column="factory"></result>
+		<result property="factory" />
 		<result property="resource_id" column="res_id"></result>
 		<result property="desc" column="res_desc"></result>
 		<result property="type" column="res_type"></result>

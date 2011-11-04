@@ -22,13 +22,9 @@ public class RASController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
 	
+	@Autowired
 	private ResourceDao resourceDao;
 	
-	@Autowired
-	public void setResourceDao(ResourceDao resourceDao) {
-		this.resourceDao = resourceDao;
-	}
-
 	@RequestMapping(value = "module/RAS/data/resources.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Resource> resources(HttpServletRequest request,

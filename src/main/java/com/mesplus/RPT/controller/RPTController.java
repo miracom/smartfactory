@@ -21,13 +21,9 @@ import com.mesplus.smartfactory.HomeController;
 public class RPTController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
-	
-	private ReportDao reportDao;
-	
+
 	@Autowired
-	public void setReportDao(ReportDao reportDao) {
-		this.reportDao = reportDao;
-	}
+	private ReportDao reportDao;
 
 	@RequestMapping(value = "module/RPT/data/reports.json", method = RequestMethod.GET)
 	public @ResponseBody
