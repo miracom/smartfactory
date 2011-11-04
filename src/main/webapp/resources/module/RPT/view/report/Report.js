@@ -41,8 +41,6 @@ var store = Ext.create('Ext.data.JsonStore', {
 Ext.define('RPT.view.report.Report', {
 	extend : 'Ext.form.Panel',
 	
-	store: 'RPT.store.ReportStore',
-
 	alias : 'widget.rpt.report.report',
 	
 	layout : {
@@ -220,8 +218,8 @@ Ext.define('RPT.view.report.Report', {
 					animate : true,
 					width : 500,
 					height : 300,
-					//store : store,
-					store: 'RPT.store.ReportStore',
+					store : store,
+					//store: 'RPT.store.ReportStore',
 					legend : {
 						position : 'right'
 					},
@@ -282,8 +280,8 @@ Ext.define('RPT.view.report.Report', {
 				flex : 1,
 				items : [ {
 					xtype : 'gridpanel',
-					//store : store,
-					store: 'RPT.store.ReportStore',
+					store : store,
+					//store: 'RPT.store.ReportStore',
 					columns : [ {
 						xtype : 'gridcolumn',
 						autoScroll : true,
@@ -307,32 +305,42 @@ Ext.define('RPT.view.report.Report', {
 						text : 'Desription'
 					}, {
 						xtype : 'numbercolumn',
-						dataIndex : 'data4',
-						align : 'center',
-						text : 'Status'
-					}, {
-						xtype : 'numbercolumn',
 						dataIndex : 'data5',
 						align : 'center',
 						text : 'Product',
 						columns : [ {
-							text : 'Name',
+							text : 'Code',
 							renderer : 'usMoney',
 							dataIndex : 'data1',
 							align : 'center',
 
 						}, {
-							text : 'Description',
+							text : 'Name',
 							renderer : 'usMoney',
 							dataIndex : 'data2',
 							align : 'center',
-						}, {
-							text : 'Qty',
-							renderer : 'usMoney',
-							dataIndex : 'data3',
-							align : 'center',
-						} ]
-					} ],
+						}, ]
+					}, {
+						xtype : 'numbercolumn',
+						dataIndex : 'data4',
+						align : 'center',
+						text : 'Status'
+					}, {
+						xtype : 'numbercolumn',
+						dataIndex : 'data4',
+						align : 'center',
+						text : 'Work Order'
+					}, {
+						xtype : 'numbercolumn',
+						dataIndex : 'data4',
+						align : 'center',
+						text : 'Qty'
+					}, {
+						xtype : 'numbercolumn',
+						dataIndex : 'data4',
+						align : 'center',
+						text : 'Inspection'
+					}, ],
 					viewConfig : {
 
 					},

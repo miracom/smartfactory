@@ -7,27 +7,27 @@
 
 	<resultMap id="ReportMap" type="com.mesplus.RPT.model.Report">
 		<result property="factory_id" column="factory"></result>
-		<result property="report_id" column="res_id"></result>
-		<result property="desc" column="res_desc"></result>
-		<result property="type" column="res_type"></result>
-		<result property="status_1" column="res_sts_1"></result>
-		<result property="status_2" column="res_sts_2"></result>
-		<result property="status_3" column="res_sts_3"></result>
-		<result property="status_4" column="res_sts_4"></result>
-		<result property="status_5" column="res_sts_5"></result>
-		<result property="status_6" column="res_sts_6"></result>
-		<result property="status_7" column="res_sts_7"></result>
-		<result property="status_8" column="res_sts_8"></result>
-		<result property="status_9" column="res_sts_9"></result>
-		<result property="created_at" column="create_time"></result>
-		<result property="updated_at" column="update_time"></result>
+		<result property="report_id" column="rpt_id"></result>
+		<result property="report_desc" column="rpt_desc"></result>
+		<result property="area" column="area"></result>
+		<result property="lot_id" column="lot_id"></result>
+		<result property="oper_id" column="oper_id"></result>
+		<result property="oper_desc" column="oper_desc"></result>
+		<result property="mat_id" column="mat_id"></result>
+		<result property="mat_desc" column="mat_desc"></result>
+		<result property="oper_sts" column="oper_sts"></result>
+		<result property="ord_id" column="ord_id"></result>
+		<result property="mat_qty" column="mat_qty"></result>
+		<result property="inspection" column="insp_id"></result>
 	</resultMap>
-		
+
 	<select id="selectReports" resultMap="ReportMap">
-	SELECT factory, res_id, res_desc from mrasresdef
+		SELECT factory, rpt_id, rpt_desc FROM mrptmfgmgt
 	</select>
 
 	<select id="findReport" parameterType="string" resultMap="ReportMap">
-	SELECT factory, res_id, res_desc FROM mrasresdef WHERE res_id = #{resource_id}
+		SELECT factory, rpt_id, rpt_desc, area, lot_id, oper_id, oper_desc, mat_id, mat_desc, oper_sts, ord_id, mat_qty, insp_id 
+		FROM mrptmfgmgt WHERE
+		rpt_id = #{report_id}
 	</select>
 </mapper>

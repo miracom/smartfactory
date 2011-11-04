@@ -1,7 +1,7 @@
 Ext.define('RPT.store.ReportStore', {
 	extend : 'Ext.data.Store',
 
-	id : 'rpt.report_store',
+	storeId : 'rpt.report_store',
 
 	autoLoad : false,
 
@@ -11,7 +11,7 @@ Ext.define('RPT.store.ReportStore', {
 		type : 'ajax',
 		url : 'module/RPT/data/report.json',
 		reader : {
-			type : 'json'
+			type : 'json',
 		}
 	}
 });

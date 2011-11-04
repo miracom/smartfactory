@@ -45,12 +45,12 @@ public class RPTController {
 	Report report(HttpServletRequest request,
 			HttpServletResponse response) {
 		String factory_id = request.getParameter("factory_id");
-		String resource_id = request.getParameter("resource_id");
+		String report_id = request.getParameter("report_id");
 
 		logger.info("factory_id : " + factory_id);
-		logger.info("resource_id : " + resource_id);
+		logger.info("report_id : " + report_id);
 		
-		Report ret = reportDao.findReport(resource_id);
+		Report ret = reportDao.findReport(report_id);
 		return ret;
 	}
 }
