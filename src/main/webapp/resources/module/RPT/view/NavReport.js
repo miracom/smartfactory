@@ -2,7 +2,6 @@ Ext.define('RPT.view.NavReport', {
 	extend: 'Ext.view.View',
 	
 	store: 'RPT.store.ReportListStore',
-	itemSelector: 'div',
 	
 	listeners: {
 		itemclick: function(view, record, item, index, e, opt) {
@@ -19,7 +18,7 @@ Ext.define('RPT.view.NavReport', {
 	autoScroll: true,
 	
 	cls: 'report-list',
-	itemSelector: '.report-list-item', //itemselector로 div 지정 
+	itemSelector: '.report-list-item',
 	overItemCls: 'report-list-item-hover',
 	tpl:'<tpl for="."><div class="report-list-item">{report_id} - {report_desc}</div></tpl>'
 });

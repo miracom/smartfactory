@@ -10,7 +10,7 @@ Ext.define('SmartFactory.view.Viewport', {
 
 	items : [ Ext.create('CMN.view.viewport.North', {
 		region : 'north', /* store와 생성 우선순위 때문에 .. 해결전까지는 xtype을 사용하지 못함. 참고. CMNController */
-		height : 72
+		height : 75
 	}), Ext.create('CMN.view.viewport.West', {
 		title : 'Navigation',
 		region : 'west',

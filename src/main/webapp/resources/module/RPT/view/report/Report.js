@@ -38,6 +38,15 @@ var store = Ext.create('Ext.data.JsonStore', {
 	} ]
 });
 
+Ext.define('Ext.ux.CustomTrigger', {
+	extend : 'Ext.form.field.Trigger',
+	alias : 'widget.customtrigger',
+
+	onTriggerClick : function() {
+		Ext.Msg.alert('Status', 'You clicked trigger!');
+	}
+});
+
 Ext.define('RPT.view.report.Report', {
 	extend : 'Ext.form.Panel',
 	
