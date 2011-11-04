@@ -53,8 +53,18 @@
     border: 1px solid #fff;
 	border-bottom: 1px dotted #A3BAE9;
 }
-.operation-list,.resource-list{padding: 0 3px 0 3px;}
-.operation-list .x-item-selected,.resource-list .x-item-selected{font-weight: bold;color: #15428B;background-color: #DFE8F6;border: 1px dotted #A3BAE9;}
+.report-list-item {
+    margin-top: 3px;
+    padding-left: 20px;
+    font-size: 11px;
+    line-height: 20px;
+    cursor: pointer;
+    background:url('../image/resource16.png') 1px 2px no-repeat;
+    border: 1px solid #fff;
+		border-bottom: 1px dotted #A3BAE9;
+}
+.operation-list,.resource-list,.report-list{padding: 0 3px 0 3px;}
+.operation-list .x-item-selected,.resource-list .x-item-selected,.report-list .x-item-selected{font-weight: bold;color: #15428B;background-color: #DFE8F6;border: 1px dotted #A3BAE9;}
 .operation-list-item-hover,.resource-list-item-hover{background-color: #eee;}
 .iconsetDockMenu{background:url('../image/iconMenu16.png') 0 1px no-repeat;}
 .iconsetDockFavor{background:url('../image/iconFavorit16.png') -1px 1px no-repeat;}

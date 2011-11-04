@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mesplus.RPT.dao.ReportDao">
+
+	<resultMap id="ReportMap" type="com.mesplus.RPT.model.Report">
+		<result property="factory_id" column="factory"></result>
+		<result property="report_id" column="rpt_id"></result>
+		<result property="report_desc" column="rpt_desc"></result>
+		<result property="area" column="area"></result>
+		<result property="lot_id" column="lot_id"></result>
+		<result property="oper_id" column="oper_id"></result>
+		<result property="oper_desc" column="oper_desc"></result>
+		<result property="mat_id" column="mat_id"></result>
+		<result property="mat_desc" column="mat_desc"></result>
+		<result property="oper_sts" column="oper_sts"></result>
+		<result property="ord_id" column="ord_id"></result>
+		<result property="mat_qty" column="mat_qty"></result>
+		<result property="inspection" column="insp_id"></result>
+	</resultMap>
+
+	<select id="selectReports" resultMap="ReportMap">
+		SELECT factory, rpt_id, rpt_desc FROM mrptmfgmgt
+	</select>
+
+	<select id="findReport" parameterType="string" resultMap="ReportMap">
+		SELECT factory, rpt_id, rpt_desc, area, lot_id, oper_id, oper_desc, mat_id, mat_desc, oper_sts, ord_id, mat_qty, insp_id 
+		FROM mrptmfgmgt WHERE
+		rpt_id = #{report_id}
+	</select>
+</mapper>

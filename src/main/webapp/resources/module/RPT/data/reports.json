@@ -1,7 +1,7 @@
 [
-   { "report_id": "Report", "desc": "Type1", "type":"P", "xtype":"rpt.report.report" },
-   { "report_id": "Report", "desc": "Type2", "type":"P", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "desc": "Type3", "type":"P", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "desc": "Type4", "type":"P", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "desc": "Type5", "type":"P", "xtype":"rpt.report.report"  }
+   { "report_id": "Report", "report_desc": "Type1", "xtype":"rpt.report.report"  },
+   { "report_id": "Report", "report_desc": "Type2", "xtype":"rpt.report.report"  },
+   { "report_id": "Report", "report_desc": "Type3", "xtype":"rpt.report.report"  },
+   { "report_id": "Report", "report_desc": "Type4", "xtype":"rpt.report.report"  },
+   { "report_id": "Report", "report_desc": "Type5", "xtype":"rpt.report.report"  }
 ]

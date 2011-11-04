@@ -2,13 +2,13 @@ Ext.define('RPT.view.NavReport', {
 	extend: 'Ext.view.View',
 	
 	store: 'RPT.store.ReportListStore',
-	itemSelector: 'li',
 	
 	listeners: {
 		itemclick: function(view, record, item, index, e, opt) {
 			SmartFactory.addContentView({
-				xtype: record.get('xtype'),
-				title: 'Report-' + record.get('desc'),
+				//xtype: record.get('xtype'),
+				xtype: 'rpt.report.report', 
+				title: record.get('report_id') + ' - ' + record.get('report_desc'),
 				data: record,
 				closable: true
 			});
@@ -18,7 +18,7 @@ Ext.define('RPT.view.NavReport', {
 	autoScroll: true,
 	
 	cls: 'report-list',
-	itemSelector: '.report-list-item', //itemselector로 div 지정 
+	itemSelector: '.report-list-item',
 	overItemCls: 'report-list-item-hover',
-	tpl:'<tpl for="."><div class="report-list-item">{report_id} - {desc}</div></tpl>'
+	tpl:'<tpl for="."><div class="report-list-item">{report_id} - {report_desc}</div></tpl>'
 });

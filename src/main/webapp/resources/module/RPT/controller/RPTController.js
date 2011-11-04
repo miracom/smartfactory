@@ -2,7 +2,7 @@ Ext.define('RPT.controller.RPTController', {
 	extend : 'Ext.app.Controller',
 
 	stores : [ 'RPT.store.ReportListStore', 'RPT.store.ReportStore' ],
-	models : [ 'RPT.model.Report' ],
+	models : [ 'RPT.model.Report', 'RPT.model.ReportChart' ],
 	views : [ 'RPT.view.report.Report' ],
 
 	init : function() {

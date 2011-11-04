@@ -49,9 +49,9 @@ Ext.define('Ext.ux.CustomTrigger', {
 
 Ext.define('RPT.view.report.Report', {
 	extend : 'Ext.form.Panel',
-
+	
 	alias : 'widget.rpt.report.report',
-
+	
 	layout : {
 		align : 'stretch',
 		type : 'vbox'
@@ -78,9 +78,10 @@ Ext.define('RPT.view.report.Report', {
 						pack : 'center',
 						type : 'hbox'
 					},
+					width : 400,
 					items : [ {
 						xtype : 'label',
-						text : 'Manufacturing_Production_Report',
+						text : 'Manufacturing Production Report'
 					} ]
 				} ]
 			},
@@ -108,15 +109,15 @@ Ext.define('RPT.view.report.Report', {
 							layout : 'anchor',
 							anchor : '90%',
 							items : [ {
-								xtype : 'customtrigger',
+								xtype : 'triggerfield',
 								fieldLabel : 'Factory',
 								emptyText : 'click the trigger',
 							}, {
-								xtype : 'customtrigger',
+								xtype : 'triggerfield',
 								fieldLabel : 'Product Group',
 								emptyText : 'click the trigger',
 							}, {
-								xtype : 'customtrigger',
+								xtype : 'triggerfield',
 								fieldLabel : ' ',
 								labelSeparator : '',
 								emptyText : 'click the trigger',
@@ -135,15 +136,15 @@ Ext.define('RPT.view.report.Report', {
 							layout : 'anchor',
 							anchor : '90%',
 							items : [ {
-								xtype : 'customtrigger',
+								xtype : 'triggerfield',
 								fieldLabel : 'Operation Code',
 								emptyText : 'click the trigger',
 							}, {
-								xtype : 'customtrigger',
+								xtype : 'triggerfield',
 								fieldLabel : 'Product Type',
 								emptyText : 'click the trigger',
 							}, {
-								xtype : 'customtrigger',
+								xtype : 'triggerfield',
 								fieldLabel : 'Product Code',
 								emptyText : 'click the trigger',
 							} ]
@@ -227,6 +228,7 @@ Ext.define('RPT.view.report.Report', {
 					width : 500,
 					height : 300,
 					store : store,
+					//store: 'RPT.store.ReportStore',
 					legend : {
 						position : 'right'
 					},
@@ -234,8 +236,7 @@ Ext.define('RPT.view.report.Report', {
 							{
 								type : 'Numeric',
 								position : 'bottom',
-								fields : [ 'data1', 'data2', 'data3', 'data4',
-										'data5' ],
+								fields : [ 'data1', 'data2', 'data3', 'data4', 'data5' ],
 								label : {
 									renderer : Ext.util.Format
 											.numberRenderer('0,0')
@@ -271,7 +272,8 @@ Ext.define('RPT.view.report.Report', {
 						},
 						label : {
 							display : 'insideEnd',
-							field : [ 'data1', 'data2', 'data3', 'data4', 'data5' ],
+							field : [ 'data1', 'data2', 'data3', 'data4',
+									'data5' ],
 							renderer : Ext.util.Format.numberRenderer('0'),
 							orientation : 'horizontal',
 							color : '#333',
@@ -288,6 +290,7 @@ Ext.define('RPT.view.report.Report', {
 				items : [ {
 					xtype : 'gridpanel',
 					store : store,
+					//store: 'RPT.store.ReportStore',
 					columns : [ {
 						xtype : 'gridcolumn',
 						autoScroll : true,
@@ -311,32 +314,42 @@ Ext.define('RPT.view.report.Report', {
 						text : 'Desription'
 					}, {
 						xtype : 'numbercolumn',
-						dataIndex : 'data4',
-						align : 'center',
-						text : 'Status'
-					}, {
-						xtype : 'numbercolumn',
 						dataIndex : 'data5',
 						align : 'center',
 						text : 'Product',
 						columns : [ {
-							text : 'Name',
+							text : 'Code',
 							renderer : 'usMoney',
 							dataIndex : 'data1',
 							align : 'center',
 
 						}, {
-							text : 'Description',
+							text : 'Name',
 							renderer : 'usMoney',
 							dataIndex : 'data2',
 							align : 'center',
-						}, {
-							text : 'Qty',
-							renderer : 'usMoney',
-							dataIndex : 'data3',
-							align : 'center',
-						} ]
-					} ],
+						}, ]
+					}, {
+						xtype : 'numbercolumn',
+						dataIndex : 'data4',
+						align : 'center',
+						text : 'Status'
+					}, {
+						xtype : 'numbercolumn',
+						dataIndex : 'data4',
+						align : 'center',
+						text : 'Work Order'
+					}, {
+						xtype : 'numbercolumn',
+						dataIndex : 'data4',
+						align : 'center',
+						text : 'Qty'
+					}, {
+						xtype : 'numbercolumn',
+						dataIndex : 'data4',
+						align : 'center',
+						text : 'Inspection'
+					}, ],
 					viewConfig : {
 
 					},
