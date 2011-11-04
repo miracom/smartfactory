@@ -1,3 +1,1 @@
-Ext.onReady(function() {
-	Miracom.MESplus.register('MBI', [ 'MBI.controller.MBIController' ]);
-});
+Miracom.register('MBI', [ 'MBI.controller.MBIController' ]);
