@@ -19,15 +19,19 @@
 .x-btn-default-toolbar-large-icon .x-btn-icon.icon4_32{background-position:76% 0;}
 .x-btn-default-toolbar-large-icon .x-btn-icon.icon5_32{background-position:100% 0;}
 
+/* app menu */
+.appMenu .x-btn-default-toolbar-small .x-btn-inner{color:#d7d7d7}
+
+/* dock bar */
 .operation-list-item {
     margin-top: 3px;
     padding-left: 20px;
     font-size: 11px;
     line-height: 20px;
     cursor: pointer;
-    background:url('../image/operation16.png') 1px 2px no-repeat;
+    background:url('../image/iconOperation16.png') 2px 2px no-repeat;
     border: 1px solid #fff;
-		border-bottom: 1px dotted #A3BAE9;
+	border-bottom: 1px dotted #A3BAE9;
 }
 .resource-list-item {
     margin-top: 3px;
@@ -35,16 +39,49 @@
     font-size: 11px;
     line-height: 20px;
     cursor: pointer;
-    background:url('../image/resource16.png') 1px 2px no-repeat;
+    background:url('../image/iconResource16.png') 2px 2px no-repeat;
     border: 1px solid #fff;
-		border-bottom: 1px dotted #A3BAE9;
+	border-bottom: 1px dotted #A3BAE9;
+}
+.report-list-item {
+    margin-top: 3px;
+    padding-left: 22px;
+    font-size: 11px;
+    line-height: 20px;
+    cursor: pointer;
+    background:url('../image/iconReport16.png') 2px 2px no-repeat;
+    border: 1px solid #fff;
+	border-bottom: 1px dotted #A3BAE9;
 }
 .operation-list,.resource-list{padding: 0 3px 0 3px;}
 .operation-list .x-item-selected,.resource-list .x-item-selected{font-weight: bold;color: #15428B;background-color: #DFE8F6;border: 1px dotted #A3BAE9;}
 .operation-list-item-hover,.resource-list-item-hover{background-color: #eee;}
+.iconsetDockMenu{background:url('../image/iconMenu16.png') 0 1px no-repeat;}
+.iconsetDockFavor{background:url('../image/iconFavorit16.png') -1px 1px no-repeat;}
+.iconsetDockResource{background:url('../image/iconResource16.png') 0 1px no-repeat;}
+.iconsetDockOperation{background:url('../image/iconOperation16.png') 0 1px no-repeat;}
+.iconsetDockReport{background:url('../image/iconReport16.png') -1px 0 no-repeat;}
+.noBoardPanel .x-panel-body-default,.noBoardPanel{border:0}
 
-.iconsetDockMenu{background:url('../image/iconMenu.png') 0 1px no-repeat !important;}
-.iconsetDockFavor{background:url('../image/iconFavor.png') 0 1px no-repeat;}
-.iconsetDockResource{background:url('../image/resource16.png') 0 1px no-repeat;}
-.iconsetDockOperation{background:url('../image/operation16.png') 0 1px no-repeat;}
-.x-tab em{padding-top:1px;}
+.x-toolbar.appmenu,.x-toolbar.appQuickIcon{border:0}
+.x-toolbar.appmenu{background:url('../image/bgAppMenu.gif') repeat-x;}
+.x-toolbar.appQuickIcon{background:url('../image/bgAppQuickIcon.gif') repeat-x;}
+.x-tab em{padding-top:1px;padding-left:4px}
+
+.dockNavigation .x-panel-header-text-default{color:#efefef;}
+.dockNavigation .x-panel-header-default{background:url('../image/bgDockHeader.gif') repeat-x;background-color:#5875a0;border:none;margin-top:-1px;height:26px}
+.dockNavigation .x-panel-body{margin-top:-2px}
+.dockNavigation .x-panel-header-default-top{box-shadow:none}
+
+/* status bar */
+.appStatusBar{background:url('../image/bgAppFooter.gif') repeat-x;}
+
+/* splitter handle*/
+.x-splitter-vertical{background:url('../image/bgSplitterVertical.gif') repeat-y;}
+.x-layout-split-left{background:url('../image/arrowSplitterLeft.gif') no-repeat !important;height:38px}
+.x-layout-split-right{background:url('../image/arrowSplitterRight.gif') no-repeat !important;height:38px}
+
+/* tab*/
+.x-tab-bar-top .x-tab-bar-body{border:none}
+.x-tab-default-top,.x-tab-default-bottom{box-shadow:none}
+.x-border-box .x-tab-bar-top .x-tab-bar-body{height:24px}

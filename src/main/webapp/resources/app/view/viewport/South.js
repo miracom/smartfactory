@@ -2,6 +2,7 @@ Ext.define('SmartFactory.view.viewport.South', {
 	extend: 'Ext.ux.statusbar.StatusBar',
 	alias: 'widget.statusbar',
   id: 'viewport.south',
+  cls:'appStatusBar noBoardPanel',
 
   // defaults to use when the status is cleared:
   defaultText: 'Default status text',
@@ -33,7 +34,7 @@ Ext.define('SmartFactory.view.viewport.South', {
           xtype: 'button',
           text: 'Show Busy',
           handler: function (){
-              SmartFactory.showBusy('나 무지 바빠.');
+              SmartFactory.showBusy('��臾댁� 諛��.');
           }
       },
       {

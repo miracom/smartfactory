@@ -1,0 +1,45 @@
+$theme-name: 'smartfactory';
+$base-color: #f0f0f0;
+
+//tabs
+$tab-height: 21px !default;
+$tab-base-color: #a3b4d3;
+
+$tabbar-background-gradient:color-stops(#a3b5d3, #5d779c);
+$tab-border-color:#5d779c;
+$tab-background-gradient: color-stops(#c1cde0, #afc2dc);
+$tab-background-gradient-over: 'tab-over' !default;
+$tab-background-gradient-active: color-stops(#fff, #fff);
+$tab-background-gradient-disabled: 'tab-disabled' !default;
+
+$tabbar-strip-height: 0px !default;
+$tabbar-strip-border-color: #5d779c !default;
+$tabbar-strip-background-color: #fff !default;
+$tabbar-top-strip-border-width: 0px !default;
+
+$tabbar-top-body-padding: 3px 0 0px !default;
+$tabbar-bottom-body-padding: 0px 0 3px !default;
+$tabbar-bottom-body-border-width: 0 !default;
+$tabbar-bottom-plain-body-border-width: 0 !default;
+$tabbar-bottom-plain-body-padding: 0 0 0 !default;
+$tab-inner-border:false !default;
+
+$tab-color:#496f9c;
+$tab-font-weight: normal !default;
+$tab-font-weight-over: bold !default;
+$tab-font-weight-active: bold !default;
+
+$tab-closable-icon-top: 6px !default;
+$tab-spacing: 1px;
+
+
+//buttons
+$button-default-border-color:#b0b0b0;
+$button-default-border-color-over:#447ac1;
+$button-default-color-over:#3f679b;
+$button-toolbar-border-color-over:adjust-color(#4f535e, $hue: 0.084deg, $saturation: -9.891%, $lightness: -15%) !default;
+$button-toolbar-background-color-over:adjust-color(#000000, $hue: -1.138deg, $saturation: -11.47%, $lightness: 35%) !default;
+
+
+@import 'compass';
+@import 'ext4/default/all';

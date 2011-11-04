@@ -11,7 +11,7 @@ Ext.define('SmartFactory.view.Viewport', {
 	items: [
 	Ext.create('SmartFactory.view.viewport.North', {
 		region: 'north',
-		height: 72
+		height: 75
 	}),
 	Ext.create('SmartFactory.view.viewport.West', {
 		title: 'Navigation',
