@@ -9,15 +9,15 @@
 		<link rel="stylesheet" href="js/ux/statusbar/css/statusbar.css"></link>
 		
 		<script src="js/ext-js/bootstrap.js"></script>
+
+		<script src="app/application.js"></script>
 		
+		<script src="product/Miracom/module.js"></script>
 		<script src="module/CMN/module.js"></script>
 		<script src="module/RPT/module.js"></script>
 		<script src="module/WIP/module.js"></script>
 		<script src="module/RAS/module.js"></script>
 		<script src="module/MBI/module.js"></script>
-
-		<script src="app/application.js"></script>
-
 	</head>
 	<body>
 	</body>

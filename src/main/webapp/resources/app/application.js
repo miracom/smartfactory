@@ -5,20 +5,18 @@ Ext.Loader.setConfig({
 	}
 });
 
-modules = [];
-
 Ext.onReady(function() {
 	Ext.application({
 		name : 'SmartFactory',
 		autoCreateViewport : false,
 
 		controllers : [ 'SmartFactory.controller.ApplicationController' ]
-				.concat(modules),
+				.concat(Miracom.controllers()),
 
 		launch : function() {
 			// Login 등등.. 여기서
 			// ...
-			Ext.apply(SmartFactory, Ext.create('SmartFactory.App'));
+			Ext.apply(SmartFactory, Miracom);
 
 			Ext.create('SmartFactory.view.Viewport').show();
 		}
