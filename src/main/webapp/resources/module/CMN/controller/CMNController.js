@@ -3,7 +3,9 @@ Ext.define('CMN.controller.CMNController', {
 
 	stores : [ 'CMN.store.MenuStore', 'CMN.store.FavoriteStore' ],
 	models : [ 'CMN.model.Menu', 'CMN.model.Favorite' ],
-	/* store와 생성 우선순위 때문에 .. 해결전까지는 North와 West View를 등록하지 못함. 참고. Viewport.js */
-	views : [ 'CMN.view.viewport.Center', 
-			'CMN.view.viewport.South', 'CMN.view.viewport.East']
+	views : [ 'CMN.view.viewport.Center', 'CMN.view.viewport.South',
+			'CMN.view.viewport.East', 'CMN.view.viewport.North',
+			'CMN.view.viewport.West', 'CMN.view.common.Menu',
+			'CMN.view.common.Toolbar', 'CMN.view.common.NavMenu',
+			'CMN.view.common.NavFavorite' ]
 });

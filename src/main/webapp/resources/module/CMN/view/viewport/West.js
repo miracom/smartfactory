@@ -1,21 +1,24 @@
 Ext.define('CMN.view.viewport.West', {
 	extend : 'Ext.tab.Panel',
 
-	id : 'docked_nav',
-	cls: 'dockNavigation',
-
 	alias : 'widget.viewport.west',
+
+	id : 'docked_nav',
+
+	cls : 'dockNavigation',
 
 	tabPosition : 'bottom',
 
-	items : [ Ext.create('CMN.view.common.NavMenu', {
+	items : [ {
+		xtype : 'cmn.nav_menu',
 		iconCls : 'iconsetDockMenu',
 		tabConfig : {
 			width : 29,
 			height : 22,
 			padding : '0 0 0 2px'
 		}
-	}), Ext.create('CMN.view.common.NavFavorite', {
+	}, {
+		xtype : 'cmn.nav_favorite',
 		iconCls : 'iconsetDockFavor',
 		tabConfig : {
 			width : 29,
@@ -23,5 +26,5 @@ Ext.define('CMN.view.viewport.West', {
 			padding : '0 0 0 2px'
 
 		}
-	}) ]
+	} ]
 });

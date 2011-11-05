@@ -1,5 +1,7 @@
 Ext.define('CMN.view.common.Toolbar', {
 	extend : 'Ext.toolbar.Toolbar',
+	
+	alias : 'widget.cmn.toolbar',
 	id : 'favorites_toolbar',
 	
 	listeners : {

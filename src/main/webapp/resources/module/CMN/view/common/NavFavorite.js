@@ -1,21 +1,24 @@
 Ext.define('CMN.view.common.NavFavorite', {
 	extend : 'Ext.grid.Panel',
-	id : 'cmn.nav_favorite',
+
+	alias : 'widget.cmn.nav_favorite',
+
+	id : 'cmn.view.nav_favorite',
 
 	listeners : {
 		render : function(comp, obj) {
-			store.on('datachanged', this.store_changed, this);
-			store.on('clear', this.store_changed, this);
+			this.store.on('datachanged', this.store_changed, this);
+			this.store.on('clear', this.store_changed, this);
 		},
-		itemclick: function(view, record, item, index, e, opt) {
+		itemclick : function(view, record, item, index, e, opt) {
 			SmartFactory.addContentView({
-				xtype: 'ras.resource.resource',
-				title: record.get('user_func_desc'),
+				xtype : 'ras.resource.resource',
+				title : record.get('user_func_desc'),
 				tabConfig : {
-					tooltip: record.get('func_name'),
+					tooltip : record.get('func_name'),
 				},
-				data: null,
-				closable: true
+				data : null,
+				closable : true
 			});
 		}
 	},
@@ -24,7 +27,7 @@ Ext.define('CMN.view.common.NavFavorite', {
 		text : 'Refresh',
 		listeners : {
 			click : function(button) {
-				var store = Ext.StoreManager.lookup('CMN.store.FavoriteStore'); 
+				var store = Ext.StoreManager.lookup('CMN.store.FavoriteStore');
 				store.load();
 			}
 		}
@@ -47,8 +50,8 @@ Ext.define('CMN.view.common.NavFavorite', {
 	} ],
 
 	store : 'CMN.store.FavoriteStore',
-	
-	store_changed: function() {
+
+	store_changed : function() {
 		this.getView().refresh();
 	}
 });

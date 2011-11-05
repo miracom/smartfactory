@@ -1,60 +1,45 @@
 Ext.define('CMN.view.common.Menu', {
-	extend: 'Ext.toolbar.Toolbar',
-	
-	constructor: function(config) {
-		CMN.view.common.Menu.superclass.constructor.apply(this, arguments);
-		
-		// this.on('beforerender', this.beforeRender, this);
-		this.store.on('load', this.beforeRender, this);
-	},
-	
-	beforeRender: function() {
-		if(!this.loadedd) {
-			try {
-				this.reloadToolbarItems();
-				this.loadedd = true;
-			} catch(e) {
-				console.log(e);
-				// Error ..
-			}
+	extend : 'Ext.toolbar.Toolbar',
+
+	alias : 'widget.cmn.menu',
+
+	listeners : {
+		render : function(comp, obj) {
+			var store = Ext.StoreManager.lookup('CMN.store.MenuStore');
+			/* 이미 로딩되어있을 수 있으므로, 먼저 로드를 한 번하고, 리스너를 연결한다. */
+			this.reloadToolbarItems(store);
+			store.on('load', this.reloadToolbarItems, this);
 		}
 	},
-	
-	reloadToolbarItems: function() {
-		if(!this.store) {
-			throw new Error("TreeStore is not configured.");
-		}
-		
+
+	reloadToolbarItems : function(store) {
 		this.removeAll();
-		
-		//Get first level children from treestore
-		var root = this.store.getRootNode();
-		
-		this.loadMenu(root).every(function(menu) {
+
+		(this.loadMenu(store.getRootNode()) || []).every(function(menu) {
 			return this.add(menu);
 		}, this);
 	},
-	
-	loadMenu: function(node) {
+
+	loadMenu : function(node) {
 		var children = node.childNodes;
-		
-		if(!children || children.length < 1) {
+
+		if (!children || children.length < 1) {
 			return undefined;
 		}
 
 		self_function = arguments.callee;
-		return children.map(function(child){
+		return children.map(function(child) {
 			var menu = self_function(child);
 			var ret = {
-				text: child.get('text')
+				text : child.get('text')
 			};
-			if(child.get('separator') === 'Y') {
+			if (child.get('separator') === 'Y') {
 				ret.xtype = 'menuseparator';
 			}
-			
-			if(menu) {
+
+			if (menu) {
 				ret.menu = {
-					items: menu
+					items : menu
 				};
 			} else {
 				ret.viewModel = 'RAS.view.resource.Resource';
