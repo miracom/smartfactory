@@ -3,6 +3,8 @@ Ext.define('CMN.view.common.Menu', {
 
 	alias : 'widget.cmn.menu',
 
+	id : 'menu',
+
 	listeners : {
 		render : function(comp, obj) {
 			var store = Ext.StoreManager.lookup('CMN.store.MenuStore');

@@ -12,8 +12,10 @@
 
 		<script src="app/application.js"></script>
 		
-		<script src="product/Miracom/module.js"></script>
+		<script src="product/Miracom/system.js"></script>
+
 		<script src="module/CMN/module.js"></script>
+		<script src="module/SEC/module.js"></script>
 		<script src="module/RPT/module.js"></script>
 		<script src="module/WIP/module.js"></script>
 		<script src="module/RAS/module.js"></script>
