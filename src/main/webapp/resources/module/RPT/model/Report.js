@@ -2,8 +2,8 @@ Ext.define('RPT.model.Report', {
 	extend: 'Ext.data.Model',
 	
 	fields: [
-		{ name: 'report_id', type: 'string' },
-		{ name: 'report_desc', type: 'string' },
+		{ name: 'rpt_id', type: 'string' },
+		{ name: 'rpt_desc', type: 'string' },
 		{ name: 'area', type: 'string' },
 		{ name: 'lot_id', type: 'string '},
 		{ name: 'oper_id', type: 'string' },
@@ -13,6 +13,8 @@ Ext.define('RPT.model.Report', {
 		{ name: 'oper_sts', type: 'string' },
 		{ name: 'ord_id', type: 'string' },
 		{ name: 'mat_qty', type: 'string' },
-		{ name: 'inspection', type: 'string' }
+		{ name: 'insp_id', type: 'string' },
+		{ name: 'plan_qty', type: 'string' },
+		{ name: 'finished_qty', type: 'string' }
     ]
 });

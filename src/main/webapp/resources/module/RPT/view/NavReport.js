@@ -8,7 +8,7 @@ Ext.define('RPT.view.NavReport', {
 			SmartFactory.addContentView({
 				//xtype: record.get('xtype'),
 				xtype: 'rpt.report.report', 
-				title: record.get('report_id') + ' - ' + record.get('report_desc'),
+				title: record.get('rpt_id') + ' - ' + record.get('rpt_desc'),
 				data: record,
 				closable: true
 			});
@@ -20,5 +20,5 @@ Ext.define('RPT.view.NavReport', {
 	cls: 'report-list',
 	itemSelector: '.report-list-item',
 	overItemCls: 'report-list-item-hover',
-	tpl:'<tpl for="."><div class="report-list-item">{report_id} - {report_desc}</div></tpl>'
+	tpl:'<tpl for="."><div class="report-list-item">{rpt_id} - {rpt_desc}</div></tpl>'
 });

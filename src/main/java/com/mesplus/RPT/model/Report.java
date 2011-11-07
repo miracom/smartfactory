@@ -1,9 +1,10 @@
 package com.mesplus.RPT.model;
 
 public class Report {
-	private String factory_id; 
-	private String report_id; 
-	private String report_desc;
+	
+	private String factory; 
+	private String rpt_id; 
+	private String rpt_desc;
 	private String area;
 	private String lot_id;
 	private String oper_id;
@@ -13,25 +14,27 @@ public class Report {
 	private String oper_sts;
 	private String ord_id;
 	private String mat_qty;
-	private String inspection;
+	private String insp_id;
+	private String plan_qty;
+	private String finished_qty;
 	
-	public String getFactory_id() {
-		return factory_id;
+	public String getFactory() {
+		return factory;
 	}
-	public void setFactory_id(String factory_id) {
-		this.factory_id = factory_id;
+	public void setFactory(String factory) {
+		this.factory = factory;
 	}
-	public String getReport_id() {
-		return report_id;
+	public String getRpt_id() {
+		return rpt_id;
 	}
-	public void setReport_id(String report_id) {
-		this.report_id = report_id;
+	public void setRpt_id(String rpt_id) {
+		this.rpt_id = rpt_id;
 	}
-	public String getReport_desc() {
-		return report_desc;
+	public String getRpt_desc() {
+		return rpt_desc;
 	}
-	public void setReport_desc(String report_desc) {
-		this.report_desc = report_desc;
+	public void setRpt_desc(String rpt_desc) {
+		this.rpt_desc = rpt_desc;
 	}
 	public String getArea() {
 		return area;
@@ -87,10 +90,23 @@ public class Report {
 	public void setMat_qty(String mat_qty) {
 		this.mat_qty = mat_qty;
 	}
-	public String getInspection() {
-		return inspection;
+	public String getInsp_id() {
+		return insp_id;
 	}
-	public void setInspection(String inspection) {
-		this.inspection = inspection;
+	public void setInsp_id(String insp_id) {
+		this.insp_id = insp_id;
 	}
+	public String getPlan_qty() {
+		return plan_qty;
+	}
+	public void setPlan_qty(String plan_qty) {
+		this.plan_qty = plan_qty;
+	}
+	public String getFinished_qty() {
+		return finished_qty;
+	}
+	public void setFinished_qty(String finished_qty) {
+		this.finished_qty = finished_qty;
+	}
+	
 }

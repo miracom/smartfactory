@@ -1,7 +1,7 @@
-[
-   { "report_id": "Report", "report_desc": "Type1", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "report_desc": "Type2", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "report_desc": "Type3", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "report_desc": "Type4", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "report_desc": "Type5", "xtype":"rpt.report.report"  }
-]
+{
+    success : true,
+	data : [
+       { "rpt_id": "Report1", "rpt_desc": "Type1" },
+       { "rpt_id": "Report2", "rpt_desc": "Type2" }
+    ]
+}
