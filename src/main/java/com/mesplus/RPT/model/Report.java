@@ -14,7 +14,6 @@ public class Report {
 	private String ord_id;
 	private String mat_qty;
 	private String inspection;
-
 	
 	public String getFactory_id() {
 		return factory_id;
@@ -28,10 +27,10 @@ public class Report {
 	public void setReport_id(String report_id) {
 		this.report_id = report_id;
 	}
-	public String getReport_Desc() {
+	public String getReport_desc() {
 		return report_desc;
 	}
-	public void setReport_Desc(String report_desc) {
+	public void setReport_desc(String report_desc) {
 		this.report_desc = report_desc;
 	}
 	public String getArea() {
@@ -52,10 +51,10 @@ public class Report {
 	public void setOper_id(String oper_id) {
 		this.oper_id = oper_id;
 	}
-	public String getOper_Desc() {
+	public String getOper_desc() {
 		return oper_desc;
 	}
-	public void setOper_Desc(String oper_desc) {
+	public void setOper_desc(String oper_desc) {
 		this.oper_desc = oper_desc;
 	}
 	public String getMat_id() {
@@ -64,16 +63,16 @@ public class Report {
 	public void setMat_id(String mat_id) {
 		this.mat_id = mat_id;
 	}
-	public String getMat_Desc() {
+	public String getMat_desc() {
 		return mat_desc;
 	}
-	public void setMat_Desc(String mat_desc) {
+	public void setMat_desc(String mat_desc) {
 		this.mat_desc = mat_desc;
 	}
-	public String getOper_Sts() {
+	public String getOper_sts() {
 		return oper_sts;
 	}
-	public void setOper_Sts(String oper_sts) {
+	public void setOper_sts(String oper_sts) {
 		this.oper_sts = oper_sts;
 	}
 	public String getOrd_id() {
@@ -82,10 +81,10 @@ public class Report {
 	public void setOrd_id(String ord_id) {
 		this.ord_id = ord_id;
 	}
-	public String getMat_Qty() {
+	public String getMat_qty() {
 		return mat_qty;
 	}
-	public void setMat_Qty(String mat_qty) {
+	public void setMat_qty(String mat_qty) {
 		this.mat_qty = mat_qty;
 	}
 	public String getInspection() {
@@ -94,6 +93,4 @@ public class Report {
 	public void setInspection(String inspection) {
 		this.inspection = inspection;
 	}
-	
-	
 }
