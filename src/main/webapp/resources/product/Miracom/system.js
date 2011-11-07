@@ -40,12 +40,12 @@ var Miracom = Miracom || (function() {
 		},
 		addContentView : function(view) {
 			this.showBusy();
-			if (view instanceof Ext.Component) {
-				Ext.getCmp('content').add(view).show();
-			} else if (typeof (view) === 'string') {
+			if (typeof (view) === 'string') {
 				Ext.getCmp('content').add(Ext.create(view, {
 					closable : true
 				})).show();
+			} else {
+				Ext.getCmp('content').add(view).show();
 			}
 			this.clearStatus();
 		},
