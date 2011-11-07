@@ -1,7 +1,7 @@
 package com.mesplus.RAS.model;
 
 public class Resource {
-	private String factory_id; 
+	private String factory; 
 	private String resource_id; 
 	private String desc;
 	private String type;
@@ -18,11 +18,11 @@ public class Resource {
 	private String created_at;
 	private String updated_at;
 	
-	public String getFactory_id() {
-		return factory_id;
+	public String getFactory() {
+		return factory;
 	}
-	public void setFactory_id(String factory_id) {
-		this.factory_id = factory_id;
+	public void setFactory(String factory) {
+		this.factory = factory;
 	}
 	public String getResource_id() {
 		return resource_id;

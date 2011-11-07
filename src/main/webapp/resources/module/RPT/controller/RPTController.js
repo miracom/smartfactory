@@ -17,9 +17,9 @@ Ext.define('RPT.controller.RPTController', {
 		var nav_report = Ext.create('RPT.view.NavReport', {
 			iconCls : 'iconsetDockReport',
 			tabConfig : {
-				width : 38,
-				height : 21,
-				padding : '0 0 0 4px'
+				width : 29,
+				height : 22,
+				padding : '0 0 0 2px'
 			}
 		});
 

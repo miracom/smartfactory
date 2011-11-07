@@ -8,16 +8,18 @@ Ext.define('SmartFactory.view.Viewport', {
 		collapsible : false
 	},
 
-	items : [ Ext.create('CMN.view.viewport.North', {
-		region : 'north', /* store와 생성 우선순위 때문에 .. 해결전까지는 xtype을 사용하지 못함. 참고. CMNController */
-		height : 72
-	}), Ext.create('CMN.view.viewport.West', {
+	items : [ {
+		xtype : 'viewport.north',
+		region : 'north',
+		height : 75
+	}, {
+		xtype : 'viewport.west',
 		title : 'Navigation',
 		region : 'west',
 		collapsible : true,
 		width : 200,
 		split : true
-	}), {
+	}, {
 		xtype : 'viewport.east',
 		region : 'east',
 		collapsible : true,

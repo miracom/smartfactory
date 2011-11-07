@@ -2,6 +2,9 @@ Ext.define('CMN.view.viewport.South', {
 	extend : 'Ext.ux.statusbar.StatusBar',
 
 	id : 'statusbar',
+
+	cls:'appStatusBar noBoardPanel',
+
 	alias : 'widget.viewport.south',
 
 	// defaults to use when the status is cleared:

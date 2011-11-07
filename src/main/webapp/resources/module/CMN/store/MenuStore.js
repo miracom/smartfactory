@@ -1,7 +1,9 @@
 Ext.define('CMN.store.MenuStore', {
 	extend : 'Ext.data.TreeStore',
 
-	autoLoad : true,
+	storeId : 'cmn.menu_store',
+	
+	autoLoad : false,
 	
 	model : 'CMN.model.Menu',
 

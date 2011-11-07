@@ -16,7 +16,7 @@ Ext.define('WIP.controller.WIPController', {
 	onViewportRendered: function() {
 		var nav_op = Ext.create('WIP.view.NavOperation', {
 			iconCls:'iconsetDockOperation',
-			tabConfig:{width:38,height:21,padding:'0 0 0 4px'}
+			tabConfig:{width:29,height:22,padding:'0 0 0 2px'}
 		});
 		
 		SmartFactory.addDockingNav(nav_op);

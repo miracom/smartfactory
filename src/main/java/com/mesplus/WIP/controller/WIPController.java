@@ -22,12 +22,8 @@ public class WIPController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
 	
-	private OperationDao operationDao; 
-
 	@Autowired
-	public void setOperationDao(OperationDao operationDao) {
-		this.operationDao = operationDao;
-	}
+	private OperationDao operationDao; 
 	
 	@RequestMapping(value = "module/WIP/data/operations.json", method = RequestMethod.GET)
 	public @ResponseBody
@@ -39,26 +35,4 @@ public class WIPController {
 		
 		return operationDao.selectOperations();
 	}
-//
-//	
-//
-//	@RequestMapping(value = "module/WIP/data/operations.json", method = RequestMethod.GET)
-//	public @ResponseBody
-//	Operation[] operations(HttpServletRequest request,
-//			HttpServletResponse response) {
-//		String factory_id = request.getParameter("factory_id");
-//		
-//		logger.info("factory_id : " + request.getParameter("factory_id"));
-//		return new Operation[] {
-//			new Operation("1000", "operation 1000", factory_id),
-//			new Operation("1000", "operation 1000", factory_id),
-//			new Operation("1000", "operation 1000", factory_id),
-//			new Operation("1000", "operation 1000", factory_id),
-//			new Operation("1000", "operation 1000", factory_id),
-//			new Operation("1000", "operation 1000", factory_id),
-//			new Operation("1000", "operation 1000", factory_id),
-//			new Operation("1000", "operation 1000", factory_id)
-//		};
-//	}
-//
 }

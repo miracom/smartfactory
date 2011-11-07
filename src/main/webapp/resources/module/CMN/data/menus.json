@@ -5,50 +5,60 @@
 			{ text: "WIP", children: [
 				{
 					text: 'Setup Factory',
+					func_name: 'WIP001',
 					tooltip: 'Setup Factory', 
 					leaf: true
 				},
 				{
 					text: 'Operation',
+					func_name: 'WIP002',
 					viewModel: 'WIP.view.oper.Operation',
 					tooltip: 'View Operation', 
 					leaf: true
 				},
 				{
 					text: 'Flow', 
+					func_name: 'WIP003',
 					leaf: true
 				},
 				{
 					text: 'Adapt', 
+					func_name: 'WIP004',
 					leaf: true
 				},
 				{
 					text: 'User', 
+					func_name: 'WIP005',
 					leaf: true
 				}
 			] },
 			{ text: "RAS", children: [
 				{
 					text: 'Setup Factory',
+					func_name: 'RAS001',
 					tooltip: 'Setup Factory', 
 					leaf: true
 				},
 				{
 					text: 'Operation',
+					func_name: 'RAS002',
 					viewModel: 'WIP.view.oper.Operation',
 					tooltip: 'View Operation', 
 					leaf: true
 				},
 				{
 					text: 'Flow', 
+					func_name: 'RAS003',
 					leaf: true
 				},
 				{
 					text: 'Adapt', 
+					func_name: 'RAS005',
 					leaf: true
 				},
 				{
 					text: 'User', 
+					func_name: 'RAS006',
 					leaf: true
 				}
 			] }
@@ -60,50 +70,60 @@
 			{ text: "WIP", children: [
 				{
 					text: 'Setup Factory',
+					func_name: 'WIP001',
 					tooltip: 'Setup Factory', 
 					leaf: true
 				},
 				{
 					text: 'Operation',
+					func_name: 'WIP002',
 					viewModel: 'WIP.view.oper.Operation',
 					tooltip: 'View Operation', 
 					leaf: true
 				},
 				{
 					text: 'Flow', 
+					func_name: 'WIP003',
 					leaf: true
 				},
 				{
 					text: 'Adapt', 
+					func_name: 'WIP004',
 					leaf: true
 				},
 				{
 					text: 'User', 
+					func_name: 'WIP005',
 					leaf: true
 				}
 			] },
 			{ text: "RAS", children: [
 				{
 					text: 'Setup Factory',
+					func_name: 'RAS001',
 					tooltip: 'Setup Factory', 
 					leaf: true
 				},
 				{
 					text: 'Operation',
+					func_name: 'RAS002',
 					viewModel: 'WIP.view.oper.Operation',
 					tooltip: 'View Operation', 
 					leaf: true
 				},
 				{
 					text: 'Flow', 
+					func_name: 'RAS003',
 					leaf: true
 				},
 				{
 					text: 'Adapt', 
+					func_name: 'RAS005',
 					leaf: true
 				},
 				{
 					text: 'User', 
+					func_name: 'RAS006',
 					leaf: true
 				}
 			] }
@@ -115,50 +135,60 @@
 			{ text: "WIP", children: [
 				{
 					text: 'Setup Factory',
+					func_name: 'WIP001',
 					tooltip: 'Setup Factory', 
 					leaf: true
 				},
 				{
 					text: 'Operation',
+					func_name: 'WIP002',
 					viewModel: 'WIP.view.oper.Operation',
 					tooltip: 'View Operation', 
 					leaf: true
 				},
 				{
 					text: 'Flow', 
+					func_name: 'WIP003',
 					leaf: true
 				},
 				{
 					text: 'Adapt', 
+					func_name: 'WIP004',
 					leaf: true
 				},
 				{
 					text: 'User', 
+					func_name: 'WIP005',
 					leaf: true
 				}
 			] },
 			{ text: "RAS", children: [
 				{
 					text: 'Setup Factory',
+					func_name: 'RAS001',
 					tooltip: 'Setup Factory', 
 					leaf: true
 				},
 				{
 					text: 'Operation',
+					func_name: 'RAS002',
 					viewModel: 'WIP.view.oper.Operation',
 					tooltip: 'View Operation', 
 					leaf: true
 				},
 				{
 					text: 'Flow', 
+					func_name: 'RAS003',
 					leaf: true
 				},
 				{
 					text: 'Adapt', 
+					func_name: 'RAS005',
 					leaf: true
 				},
 				{
 					text: 'User', 
+					func_name: 'RAS006',
 					leaf: true
 				}
 			] }

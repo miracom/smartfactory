@@ -6,29 +6,32 @@
 <mapper namespace="com.mesplus.CMN.dao.MenuDao">
 
 	<resultMap id="MenuMap" type="com.mesplus.CMN.model.Menu">
-		<result property="func_name" column="func_name"></result>
-		<result property="func_desc" column="func_desc"></result>
-		<result property="func_type_flag" column="func_type_flag"></result>
-		<result property="func_group" column="func_group"></result>
-		<result property="assembly_file" column="assembly_file"></result>
-		<result property="assembly_name" column="assembly_name"></result>
-		<result property="short_cut" column="short_cut"></result>
-		<result property="icon_index" column="icon_index"></result>
-		<result property="disp_level" column="disp_level"></result>
-		<result property="separator" column="separator"></result>
-		<result property="short_cut" column="short_cut"></result>
-		<result property="add_tool_bar" column="add_tool_bar"></result>
+		<result property="func_name" />
+		<result property="func_desc" />
+		<result property="func_type_flag" />
+		<result property="func_group" />
+		<result property="assembly_file" />
+		<result property="assembly_name" />
+		<result property="short_cut" />
+		<result property="icon_index" />
+		<result property="disp_level" />
+		<result property="separator" />
+		<result property="short_cut" />
+		<result property="add_tool_bar" />
 	</resultMap>
-		
+
 	<select id="selectMenus" resultMap="MenuMap">
-	SELECT DEF.FUNC_NAME, DEF.FUNC_DESC, DEF.FUNC_TYPE_FLAG, DEF.FUNC_GROUP, DEF.ASSEMBLY_FILE, DEF.ASSEMBLY_NAME, DEF.SHORT_CUT, DEF.ICON_INDEX, GRP.DISP_LEVEL, GRP.SEPARATOR, GRP.ADD_TOOL_BAR
-	FROM MSECFUNDEF DEF, MSECGRPFUN GRP
-	WHERE 
+		SELECT DEF.FUNC_NAME, DEF.FUNC_DESC, DEF.FUNC_TYPE_FLAG, DEF.FUNC_GROUP,
+		DEF.ASSEMBLY_FILE, DEF.ASSEMBLY_NAME, DEF.SHORT_CUT, DEF.ICON_INDEX,
+		GRP.DISP_LEVEL, GRP.SEPARATOR, GRP.ADD_TOOL_BAR
+		FROM MSECFUNDEF DEF, MSECGRPFUN GRP
+		WHERE
 		DEF.FUNC_NAME = GRP.FUNC_NAME
 		AND GRP.FACTORY = 'DEMO'
-		AND GRP.SEC_GRP_ID = 'ADMIN_GROUP'
+		AND GRP.SEC_GRP_ID =
+		'ADMIN_GROUP'
 		AND GRP.PROGRAM_ID = 'MESClient'
-	ORDER BY GRP.DISP_LEVEL ASC
+		ORDER BY GRP.DISP_LEVEL ASC
 	</select>
 
 </mapper>

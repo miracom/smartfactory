@@ -1,9 +1,30 @@
 Ext.define('CMN.controller.CMNController', {
 	extend : 'Ext.app.Controller',
 
-	stores : [ 'CMN.store.MenuStore', 'CMN.store.FavoriteStore' ],
-	models : [ 'CMN.model.Menu' ],
-	/* store와 생성 우선순위 때문에 .. 해결전까지는 North와 West View를 등록하지 못함. 참고. Viewport.js */
-	views : [ 'CMN.view.viewport.Center', 
-			'CMN.view.viewport.South', 'CMN.view.viewport.East']
+	stores : [ 'CMN.store.MenuStore', 'CMN.store.FavoriteStore',
+			'CMN.store.SearchStore' ],
+	models : [ 'CMN.model.Menu', 'CMN.model.Favorite', 'CMN.model.Search' ],
+	views : [ 'CMN.view.viewport.Center', 'CMN.view.viewport.South',
+			'CMN.view.viewport.East', 'CMN.view.viewport.North',
+			'CMN.view.viewport.West', 'CMN.view.common.Menu',
+			'CMN.view.common.SystemMenu', 'CMN.view.common.Toolbar',
+			'CMN.view.common.NavMenu', 'CMN.view.common.NavFavorite',
+			'CMN.view.common.SearchField' ],
+
+	init : function() {
+		this.control({
+			'viewport' : {
+				afterrender : this.onViewportRendered
+			}
+		});
+	},
+
+	onViewportRendered : function() {
+		var search = Ext.create('CMN.view.common.SearchField', {
+			store : Ext.create('CMN.store.SearchStore')
+		});
+
+		SmartFactory.addSystemMenu(search);
+	}
+
 });

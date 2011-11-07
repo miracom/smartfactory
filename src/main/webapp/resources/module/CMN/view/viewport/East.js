@@ -3,5 +3,5 @@ Ext.define('CMN.view.viewport.East', {
 
 	alias : 'widget.viewport.east',
 
-	html : 'East'
+	cls : 'dockNavigation'
 });
