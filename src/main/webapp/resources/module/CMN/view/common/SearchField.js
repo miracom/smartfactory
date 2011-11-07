@@ -1,76 +1,79 @@
-/*
-
-This file is part of Ext JS 4
-
-Copyright (c) 2011 Sencha Inc
-
-Contact:  http://www.sencha.com/contact
-
-GNU General Public License Usage
-This file may be used under the terms of the GNU General Public License version 3.0 as published by the Free Software Foundation and appearing in the file LICENSE included in the packaging of this file.  Please review the following information to ensure the GNU General Public License version 3.0 requirements will be met: http://www.gnu.org/copyleft/gpl.html.
-
-If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
-
-*/
 Ext.define('CMN.view.common.SearchField', {
-    extend: 'Ext.form.field.Trigger',
-    
-    alias: 'widget.cmn.searchfield',
-    
-    trigger1Cls: Ext.baseCSSPrefix + 'form-clear-trigger',
-    
-    trigger2Cls: Ext.baseCSSPrefix + 'form-search-trigger',
-    
-    hasSearch : false,
-    paramName : 'query',
-    
-    initComponent: function(){
-        this.callParent(arguments);
-        this.on('specialkey', function(f, e){
-            if(e.getKey() == e.ENTER){
-                this.onTrigger2Click();
-            }
-        }, this);
-    },
-    
-    afterRender: function(){
-        this.callParent();
-        this.triggerEl.item(0).setDisplayed('none');  
-    },
-    
-    onTrigger1Click : function(){
-        var me = this,
-            store = me.store,
-            proxy = store.getProxy(),
-            val;
-            
-        if (me.hasSearch) {
-            me.setValue('');
-            proxy.extraParams[me.paramName] = '';
-            proxy.extraParams.start = 0;
-            store.load();
-            me.hasSearch = false;
-            me.triggerEl.item(0).setDisplayed('none');
-            me.doComponentLayout();
-        }
-    },
+	extend : 'Ext.form.field.ComboBox',
 
-    onTrigger2Click : function(){
-        var me = this,
-            store = me.store,
-            proxy = store.getProxy(),
-            value = me.getValue();
-            
-        if (value.length < 1) {
-            me.onTrigger1Click();
-            return;
-        }
+	alias : 'widget.cmn.searchfield',
+	
+//	store : Ext.create('CMN.store.SearchStore'),
+//
+//	displayField : 'Type menu ..',
+//	
+//	hideLabel : true,
+//	
+//	hideTrigger : false,
+//
+//	typeAhead : false,
+	
+	trigger1Cls : Ext.baseCSSPrefix + 'form-clear-trigger',
 
-        proxy.extraParams[me.paramName] = value;
-        proxy.extraParams.start = 0;
-        store.load();
-        me.hasSearch = true;
-        me.triggerEl.item(0).setDisplayed('block');
-        me.doComponentLayout();
-    }
+	trigger2Cls : Ext.baseCSSPrefix + 'form-search-trigger',
+
+	hasSearch : false,
+	
+	paramName : 'query',
+
+	initComponent : function() {
+		this.callParent(arguments);
+		this.on('specialkey', function(f, e) {
+			if (e.getKey() == e.ENTER) {
+				this.onTrigger2Click();
+			}
+		}, this);
+	},
+
+	afterRender : function() {
+		this.callParent();
+		this.triggerEl.item(0).setDisplayed('none');
+	},
+
+	onTrigger1Click : function() {
+		var me = this, store = me.store, proxy = store
+				.getProxy(), val;
+
+		if (me.hasSearch) {
+			me.setValue('');
+			proxy.extraParams[me.paramName] = '';
+			proxy.extraParams.start = 0;
+			store.load();
+			me.hasSearch = false;
+			me.triggerEl.item(0).setDisplayed('none');
+			me.doComponentLayout();
+		}
+	},
+
+	onTrigger2Click : function() {
+		var me = this, store = me.store, proxy = store
+				.getProxy(), value = me.getValue();
+
+		if (value.length < 1) {
+			me.onTrigger1Click();
+			return;
+		}
+
+		proxy.extraParams[me.paramName] = value;
+		proxy.extraParams.start = 0;
+		store.load();
+		me.hasSearch = true;
+		me.triggerEl.item(0).setDisplayed('block');
+		me.doComponentLayout();
+	},
+	
+	listConfig : {
+		loadingText : 'Searching...',
+		emptyText : 'No matching posts found.',
+
+		getInnerTpl : function() {
+			return '<a class="search-item" href="">'
+					+ '<h3><span>{fundc_name}<br />by {user_func_desc}</span></h3></a>';
+		}
+	}
 });
