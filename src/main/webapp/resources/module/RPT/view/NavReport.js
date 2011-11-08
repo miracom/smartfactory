@@ -5,6 +5,7 @@ Ext.define('RPT.view.NavReport', {
 	
 	listeners: {
 		itemclick: function(view, record, item, index, e, opt) {
+
 			var report;
 			
 			console.log(record);
@@ -32,5 +33,5 @@ Ext.define('RPT.view.NavReport', {
 	cls: 'report-list',
 	itemSelector: '.report-list-item',
 	overItemCls: 'report-list-item-hover',
-	tpl:'<tpl for="."><div class="report-list-item">{report_id} - {report_desc}</div></tpl>'
+	tpl:'<tpl for="."><div class="report-list-item">{rpt_id} - {rpt_desc}</div></tpl>'
 });
