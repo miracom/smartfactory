@@ -32,7 +32,7 @@ Ext.define('RPT.view.report.Report', {
 					width : 400,
 					items : [ {
 						xtype : 'label',
-						text : 'Manufacturing Production Report'
+						text : 'Monitoring - Production Status'
 					} ]
 				} ]
 			},
@@ -176,6 +176,8 @@ Ext.define('RPT.view.report.Report', {
 					xtype : 'chart',
 					renderTo : Ext.getBody(),
 					animate : true,
+					width : 400,
+					height : 250,
 					store: 'RPT.store.ReportListStore',
 					legend : {
 						position : 'right'
@@ -214,8 +216,7 @@ Ext.define('RPT.view.report.Report', {
 							width : 200,
 							height : 30,
 							renderer : function(storeItem, item) {
-								this.setTitle(storeItem.get('oper_id') + ': '
-										+ storeItem.get('mat_qty') + ' Products Produced');
+								this.setTitle(storeItem.get('oper_id') + ' : ' + 'This is a tip');
 							}
 						},
 						label : {
