@@ -5,13 +5,25 @@ Ext.define('RPT.view.NavReport', {
 	
 	listeners: {
 		itemclick: function(view, record, item, index, e, opt) {
-			SmartFactory.addContentView({
-				//xtype: record.get('xtype'),
-				xtype: 'rpt.report.report', 
-				title: record.get('report_id') + ' - ' + record.get('report_desc'),
-				data: record,
-				closable: true
-			});
+			var report;
+			
+			console.log(record);
+			
+			if(record.get('xtype')) {
+				report = {
+					xtype: record.get('xtype'), 
+					title: record.get('report_id') + ' - ' + record.get('report_desc'),
+					data: record,
+					closable: true
+				};
+			} else if(record.get('report_view')) {
+				report = Ext.create(record.get('report_view'), {
+					title: record.get('report_id') + ' - ' + record.get('report_desc'),
+					data: record,
+					closable: true
+				});
+			}
+			SmartFactory.addContentView(report);
 		}
 	},
 	

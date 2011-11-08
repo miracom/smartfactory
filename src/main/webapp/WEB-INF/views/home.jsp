@@ -20,6 +20,7 @@
 		<script src="module/WIP/module.js"></script>
 		<script src="module/RAS/module.js"></script>
 		<script src="module/MBI/module.js"></script>
+		<script src="module/NAM/module.js"></script>
 	</head>
 	<body>
 	</body>

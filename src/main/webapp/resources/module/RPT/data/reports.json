@@ -3,5 +3,5 @@
    { "report_id": "Report", "report_desc": "Type2", "xtype":"rpt.report.report"  },
    { "report_id": "Report", "report_desc": "Type3", "xtype":"rpt.report.report"  },
    { "report_id": "Report", "report_desc": "Type4", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "report_desc": "Type5", "xtype":"rpt.report.report"  }
+   { "report_id": "Report", "report_desc": "Type5", "report_view": "RPT.view.report.Report001"  }
 ]

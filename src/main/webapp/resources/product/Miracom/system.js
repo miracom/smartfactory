@@ -39,6 +39,7 @@ var Miracom = Miracom || (function() {
 			system_menu.setSize(width, system_menu.getHeight());
 		},
 		addContentView : function(view) {
+			console.log(view);
 			this.showBusy();
 			if (typeof (view) === 'string') {
 				Ext.getCmp('content').add(Ext.create(view, {
