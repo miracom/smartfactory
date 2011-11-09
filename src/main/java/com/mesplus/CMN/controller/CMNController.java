@@ -1,7 +1,6 @@
 package com.mesplus.CMN.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.CMN.dao.FavoriteDao;
 import com.mesplus.CMN.dao.MenuDao;
+import com.mesplus.CMN.model.Favorite;
 import com.mesplus.CMN.model.Menu;
 import com.mesplus.smartfactory.HomeController;
 
@@ -40,7 +40,7 @@ public class CMNController {
 	
 	@RequestMapping(value = "module/CMN/data/favorites.json", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Map<String, Object>> favorites(HttpServletRequest request, HttpServletResponse response) {
+	List<Favorite> favorites(HttpServletRequest request, HttpServletResponse response) {
 		String factory_id = request.getParameter("factory_id");
 
 		logger.info("factory_id : " + factory_id);
