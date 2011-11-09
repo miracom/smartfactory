@@ -6,7 +6,7 @@ Ext.define('RPT.view.NavReport', {
 	listeners: {
 		itemclick: function(view, record, item, index, e, opt) {
 
-			var report;
+			var report = null;
 			
 			console.log(record);
 			
