@@ -1,8 +1,8 @@
-Ext.define('RPT.view.report.Report', {
+Ext.define('RPT.view.report.ReportBar', {
 	extend : 'Ext.form.Panel',
-	
-	alias : 'widget.rpt.report.report',
-	
+
+	alias : 'widget.rpt.report.report_bar',
+
 	layout : {
 		align : 'stretch',
 		type : 'vbox'
@@ -172,41 +172,38 @@ Ext.define('RPT.view.report.Report', {
 				xtype : 'container',
 				layout : 'fit',
 				flex : 1,
-				items : [ {			
+				items : [ {
 					xtype : 'chart',
-					renderTo : Ext.getBody(),
 					animate : true,
 					width : 400,
 					height : 250,
-					store: 'RPT.store.ReportListStore',
+					store : 'RPT.store.ReportListStore',
 					legend : {
 						position : 'right'
 					},
-					axes : [
-							{
-								type : 'Numeric',
-								position : 'bottom',
-								fields : [ 'mat_qty', 'plan_qty', 'finished_qty' ],
-								label : {
-									renderer : Ext.util.Format
-											.numberRenderer('0,0')
-								},
-								title : 'Quantity',
-								grid : {
-									odd : {
-										opacity : 0.5,
-										fill : '#ddd',
-										stroke : '#bbb',
-										'stroke-width' : 1
-									}
-								},
-								minimum : 0
-							}, {
-								type : 'Category',
-								position : 'left',
-								fields : 'oper_id',
-								title : 'Operations'
-							} ],
+					axes : [ {
+						type : 'Numeric',
+						position : 'bottom',
+						fields : [ 'mat_qty', 'plan_qty', 'finished_qty' ],
+						label : {
+							renderer : Ext.util.Format.numberRenderer('0,0')
+						},
+						title : 'Quantity',
+						grid : {
+							odd : {
+								opacity : 0.5,
+								fill : '#ddd',
+								stroke : '#bbb',
+								'stroke-width' : 1
+							}
+						},
+						minimum : 0
+					}, {
+						type : 'Category',
+						position : 'left',
+						fields : 'oper_id',
+						title : 'Operations'
+					} ],
 					series : [ {
 						type : 'bar',
 						axis : 'bottom',
@@ -216,7 +213,8 @@ Ext.define('RPT.view.report.Report', {
 							width : 200,
 							height : 30,
 							renderer : function(storeItem, item) {
-								this.setTitle(storeItem.get('oper_id') + ' : ' + 'This is a tip');
+								this.setTitle(storeItem.get('oper_id') + ' : '
+										+ 'This is a tip');
 							}
 						},
 						label : {
@@ -237,7 +235,7 @@ Ext.define('RPT.view.report.Report', {
 				flex : 1,
 				items : [ {
 					xtype : 'gridpanel',
-					store: 'RPT.store.ReportListStore',	
+					store : 'RPT.store.ReportListStore',
 					columns : [ {
 						xtype : 'gridcolumn',
 						autoScroll : true,
@@ -305,7 +303,7 @@ Ext.define('RPT.view.report.Report', {
 						dataIndex : 'insp_id',
 						align : 'center',
 						text : 'Inspection'
-					}  ],
+					} ],
 					viewConfig : {
 
 					},

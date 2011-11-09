@@ -6,8 +6,7 @@ Ext.define('RPT.view.NavReport', {
 	listeners: {
 		itemclick: function(view, record, item, index, e, opt) {
 			SmartFactory.addContentView({
-				//xtype: record.get('xtype'),
-				xtype: 'rpt.report.report', 
+				xtype: 'rpt.report.report_line', 
 				title: record.get('rpt_id') + ' - ' + record.get('rpt_desc'),
 				data: record,
 				closable: true
