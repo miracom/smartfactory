@@ -3,7 +3,7 @@ Ext.define('RPT.controller.RPTController', {
 
 	stores : [ 'RPT.store.ReportListStore', 'RPT.store.ReportStore' ],
 	models : [ 'RPT.model.Report' ],
-	views : [ 'RPT.view.report.ReportBar', 'RPT.view.report.ReportColumn', 'RPT.view.report.ReportPie', 'RPT.view.report.ReportLine' ],
+	views : [],
 
 	init : function() {
 		this.control({

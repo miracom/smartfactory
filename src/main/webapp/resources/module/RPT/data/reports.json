@@ -1,7 +1,10 @@
-[
-   { "report_id": "Report", "report_desc": "Type1", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "report_desc": "Type2", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "report_desc": "Type3", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "report_desc": "Type4", "xtype":"rpt.report.report"  },
-   { "report_id": "Report", "report_desc": "Type5", "report_view": "RPT.view.report.Report001"  }
-]
+{
+    success : true,
+	data : [
+	{ "rpt_id": "Report", "rpt_desc": "Type1", "report_view": "RPT.view.report.ReportBar" },
+	{ "rpt_id": "Report", "rpt_desc": "Type2", "report_view": "RPT.view.report.ReportColumn" },
+	{ "rpt_id": "Report", "rpt_desc": "Type3", "report_view": "RPT.view.report.ReportPie" },
+	{ "rpt_id": "Report", "rpt_desc": "Type4", "report_view": "RPT.view.report.ReportLine" },
+	{ "rpt_id": "Report", "rpt_desc": "Type5", "report_view": "RPT.view.report.Report001" }
+    ]
+}

@@ -2,8 +2,8 @@
     success : true,
 	data : [
        { "area":"area1", "lot_id":"lot1", "oper_id":"oper1", "oper_desc":"cut1", "mat_id":"stone", "mat_desc":"finished"
-       , "oper_sts":"process", "ord_id":"ord1", "mat_qty":"10", "insp_id":"2011-11", "plan_qty":"10", "finished_qty":"8" },
-       { "area":"area2", "lot_id":"lot2", "oper_id":"oper2", "oper_desc":"cut2", "mat_id":"stone", "mat_desc":"finished"
-       , "oper_sts":"process", "ord_id":"ord2", "mat_qty":"20", "insp_id":"2011-11", "plan_qty":"20", "finished_qty":"16" },
+       , "oper_sts":"process", "ord_id":"ord1", "mat_qty":"10", "xtype":"", "report_view":"RPT.view.report.ReportBar", "insp_id":"2011-11", "plan_qty":"10", "finished_qty":"8" },
+       { "area":"area1", "lot_id":"lot1", "oper_id":"oper1", "oper_desc":"cut1", "mat_id":"stone", "mat_desc":"finished"
+       , "oper_sts":"process", "ord_id":"ord1", "mat_qty":"10", "xtype":"", "report_view":"RPT.view.report.ReportColumn", "insp_id":"2011-11", "plan_qty":"10", "finished_qty":"8" }
     ]
 }

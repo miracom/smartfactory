@@ -14,6 +14,7 @@ public class Report {
 	private String oper_sts;
 	private String ord_id;
 	private String mat_qty;
+	private String report_view;
 	private String insp_id;
 	private String plan_qty;
 	private String finished_qty;
@@ -89,6 +90,12 @@ public class Report {
 	}
 	public void setMat_qty(String mat_qty) {
 		this.mat_qty = mat_qty;
+	}
+	public String getReport_view() {
+		return report_view;
+	}
+	public void setReport_view(String report_view) {
+		this.report_view = report_view;
 	}
 	public String getInsp_id() {
 		return insp_id;

@@ -10,16 +10,9 @@ Ext.define('RPT.view.NavReport', {
 			
 			console.log(record);
 			
-			if(record.get('xtype')) {
-				report = {
-					xtype: record.get('xtype'), 
-					title: record.get('report_id') + ' - ' + record.get('report_desc'),
-					data: record,
-					closable: true
-				};
-			} else if(record.get('report_view')) {
+			if(record.get('report_view')) {
 				report = Ext.create(record.get('report_view'), {
-					title: record.get('report_id') + ' - ' + record.get('report_desc'),
+					title: record.get('rpt_id') + ' - ' + record.get('rpt_desc'),
 					data: record,
 					closable: true
 				});

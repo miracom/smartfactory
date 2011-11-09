@@ -6,30 +6,31 @@
 <mapper namespace="com.mesplus.RPT.dao.ReportDao">
 
 	<resultMap id="ReportMap" type="com.mesplus.RPT.model.Report">
-		<result property="factory" column="factory"></result>
-		<result property="rpt_id" column="rpt_id"></result>
-		<result property="rpt_desc" column="rpt_desc"></result>
-		<result property="area" column="area"></result>
-		<result property="lot_id" column="lot_id"></result>
-		<result property="oper_id" column="oper_id"></result>
-		<result property="oper_desc" column="oper_desc"></result>
-		<result property="mat_id" column="mat_id"></result>
-		<result property="mat_desc" column="mat_desc"></result>
-		<result property="oper_sts" column="oper_sts"></result>
-		<result property="ord_id" column="ord_id"></result>
-		<result property="mat_qty" column="mat_qty"></result>
-		<result property="insp_id" column="insp_id"></result>
-		<result property="plan_qty" column="plan_qty"></result>
-		<result property="finished_qty" column="finished_qty"></result>
+		<result property="factory"/>
+		<result property="rpt_id"/>
+		<result property="rpt_desc"/>
+		<result property="area"/>
+		<result property="lot_id"/>
+		<result property="oper_id"/>
+		<result property="oper_desc"/>
+		<result property="mat_id"/>
+		<result property="mat_desc"/>
+		<result property="oper_sts"/>
+		<result property="ord_id"/>
+		<result property="mat_qty"/>
+		<result property="report_view"/>
+		<result property="insp_id"/>
+		<result property="plan_qty"/>
+		<result property="finished_qty"/>
 	</resultMap>
 
 	<select id="selectReports" resultMap="ReportMap">
-		SELECT factory, rpt_id, rpt_desc, area, lot_id, oper_id, oper_desc, mat_id, mat_desc, oper_sts, ord_id, mat_qty, insp_id, plan_qty, finished_qty 
+		SELECT * 
 		FROM mrptmfgmgt
 	</select>
 
 	<select id="findReport" parameterType="string" resultMap="ReportMap">
-		SELECT factory, rpt_id, rpt_desc, area, lot_id, oper_id, oper_desc, mat_id, mat_desc, oper_sts, ord_id, mat_qty, insp_id, plan_qty, finished_qty 
+		SELECT * 
 		FROM mrptmfgmgt WHERE
 		rpt_id = #{rpt_id}
 	</select>
