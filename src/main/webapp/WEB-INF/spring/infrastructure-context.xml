@@ -38,19 +38,8 @@
 	</bean>	
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.mesplus.CMN" />
-    </bean>	
-
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.mesplus.WIP" />
-    </bean>	
-
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.mesplus.RAS" />
-    </bean>	
-
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.mesplus.RPT" />
+        <property name="basePackage" value="com.mesplus" />
+        <property name="annotationClass" value="org.springframework.stereotype.Component" />
     </bean>	
 
  </beans>

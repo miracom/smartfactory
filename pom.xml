@@ -6,7 +6,7 @@
 	<artifactId>smartfactory</artifactId>
 	<name>Smart Factory</name>
 	<packaging>war</packaging>
-	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<version>1.0.1-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.0.6.RELEASE</org.springframework-version>

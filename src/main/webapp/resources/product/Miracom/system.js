@@ -31,7 +31,7 @@ var Miracom = Miracom || (function() {
 		},
 		addSystemMenu : function(menu) {
 			var system_menu = Ext.getCmp('system_menu');
-			system_menu.add(menu);
+			system_menu.insert(0, menu);
 			var width = 6;
 			system_menu.items.each(function(el) {
 				width += el.getWidth();
@@ -39,6 +39,7 @@ var Miracom = Miracom || (function() {
 			system_menu.setSize(width, system_menu.getHeight());
 		},
 		addContentView : function(view) {
+			console.log(view);
 			this.showBusy();
 			if (typeof (view) === 'string') {
 				Ext.getCmp('content').add(Ext.create(view, {

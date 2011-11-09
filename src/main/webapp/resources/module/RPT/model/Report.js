@@ -13,6 +13,8 @@ Ext.define('RPT.model.Report', {
 		{ name: 'oper_sts', type: 'string' },
 		{ name: 'ord_id', type: 'string' },
 		{ name: 'mat_qty', type: 'number' },
+		{ name: 'xtype', type: 'string' },
+		{ name: 'report_view', type: 'string' },
 		{ name: 'insp_id', type: 'string' },
 		{ name: 'plan_qty', type: 'number' },
 		{ name: 'finished_qty', type: 'number' }

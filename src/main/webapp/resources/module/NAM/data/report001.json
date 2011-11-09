@@ -1,0 +1,41 @@
+[{ 
+	location: 'Area 1',
+	lot_id: 'M00001',
+	oper_id: '1000',
+	oper_desc: 'Cleaning',
+	mat_id: 'M1000',
+	mat_desc: 'SONY-TV',
+	data1: 10,
+	data2: 20
+},
+{
+	location: 'Area 1',
+	lot_id: 'M00001',
+	oper_id: '2000',
+	oper_desc: 'Coating',
+	mat_id: 'M1000',
+	mat_desc: 'SONY-TV',
+	data1: 10,
+	data2: 20
+},
+{
+	location: 'Area 1',
+	lot_id: 'M00001',
+	oper_id: '3000',
+	oper_desc: 'Cutting',
+	mat_id: 'M1000',
+	mat_desc: 'SONY-TV',
+	data1: 10,
+	data2: 20
+},
+{
+	location: 'Area 1',
+	lot_id: 'M00001',
+	oper_id: '4000',
+	oper_desc: 'Press',
+	mat_id: 'M1000',
+	mat_desc: 'SONY-TV',
+	data1: 10,
+	data2: 20
+}
+]
