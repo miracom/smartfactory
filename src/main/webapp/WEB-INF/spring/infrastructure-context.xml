@@ -33,6 +33,7 @@
 
     <!-- simplest possible SqlSessionFactory configuration -->
  	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+ 		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml" />
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath*:com/mesplus/*/dao/**/*.xml" />
 	</bean>	
