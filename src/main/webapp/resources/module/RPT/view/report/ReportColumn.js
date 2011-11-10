@@ -32,7 +32,7 @@ Ext.define('RPT.view.report.ReportColumn', {
 					width : 400,
 					items : [ {
 						xtype : 'label',
-						text : 'Monitoring - Operarion Status'
+						text : 'Monitoring - Production Status'
 					} ]
 				} ]
 			},
@@ -62,16 +62,16 @@ Ext.define('RPT.view.report.ReportColumn', {
 							items : [ {
 								xtype : 'triggerfield',
 								fieldLabel : 'Factory',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : 'Product Group',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : ' ',
 								labelSeparator : '',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							} ]
 						} ]
 					}, {
@@ -89,15 +89,15 @@ Ext.define('RPT.view.report.ReportColumn', {
 							items : [ {
 								xtype : 'triggerfield',
 								fieldLabel : 'Operation Code',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : 'Product Type',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : 'Product Code',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							} ]
 						} ]
 					}, {
@@ -222,7 +222,7 @@ Ext.define('RPT.view.report.ReportColumn', {
 							display : 'insideEnd',
 							field : [ 'mat_qty', 'plan_qty', 'finished_qty' ],
 							renderer : Ext.util.Format.numberRenderer('0'),
-							orientation : 'vertical',
+							orientation : 'horizontal',
 							color : '#333',
 							'text-anchor' : 'middle'
 						},
