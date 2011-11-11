@@ -26,19 +26,16 @@ $tab-inner-border:false !default;
 
 $tab-color:#496f9c;
 $tab-font-weight: normal !default;
-$tab-font-weight-over: bold !default;
 $tab-font-weight-active: bold !default;
 
 $tab-closable-icon-top: 6px !default;
 $tab-spacing: 1px;
 
-
 //buttons
 $button-default-border-color:#b0b0b0;
 $button-default-border-color-over:#447ac1;
+$button-default-border-color-pressed:#000;
 $button-default-color-over:#3f679b;
-$button-toolbar-border-color-over:adjust-color(#4f535e, $hue: 0.084deg, $saturation: -9.891%, $lightness: -15%) !default;
-$button-toolbar-background-color-over:adjust-color(#000000, $hue: -1.138deg, $saturation: -11.47%, $lightness: 35%) !default;
 
 
 @import 'compass';
