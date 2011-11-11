@@ -60,16 +60,16 @@ Ext.define('RPT.view.report.ReportPie', {
 					items : [ {
 						xtype : 'triggerfield',
 						fieldLabel : 'Factory',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					}, {
 						xtype : 'triggerfield',
 						fieldLabel : 'Product Group',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					}, {
 						xtype : 'triggerfield',
 						fieldLabel : ' ',
 						labelSeparator : '',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					} ]
 				} ]
 			}, {
@@ -87,15 +87,15 @@ Ext.define('RPT.view.report.ReportPie', {
 					items : [ {
 						xtype : 'triggerfield',
 						fieldLabel : 'Operation Code',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					}, {
 						xtype : 'triggerfield',
 						fieldLabel : 'Product Type',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					}, {
 						xtype : 'triggerfield',
 						fieldLabel : 'Product Code',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					} ]
 				} ]
 			}, {
@@ -187,7 +187,7 @@ Ext.define('RPT.view.report.ReportPie', {
 				},
 				series : [ {
 					type : 'pie',
-					title : [ '1001', '1002', '1003', '1004', '1005' ],
+					title : [ '1001', '1002', '1003', '1004', '1005', '1006' ],
 					field : 'plan_qty',
 					showInLegend : true,
 					highlight : {
@@ -218,7 +218,7 @@ Ext.define('RPT.view.report.ReportPie', {
 				},
 				series : [ {
 					type : 'pie',
-					title : [ '1001', '1002', '1003', '1004', '1005' ],
+					title : [ '1001', '1002', '1003', '1004', '1005', '1006' ],
 					field : 'mat_qty',
 					showInLegend : true,
 					highlight : {
@@ -249,7 +249,7 @@ Ext.define('RPT.view.report.ReportPie', {
 				},
 				series : [ {
 					type : 'pie',
-					title : [ '1001', '1002', '1003', '1004', '1005' ],
+					title : [ '1001', '1002', '1003', '1004', '1005', '1006' ],
 					field : 'finished_qty',
 					showInLegend : true,
 					highlight : {

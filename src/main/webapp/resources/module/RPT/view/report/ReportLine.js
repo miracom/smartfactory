@@ -59,16 +59,16 @@ Ext.define('RPT.view.report.ReportLine', {
 					items : [ {
 						xtype : 'triggerfield',
 						fieldLabel : 'Factory',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					}, {
 						xtype : 'triggerfield',
 						fieldLabel : 'Product Group',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					}, {
 						xtype : 'triggerfield',
 						fieldLabel : ' ',
 						labelSeparator : '',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					} ]
 				} ]
 			}, {
@@ -86,15 +86,15 @@ Ext.define('RPT.view.report.ReportLine', {
 					items : [ {
 						xtype : 'triggerfield',
 						fieldLabel : 'Operation Code',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					}, {
 						xtype : 'triggerfield',
 						fieldLabel : 'Product Type',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					}, {
 						xtype : 'triggerfield',
 						fieldLabel : 'Product Code',
-						emptyText : 'click the trigger',
+						emptyText : 'click the trigger'
 					} ]
 				} ]
 			}, {
@@ -221,7 +221,15 @@ Ext.define('RPT.view.report.ReportLine', {
                     renderer: function(storeItem, item) {
                         this.setTitle(storeItem.get('oper_id') + '<br />' + storeItem.get('plan_qty'));
                     }
-                }
+                },
+				label : {
+					display : 'middle',
+					field : 'plan_qty' ,
+					renderer : Ext.util.Format.numberRenderer('0'),
+					orientation : 'horizontal',
+					color : '#333',
+					'text-anchor' : 'middle'
+				},
 			}, {
 				type : 'line',
 				highlight : {
@@ -244,7 +252,15 @@ Ext.define('RPT.view.report.ReportLine', {
                     renderer: function(storeItem, item) {
                         this.setTitle(storeItem.get('oper_id') + '<br />' + storeItem.get('mat_qty'));
                     }
-                }
+                },
+				label : {
+					display : 'middle',
+					field : 'mat_qty' ,
+					renderer : Ext.util.Format.numberRenderer('0'),
+					orientation : 'horizontal',
+					color : '#333',
+					'text-anchor' : 'middle'
+				},
 			}, {
 				type : 'line',
 				highlight : {
@@ -267,7 +283,15 @@ Ext.define('RPT.view.report.ReportLine', {
                     renderer: function(storeItem, item) {
                         this.setTitle(storeItem.get('oper_id') + '<br />' + storeItem.get('finished_qty'));
                     }
-                }
+                },
+				label : {
+					display : 'middle',
+					field : 'finished_qty' ,
+					renderer : Ext.util.Format.numberRenderer('0'),
+					orientation : 'horizontal',
+					color : '#333',
+					'text-anchor' : 'middle'
+				},
 			} ],
 		} ]
 	}, {

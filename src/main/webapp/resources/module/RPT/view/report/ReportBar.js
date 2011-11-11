@@ -62,16 +62,16 @@ Ext.define('RPT.view.report.ReportBar', {
 							items : [ {
 								xtype : 'triggerfield',
 								fieldLabel : 'Factory',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : 'Product Group',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : ' ',
 								labelSeparator : '',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							} ]
 						} ]
 					}, {
@@ -89,15 +89,15 @@ Ext.define('RPT.view.report.ReportBar', {
 							items : [ {
 								xtype : 'triggerfield',
 								fieldLabel : 'Operation Code',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : 'Product Type',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : 'Product Code',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							} ]
 						} ]
 					}, {
