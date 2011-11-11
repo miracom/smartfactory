@@ -5,13 +5,13 @@ Ext.define('RPT.store.ReportStore', {
 
 	autoLoad : false,
 
-	model : 'RPT.model.ReportChart',
+	model : 'RPT.model.Report',
 
 	proxy : {
 		type : 'ajax',
 		url : 'module/RPT/data/report.json',
 		reader : {
-			type : 'json',
+			type : 'json'
 		}
 	}
 });

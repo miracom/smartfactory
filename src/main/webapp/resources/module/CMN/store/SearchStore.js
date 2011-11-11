@@ -6,6 +6,8 @@ Ext.define('CMN.store.SearchStore', {
 	autoLoad : false,
 
 	model : 'CMN.model.Search',
+	
+	pageSize: 10,
 
 	proxy : {
 		type : 'ajax',

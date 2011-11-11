@@ -37,7 +37,7 @@ public class CMNController {
 
 		return Menu.buildHierarchy(menuDao.selectMenus());
 	}
-
+	
 	@RequestMapping(value = "module/CMN/data/favorites.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Favorite> favorites(HttpServletRequest request, HttpServletResponse response) {

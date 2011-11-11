@@ -1,56 +1,7 @@
-var store = Ext.create('Ext.data.JsonStore', {
-	fields : [ 'name', 'data1', 'data2', 'data3', 'data4', 'data5' ],
-	data : [ {
-		'name' : 'Operation1',
-		'data1' : 10,
-		'data2' : 12,
-		'data3' : 14,
-		'data4' : 8,
-		'data5' : 13
-	}, {
-		'name' : 'Operation2',
-		'data1' : 7,
-		'data2' : 8,
-		'data3' : 16,
-		'data4' : 10,
-		'data5' : 3
-	}, {
-		'name' : 'Operation3',
-		'data1' : 5,
-		'data2' : 2,
-		'data3' : 14,
-		'data4' : 12,
-		'data5' : 7
-	}, {
-		'name' : 'Operation4',
-		'data1' : 2,
-		'data2' : 14,
-		'data3' : 6,
-		'data4' : 1,
-		'data5' : 23
-	}, {
-		'name' : 'Operation5',
-		'data1' : 27,
-		'data2' : 38,
-		'data3' : 36,
-		'data4' : 13,
-		'data5' : 33
-	} ]
-});
-
-Ext.define('Ext.ux.CustomTrigger', {
-	extend : 'Ext.form.field.Trigger',
-	alias : 'widget.customtrigger',
-
-	onTriggerClick : function() {
-		Ext.Msg.alert('Status', 'You clicked trigger!');
-	}
-});
-
-Ext.define('RPT.view.report.Report', {
+Ext.define('RPT.view.report.ReportColumn', {
 	extend : 'Ext.form.Panel',
 	
-	alias : 'widget.rpt.report.report',
+	alias : 'widget.rpt.report.report_column',
 	
 	layout : {
 		align : 'stretch',
@@ -81,7 +32,7 @@ Ext.define('RPT.view.report.Report', {
 					width : 400,
 					items : [ {
 						xtype : 'label',
-						text : 'Manufacturing Production Report'
+						text : 'Monitoring - Production Status'
 					} ]
 				} ]
 			},
@@ -111,16 +62,16 @@ Ext.define('RPT.view.report.Report', {
 							items : [ {
 								xtype : 'triggerfield',
 								fieldLabel : 'Factory',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : 'Product Group',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : ' ',
 								labelSeparator : '',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							} ]
 						} ]
 					}, {
@@ -138,15 +89,15 @@ Ext.define('RPT.view.report.Report', {
 							items : [ {
 								xtype : 'triggerfield',
 								fieldLabel : 'Operation Code',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : 'Product Type',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							}, {
 								xtype : 'triggerfield',
 								fieldLabel : 'Product Code',
-								emptyText : 'click the trigger',
+								emptyText : 'click the trigger'
 							} ]
 						} ]
 					}, {
@@ -221,22 +172,20 @@ Ext.define('RPT.view.report.Report', {
 				xtype : 'container',
 				layout : 'fit',
 				flex : 1,
-				items : [ {
+				items : [ {			
 					xtype : 'chart',
-					renderTo : Ext.getBody(),
 					animate : true,
-					width : 500,
-					height : 300,
-					store : store,
-					//store: 'RPT.store.ReportStore',
+					width : 400,
+					height : 250,
+					store: 'RPT.store.ReportListStore',
 					legend : {
 						position : 'right'
 					},
 					axes : [
 							{
 								type : 'Numeric',
-								position : 'bottom',
-								fields : [ 'data1', 'data2', 'data3', 'data4', 'data5' ],
+								position : 'left',
+								fields : [ 'mat_qty', 'plan_qty', 'finished_qty' ],
 								label : {
 									renderer : Ext.util.Format
 											.numberRenderer('0,0')
@@ -253,34 +202,32 @@ Ext.define('RPT.view.report.Report', {
 								minimum : 0
 							}, {
 								type : 'Category',
-								position : 'left',
-								fields : [ 'name' ],
+								position : 'bottom',
+								fields : 'oper_id',
 								title : 'Operations'
 							} ],
 					series : [ {
-						type : 'bar',
-						axis : 'bottom',
+						type : 'column',
+						axis : 'left',
 						highlight : true,
 						tips : {
 							trackMouse : true,
-							width : 140,
+							width : 200,
 							height : 30,
 							renderer : function(storeItem, item) {
-								this.setTitle(storeItem.get('name') + ': '
-										+ storeItem.get('data1') + ' views');
+								this.setTitle(storeItem.get('oper_id') + ' : ' + 'This is a tip');
 							}
 						},
 						label : {
 							display : 'insideEnd',
-							field : [ 'data1', 'data2', 'data3', 'data4',
-									'data5' ],
+							field : [ 'mat_qty', 'plan_qty', 'finished_qty' ],
 							renderer : Ext.util.Format.numberRenderer('0'),
 							orientation : 'horizontal',
 							color : '#333',
 							'text-anchor' : 'middle'
 						},
-						xField : 'name',
-						yField : [ 'data1', 'data2' ]
+						xField : 'oper_id',
+						yField : [ 'mat_qty', 'plan_qty', 'finished_qty' ]
 					} ]
 				} ]
 			}, {
@@ -289,67 +236,75 @@ Ext.define('RPT.view.report.Report', {
 				flex : 1,
 				items : [ {
 					xtype : 'gridpanel',
-					store : store,
-					//store: 'RPT.store.ReportStore',
+					store: 'RPT.store.ReportListStore',	
 					columns : [ {
 						xtype : 'gridcolumn',
 						autoScroll : true,
-						dataIndex : 'name',
+						dataIndex : 'area',
 						align : 'center',
 						text : 'Location'
 					}, {
-						xtype : 'numbercolumn',
-						dataIndex : 'data1',
+						xtype : 'gridcolumn',
+						dataIndex : 'lot_id',
 						align : 'center',
 						text : 'Lot No'
 					}, {
-						xtype : 'numbercolumn',
-						dataIndex : 'data2',
+						xtype : 'gridcolumn',
+						dataIndex : 'oper_id',
 						align : 'center',
 						text : 'Operation'
 					}, {
-						xtype : 'numbercolumn',
-						dataIndex : 'data3',
+						xtype : 'gridcolumn',
+						dataIndex : 'oper_desc',
 						align : 'center',
 						text : 'Desription'
 					}, {
-						xtype : 'numbercolumn',
-						dataIndex : 'data5',
+						xtype : 'gridcolumn',
 						align : 'center',
 						text : 'Product',
 						columns : [ {
+							xtype : 'gridcolumn',
 							text : 'Code',
-							renderer : 'usMoney',
-							dataIndex : 'data1',
+							dataIndex : 'mat_id',
 							align : 'center',
 
 						}, {
+							xtype : 'gridcolumn',
 							text : 'Name',
-							renderer : 'usMoney',
-							dataIndex : 'data2',
+							dataIndex : 'mat_desc',
 							align : 'center',
 						}, ]
 					}, {
-						xtype : 'numbercolumn',
-						dataIndex : 'data4',
+						xtype : 'gridcolumn',
+						dataIndex : 'oper_sts',
 						align : 'center',
 						text : 'Status'
 					}, {
-						xtype : 'numbercolumn',
-						dataIndex : 'data4',
+						xtype : 'gridcolumn',
+						dataIndex : 'ord_id',
 						align : 'center',
 						text : 'Work Order'
 					}, {
 						xtype : 'numbercolumn',
-						dataIndex : 'data4',
+						dataIndex : 'plan_qty',
 						align : 'center',
-						text : 'Qty'
+						text : 'Planned Qty'
 					}, {
 						xtype : 'numbercolumn',
-						dataIndex : 'data4',
+						dataIndex : 'mat_qty',
+						align : 'center',
+						text : 'Material Qty'
+					}, {
+						xtype : 'numbercolumn',
+						dataIndex : 'finished_qty',
+						align : 'center',
+						text : 'Finished Qty'
+					}, {
+						xtype : 'gridcolumn',
+						dataIndex : 'insp_id',
 						align : 'center',
 						text : 'Inspection'
-					}, ],
+					}  ],
 					viewConfig : {
 
 					},

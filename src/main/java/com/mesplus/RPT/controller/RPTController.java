@@ -29,9 +29,9 @@ public class RPTController {
 	public @ResponseBody
 	List<Report> reports(HttpServletRequest request,
 			HttpServletResponse response) {
-		String factory_id = request.getParameter("factory_id");
+		String factory = request.getParameter("factory");
 
-		logger.info("factory_id : " + factory_id);
+		logger.info("factory : " + factory);
 		
 		return reportDao.selectReports();
 	}
@@ -40,13 +40,13 @@ public class RPTController {
 	public @ResponseBody
 	Report report(HttpServletRequest request,
 			HttpServletResponse response) {
-		String factory_id = request.getParameter("factory_id");
-		String report_id = request.getParameter("report_id");
+		String factory = request.getParameter("factory");
+		String rpt_id = request.getParameter("rpt_id");
 
-		logger.info("factory_id : " + factory_id);
-		logger.info("report_id : " + report_id);
+		logger.info("factory : " + factory);
+		logger.info("rpt_id : " + rpt_id);
 		
-		Report ret = reportDao.findReport(report_id);
+		Report ret = reportDao.findReport(rpt_id);
 		return ret;
 	}
 }

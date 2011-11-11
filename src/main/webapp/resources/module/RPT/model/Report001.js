@@ -1,4 +1,4 @@
-Ext.define('RPT.model.ReportChart', {
+Ext.define('RPT.model.Report001', {
 	extend: 'Ext.data.Model',
 	
 		fields: [

@@ -1,0 +1,5 @@
+[
+{ report_id: 'REP001', report_desc: 'SAMPLE 001', report_view : 'NAM.view.Report001'},
+{ report_id: 'REP002', report_desc: 'SAMPLE 002', report_view : 'NAM.view.Report001'},
+{ report_id: 'REP003', report_desc: 'SAMPLE 003', report_view : 'NAM.view.Report001'}
+]
