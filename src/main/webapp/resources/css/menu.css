@@ -21,6 +21,19 @@
 
 /* app menu */
 .appMenu .x-btn-default-toolbar-small .x-btn-inner{color:#d7d7d7}
+.appMenu .x-btn-default-toolbar-small-over,.appMenu .x-btn-default-toolbar-small-menu-active,
+.appQuickIcon .x-btn-default-toolbar-large-over,.appQuickIcon .x-btn-default-toolbar-large-menu-over,
+.appQuickIcon x-btn-default-toolbar-large-pressed{
+	background:url('../image/bgBlackGradient.png') repeat-x;
+}
+.appMenu .x-btn-default-toolbar-small-over,.appMenu .x-btn-default-toolbar-small-menu-active{border-color:#111}
+.appQuickIcon .x-btn-default-toolbar-large-over,.appQuickIcon .x-btn-default-toolbar-large-menu-over{border-color:#474c59}
+.appQuickIcon .x-btn-default-toolbar-large-pressed{border-color:#5f93d4}
+.appMenu .x-panel-body-default{border-color:#9DA8B2}
+.x-menu-body{margin-top:2px;border:1px solid #9ea8b3 !important}
+.appMenu .x-btn-arrow-right{background:url('../image/arrowDownDefault.gif') 102% 5px no-repeat;}
+.appMenu .x-btn-arrow-right:hover{background:url('../image/arrowDownOver.gif') 102% 5px no-repeat;}
+.appMenu .x-toolbar-item{margin-right:10px}
 
 /* dock bar */
 .operation-list-item {
@@ -66,11 +79,15 @@
 .x-toolbar.appmenu,.x-toolbar.appQuickIcon{border:0}
 .x-toolbar.appmenu{background:url('../image/bgAppMenu.gif') repeat-x;}
 .x-toolbar.appQuickIcon{background:url('../image/bgAppQuickIcon.gif') repeat-x;}
+.appQuickIcon .x-toolbar-item{margin:0 5px}
 .x-tab em{padding-top:1px;padding-left:4px}
 
 .dockNavigation .x-panel-header-text-default{color:#efefef;}
 .dockNavigation .x-panel-header-default{background:url('../image/bgDockHeader.gif') repeat-x;background-color:#5875a0;border:none;height:27px}
 .dockNavigation .x-panel-header-default-top{box-shadow:none}
+.dockNavigation .x-tab button{overflow-x:hidden}
+.dockNavigation .x-tool-collapse-left{background:url('../image/iconBtnSet.gif') 0 2px no-repeat;}
+.x-panel-header-default-left, .x-panel-header-default-right{background:url('../image/bgDockCollapsed.gif') no-repeat;width:25px;border-width:0;left:-1px}
 
 /* status bar */
 .appStatusBar{background:url('../image/bgAppFooter.gif') repeat-x;}
@@ -85,3 +102,38 @@
 .x-tab-default-top,.x-tab-default-bottom{box-shadow:none}
 .x-border-box .x-tab-bar-top .x-tab-bar-body{height:27px}
 .x-tab-bar-top .x-tab-bar-body{padding-top:6px}
+
+/* tree style*/
+.x-tree-icon-parent{background:url('../image/folder.gif') no-repeat;}
+.x-grid-tree-node-expanded .x-tree-icon-parent{background:url('../image/folder-open.gif') no-repeat;}
+.x-tree-icon-leaf{background:url('../image/leaf.gif') no-repeat;}
+.x-tree-elbow-plus{background:url('../image/elbow-plus.gif') no-repeat;}
+.x-tree-lines .x-tree-elbow-end-plus{background:url('../image/elbow-end-plus.gif') no-repeat;}
+.x-tree-lines .x-grid-tree-node-expanded .x-tree-elbow-end-plus{background:url('../image/elbow-end-minus.gif') no-repeat;}
+.x-tree-lines .x-grid-tree-node-expanded .x-tree-elbow-plus{background:url('../image/elbow-minus.gif') no-repeat;}
+
+/* form */
+.x-form-trigger{background:url('../image/trigger.gif') no-repeat;margin-left:-1px}
+.x-form-trigger-over{background:url('../image/trigger.gif') -17px 0 no-repeat;}
+
+/* x progress bar style*/
+.x-progress{border:1px solid #f5f4f5;height:11px;background-color:#2a2a2a;-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;}
+
+/* login page style*/
+.welcome{background:url('../image/bgWelcomeHeader.gif') repeat-x;background-color:#ececec;margin:0;padding:0}
+.welcomeMent{background:url('../image/iconWelcomeFactory.png') 0 -2px no-repeat;padding:5px 0 0 165px;margin:3px 0 0 15px;height:90px;color:#fff;font-size:24px}
+.welcomeMent span{font-weight:bold}
+.productName{font-size:14px;color:#92c3f5;display:block;margin-bottom:18px}
+.welcome form{margin:50px auto;width:250px;}
+.welcome label{text-transform:capitalize;font-size:14px;color:#333}
+.welcome .loginInput{margin:3px 0 20px 0;width:250px;font-size:18px;}
+.welcome .btnWelcomeLogin{
+	background:url('../image/bgBtnBlue.gif') no-repeat;
+	float:right;margin-top:-5px;
+	width:100px;height:31px;display:inline-block;
+	color:#fff;font-size:14px;text-align:left;
+	border:0
+}
+.welcome .btnWelcomeLogin:hover{background:url('../image/bgBtnGreen.gif') no-repeat;cursor:pointer}
+.btnline{margin-top:20px}
+.welcome .btnline label{font-size:12px;color:#666}
