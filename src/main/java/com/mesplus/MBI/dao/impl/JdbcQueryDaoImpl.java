@@ -12,13 +12,13 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.mesplus.MBI.dao.QueryDao;
 import com.mesplus.MBI.model.Query;
 import com.mesplus.MBI.model.QueryParameter;
 
-@Repository
+@Component
 public class JdbcQueryDaoImpl implements QueryDao {
 
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
