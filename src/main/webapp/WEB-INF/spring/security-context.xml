@@ -11,6 +11,7 @@
 		<!-- access-decision-manager-ref="unanimousBased"> -->
 		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/**/*.css" access="permitAll" />
+		<intercept-url pattern="/**/image/*.*" access="permitAll" />
 		<intercept-url pattern="/**/*" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/secure/**/*"
 			access="hasRole('ROLE_MANAGER') and fullyAuthenticated" />
