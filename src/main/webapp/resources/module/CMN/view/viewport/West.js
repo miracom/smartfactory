@@ -7,24 +7,5 @@ Ext.define('CMN.view.viewport.West', {
 
 	cls : 'dockNavigation',
 
-	tabPosition : 'bottom',
-
-	items : [ {
-		xtype : 'cmn.nav_menu',
-		iconCls : 'iconsetDockMenu',
-		tabConfig : {
-			width : 29,
-			height : 22,
-			padding : '0 0 0 2px'
-		}
-	}, {
-		xtype : 'cmn.nav_favorite',
-		iconCls : 'iconsetDockFavor',
-		tabConfig : {
-			width : 29,
-			height : 22,
-			padding : '0 0 0 2px'
-
-		}
-	} ]
+	tabPosition : 'bottom'
 });

@@ -36,6 +36,6 @@ Ext.define('SEC.controller.SECController', {
 					} ]
 		};
 
-		SmartFactory.addSystemMenu(profile);
+		SmartFactory.addSystemMenu('Ext.button.Button', profile);
 	}
 });

@@ -26,17 +26,38 @@ var Miracom = Miracom || (function() {
 		modules : getModules,
 		register : registerModule,
 		controllers : getAllControllers,
-		addDockingNav : function(view) {
-			Ext.getCmp('docked_nav').add(view);
+		addDockingNav : function(view, config) {
+			var defaults = {
+				tabConfig : {
+					width : 29,
+					height : 22,
+					padding : '0 0 0 2px'
+				}
+			};
+
+			try {
+				Ext.getCmp('docked_nav').add(Ext.create(view, Ext.merge(defaults, config)));
+			} catch(e) {
+				console.log(e);
+			}
 		},
-		addSystemMenu : function(menu) {
-			var system_menu = Ext.getCmp('system_menu');
-			system_menu.insert(0, menu);
-			var width = 6;
-			system_menu.items.each(function(el) {
-				width += el.getWidth();
-			});
-			system_menu.setSize(width, system_menu.getHeight());
+		addSystemMenu : function(view, config) {
+			try {
+				var system_menu = Ext.getCmp('system_menu');
+				var menu = Ext.create(view, config);
+				
+				system_menu.insert(0, menu);
+
+				var width = 6; // TODO should be more systemic.
+
+				system_menu.items.each(function(el) {
+					width += el.getWidth();
+				});
+
+				system_menu.setSize(width, system_menu.getHeight());
+			} catch(e) {
+				console.log(e);
+			}
 		},
 		addContentView : function(view) {
 			console.log(view);

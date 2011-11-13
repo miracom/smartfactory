@@ -20,11 +20,17 @@ Ext.define('CMN.controller.CMNController', {
 	},
 
 	onViewportRendered : function() {
-		var search = Ext.create('CMN.view.common.SearchField', {
+		SmartFactory.addDockingNav('CMN.view.common.NavMenu', {
+    		iconCls : 'iconsetDockMenu'
+		});
+		
+		SmartFactory.addDockingNav('CMN.view.common.NavFavorite', {
+    		iconCls : 'iconsetDockFavor'
+		});
+		
+		SmartFactory.addSystemMenu('CMN.view.common.SearchField', {
 			store : Ext.create('CMN.store.SearchStore')
 		});
-
-		SmartFactory.addSystemMenu(search);
 	}
 
 });

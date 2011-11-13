@@ -14,15 +14,8 @@ Ext.define('RAS.controller.RASController', {
 	},
 
 	onViewportRendered : function() {
-		var nav_op = Ext.create('RAS.view.NavResource', {
-			iconCls : 'iconsetDockResource',
-			tabConfig : {
-				width : 29,
-				height : 22,
-				padding : '0 0 0 2px'
-			}
+		SmartFactory.addDockingNav('RAS.view.NavResource', {
+			iconCls : 'iconsetDockResource'
 		});
-
-		SmartFactory.addDockingNav(nav_op);
 	}
 });

@@ -14,16 +14,9 @@ Ext.define('RPT.controller.RPTController', {
 	},
 
 	onViewportRendered : function() {
-		var nav_report = Ext.create('RPT.view.NavReport', {
-			iconCls : 'iconsetDockReport',
-			tabConfig : {
-				width : 29,
-				height : 22,
-				padding : '0 0 0 2px'
-			}
+		SmartFactory.addDockingNav('RPT.view.NavReport', {
+			iconCls : 'iconsetDockReport'
 		});
-
-		SmartFactory.addDockingNav(nav_report);
 	}
 
 });
