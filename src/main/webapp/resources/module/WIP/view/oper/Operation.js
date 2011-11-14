@@ -35,7 +35,12 @@ Ext.define('WIP.view.oper.Operation', {
 			this.up('form').loadData();
 		} 
 	},
-	{ text: 'Save' }
+	{ 
+		text: 'Save',
+		handler: function(button) {
+			SmartFactory.showSelector({});
+		}
+	}
 	],
 	
 	initComponent: function() {

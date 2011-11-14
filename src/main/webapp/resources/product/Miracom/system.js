@@ -99,6 +99,10 @@ var Miracom = Miracom || (function() {
 				// auto-clear after a set interval
 				});
 			}
+		},
+		showSelector : function(config) {
+			var selector = Ext.create('CMN.view.common.Selector', config);
+			selector.show();
 		}
 	};
 })();
