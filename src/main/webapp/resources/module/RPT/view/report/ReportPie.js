@@ -180,7 +180,6 @@ Ext.define('RPT.view.report.ReportPie', {
 				xtype : 'chart',
 				animate : true,
 				store : 'RPT.store.ReportListStore',
-				theme : 'Base:gradients',
 				shadow : true,
 				legend : {
 					position : 'right'
@@ -201,6 +200,18 @@ Ext.define('RPT.view.report.ReportPie', {
 						contrast : true,
 						font : '15px Arial'
 					},
+			        tips: {
+			            trackMouse: true,
+			            width: 140,
+			            height: 28,
+			            renderer: function(storeItem, item) {
+			                var total = 0;
+			                storeItem.store.each(function(rec) {
+			                    total += rec.get('plan_qty');
+			                });
+			                this.setTitle(storeItem.get('oper_id') + ' : ' + Math.round(storeItem.get('plan_qty') / total * 100) + '%');
+			            }
+			        }
 				} ]
 			} ]
 		}, {
@@ -211,7 +222,6 @@ Ext.define('RPT.view.report.ReportPie', {
 				xtype : 'chart',
 				animate : true,
 				store : 'RPT.store.ReportListStore',
-				theme : 'Base:gradients',
 				shadow : true,
 				legend : {
 					position : 'right'
@@ -232,6 +242,18 @@ Ext.define('RPT.view.report.ReportPie', {
 						contrast : true,
 						font : '15px Arial'
 					},
+			        tips: {
+			            trackMouse: true,
+			            width: 140,
+			            height: 28,
+			            renderer: function(storeItem, item) {
+			                var total = 0;
+			                storeItem.store.each(function(rec) {
+			                    total += rec.get('mat_qty');
+			                });
+			                this.setTitle(storeItem.get('oper_id') + ' : ' + Math.round(storeItem.get('mat_qty') / total * 100) + '%');
+			            }
+			        }
 				} ]
 			} ]
 		}, {
@@ -242,7 +264,6 @@ Ext.define('RPT.view.report.ReportPie', {
 				xtype : 'chart',
 				animate : true,
 				store : 'RPT.store.ReportListStore',
-				theme : 'Base:gradients',
 				shadow : true,
 				legend : {
 					position : 'right'
@@ -263,6 +284,18 @@ Ext.define('RPT.view.report.ReportPie', {
 						contrast : true,
 						font : '15px Arial'
 					},
+			        tips: {
+			            trackMouse: true,
+			            width: 140,
+			            height: 28,
+			            renderer: function(storeItem, item) {
+			                var total = 0;
+			                storeItem.store.each(function(rec) {
+			                    total += rec.get('finished_qty');
+			                });
+			                this.setTitle(storeItem.get('oper_id') + ' : ' + Math.round(storeItem.get('finished_qty') / total * 100) + '%');
+			            }
+			        }
 				} ]
 			} ]
 		} ]
@@ -346,7 +379,22 @@ Ext.define('RPT.view.report.ReportPie', {
 			},
 			features : [ {
 				ftype : 'grouping'
-			} ]
+			} ],
+			listeners: {
+				itemclick: function(grid, record, item, index, e, opt) {
+
+					var report = null;
+
+					if(record.get('oper_id')) {
+						report = Ext.create('RPT.view.report.ReportModal', {
+							title: 'Operation' + ' - ' + record.get('oper_id'),
+							data: record,
+							closable: true
+						});
+					}
+					SmartFactory.addContentView(report);
+				}
+			}
 		} ]
 	} ]
 

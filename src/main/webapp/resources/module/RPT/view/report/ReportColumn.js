@@ -310,7 +310,22 @@ Ext.define('RPT.view.report.ReportColumn', {
 					},
 					features : [ {
 						ftype : 'grouping'
-					} ]
+					} ],
+					listeners: {
+						itemclick: function(grid, record, item, index, e, opt) {
+
+							var report = null;
+
+							if(record.get('oper_id')) {
+								report = Ext.create('RPT.view.report.ReportModal', {
+									title: 'Operation' + ' - ' + record.get('oper_id'),
+									data: record,
+									closable: true
+								});
+							}
+							SmartFactory.addContentView(report);
+						}
+					}
 				} ]
 			} ]
 
