@@ -29,16 +29,19 @@ public class MaterialController {
 	@RequestMapping(value = "module/WIP/data/materials.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> materials(HttpServletRequest request, HttpServletResponse response) {
+		String[] selects = (String[])request.getParameterValues("selects");
+		
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("factory", "FAB");
 //		return materialDao.selectMaterials(new String[] { "factory", "mat_id", "mat_ver" }, params);
-		return materialDao.selectMaterials(null, params);
+		return materialDao.selectMaterials(selects, params);
 	}
 
 	@RequestMapping(value = "module/WIP/data/materials.json", method = RequestMethod.POST, headers = "Accept=application/json")
 	public @ResponseBody
 	List<Map<String, Object>> another_materials(@RequestBody Map<String, Object> request, HttpServletResponse response) {
-		return materialDao.selectMaterials(new String[] { "factory", "mat_id", "mat_ver" }, null);
+		String[] selects = (String[])request.get("selects");
+		return materialDao.selectMaterials(selects, null);
 	}
 
 	@RequestMapping(value = "module/WIP/data/material.json", method = RequestMethod.GET)
