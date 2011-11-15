@@ -1,5 +1,6 @@
 package com.mesplus.MBI.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,29 +13,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mesplus.MBI.dao.QueryDao;
-import com.mesplus.MBI.model.Query;
+import com.mesplus.MBI.dao.FormDao;
 
-@Controller
+//@Controller
 public class MBIController {
 
 	@Autowired
-	private QueryDao queryDao;
+	private FormDao formDao;
 
-	@RequestMapping(value = "module/MBI/data/queries.json", method = RequestMethod.GET)
+	@RequestMapping(value = "module/MBI/data/consqls.json", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Map<String, Object>> menus(HttpServletRequest request, HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-
-		return queryDao.selectQueries(factory);
-	}
-	
-	@RequestMapping(value = "module/MBI/data/query.json", method = RequestMethod.GET)
-	public @ResponseBody
-	Query favorites(HttpServletRequest request, HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-		String queryid = request.getParameter("queryid");
-
-		return queryDao.findQuery(factory, queryid);
+	List<Map<String, Object>> consqls(HttpServletRequest request, HttpServletResponse response) {
+		String fac_id = request.getParameter("fac_id");
+		String func_id = request.getParameter("func_id");
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("fac_id",fac_id);
+		params.put("func_id", func_id);
+		
+		return formDao.controlSqlGenNT(params);
 	}
 }

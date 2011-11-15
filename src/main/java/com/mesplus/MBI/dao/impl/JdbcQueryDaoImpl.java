@@ -18,7 +18,7 @@ import com.mesplus.MBI.dao.QueryDao;
 import com.mesplus.MBI.model.Query;
 import com.mesplus.MBI.model.QueryParameter;
 
-@Component
+//@Component
 public class JdbcQueryDaoImpl implements QueryDao {
 
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;

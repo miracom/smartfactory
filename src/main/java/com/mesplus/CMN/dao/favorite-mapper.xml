@@ -17,7 +17,7 @@
 	<select id="selectFavorites" resultMap="FavoriteMap">
 		SELECT *
 		FROM MSECUSRFUN
-		WHERE FACTORY = 'DEMO'
+		WHERE FACTORY = '1000'
 		AND PROGRAM_ID = 'MESClient'
 		AND USER_ID = 'ADMIN'
 		ORDER BY SEQ_NUM ASC
