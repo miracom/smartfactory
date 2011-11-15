@@ -25,7 +25,7 @@
     <parameter property="cur.refer" jdbcType="REF" mode="OUT"/>
   </parameterMap>
 
-  <select id="controlSqlGenNT" parameterMap="spParameterMap" statementType="CALLABLE" resultType="hashmap">
+  <select id="controlSqlGenNT" parameterMap="spParameterMap" statementType="CALLABLE" >
     {call P_ADSNCONSQL_GEN_NT(
       #{fac_id,jdbcType=VARCHAR,mode=IN},
       #{func_id,jdbcType=VARCHAR,mode=IN},
