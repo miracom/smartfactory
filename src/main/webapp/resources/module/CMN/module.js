@@ -1,1 +1,1 @@
-Miracom.register('CMN', [ 'CMN.controller.CMNController' ]);
+SmartFactory.register('CMN', [ 'CMN.controller.CMNController' ]);

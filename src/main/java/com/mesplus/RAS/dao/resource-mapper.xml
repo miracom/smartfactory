@@ -23,11 +23,11 @@
 		<result property="updated_at" column="update_time"></result>
 	</resultMap>
 		
-	<select id="selectResources" resultMap="ResourceMap">
-	SELECT factory, res_id, res_desc from mrasresdef
+	<select id="selectResources" parameterType="map" resultMap="ResourceMap">
+	SELECT factory, res_id, res_desc from mrasresdef WHERE factory = #{factory}
 	</select>
 
-	<select id="findResource" parameterType="string" resultMap="ResourceMap">
-	SELECT factory, res_id, res_desc FROM mrasresdef WHERE res_id = #{resource_id}
+	<select id="findResource" parameterType="map" resultMap="ResourceMap">
+	SELECT factory, res_id, res_desc FROM mrasresdef WHERE factory = #{factory} AND res_id = #{res_id}
 	</select>
 </mapper>

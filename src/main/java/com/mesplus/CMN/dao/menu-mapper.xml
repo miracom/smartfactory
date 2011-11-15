@@ -20,14 +20,14 @@
 		<result property="add_tool_bar" />
 	</resultMap>
 
-	<select id="selectMenus" resultMap="MenuMap">
+	<select id="selectMenus" parameterType="map" resultMap="MenuMap">
 		SELECT DEF.FUNC_NAME, DEF.FUNC_DESC, DEF.FUNC_TYPE_FLAG, DEF.FUNC_GROUP,
 		DEF.ASSEMBLY_FILE, DEF.ASSEMBLY_NAME, DEF.SHORT_CUT, DEF.ICON_INDEX,
 		GRP.DISP_LEVEL, GRP.SEPARATOR, GRP.ADD_TOOL_BAR
 		FROM MSECFUNDEF DEF, MSECGRPFUN GRP
 		WHERE
 		DEF.FUNC_NAME = GRP.FUNC_NAME
-		AND GRP.FACTORY = 'DEMO'
+		AND GRP.FACTORY = #{factory}
 		AND GRP.SEC_GRP_ID =
 		'ADMIN_GROUP'
 		AND GRP.PROGRAM_ID = 'MESClient'

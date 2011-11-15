@@ -11,12 +11,12 @@ Ext.onReady(function() {
 		autoCreateViewport : false,
 
 		controllers : [ 'SmartFactory.controller.ApplicationController' ]
-				.concat(Miracom.controllers()),
+				.concat(SmartFactory.controllers()),
 
 		launch : function() {
 			// Login 등등.. 여기서
 			// ...
-			Ext.apply(SmartFactory, Miracom);
+//			Ext.apply(SmartFactory, Miracom);
 
 			Ext.create('SmartFactory.view.Viewport').show();
 		}

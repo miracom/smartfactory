@@ -1,1 +1,1 @@
-Miracom.register('RAS', [ 'RAS.controller.RASController' ]);
+SmartFactory.register('RAS', [ 'RAS.controller.RASController' ]);

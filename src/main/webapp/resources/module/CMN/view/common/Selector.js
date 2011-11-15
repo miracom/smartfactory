@@ -34,6 +34,8 @@ Ext.define('CMN.view.common.Selector', {
 				type : 'ajax',
 				url : 'module/WIP/data/materials.json',
 				extraParams : {
+					factory : SmartFactory.factory(),
+					user : SmartFactory.user(),
 					selects : ['factory', 'mat_id', 'mat_ver', 'mat_desc']
 				},
 				reader : {

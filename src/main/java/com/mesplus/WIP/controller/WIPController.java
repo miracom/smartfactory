@@ -1,6 +1,8 @@
 package com.mesplus.WIP.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,10 +31,14 @@ public class WIPController {
 	public @ResponseBody
 	List<Operation> operations(HttpServletRequest request,
 			HttpServletResponse response) {
-		String factory_id = request.getParameter("factory_id");
+		String factory = request.getParameter("factory");
+		String user = request.getParameter("user");
+
+		Map<String, Object> params = new HashMap<String, Object>();
 		
-		logger.info("factory_id : " + factory_id);
+		params.put("factory", factory);
+		params.put("user", user);
 		
-		return operationDao.selectOperations();
+		return operationDao.selectOperations(params);
 	}
 }

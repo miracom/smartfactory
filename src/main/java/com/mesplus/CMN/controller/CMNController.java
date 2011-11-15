@@ -1,6 +1,8 @@
 package com.mesplus.CMN.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,20 +33,28 @@ public class CMNController {
 	@RequestMapping(value = "module/CMN/data/menus.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Menu> menus(HttpServletRequest request, HttpServletResponse response) {
-		String factory_id = request.getParameter("factory_id");
+		String factory = request.getParameter("factory");
+		String user = request.getParameter("user");
 
-		logger.info("factory_id : " + factory_id);
+		Map<String, Object> params = new HashMap<String, Object>();
+		
+		params.put("factory", factory);
+		params.put("user", user);
 
-		return Menu.buildHierarchy(menuDao.selectMenus());
+		return Menu.buildHierarchy(menuDao.selectMenus(params));
 	}
 	
 	@RequestMapping(value = "module/CMN/data/favorites.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Favorite> favorites(HttpServletRequest request, HttpServletResponse response) {
-		String factory_id = request.getParameter("factory_id");
+		String factory = request.getParameter("factory");
+		String user = request.getParameter("user");
 
-		logger.info("factory_id : " + factory_id);
-
-		return favoriteDao.selectFavorites();
+		Map<String, Object> params = new HashMap<String, Object>();
+		
+		params.put("factory", factory);
+		params.put("user", user);
+		
+		return favoriteDao.selectFavorites(params);
 	}
 }

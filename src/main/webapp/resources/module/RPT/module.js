@@ -1,1 +1,1 @@
-Miracom.register('RPT', [ 'RPT.controller.RPTController' ]);
+SmartFactory.register('RPT', [ 'RPT.controller.RPTController' ]);

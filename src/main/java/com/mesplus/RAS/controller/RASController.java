@@ -1,6 +1,8 @@
 package com.mesplus.RAS.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,24 +31,32 @@ public class RASController {
 	public @ResponseBody
 	List<Resource> resources(HttpServletRequest request,
 			HttpServletResponse response) {
-		String factory_id = request.getParameter("factory_id");
+		String factory = request.getParameter("factory");
+		String user = request.getParameter("user");
 
-		logger.info("factory_id : " + factory_id);
+		Map<String, Object> params = new HashMap<String, Object>();
 		
-		return resourceDao.selectResources();
+		params.put("factory", factory);
+		params.put("user", user);
+		
+		return resourceDao.selectResources(params);
 	}
 
 	@RequestMapping(value = "module/RAS/data/resource.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Resource resource(HttpServletRequest request,
 			HttpServletResponse response) {
-		String factory_id = request.getParameter("factory_id");
-		String resource_id = request.getParameter("resource_id");
+		String factory = request.getParameter("factory");
+		String user = request.getParameter("user");
+		String res_id = request.getParameter("res_id");
 
-		logger.info("factory_id : " + factory_id);
-		logger.info("resource_id : " + resource_id);
+		Map<String, Object> params = new HashMap<String, Object>();
 		
-		Resource ret = 	resourceDao.findResource(resource_id);
+		params.put("factory", factory);
+		params.put("user", user);
+		params.put("res_id", res_id);
+		
+		Resource ret = 	resourceDao.findResource(params);
 		return ret;
 	}
 }

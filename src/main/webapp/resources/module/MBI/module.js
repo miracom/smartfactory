@@ -1,1 +1,1 @@
-Miracom.register('MBI', [ 'MBI.controller.MBIController' ]);
+SmartFactory.register('MBI', [ 'MBI.controller.MBIController' ]);

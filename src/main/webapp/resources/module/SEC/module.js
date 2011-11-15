@@ -1,1 +1,1 @@
-Miracom.register('SEC', [ 'SEC.controller.SECController' ]);
+SmartFactory.register('SEC', [ 'SEC.controller.SECController' ]);
