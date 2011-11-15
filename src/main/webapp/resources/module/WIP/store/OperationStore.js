@@ -10,7 +10,10 @@ Ext.define('WIP.store.OperationStore', {
 	proxy: {
 		type: 'ajax',
 		url : 'module/WIP/data/operations.json',
-//		url : 'WIP/operations',
+		extraParams : {
+			factory : SmartFactory.factory(),
+			user : SmartFactory.user()
+		},
 		extraParams: {
 			factory_id: 'FAB101'
 		}, 

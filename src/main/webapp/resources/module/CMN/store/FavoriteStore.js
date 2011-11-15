@@ -10,6 +10,10 @@ Ext.define('CMN.store.FavoriteStore', {
 	proxy : {
 		type : 'ajax',
 		url : 'module/CMN/data/favorites.json',
+		extraParams : {
+			factory : SmartFactory.factory(),
+			user : SmartFactory.user()
+		},
 		reader : {
 			type : 'json'
 		}

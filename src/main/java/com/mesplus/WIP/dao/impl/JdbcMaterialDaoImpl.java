@@ -29,7 +29,7 @@ public class JdbcMaterialDaoImpl implements MaterialDao {
 		return StringUtils.arrayToDelimitedString(selects, ", ");
 	}
 	
-	private static String buildWhereClause(String[] filters, Map<String, String> parameters) {
+	private static String buildWhereClause(String[] filters, Map<String, Object> parameters) {
 		if(filters == null || filters.length == 0 || parameters == null || parameters.size() == 0)
 			return "";
 		
@@ -44,7 +44,7 @@ public class JdbcMaterialDaoImpl implements MaterialDao {
 	}
 	
 	@Override
-	public List<Map<String, Object>> selectMaterials(String[] selects, Map<String, String> parameters) {
+	public List<Map<String, Object>> selectMaterials(String[] selects, Map<String, Object> parameters) {
 		String[] filters = {"factory", "mat_id", "mat_ver"};
 		String selectClause = buildSelectClause(selects);
 		String whereClause = buildWhereClause(filters, parameters);

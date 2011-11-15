@@ -1,1 +1,1 @@
-Miracom.register('WIP', [ 'WIP.controller.WIPController' ]);
+SmartFactory.register('WIP', [ 'WIP.controller.WIPController' ]);

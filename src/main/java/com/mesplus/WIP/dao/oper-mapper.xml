@@ -11,7 +11,7 @@
 		<result property="desc" column="oper_desc"></result>
 	</resultMap>
 
-	<select id="selectOperations" resultMap="OperMap">
-		SELECT factory, oper, oper_desc from mwipoprdef
+	<select id="selectOperations" parameterType="map" resultMap="OperMap">
+		SELECT factory, oper, oper_desc from mwipoprdef WHERE factory = #{factory}
 	</select>
 </mapper>

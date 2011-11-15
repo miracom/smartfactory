@@ -14,12 +14,12 @@
 		<result property="user_func_desc" />
 	</resultMap>
 
-	<select id="selectFavorites" resultMap="FavoriteMap">
+	<select id="selectFavorites" parameterType="hashmap" resultMap="FavoriteMap">
 		SELECT *
 		FROM MSECUSRFUN
-		WHERE FACTORY = '1000'
+		WHERE FACTORY = #{factory}
 		AND PROGRAM_ID = 'MESClient'
-		AND USER_ID = 'ADMIN'
+		AND USER_ID = #{user}
 		ORDER BY SEQ_NUM ASC
 	</select>
 

@@ -1,1 +1,1 @@
-Miracom.register('NAM', [ 'NAM.controller.NAMController' ]);
+SmartFactory.register('NAM', [ 'NAM.controller.NAMController' ]);

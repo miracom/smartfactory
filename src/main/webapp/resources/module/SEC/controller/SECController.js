@@ -15,7 +15,7 @@ Ext.define('SEC.controller.SECController', {
 
 	onViewportRendered : function() {
 		var profile = {
-			text : 'shnam',
+			text : SmartFactory.user(),
 			menu : [
 					{
 						text : 'Profile',

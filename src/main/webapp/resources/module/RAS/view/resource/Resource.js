@@ -69,7 +69,7 @@ Ext.define('RAS.view.resource.Resource', {
 			var store = Ext.data.StoreManager.lookup('RAS.store.ResourceStore');
 			store.load({
 				scope: this,
-				params: { resource_id: resource_id },
+				params: { res_id : resource_id },
 				callback: function(records, operation, success) {
 					this.loadRecord(records[0]);
 				}
