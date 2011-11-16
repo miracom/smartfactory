@@ -12,4 +12,6 @@ public class CustomJdbcDaoImpl extends JdbcDaoImpl implements IChangePassword {
 		String factory = "FAB";
 		getJdbcTemplate().update("UPDATE MSECUSRDEF SET PASSWORD=? WHERE FACTORY=? AND USER_ID=?", password, factory, user_id);
 	}
+	
+	
 }
