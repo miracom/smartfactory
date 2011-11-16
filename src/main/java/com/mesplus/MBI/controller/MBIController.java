@@ -25,7 +25,44 @@ public class MBIController {
 	List<Map<String, Object>> consqls(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
-		
+
 		return formDao.controlSqlGenNT(fac_id, func_id);
+	}
+
+	@RequestMapping(value = "module/MBI/data/assdef_gen_nt.json", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Map<String, Object>> assdefGenNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String fac_id = request.getParameter("fac_id");
+		String func_id = request.getParameter("func_id");
+
+		return formDao.assdefGenNtDao(fac_id, func_id);
+	}
+
+	@RequestMapping(value = "module/MBI/data/chtinf_nt.json", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Map<String, Object>> chtinfNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String fac_id = request.getParameter("fac_id");
+		String func_id = request.getParameter("func_id");
+
+		return formDao.chtinfNtDao(fac_id, func_id);
+	}
+
+	@RequestMapping(value = "module/MBI/data/consql_gen_nt.json", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Map<String, Object>> consqlGenNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String fac_id = request.getParameter("fac_id");
+		String func_id = request.getParameter("func_id");
+
+		return formDao.consqlGenNtDao(fac_id, func_id);
+	}
+
+	@RequestMapping(value = "module/MBI/data/fscrel_nt.json", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Map<String, Object>> fscrelNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String fac_id = request.getParameter("fac_id");
+		String func_id = request.getParameter("func_id");
+		String spd_id = request.getParameter("spd_id");
+
+		return formDao.fscrelNtDao(fac_id, func_id, spd_id);
 	}
 }
