@@ -19,9 +19,11 @@
 
 
 	<form action="j_spring_security_check" method="post">
-		<label for="j_username">user name</label>: <input id="j_username"
+		<label for="j_password">Factory</label> <input id="j_password"
+			name="j_password" maxlength="50" type="text" class="loginInput" /> <label
+			for="j_username">user name</label> <input id="j_username"
 			name="j_username" maxlength="50" type="text" class="loginInput" /> <label
-			for="j_password">Password</label>: <input id="j_password"
+			for="j_password">Password</label> <input id="j_password"
 			name="j_password" maxlength="50" type="password" class="loginInput" />
 
 		<div class="btnline">

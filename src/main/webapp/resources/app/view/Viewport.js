@@ -23,8 +23,7 @@ Ext.define('SmartFactory.view.Viewport', {
 		xtype : 'viewport.east',
 		region : 'east',
 		collapsible : true,
-		collapsed : true,
-		width : 200,
+		width:200,
 		split : true
 	}, {
 		xtype : 'viewport.south',

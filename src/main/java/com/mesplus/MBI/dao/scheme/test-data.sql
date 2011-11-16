@@ -41,8 +41,7 @@ SELECT Q.FACTORY FACTORY, Q.QUERYID QUERYID, Q.STATEMENT STATEMENT, Q.COMMANDTYP
 		ORDER BY Q.QUERYID
 		
 		
-select * from MSECUSRDEF;
-		
+ 
 Password 암호화 코딩
 //사용예
 COM_encpypt_one_way(s_encode_password, s_password, sizeof(MSECUSREXT.ENCODE_PASSWORD), s_user_id, sizeof(MSECUSREXT.USER_ID));
