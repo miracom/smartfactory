@@ -4,12 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mesplus.SEC.dao.CustomJdbcDaoImpl;
 import com.mesplus.smartfactory.HomeController;
 
 @Controller
@@ -18,7 +18,9 @@ public class AuthController {
 			.getLogger(HomeController.class);
 	
 	@Autowired
-	private UserDetailsManager userDetailsManager;
+	private CustomJdbcDaoImpl jdbcUserService;
+
+//	private UserDetailsManager userDetailsManager;
 	
 	@RequestMapping(value="/account/changePassword", method=RequestMethod.GET)
 	public void showChangePasswordPage() {
@@ -26,7 +28,7 @@ public class AuthController {
 	
 	@RequestMapping(value="/account/changePassword", method=RequestMethod.POST)
 	public String submitChangePasswordPage(@RequestParam("oldpassword") String oldPassword, @RequestParam("password") String newPassword){
-		userDetailsManager.changePassword(oldPassword, newPassword);
+		jdbcUserService.changePassword(oldPassword, newPassword);
 
 		SecurityContextHolder.clearContext();
 		

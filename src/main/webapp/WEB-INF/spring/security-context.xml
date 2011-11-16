@@ -21,6 +21,33 @@
 			logout-url="/logout" />
 	</http>
 
+	<beans:bean class="com.mesplus.SEC.service.CustomPasswordEncoder" id="passwordEncoder" />
+	<beans:bean class="org.springframework.security.authentication.dao.ReflectionSaltSource" id="saltSource">
+		<beans:property name="userPropertyToUse" value="username" />
+	</beans:bean>
+	
+	<beans:bean id="jdbcUserService" class="com.mesplus.SEC.dao.CustomJdbcDaoImpl">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="usersByUsernameQuery">
+			<beans:value>
+			SELECT USER_ID, ENCODE_PASSWORD, 1 FROM MSECUSREXT WHERE FACTORY='DEMO' AND USER_ID = ?
+			</beans:value>
+		</beans:property>
+		<beans:property name="authoritiesByUsernameQuery">
+			<beans:value>
+			SELECT USER_ID, 'ROLE_USER' FROM MSECUSREXT WHERE FACTORY='DEMO' AND USER_ID = ?
+			</beans:value>
+		</beans:property>
+	</beans:bean>
+	
+	<authentication-manager>
+		<authentication-provider user-service-ref="jdbcUserService">
+			<password-encoder ref="passwordEncoder" >
+				<salt-source ref="saltSource" />
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+	
 	<beans:bean class="org.springframework.security.access.vote.UnanimousBased"
 		id="unanimousBased">
 		<beans:property name="decisionVoters">
@@ -30,46 +57,10 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-	<beans:bean class="org.springframework.security.access.vote.RoleVoter"
-		id="roleVoter" />
-	<beans:bean
-		class="org.springframework.security.access.vote.AuthenticatedVoter"
-		id="authenticatedVoter" />
-
-<!-- 
-	<authentication-manager alias="authenticationManager">
-		<authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource"
-			role-prefix="ROLE_" 
-			users-by-username-query="SELECT USER_ID, PASSWORD, 1 FROM MSECUSRDEF WHERE FACTORY='FAB' AND USER_ID = ?" 
-			authorities-by-username-query="SELECT USER_ID, 1 FROM MSECUSRDEF WHERE FACTORY='FAB' AND USER_ID = ?" 
-			 group-authorities-by-username-query="SELECT USER_ID, 1 FROM MSECUSRDEF WHERE FACTORY='FAB' AND USER_ID = ?"
-			/>
-		</authentication-provider>
-	</authentication-manager>
- -->
-
-	<beans:bean id="jdbcUserService" class="com.mesplus.SEC.dao.CustomJdbcDaoImpl">
-		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="usersByUsernameQuery">
-			<beans:value>
-			SELECT USER_ID, PASSWORD, 1 FROM MSECUSRDEF WHERE FACTORY='FAB' AND USER_ID = ?
-			</beans:value>
-		</beans:property>
-	</beans:bean>
 	
-<!-- 
-	<beans:bean id="jdbcUserService" class="org.springframework.security.provisioning.JdbcUserDetailsManager">
-		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="authenticationManager" ref="authenticationManager" />
-		<beans:property name="usersByUsernameQuery">
-			<beans:value>
-			SELECT USER_ID, PASSWORD, 1 FROM MSECUSRDEF WHERE USER_ID = ?
-			</beans:value>
-		</beans:property>
-	</beans:bean>
+	<beans:bean class="org.springframework.security.access.vote.RoleVoter" id="roleVoter" />
+	<beans:bean	class="org.springframework.security.access.vote.AuthenticatedVoter" id="authenticatedVoter" />
 
- -->  
 	<beans:bean id="myLogoutSuccessHandler"
 		class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
 		<beans:property name="defaultTargetUrl" value="/" />
