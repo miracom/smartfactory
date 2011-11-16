@@ -34,6 +34,7 @@
 .appMenu .x-btn-arrow-right{background:url('../image/arrowDownDefault.gif') 102% 5px no-repeat;}
 .appMenu .x-btn-arrow-right:hover{background:url('../image/arrowDownOver.gif') 102% 5px no-repeat;}
 .appMenu .x-toolbar-item{margin-right:10px}
+.x-menu-scroll-top-disabled,.x-box-scroller-bottom{display:none}
 
 /* dock bar */
 .operation-list-item {
@@ -87,7 +88,13 @@
 .dockNavigation .x-panel-header-default-top{box-shadow:none}
 .dockNavigation .x-tab button{overflow-x:hidden}
 .dockNavigation .x-tool-collapse-left{background:url('../image/iconBtnSet.gif') 0 2px no-repeat;}
+.dockNavigation .x-tool-collapse-right{background:url('../image/iconBtnSet.gif') -15px 2px no-repeat;}
 .x-panel-header-default-left, .x-panel-header-default-right{background:url('../image/bgDockCollapsed.gif') no-repeat;width:25px;border-width:0;left:-1px}
+
+/*search panel*/
+.searchPanel .x-form-item-label{color:#666;font-size:11px;}
+.searchPanel .x-form-item-body{margin-top:-2px}
+.searchPanel .x-form-trigger-wrap-focus .x-form-trigger{background-position:-24px 0}
 
 /* status bar */
 .appStatusBar{background:url('../image/bgAppFooter.gif') repeat-x;}
@@ -113,8 +120,15 @@
 .x-tree-lines .x-grid-tree-node-expanded .x-tree-elbow-plus{background:url('../image/elbow-minus.gif') no-repeat;}
 
 /* form */
-.x-form-trigger{background:url('../image/trigger.gif') no-repeat;margin-left:-1px}
-.x-form-trigger-over{background:url('../image/trigger.gif') -17px 0 no-repeat;}
+.x-form-trigger{background:url('../image/trigger.gif') no-repeat;margin-left:-1px;width:24px}
+.x-form-trigger-over{background:url('../image/trigger.gif') -24px 0 no-repeat}
+.x-form-date-trigger{background:url('../image/date-trigger.gif') no-repeat;margin-left:-1px;width:24px}
+.x-form-date-trigger-over,.x-form-date-trigger-click,.x-form-date-trigger-pressed{background:url('../image/date-trigger.gif') -24px 0 no-repeat;margin-left:-1px;width:24px}
+.resourceSelector .x-form-trigger{background:url('../image/selector-trigger.gif') no-repeat;margin-left:-1px;width:24px}
+.resourceSelector .x-form-trigger-over,.resourceSelector .x-form-trigger-click,.resourceSelector .x-form-trigger-pressed{
+	background:url('../image/selector-trigger.gif') -24px 0 no-repeat;margin-left:-1px;width:24px
+}
+
 
 /* x progress bar style*/
 .x-progress{border:1px solid #f5f4f5;height:11px;background-color:#2a2a2a;-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;}
@@ -137,3 +151,13 @@
 .welcome .btnWelcomeLogin:hover{background:url('../image/bgBtnGreen.gif') no-repeat;cursor:pointer}
 .btnline{margin-top:20px}
 .welcome .btnline label{font-size:12px;color:#666}
+
+/* button style*/
+.x-btn-default-small{background:url('../image/bgBtn.gif') repeat-x;padding:1px}
+.x-btn-default-small-over{background:url('../image/bgBtnOver.gif') repeat-x;padding:1px}
+.x-toolbar-footer-docked-bottom{border:1px solid #cfcfcf;border-width:1px 1px 0px 1px !important;height:27px;background-color:#f0f0f0}
+
+/* picker style*/
+table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
+.x-datepicker-prev{background:url('../image/iconBtnSet.gif') 0 2px repeat-x;width:12px;margin-left:3px}
+.x-datepicker-next{background:url('../image/iconBtnSet.gif') 100% 2px repeat-x;width:14px;margin-left:3px}

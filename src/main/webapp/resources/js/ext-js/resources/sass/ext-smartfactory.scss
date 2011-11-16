@@ -33,10 +33,16 @@ $tab-spacing: 1px;
 
 //buttons
 $button-default-border-color:#b0b0b0;
-$button-default-border-color-over:#447ac1;
-$button-default-border-color-pressed:#000;
-$button-default-color-over:#3f679b;
+$button-default-border-color-over:#b5ccdd;
+$button-default-border-color-pressed:#b5ccdd;
+$button-default-color-over:#5b7cb3;
 
+//pickers
+$datepicker-today-item-border-color: #ff6600 !default;
+
+//loadmask
+$loadmask-opacity: 0.3 !default;
+$loadmask-backgorund: #000 !default;
 
 @import 'compass';
 @import 'ext4/default/all';
