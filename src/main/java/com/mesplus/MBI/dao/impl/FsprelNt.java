@@ -17,18 +17,21 @@ import org.springframework.jdbc.object.StoredProcedure;
 
 import com.mesplus.util.ResultSetUtils;
 
-public class ControlSQLProcedure extends StoredProcedure {
+public class FsprelNt extends StoredProcedure {
 	public static final String FAC_ID_PARAM = "fac_id";
 	public static final String FUNC_ID_PARAM = "func_id";
+	public static final String SPD_ID_PARAM = "spd_id";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_ADSNCONSQL_GEN_NT";
+	private static final String SPROC_NAME = "P_ADSNFSPREL_NT";
+																
 
-	public ControlSQLProcedure(DataSource dataSource) throws SQLException {
+	public FsprelNt(DataSource dataSource) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(SPD_ID_PARAM, Types.VARCHAR));
 		declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new RowMapper<Map<String, Object>>() {
 			@Override
 			public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -39,10 +42,11 @@ public class ControlSQLProcedure extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id) {
+	public Map<String, Object> execute(String fac_id, String func_id, String spd_id) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
 		inputs.put(FAC_ID_PARAM, fac_id);
 		inputs.put(FUNC_ID_PARAM, func_id);
+		inputs.put(SPD_ID_PARAM, spd_id);
 
 		return super.execute(inputs);
 	}

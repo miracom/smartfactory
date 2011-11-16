@@ -3,8 +3,6 @@ package com.mesplus.MBI.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
-
 import com.mesplus.MBI.model.Query;
 
 public interface QueryDao {
