@@ -17,33 +17,35 @@ import org.springframework.jdbc.object.StoredProcedure;
 
 import com.mesplus.util.ResultSetUtils;
 
-public class ControlSQLProcedure extends StoredProcedure {
+public class FtrfldNt extends StoredProcedure {
 	public static final String FAC_ID_PARAM = "fac_id";
-	public static final String FUNC_ID_PARAM = "func_id"; // input name
-	public static final String CUR_REFER_PARAM = "cur.refer"; // out name
+	public static final String FUNC_ID_PARAM = "func_id";
+	public static final String FUNC_TEMPLATE_ID_PARAM = "func_template_id";
+	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_ADSNCONSQL_GEN_NT"; // procedure
-																	// name
+	private static final String SPROC_NAME = "P_ADSNFTRFLD_NT";
 
-	public ControlSQLProcedure(DataSource dataSource) throws SQLException {
+	public FtrfldNt(DataSource dataSource) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(FUNC_TEMPLATE_ID_PARAM, Types.VARCHAR));
 		declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new RowMapper<Map<String, Object>>() {
 			@Override
 			public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
 				return ResultSetUtils.convertResultSetToMap(rs);
 			}
 		}));
-		
+
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id) {
+	public Map<String, Object> execute(String fac_id, String func_id, String func_template_id) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
 		inputs.put(FAC_ID_PARAM, fac_id);
 		inputs.put(FUNC_ID_PARAM, func_id);
+		inputs.put(FUNC_TEMPLATE_ID_PARAM, func_template_id);
 
 		return super.execute(inputs);
 	}

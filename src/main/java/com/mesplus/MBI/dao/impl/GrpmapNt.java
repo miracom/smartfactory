@@ -17,15 +17,14 @@ import org.springframework.jdbc.object.StoredProcedure;
 
 import com.mesplus.util.ResultSetUtils;
 
-public class ControlSQLProcedure extends StoredProcedure {
+public class GrpmapNt extends StoredProcedure {
 	public static final String FAC_ID_PARAM = "fac_id";
-	public static final String FUNC_ID_PARAM = "func_id"; // input name
-	public static final String CUR_REFER_PARAM = "cur.refer"; // out name
+	public static final String FUNC_ID_PARAM = "func_id";
+	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_ADSNCONSQL_GEN_NT"; // procedure
-																	// name
+	private static final String SPROC_NAME = "P_ADSNGRPMAP_NT";
 
-	public ControlSQLProcedure(DataSource dataSource) throws SQLException {
+	public GrpmapNt(DataSource dataSource) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
@@ -36,7 +35,7 @@ public class ControlSQLProcedure extends StoredProcedure {
 				return ResultSetUtils.convertResultSetToMap(rs);
 			}
 		}));
-		
+
 		compile();
 	}
 
