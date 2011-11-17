@@ -31,6 +31,11 @@ Ext.define('CMN.view.viewport.East', {
 		xtype:'combobox',
 		fieldLabel: 'Product ID',
         labelAlign: 'top',
+        listeners : {
+        	focus : function() {
+        		SmartFactory.showSelector();
+        	}
+        },
         store:          Ext.create('Ext.data.Store', {
             fields : ['name', 'value'],
             data   : [

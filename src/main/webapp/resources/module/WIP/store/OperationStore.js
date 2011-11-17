@@ -14,9 +14,6 @@ Ext.define('WIP.store.OperationStore', {
 			factory : SmartFactory.factory(),
 			user : SmartFactory.user()
 		},
-		extraParams: {
-			factory_id: 'FAB101'
-		}, 
 		reader: {
 			type: 'json'
 		}
