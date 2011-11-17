@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import com.mesplus.MBI.dao.FormDao;
 
+
+//<context:component-scan> 태그를 사용하면 @Component 어노테이션이 적용된 컨트롤러 클래스를 검색하여 Bean으로 등록
 @Component
 public class JdbcFormDaoImpl implements FormDao {
 
@@ -109,7 +111,7 @@ public class JdbcFormDaoImpl implements FormDao {
 		
 		GrpcolNt sp = new GrpcolNt(dataSource);
 		Map<String, Object> results = sp.execute(fac_id, func_id, lang_falg);
-		
+
 		return (List<Map<String, Object>>)results.get(GrpcolNt.CUR_REFER_PARAM);
 	}
 	

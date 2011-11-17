@@ -23,7 +23,6 @@ public class FxtrelNt extends StoredProcedure {
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
 	private static final String SPROC_NAME = "P_ADSNFXTREL_NT";
-																
 
 	public FxtrelNt(DataSource dataSource) throws SQLException {
 		super(dataSource, SPROC_NAME);
