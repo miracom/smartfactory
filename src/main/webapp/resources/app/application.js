@@ -6,6 +6,9 @@ Ext.Loader.setConfig({
 });
 
 Ext.onReady(function() {
+	SmartFactory.user(Ext.getBody().getAttribute('user'));
+	SmartFactory.factory(Ext.getBody().getAttribute('factory'));
+
 	Ext.application({
 		name : 'SmartFactory',
 		autoCreateViewport : false,

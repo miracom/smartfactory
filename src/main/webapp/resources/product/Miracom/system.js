@@ -1,6 +1,8 @@
-var SmartFactory = SmartFactory || (function(user, factory) {
+var SmartFactory = SmartFactory || (function() {
 	var modules_order = [];
 	var modules = {};
+	var current_user;
+	var current_factory;
 
 	function getModules() {
 		return modules;
@@ -22,22 +24,26 @@ var SmartFactory = SmartFactory || (function(user, factory) {
 		}, []);
 	}
 	
-	function getCurrentFactory() {
-		return factory;
+	function currentFactory(factory) {
+		if(current_factory === undefined && factory !== undefined)
+			current_factory = factory;
+		return current_factory;
 	}
 	
-	function getCurrentUser() {
-		return user;
+	function currentUser(user) {
+		if(current_user === undefined && user !== undefined)
+			current_user = user;
+		return current_user;
 	}
 	
 	return {
 		modules : getModules,
 		register : registerModule,
 		controllers : getAllControllers,
-		user : getCurrentUser,
-		factory : getCurrentFactory 
+		user : currentUser,
+		factory : currentFactory 
 	};
-})('ADMIN', '1000');
+})();
 
 SmartFactory.addDockingNav = function(view, config) {
 	var defaults = {
