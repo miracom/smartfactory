@@ -19,9 +19,9 @@ import com.mesplus.util.ResultSetUtils;
 
 public class GrpcolNt extends StoredProcedure {
 	public static final String FAC_ID_PARAM = "fac_id";
-	public static final String FUNC_ID_PARAM = "func_id"; 
-	public static final String LANG_FLAG_PARAM = "lang_flag"; 
-	public static final String CUR_REFER_PARAM = "cur.refer"; 
+	public static final String FUNC_ID_PARAM = "func_id";
+	public static final String LANG_FLAG_PARAM = "lang_flag";
+	public static final String CUR_REFER_PARAM = "cur.refer";
 
 	private static final String SPROC_NAME = "P_ADSNGRPCOL_NT";
 

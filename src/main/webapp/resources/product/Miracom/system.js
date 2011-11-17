@@ -83,13 +83,13 @@ SmartFactory.addSystemMenu = function(view, config) {
 SmartFactory.addContentView = function(view) {
 	console.log(view);
 	this.showBusy();
-//	if (typeof (view) === 'string') {
-		Ext.getCmp('content').add(Ext.create('MBI.view.FormDesign', {
+	if (typeof (view) === 'string') {
+		Ext.getCmp('content').add(Ext.create(view, {
 			closable : true
 		})).show();
-//	} else {
-//		Ext.getCmp('content').add(view).show();
-//	}
+	} else {
+		Ext.getCmp('content').add(view).show();
+	}
 	this.clearStatus();
 };
 
