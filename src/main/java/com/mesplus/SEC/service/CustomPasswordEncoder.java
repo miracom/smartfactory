@@ -18,8 +18,8 @@ public class CustomPasswordEncoder implements PasswordEncoder {
 
 		String encoded = "";
 		
-		String s = (String)salt + SALT_PASTE;
-		rawPass += PASSWORD_PASTE;
+		String s = ((String)salt).toUpperCase() + SALT_PASTE;
+		rawPass = rawPass.toUpperCase() + PASSWORD_PASTE;
 		
 		for(i = 0;i < PASSWORD_LENGTH;i++) {
 			j = j + rawPass.charAt(i);

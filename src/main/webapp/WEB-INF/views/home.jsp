@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html lang='en'>
 	<head>
@@ -23,6 +25,6 @@
 		<script src="module/MBI/module.js"></script>
 		<script src="module/NAM/module.js"></script>
 	</head>
-	<body>
+	<body user="<sec:authentication property="principal.username"/>" factory="<sec:authentication property="principal.factory"/>">
 	</body>
 </html>
