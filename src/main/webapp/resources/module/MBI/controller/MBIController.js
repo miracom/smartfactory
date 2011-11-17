@@ -1,7 +1,7 @@
 Ext.define('MBI.controller.MBIController', {
 	extend: 'Ext.app.Controller',
 	
-	stores: [],
+	stores: ['MBI.store.FormDesign'],
 	models: [],
 	views: [],
 	
