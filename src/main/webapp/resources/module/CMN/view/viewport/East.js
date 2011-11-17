@@ -41,6 +41,11 @@ Ext.define('CMN.view.viewport.East', {
 		xtype:'combobox',
 		cls:'resourceSelector',
 		fieldLabel: 'Operation ID',
+		listeners: {
+			focus: function() {
+				SmartFactory.showSelector();
+			}
+		},
         labelAlign: 'top',
         store:          Ext.create('Ext.data.Store', {
             fields : ['name', 'value'],

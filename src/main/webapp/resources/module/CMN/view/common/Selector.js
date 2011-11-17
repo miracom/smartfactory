@@ -11,8 +11,8 @@ Ext.define('CMN.view.common.Selector', {
 	modal : true,
 	closable : true,
 	
-	width : 300,
-	height: 600,
+	width : 450,
+	height: 500,
 
     initComponent : function() {
         this.callParent();
@@ -60,7 +60,6 @@ Ext.define('CMN.view.common.Selector', {
         		header : 'Description',
         		dataIndex : 'MAT_DESC'
         	} ]
-
         };
 	},
 	
