@@ -24,7 +24,6 @@ public class FsprelNt extends StoredProcedure {
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
 	private static final String SPROC_NAME = "P_ADSNFSPREL_NT";
-																
 
 	public FsprelNt(DataSource dataSource) throws SQLException {
 		super(dataSource, SPROC_NAME);
