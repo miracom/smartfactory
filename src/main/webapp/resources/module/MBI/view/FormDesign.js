@@ -14,6 +14,6 @@ Ext.define('MBI.view.FormDesign', {
 		dataIndex : 'sp_id',
 		align : 'center',
 		text : 'SP ID'
-	} ]
+	}]
 
 });
