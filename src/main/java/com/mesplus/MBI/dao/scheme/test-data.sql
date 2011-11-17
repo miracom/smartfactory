@@ -1,3 +1,7 @@
+SELECT USER_ID, ENCODE_PASSWORD, 1 FROM MSECUSREXT WHERE USER_ID = 'ADMIN' AND FACTORY = 'DEMO'
+
+
+
 insert into queries(factory, queryid, statement, commandtype, description, commandtimeout, commandtext) values
 ('FAB', 'VIEW_GCMDATA_LIST', 'Select', 'Text', '공장의 GCM 정보 가져오기', 60, 
 'SELECT * FROM MGCMTBLDAT WHERE FACTORY=:FACTORY AND TABLE_NAME=:TABLE_NAME'
