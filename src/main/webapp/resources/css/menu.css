@@ -109,6 +109,13 @@
 .x-tab-default-top,.x-tab-default-bottom{box-shadow:none}
 .x-border-box .x-tab-bar-top .x-tab-bar-body{height:27px}
 .x-tab-bar-top .x-tab-bar-body{padding-top:6px}
+.x-box-scroller-left .x-toolbar-scroll-left, .x-box-scroller-left .x-tabbar-scroll-left{background:url('../image/tabNavi.gif') 0 -3px no-repeat;width:18px;}
+.x-box-scroller-left .x-toolbar-scroll-left, .x-box-scroller-left .x-tabbar-scroll-left-hover{background:url('../image/tabNavi.gif') -18px -3px no-repeat;width:18px;}
+.x-box-scroller-right .x-toolbar-scroll-right, .x-box-scroller-right .x-tabbar-scroll-right{background:url('../image/tabNavi.gif') 0 -27px no-repeat;width:18px;}
+.x-box-scroller-right .x-toolbar-scroll-right, .x-box-scroller-right .x-tabbar-scroll-right-hover{background:url('../image/tabNavi.gif') -18px -27px no-repeat;width:18px;}
+.x-tab-tabmenu-right{background:url('../image/tabNavi.gif') 0 -51px no-repeat !important;width:18px;}
+.x-tab-tabmenu-right:hover{background:url('../image/tabNavi.gif') -18px -51px no-repeat !important;width:18px;}
+.x-panel-default-scroller{margin-top:-5px}
 
 /* tree style*/
 .x-tree-icon-parent{background:url('../image/folder.gif') no-repeat;}
