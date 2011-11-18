@@ -61,6 +61,9 @@ Ext.define('CMN.view.viewport.East', {
     }],
     buttons: [{
         text: 'Search',
+        handler: function() {
+        	SmartFactory.addContentView('MBI.view.FormDesign');
+        }
     }, {
         text: 'Reset',
     }]

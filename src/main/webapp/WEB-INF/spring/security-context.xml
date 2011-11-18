@@ -17,7 +17,7 @@
 		<!-- <intercept-url pattern="/secure/**/*"
 			access="hasRole('ROLE_MANAGER') and fullyAuthenticated" /> -->
 		<custom-filter position="FORM_LOGIN_FILTER" ref="smartfactoryAuthFilter" />
-		<logout invalidate-session="true" success-handler-ref="myLogoutSuccessHandler"
+		<logout invalidate-session="true" success-handler-ref="logoutSuccessHandler"
 			logout-url="/logout" />
 	</http>
 	
@@ -84,7 +84,7 @@
 	<beans:bean class="org.springframework.security.access.vote.RoleVoter" id="roleVoter" />
 	<beans:bean	class="org.springframework.security.access.vote.AuthenticatedVoter" id="authenticatedVoter" />
 
-	<beans:bean id="myLogoutSuccessHandler"
+	<beans:bean id="logoutSuccessHandler"
 		class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
 		<beans:property name="defaultTargetUrl" value="/" />
 		<beans:property name="alwaysUseDefaultTargetUrl" value="true" />

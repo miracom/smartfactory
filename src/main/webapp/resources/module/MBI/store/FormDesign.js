@@ -1,9 +1,7 @@
 Ext.define('MBI.store.FormDesign', {
 	extend: 'Ext.data.Store',
 	
-	storeId: 'xxxxx',
-	
-	autoLoad: true,
+	autoLoad: false,
 	
 	listeners: {
 		load : function(store, records, successful, operation, eOpts) {
