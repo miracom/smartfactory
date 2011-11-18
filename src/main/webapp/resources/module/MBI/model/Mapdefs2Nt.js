@@ -1,4 +1,4 @@
-Ext.define('MBI.model.MapdefS2Nt', {
+Ext.define('MBI.model.Mapdefs2Nt', {
 	fields : [ {
 		name : 'decimal_len',
 		type : 'string'
