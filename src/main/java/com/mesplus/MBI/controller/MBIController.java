@@ -15,14 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.MBI.dao.FormDao;
 
-
 @Controller
 public class MBIController {
 
 	@Autowired
 	private FormDao formDao;
-	
-	// Test URL: module/MBI/data/get_design.json?fac_id=83&func_id=904&spd_id=1
+
+	// Test URL: module/MBI/data/get_design.json?fac_id=83&func_id=904&spd_id=1&func_template_id=&lang_flag=1&admin_user=ADMIN&grp_user_id=
 	@RequestMapping(value = "module/MBI/data/get_design.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String, Object> getDesign(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -32,10 +31,10 @@ public class MBIController {
 		String func_template_id = request.getParameter("func_template_id");
 		String lang_flag = request.getParameter("lang_flag");
 		String admin_user = request.getParameter("admin_user");
-		String grp_user_id = request.getParameter("grp_user_id"); 
-		
+		String grp_user_id = request.getParameter("grp_user_id");
+
 		Map<String, Object> design = new HashMap<String, Object>();
-		
+
 		design.put("fsprelNt", formDao.fsprelNtDao(fac_id, func_id, spd_id));
 		design.put("ftrfldNt", formDao.ftrfldNtDao(fac_id, func_id, func_template_id));
 		design.put("fxtrelNt", formDao.fxtrelNtDao(fac_id, func_id));
@@ -72,37 +71,37 @@ public class MBIController {
 
 		return formDao.fscrelNtDao(fac_id, func_id, spd_id);
 	}
-	
+
 	@RequestMapping(value = "module/MBI/data/mapcon_gen_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> mapConGenNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String lang_flag = request.getParameter("lang_flag");
-		
+
 		return formDao.mapConGenNtDao(fac_id, func_id, lang_flag);
 	}
-	
+
 	@RequestMapping(value = "module/MBI/data/mapdef_s2_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> mapDefS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String admin_user = request.getParameter("admin_user");
-		
+
 		return formDao.mapDefS2NtDao(fac_id, func_id, admin_user);
 	}
-	
+
 	@RequestMapping(value = "module/MBI/data/tabvld_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> tabVldNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
-		
+
 		return formDao.tabVldNtDao(fac_id, func_id, spd_id);
 	}
-	
+
 	@RequestMapping(value = "module/MBI/data/usrcol_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> usrColNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -110,17 +109,17 @@ public class MBIController {
 		String func_id = request.getParameter("func_id");
 		String grp_usr_id = request.getParameter("grp_usr_id");
 		String lang_flag = request.getParameter("lang_flag");
-		
+
 		return formDao.usrColNtDao(fac_id, func_id, grp_usr_id, lang_flag);
 	}
-	
+
 	@RequestMapping(value = "module/MBI/data/usrmap_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> usrMapNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String grp_usr_id = request.getParameter("grp_usr_id");
-		
+
 		return formDao.usrMapNtDao(fac_id, func_id, grp_usr_id);
 	}
 
@@ -135,7 +134,8 @@ public class MBIController {
 		return formDao.fsprelNtDao(fac_id, func_id, spd_id);
 	}
 
-	// Test URL: module/MBI/data/ftrfld_nt.json?fac_id=83&func_id=904&func_template_id=1
+	// Test URL:
+	// module/MBI/data/ftrfld_nt.json?fac_id=83&func_id=904&func_template_id=1
 	@RequestMapping(value = "module/MBI/data/ftrfld_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> ftrfldNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -156,7 +156,8 @@ public class MBIController {
 		return formDao.fxtrelNtDao(fac_id, func_id);
 	}
 
-	// Test URL: module/MBI/data/grpcol_nt.json?fac_id=83&func_id=904&lang_falg=1
+	// Test URL:
+	// module/MBI/data/grpcol_nt.json?fac_id=83&func_id=904&lang_falg=1
 	@RequestMapping(value = "module/MBI/data/grpcol_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> grpcolNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -176,7 +177,7 @@ public class MBIController {
 
 		return formDao.grpmapNtDao(fac_id, func_id);
 	}
-	
+
 	@RequestMapping(value = "module/MBI/data/assdef_gen_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> assdefGenNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
