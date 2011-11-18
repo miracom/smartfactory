@@ -3,20 +3,6 @@ Ext.define('MBI.store.FormDesign', {
 	
 	autoLoad: false,
 	
-	listeners: {
-		load : function(store, records, successful, operation, eOpts) {
-			Ext.create('Ext.data.Store', {
-				storeId : 'yyyyy',
-				data : records[0].get('fsprelNt'),
-				fields: [
-				{ name: 'sp_name', type: 'string'},
-				{ name: 'sp_id', type: 'integer' },
-				{ name: 'reload_flag', type:'string' }
-				]
-			});
-		}
-	},
-	
 	fields: [
      	{ name: 'fsprelNt', type: 'auto' },
     	{ name: 'ftrfldNt', type: 'auto' },

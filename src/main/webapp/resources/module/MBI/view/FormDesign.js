@@ -28,15 +28,10 @@ Ext.define('MBI.view.FormDesign', {
 	refreshItems : function() {
 		this.removeAll();
 		
-		console.log('HEHR');
-		
 		var map = this.store.data.get(0).data;
-		console.log(map);
 		
 		for(var item in map) {
 			try {
-				console.log("MAP[ITEM]: ");
-				console.log(map[item]);
 				var capitalized = this.capitalize(item);
 				
 				var model_name = 'MBI.model.' + capitalized;
