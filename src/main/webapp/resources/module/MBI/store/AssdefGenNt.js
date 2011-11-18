@@ -1,5 +1,5 @@
-Ext.define('MBI.model.AssdefGenNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.AssdefGenNt', {
+	extend: 'Ext.data.Store',
 	
 	fields: [
 	{ name: 'from_code', type: 'string' },

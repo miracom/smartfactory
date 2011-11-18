@@ -11,7 +11,7 @@
 	<input id="oldpassword"	name="oldpassword" size="20" maxlength="50" type="password" />
 	<br /> 
 	
-	<label for="password">New Password</label> <input id="password" name="password" size="20" maxlength="50" type="password" />
+	<label for="password">New Password</label>
 	<input id="password" name="password" size="20" maxlength="50" type="password" />
 	<br />
 	

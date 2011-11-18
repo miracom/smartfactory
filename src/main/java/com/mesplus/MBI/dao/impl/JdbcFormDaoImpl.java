@@ -136,15 +136,15 @@ public class JdbcFormDaoImpl implements FormDao {
 		return (List<Map<String, Object>>) results.get(MapconGenNt.CUR_REFER_PARAM);
 	}
 
-	public List<Map<String, Object>> mapdefs2NtDao(String fac_id, String func_id, String admin_user) throws SQLException {
+	public List<Map<String, Object>> mapdefS2NtDao(String fac_id, String func_id, String admin_user) throws SQLException {
 		if (fac_id == null || func_id == null || admin_user == null) {
 			throw new IllegalArgumentException("Parameters(fac_id, func_id, admin_user) should not be null.");
 		}
 
-		Mapdefs2Nt sp = new Mapdefs2Nt(dataSource);
+		MapdefS2Nt sp = new MapdefS2Nt(dataSource);
 		Map<String, Object> results = sp.execute(fac_id, func_id, admin_user);
 
-		return (List<Map<String, Object>>) results.get(Mapdefs2Nt.CUR_REFER_PARAM);
+		return (List<Map<String, Object>>) results.get(MapdefS2Nt.CUR_REFER_PARAM);
 	}
 
 	public List<Map<String, Object>> tabvldNtDao(String fac_id, String func_id, String spd_id) throws SQLException {

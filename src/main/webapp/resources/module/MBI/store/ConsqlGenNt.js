@@ -1,5 +1,5 @@
-Ext.define('MBI.model.ConsqlGenNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.ConsqlGenNt', {
+	extend: 'Ext.data.Store',
 
 	fields: [
 	{ name: 'left_col', type: 'string' },

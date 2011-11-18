@@ -13,7 +13,7 @@ public interface FormDao {
 	public List<Map<String, Object>> mapconGenNtDao(String fac_id,
 			String func_id, String lang_flag) throws SQLException;
 
-	public List<Map<String, Object>> mapdefs2NtDao(String fac_id,
+	public List<Map<String, Object>> mapdefS2NtDao(String fac_id,
 			String func_id, String admin_user) throws SQLException;
 
 	public List<Map<String, Object>> tabvldNtDao(String fac_id, String func_id,

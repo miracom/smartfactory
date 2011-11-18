@@ -1,5 +1,5 @@
-Ext.define('MBI.model.GrpmapNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.GrpmapNt', {
+	extend: 'Ext.data.Store',
 
 	fields : [ {
 		name : 'pnlcntrdtldtl_w',

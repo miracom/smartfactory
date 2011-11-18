@@ -1,5 +1,5 @@
-Ext.define('MBI.model.FscrelNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.FscrelNt', {
+	extend: 'Ext.data.Store',
 
 	fields : [ {
 		name : 'service_id',

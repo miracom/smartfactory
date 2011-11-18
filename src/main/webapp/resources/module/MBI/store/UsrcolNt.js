@@ -1,5 +1,5 @@
-Ext.define('MBI.model.UsrcolNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.UsrcolNt', {
+	extend: 'Ext.data.Store',
 
 	fields : [ {
 		name : 'spread_id',

@@ -1,5 +1,5 @@
-Ext.define('MBI.model.ChtinfNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.ChtinfNt', {
+	extend: 'Ext.data.Store',
 
 	fields: [
     

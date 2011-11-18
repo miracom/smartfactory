@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.authentication.dao.SaltSource;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
@@ -35,10 +37,17 @@ public class CustomJdbcDaoImpl extends JdbcDaoImpl implements IChangePassword {
 	public static final SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
 	
 	@Override
-	public void changePassword(String user_id, String password) {
-		CustomUserDetails user = (CustomUserDetails)loadUserByUsername(user_id);
+	public void changePassword(String oldpassword, String password) {
+	    SecurityContext securityContext = SecurityContextHolder.getContext();
+	    Authentication authentication = securityContext.getAuthentication();
 		
+		CustomUserDetails user = (CustomUserDetails)authentication.getPrincipal();
+		
+		if(!passwordEncoder.isPasswordValid(user.getPassword(), oldpassword, saltSource.getSalt(user)))
+			return; // TODO throw right exception for incorrect password.
+
 		String encodePassword = passwordEncoder.encodePassword(password, saltSource.getSalt(user));
+		
 		
 		getJdbcTemplate().update("UPDATE MSECUSREXT SET ENCODE_PASSWORD=? WHERE FACTORY=? AND USER_ID=?", encodePassword, user.getFactory(), user.getUser_id());
 	}

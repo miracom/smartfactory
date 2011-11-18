@@ -1,23 +1,7 @@
 Ext.define('MBI.store.FormDesign', {
 	extend: 'Ext.data.Store',
 	
-	storeId: 'xxxxx',
-	
-	autoLoad: true,
-	
-	listeners: {
-		load : function(store, records, successful, operation, eOpts) {
-			Ext.create('Ext.data.Store', {
-				storeId : 'yyyyy',
-				data : records[0].get('fsprelNt'),
-				fields: [
-				{ name: 'sp_name', type: 'string'},
-				{ name: 'sp_id', type: 'integer' },
-				{ name: 'reload_flag', type:'string' }
-				]
-			});
-		}
-	},
+	autoLoad: false,
 	
 	fields: [
      	{ name: 'fsprelNt', type: 'auto' },
@@ -30,7 +14,7 @@ Ext.define('MBI.store.FormDesign', {
     	{ name: 'consqlGenNt', type: 'auto' },
     	{ name: 'fscrelNt', type: 'auto' },
     	{ name: 'mapconGenNt', type: 'auto' },
-    	{ name: 'mapdefs2Nt', type: 'auto' },
+    	{ name: 'mapdefS2Nt', type: 'auto' },
     	{ name: 'tabvldNt', type: 'auto' },
     	{ name: 'usrcolNt', type: 'auto' },
     	{ name: 'usrmapNt', type: 'auto' }

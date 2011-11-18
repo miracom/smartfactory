@@ -17,7 +17,7 @@ import org.springframework.jdbc.object.StoredProcedure;
 
 import com.mesplus.util.ResultSetUtils;
 
-public class Mapdefs2Nt extends StoredProcedure {
+public class MapdefS2Nt extends StoredProcedure {
 
 	public static final String FAC_ID_PARAM = "fac_id";
 	public static final String FUNC_ID_PARAM = "func_id";
@@ -26,7 +26,7 @@ public class Mapdefs2Nt extends StoredProcedure {
 
 	private static final String SPROC_NAME = "P_ADSNMAPDEF_S2_NT";
 
-	public Mapdefs2Nt(DataSource dataSource) throws SQLException {
+	public MapdefS2Nt(DataSource dataSource) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));

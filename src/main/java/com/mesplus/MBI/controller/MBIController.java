@@ -21,7 +21,7 @@ public class MBIController {
 	@Autowired
 	private FormDao formDao;
 
-	// Test URL: module/MBI/data/get_design.json?fac_id=83&func_id=904&spd_id=1
+	// Test URL: module/MBI/data/get_design.json?fac_id=83&func_id=904&spd_id=1&func_template_id=&lang_flag=1&admin_user=ADMIN&grp_user_id=
 	@RequestMapping(value = "module/MBI/data/get_design.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String, Object> getDesign(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -44,11 +44,11 @@ public class MBIController {
 		design.put("chtinfNt", formDao.chtinfNtDao(fac_id, func_id));
 		design.put("consqlGenNt", formDao.consqlGenNtDao(fac_id, func_id));
 		design.put("fscrelNt", formDao.fscrelNtDao(fac_id, func_id, spd_id));
-		design.put("mapConGenNt", formDao.mapconGenNtDao(fac_id, func_id, lang_flag));
-		design.put("mapDefS2Nt", formDao.mapdefs2NtDao(fac_id, func_id, admin_user));
-		design.put("tabVldNt", formDao.tabvldNtDao(fac_id, func_id, spd_id));
-		design.put("usrColNt", formDao.usrcolNtDao(fac_id, func_id, grp_user_id, lang_flag));
-		design.put("usrMapNt", formDao.usrmapNtDao(fac_id, func_id, grp_user_id));
+		design.put("mapconGenNt", formDao.mapconGenNtDao(fac_id, func_id, lang_flag));
+		design.put("mapdefS2Nt", formDao.mapdefS2NtDao(fac_id, func_id, admin_user));
+		design.put("tabvldNt", formDao.tabvldNtDao(fac_id, func_id, spd_id));
+		design.put("usrcolNt", formDao.usrcolNtDao(fac_id, func_id, grp_user_id, lang_flag));
+		design.put("usrmapNt", formDao.usrmapNtDao(fac_id, func_id, grp_user_id));
 
 		return design;
 	}
@@ -84,12 +84,12 @@ public class MBIController {
 
 	@RequestMapping(value = "module/MBI/data/mapdef_s2_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Map<String, Object>> mapdefs2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	List<Map<String, Object>> mapdefS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String admin_user = request.getParameter("admin_user");
 
-		return formDao.mapdefs2NtDao(fac_id, func_id, admin_user);
+		return formDao.mapdefS2NtDao(fac_id, func_id, admin_user);
 	}
 
 	@RequestMapping(value = "module/MBI/data/tabvld_nt.json", method = RequestMethod.GET)
