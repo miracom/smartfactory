@@ -34,16 +34,15 @@ Ext.define('MBI.view.FormDesign', {
 			try {
 				var capitalized = this.capitalize(item);
 				
-				var model_name = 'MBI.model.' + capitalized;
+				var store_name = 'MBI.store.' + capitalized;
 				var view_name = 'MBI.view.' + capitalized + 'View';
 				var title = capitalized;
 				
 				var view = Ext.create(view_name, {
 					title : item.capitalize,
 					height : 100,
-					store : Ext.create('Ext.data.Store', {
-						data : map[item],
-						fields: Ext.create(model_name).fields
+					store : Ext.create(store_name, {
+						data : map[item]
 					})
 				});
 				this.add(view);

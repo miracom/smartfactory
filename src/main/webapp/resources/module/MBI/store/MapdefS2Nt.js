@@ -1,5 +1,5 @@
-Ext.define('MBI.model.MapdefS2Nt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.MapdefS2Nt', {
+	extend: 'Ext.data.Store',
 
 	fields : [ {
 		name : 'decimal_len',

@@ -1,5 +1,5 @@
-Ext.define('MBI.model.UsrmapNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.UsrmapNt', {
+	extend: 'Ext.data.Store',
 
 	fields : [ {
 		name : 'pnlcntrdtldtl_w',

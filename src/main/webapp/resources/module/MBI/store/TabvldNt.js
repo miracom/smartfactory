@@ -1,5 +1,5 @@
-Ext.define('MBI.model.TabvldNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.TabvldNt', {
+	extend: 'Ext.data.Store',
 
 	fields : [
 

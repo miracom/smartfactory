@@ -1,5 +1,5 @@
-Ext.define('MBI.model.FxtrelNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.FxtrelNt', {
+	extend: 'Ext.data.Store',
 
 	fields : [ {
 		name : 'template_name',

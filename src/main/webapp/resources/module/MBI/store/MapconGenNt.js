@@ -1,5 +1,5 @@
-Ext.define('MBI.model.MapconGenNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.MapconGenNt', {
+	extend: 'Ext.data.Store',
 
 	fields : [ {
 		name : 'auto_create_flag',
