@@ -14,8 +14,8 @@
 		<intercept-url pattern="/**/image/*.*" access="permitAll" />
 		<intercept-url pattern="/**/*" access="fullyAuthenticated" />
 		<!-- <intercept-url pattern="/**/*" access="hasRole('ROLE_USER')" /> -->
-		<intercept-url pattern="/secure/**/*"
-			access="hasRole('ROLE_MANAGER') and fullyAuthenticated" />
+		<!-- <intercept-url pattern="/secure/**/*"
+			access="hasRole('ROLE_MANAGER') and fullyAuthenticated" /> -->
 		<custom-filter position="FORM_LOGIN_FILTER" ref="smartfactoryAuthFilter" />
 		<logout invalidate-session="true" success-handler-ref="myLogoutSuccessHandler"
 			logout-url="/logout" />
