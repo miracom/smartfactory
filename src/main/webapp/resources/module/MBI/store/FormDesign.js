@@ -13,11 +13,11 @@ Ext.define('MBI.store.FormDesign', {
     	{ name: 'chtinfNt', type: 'auto' },
     	{ name: 'consqlGenNt', type: 'auto' },
     	{ name: 'fscrelNt', type: 'auto' },
-    	{ name: 'mapConGenNt', type: 'auto' },
-    	{ name: 'mapDefS2Nt', type: 'auto' },
-    	{ name: 'tabVldNt', type: 'auto' },
-    	{ name: 'usrColNt', type: 'auto' },
-    	{ name: 'usrMapNt', type: 'auto' }
+    	{ name: 'mapconGenNt', type: 'auto' },
+    	{ name: 'mapdefS2Nt', type: 'auto' },
+    	{ name: 'tabvldNt', type: 'auto' },
+    	{ name: 'usrcolNt', type: 'auto' },
+    	{ name: 'usrmapNt', type: 'auto' }
 	],
 	
 	proxy: {

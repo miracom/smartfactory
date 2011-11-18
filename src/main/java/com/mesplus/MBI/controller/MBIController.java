@@ -44,11 +44,11 @@ public class MBIController {
 		design.put("chtinfNt", formDao.chtinfNtDao(fac_id, func_id));
 		design.put("consqlGenNt", formDao.consqlGenNtDao(fac_id, func_id));
 		design.put("fscrelNt", formDao.fscrelNtDao(fac_id, func_id, spd_id));
-		design.put("mapConGenNt", formDao.mapConGenNtDao(fac_id, func_id, lang_flag));
-		design.put("mapDefS2Nt", formDao.mapDefS2NtDao(fac_id, func_id, admin_user));
-		design.put("tabVldNt", formDao.tabVldNtDao(fac_id, func_id, spd_id));
-		design.put("usrColNt", formDao.usrColNtDao(fac_id, func_id, grp_user_id, lang_flag));
-		design.put("usrMapNt", formDao.usrMapNtDao(fac_id, func_id, grp_user_id));
+		design.put("mapconGenNt", formDao.mapConGenNtDao(fac_id, func_id, lang_flag));
+		design.put("mapdefS2Nt", formDao.mapDefS2NtDao(fac_id, func_id, admin_user));
+		design.put("tabvldNt", formDao.tabVldNtDao(fac_id, func_id, spd_id));
+		design.put("usrcolNt", formDao.usrColNtDao(fac_id, func_id, grp_user_id, lang_flag));
+		design.put("usrmapNt", formDao.usrMapNtDao(fac_id, func_id, grp_user_id));
 
 		return design;
 	}
@@ -74,7 +74,7 @@ public class MBIController {
 
 	@RequestMapping(value = "module/MBI/data/mapcon_gen_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Map<String, Object>> mapConGenNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	List<Map<String, Object>> mapconGenNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String lang_flag = request.getParameter("lang_flag");
@@ -84,7 +84,7 @@ public class MBIController {
 
 	@RequestMapping(value = "module/MBI/data/mapdef_s2_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Map<String, Object>> mapDefS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	List<Map<String, Object>> mapdefS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String admin_user = request.getParameter("admin_user");
@@ -94,7 +94,7 @@ public class MBIController {
 
 	@RequestMapping(value = "module/MBI/data/tabvld_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Map<String, Object>> tabVldNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	List<Map<String, Object>> tabvldNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
@@ -104,7 +104,7 @@ public class MBIController {
 
 	@RequestMapping(value = "module/MBI/data/usrcol_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Map<String, Object>> usrColNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	List<Map<String, Object>> usrcolNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String grp_usr_id = request.getParameter("grp_usr_id");
@@ -115,7 +115,7 @@ public class MBIController {
 
 	@RequestMapping(value = "module/MBI/data/usrmap_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Map<String, Object>> usrMapNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	List<Map<String, Object>> usrmapNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String grp_usr_id = request.getParameter("grp_usr_id");
