@@ -39,9 +39,8 @@
 /* dock bar */
 .operation-list-item {
     margin-top: 3px;
-    padding-left: 20px;
+    padding:2px 3px 2px 20px;
     font-size: 11px;
-    line-height: 20px;
     cursor: pointer;
     background:url('../image/iconOperation16.png') 2px 2px no-repeat;
     border: 1px solid #fff;
@@ -49,9 +48,8 @@
 }
 .resource-list-item {
     margin-top: 3px;
-    padding-left: 20px;
+    padding:2px 3px 2px 20px;
     font-size: 11px;
-    line-height: 20px;
     cursor: pointer;
     background:url('../image/iconResource16.png') 2px 2px no-repeat;
     border: 1px solid #fff;
@@ -59,9 +57,8 @@
 }
 .report-list-item {
     margin-top: 3px;
-    padding-left: 22px;
+    padding:2px 3px 2px 20px;
     font-size: 11px;
-    line-height: 20px;
     cursor: pointer;
     background:url('../image/iconReport16.png') 2px 2px no-repeat;
     border: 1px solid #fff;
@@ -168,3 +165,7 @@
 table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
 .x-datepicker-prev{background:url('../image/iconBtnSet.gif') 0 2px repeat-x;width:12px;margin-left:3px}
 .x-datepicker-next{background:url('../image/iconBtnSet.gif') 100% 2px repeat-x;width:14px;margin-left:3px}
+
+/* window style*/
+.x-tool-refresh, .x-tool-over .x-tool-refresh{background:url('../image/modalIcons.gif') 0 2px no-repeat;}
+.x-tool-close, .x-tool-over .x-tool-close{background:url('../image/modalIcons.gif') -15px 2px no-repeat;}

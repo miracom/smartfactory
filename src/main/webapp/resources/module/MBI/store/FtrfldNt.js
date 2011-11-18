@@ -1,5 +1,5 @@
-Ext.define('MBI.model.FtrfldNt', {
-	extend: 'Ext.data.Model',
+Ext.define('MBI.store.FtrfldNt', {
+	extend: 'Ext.data.Store',
 
 	fields : [ {
 		name : 'field_val_index',
