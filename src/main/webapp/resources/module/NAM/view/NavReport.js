@@ -5,7 +5,7 @@ Ext.define('NAM.view.NavReport', {
 	
 	listeners: {
 		itemclick: function(comp, item) {
-			var report = Ext.create(item.get('report_view'), {
+			var report = Ext.create('MBI.view.FormDesign', {
 				title: item.get('report_desc'),
 				closable: true,
 				tooltip: item.get('report_id')

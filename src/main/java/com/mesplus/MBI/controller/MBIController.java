@@ -21,7 +21,8 @@ public class MBIController {
 	@Autowired
 	private FormDao formDao;
 
-	// Test URL: module/MBI/data/get_design.json?fac_id=83&func_id=904&spd_id=1&func_template_id=&lang_flag=1&admin_user=ADMIN&grp_user_id=
+	// Test URL:
+	// module/MBI/data/get_design.json?fac_id=83&func_id=904&spd_id=1&func_template_id=&lang_flag=1&admin_user=ADMIN&grp_user_id=
 	@RequestMapping(value = "module/MBI/data/get_design.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String, Object> getDesign(HttpServletRequest request, HttpServletResponse response) throws Exception {

@@ -1,9 +1,9 @@
 Ext.define('MBI.controller.MBIController', {
 	extend: 'Ext.app.Controller',
 	
-	stores: ['MBI.store.FormList','MBI.store.FormDesign'],
+	stores: ['MBI.store.SecfundefNt','MBI.store.FormDesign'],
 	models: ['MBI.model.SecfundefNt'],
-	views: [],
+	views: ['MBI.view.FormDesign'],
 	
 	init: function() {
 		this.control({

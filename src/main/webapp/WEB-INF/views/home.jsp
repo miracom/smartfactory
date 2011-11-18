@@ -23,7 +23,7 @@
 		<script src="module/WIP/module.js"></script>
 		<script src="module/RAS/module.js"></script>
 		<script src="module/MBI/module.js"></script>
-		<script src="module/NAM/module.js"></script>
+		<!--<script src="module/NAM/module.js"></script>-->
 	</head>
 	<body user="<sec:authentication property="principal.username"/>" factory="<sec:authentication property="principal.factory"/>">
 	</body>
