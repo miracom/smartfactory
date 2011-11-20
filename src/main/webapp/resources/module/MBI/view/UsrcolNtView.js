@@ -1,8 +1,6 @@
 Ext.define('MBI.view.UsrcolNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('yyyyy'),
-	
 	columns : [
 {
 		dataIndex : 'spread_id',

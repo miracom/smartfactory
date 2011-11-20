@@ -1,7 +1,6 @@
 Ext.define('MBI.view.GrpmapNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('test'),
 	autoScroll : true,
 	
 	columns : [ {

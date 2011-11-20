@@ -1,8 +1,6 @@
 Ext.define('MBI.view.TabvldNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('yyyyy'),
-	
 	columns : [
 
 	       	{

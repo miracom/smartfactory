@@ -1,8 +1,6 @@
 Ext.define('MBI.view.MapconGenNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('yyyyy'),
-	
 	columns : [
 	{
 		xtype : 'gridcolumn',

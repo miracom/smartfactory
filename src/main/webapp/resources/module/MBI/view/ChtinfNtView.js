@@ -1,7 +1,6 @@
 Ext.define('MBI.view.ChtinfNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	//model: 'MBI.model.ChtinfNt',
 	autoScroll : true,
 	
 	columns : [ {

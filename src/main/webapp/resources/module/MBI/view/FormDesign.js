@@ -7,33 +7,35 @@ Ext.define('MBI.view.FormDesign', {
 	
 	autoScroll: true,
 	
-	layout : {
-		align : 'stretch',
-		type : 'vbox'
-	},
+//	layout : {
+//		align : 'stretch',
+//		type : 'vbox',
+//		shrinkToFit : false
+//	},
+	layout: 'accordion',
 	
 	listeners : {
 		render : function(panel, opts) {
 			//console.log("data= " + this.data.get('func_id'));
-			this.store = Ext.create('MBI.store.FormDesign');
-//			this.store = Ext.create('MBI.store.FormDesign',{
-//				proxy: {
-//					type: 'ajax',
-//					url : 'module/MBI/data/get_design.json',
-//					extraParams : {
-//						fac_id : 83,
-//						func_id : this.data.get('func_id'),
-//						spd_id : '',
-//						lang_flag : 1,
-//						admin_user : SmartFactory.user(),
-//						func_template_id : 1,
-//						grp_user_id : ''
-//					},
-//					reader: {
-//						type: 'json'
-//					}
-//				}
-//			});
+//			this.store = Ext.create('MBI.store.FormDesign');
+			this.store = Ext.create('MBI.store.FormDesign',{
+				proxy: {
+					type: 'ajax',
+					url : 'module/MBI/data/get_design.json',
+					extraParams : {
+						fac_id : this.data.get('fac_id'),
+						func_id : this.data.get('func_id'),
+						spd_id : '',
+						lang_flag : 1,
+						admin_user : SmartFactory.user(),
+						func_template_id : 1,
+						grp_user_id : ''
+					},
+					reader: {
+						type: 'json'
+					}
+				}
+			});
 			
 			this.store.on('datachanged', this.refreshItems, this);
 			this.store.on('clear', this.refreshItems, this);
@@ -50,6 +52,7 @@ Ext.define('MBI.view.FormDesign', {
 		this.removeAll();
 		
 		var map = this.store.data.get(0).data;
+		var views = [];
 		
 		for(var item in map) {
 			try {
@@ -65,10 +68,12 @@ Ext.define('MBI.view.FormDesign', {
 						data : map[item]
 					})
 				});
-				this.add(view);
+				views.push(view);
 			} catch(e) {
 				console.log(e);
 			}
 		}
+		this.add(views);
+		this.doLayout();
 	}
 });

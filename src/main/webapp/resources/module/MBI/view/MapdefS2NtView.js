@@ -1,7 +1,7 @@
 Ext.define('MBI.view.MapdefS2NtView', {
 	extend: 'Ext.grid.Panel',
-	
-	 store : Ext.getStore('yyyyy'),
+
+	autoScroll: true,
 	
 	columns : [
 

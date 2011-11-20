@@ -1,7 +1,6 @@
 Ext.define('MBI.view.FxtrelNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('test'),
 	autoScroll : true,
 	
 	columns : [ {
