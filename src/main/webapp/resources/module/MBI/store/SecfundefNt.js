@@ -1,6 +1,8 @@
 Ext.define('MBI.store.SecfundefNt', {
 	extend: 'Ext.data.Store',
 
+	autoLoad: false,
+	
 	fields: [
 	     	{ name: 'func_desc_eng', type: 'string' },
 	    	{ name: 'func_group_name', type: 'string' },
@@ -37,8 +39,6 @@ Ext.define('MBI.store.SecfundefNt', {
 	    	{ name: 'func_desc', type: 'string' },
 	],
 
-	autoLoad: true,
-	
 	proxy: {
 		type: 'ajax',
 		url : 'module/MBI/data/secfundef_nt.json',
