@@ -17,11 +17,9 @@ Ext.define('MBI.view.NavFormlist', {
 	
 	autoScroll: true,
 	
+	cls: 'operation-list',
 	itemSelector: '.mbi_formlist_item',
-	tpl: 
-	'<ul>' +
-		'<tpl for=".">' +
-			'<li class="mbi_formlist_item">{func_id}-{func_code}</li>' +
-		'</tpl>' +
-	'</ul>'
+	overItemCls: 'operation-list-item-hover',
+	
+	tpl:'<tpl for="."><div class="resource-list-item">{func_id} - {func_code}</div></tpl>'
 });

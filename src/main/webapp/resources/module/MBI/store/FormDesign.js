@@ -19,13 +19,13 @@ Ext.define('MBI.store.FormDesign', {
     	{ name: 'usrcolNt', type: 'auto' },
     	{ name: 'usrmapNt', type: 'auto' }
 	],
-	//this.store.data.get(0).data;
+
 	proxy: {
 		type: 'ajax',
 		url : 'module/MBI/data/get_design.json',
 		extraParams : {
 			fac_id : 83,
-			func_id : 2,// 'MBI.store.SecfundefNt'.,
+			func_id : 1083,
 			spd_id : '',
 			lang_flag : 1,
 			admin_user : SmartFactory.user(),
