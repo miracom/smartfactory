@@ -1,6 +1,7 @@
 package com.mesplus.MBI.dao.impl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -187,7 +188,55 @@ public class JdbcFormDaoImpl implements FormDao {
 
 		SecfundefNt sp = new SecfundefNt(dataSource);
 		Map<String, Object> results = sp.execute(fac_id, func_group, func_code, func_type);
-
+	results.get(SecfundefNt.CUR_REFER_PARAM);
 		return (List<Map<String, Object>>) results.get(SecfundefNt.CUR_REFER_PARAM);
+	}
+	
+	//List<Resource> selectResources(Map<String, Object> params)
+	public Map<String, Object> dynamicS2RtDao(String status, String func_id, String spd_id, String fac_id, String user_id, String lang_flag, String arrlst) throws SQLException {
+		if (status == null || func_id == null || spd_id == null || fac_id == null || user_id == null || lang_flag == null || arrlst == null){
+			throw new IllegalArgumentException("Parameters(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst) should not be null");
+		}
+		
+		DynamicS2Rt sp = new DynamicS2Rt(dataSource);
+
+		Map<String, Object> results = sp.execute(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst);
+
+		Map<String, Object> params = new HashMap<String, Object>();
+ 
+		if (results.get(DynamicS2Rt.RETURN_MSG_PARAM).toString().equals("1"))
+		{
+			sp.getJdbcTemplate().update("Commit");
+		}
+		
+		params.put("sqltext", results.get(DynamicS2Rt.SQLTEXT_PARAM));
+		params.put("out_new_id", results.get(DynamicS2Rt.OUT_NEW_ID_PARAM));
+		params.put("return_msg", results.get(DynamicS2Rt.RETURN_MSG_PARAM));
+		return params;
+	}
+	
+	public Map<String, Object> testRtDao(String lot_id, String fac_id, String mat_id, String order_id, String user_id) throws SQLException {
+		if (lot_id == null ){
+			throw new IllegalArgumentException("Parameters should not be null");
+		}
+		
+		TestRt sp = new TestRt(dataSource);
+
+		Map<String, Object> results = sp.execute( lot_id,  fac_id,  mat_id,  order_id,  user_id);
+
+		Map<String, Object> params = new HashMap<String, Object>();
+		
+		if (results.get(DynamicS2Rt.RETURN_MSG_PARAM).toString().equals("1"))
+		{
+			sp.getJdbcTemplate().update("Commit");
+		}
+//		else{
+//			sp.getJdbcTemplate().update("Rollback");
+//		}
+
+		params.put("sqltext", results.get(DynamicS2Rt.SQLTEXT_PARAM));
+		params.put("return_msg", results.get(DynamicS2Rt.RETURN_MSG_PARAM));
+		
+		return params;
 	}
 }
