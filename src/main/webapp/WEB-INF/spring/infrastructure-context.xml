@@ -21,12 +21,8 @@
 	</jdbc:embedded-database>
 	-->
 	
-	 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@210.124.36.196:1521:DSTDB"/>
-		<property name="username" value="mesmgr"/>
-		<property name="password" value="mesmgr"/>
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/comp/env/jdbc/orames" />
 	</bean>
 	
   	<!--

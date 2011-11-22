@@ -4,6 +4,9 @@ Ext.define('RPT.view.NavReport', {
 	store: 'RPT.store.ReportListStore',
 	
 	listeners: {
+		render: function(view) {
+			view.store.load();
+		},
 		itemclick: function(view, record, item, index, e, opt) {
 
 			var report = null;

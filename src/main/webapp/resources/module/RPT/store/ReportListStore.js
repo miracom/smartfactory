@@ -3,7 +3,7 @@ Ext.define('RPT.store.ReportListStore', {
 
 	storeId : 'rpt.report_list_store',
 
-	autoLoad : true,
+	autoLoad : false,
 
 	model : 'RPT.model.Report',
 
