@@ -1,8 +1,6 @@
 Ext.define('MBI.store.SecfundefNt', {
 	extend: 'Ext.data.Store',
 
-	autoLoad: false,
-	
 	fields: [
 	     	{ name: 'func_desc_eng', type: 'string' },
 	    	{ name: 'func_group_name', type: 'string' },

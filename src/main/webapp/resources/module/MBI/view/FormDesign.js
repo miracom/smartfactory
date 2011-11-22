@@ -7,10 +7,7 @@ Ext.define('MBI.view.FormDesign', {
 	
 	autoScroll: true,
 	
-	layout : {
-		align : 'stretch',
-		type : 'vbox'
-	},
+	layout : 'accordion',
 	
 	listeners : {
 		render : function(panel, opts) {

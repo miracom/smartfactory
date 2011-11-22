@@ -4,6 +4,9 @@ Ext.define('MBI.view.NavFormlist', {
 	store: 'MBI.store.SecfundefNt',
 	
 	listeners: {
+		render: function(view) {
+			view.store.load();
+		},
 		itemclick: function(view, record, item, index, e, opt) {
 			//SmartFactory.addContentView('MBI.view.FormDesign');
 			SmartFactory.addContentView({
