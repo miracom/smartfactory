@@ -9,7 +9,6 @@ Ext.define('CMN.view.common.Selector', {
 	},
 	
 	modal : true,
-	closable : true,
 	
 	width : 450,
 	height: 500,

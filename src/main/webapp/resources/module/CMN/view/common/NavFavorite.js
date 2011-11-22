@@ -15,7 +15,7 @@ Ext.define('CMN.view.common.NavFavorite', {
 				xtype : 'ras.resource.resource',
 				title : record.get('user_func_desc'),
 				tabConfig : {
-					tooltip : record.get('func_name'),
+					tooltip : record.get('func_name')
 				},
 				data : null,
 				closable : true

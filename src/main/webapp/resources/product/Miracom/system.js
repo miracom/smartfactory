@@ -19,9 +19,10 @@ var SmartFactory = SmartFactory || (function() {
 	}
 
 	function getAllControllers() {
-		return modules_order.reduce(function(joined, module) {
-			return joined.concat(modules[module]);
-		}, []);
+		var joined = [];
+		for(var i = 0;i < modules_order.length;i++)
+			joined = joined.concat(modules[modules_order[i]]);
+		return joined;
 	}
 	
 	function currentFactory(factory) {
@@ -57,7 +58,7 @@ SmartFactory.addDockingNav = function(view, config) {
 	try {
 		Ext.getCmp('docked_nav').add(Ext.create(view, Ext.merge(defaults, config)));
 	} catch(e) {
-		console.log(e);
+//		console.log(e);
 	}
 }
 
@@ -76,12 +77,12 @@ SmartFactory.addSystemMenu = function(view, config) {
 
 		system_menu.setSize(width, system_menu.getHeight());
 	} catch(e) {
-		console.log(e);
+//		console.log(e);
 	}
 }
 
 SmartFactory.addContentView = function(view) {
-	console.log(view);
+//	console.log(view);
 	this.showBusy();
 	if (typeof (view) === 'string') {
 		Ext.getCmp('content').add(Ext.create(view, {
@@ -128,4 +129,8 @@ SmartFactory.doMenu = function(menu) {
 SmartFactory.showSelector = function(config) {
 	var selector = Ext.create('CMN.view.common.Selector', config);
 	selector.show();
+};
+
+console = console || {
+	log: function() {}
 };

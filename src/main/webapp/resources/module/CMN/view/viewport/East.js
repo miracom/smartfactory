@@ -55,8 +55,8 @@ Ext.define('CMN.view.viewport.East', {
         })
     }],
     buttons: [{
-        text: 'Search',
+        text: 'Search'
     }, {
-        text: 'Reset',
+        text: 'Reset'
     }]
 });

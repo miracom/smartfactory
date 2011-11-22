@@ -18,7 +18,7 @@ Ext.define('CMN.view.common.NavMenu', {
 					xtype : 'ras.resource.resource',
 					title : record.get('text'),
 					tabConfig : {
-						tooltip : record.get('func_name'),
+						tooltip : record.get('func_name')
 					},
 					data : null,
 					closable : true
