@@ -4,10 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
-
-import com.mesplus.RAS.model.Resource;
-
 public interface FormDao {
 
 	public List<Map<String, Object>> mapconGenNtDao(String fac_id,
@@ -53,5 +49,9 @@ public interface FormDao {
 			String spd_id) throws SQLException;
 	
 	public List<Map<String, Object>> secfundefNtDao(String fac_id, String func_group, String func_code, String func_type)throws SQLException;
+	
+	public Map<String, Object> dynamicS2RtDao(String status, String func_id, String spd_id, String fac_id, String user_id, String lang_flag, String arrlst)throws SQLException;
+	
+	public Map<String, Object> testRtDao(String lot_id, String fac_id, String mat_id, String order_id, String user_id)throws SQLException;
 
 }

@@ -208,4 +208,31 @@ public class MBIController {
 		return formDao.secfundefNtDao(fac_id, func_group, func_code, func_type);
 	}
 
+	//http://localhost:8080/smartfactory/modul/MBI/data/dynamic_s2_rt.json?status=U&func_id=1042&spd_id=1&fac_id=83&user_id=ADMIN&lang_flag=1&arrlst=LOT0001`^55555`^A`^xxxxx
+	@RequestMapping(value = "modul/MBI/data/dynamic_s2_rt.json", method = RequestMethod.GET)
+	public @ResponseBody
+	Map<String, Object> dynamicS2Rt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String status = request.getParameter("status");
+		String func_id = request.getParameter("func_id");
+		String spd_id = request.getParameter("spd_id");
+		String fac_id = request.getParameter("fac_id");
+		String user_id = request.getParameter("user_id");
+		String lang_flag = request.getParameter("lang_flag");
+		String arrlst = request.getParameter("arrlst");
+		
+		return formDao.dynamicS2RtDao(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst);
+	}
+	
+	//http://localhost:8080/smartfactory/modul/MBI/data/test_rt.json?lot_id=LOT0001&fac_id=1000&mat_id=33333&order_id=kkh&user_id=ADMIN
+	@RequestMapping(value = "modul/MBI/data/test_rt.json", method = RequestMethod.GET)
+	public @ResponseBody
+	Map<String, Object> testRt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String lot_id = request.getParameter("lot_id");
+		String fac_id = request.getParameter("fac_id");
+		String mat_id = request.getParameter("mat_id");
+		String order_id = request.getParameter("order_id");
+		String user_id = request.getParameter("user_id");
+		
+		return formDao.testRtDao(lot_id, fac_id, mat_id, order_id, user_id);
+	}
 }

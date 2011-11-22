@@ -37,8 +37,6 @@ Ext.define('MBI.store.SecfundefNt', {
 	    	{ name: 'func_desc', type: 'string' },
 	],
 
-	autoLoad: true,
-	
 	proxy: {
 		type: 'ajax',
 		url : 'module/MBI/data/secfundef_nt.json',

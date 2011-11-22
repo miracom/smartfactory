@@ -9,11 +9,7 @@ Ext.define('MBI.view.FormDesign', {
 	
 	autoScroll: true,
 
-	//layout:'accordion',
-	layout : {
-		align : 'stretch',
-		type : 'vbox'
-	},
+	layout : 'accordion',
 	
 	listeners : {
 		render : function(panel, opts) {
@@ -22,9 +18,8 @@ Ext.define('MBI.view.FormDesign', {
 					type: 'ajax',
 					url : 'module/MBI/data/get_design.json',
 					extraParams : {
-						fac_id : 83,
-						//func_id : this.data.get('func_id'),
-						func_id : 2,
+						fac_id : this.data.get('fac_id'),
+						func_id : this.data.get('func_id'),
 						spd_id : '',
 						lang_flag : 1,
 						admin_user : SmartFactory.user(),
