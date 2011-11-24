@@ -1,18 +1,18 @@
+
+
+
 Ext.define('MBI.view.FormDesign', {
 	extend: 'Ext.panel.Panel',
-	
 	alias: 'widget.mbi.formdesign',
 	
 	title: 'Form Design',
 	
 	autoScroll: true,
-	
+
 	layout : 'accordion',
 	
 	listeners : {
 		render : function(panel, opts) {
-			//console.log("data= " + this.data.get('func_id'));
-			//this.store = Ext.create('MBI.store.FormDesign');
 			this.store = Ext.create('MBI.store.FormDesign',{
 				proxy: {
 					type: 'ajax',
@@ -69,3 +69,9 @@ Ext.define('MBI.view.FormDesign', {
 		}
 	}
 });
+
+
+
+
+
+

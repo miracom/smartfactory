@@ -43,7 +43,9 @@ public class ChtinfNt extends StoredProcedure {
 		Map<String, Object> inputs = new HashMap<String, Object>();
 		inputs.put(FAC_ID_PARAM, fac_id);
 		inputs.put(FUNC_ID_PARAM, func_id);
-
+		
 		return super.execute(inputs);
+		
+		
 	}
 }
