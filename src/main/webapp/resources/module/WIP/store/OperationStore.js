@@ -3,7 +3,7 @@ Ext.define('WIP.store.OperationStore', {
 	
 	storeId: 'wip.operation_store',
 	
-	autoLoad: true,
+	autoLoad: false,
 	
 	model: 'WIP.model.Operation',
 

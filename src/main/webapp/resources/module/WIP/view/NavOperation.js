@@ -5,6 +5,9 @@ Ext.define('WIP.view.NavOperation', {
 	itemSelector: 'li',
 	
 	listeners: {
+		render: function(view) {
+			view.store.load();
+		},
 		itemclick: function(view, record, item, index, e, opt) {
 			SmartFactory.addContentView({
 				xtype: 'wip.oper.operation',
