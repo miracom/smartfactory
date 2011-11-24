@@ -4,12 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.cometd.bayeux.Channel;
 import org.cometd.bayeux.Message;
 import org.cometd.bayeux.client.ClientSessionChannel;
+import org.cometd.bayeux.server.BayeuxServer;
+import org.cometd.bayeux.server.LocalSession;
 import org.cometd.client.BayeuxClient;
 import org.cometd.client.transport.ClientTransport;
 import org.cometd.client.transport.LongPollingTransport;
@@ -51,6 +54,9 @@ public class RASController {
 		return resourceDao.selectResources(params);
 	}
 
+	@Autowired
+	private BayeuxServer bayeux;
+	
 	@RequestMapping(value = "module/RAS/data/resource.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Resource resource(HttpServletRequest request,
@@ -69,44 +75,52 @@ public class RASController {
 		
 		/** FROM HERE for TEST COMET **/
 		
-		try {
-			HttpClient httpClient = new HttpClient();
+		try {  
+			LocalSession client = bayeux.newLocalSession("server");
 			
-			httpClient.setMaxConnectionsPerAddress(2);
-			httpClient.start();
-
-			Map<String, Object> options = new HashMap<String, Object>();
-			JSONContext.Client jsonContext = new JacksonJSONContextClient();
-			options.put(ClientTransport.JSON_CONTEXT, jsonContext);
-			
-			ClientTransport transport = LongPollingTransport.create(options, httpClient);
-
-			BayeuxClient client = new BayeuxClient("http://localhost:8000/faye", transport);
-
-			client.getChannel(Channel.META_CONNECT).addListener(new ClientSessionChannel.MessageListener() {
-				
-				@Override
-				public void onMessage(ClientSessionChannel channel, Message message) {
-					logger.info("Comet Channel [" + channel + "] : " + message.getJSON());
-				}
-			});
-			client.getChannel(Channel.META_HANDSHAKE).addListener(new ClientSessionChannel.MessageListener() 
-			{ 
-			    public void onMessage(ClientSessionChannel channel, Message message)
-			    {
-		        	logger.info("Comet Channel [" + channel + "] : " + message.getJSON());
-			    }
-			});
 			client.handshake();
-			boolean handshaken = client.waitFor(1000, BayeuxClient.State.CONNECTED);
-			if (handshaken)
-			{
-	    		Map<String, Object> data = new HashMap<String, Object>();
-	    		data.put("mymessage", "안냐쇼");
-	    		client.getChannel("/email/new").publish(data);
-			}
+    		Map<String, Object> data = new HashMap<String, Object>();
+    		data.put("mymessage", "안냐쇼");
+    		client.getChannel("/echo").publish(data);
 			client.disconnect();
-			client.waitFor(1000, BayeuxClient.State.DISCONNECTED);
+			
+//			HttpClient httpClient = new HttpClient();
+//			
+//			httpClient.setMaxConnectionsPerAddress(2);
+//			httpClient.start();
+//
+//			Map<String, Object> options = new HashMap<String, Object>();
+//			JSONContext.Client jsonContext = new JacksonJSONContextClient();
+//			options.put(ClientTransport.JSON_CONTEXT, jsonContext);
+//			
+//			ClientTransport transport = LongPollingTransport.create(options, httpClient);
+//
+//			BayeuxClient client = new BayeuxClient("http://localhost:8080/smartfactory/cometd", transport);
+//
+//			client.getChannel(Channel.META_CONNECT).addListener(new ClientSessionChannel.MessageListener() {
+//				
+//				@Override
+//				public void onMessage(ClientSessionChannel channel, Message message) {
+//					logger.info("Comet Channel [" + channel + "] : " + message.getJSON());
+//				}
+//			});
+//			client.getChannel(Channel.META_HANDSHAKE).addListener(new ClientSessionChannel.MessageListener() 
+//			{ 
+//			    public void onMessage(ClientSessionChannel channel, Message message)
+//			    {
+//		        	logger.info("Comet Channel [" + channel + "] : " + message.getJSON());
+//			    }
+//			});
+//			client.handshake();
+//			boolean handshaken = client.waitFor(1000, BayeuxClient.State.CONNECTED);
+//			if (handshaken)
+//			{
+//	    		Map<String, Object> data = new HashMap<String, Object>();
+//	    		data.put("mymessage", "안냐쇼");
+//	    		client.getChannel("/email/new").publish(data);
+//			}
+//			client.disconnect();
+//			client.waitFor(1000, BayeuxClient.State.DISCONNECTED);
 		} catch(Exception e) {
 			logger.error(e.getMessage());
 		}

@@ -12,6 +12,8 @@
 		<intercept-url pattern="/**/*.css" access="permitAll" />
 		<intercept-url pattern="/js/**/*.js" access="permitAll" />
 		<intercept-url pattern="/**/image/*.*" access="permitAll" />
+		<intercept-url pattern="/cometd" access="permitAll" />
+		<intercept-url pattern="/cometd/**/*" access="permitAll" />
 		<intercept-url pattern="/**/*" access="fullyAuthenticated" />
 		<!-- <intercept-url pattern="/**/*" access="hasRole('ROLE_USER')" /> -->
 		<!-- <intercept-url pattern="/secure/**/*"
