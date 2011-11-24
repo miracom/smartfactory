@@ -4,6 +4,9 @@ Ext.define('RAS.view.NavResource', {
 	store: 'RAS.store.ResourceListStore',
 	
 	listeners: {
+		render: function(view) {
+			view.store.load();
+		},
 		itemclick: function(view, record, item, index, e, opt) {
 			SmartFactory.addContentView({
 				xtype: 'ras.resource.resource',

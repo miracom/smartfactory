@@ -41,7 +41,9 @@ Ext.define('CMN.view.common.Menu', {
 				iconCls : 'icon_' + child.get('func_name')
 			};
 			if (child.get('separator') === 'Y') {
-				obj.xtype = 'menuseparator';
+				result.push({
+					xtype : 'menuseparator'
+				});
 			}
 
 			if (menu) {
