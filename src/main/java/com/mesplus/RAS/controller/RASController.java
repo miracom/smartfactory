@@ -7,6 +7,15 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.cometd.bayeux.Channel;
+import org.cometd.bayeux.Message;
+import org.cometd.bayeux.client.ClientSessionChannel;
+import org.cometd.client.BayeuxClient;
+import org.cometd.client.transport.ClientTransport;
+import org.cometd.client.transport.LongPollingTransport;
+import org.cometd.common.JSONContext;
+import org.cometd.common.JacksonJSONContextClient;
+import org.eclipse.jetty.client.HttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +66,51 @@ public class RASController {
 		params.put("res_id", res_id);
 		
 		Resource ret = 	resourceDao.findResource(params);
+		
+		/** FROM HERE for TEST COMET **/
+		
+		try {
+			HttpClient httpClient = new HttpClient();
+			
+			httpClient.setMaxConnectionsPerAddress(2);
+			httpClient.start();
+
+			Map<String, Object> options = new HashMap<String, Object>();
+			JSONContext.Client jsonContext = new JacksonJSONContextClient();
+			options.put(ClientTransport.JSON_CONTEXT, jsonContext);
+			
+			ClientTransport transport = LongPollingTransport.create(options, httpClient);
+
+			BayeuxClient client = new BayeuxClient("http://localhost:8000/faye", transport);
+
+			client.getChannel(Channel.META_CONNECT).addListener(new ClientSessionChannel.MessageListener() {
+				
+				@Override
+				public void onMessage(ClientSessionChannel channel, Message message) {
+					logger.info("Comet Channel [" + channel + "] : " + message.getJSON());
+				}
+			});
+			client.getChannel(Channel.META_HANDSHAKE).addListener(new ClientSessionChannel.MessageListener() 
+			{ 
+			    public void onMessage(ClientSessionChannel channel, Message message)
+			    {
+		        	logger.info("Comet Channel [" + channel + "] : " + message.getJSON());
+			    }
+			});
+			client.handshake();
+			boolean handshaken = client.waitFor(1000, BayeuxClient.State.CONNECTED);
+			if (handshaken)
+			{
+	    		Map<String, Object> data = new HashMap<String, Object>();
+	    		data.put("mymessage", "안냐쇼");
+	    		client.getChannel("/email/new").publish(data);
+			}
+			client.disconnect();
+			client.waitFor(1000, BayeuxClient.State.DISCONNECTED);
+		} catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
 		return ret;
 	}
 }
