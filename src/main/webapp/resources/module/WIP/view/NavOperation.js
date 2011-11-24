@@ -2,7 +2,7 @@ Ext.define('WIP.view.NavOperation', {
 	extend: 'Ext.view.View',
 	
 	store: 'WIP.store.OperationStore',
-	itemSelector: 'li',
+	itemSelector: 'div',
 	
 	listeners: {
 		render: function(view) {
