@@ -18,7 +18,7 @@ Ext.define('CMN.view.common.Toolbar', {
 			xtype: 'ras.resource.resource',
 			title: button.data.get('user_func_desc'),
 			tabConfig : {
-				tooltip: button.data.get('func_name'),
+				tooltip: button.data.get('func_name')
 			},
 			data: null,
 			closable: true
@@ -29,11 +29,12 @@ Ext.define('CMN.view.common.Toolbar', {
 		this.removeAll();
 		var records = store.data.items;
 		for ( var idx in records) {
+			var record = records[idx];
 			this.add({
-				iconCls : 'icon1_32',
+				iconCls : 'icon_' + record.get('func_name'),
 				scale : 'large',
-				tooltip : records[idx].get('user_func_desc'),
-				data : records[idx],
+				tooltip : record.get('user_func_desc'),
+				data : record,
 				handler : this.default_handler
 			});
 		}

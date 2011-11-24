@@ -11,6 +11,9 @@
 		<link rel="stylesheet" href="js/ux/statusbar/css/statusbar.css"></link>
 		<link rel="stylesheet" href="js/ux/tab/css/TabScrollerMenu.css"></link>
 		
+		<script src="js/downloadify/swfobject.js"></script>
+		<script src="js/downloadify/downloadify.min.js"></script>
+		
 		<script src="js/ext-js/bootstrap.js"></script>
 
 		<script src="app/application.js"></script>

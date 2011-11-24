@@ -19,29 +19,30 @@ var SmartFactory = SmartFactory || (function() {
 	}
 
 	function getAllControllers() {
-		return modules_order.reduce(function(joined, module) {
-			return joined.concat(modules[module]);
-		}, []);
+		var joined = [];
+		for(var i = 0;i < modules_order.length;i++)
+			joined = joined.concat(modules[modules_order[i]]);
+		return joined;
 	}
-
+	
 	function currentFactory(factory) {
-		if (current_factory === undefined && factory !== undefined)
+		if(current_factory === undefined && factory !== undefined)
 			current_factory = factory;
 		return current_factory;
 	}
-
+	
 	function currentUser(user) {
-		if (current_user === undefined && user !== undefined)
+		if(current_user === undefined && user !== undefined)
 			current_user = user;
 		return current_user;
 	}
-
+	
 	return {
 		modules : getModules,
 		register : registerModule,
 		controllers : getAllControllers,
 		user : currentUser,
-		factory : currentFactory
+		factory : currentFactory 
 	};
 })();
 
@@ -56,8 +57,8 @@ SmartFactory.addDockingNav = function(view, config) {
 
 	try {
 		Ext.getCmp('docked_nav').add(Ext.create(view, Ext.merge(defaults, config)));
-	} catch (e) {
-		console.log(e);
+	} catch(e) {
+//		console.log(e);
 	}
 }
 
@@ -65,7 +66,7 @@ SmartFactory.addSystemMenu = function(view, config) {
 	try {
 		var system_menu = Ext.getCmp('system_menu');
 		var menu = Ext.create(view, config);
-
+		
 		system_menu.insert(0, menu);
 
 		var width = 6; // TODO should be more systemic.
@@ -75,13 +76,13 @@ SmartFactory.addSystemMenu = function(view, config) {
 		});
 
 		system_menu.setSize(width, system_menu.getHeight());
-	} catch (e) {
-		console.log(e);
+	} catch(e) {
+//		console.log(e);
 	}
 }
 
 SmartFactory.addContentView = function(view) {
-	console.log(view);
+//	console.log(view);
 	this.showBusy();
 	if (typeof (view) === 'string') {
 		Ext.getCmp('content').add(Ext.create(view, {
@@ -120,8 +121,7 @@ SmartFactory.doMenu = function(menu) {
 		SmartFactory.setStatus({
 			text : 'View Not Found!',
 			iconCls : 'x-status-error',
-			clear : true
-		// auto-clear after a set interval
+			clear : true // auto-clear after a set interval
 		});
 	}
 };
@@ -130,3 +130,8 @@ SmartFactory.showSelector = function(config) {
 	var selector = Ext.create('CMN.view.common.Selector', config);
 	selector.show();
 };
+
+console = console || {
+	log: function() {}
+};
+

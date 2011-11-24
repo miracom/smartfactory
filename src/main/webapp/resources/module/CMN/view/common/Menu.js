@@ -17,9 +17,9 @@ Ext.define('CMN.view.common.Menu', {
 	reloadToolbarItems : function(store) {
 		this.removeAll();
 
-		(this.loadMenu(store.getRootNode()) || []).every(function(menu) {
-			return this.add(menu);
-		}, this);
+		var first_levels = (this.loadMenu(store.getRootNode()) || []);
+		for(var i = 0;i < first_levels.length;i++)
+			this.add(first_levels[i]);
 	},
 
 	loadMenu : function(node) {
@@ -30,25 +30,32 @@ Ext.define('CMN.view.common.Menu', {
 		}
 
 		self_function = arguments.callee;
-		return children.map(function(child) {
+		
+		var result = [];
+		
+		for(var i = 0;i < children.length;i++) {
+			var child = children[i];
 			var menu = self_function(child);
-			var ret = {
-				text : child.get('text')
+			var obj = {
+				text : child.get('text'),
+				iconCls : 'icon_' + child.get('func_name')
 			};
 			if (child.get('separator') === 'Y') {
-				ret.xtype = 'menuseparator';
+				obj.xtype = 'menuseparator';
 			}
 
 			if (menu) {
-				ret.menu = {
+				obj.menu = {
 					items : menu
 				};
 			} else {
-				ret.viewModel = 'RAS.view.resource.Resource';
-				ret.handler = SmartFactory.doMenu;
-				ret.tooltip = child.get('func_name');
+				obj.viewModel = 'RAS.view.resource.Resource';
+				obj.handler = SmartFactory.doMenu;
+				obj.tooltip = child.get('func_name');
 			}
-			return ret;
-		});
+			result.push(obj);
+		}
+		
+		return result;
 	}
 });

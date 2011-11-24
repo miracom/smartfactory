@@ -1,3 +1,4 @@
+*{font-family:tahoma}
 .x-menu-item-icon{background:url('../image/iconset16.png') no-repeat;}
 .x-menu-item-icon.icon1_16{background-position: 0 0;}
 .x-menu-item-icon.icon2_16{background-position: 27% 0;}
@@ -33,8 +34,9 @@
 .x-menu-body{margin-top:2px;border:1px solid #9ea8b3 !important}
 .appMenu .x-btn-arrow-right{background:url('../image/arrowDownDefault.gif') 102% 5px no-repeat;}
 .appMenu .x-btn-arrow-right:hover{background:url('../image/arrowDownOver.gif') 102% 5px no-repeat;}
-.appMenu .x-toolbar-item{margin-right:10px}
 .x-menu-scroll-top-disabled,.x-box-scroller-bottom{display:none}
+#system_menu .x-form-trigger{background:url('../image/inputSearch.gif') no-repeat;margin-left:-3px;border-bottom:0}
+#system_menu .x-form-trigger-over{background:url('../image/inputSearch.gif') -24px 0 no-repeat;margin-left:-3px;border-bottom:0}
 
 /* dock bar */
 .operation-list-item {
@@ -84,8 +86,9 @@
 .dockNavigation .x-panel-header-default{background:url('../image/bgDockHeader.gif') repeat-x;background-color:#5875a0;border:none;height:27px}
 .dockNavigation .x-panel-header-default-top{box-shadow:none}
 .dockNavigation .x-tab button{overflow-x:hidden}
-.dockNavigation .x-tool-collapse-left{background:url('../image/iconBtnSet.gif') 0 2px no-repeat;}
-.dockNavigation .x-tool-collapse-right{background:url('../image/iconBtnSet.gif') -15px 2px no-repeat;}
+.dockNavigation .x-tool-collapse-left,.x-tool-expand-left{background:url('../image/iconBtnSet.gif') 0 2px no-repeat;}
+.x-tool-expand-left{margin-left:3px !important}
+.dockNavigation .x-tool-collapse-right,.x-tool-expand-right{background:url('../image/iconBtnSet.gif') -15px 2px no-repeat;}
 .x-panel-header-default-left, .x-panel-header-default-right{background:url('../image/bgDockCollapsed.gif') no-repeat;width:25px;border-width:0;left:-1px}
 
 /*search panel*/
@@ -132,17 +135,26 @@
 .resourceSelector .x-form-trigger-over,.resourceSelector .x-form-trigger-click,.resourceSelector .x-form-trigger-pressed{
 	background:url('../image/selector-trigger.gif') -24px 0 no-repeat;margin-left:-1px;width:24px
 }
+.x-boundlist-item{background:url('../image/arrowRightGray.gif') 4px 8px no-repeat;padding-left:11px;color:#333;font-size:11px;border-bottom:1px dotted #ccc}
+.x-boundlist-item-over{background:url('../image/arrowRightBlue.gif') 4px 8px no-repeat;background-color:#fff;padding-left:11px}
 
 
 /* x progress bar style*/
 .x-progress{border:1px solid #f5f4f5;height:11px;background-color:#2a2a2a;-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;}
 
+/*floating panel*/
+.x-boundlist-floating{
+	background:url('../image/bgFloatingPanel.gif') repeat-x;background-color:#e6e6e6;
+	-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;
+	border:1px solid #999
+}
+
 /* login page style*/
-.welcome{background:url('../image/bgWelcomeHeader.gif') repeat-x;background-color:#ececec;margin:0;padding:0}
-.welcomeMent{background:url('../image/iconWelcomeFactory.png') 0 -2px no-repeat;padding:5px 0 0 165px;margin:3px 0 0 15px;height:90px;color:#fff;font-size:24px}
+.welcome{background:url('../image/bgWelcomeHeader.gif') repeat-x;background-color:#ececec;margin:0;padding:0;text-align:center}
+.welcomeMent{background:url('../image/iconWelcomeFactory.png') 0 -2px no-repeat;padding:0px 0 0 165px;margin:3px 0 0 15px;height:90px;color:#fff;font-size:24px;text-align:left}
 .welcomeMent span{font-weight:bold}
 .productName{font-size:14px;color:#92c3f5;display:block;margin-bottom:18px}
-.welcome form{margin:50px auto;width:250px;}
+.welcome form{margin:50px auto;width:250px;text-align:left}
 .welcome label{text-transform:capitalize;font-size:14px;color:#333}
 .welcome .loginInput{margin:3px 0 20px 0;width:250px;font-size:18px;}
 .welcome .btnWelcomeLogin{
@@ -150,7 +162,9 @@
 	float:right;margin-top:-5px;
 	width:100px;height:31px;display:inline-block;
 	color:#fff;font-size:14px;text-align:left;
-	border:0
+	border:0;
+	padding-left /*\**/:7px\9;
+	margin-top /*\**/:-25px\9;
 }
 .welcome .btnWelcomeLogin:hover{background:url('../image/bgBtnGreen.gif') no-repeat;cursor:pointer}
 .btnline{margin-top:20px}
@@ -169,3 +183,5 @@ table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
 /* window style*/
 .x-tool-refresh, .x-tool-over .x-tool-refresh{background:url('../image/modalIcons.gif') 0 2px no-repeat;}
 .x-tool-close, .x-tool-over .x-tool-close{background:url('../image/modalIcons.gif') -15px 2px no-repeat;}
+
+/* report style */
