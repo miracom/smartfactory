@@ -14,6 +14,7 @@
 		<intercept-url pattern="/**/image/*.*" access="permitAll" />
 		<intercept-url pattern="/cometd" access="permitAll" />
 		<intercept-url pattern="/cometd/**/*" access="permitAll" />
+		<intercept-url pattern="/echoService/**/*" access="permitAll" />
 		<intercept-url pattern="/**/*" access="fullyAuthenticated" />
 		<!-- <intercept-url pattern="/**/*" access="hasRole('ROLE_USER')" /> -->
 		<!-- <intercept-url pattern="/secure/**/*"

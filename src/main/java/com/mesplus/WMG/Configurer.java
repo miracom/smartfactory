@@ -13,15 +13,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
 
-@Component
+//@Component
 public class Configurer implements DestructionAwareBeanPostProcessor, ServletContextAware {
+	@Inject
 	private BayeuxServer bayeuxServer;
 	private ServerAnnotationProcessor processor;
 
-	@Inject
-	private void setBayeuxServer(BayeuxServer bayeuxServer) {
-		this.bayeuxServer = bayeuxServer;
-	}
+//	@Inject
+//	private void setBayeuxServer(BayeuxServer bayeuxServer) {
+//		this.bayeuxServer = bayeuxServer;
+//	}
 
 	@PostConstruct
 	private void init() {
@@ -43,12 +44,12 @@ public class Configurer implements DestructionAwareBeanPostProcessor, ServletCon
 		processor.deprocessCallbacks(bean);
 	}
 
-	@Bean(initMethod = "start", destroyMethod = "stop")
-	public BayeuxServer bayeuxServer() {
-		BayeuxServerImpl bean = new BayeuxServerImpl();
-		bean.setOption(BayeuxServerImpl.LOG_LEVEL, "3");
-		return bean;
-	}
+//	@Bean(initMethod = "start", destroyMethod = "stop")
+//	public BayeuxServer getBayeuxServer() {
+//		BayeuxServerImpl bean = new BayeuxServerImpl();
+//		bean.setOption(BayeuxServerImpl.LOG_LEVEL, "3");
+//		return bean;
+//	}
 
 	public void setServletContext(ServletContext servletContext) {
 		servletContext.setAttribute(BayeuxServer.ATTRIBUTE, bayeuxServer);

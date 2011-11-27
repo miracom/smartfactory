@@ -3,6 +3,7 @@ var SmartFactory = SmartFactory || (function() {
 	var modules = {};
 	var current_user;
 	var current_factory;
+	var _communicator;
 
 	function getModules() {
 		return modules;
@@ -37,12 +38,19 @@ var SmartFactory = SmartFactory || (function() {
 		return current_user;
 	}
 	
+	function activeCommunicator(communicator) {
+		if(_communicator === undefined && communicator !== undefined)
+			_communicator = communicator;
+		return _communicator;
+	}
+	
 	return {
 		modules : getModules,
 		register : registerModule,
 		controllers : getAllControllers,
 		user : currentUser,
-		factory : currentFactory 
+		factory : currentFactory,
+		communicator : activeCommunicator
 	};
 })();
 

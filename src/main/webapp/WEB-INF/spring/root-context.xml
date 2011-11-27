@@ -4,6 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<import resource="infrastructure-context.xml"/>	
+	<import resource="security-context.xml"/>	
+	<import resource="cometd-context.xml"/>	
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 

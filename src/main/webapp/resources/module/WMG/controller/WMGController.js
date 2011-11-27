@@ -17,6 +17,10 @@ Ext.define('WMG.controller.WMGController', {
 		SmartFactory.addDockingNav('WMG.view.NavCommunicator', {
     		iconCls : 'iconsetDockCommunicator'
 		});
+		
+		SmartFactory.communicator(Ext.create('WMG.service.Communicator', {
+			username : SmartFactory.user()
+		})).join();
 	}
 
 });

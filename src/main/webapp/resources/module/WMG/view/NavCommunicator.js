@@ -15,6 +15,9 @@ Ext.define('WMG.view.NavCommunicator', {
 			click : function() {
 				var store = Ext.StoreManager.lookup('WMG.store.CommunicatorStore');
 				store.removeAll(false);
+				
+				/* TO BE REMOVED */
+				SmartFactory.communicator().send('ADMIN::All Cleared.');
 			}
 		}
 	} ],
