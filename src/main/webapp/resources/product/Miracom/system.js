@@ -1,9 +1,49 @@
+//Ext.require(['product/util/Msg']);
+
+var Util = Util || {};
+
+Util.Msg = function() {
+	var msgCt;
+
+	function createBox(t, s) {
+		return '<div class="msg"><h3>' + t + '</h3><p>' + s + '</p></div>';
+	}
+
+	return {
+		msg : function(title, format) {
+			if (!msgCt) {
+				msgCt = Ext.core.DomHelper.insertFirst(document.body, {
+					id : 'msg-div'
+				}, true);
+			}
+			var s = Ext.String.format.apply(String, Array.prototype.slice.call(arguments, 1));
+			var m = Ext.core.DomHelper.append(msgCt, createBox(title, s), true);
+			m.hide();
+			m.slideIn('t').ghost("t", {
+				delay : 1000,
+				remove : true
+			});
+		}
+	};
+};
+
 var SmartFactory = SmartFactory || (function() {
 	var modules_order = [];
 	var modules = {};
 	var current_user;
 	var current_factory;
 	var _communicator;
+	var _msg;
+
+	function getMsg() {
+		if(_msg === undefined)
+			_msg = new Util.Msg();
+		return _msg;
+	}
+
+	function displayMsg(title, format) {
+		getMsg().msg(title, format);
+	}
 
 	function getModules() {
 		return modules;
@@ -50,7 +90,8 @@ var SmartFactory = SmartFactory || (function() {
 		controllers : getAllControllers,
 		user : currentUser,
 		factory : currentFactory,
-		communicator : activeCommunicator
+		communicator : activeCommunicator,
+		msg : displayMsg
 	};
 })();
 
@@ -66,9 +107,9 @@ SmartFactory.addDockingNav = function(view, config) {
 	try {
 		Ext.getCmp('docked_nav').add(Ext.create(view, Ext.merge(defaults, config)));
 	} catch(e) {
-//		console.log(e);
+		console.log(e);
 	}
-}
+};
 
 SmartFactory.addSystemMenu = function(view, config) {
 	try {
@@ -87,7 +128,7 @@ SmartFactory.addSystemMenu = function(view, config) {
 	} catch(e) {
 //		console.log(e);
 	}
-}
+};
 
 SmartFactory.addContentView = function(view) {
 //	console.log(view);

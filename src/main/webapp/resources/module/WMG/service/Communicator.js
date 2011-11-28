@@ -10,11 +10,14 @@ Ext.define('WMG.service.Communicator', {
 	private_channel : '/communicator/private',
 	member_channel : '/communicator/member/public', /* demo member list */
 	service_channel : '/service/members',
+	notice_channel : '/communicator/notice',
 	cookie_name : 'com.mesplus.smartfactory.communicator.state',
 	alternate_server : 'xxx.yyy.zzz',
 
 	constructor : function(config) {
 		Ext.apply(this, config);
+		
+		console.dir(this);
 		/*
 		 * Something to do.
 		 */
@@ -24,10 +27,10 @@ Ext.define('WMG.service.Communicator', {
 		var self = this;
 		
 		$.cometd.websocketEnabled = true;
-		$.cometd.addListener('/meta/*', function(message) {
-			console.log('meta : ');
-			console.dir(message);
-		});
+//		$.cometd.addListener('/meta/*', function(message) {
+//			console.log('meta : ');
+//			console.dir(message);
+//		});
 
 		$.cometd.addListener('/meta/connect', function(message) {
 			if (self.state === 'disconnecting') {
@@ -129,6 +132,13 @@ Ext.define('WMG.service.Communicator', {
 		console.log('send : ');
 		console.dir(text);
 	},
+	
+	send_notice : function(title, message) {
+		$.cometd.publish(this.notice_channel, {
+			title : title,
+			message : message
+		});
+	},
 
 	receive : function(message) {
 		var sender = message.data.user;
@@ -160,10 +170,18 @@ Ext.define('WMG.service.Communicator', {
 		console.log('members : ');
 		console.dir(message);
 	},
-
+	
 	subscribe : function() {
+		var self = this;
+		
 		this.public_subscription = $.cometd.subscribe(this.public_channel, this.receive);
 		this.member_subscription = $.cometd.subscribe(this.member_channel, this.members);
+		this.notice_subscription = $.cometd.subscribe(this.notice_channel, function(message) {
+			console.log('notice received');
+			console.dir(self);
+			if(self.callback_notice)
+				self.callback_notice(message);
+		});
 		console.log('subscribe');
 	},
 

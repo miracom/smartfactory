@@ -19,7 +19,12 @@ Ext.define('WMG.controller.WMGController', {
 		});
 		
 		SmartFactory.communicator(Ext.create('WMG.service.Communicator', {
-			username : SmartFactory.user()
+			username : SmartFactory.user(),
+			callback_notice : function(message) {
+				console.log('HHHHHHHH');
+				console.dir(message);
+				SmartFactory.msg(message.data.title, message.data.message);
+			}
 		})).join();
 	}
 
