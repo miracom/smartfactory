@@ -6,8 +6,8 @@
 }
 #msg-div {
     position:absolute;
-    left:35%;
-    top:10px;
+    right:2%;
+    bottom:10px;
     width:300px;
     z-index:20000;
 }
