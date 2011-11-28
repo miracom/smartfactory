@@ -24,6 +24,12 @@ Ext.define('WMG.controller.WMGController', {
 				console.log('HHHHHHHH');
 				console.dir(message);
 				SmartFactory.msg(message.data.title, message.data.message);
+			},
+			callback_join_in : function(message) {
+				SmartFactory.msg('Joined in.', message.data.username);
+			},
+			callback_join_out : function(message) {
+				SmartFactory.msg('Joined out.', message.data.username);
 			}
 		})).join();
 	}

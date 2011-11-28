@@ -16,24 +16,23 @@ Ext.define('SEC.controller.SECController', {
 	onViewportRendered : function() {
 		var profile = {
 			text : SmartFactory.user(),
-			menu : [
-					{
-						text : 'Profile',
-						handler : function() {
-							SmartFactory.addContentView('SEC.view.User');
+			menu : [ {
+				text : 'Profile',
+				handler : function() {
+					SmartFactory.addContentView('SEC.view.User');
+				}
+			}, {
+				text : 'Logout',
+				handler : function() {
+					Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function(confirm) {
+						if (confirm === 'yes') {
+							SmartFactory.communicator().leave();
+							document.location.href = 'logout';
 						}
-					},
-					{
-						text : 'Logout',
-						handler : function() {
-							Ext.MessageBox.confirm('Confirm',
-									'Are you sure you want to do that?',
-									function(confirm) {
-										if (confirm === 'yes')
-											document.location.href = 'logout';
-									});
-						}
-					} ]
+
+					});
+				}
+			} ]
 		};
 
 		SmartFactory.addSystemMenu('Ext.button.Button', profile);

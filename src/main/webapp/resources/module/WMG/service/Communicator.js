@@ -57,7 +57,30 @@ Ext.define('WMG.service.Communicator', {
 			console.log("onMetaHandshake : " + message.successful);
 		});
 		
-		$(window).unload(this.onWindowUnloaded);
+		$(window).unload(function() {
+			console.log('leave');
+			self.leave();		
+			if ($.cometd.reload) {
+				$.cometd.reload();
+				// Save the application state only if the user was chatting
+				if (self.state === 'connected' && self.username) {
+					var expires = new Date();
+					expires.setTime(expires.getTime() + 5 * 1000);
+					org.cometd.COOKIE.set(self.cookie_name, org.cometd.JSON.toJSON({
+						username : self.username,
+						useServer : true, // or false
+						altServer : self.alternate_server
+					}), {
+						'max-age' : 5,
+						expires : expires
+					});
+				}
+			} else {
+				console.log('leave');
+				self.leave();
+				$.cometd.disconnect();
+			}
+		});
 
 //		this.restoreState();
 
@@ -96,13 +119,13 @@ Ext.define('WMG.service.Communicator', {
 	},
 
 	leave : function() {
+		var self = this;
 		$.cometd.batch(function() {
-			$.cometd.publish(this.public_channel, {
-				user : this.username,
-				membership : 'leave',
-				chat : this.username + ' has left'
+			$.cometd.publish('/communicator/join/out', {
+				username : self.username,
+				userid : self.username
 			});
-			this.unsubscribe();
+			self.unsubscribe();
 		});
 		$.cometd.disconnect();
 
@@ -176,6 +199,24 @@ Ext.define('WMG.service.Communicator', {
 		
 		this.public_subscription = $.cometd.subscribe(this.public_channel, this.receive);
 		this.member_subscription = $.cometd.subscribe(this.member_channel, this.members);
+		this.presence_join_in_subscription = $.cometd.subscribe('/communicator/join/in', function(message) {
+			console.log('join in message received');
+			console.dir(self);
+			if(self.callback_join_in)
+				self.callback_join_in(message);
+		});
+		this.presence_join_out_subscription = $.cometd.subscribe('/communicator/join/out', function(message) {
+			console.log('join out message received');
+			console.dir(self);
+			if(self.callback_join_out)
+				self.callback_join_out(message);
+		});
+		this.private_message_subscription = $.cometd.subscribe('/communicator/member/' + this.username, function(message) {
+			console.log('chat message received');
+			console.dir(self);
+			if(self.callback_private_message)
+				self.callback_private_message(message);
+		});
 		this.notice_subscription = $.cometd.subscribe(this.notice_channel, function(message) {
 			console.log('notice received');
 			console.dir(self);
@@ -186,14 +227,18 @@ Ext.define('WMG.service.Communicator', {
 	},
 
 	unsubscribe : function() {
-		if (this.public_subscription) {
-			$.cometd.unsubscribe(this.public_subscription);
+		try {
+			if (this.public_subscription) {
+				$.cometd.unsubscribe(this.public_subscription);
+			}
+			this.public_subscription = null;
+			if (this.member_subscription) {
+				$.cometd.unsubscribe(this.member_subscription);
+			}
+			this.member_subscription = null;
+		}catch(e) {
+			console.log(e);
 		}
-		this.public_subscription = null;
-		if (this.member_subscription) {
-			$.cometd.unsubscribe(this.member_subscription);
-		}
-		this.member_subscription = null;
 		console.log('unsubscribe');
 	},
 
@@ -206,10 +251,9 @@ Ext.define('WMG.service.Communicator', {
 		try{
 		$.cometd.batch(function() {
 			self.subscribe();
-			$.cometd.publish(self.public_channel, {
-				user : self.username,
-				membership : 'join',
-				chat : self.username + ' has joined'
+			$.cometd.publish('/communicator/join/in', {
+				username : self.username,
+				userid : self.username
 			});
 		});
 		} catch(e) {
@@ -266,6 +310,8 @@ Ext.define('WMG.service.Communicator', {
 	},
 
 	onWindowUnloaded : function() {
+		console.log('leave');
+		this.leave();		
 		if ($.cometd.reload) {
 			$.cometd.reload();
 			// Save the application state only if the user was chatting
@@ -282,6 +328,8 @@ Ext.define('WMG.service.Communicator', {
 				});
 			}
 		} else {
+			console.log('leave');
+			this.leave();
 			$.cometd.disconnect();
 		}
 	}
