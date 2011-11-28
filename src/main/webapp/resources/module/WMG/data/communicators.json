@@ -1,9 +1,9 @@
 [
-{ "id": "shnam", "name": "남상혁", "status":"1" },
-{ "id": "yhreset", "name": "정연희", "status":"1" },
-{ "id": "speedkuk", "name": "국승호", "status":"2" },
-{ "id": "jhkim", "name": "김진호", "status":"1" },
-{ "id": "khkim", "name": "김경향", "status":"2" },
-{ "id": "shpark", "name": "박성환", "status":"3" },
-{ "id": "jsjung", "name": "정주석", "status":"3" }
+{ "id": "shnam", "name": "남상혁", "status":"off" },
+{ "id": "yhreset", "name": "정연희", "status":"on" },
+{ "id": "speedkuk", "name": "국승호", "status":"on" },
+{ "id": "jhkim", "name": "김진호", "status":"on" },
+{ "id": "khkim", "name": "김경향", "status":"off" },
+{ "id": "shpark", "name": "박성환", "status":"off" },
+{ "id": "jsjung", "name": "정주석", "status":"on" }
 ]
