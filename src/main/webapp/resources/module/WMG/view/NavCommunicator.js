@@ -30,10 +30,10 @@ Ext.define('WMG.view.NavCommunicator', {
 		
 		itemSelector: 'div',
 
-		cls: 'operation-list',
+		cls: 'communicator-list',
 		itemSelector: '.communicator-list-item', //itemselector로 div 지정 
 		overItemCls: 'operation-list-item-hover',
-		tpl:'<tpl for="."><div class="communicator-list-item">{name} - {id}</div></tpl>',
+		tpl:'<tpl for="."><div class="communicator-list-item {status}">{name} - {id}</div></tpl>',
 
 		listeners : {
 			render : function(view, obj) {
