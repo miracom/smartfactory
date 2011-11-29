@@ -113,6 +113,7 @@ Ext.define('RPT.view.report.ReportDashBoard1', {
 	        		 items : [ {
 	        			 xtype : 'gridpanel',
 	        			 store : 'RPT.store.ReportListStore',
+	        			 columnLines : true,
 	        			 columns : [ {
 	        				 xtype : 'gridcolumn',
 	        				 autoScroll : true,
