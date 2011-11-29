@@ -32,8 +32,6 @@
 
 		<script src="app/application.js"></script>
 		
-		<script src="product/Miracom/system.js"></script>
-
 		<script src="module/CMN/module.js"></script>
 		<script src="module/SEC/module.js"></script>
 		<script src="module/RPT/module.js"></script>
@@ -41,8 +39,15 @@
 		<script src="module/RAS/module.js"></script>
 		<script src="module/MBI/module.js"></script>
 		<script src="module/WMG/module.js"></script>
+		
+		<script type="text/javascript">
+		var login = {
+			username : '<sec:authentication property="principal.username"/>',
+			factory : '<sec:authentication property="principal.factory"/>'
+		};
+		</script>
 
 	</head>
-	<body user="<sec:authentication property="principal.username"/>" factory="<sec:authentication property="principal.factory"/>">
+	<body>
 	</body>
 </html>

@@ -1,1 +1,1 @@
-SmartFactory.register('RAS', [ 'RAS.controller.RASController' ]);
+Ext.module.register('RAS', [ 'RAS.controller.RASController' ]);

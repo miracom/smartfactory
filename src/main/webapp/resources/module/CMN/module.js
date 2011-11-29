@@ -1,1 +1,1 @@
-SmartFactory.register('CMN', [ 'CMN.controller.CMNController' ]);
+Ext.module.register('CMN', [ 'CMN.controller.CMNController' ]);
