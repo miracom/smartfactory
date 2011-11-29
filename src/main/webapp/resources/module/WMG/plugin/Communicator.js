@@ -167,6 +167,8 @@ Ext.define('WMG.plugin.Communicator', {
 			$.cometd.configure({
 				url : url,
 				logLevel : logLevels[options.logLevel + 2]
+				// TODO change logLevel to following line. 
+				// logLevel : logLevels[options.logLevel]
 			});
 			$.cometd.handshake();
 		}
