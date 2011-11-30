@@ -1,5 +1,8 @@
 package com.mesplus.DSN.services;
 
+import javax.jws.WebService;
+
+@WebService
 public class ClsDSNColumnSetup {
 	public java.lang.String GetColumnList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		return null;

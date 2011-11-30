@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ClsDSNExcelTemplateSetupService WSDL service -->
+
+  <service name="ClsDSNExcelTemplateSetup" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+      <parameter name="wsdlServiceElement" value="ClsDSNExcelTemplateSetupService"/>
+      <parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+      <parameter name="wsdlServicePort" value="ClsDSNExcelTemplateSetup"/>
+      <parameter name="className" value="com.mesplus.DSN.services.ClsDSNExcelTemplateSetup"/>
+      <parameter name="wsdlPortType" value="ClsDSNExcelTemplateSetup"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getTemplateFileList" qname="operNS:GetTemplateFileList" returnQName="retNS:GetTemplateFileListReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getExcelTemplate" qname="operNS:GetExcelTemplate" returnQName="retNS:GetExcelTemplateReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getExcelTemplateSheet" qname="operNS:GetExcelTemplateSheet" returnQName="retNS:GetExcelTemplateSheetReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getExcelTemplateField" qname="operNS:GetExcelTemplateField" returnQName="retNS:GetExcelTemplateFieldReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setExcelTemplateAll" qname="operNS:SetExcelTemplateAll" returnQName="retNS:SetExcelTemplateAllReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsExcelTemplate" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsExcelTemplateSheet" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsExcelTemplateField" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getTemplateFileList getExcelTemplateSheet setExcelTemplateAll getExcelTemplateField getExcelTemplate"/>
+
+  </service>
+</deployment>

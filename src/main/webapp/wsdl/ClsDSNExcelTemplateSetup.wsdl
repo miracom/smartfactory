@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.DSN.mesplus.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.DSN.mesplus.com" xmlns:intf="http://services.DSN.mesplus.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.DSN.mesplus.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="GetTemplateFileList">
+    <complexType/>
+   </element>
+   <element name="GetTemplateFileListResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="GetTemplateFileListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetExcelTemplate">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetExcelTemplateResponse">
+    <complexType>
+     <sequence>
+      <element name="GetExcelTemplateReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetExcelTemplateSheet">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetExcelTemplateSheetResponse">
+    <complexType>
+     <sequence>
+      <element name="GetExcelTemplateSheetReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetExcelTemplateField">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetExcelTemplateFieldResponse">
+    <complexType>
+     <sequence>
+      <element name="GetExcelTemplateFieldReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetExcelTemplateAll">
+    <complexType>
+     <sequence>
+      <element name="psParamsExcelTemplate" type="xsd:string"/>
+      <element name="psParamsExcelTemplateSheet" type="xsd:string"/>
+      <element name="psParamsExcelTemplateField" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetExcelTemplateAllResponse">
+    <complexType>
+     <sequence>
+      <element name="SetExcelTemplateAllReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="GetExcelTemplateFieldRequest">
+
+      <wsdl:part element="impl:GetExcelTemplateField" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetExcelTemplateAllResponse">
+
+      <wsdl:part element="impl:SetExcelTemplateAllResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetExcelTemplateAllRequest">
+
+      <wsdl:part element="impl:SetExcelTemplateAll" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetExcelTemplateFieldResponse">
+
+      <wsdl:part element="impl:GetExcelTemplateFieldResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetExcelTemplateResponse">
+
+      <wsdl:part element="impl:GetExcelTemplateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetTemplateFileListResponse">
+
+      <wsdl:part element="impl:GetTemplateFileListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetExcelTemplateSheetResponse">
+
+      <wsdl:part element="impl:GetExcelTemplateSheetResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetExcelTemplateRequest">
+
+      <wsdl:part element="impl:GetExcelTemplate" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetTemplateFileListRequest">
+
+      <wsdl:part element="impl:GetTemplateFileList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetExcelTemplateSheetRequest">
+
+      <wsdl:part element="impl:GetExcelTemplateSheet" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ClsDSNExcelTemplateSetup">
+
+      <wsdl:operation name="GetTemplateFileList">
+
+         <wsdl:input message="impl:GetTemplateFileListRequest" name="GetTemplateFileListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetTemplateFileListResponse" name="GetTemplateFileListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetExcelTemplate">
+
+         <wsdl:input message="impl:GetExcelTemplateRequest" name="GetExcelTemplateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetExcelTemplateResponse" name="GetExcelTemplateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetExcelTemplateSheet">
+
+         <wsdl:input message="impl:GetExcelTemplateSheetRequest" name="GetExcelTemplateSheetRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetExcelTemplateSheetResponse" name="GetExcelTemplateSheetResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetExcelTemplateField">
+
+         <wsdl:input message="impl:GetExcelTemplateFieldRequest" name="GetExcelTemplateFieldRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetExcelTemplateFieldResponse" name="GetExcelTemplateFieldResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetExcelTemplateAll">
+
+         <wsdl:input message="impl:SetExcelTemplateAllRequest" name="SetExcelTemplateAllRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SetExcelTemplateAllResponse" name="SetExcelTemplateAllResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ClsDSNExcelTemplateSetupSoapBinding" type="impl:ClsDSNExcelTemplateSetup">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="GetTemplateFileList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetTemplateFileListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetTemplateFileListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetExcelTemplate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetExcelTemplateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetExcelTemplateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetExcelTemplateSheet">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetExcelTemplateSheetRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetExcelTemplateSheetResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetExcelTemplateField">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetExcelTemplateFieldRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetExcelTemplateFieldResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetExcelTemplateAll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SetExcelTemplateAllRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SetExcelTemplateAllResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ClsDSNExcelTemplateSetupService">
+
+      <wsdl:port binding="impl:ClsDSNExcelTemplateSetupSoapBinding" name="ClsDSNExcelTemplateSetup">
+
+         <wsdlsoap:address location="http://localhost:8080/smartfactory/services/ClsDSNExcelTemplateSetup"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

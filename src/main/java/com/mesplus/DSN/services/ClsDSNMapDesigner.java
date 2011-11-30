@@ -1,5 +1,8 @@
 package com.mesplus.DSN.services;
 
+import javax.jws.WebService;
+
+@WebService
 public class ClsDSNMapDesigner {
 	public java.lang.String GetDesignerS2(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		return null;

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.DSN.mesplus.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.DSN.mesplus.com" xmlns:intf="http://services.DSN.mesplus.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.DSN.mesplus.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="GetFunctionList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetFunctionListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetFunction">
+    <complexType>
+     <sequence>
+      <element name="psParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetFunctionResponse">
+    <complexType>
+     <sequence>
+      <element name="SetFunctionReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="GetFunctionListResponse">
+
+      <wsdl:part element="impl:GetFunctionListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetFunctionRequest">
+
+      <wsdl:part element="impl:SetFunction" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetFunctionResponse">
+
+      <wsdl:part element="impl:SetFunctionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetFunctionListRequest">
+
+      <wsdl:part element="impl:GetFunctionList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ClsSYSFunctionSetup">
+
+      <wsdl:operation name="GetFunctionList">
+
+         <wsdl:input message="impl:GetFunctionListRequest" name="GetFunctionListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetFunctionListResponse" name="GetFunctionListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetFunction">
+
+         <wsdl:input message="impl:SetFunctionRequest" name="SetFunctionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SetFunctionResponse" name="SetFunctionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ClsSYSFunctionSetupSoapBinding" type="impl:ClsSYSFunctionSetup">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="GetFunctionList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetFunctionListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetFunctionListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetFunction">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SetFunctionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SetFunctionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ClsSYSFunctionSetupService">
+
+      <wsdl:port binding="impl:ClsSYSFunctionSetupSoapBinding" name="ClsSYSFunctionSetup">
+
+         <wsdlsoap:address location="http://localhost:8080/smartfactory/services/ClsSYSFunctionSetup"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

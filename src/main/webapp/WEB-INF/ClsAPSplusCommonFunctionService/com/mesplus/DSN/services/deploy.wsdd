@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ClsAPSplusCommonFunctionService WSDL service -->
+
+  <service name="ClsAPSplusCommonFunction" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+      <parameter name="wsdlServiceElement" value="ClsAPSplusCommonFunctionService"/>
+      <parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+      <parameter name="wsdlServicePort" value="ClsAPSplusCommonFunction"/>
+      <parameter name="className" value="com.mesplus.DSN.services.ClsAPSplusCommonFunction"/>
+      <parameter name="wsdlPortType" value="ClsAPSplusCommonFunction"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getGCMDataList" qname="operNS:GetGCMDataList" returnQName="retNS:GetGCMDataListReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:arrParams" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getSQLData" qname="operNS:GetSQLData" returnQName="retNS:GetSQLDataReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:sSqlText" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getSQLDataArrayList" qname="operNS:GetSQLDataArrayList" returnQName="retNS:GetSQLDataArrayListReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:sSqlText" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFunctionControl" qname="operNS:GetFunctionControl" returnQName="retNS:GetFunctionControlReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:arrParams" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setSQLData" qname="operNS:SetSQLData" returnQName="retNS:SetSQLDataReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psSqlText" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="executeDDLQueryOnly" qname="operNS:ExecuteDDLQueryOnly" returnQName="retNS:ExecuteDDLQueryOnlyReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psSqlText" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="uploadFile" qname="operNS:UploadFile" returnQName="retNS:UploadFileReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pbaFile" type="tns:base64Binary"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psFileName" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="executeDDLQueryOnly uploadFile setSQLData getFunctionControl getSQLDataArrayList getSQLData getGCMDataList"/>
+
+  </service>
+</deployment>

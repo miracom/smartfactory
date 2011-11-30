@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.DSN.mesplus.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.DSN.mesplus.com" xmlns:intf="http://services.DSN.mesplus.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.DSN.mesplus.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="GetTableList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetTableListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetTableListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetTableListSync">
+    <complexType/>
+   </element>
+   <element name="GetTableListSyncResponse">
+    <complexType>
+     <sequence>
+      <element name="GetTableListSyncReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetTable">
+    <complexType>
+     <sequence>
+      <element name="psParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetTableResponse">
+    <complexType>
+     <sequence>
+      <element name="SetTableReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="SetTableRequest">
+
+      <wsdl:part element="impl:SetTable" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetTableListResponse">
+
+      <wsdl:part element="impl:GetTableListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetTableListRequest">
+
+      <wsdl:part element="impl:GetTableList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetTableListSyncResponse">
+
+      <wsdl:part element="impl:GetTableListSyncResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetTableResponse">
+
+      <wsdl:part element="impl:SetTableResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetTableListSyncRequest">
+
+      <wsdl:part element="impl:GetTableListSync" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ClsDSNTableSetup">
+
+      <wsdl:operation name="GetTableList">
+
+         <wsdl:input message="impl:GetTableListRequest" name="GetTableListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetTableListResponse" name="GetTableListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetTableListSync">
+
+         <wsdl:input message="impl:GetTableListSyncRequest" name="GetTableListSyncRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetTableListSyncResponse" name="GetTableListSyncResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetTable">
+
+         <wsdl:input message="impl:SetTableRequest" name="SetTableRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SetTableResponse" name="SetTableResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ClsDSNTableSetupSoapBinding" type="impl:ClsDSNTableSetup">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="GetTableList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetTableListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetTableListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetTableListSync">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetTableListSyncRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetTableListSyncResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetTable">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SetTableRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SetTableResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ClsDSNTableSetupService">
+
+      <wsdl:port binding="impl:ClsDSNTableSetupSoapBinding" name="ClsDSNTableSetup">
+
+         <wsdlsoap:address location="http://localhost:8080/smartfactory/services/ClsDSNTableSetup"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

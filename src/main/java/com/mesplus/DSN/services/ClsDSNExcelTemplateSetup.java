@@ -1,5 +1,8 @@
 package com.mesplus.DSN.services;
 
+import javax.jws.WebService;
+
+@WebService
 public class ClsDSNExcelTemplateSetup {
 	public java.lang.String[] GetTemplateFileList() throws java.rmi.RemoteException {
         return null;

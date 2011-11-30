@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.DSN.mesplus.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.DSN.mesplus.com" xmlns:intf="http://services.DSN.mesplus.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.DSN.mesplus.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="GetGCMDataList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="arrParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetGCMDataListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetGCMDataListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetSQLData">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="sSqlText" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetSQLDataResponse">
+    <complexType>
+     <sequence>
+      <element name="GetSQLDataReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetSQLDataArrayList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="sSqlText" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetSQLDataArrayListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetSQLDataArrayListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionControl">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="arrParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionControlResponse">
+    <complexType>
+     <sequence>
+      <element name="GetFunctionControlReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetSQLData">
+    <complexType>
+     <sequence>
+      <element name="psSqlText" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetSQLDataResponse">
+    <complexType>
+     <sequence>
+      <element name="SetSQLDataReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ExecuteDDLQueryOnly">
+    <complexType>
+     <sequence>
+      <element name="psSqlText" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ExecuteDDLQueryOnlyResponse">
+    <complexType>
+     <sequence>
+      <element name="ExecuteDDLQueryOnlyReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="UploadFile">
+    <complexType>
+     <sequence>
+      <element name="pbaFile" type="xsd:base64Binary"/>
+      <element name="psFileName" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="UploadFileResponse">
+    <complexType>
+     <sequence>
+      <element name="UploadFileReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="GetSQLDataArrayListRequest">
+
+      <wsdl:part element="impl:GetSQLDataArrayList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetFunctionControlRequest">
+
+      <wsdl:part element="impl:GetFunctionControl" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetSQLDataRequest">
+
+      <wsdl:part element="impl:SetSQLData" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetSQLDataResponse">
+
+      <wsdl:part element="impl:GetSQLDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetSQLDataRequest">
+
+      <wsdl:part element="impl:GetSQLData" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetGCMDataListRequest">
+
+      <wsdl:part element="impl:GetGCMDataList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetSQLDataArrayListResponse">
+
+      <wsdl:part element="impl:GetSQLDataArrayListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetSQLDataResponse">
+
+      <wsdl:part element="impl:SetSQLDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ExecuteDDLQueryOnlyRequest">
+
+      <wsdl:part element="impl:ExecuteDDLQueryOnly" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="UploadFileResponse">
+
+      <wsdl:part element="impl:UploadFileResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="UploadFileRequest">
+
+      <wsdl:part element="impl:UploadFile" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ExecuteDDLQueryOnlyResponse">
+
+      <wsdl:part element="impl:ExecuteDDLQueryOnlyResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetFunctionControlResponse">
+
+      <wsdl:part element="impl:GetFunctionControlResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetGCMDataListResponse">
+
+      <wsdl:part element="impl:GetGCMDataListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ClsAPSplusCommonFunction">
+
+      <wsdl:operation name="GetGCMDataList">
+
+         <wsdl:input message="impl:GetGCMDataListRequest" name="GetGCMDataListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetGCMDataListResponse" name="GetGCMDataListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetSQLData">
+
+         <wsdl:input message="impl:GetSQLDataRequest" name="GetSQLDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetSQLDataResponse" name="GetSQLDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetSQLDataArrayList">
+
+         <wsdl:input message="impl:GetSQLDataArrayListRequest" name="GetSQLDataArrayListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetSQLDataArrayListResponse" name="GetSQLDataArrayListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetFunctionControl">
+
+         <wsdl:input message="impl:GetFunctionControlRequest" name="GetFunctionControlRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetFunctionControlResponse" name="GetFunctionControlResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetSQLData">
+
+         <wsdl:input message="impl:SetSQLDataRequest" name="SetSQLDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SetSQLDataResponse" name="SetSQLDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ExecuteDDLQueryOnly">
+
+         <wsdl:input message="impl:ExecuteDDLQueryOnlyRequest" name="ExecuteDDLQueryOnlyRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ExecuteDDLQueryOnlyResponse" name="ExecuteDDLQueryOnlyResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="UploadFile">
+
+         <wsdl:input message="impl:UploadFileRequest" name="UploadFileRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:UploadFileResponse" name="UploadFileResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ClsAPSplusCommonFunctionSoapBinding" type="impl:ClsAPSplusCommonFunction">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="GetGCMDataList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetGCMDataListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetGCMDataListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetSQLData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetSQLDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetSQLDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetSQLDataArrayList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetSQLDataArrayListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetSQLDataArrayListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetFunctionControl">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetFunctionControlRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetFunctionControlResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetSQLData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SetSQLDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SetSQLDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ExecuteDDLQueryOnly">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ExecuteDDLQueryOnlyRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ExecuteDDLQueryOnlyResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="UploadFile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="UploadFileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="UploadFileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ClsAPSplusCommonFunctionService">
+
+      <wsdl:port binding="impl:ClsAPSplusCommonFunctionSoapBinding" name="ClsAPSplusCommonFunction">
+
+         <wsdlsoap:address location="http://localhost:8080/smartfactory/services/ClsAPSplusCommonFunction"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

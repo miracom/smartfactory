@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ClsDSNMapDesignerService WSDL service -->
+
+  <service name="ClsDSNMapDesigner" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+      <parameter name="wsdlServiceElement" value="ClsDSNMapDesignerService"/>
+      <parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+      <parameter name="wsdlServicePort" value="ClsDSNMapDesigner"/>
+      <parameter name="className" value="com.mesplus.DSN.services.ClsDSNMapDesigner"/>
+      <parameter name="wsdlPortType" value="ClsDSNMapDesigner"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDesignerS2" qname="operNS:GetDesignerS2" returnQName="retNS:GetDesignerS2Return" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getPersonalizationMap" qname="operNS:GetPersonalizationMap" returnQName="retNS:GetPersonalizationMapReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAdminMap" qname="operNS:GetAdminMap" returnQName="retNS:GetAdminMapReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getPersonalizationCol" qname="operNS:GetPersonalizationCol" returnQName="retNS:GetPersonalizationColReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAdminCol" qname="operNS:GetAdminCol" returnQName="retNS:GetAdminColReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFunctionSpreadList" qname="operNS:GetFunctionSpreadList" returnQName="retNS:GetFunctionSpreadListReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFunctionRelationList" qname="operNS:GetFunctionRelationList" returnQName="retNS:GetFunctionRelationListReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFunctionTableRelationList" qname="operNS:GetFunctionTableRelationList" returnQName="retNS:GetFunctionTableRelationListReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFunctionSPRelationList" qname="operNS:GetFunctionSPRelationList" returnQName="retNS:GetFunctionSPRelationListReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDesignerFunctionSpreadAll" qname="operNS:GetDesignerFunctionSpreadAll" returnQName="retNS:GetDesignerFunctionSpreadAllReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFunctionExcelTemplateFieldList" qname="operNS:GetFunctionExcelTemplateFieldList" returnQName="retNS:GetFunctionExcelTemplateFieldListReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDynamicQueryS2" qname="operNS:GetDynamicQueryS2" returnQName="retNS:GetDynamicQueryS2Return" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setMapDesignerAllS2" qname="operNS:SetMapDesignerAllS2" returnQName="retNS:SetMapDesignerAllS2Return" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsDesigner" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsCondition" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsDesignerTable" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsWhere" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsFunctionTableRelation" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsFunctionSpreadValidation" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsFunctionSPRelation" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsFunctionServiceRelation" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsChart" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsAssign" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamFunctionTemplateRelation" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamFunctionTemplateField" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setPersonalization" qname="operNS:SetPersonalization" returnQName="retNS:SetPersonalizationReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsMap" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsCol" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setAdmin" qname="operNS:SetAdmin" returnQName="retNS:SetAdminReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsMap" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamsCol" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setPersonalizationMap" qname="operNS:SetPersonalizationMap" returnQName="retNS:SetPersonalizationMapReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParams" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setPersonalizationCol" qname="operNS:SetPersonalizationCol" returnQName="retNS:SetPersonalizationColReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParams" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="executeStoredProcedure" qname="operNS:ExecuteStoredProcedure" returnQName="retNS:ExecuteStoredProcedureReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psSPID" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psSPName" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParams" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getServiceMember" qname="operNS:GetServiceMember" returnQName="retNS:GetServiceMemberReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psServiceID" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="copyMapDesigner" qname="operNS:CopyMapDesigner" returnQName="retNS:CopyMapDesignerReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setDynamicQuery" qname="operNS:SetDynamicQuery" returnQName="retNS:SetDynamicQueryReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParams" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setDynamicMultiQuery" qname="operNS:SetDynamicMultiQuery" returnQName="retNS:SetDynamicMultiQueryReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamMaster" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParamDetail" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParentKey" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setDynamicTripleQuery" qname="operNS:SetDynamicTripleQuery" returnQName="retNS:SetDynamicTripleQueryReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamMaster" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParamDetail" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParamDetailDetail" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParentKey" type="tns:string"/>
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psDetailKey" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getDesignerFunctionSpreadAll getFunctionSPRelationList setPersonalizationMap getAdminMap getFunctionSpreadList getFunctionExcelTemplateFieldList setDynamicQuery executeStoredProcedure getDesignerS2 setAdmin getPersonalizationCol copyMapDesigner setMapDesignerAllS2 getAdminCol setDynamicMultiQuery setPersonalization getDynamicQueryS2 getPersonalizationMap getServiceMember setPersonalizationCol setDynamicTripleQuery getFunctionTableRelationList getFunctionRelationList"/>
+
+  </service>
+</deployment>

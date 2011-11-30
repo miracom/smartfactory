@@ -1,0 +1,274 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="D:\Project\MESlplus6WebUI\Source\FormDesign\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\smartfactory\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="ClsDSNMapDesigner" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="GetDesignerS2" qname="ns1:GetDesignerS2" returnQName="ns1:GetDesignerS2Return" returnType="xsd:string" soapAction="" xmlns:ns1="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:psaParam" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="GetPersonalizationMap" qname="ns2:GetPersonalizationMap" returnQName="ns2:GetPersonalizationMapReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetAdminMap" qname="ns3:GetAdminMap" returnQName="ns3:GetAdminMapReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetPersonalizationCol" qname="ns4:GetPersonalizationCol" returnQName="ns4:GetPersonalizationColReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetAdminCol" qname="ns5:GetAdminCol" returnQName="ns5:GetAdminColReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetFunctionSpreadList" qname="ns6:GetFunctionSpreadList" returnQName="ns6:GetFunctionSpreadListReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetFunctionRelationList" qname="ns7:GetFunctionRelationList" returnQName="ns7:GetFunctionRelationListReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetFunctionTableRelationList" qname="ns8:GetFunctionTableRelationList" returnQName="ns8:GetFunctionTableRelationListReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetFunctionSPRelationList" qname="ns9:GetFunctionSPRelationList" returnQName="ns9:GetFunctionSPRelationListReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetDesignerFunctionSpreadAll" qname="ns10:GetDesignerFunctionSpreadAll" returnQName="ns10:GetDesignerFunctionSpreadAllReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetFunctionExcelTemplateFieldList" qname="ns11:GetFunctionExcelTemplateFieldList" returnQName="ns11:GetFunctionExcelTemplateFieldListReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetDynamicQueryS2" qname="ns12:GetDynamicQueryS2" returnQName="ns12:GetDynamicQueryS2Return" returnType="xsd:string" soapAction="" xmlns:ns12="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetMapDesignerAllS2" qname="ns13:SetMapDesignerAllS2" returnQName="ns13:SetMapDesignerAllS2Return" returnType="xsd:string" soapAction="" xmlns:ns13="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:psParamsDesigner" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamsCondition" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamsDesignerTable" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamsWhere" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamsFunctionTableRelation" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamsFunctionSpreadValidation" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamsFunctionSPRelation" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamsFunctionServiceRelation" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamsChart" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamsAssign" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamFunctionTemplateRelation" type="xsd:string"/>
+   <ns1:parameter qname="ns13:psParamFunctionTemplateField" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetPersonalization" qname="ns14:SetPersonalization" returnQName="ns14:SetPersonalizationReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:psParamsMap" type="xsd:string"/>
+   <ns1:parameter qname="ns14:psParamsCol" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetAdmin" qname="ns15:SetAdmin" returnQName="ns15:SetAdminReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:psParamsMap" type="xsd:string"/>
+   <ns1:parameter qname="ns15:psParamsCol" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetPersonalizationMap" qname="ns16:SetPersonalizationMap" returnQName="ns16:SetPersonalizationMapReturn" returnType="xsd:string" soapAction="" xmlns:ns16="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns16:psParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetPersonalizationCol" qname="ns17:SetPersonalizationCol" returnQName="ns17:SetPersonalizationColReturn" returnType="xsd:string" soapAction="" xmlns:ns17="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns17:psParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="ExecuteStoredProcedure" qname="ns18:ExecuteStoredProcedure" returnQName="ns18:ExecuteStoredProcedureReturn" returnType="xsd:string" soapAction="" xmlns:ns18="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:psSPID" type="xsd:string"/>
+   <ns1:parameter qname="ns18:psSPName" type="xsd:string"/>
+   <ns1:parameter qname="ns18:psParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetServiceMember" qname="ns19:GetServiceMember" returnQName="ns19:GetServiceMemberReturn" returnType="xsd:string" soapAction="" xmlns:ns19="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns19:psServiceID" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="CopyMapDesigner" qname="ns20:CopyMapDesigner" returnQName="ns20:CopyMapDesignerReturn" returnType="xsd:string" soapAction="" xmlns:ns20="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns20:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetDynamicQuery" qname="ns21:SetDynamicQuery" returnQName="ns21:SetDynamicQueryReturn" returnType="xsd:string" soapAction="" xmlns:ns21="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns21:psParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetDynamicMultiQuery" qname="ns22:SetDynamicMultiQuery" returnQName="ns22:SetDynamicMultiQueryReturn" returnType="xsd:string" soapAction="" xmlns:ns22="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns22:psParamMaster" type="xsd:string"/>
+   <ns1:parameter qname="ns22:psaParamDetail" type="xsd:string"/>
+   <ns1:parameter qname="ns22:psParentKey" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetDynamicTripleQuery" qname="ns23:SetDynamicTripleQuery" returnQName="ns23:SetDynamicTripleQueryReturn" returnType="xsd:string" soapAction="" xmlns:ns23="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns23:psParamMaster" type="xsd:string"/>
+   <ns1:parameter qname="ns23:psParamDetail" type="xsd:string"/>
+   <ns1:parameter qname="ns23:psaParamDetailDetail" type="xsd:string"/>
+   <ns1:parameter qname="ns23:psParentKey" type="xsd:string"/>
+   <ns1:parameter qname="ns23:psDetailKey" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="GetDesignerFunctionSpreadAll GetFunctionSPRelationList SetPersonalizationMap GetAdminMap GetFunctionSpreadList GetFunctionExcelTemplateFieldList SetDynamicQuery ExecuteStoredProcedure GetDesignerS2 SetAdmin GetPersonalizationCol CopyMapDesigner SetMapDesignerAllS2 GetAdminCol SetDynamicMultiQuery SetPersonalization GetDynamicQueryS2 GetPersonalizationMap GetServiceMember SetPersonalizationCol SetDynamicTripleQuery GetFunctionTableRelationList GetFunctionRelationList"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ClsDSNMapDesigner"/>
+  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsDSNMapDesigner"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsDSNMapDesigner"/>
+  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsDSNMapDesigner"/>
+ </ns1:service>
+ <ns1:service name="ClsAPSplusCommonFunction" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="GetGCMDataList" qname="ns24:GetGCMDataList" returnQName="ns24:GetGCMDataListReturn" returnType="xsd:string" soapAction="" xmlns:ns24="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns24:arrParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetSQLData" qname="ns25:GetSQLData" returnQName="ns25:GetSQLDataReturn" returnType="xsd:string" soapAction="" xmlns:ns25="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns25:sSqlText" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetSQLDataArrayList" qname="ns26:GetSQLDataArrayList" returnQName="ns26:GetSQLDataArrayListReturn" returnType="xsd:string" soapAction="" xmlns:ns26="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns26:sSqlText" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetFunctionControl" qname="ns27:GetFunctionControl" returnQName="ns27:GetFunctionControlReturn" returnType="xsd:string" soapAction="" xmlns:ns27="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns27:arrParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetSQLData" qname="ns28:SetSQLData" returnQName="ns28:SetSQLDataReturn" returnType="xsd:string" soapAction="" xmlns:ns28="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns28:psSqlText" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="ExecuteDDLQueryOnly" qname="ns29:ExecuteDDLQueryOnly" returnQName="ns29:ExecuteDDLQueryOnlyReturn" returnType="xsd:string" soapAction="" xmlns:ns29="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns29:psSqlText" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="UploadFile" qname="ns30:UploadFile" returnQName="ns30:UploadFileReturn" returnType="xsd:string" soapAction="" xmlns:ns30="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns30:pbaFile" type="xsd:base64Binary"/>
+   <ns1:parameter qname="ns30:psFileName" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="ExecuteDDLQueryOnly UploadFile SetSQLData GetFunctionControl GetSQLDataArrayList GetSQLData GetGCMDataList"/>
+  <ns1:parameter name="wsdlPortType" value="ClsAPSplusCommonFunction"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsAPSplusCommonFunction"/>
+  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsAPSplusCommonFunction"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsAPSplusCommonFunction"/>
+ </ns1:service>
+ <ns1:service name="ClsSYSFunctionSetup" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="GetFunctionList" qname="ns31:GetFunctionList" returnQName="ns31:GetFunctionListReturn" returnType="xsd:string" soapAction="" xmlns:ns31="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns31:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetFunction" qname="ns32:SetFunction" returnQName="ns32:SetFunctionReturn" returnType="xsd:string" soapAction="" xmlns:ns32="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns32:psParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="SetFunction GetFunctionList"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ClsSYSFunctionSetup"/>
+  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsSYSFunctionSetup"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsSYSFunctionSetup"/>
+  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsSYSFunctionSetupService"/>
+ </ns1:service>
+ <ns1:service name="ClsDSNExcelTemplateSetup" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="GetTemplateFileList" qname="ns33:GetTemplateFileList" returnQName="ns33:GetTemplateFileListReturn" returnType="xsd:string" soapAction="" xmlns:ns33="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="GetExcelTemplate" qname="ns34:GetExcelTemplate" returnQName="ns34:GetExcelTemplateReturn" returnType="xsd:string" soapAction="" xmlns:ns34="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns34:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetExcelTemplateSheet" qname="ns35:GetExcelTemplateSheet" returnQName="ns35:GetExcelTemplateSheetReturn" returnType="xsd:string" soapAction="" xmlns:ns35="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns35:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetExcelTemplateField" qname="ns36:GetExcelTemplateField" returnQName="ns36:GetExcelTemplateFieldReturn" returnType="xsd:string" soapAction="" xmlns:ns36="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns36:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetExcelTemplateAll" qname="ns37:SetExcelTemplateAll" returnQName="ns37:SetExcelTemplateAllReturn" returnType="xsd:string" soapAction="" xmlns:ns37="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns37:psParamsExcelTemplate" type="xsd:string"/>
+   <ns1:parameter qname="ns37:psParamsExcelTemplateSheet" type="xsd:string"/>
+   <ns1:parameter qname="ns37:psParamsExcelTemplateField" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="GetTemplateFileList GetExcelTemplateSheet SetExcelTemplateAll GetExcelTemplateField GetExcelTemplate"/>
+  <ns1:parameter name="wsdlPortType" value="ClsDSNExcelTemplateSetup"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsDSNExcelTemplateSetup"/>
+  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsDSNExcelTemplateSetup"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsDSNExcelTemplateSetup"/>
+ </ns1:service>
+ <ns1:service name="ClsDSNDatabaseSynchronization" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="GetCompareDB" qname="ns38:GetCompareDB" returnQName="ns38:GetCompareDBReturn" returnType="xsd:string" soapAction="" xmlns:ns38="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns38:parrParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="GetCompareDB"/>
+  <ns1:parameter name="wsdlPortType" value="ClsDSNDatabaseSynchronization"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsDSNDatabaseSynchronization"/>
+  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsDSNDatabaseSynchronization"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsDSNDatabaseSynchronization"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="ClsDSNColumnSetup" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="GetColumnList" qname="ns39:GetColumnList" returnQName="ns39:GetColumnListReturn" returnType="xsd:string" soapAction="" xmlns:ns39="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns39:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetColumnListReverse" qname="ns40:GetColumnListReverse" returnQName="ns40:GetColumnListReverseReturn" returnType="xsd:string" soapAction="" xmlns:ns40="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns40:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetColumn" qname="ns41:SetColumn" returnQName="ns41:SetColumnReturn" returnType="xsd:string" soapAction="" xmlns:ns41="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns41:psParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="GetColumnListReverse GetColumnList SetColumn"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ClsDSNColumnSetup"/>
+  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsDSNColumnSetup"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsDSNColumnSetup"/>
+  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsDSNColumnSetup"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="ClsDSNTableSetup" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="GetTableList" qname="ns42:GetTableList" returnQName="ns42:GetTableListReturn" returnType="xsd:string" soapAction="" xmlns:ns42="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns42:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="GetTableListSync" qname="ns43:GetTableListSync" returnQName="ns43:GetTableListSyncReturn" returnType="xsd:string" soapAction="" xmlns:ns43="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="SetTable" qname="ns44:SetTable" returnQName="ns44:SetTableReturn" returnType="xsd:string" soapAction="" xmlns:ns44="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns44:psParams" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="GetTableList GetTableListSync SetTable"/>
+  <ns1:parameter name="wsdlPortType" value="ClsDSNTableSetup"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsDSNTableSetup"/>
+  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsDSNTableSetup"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsDSNTableSetup"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.DSN.mesplus.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.DSN.mesplus.com" xmlns:intf="http://services.DSN.mesplus.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.DSN.mesplus.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="GetCompareDB">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="parrParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetCompareDBResponse">
+    <complexType>
+     <sequence>
+      <element name="GetCompareDBReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="GetCompareDBResponse">
+
+      <wsdl:part element="impl:GetCompareDBResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetCompareDBRequest">
+
+      <wsdl:part element="impl:GetCompareDB" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ClsDSNDatabaseSynchronization">
+
+      <wsdl:operation name="GetCompareDB">
+
+         <wsdl:input message="impl:GetCompareDBRequest" name="GetCompareDBRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetCompareDBResponse" name="GetCompareDBResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ClsDSNDatabaseSynchronizationSoapBinding" type="impl:ClsDSNDatabaseSynchronization">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="GetCompareDB">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetCompareDBRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetCompareDBResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ClsDSNDatabaseSynchronizationService">
+
+      <wsdl:port binding="impl:ClsDSNDatabaseSynchronizationSoapBinding" name="ClsDSNDatabaseSynchronization">
+
+         <wsdlsoap:address location="http://localhost:8080/smartfactory/services/ClsDSNDatabaseSynchronization"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

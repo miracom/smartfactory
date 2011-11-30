@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.DSN.mesplus.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.DSN.mesplus.com" xmlns:intf="http://services.DSN.mesplus.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.DSN.mesplus.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="GetColumnList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetColumnListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetColumnListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetColumnListReverse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetColumnListReverseResponse">
+    <complexType>
+     <sequence>
+      <element name="GetColumnListReverseReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetColumn">
+    <complexType>
+     <sequence>
+      <element name="psParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetColumnResponse">
+    <complexType>
+     <sequence>
+      <element name="SetColumnReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="GetColumnListRequest">
+
+      <wsdl:part element="impl:GetColumnList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetColumnListReverseRequest">
+
+      <wsdl:part element="impl:GetColumnListReverse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetColumnListReverseResponse">
+
+      <wsdl:part element="impl:GetColumnListReverseResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetColumnResponse">
+
+      <wsdl:part element="impl:SetColumnResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetColumnListResponse">
+
+      <wsdl:part element="impl:GetColumnListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetColumnRequest">
+
+      <wsdl:part element="impl:SetColumn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ClsDSNColumnSetup">
+
+      <wsdl:operation name="GetColumnList">
+
+         <wsdl:input message="impl:GetColumnListRequest" name="GetColumnListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetColumnListResponse" name="GetColumnListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetColumnListReverse">
+
+         <wsdl:input message="impl:GetColumnListReverseRequest" name="GetColumnListReverseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetColumnListReverseResponse" name="GetColumnListReverseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetColumn">
+
+         <wsdl:input message="impl:SetColumnRequest" name="SetColumnRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SetColumnResponse" name="SetColumnResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ClsDSNColumnSetupSoapBinding" type="impl:ClsDSNColumnSetup">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="GetColumnList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetColumnListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetColumnListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetColumnListReverse">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetColumnListReverseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetColumnListReverseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetColumn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SetColumnRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SetColumnResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ClsDSNColumnSetupService">
+
+      <wsdl:port binding="impl:ClsDSNColumnSetupSoapBinding" name="ClsDSNColumnSetup">
+
+         <wsdlsoap:address location="http://localhost:8080/smartfactory/services/ClsDSNColumnSetup"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

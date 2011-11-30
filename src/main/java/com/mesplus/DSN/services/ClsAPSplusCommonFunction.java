@@ -18,7 +18,6 @@ public class ClsAPSplusCommonFunction {
 			return null;
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			throw new RemoteException("Exception", e);
 		}
 	}
