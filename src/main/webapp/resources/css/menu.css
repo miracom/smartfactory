@@ -7,14 +7,14 @@
 #msg-div {
     position:absolute;
     right:2%;
-    bottom:10px;
+    bottom:30px;
     width:300px;
     z-index:20000;
 }
 #msg-div .msg {
-    border-radius: 8px;
-    -moz-border-radius: 8px;
-    background: #F6F6F6;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    background: #ffffff;
     border: 2px solid #ccc;
     margin-top: 2px;
     padding: 10px 15px;
@@ -102,6 +102,7 @@
 .x-nlg .x-toolbar.appQuickIcon,.x-toolbar.appQuickIcon{background:url('../image/bgAppQuickIcon.gif') repeat-x !important;}
 .appQuickIcon .x-toolbar-item{margin:0 5px}
 .x-tab em{padding-top:1px;padding-left:4px}
+.x-toolbar-default-docked-top{background:url('../image/bgDockedTop.png') repeat-x !important;height:22px;top:-1px}
 
 .dockNavigation .x-panel-header-text-default{color:#efefef;}
 .dockNavigation .x-panel-header-default{background:url('../image/bgDockHeader.gif') repeat-x;background-color:#5875a0;border:none;height:27px}
@@ -111,6 +112,13 @@
 .x-tool-expand-left{margin-left:3px !important}
 .dockNavigation .x-tool-collapse-right,.x-tool-expand-right{background:url('../image/iconBtnSet.gif') -15px 2px no-repeat;}
 .x-panel-header-default-left, .x-panel-header-default-right{background:url('../image/bgDockCollapsed.gif') no-repeat;width:25px;border-width:0;left:-1px}
+.x-panel-body-default{border-top:1px}
+.navDoctedRefresh{background:url('../image/iconDockedRefreshOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
+.navDoctedClear{background:url('../image/iconDockedClearOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
+.navDoctedRefresh:hover{background:url('../image/iconDockedRefreshOn.png') no-repeat !important;}
+.navDoctedClear:hover{background:url('../image/iconDockedClearOn.png') no-repeat !important;}
+.x-toolbar-default-docked-top .x-btn-default-toolbar-small{border:0}
+.x-toolbar-default-docked-top .x-btn-default-toolbar-small-hover{border:0}
 
 /*search panel*/
 .searchPanel .x-form-item-label{color:#666;font-size:11px;}
