@@ -11,8 +11,7 @@
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.0.6.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.9</org.aspectj-version>
-		<org.slf4j-version>1.5.10</org.slf4j-version>
-		<json-simple-version>1.1</json-simple-version>
+		<org.slf4j-version>1.6.4</org.slf4j-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -163,8 +162,6 @@
 		</dependency>
 
 		<!-- JSON Simple & Jackson Library -->
-		<!-- <dependency> <groupId>com.googlecode.json-simple</groupId> <artifactId>json-simple</artifactId> 
-			<version>${json-simple-version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -190,6 +187,31 @@
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
+		</dependency>
+
+		<!-- Comet Service -->
+		<dependency>
+		    <groupId>org.cometd.java</groupId>
+		    <artifactId>cometd-java-client</artifactId>
+		    <version>2.4.0.RC1</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.cometd.java</groupId>
+		    <artifactId>cometd-java-server</artifactId>
+		    <version>2.4.0.RC1</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.cometd.java</groupId>
+		    <artifactId>cometd-java-annotations</artifactId>
+		    <version>2.4.0.RC1</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.cometd.java</groupId>
+		    <artifactId>cometd-websocket-jetty</artifactId>
+		    <version>2.4.0.RC1</version>
 		</dependency>
 
 		<!-- Test -->

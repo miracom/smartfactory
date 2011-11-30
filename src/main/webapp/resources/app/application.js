@@ -1,60 +1,61 @@
 Ext.Loader.setConfig({
 	enabled : true,
 	paths : {
+		'SmartFactory' : 'product/SmartFactory.js',
 		'Ext.ux' : 'js/ux'
 	}
 });
 
-Ext.onReady(function() {
-	SmartFactory.user(Ext.getBody().getAttribute('user'));
-	SmartFactory.factory(Ext.getBody().getAttribute('factory'));
+Ext.require(['SmartFactory']);
 
+Ext.module = function() {
+	var modules_order = [];
+	var modules = {};
+
+	function getModules() {
+		return modules;
+	}
+
+	function registerModule(module_name, controllers) {
+		if (modules[module_name])
+			return;
+
+		modules[module_name] = controllers;
+		modules_order.push(module_name);
+
+		Ext.Loader.setPath(module_name, 'module/' + module_name);
+	}
+
+	function getAllControllers() {
+		var joined = [];
+		for(var i = 0;i < modules_order.length;i++)
+			joined = joined.concat(modules[modules_order[i]]);
+		return joined;
+	}
+	
+	return {
+		modules : getModules,
+		register : registerModule,
+		controllers : getAllControllers,
+	};
+	
+}();
+
+var console = console || {
+	log : function() {
+	}
+};
+
+Ext.onReady(function() {
 	Ext.application({
 		name : 'SmartFactory',
 		autoCreateViewport : false,
 
 		controllers : [ 'SmartFactory.controller.ApplicationController' ]
-				.concat(SmartFactory.controllers()),
+				.concat(Ext.module.controllers()),
 
 		launch : function() {
-			// Login 등등.. 여기서
-			// ...
-//			Ext.apply(SmartFactory, Miracom);
-
 			Ext.create('SmartFactory.view.Viewport').show();
 		}
 	});
 });
-
-// Ext.override(Ext.form.Field, {
-// initEvents: function () {
-// this.el.on(Ext.isIE ? "keydown" : "keypress", this.fireKey, this);
-// this.el.on("focus", this.onFocus, this);
-// this.el.on("blur", this.onBlur, this);
-// this.el.on("change", this.markDirty, this);
-// // reference to original value for reset
-// this.originalValue = this.getValue();
-// },
-// markDirty: function () {
-// if (this.isDirty() && this.originalValue != this.getValue()) {
-// if (!this.dirtyIcon) {
-// var elp = this.el.parent('.x-form-element');
-// this.dirtyIcon = elp.createChild({
-// cls: 'x-grid3-dirty-cell'
-// });
-// this.dirtyIcon.position("absolute",0,0,0);
-// this.dirtyIcon.setSize(10, 10);
-// }
-// this.alignDirtyIcon();
-// this.dirtyIcon.show();
-// this.on('resize', this.alignDirtyIcon, this);
-// } else {
-// if (this.dirtyIcon) {
-// this.dirtyIcon.hide();
-// }
-// }
-// },
-// alignDirtyIcon: function () {
-// this.dirtyIcon.alignTo(this.el, 'tl', [0, 0]);
-// }
-// });

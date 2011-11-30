@@ -1,1 +1,1 @@
-SmartFactory.register('NAM', [ 'NAM.controller.NAMController' ]);
+Ext.module.register('NAM', [ 'NAM.controller.NAMController' ]);

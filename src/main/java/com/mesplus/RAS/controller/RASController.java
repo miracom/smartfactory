@@ -57,6 +57,7 @@ public class RASController {
 		params.put("res_id", res_id);
 		
 		Resource ret = 	resourceDao.findResource(params);
+		
 		return ret;
 	}
 }

@@ -171,7 +171,7 @@ Ext.define('RPT.view.report.ReportLine', {
 		items : [ {
 			xtype : 'gridpanel',
 			store : 'RPT.store.ReportListStore',
-			//store : store,
+			columnLines : true,
 			columns : [ {
 				xtype : 'gridcolumn',
 				autoScroll : true,

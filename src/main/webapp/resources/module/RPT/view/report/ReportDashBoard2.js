@@ -59,6 +59,7 @@ Ext.define('RPT.view.report.ReportDashBoard2', {
 	        		        	  flex : 1,
 	        		        	  margin : '0 0 1 0',
 	        		        	  store : 'RPT.store.ReportListStore',
+	        		        	  columnLines : true,
 	        		        	  columns : [ {
 	        		        		  xtype : 'gridcolumn',
 	        		        		  autoScroll : true,
@@ -139,6 +140,7 @@ Ext.define('RPT.view.report.ReportDashBoard2', {
 	        		        	  flex : 1,
 	        		        	  margin : '0 0 1 0',
 	        		        	  store : 'RPT.store.ReportListStore',
+	        		        	  columnLines : true,
 	        		        	  columns : [ {
 	        		        		  xtype : 'gridcolumn',
 	        		        		  autoScroll : true,
@@ -218,6 +220,7 @@ Ext.define('RPT.view.report.ReportDashBoard2', {
 	        		        	  xtype : 'gridpanel',
 	        		        	  flex : 1,
 	        		        	  store : 'RPT.store.ReportListStore',
+	        		        	  columnLines : true,
 	        		        	  columns : [ {
 	        		        		  xtype : 'gridcolumn',
 	        		        		  autoScroll : true,

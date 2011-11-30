@@ -60,7 +60,10 @@ Ext.define('CMN.view.viewport.East', {
         })
     }],
     buttons: [{
-        text: 'Search'
+        text: 'Search',
+        handler : function() {
+        	SmartFactory.communicator.notice('XXXX', 'YYYYYYY');
+        }
     }, {
         text: 'Reset'
     }]

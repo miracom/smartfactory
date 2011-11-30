@@ -33,10 +33,14 @@
 	</logger>
 
 	<logger name="org.springframework.security">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 
 	<logger name="java.sql">
+		<level value="debug" />
+	</logger>
+
+	<logger name="org.cometd">
 		<level value="debug" />
 	</logger>
 

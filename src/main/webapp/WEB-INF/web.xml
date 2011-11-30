@@ -8,7 +8,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/spring/root-context.xml
-			/WEB-INF/spring/security-context.xml
 		</param-value>
 	</context-param>
 
@@ -31,6 +30,64 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+    <servlet>
+        <servlet-name>cometd</servlet-name>
+        <servlet-class>org.cometd.java.annotation.AnnotationCometdServlet</servlet-class>
+        <init-param>
+            <param-name>timeout</param-name>
+            <param-value>30000</param-value>
+        </init-param>
+        <init-param>
+            <param-name>interval</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>maxInterval</param-name>
+            <param-value>10000</param-value>
+        </init-param>
+        <init-param>
+            <param-name>maxLazyTimeout</param-name>
+            <param-value>5000</param-value>
+        </init-param>
+        <init-param>
+            <param-name>long-polling.multiSessionInterval</param-name>
+            <!-- <param-value>2000</param-value> -->
+            <param-value>2000</param-value>
+        </init-param>
+        <init-param>
+            <param-name>logLevel</param-name>
+            <param-value>3</param-value>
+        </init-param>
+        <init-param>
+            <param-name>services</param-name>
+            <param-value>
+            	com.mesplus.WMG.service.EchoService, com.mesplus.WMG.service.CommunicatorService
+            </param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>cometd</servlet-name>
+        <url-pattern>/cometd/*</url-pattern>
+    </servlet-mapping>
+    
+	<!--
+	While CometD 2 runs natively in Jetty 7 and in Servlet 3 compliant servlet containers, it requires additional configuration for other servlet containers such as Jetty 6 or Tomcat 6.
+	These other servlet containers need a ContinuationFilter to be configured for the paths that make use of Jetty Continuations (in CometD this path is usually "/cometd/*")
+	-->     
+	<!--
+	<filter>
+        <filter-name>continuation</filter-name>
+        <filter-class>org.eclipse.jetty.continuation.ContinuationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>continuation</filter-name>
+        <url-pattern>/cometd/*</url-pattern>
+    </filter-mapping>	
+	-->
+	
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -40,4 +97,5 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
 </web-app>

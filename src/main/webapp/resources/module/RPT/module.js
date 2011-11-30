@@ -1,1 +1,1 @@
-SmartFactory.register('RPT', [ 'RPT.controller.RPTController' ]);
+Ext.module.register('RPT', [ 'RPT.controller.RPTController' ]);

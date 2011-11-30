@@ -12,10 +12,10 @@ Ext.define('RPT.model.Report', {
 		{ name: 'mat_desc', type: 'string' },
 		{ name: 'oper_sts', type: 'string' },
 		{ name: 'ord_id', type: 'string' },
-		{ name: 'mat_qty', type: 'number' },
-		{ name: 'report_view', type: 'string' },
-		{ name: 'insp_id', type: 'string' },
 		{ name: 'plan_qty', type: 'number' },
-		{ name: 'finished_qty', type: 'number' }
+		{ name: 'mat_qty', type: 'number' },
+		{ name: 'finished_qty', type: 'number' },
+		{ name: 'insp_id', type: 'string' },
+		{ name: 'report_view', type: 'string' }
     ]
 });
