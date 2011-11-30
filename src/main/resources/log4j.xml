@@ -41,7 +41,7 @@
 	</logger>
 
 	<logger name="org.cometd">
-		<level value="debug" />
+		<level value="warn" />
 	</logger>
 
 	<!-- Root Logger -->
