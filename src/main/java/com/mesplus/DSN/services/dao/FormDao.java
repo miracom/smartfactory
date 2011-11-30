@@ -45,4 +45,7 @@ public interface FormDao {
 
 	public List<Map<String, Object>> mtbldatNtDao(String a_fac_id, String a_tbl_code, String a_lang_flag, String a_params, ReturnType rType)
 			throws SQLException;
+
+	public List<Map<String, Object>> dynamicS2NtDao(String fac_id, String func_id, String spd_id, String col_param, String cond_param, String lang_flag)
+			throws SQLException;
 }
