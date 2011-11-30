@@ -1,1 +1,1 @@
-SmartFactory.register('SEC', [ 'SEC.controller.SECController' ]);
+Ext.module.register('SEC', [ 'SEC.controller.SECController' ]);

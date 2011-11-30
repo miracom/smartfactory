@@ -1,1 +1,1 @@
-SmartFactory.register('MBI', [ 'MBI.controller.MBIController' ]);
+Ext.module.register('MBI', [ 'MBI.controller.MBIController' ]);

@@ -11,30 +11,31 @@ Ext.define('WMG.controller.WMGController', {
 				afterrender : this.onViewportRendered
 			}
 		});
+		
+		var self = this;
+
+		SmartFactory.mixin('WMG.plugin.Communicator', {
+			messageNoticed : function(message) {
+				console.dir(message);
+				SmartFactory.msg(message.data.title, message.data.message);
+			},
+			memberJoinedIn : function(message) {
+				self.joinIn(message.data.username);
+				SmartFactory.msg('Joined in.', message.data.username);
+			},
+			memberJoinedOut : function(message) {
+				self.joinOut(message.data.username);
+				SmartFactory.msg('Joined out.', message.data.username);
+			}
+		});
+		
+		SmartFactory.communicator.join();
 	},
 
 	onViewportRendered : function() {
 		SmartFactory.addDockingNav('WMG.view.NavCommunicator', {
     		iconCls : 'iconsetDockCommunicator'
 		});
-		
-		var self = this;
-		SmartFactory.communicator(Ext.create('WMG.service.Communicator', {
-			username : SmartFactory.user(),
-			callback_notice : function(message) {
-				console.log('HHHHHHHH');
-				console.dir(message);
-				SmartFactory.msg(message.data.title, message.data.message);
-			},
-			callback_join_in : function(message) {
-				self.joinIn(message.data.username);
-				SmartFactory.msg('Joined in.', message.data.username);
-			},
-			callback_join_out : function(message) {
-				self.joinOut(message.data.username);
-				SmartFactory.msg('Joined out.', message.data.username);
-			}
-		})).join();
 	},
 	
 	joinIn : function(user) {

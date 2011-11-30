@@ -26,7 +26,7 @@ Ext.define('SEC.controller.SECController', {
 				handler : function() {
 					Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function(confirm) {
 						if (confirm === 'yes') {
-							SmartFactory.communicator().leave();
+							SmartFactory.communicator.leave();
 							document.location.href = 'logout';
 						}
 

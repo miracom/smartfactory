@@ -1,1 +1,1 @@
-SmartFactory.register('WIP', [ 'WIP.controller.WIPController' ]);
+Ext.module.register('WIP', [ 'WIP.controller.WIPController' ]);

@@ -235,6 +235,7 @@ Ext.define('RPT.view.report.ReportBar', {
 		items : [ {
 			xtype : 'gridpanel',
 			store : 'RPT.store.ReportListStore',
+			columnLines : true,
 			columns : [ {
 				xtype : 'gridcolumn',
 				autoScroll : true,

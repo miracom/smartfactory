@@ -1,1 +1,1 @@
-SmartFactory.register('WMG', [ 'WMG.controller.WMGController' ]);
+Ext.module.register('WMG', [ 'WMG.controller.WMGController' ]);
