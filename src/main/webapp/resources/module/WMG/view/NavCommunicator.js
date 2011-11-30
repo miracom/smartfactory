@@ -2,7 +2,8 @@ Ext.define('WMG.view.NavCommunicator', {
 	extend: 'Ext.panel.Panel',
 
 	tbar : [ {
-		text : 'Refresh',
+		
+		cls : 'navDoctedRefresh',
 		listeners : {
 			click : function(button) {
 				var store = Ext.StoreManager.lookup('WMG.store.CommunicatorStore');
@@ -10,7 +11,7 @@ Ext.define('WMG.view.NavCommunicator', {
 			}
 		}
 	}, {
-		text : 'Clear',
+		cls : 'navDoctedClear',
 		listeners : {
 			click : function() {
 				var store = Ext.StoreManager.lookup('WMG.store.CommunicatorStore');

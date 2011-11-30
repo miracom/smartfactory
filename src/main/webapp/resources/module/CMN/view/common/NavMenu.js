@@ -28,7 +28,7 @@ Ext.define('CMN.view.common.NavMenu', {
 	},
 
 	tbar : [ {
-		text : 'Refresh',
+		cls : 'navDoctedRefresh',
 		listeners : {
 			click : function(button) {
 				var store = Ext.StoreManager.lookup('CMN.store.MenuStore');
