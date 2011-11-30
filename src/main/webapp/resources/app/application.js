@@ -36,13 +36,15 @@ Ext.module = function() {
 	return {
 		modules : getModules,
 		register : registerModule,
-		controllers : getAllControllers,
+		controllers : getAllControllers
 	};
 	
 }();
 
 var console = console || {
 	log : function() {
+	},
+	trace : function(){
 	}
 };
 
