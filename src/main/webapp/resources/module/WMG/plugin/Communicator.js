@@ -176,8 +176,8 @@ Ext.define('WMG.plugin.Communicator', {
 		function leave() {
 			$.cometd.batch(function() {
 				$.cometd.publish(options.joinOutChannel, {
-					username : self.username,
-					userid : self.username
+					username : options.username,
+					userid : options.username
 				});
 				unsubscribe();
 			});
