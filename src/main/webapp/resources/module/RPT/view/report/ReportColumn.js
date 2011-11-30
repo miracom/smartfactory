@@ -41,56 +41,6 @@ Ext.define('RPT.view.report.ReportColumn', {
 	        	 } ]
 	         },
 	         {
-	        	 xtype : 'toolbar',
-	        	 height : 30,
-	        	 layout : {
-	        		 pack : 'start',
-	        		 type : 'hbox'
-	        	 },
-	        	 items : [ {
-	        		 xtype : 'exporterbutton',
-	        		 store : EX_store
-	        	 }, {
-	        		 iconCls : 'icon1_32',
-	        		 scale : 'small'
-	        	 }, {
-	        		 xtype : 'tbspacer',
-	        		 width : 3
-	        	 }, {
-	        		 iconCls : 'icon2_32',
-	        		 scale : 'small'
-	        	 }, {
-	        		 xtype : 'tbspacer',
-	        		 width : 3
-	        	 }, {
-	        		 iconCls : 'icon3_32',
-	        		 scale : 'small'
-	        	 }, {
-	        		 xtype : 'tbspacer',
-	        		 width : 3
-	        	 }, {
-	        		 iconCls : 'icon4_32',
-	        		 scale : 'small'
-	        	 }, {
-	        		 xtype : 'tbspacer',
-	        		 width : 3
-	        	 }, {
-	        		 iconCls : 'icon5_32',
-	        		 scale : 'small'
-	        	 }, {
-	        		 xtype : 'tbfill',
-	        	 }, {
-	        		 iconCls : 'icon1_32',
-	        		 scale : 'small'
-	        	 }, {
-	        		 xtype : 'tbspacer',
-	        		 width : 3
-	        	 }, {
-	        		 iconCls : 'icon2_32',
-	        		 scale : 'small'
-	        	 } ]
-	         }, 
-	         {
 	        	 xtype : 'container',
 	        	 layout : 'fit',
 	        	 flex : 1,
@@ -161,9 +111,6 @@ Ext.define('RPT.view.report.ReportColumn', {
 	        		 xtype : 'gridpanel',
 	        		 store: 'RPT.store.ReportListStore',
 	        		 title : 'TestGrid',
-	        		 tbar :  {
-	        			 xtype : 'exporterbutton'
-	        		 },
 	        		 columns : [ {
 	        			 xtype : 'gridcolumn',
 	        			 autoScroll : true,
@@ -238,6 +185,9 @@ Ext.define('RPT.view.report.ReportColumn', {
 	        		 features : [ {
 	        			 ftype : 'grouping'
 	        		 } ],
+	        		 tbar :  {
+	        			 xtype : 'exporterbutton'
+	        		 },
 	        		 listeners: {
 	        			 itemclick: function(grid, record, item, index, e, opt) {
 
@@ -254,5 +204,22 @@ Ext.define('RPT.view.report.ReportColumn', {
 	        			 }
 	        		 }
 	        	 } ]
-	         } ]
+	         },
+	         {
+	        	 xtype : 'toolbar',
+	        	 height : 30,
+	        	 layout : {
+	        		 pack : 'start',
+	        		 type : 'hbox'
+	        	 },
+	        	 items : [ {
+	        		 xtype : 'tbspacer',
+	        		 width : 3
+	        	 }, {
+	        		 xtype : 'tbfill'
+	        	 }, {
+	        		 xtype : 'exporterbutton',
+	        		 store : EX_store
+	        	 } ]
+	         }, ]
 });

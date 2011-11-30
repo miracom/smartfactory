@@ -3,7 +3,7 @@ Ext.define('RAS.store.ResourceListStore', {
 	
 	storeId: 'ras.resource_list_store',
 	
-	autoLoad: true,
+	autoLoad: false,
 	
 	model: 'RAS.model.Resource',
 

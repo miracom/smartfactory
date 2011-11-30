@@ -50,5 +50,9 @@ $window-header-color:#333;
 //separator
 $toolbar-separator-color: #ccc !default;
 
+//toolbar
+$toolbar-background-color:#ffffff;
+$toolbar-background-gradient:#ffffff;
+
 @import 'compass';
 @import 'ext4/default/all';
