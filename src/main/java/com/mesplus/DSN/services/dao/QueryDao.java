@@ -1,4 +1,4 @@
-package com.mesplus.MBI.dao;
+package com.mesplus.DSN.services.dao;
 
 import java.util.List;
 import java.util.Map;

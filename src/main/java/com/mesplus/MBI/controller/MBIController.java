@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mesplus.MBI.dao.FormDao;
+import com.mesplus.DSN.services.dao.FormDao;
+import com.mesplus.util.EnumUtils.ReturnType;
 
 @Controller
 public class MBIController {
@@ -36,20 +37,20 @@ public class MBIController {
 
 		Map<String, Object> design = new HashMap<String, Object>();
 
-		design.put("fsprelNt", formDao.fsprelNtDao(fac_id, func_id, spd_id));
-		design.put("ftrfldNt", formDao.ftrfldNtDao(fac_id, func_id, func_template_id));
-		design.put("fxtrelNt", formDao.fxtrelNtDao(fac_id, func_id));
-		design.put("grpcolNt", formDao.grpcolNtDao(fac_id, func_id, lang_flag));
-		design.put("grpmapNt", formDao.grpmapNtDao(fac_id, func_id));
-		design.put("assdefGenNt", formDao.assdefGenNtDao(fac_id, func_id));
-		design.put("chtinfNt", formDao.chtinfNtDao(fac_id, func_id));
-		design.put("consqlGenNt", formDao.consqlGenNtDao(fac_id, func_id));
-		design.put("fscrelNt", formDao.fscrelNtDao(fac_id, func_id, spd_id));
-		design.put("mapconGenNt", formDao.mapconGenNtDao(fac_id, func_id, lang_flag));
-		design.put("mapdefS2Nt", formDao.mapdefS2NtDao(fac_id, func_id, admin_user));
-		design.put("tabvldNt", formDao.tabvldNtDao(fac_id, func_id, spd_id));
-		design.put("usrcolNt", formDao.usrcolNtDao(fac_id, func_id, grp_user_id, lang_flag));
-		design.put("usrmapNt", formDao.usrmapNtDao(fac_id, func_id, grp_user_id));
+		design.put("fsprelNt", formDao.fsprelNtDao(fac_id, func_id, spd_id, ReturnType.OBJECT));
+		design.put("ftrfldNt", formDao.ftrfldNtDao(fac_id, func_id, func_template_id, ReturnType.OBJECT));
+		design.put("fxtrelNt", formDao.fxtrelNtDao(fac_id, func_id, ReturnType.OBJECT));
+		design.put("grpcolNt", formDao.grpcolNtDao(fac_id, func_id, lang_flag, ReturnType.OBJECT));
+		design.put("grpmapNt", formDao.grpmapNtDao(fac_id, func_id, ReturnType.OBJECT));
+		design.put("assdefGenNt", formDao.assdefGenNtDao(fac_id, func_id, ReturnType.OBJECT));
+		design.put("chtinfNt", formDao.chtinfNtDao(fac_id, func_id, ReturnType.OBJECT));
+		design.put("consqlGenNt", formDao.consqlGenNtDao(fac_id, func_id, ReturnType.OBJECT));
+		design.put("fscrelNt", formDao.fscrelNtDao(fac_id, func_id, spd_id, ReturnType.OBJECT));
+		design.put("mapconGenNt", formDao.mapconGenNtDao(fac_id, func_id, lang_flag, ReturnType.OBJECT));
+		design.put("mapdefS2Nt", formDao.mapdefS2NtDao(fac_id, func_id, admin_user, ReturnType.OBJECT));
+		design.put("tabvldNt", formDao.tabvldNtDao(fac_id, func_id, spd_id, ReturnType.OBJECT));
+		design.put("usrcolNt", formDao.usrcolNtDao(fac_id, func_id, grp_user_id, lang_flag, ReturnType.OBJECT));
+		design.put("usrmapNt", formDao.usrmapNtDao(fac_id, func_id, grp_user_id, ReturnType.OBJECT));
 
 		return design;
 	}
@@ -60,7 +61,7 @@ public class MBIController {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 
-		return formDao.consqlGenNtDao(fac_id, func_id);
+		return formDao.consqlGenNtDao(fac_id, func_id, ReturnType.OBJECT);
 	}
 
 	@RequestMapping(value = "module/MBI/data/fscrel_nt.json", method = RequestMethod.GET)
@@ -70,7 +71,7 @@ public class MBIController {
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
 
-		return formDao.fscrelNtDao(fac_id, func_id, spd_id);
+		return formDao.fscrelNtDao(fac_id, func_id, spd_id, ReturnType.OBJECT);
 	}
 
 	@RequestMapping(value = "module/MBI/data/mapcon_gen_nt.json", method = RequestMethod.GET)
@@ -80,7 +81,7 @@ public class MBIController {
 		String func_id = request.getParameter("func_id");
 		String lang_flag = request.getParameter("lang_flag");
 
-		return formDao.mapconGenNtDao(fac_id, func_id, lang_flag);
+		return formDao.mapconGenNtDao(fac_id, func_id, lang_flag, ReturnType.OBJECT);
 	}
 
 	@RequestMapping(value = "module/MBI/data/mapdef_s2_nt.json", method = RequestMethod.GET)
@@ -90,7 +91,7 @@ public class MBIController {
 		String func_id = request.getParameter("func_id");
 		String admin_user = request.getParameter("admin_user");
 
-		return formDao.mapdefS2NtDao(fac_id, func_id, admin_user);
+		return formDao.mapdefS2NtDao(fac_id, func_id, admin_user, ReturnType.OBJECT);
 	}
 
 	@RequestMapping(value = "module/MBI/data/tabvld_nt.json", method = RequestMethod.GET)
@@ -100,7 +101,7 @@ public class MBIController {
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
 
-		return formDao.tabvldNtDao(fac_id, func_id, spd_id);
+		return formDao.tabvldNtDao(fac_id, func_id, spd_id, ReturnType.OBJECT);
 	}
 
 	@RequestMapping(value = "module/MBI/data/usrcol_nt.json", method = RequestMethod.GET)
@@ -111,7 +112,7 @@ public class MBIController {
 		String grp_usr_id = request.getParameter("grp_usr_id");
 		String lang_flag = request.getParameter("lang_flag");
 
-		return formDao.usrcolNtDao(fac_id, func_id, grp_usr_id, lang_flag);
+		return formDao.usrcolNtDao(fac_id, func_id, grp_usr_id, lang_flag, ReturnType.OBJECT);
 	}
 
 	@RequestMapping(value = "module/MBI/data/usrmap_nt.json", method = RequestMethod.GET)
@@ -121,7 +122,7 @@ public class MBIController {
 		String func_id = request.getParameter("func_id");
 		String grp_usr_id = request.getParameter("grp_usr_id");
 
-		return formDao.usrmapNtDao(fac_id, func_id, grp_usr_id);
+		return formDao.usrmapNtDao(fac_id, func_id, grp_usr_id, ReturnType.OBJECT);
 	}
 
 	// Test URL: module/MBI/data/fsprel_nt.json?fac_id=83&func_id=904&spd_id=1
@@ -132,7 +133,7 @@ public class MBIController {
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
 
-		return formDao.fsprelNtDao(fac_id, func_id, spd_id);
+		return formDao.fsprelNtDao(fac_id, func_id, spd_id, ReturnType.OBJECT);
 	}
 
 	// Test URL:
@@ -144,7 +145,7 @@ public class MBIController {
 		String func_id = request.getParameter("func_id");
 		String func_template_id = request.getParameter("func_template_id");
 
-		return formDao.ftrfldNtDao(fac_id, func_id, func_template_id);
+		return formDao.ftrfldNtDao(fac_id, func_id, func_template_id, ReturnType.OBJECT);
 	}
 
 	// Test URL: module/MBI/data/fxtrel_nt.json?fac_id=83&func_id=904
@@ -154,7 +155,7 @@ public class MBIController {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 
-		return formDao.fxtrelNtDao(fac_id, func_id);
+		return formDao.fxtrelNtDao(fac_id, func_id, ReturnType.OBJECT);
 	}
 
 	// Test URL:
@@ -166,7 +167,7 @@ public class MBIController {
 		String func_id = request.getParameter("func_id");
 		String lang_falg = request.getParameter("lang_falg");
 
-		return formDao.grpcolNtDao(fac_id, func_id, lang_falg);
+		return formDao.grpcolNtDao(fac_id, func_id, lang_falg, ReturnType.OBJECT);
 	}
 
 	// Test URL: module/MBI/data/grpmap_nt.json?fac_id=2&func_id=84
@@ -176,7 +177,7 @@ public class MBIController {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 
-		return formDao.grpmapNtDao(fac_id, func_id);
+		return formDao.grpmapNtDao(fac_id, func_id, ReturnType.OBJECT);
 	}
 
 	@RequestMapping(value = "module/MBI/data/assdef_gen_nt.json", method = RequestMethod.GET)
@@ -185,7 +186,7 @@ public class MBIController {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 
-		return formDao.assdefGenNtDao(fac_id, func_id);
+		return formDao.assdefGenNtDao(fac_id, func_id, ReturnType.OBJECT);
 	}
 
 	@RequestMapping(value = "module/MBI/data/chtinf_nt.json", method = RequestMethod.GET)
@@ -194,7 +195,7 @@ public class MBIController {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 
-		return formDao.chtinfNtDao(fac_id, func_id);
+		return formDao.chtinfNtDao(fac_id, func_id, ReturnType.OBJECT);
 	}
 
 	@RequestMapping(value = "module/MBI/data/secfundef_nt.json", method = RequestMethod.GET)
@@ -205,7 +206,7 @@ public class MBIController {
 		String func_code = request.getParameter("func_code");
 		String func_type = request.getParameter("func_type");
 
-		return formDao.secfundefNtDao(fac_id, func_group, func_code, func_type);
+		return formDao.secfundefNtDao(fac_id, func_group, func_code, func_type, ReturnType.OBJECT);
 	}
 
 	//http://localhost:8080/smartfactory/modul/MBI/data/dynamic_s2_rt.json?status=U&func_id=1042&spd_id=1&fac_id=83&user_id=ADMIN&lang_flag=1&arrlst=LOT0001`^55555`^A`^xxxxx
@@ -220,7 +221,7 @@ public class MBIController {
 		String lang_flag = request.getParameter("lang_flag");
 		String arrlst = request.getParameter("arrlst");
 		
-		return formDao.dynamicS2RtDao(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst);
+		return formDao.dynamicS2RtDao(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst, ReturnType.OBJECT);
 	}
 	
 	//http://localhost:8080/smartfactory/modul/MBI/data/test_rt.json?lot_id=LOT0001&fac_id=1000&mat_id=33333&order_id=kkh&user_id=ADMIN
@@ -233,21 +234,21 @@ public class MBIController {
 		String order_id = request.getParameter("order_id");
 		String user_id = request.getParameter("user_id");
 		
-		return formDao.testRtDao(lot_id, fac_id, mat_id, order_id, user_id);
+		return formDao.testRtDao(lot_id, fac_id, mat_id, order_id, user_id, ReturnType.OBJECT);
 	}
 	
 	//http://localhost:8080/smartfactory/home/module/MBI/data/dynamic_s2_nt.json?fac_id=83&func_id=1062&spd_id=1&param=''&cond_param=''&lang_flag=1
-	@RequestMapping(value = "module/MBI/data/dynamic_s2_nt.json", method = RequestMethod.GET) 
-	public @ResponseBody
-	List<Map<String, Object>> dynamicS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
-		String func_id = request.getParameter("func_id");
-		String spd_id = request.getParameter("spd_id");
-		String col_param = request.getParameter("col_param");
-		String cond_param = request.getParameter("cond_param");
-		String lang_flag  = request.getParameter("lang_flag");
-		
-		return formDao.dynamicS2NtDao(fac_id, func_id, spd_id, col_param,cond_param,lang_flag);
-	}
+//	@RequestMapping(value = "module/MBI/data/dynamic_s2_nt.json", method = RequestMethod.GET) 
+//	public @ResponseBody
+//	List<Map<String, Object>> dynamicS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		String fac_id = request.getParameter("fac_id");
+//		String func_id = request.getParameter("func_id");
+//		String spd_id = request.getParameter("spd_id");
+//		String col_param = request.getParameter("col_param");
+//		String cond_param = request.getParameter("cond_param");
+//		String lang_flag  = request.getParameter("lang_flag");
+//		
+//		return formDao.dynamicS2NtDao(fac_id, func_id, spd_id, col_param,cond_param,lang_flag, ReturnType.OBJECT);
+//	}
 	
 }

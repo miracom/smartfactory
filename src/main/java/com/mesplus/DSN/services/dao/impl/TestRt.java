@@ -1,6 +1,5 @@
-package com.mesplus.MBI.dao.impl;
+package com.mesplus.DSN.services.dao.impl;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.HashMap;
@@ -8,14 +7,11 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import oracle.jdbc.OracleTypes;
-
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.StoredProcedure;
 
-import com.mesplus.util.ResultSetUtils;
+import com.mesplus.util.EnumUtils.ReturnType;
 
 public class TestRt extends StoredProcedure {
 	public static final String LOT_ID_PARAM = "lot_id";
@@ -29,7 +25,7 @@ public class TestRt extends StoredProcedure {
 
 	private static final String SPROC_NAME = "P_TEST_RT";
 
-	public TestRt(DataSource dataSource) throws SQLException {
+	public TestRt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(LOT_ID_PARAM, Types.VARCHAR));

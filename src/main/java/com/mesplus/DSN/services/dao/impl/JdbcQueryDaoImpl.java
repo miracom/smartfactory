@@ -1,4 +1,4 @@
-package com.mesplus.MBI.dao.impl;
+package com.mesplus.DSN.services.dao.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import com.mesplus.MBI.dao.QueryDao;
+import com.mesplus.DSN.services.dao.QueryDao;
 import com.mesplus.MBI.model.Query;
 import com.mesplus.MBI.model.QueryParameter;
 
