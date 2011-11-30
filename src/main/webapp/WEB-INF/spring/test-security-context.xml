@@ -67,6 +67,6 @@
 
 	<jdbc:embedded-database id="securityDataSource" type="HSQL">
 		<jdbc:script location="classpath:com/mesplus/SEC/dao/scheme/security-schema.sql" />
-		<jdbc:script location="classpath:com/mesplus/SEC/dao/scheme/test-data.sql" />
+		<jdbc:script location="classpath:com/mesplus/SEC/dao/scheme/test-security-data.sql" />
 	</jdbc:embedded-database>
 </beans:beans>

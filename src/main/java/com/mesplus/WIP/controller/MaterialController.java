@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mesplus.SEC.model.CustomUserDetails;
 import com.mesplus.WIP.dao.MaterialDao;
 import com.mesplus.smartfactory.HomeController;
+import com.mesplus.util.SessionUtils;
 
 @Controller
 public class MaterialController {
@@ -29,13 +31,12 @@ public class MaterialController {
 	@RequestMapping(value = "module/WIP/data/materials.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> materials(HttpServletRequest request, HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-		String user = request.getParameter("user");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		
-		params.put("factory", factory);
-		params.put("user", user);
+		params.put("factory", user.getFactory());
+		params.put("user", user.getUser_id());
 
 		String[] selects = (String[])request.getParameterValues("selects");
 		
@@ -52,7 +53,9 @@ public class MaterialController {
 	@RequestMapping(value = "module/WIP/data/material.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String, Object> material(HttpServletRequest request, HttpServletResponse response) {
-		String factory = request.getParameter("factory");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+
+		String factory = user.getFactory();
 		String mat_id = request.getParameter("mat_id");
 		String mat_ver = request.getParameter("mat_ver");
 

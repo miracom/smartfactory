@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.RAS.dao.ResourceDao;
 import com.mesplus.RAS.model.Resource;
+import com.mesplus.SEC.model.CustomUserDetails;
 import com.mesplus.smartfactory.HomeController;
+import com.mesplus.util.SessionUtils;
 
 @Controller
 public class RASController {
@@ -31,13 +33,13 @@ public class RASController {
 	public @ResponseBody
 	List<Resource> resources(HttpServletRequest request,
 			HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-		String user = request.getParameter("user");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		
-		params.put("factory", factory);
-		params.put("user", user);
+		params.put("factory", user.getFactory());
+		params.put("user", user.getUser_id());
+
 		
 		return resourceDao.selectResources(params);
 	}
@@ -46,16 +48,15 @@ public class RASController {
 	public @ResponseBody
 	Resource resource(HttpServletRequest request,
 			HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-		String user = request.getParameter("user");
-		String res_id = request.getParameter("res_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
 
 		Map<String, Object> params = new HashMap<String, Object>();
+		String res_id = request.getParameter("res_id");
 		
-		params.put("factory", factory);
-		params.put("user", user);
+		params.put("factory", user.getFactory());
+		params.put("user", user.getUser_id());
 		params.put("res_id", res_id);
-		
+
 		Resource ret = 	resourceDao.findResource(params);
 		
 		return ret;

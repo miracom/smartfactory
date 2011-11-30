@@ -19,7 +19,9 @@ import com.mesplus.CMN.dao.FavoriteDao;
 import com.mesplus.CMN.dao.MenuDao;
 import com.mesplus.CMN.model.Favorite;
 import com.mesplus.CMN.model.Menu;
+import com.mesplus.SEC.model.CustomUserDetails;
 import com.mesplus.smartfactory.HomeController;
+import com.mesplus.util.SessionUtils;
 
 @Controller
 public class CMNController {
@@ -33,13 +35,12 @@ public class CMNController {
 	@RequestMapping(value = "module/CMN/data/menus.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Menu> menus(HttpServletRequest request, HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-		String user = request.getParameter("user");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		
-		params.put("factory", factory);
-		params.put("user", user);
+		params.put("factory", user.getFactory());
+		params.put("user", user.getUser_id());
 
 		return Menu.buildHierarchy(menuDao.selectMenus(params));
 	}
@@ -47,13 +48,12 @@ public class CMNController {
 	@RequestMapping(value = "module/CMN/data/favorites.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Favorite> favorites(HttpServletRequest request, HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-		String user = request.getParameter("user");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		
-		params.put("factory", factory);
-		params.put("user", user);
+		params.put("factory", user.getFactory());
+		params.put("user", user.getUser_id());
 		
 		return favoriteDao.selectFavorites(params);
 	}
