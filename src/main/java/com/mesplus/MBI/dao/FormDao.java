@@ -53,5 +53,7 @@ public interface FormDao {
 	public Map<String, Object> dynamicS2RtDao(String status, String func_id, String spd_id, String fac_id, String user_id, String lang_flag, String arrlst)throws SQLException;
 	
 	public Map<String, Object> testRtDao(String lot_id, String fac_id, String mat_id, String order_id, String user_id)throws SQLException;
+	
+	public List<Map<String, Object>> dynamicS2NtDao(String fac_id, String func_id, String spd_id, String col_param, String cond_param, String lang_flag)throws SQLException;
 
 }

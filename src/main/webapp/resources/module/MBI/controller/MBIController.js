@@ -3,7 +3,8 @@ Ext.define('MBI.controller.MBIController', {
 	
 	stores: ['MBI.store.SecfundefNt','MBI.store.FormDesign'],
 	models: ['MBI.model.SecfundefNt'],
-	views: ['MBI.view.FormDesign'],
+	//views: ['MBI.view.FormDesign'],
+	views: ['MBI.view.FormDesign','MBI.view.form.BaseLayoutView'],
 	
 	init: function() {
 		this.control({
@@ -15,6 +16,9 @@ Ext.define('MBI.controller.MBIController', {
 	
 	onViewportRendered: function() {
 		SmartFactory.addDockingNav('MBI.view.NavFormlist', {
+			iconCls:'iconsetDockReport'
+		});
+		SmartFactory.addDockingNav('MBI.view.NavFunclist', {
 			iconCls:'iconsetDockReport'
 		});
 	}
