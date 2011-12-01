@@ -42,7 +42,8 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 
 		//this.funcData.get('assembly_name');
 		var view_patn = this.funcData.get('func_patn'); // FUNC_PATN : 1G,2G,3G,1GA....
-		var view_name = 'MBI.view.form.BaseForm' + view_patn; //ASSEMBLY_NAME
+		//var view_name = 'MBI.view.form.BaseForm' + view_patn; //ASSEMBLY_NAME
+		var view_name = 'MBI.view.form.BaseForm1G' //TEST
 		//console.log('call form 0 : '+view_name);
 		
 		var view = Ext.create(view_name,{

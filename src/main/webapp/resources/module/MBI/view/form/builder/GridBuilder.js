@@ -25,7 +25,15 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 						columns : this.buildColumn(),
 						selModel: Ext.create('Ext.selection.CheckboxModel'),
 						columnLines : true,
-						
+//						stripeRows : true,
+//						loadMask : { msg : 'loading....'},
+//						
+//						clicksToEdit : 1, // Edit for Cell click
+//						sm : new Ext.grid.RowSelectionModel({
+//							singleSelect : true
+						//}),
+						//view : new
+					
                     }]
                 }]
 			}]
@@ -43,14 +51,30 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 				text : mapdefS2Nt[i].col_alias1,
 				width : mapdefS2Nt[i].col_width,
 				align : alignList[mapdefS2Nt[i].align_type],
-				editor: {
-	                allowBlank: false
-	            }
+				editor : {
+					xtype : 'textfield',
+	    			allowBlank: false
+	    			},
+				//editor: this.buildEditor(mapdefS2Nt[i].save_flag)
 			});
 		};
 		return mapColums;
 	},
-
+    buildEditor : function(saveFlag){
+    	var editorList = [];
+    	if(saveFlag == 1){
+    		editorList.push({
+    			xtype : 'textfield',
+    			allowBlank: false
+     		});
+    	}
+    	else{
+    		editorList.push({
+    			allowBlank: false
+    		});
+    	};
+    	return editorList;
+    },
 	getTitle : function(lang_flag){
 		var mapdefS2Nt =  this.formInfoData.get(0).data.mapdefS2Nt;
 		//if (lang_flag == 2) return 	mapdefS2Nt[0].tab_text2;

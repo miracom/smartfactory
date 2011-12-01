@@ -8,15 +8,14 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 		Ext.apply(this, config);
 	},
 	buildStore : function(){
+		//console.log(this.buildFieldInfo());
 		return Ext.create('Ext.data.Store',{
 			autoLoad : false,
 			fields : this.buildFieldInfo(),
 			proxy : this.buildProxy()
 		});
 	},
-	toLower : function(string) {
-	    return string.toLowerCase();
-	},
+
 	buildFieldInfo : function(){
 		var map = this.formInfoData.get(0).data;
 		var mapdefS2Nt = map.mapdefS2Nt;
@@ -29,7 +28,7 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 				type : this.getTypeToFomat(mapdefS2Nt[i].data_type)
 			});
 		};
-		//console.log('call buildStore/buildFieldInfo :');
+		//console.log('call buildStore/buildFieldInfo :'+mapField);
 		//console.log(mapField);
 		return mapField;
 	},
