@@ -6,6 +6,7 @@
 	<import resource="infrastructure-context.xml"/>	
 	<import resource="security-context.xml"/>	
 	<import resource="cometd-context.xml"/>	
+	<import resource="cache-context.xml"/>	
 	<import resource="test-file-context.xml"/>	
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
