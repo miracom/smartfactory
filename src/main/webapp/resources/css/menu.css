@@ -127,6 +127,12 @@
 
 /* status bar */
 .x-nlg .appStatusBar,.appStatusBar{background:url('../image/bgAppFooter.gif') repeat-x !important;}
+.noticeCount{
+	background:url('../image/bgStatusBarCount.gif') repeat-x !important;border:1px solid #efefef;height:19px;
+	-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;margin-right:5px
+}
+.noticeCount.x-btn-default-toolbar-small .x-btn-inner{color:#7ac4fe !important;line-height:12px !important}
+.noticeCount .noticeIcon{background:url('../image/iconStatusBarNotice.gif') no-repeat;width:15px;height:12px;margin:1px 0 0 1px}
 
 /* splitter handle*/
 .x-splitter-vertical{background:url('../image/bgSplitterVertical.gif') repeat-y;}

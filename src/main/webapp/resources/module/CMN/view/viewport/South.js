@@ -43,7 +43,15 @@ Ext.define('CMN.view.viewport.South', {
 		handler : function() {
 			SmartFactory.clearStatus();
 		}
-	}, '-', 'Plain Text' ],
+	}, {
+		xtype : 'button',
+		cls : 'noticeCount',
+		iconCls : 'noticeIcon',
+		text : '3',
+		handler : function() {
+        	SmartFactory.communicator.notice('notice', 'notice message...');
+        }
+	}],
 
 	initComponent : function() {
 		this.callParent();
