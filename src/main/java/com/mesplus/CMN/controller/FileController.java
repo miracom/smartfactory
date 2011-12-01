@@ -45,7 +45,7 @@ public class FileController {
 		String browser = getBrowser(request);
 		String encoded = null;
 		if(browser.equals("MSIE"))
-			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20"); // I'm not sure..
+			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
 		else if(browser.equals("Chrome")) {
 			StringBuffer sb = new StringBuffer();
 			for(int i = 0;i < filename.length();i++) {
@@ -59,11 +59,11 @@ public class FileController {
 			encoded = sb.toString();
 		}
 		else if(browser.equals("Opera"))
-			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20"); // I'm not sure..
+			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
 		else if(browser.equals("Firefox"))
-			encoded = new String(filename.getBytes("UTF-8"), "8859_1"); // I'm not sure..
+			encoded = new String(filename.getBytes("UTF-8"), "8859_1");
 		else
-			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20"); // I'm not sure..
+			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
 		
 		response.setHeader("Content-Disposition","attachment;filename=\"" + encoded + "\"");
 	}
