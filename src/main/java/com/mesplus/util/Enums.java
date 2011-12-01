@@ -1,6 +1,6 @@
 package com.mesplus.util;
 
-public class EnumUtils {
+public class Enums {
 	public enum ReturnType {
 	    NONE, OBJECT, ELEMENT
 	}

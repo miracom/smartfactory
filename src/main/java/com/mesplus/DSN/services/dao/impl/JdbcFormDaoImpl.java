@@ -11,23 +11,23 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.mesplus.DSN.services.dao.FormDao;
-import com.mesplus.util.EnumUtils.ReturnType;
+import com.mesplus.DSN.services.dao.impl.agcm.TbldatNt;
+import com.mesplus.util.Enums.ReturnType;
 
 //<context:component-scan> 태그를 사용하면 @Component 어노테이션이 적용된 컨트롤러 클래스를 검색하여 Bean으로 등록
 @Component
 public class JdbcFormDaoImpl implements FormDao {
 
 	private static FormDao globalFormDao = null;
-	
+
 	public static FormDao getGlobalFormDao() {
 		return globalFormDao;
 	}
-	
-	public JdbcFormDaoImpl()
-	{
+
+	public JdbcFormDaoImpl() {
 		globalFormDao = this;
 	}
-	
+
 	@Autowired
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
@@ -38,6 +38,18 @@ public class JdbcFormDaoImpl implements FormDao {
 		return jdbcTemplate;
 	}
 
+	public List<Map<String, Object>> tbldatNtDao(String a_fac_id, String a_tbl_code, String a_lang_flag, String a_params, ReturnType rType) throws SQLException {
+		if (a_fac_id == null || a_tbl_code == null || a_lang_flag == null || a_params == null) {
+			throw new IllegalArgumentException("Parameters(a_fac_id, a_tbl_code, a_lang_flag, a_params) should not be null.");
+		}
+
+		TbldatNt sp = new TbldatNt(dataSource, rType);
+		Map<String, Object> results = sp.execute(a_fac_id, a_tbl_code, a_lang_flag, a_params);
+
+		return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
+	}
+
+	// division line
 	public List<Map<String, Object>> assdefGenNtDao(String fac_id, String func_id, ReturnType rType) throws SQLException {
 		if (fac_id == null || func_id == null) {
 			throw new IllegalArgumentException("Parameters(fac_id, func_id) should not be null.");
@@ -205,26 +217,15 @@ public class JdbcFormDaoImpl implements FormDao {
 	}
 
 	// rt Test
-	public Map<String, Object> dynamicS2RtDao(String status, String func_id, String spd_id, String fac_id, String user_id, String lang_flag, String arrlst,
-			ReturnType rType) throws SQLException {
+	public Map<String, Object> dynamicS2RtDao(String status, String func_id, String spd_id, String fac_id, String user_id, String lang_flag, String arrlst, ReturnType rType)
+			throws Exception {
 		if (status == null || func_id == null || spd_id == null || fac_id == null || user_id == null || lang_flag == null || arrlst == null) {
 			throw new IllegalArgumentException("Parameters(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst) should not be null");
 		}
 
 		DynamicS2Rt sp = new DynamicS2Rt(dataSource, rType);
 		Map<String, Object> results = sp.execute(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst);
-
-		return results;
-	}
-
-	public Map<String, Object> testRtDao(String lot_id, String fac_id, String mat_id, String order_id, String user_id, ReturnType rType) throws SQLException {
-		if (lot_id == null) {
-			throw new IllegalArgumentException("Parameters should not be null");
-		}
-
-		TestRt sp = new TestRt(dataSource, rType);
-		Map<String, Object> results = sp.execute(lot_id, fac_id, mat_id, order_id, user_id);
-
+		
 		return results;
 	}
 
@@ -239,24 +240,25 @@ public class JdbcFormDaoImpl implements FormDao {
 
 		return (List<Map<String, Object>>) results.get(MtbldatNt.CUR_REFER_PARAM);
 	}
-	
-	public List<Map<String, Object>> dynamicS2NtDao(String fac_id, String func_id, String spd_id, String col_param, String cond_param, String lang_flag) throws SQLException {
-		if (fac_id == null||func_id == null) {
+
+	public List<Map<String, Object>> dynamicS2NtDao(String fac_id, String func_id, String spd_id, String col_param, String cond_param, String lang_flag)
+			throws SQLException {
+		if (fac_id == null || func_id == null) {
 			throw new IllegalArgumentException("Parameters(fac_id, func_id, spd_id, col_param,cond_param,lang_flag) should not be null.");
 		}
 
 		DynamicS2Nt sp = new DynamicS2Nt(dataSource);
-		Map<String, Object> results = sp.execute(fac_id, func_id, spd_id, col_param,cond_param,lang_flag);
-		
-//		Map<String, Object> params = new HashMap<String, Object>();
-//		
-//		params.put("sqltext1", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-//		params.put("sqltext2", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-//		params.put("sqltext3", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-//		params.put("sqltext4", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-//		params.put("sqltext5", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-//		
-		//results.put("sqltext", params);
+		Map<String, Object> results = sp.execute(fac_id, func_id, spd_id, col_param, cond_param, lang_flag);
+
+		// Map<String, Object> params = new HashMap<String, Object>();
+		//
+		// params.put("sqltext1", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
+		// params.put("sqltext2", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
+		// params.put("sqltext3", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
+		// params.put("sqltext4", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
+		// params.put("sqltext5", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
+		//
+		// results.put("sqltext", params);
 		return (List<Map<String, Object>>) results.get(DynamicS2Nt.CUR_REFER_PARAM);
 	}
 }

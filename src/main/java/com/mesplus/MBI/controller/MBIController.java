@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.DSN.services.dao.FormDao;
-import com.mesplus.util.EnumUtils.ReturnType;
+import com.mesplus.util.Enums.ReturnType;
 
 @Controller
 public class MBIController {
@@ -222,19 +222,6 @@ public class MBIController {
 		String arrlst = request.getParameter("arrlst");
 		
 		return formDao.dynamicS2RtDao(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst, ReturnType.OBJECT);
-	}
-	
-	//http://localhost:8080/smartfactory/modul/MBI/data/test_rt.json?lot_id=LOT0001&fac_id=1000&mat_id=33333&order_id=kkh&user_id=ADMIN
-	@RequestMapping(value = "modul/MBI/data/test_rt.json", method = RequestMethod.GET)
-	public @ResponseBody
-	Map<String, Object> testRt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String lot_id = request.getParameter("lot_id");
-		String fac_id = request.getParameter("fac_id");
-		String mat_id = request.getParameter("mat_id");
-		String order_id = request.getParameter("order_id");
-		String user_id = request.getParameter("user_id");
-		
-		return formDao.testRtDao(lot_id, fac_id, mat_id, order_id, user_id, ReturnType.OBJECT);
 	}
 	
 	//http://localhost:8080/smartfactory/home/module/MBI/data/dynamic_s2_nt.json?fac_id=83&func_id=1062&spd_id=1&param=''&cond_param=''&lang_flag=1

@@ -1,55 +1,177 @@
 package com.mesplus.DSN.services;
 
+import java.rmi.RemoteException;
+
 import javax.jws.WebService;
 
 @WebService
 public class ClsDSNMapDesigner {
 	public java.lang.String GetDesignerS2(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetPersonalizationMap(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetAdminMap(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetPersonalizationCol(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetAdminCol(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetFunctionSpreadList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetFunctionRelationList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetFunctionTableRelationList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetFunctionSPRelationList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetDesignerFunctionSpreadAll(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String GetFunctionExcelTemplateFieldList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String[] GetDynamicQueryS2(java.lang.String[] psaParam) throws java.rmi.RemoteException {
-		return null;
+		try {
+
+			if (psaParam.length == 0) {
+				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String SetMapDesignerAllS2(java.lang.String psParamsDesigner, java.lang.String psParamsCondition, java.lang.String psParamsDesignerTable,

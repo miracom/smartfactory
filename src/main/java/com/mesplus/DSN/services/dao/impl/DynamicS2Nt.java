@@ -18,18 +18,17 @@ import org.springframework.jdbc.object.StoredProcedure;
 import com.mesplus.util.ResultSetUtils;
 
 public class DynamicS2Nt extends StoredProcedure {
-	public static final String FAC_ID_PARAM = "fac_id";
-	public static final String FUNC_ID_PARAM = "func_id";
-	public static final String SPD_ID_PARAM = "spd_id";
-	public static final String COL_PARAM_PARAM = "col_param";
-	public static final String COND_PARAM_PARAM = "cond_param";
-	public static final String LANG_FLAG_PARAM = "lang_flag";
-	public static final String SQLTEXT1_PARAM = "sqltext1";
-	public static final String SQLTEXT2_PARAM = "sqltext2";
-	public static final String SQLTEXT3_PARAM = "sqltext3";
-	public static final String SQLTEXT4_PARAM = "sqltexT4";
-	public static final String SQLTEXT5_PARAM = "sqltext5";
-	
+	private static final String FAC_ID_PARAM = "fac_id";
+	private static final String FUNC_ID_PARAM = "func_id";
+	private static final String SPD_ID_PARAM = "spd_id";
+	private static final String COL_PARAM_PARAM = "col_param";
+	private static final String COND_PARAM_PARAM = "cond_param";
+	private static final String LANG_FLAG_PARAM = "lang_flag";
+	private static final String SQLTEXT1_PARAM = "sqltext1";
+	private static final String SQLTEXT2_PARAM = "sqltext2";
+	private static final String SQLTEXT3_PARAM = "sqltext3";
+	private static final String SQLTEXT4_PARAM = "sqltexT4";
+	private static final String SQLTEXT5_PARAM = "sqltext5";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
 	private static final String SPROC_NAME = "P_DYNAMIC_S2_NT";
