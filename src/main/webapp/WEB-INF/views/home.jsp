@@ -20,6 +20,9 @@
 	    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 	    <script type="text/javascript" src="js/jquery/upload/fileuploader.js"></script>	    
 
+		<!-- JavaScripts For Each Modules -->
+		<script src="js/smartfactory/cmn.js"></script>
+
 		<!-- JavaScripts For Comet -->
 	    <script type="text/javascript" src="js/org/cometd.js"></script>
 	    <script type="text/javascript" src="js/org/cometd/AckExtension.js"></script>

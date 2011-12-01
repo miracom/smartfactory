@@ -19,7 +19,7 @@ Ext.define('SEC.view.User', {
 
                 // template for one item in file list
                 fileTemplate: '<li>' +
-                	'<span class="fileName"></span>' +
+                	'<span class="fileName downloadable"></span>' +
                 	'<span class="spinner"></span>' +
                 	'<span class="fileSize"></span>' +
                 	'<a class="uploadCancel" href="#">Cancel</a>' +
