@@ -484,32 +484,32 @@ qq.FileUploader = function(o){
         // if set, will be used instead of qq-upload-list in template
         listElement: null,
                 
-        template: '<div class="qq-uploader">' + 
-                '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button">Upload a file</div>' +
-                '<ul class="qq-upload-list"></ul>' + 
+        template: '<div class="fileUpload">' + 
+                '<div class="uploadArea"><span>Drop files here to upload</span></div>' +
+                '<div class="btnUpload">Upload a file</div>' +
+                '<ul class="uploadFileList"></ul>' + 
              '</div>',
 
         // template for one item in file list
         fileTemplate: '<li>' +
-                '<span class="qq-upload-file"></span>' +
-                '<span class="qq-upload-spinner"></span>' +
-                '<span class="qq-upload-size"></span>' +
-                '<a class="qq-upload-cancel" href="#">Cancel</a>' +
-                '<span class="qq-upload-failed-text">Failed</span>' +
+                '<span class="fileName"></span>' +
+                '<span class="spinner"></span>' +
+                '<span class="fileSize"></span>' +
+                '<a class="uploadCancel" href="#">Cancel</a>' +
+                '<span class="uploadFailed">Failed</span>' +
             '</li>',        
         
         classes: {
             // used to get elements from templates
-            button: 'qq-upload-button',
-            drop: 'qq-upload-drop-area',
-            dropActive: 'qq-upload-drop-area-active',
-            list: 'qq-upload-list',
+            button: 'btnUpload',
+            drop: 'uploadArea',
+            dropActive: 'uploadArea-active',
+            list: 'uploadFileList',
                         
-            file: 'qq-upload-file',
-            spinner: 'qq-upload-spinner',
-            size: 'qq-upload-size',
-            cancel: 'qq-upload-cancel',
+            file: 'fileName',
+            spinner: 'spinner',
+            size: 'fileSize',
+            cancel: 'uploadCancel',
 
             // added to list item when upload completes
             // used in css to hide progress spinner
@@ -758,8 +758,8 @@ qq.UploadButton = function(o){
         // name attribute of file input
         name: 'file',
         onChange: function(input){},
-        hoverClass: 'qq-upload-button-hover',
-        focusClass: 'qq-upload-button-focus'                       
+        hoverClass: 'btnUpload-hover',
+        focusClass: 'btnUpload-focus'                       
     };
     
     qq.extend(this._options, o);
