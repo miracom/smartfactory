@@ -7,6 +7,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Element;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +32,9 @@ public class CMNController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired
+	private CacheManager cacheManager;
+
+	@Autowired
 	private MenuDao menuDao;
 	@Autowired
 	private FavoriteDao favoriteDao;
@@ -38,23 +45,33 @@ public class CMNController {
 		CustomUserDetails user = SessionUtils.currentUserDetails();
 
 		Map<String, Object> params = new HashMap<String, Object>();
-		
+
 		params.put("factory", user.getFactory());
 		params.put("user", user.getUser_id());
 
-		return Menu.buildHierarchy(menuDao.selectMenus(params));
+		Cache menusCache = cacheManager.getCache("menus");
+		Element element = menusCache.get(params);
+
+		if (element != null)
+			return (List<Menu>) element.getValue();
+
+		List<Menu> menus = Menu.buildHierarchy(menuDao.selectMenus(params));
+
+		menusCache.putIfAbsent(new Element(params, menus));
+
+		return menus;
 	}
-	
+
 	@RequestMapping(value = "module/CMN/data/favorites.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Favorite> favorites(HttpServletRequest request, HttpServletResponse response) {
 		CustomUserDetails user = SessionUtils.currentUserDetails();
 
 		Map<String, Object> params = new HashMap<String, Object>();
-		
+
 		params.put("factory", user.getFactory());
 		params.put("user", user.getUser_id());
-		
+
 		return favoriteDao.selectFavorites(params);
 	}
 }
