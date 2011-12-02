@@ -47,7 +47,7 @@ public class TabvldNt extends StoredProcedure {
 		inputs.put(FAC_ID_PARAM, fac_id);
 		inputs.put(FUNC_ID_PARAM, func_id);
 		inputs.put(SPD_ID_PARAM, spd_id);
-
+		
 		return super.execute(inputs);
 	}
 
