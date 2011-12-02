@@ -10,10 +10,10 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 		var fieldSet = Ext.create('MBI.view.form.builder.FieldBuilder',{
         	data : this.formInfoData.get(0).data.mapconGenNt
         }).getFieldSet();
-		console.log('fieldSet');
-		console.log(fieldSet);
+
 		return Ext.create('Ext.form.Panel',{
 		//return Ext.create('Ext.container.Container',{
+			
 			bodyStyle:'padding:3px 3px 0',
 			//fieldDefaults: {
 		    //    msgTarget: 'side',
@@ -37,7 +37,8 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 		            }
 		        },
 		        items : fieldSet
-		    }],	
+		    }],
+		    
 		});
 	},
 });

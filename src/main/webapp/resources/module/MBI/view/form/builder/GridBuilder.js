@@ -5,9 +5,9 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 	},
 	buildGrid : function(){
 		//console.log('call buildGrid');
-		var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
-	        clicksToEdit: 1
-	    });
+//		var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+//	        clicksToEdit: 1
+//	    });
 		
 		//return Ext.create('Ext.panel.Panel',{
 		return Ext.create('Ext.container.Container',{
@@ -24,7 +24,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 						
 						columns : this.buildColumn(),
 						selModel: Ext.create('Ext.selection.CheckboxModel'),
-						columnLines : true,
+						columnLines : true
 //						stripeRows : true,
 //						loadMask : { msg : 'loading....'},
 //						
@@ -54,7 +54,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 				editor : {
 					xtype : 'textfield',
 	    			allowBlank: false
-	    			},
+	    			}
 				//editor: this.buildEditor(mapdefS2Nt[i].save_flag)
 			});
 		};

@@ -40,7 +40,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return {
     		xtype : 'checkboxfield',
     		boxLabel : rowData.display_text,
-    		name : rowData.display_text.toLowerCase(),
+    		name : rowData.display_text.toLowerCase()
     		//id : 'checkbox_'+rowData.display_text.toLowerCase(),
     		//checked : 'true', //
     		//boxLabelEI : it's depend on the 'NOTNULL' =>BORD
@@ -87,7 +87,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
     		//id : 'dateto_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		format : 'Y-m-d',
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date2), //defaults to today
+    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date2) //defaults to today
 		}];
 	},
 	//no : 6

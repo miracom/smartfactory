@@ -31,6 +31,12 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 			this.store.on('datachanged', this.refreshItems, this);
 			this.store.on('clear', this.refreshItems, this);
 			this.store.load();					
+		},
+		activate : function(){
+			Ext.getCmp('east').getLayout().setActiveItem(this.supplement);
+		},
+		destory : function(){
+			Ext.getCmp('east').remove(this.supplement);
 		}
 	},
 
@@ -55,6 +61,8 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 			langFlag : 1 /// getLangFlag!!!!!!!!!!!!!!
 		});
 		this.add(view);
+		this.supplement = view.view_condition;
+		Ext.getCmp('east').add(this.supplement);
 	},
 	
 	getViewTitle : function(){
