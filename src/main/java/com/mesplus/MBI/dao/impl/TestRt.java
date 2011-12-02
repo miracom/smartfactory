@@ -1,6 +1,5 @@
 package com.mesplus.MBI.dao.impl;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.HashMap;
@@ -8,14 +7,9 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import oracle.jdbc.OracleTypes;
-
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.StoredProcedure;
-
-import com.mesplus.util.ResultSetUtils;
 
 public class TestRt extends StoredProcedure {
 	public static final String LOT_ID_PARAM = "lot_id";

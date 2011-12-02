@@ -21,8 +21,9 @@ Ext.define('MBI.view.NavFormlist', {
 	autoScroll: true,
 	
 	cls: 'operation-list',
-	itemSelector: '.mbi_formlist_item',
+	//itemSelector: '.mbi_formlist_item',
+	itemSelector: '.operation-list-item', //itemselector로 div 지정
 	overItemCls: 'operation-list-item-hover',
 	
-	tpl:'<tpl for="."><div class="mbi_formlist_item">{func_id} - {func_code}</div></tpl>'
+	tpl:'<tpl for="."><div class="operation-list-item">[ MAP: {func_id} - {func_code}]</div></tpl>'
 });

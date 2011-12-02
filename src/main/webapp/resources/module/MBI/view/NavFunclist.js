@@ -19,9 +19,10 @@ Ext.define('MBI.view.NavFunclist', {
 	
 	autoScroll: true,
 	
-	cls: 'operation-list',
-	itemSelector: '.mbi_funclist_item',
-	overItemCls: 'operation-list-item-hover',
+	cls: 'report-list',
+	//itemSelector: '.mbi_funclist_item',
+	itemSelector: '.report-list-item',
+	overItemCls: 'report-list-item-hover',
 	
-	tpl:'<tpl for="."><div class="mbi_funclist_item">[FORM:{func_id} - {func_code}]</div></tpl>'
+	tpl:'<tpl for="."><div class="report-list-item">[ {func_id} - {func_code} ]</BR>: {func_name1}</div></tpl>'
 });
