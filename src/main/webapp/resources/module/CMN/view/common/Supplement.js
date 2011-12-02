@@ -2,7 +2,6 @@ Ext.define('CMN.view.common.Supplement', {
 	extend: 'Ext.panel.Panel',
 	
 	cls : 'dockNavigation searchPanel',
-	title :'Supplement',
 	
 	layout : {
 		align : 'stretch',

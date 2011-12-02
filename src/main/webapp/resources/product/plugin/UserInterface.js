@@ -47,10 +47,7 @@ Ext.define('plugin.UserInterface', {
 			comp = view;
 		}
 		
-		comp = Ext.getCmp('content').add(comp);
-		if(comp.supplement)
-			Ext.getCmp('east').add(comp.supplement);
-		comp.show();
+		Ext.getCmp('content').add(comp).show();
 		
 		this.clearStatus();
 	},

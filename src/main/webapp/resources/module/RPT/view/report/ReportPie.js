@@ -3,6 +3,8 @@ Ext.define('RPT.view.report.ReportPie', {
 
 	alias : 'widget.rpt.report.report_pie',
 
+	plugins : [Ext.create('CMN.plugin.Supplement')], 
+
 	layout : {
 		align : 'stretch',
 		type : 'vbox'
