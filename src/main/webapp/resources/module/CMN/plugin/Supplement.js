@@ -5,11 +5,11 @@ Ext.define('CMN.plugin.Supplement', {
 		 * TODO get any simple model object to build supplement panel which will be showed on east side.
 		 */   
         
-//		c.showMessage = this.showMessage.createDelegate(this);
+//		client.showMessage = this.showMessage.createDelegate(this);
 //        if (client.rendered) {
-//            this.onRender(c);
+//            this.onRender(client);
 //        } else {
-//            c.on('render', this.onRender, this);
+//            client.on('render', this.onRender, this);
 //        }
         
         /*
@@ -25,8 +25,10 @@ Ext.define('CMN.plugin.Supplement', {
     },
     
     onRender : function() {
-		if(this.supplement)
+		if(this.supplement) {
 			Ext.getCmp('east').add(this.supplement);
+			this.supplement.doLayout();
+		}
     },
 	
     onActivate : function() {
