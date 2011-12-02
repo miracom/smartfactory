@@ -15,10 +15,6 @@ Ext.define('CMN.store.MenuStore', {
 	proxy : {
 		type : 'ajax',
 		url : 'module/CMN/data/menus.json',
-		extraParams : {
-			factory : SmartFactory.factory(),
-			user : SmartFactory.user()
-		},
 		reader : {
 			type : 'json'
 		}

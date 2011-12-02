@@ -12,8 +12,8 @@ Ext.define('WMG.plugin.Communicator', {
 			joinOutChannel : '/communicator/join/out',
 			privateChannel : '/communicator/private',
 			membersChannel : '/communicator/members',
-			username : SmartFactory.user(),
-			factory : SmartFactory.factory(),
+			username : SmartFactory.login.id(),
+			factory : SmartFactory.login.factory(),
 			logLevel : 1,
 			connectionClosed : function() {},
 			connectionEstablished : function() {},
@@ -176,8 +176,8 @@ Ext.define('WMG.plugin.Communicator', {
 		function leave() {
 			$.cometd.batch(function() {
 				$.cometd.publish(options.joinOutChannel, {
-					username : self.username,
-					userid : self.username
+					username : options.username,
+					userid : options.username
 				});
 				unsubscribe();
 			});

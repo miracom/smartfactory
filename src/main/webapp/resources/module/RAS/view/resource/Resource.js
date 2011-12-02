@@ -6,6 +6,14 @@ Ext.define('RAS.view.resource.Resource', {
 	title: 'Resource',
 	bodyPadding: 15,
 	
+	constructor : function(config) {
+		this.supplement = Ext.create('CMN.view.common.Supplement', {
+			title : config.title || this.title
+		});
+		
+		RAS.view.resource.Resource.superclass.constructor.call(this, config);
+	},
+	
 	defaults: {
 		anchor: '100%'
 	},
@@ -58,6 +66,10 @@ Ext.define('RAS.view.resource.Resource', {
 		},
 		activate: function() {
 			this.getForm().findField('resource_id').focus(false, 100);
+			Ext.getCmp('east').getLayout().setActiveItem(this.supplement);
+		},
+		destroy: function() {
+			Ext.getCmp('east').remove(this.supplement);
 		}
 	},
 	

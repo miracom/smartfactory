@@ -10,10 +10,6 @@ Ext.define('WMG.store.CommunicatorStore', {
 	proxy : {
 		type : 'ajax',
 		url : 'module/WMG/data/communicators.json',
-		extraParams : {
-			factory : SmartFactory.factory(),
-			user : SmartFactory.user()
-		},
 		reader : {
 			type : 'json'
 		}
