@@ -18,7 +18,7 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 						func_id : this.funcData.get('func_id'),
 						spd_id : '',
 						lang_flag : 1,
-						admin_user : SmartFactory.user(),
+						admin_user : SmartFactory.login.name(),
 						func_template_id : 1,
 						grp_user_id : ''
 					},
@@ -33,7 +33,8 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 			this.store.load();					
 		},
 		activate : function(){
-			Ext.getCmp('east').getLayout().setActiveItem(this.supplement);
+			if (this.supplement)
+				Ext.getCmp('east').getLayout().setActiveItem(this.supplement);
 		},
 		destory : function(){
 			Ext.getCmp('east').remove(this.supplement);
@@ -60,9 +61,9 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 			funcId : this.funcData.get('func_id'),
 			langFlag : 1 /// getLangFlag!!!!!!!!!!!!!!
 		});
-		this.add(view);
 		this.supplement = view.view_condition;
 		Ext.getCmp('east').add(this.supplement);
+		this.add(view);
 	},
 	
 	getViewTitle : function(){

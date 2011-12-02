@@ -19,25 +19,12 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 		    //    msgTarget: 'side',
 		    //    labelWidth: 80
 		    //},
-		
-		    items: [{
-		        xtype:'fieldset',
-		        title: 'condition view',
-		        collapsible: true,
-		        layout: {
-		        	 type: 'hbox'
-		        },
-		        
-		        defaults: {
-		            //labelWidth: 100,
-		            // implicitly create Container by specifying xtype
-		            //flex: 1,
-		            style: {
-		                padding: '5px'
-		            }
-		        },
-		        items : fieldSet
-		    }],
+	        layout: {
+	        	 type: 'vbox',
+	        	 align : 'stretch'	        		 
+	        },
+		    items: fieldSet
+		    
 		    
 		});
 	},

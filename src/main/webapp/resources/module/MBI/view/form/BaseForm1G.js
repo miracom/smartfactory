@@ -9,12 +9,13 @@ Ext.define('MBI.view.form.BaseForm1G', {
 	},
 	autoScroll: true,//false,
 	constructor : function(config){
+		
+		MBI.view.form.BaseForm1G.superclass.constructor.call(this, config);
 		this.refreshItems();
-		MBI.view.form.BaseForm1G.supperclass.constructor.call(this, config);
 	},
 
 	refreshItems : function() {
-		this.removeAll();
+		//this.removeAll();
 		//console.log('ConditionBuilder');
 		//console.log(this.store.data);
 		this.view_condition = Ext.create('MBI.view.form.builder.ConditionBuilder',{

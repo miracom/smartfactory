@@ -22,7 +22,7 @@ Ext.define('MBI.view.FormDesign', {
 						func_id : this.data.get('func_id'),
 						spd_id : '',
 						lang_flag : 1,
-						admin_user : SmartFactory.user(),
+						admin_user : SmartFactory.login.name(),
 						func_template_id : 1,
 						grp_user_id : ''
 					},
