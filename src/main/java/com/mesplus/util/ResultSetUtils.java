@@ -22,7 +22,7 @@ public class ResultSetUtils {
 		return map;
 	}
 
-	public final static Map<String, Object> convertResultSetToMapElement(ResultSet rs) throws SQLException {
+	public final static Map<String, Object> convertResultSetToMapElement(ResultSet rs, Map<String, String> typeMap) throws SQLException {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		ResultSetMetaData meta = rs.getMetaData();
@@ -30,7 +30,7 @@ public class ResultSetUtils {
 		for (int i = 1; i <= meta.getColumnCount(); i++) {
 
 			String key = meta.getColumnName(i);
-			String type = meta.getColumnTypeName(i);
+			String type = TypeConvert.getChangeType(meta.getColumnTypeName(i), typeMap);
 			String value = "";
 			if (rs.getObject(i) != null) {
 				value = rs.getObject(i).toString();

@@ -4,14 +4,35 @@ import java.rmi.RemoteException;
 
 import javax.jws.WebService;
 
+import com.mesplus.util.Enums.ReturnType;
+
 @WebService
 public class ClsDSNMapDesigner {
 	public java.lang.String GetDesignerS2(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 6) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
+			
+			String xName1 = "COLINFO";
+			String xName2 = "WHERECLAUSE";
+			String xName3 = "PMAPINFO";
+			String xName4 = "PCOLINFO";
+			String xName5 = "AMAPINFO";
+			String xName6 = "ACOLINFO";
+			String xName7 = "FUNVLDREL";
+			String xName8 = "FUNSPREL";
+			String xName9 = "FUNSVREL";
+			String xName10 = "CHARTINFO";
+			String xName11 = "FunctionTemplate";
+			String xName12 = "FunctionTemplateField";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String grp_user_id = psaParam[2];
+			String lang_flag = psaParam[3];
+			String admin_user = psaParam[4];
+			ReturnType rType = ReturnType.ELEMENT;
 
 			return null;
 
@@ -23,10 +44,17 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetPersonalizationMap(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 4) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
+			String xName = "PMAPINFO";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String grp_usr_id = psaParam[2];
+			ReturnType rType = ReturnType.ELEMENT;
+			
+			
 			return null;
 
 		} catch (Exception e) {
@@ -37,10 +65,16 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetAdminMap(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 4) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
+			String xName = "AMAPINFO";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String grp_usr_id = psaParam[2];
+			ReturnType rType = ReturnType.ELEMENT;
+			
 			return null;
 
 		} catch (Exception e) {
@@ -51,10 +85,17 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetPersonalizationCol(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 5) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
+			String xName = "PCOLINFO";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String grp_usr_id = psaParam[2];
+			String lang_flag = psaParam[3];
+			ReturnType rType = ReturnType.ELEMENT;
+			
 			return null;
 
 		} catch (Exception e) {
@@ -65,10 +106,17 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetAdminCol(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 5) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
+			String xName = "ACOLINFO";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String grp_usr_id = psaParam[2];
+			String lang_flag = psaParam[3];
+			ReturnType rType = ReturnType.ELEMENT;
+			
 			return null;
 
 		} catch (Exception e) {
@@ -79,10 +127,15 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetFunctionSpreadList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 3) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
+			String xName = "FunctionSpreadList";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			ReturnType rType = ReturnType.ELEMENT;
+			
 			return null;
 
 		} catch (Exception e) {
@@ -93,10 +146,23 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetFunctionRelationList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 6) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
+			String xName1 = "WHERECLAUSE";
+			String xName2 = "FunctionTableRelationList";
+			String xName3 = "FUNVLDREL";
+			String xName4 = "FunctionSPRelationList";
+			String xName5 = "FunctionServiceRelationList";
+			String xName6 = "ChartProperties";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String spd_id = psaParam[2];
+			String tab_id = psaParam[3];
+			String admin_user = psaParam[4];
+			ReturnType rType = ReturnType.ELEMENT;
+		
 			return null;
 
 		} catch (Exception e) {
@@ -107,10 +173,18 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetFunctionTableRelationList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 5) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
+			String xName = "FunctionTableRelationList";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String spd_id = psaParam[2];
+			String tab_id = psaParam[3];
+			ReturnType rType = ReturnType.ELEMENT;
+			
+			
 			return null;
 
 		} catch (Exception e) {
@@ -121,10 +195,17 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetFunctionSPRelationList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 5) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
+			String xName = "FunctionSPRelationList";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String spd_id = psaParam[2];
+			String tab_id = psaParam[3];
+			ReturnType rType = ReturnType.ELEMENT;
+			
 			return null;
 
 		} catch (Exception e) {
@@ -135,9 +216,18 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetDesignerFunctionSpreadAll(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 4) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
+			
+			String xName1 = "COLINFO";
+			String xName2 = "CONDITIONLIST";
+			String xName3 = "FunctionSpreadList";
+			String xName4 = "FunctionTemplateList";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String admin_user = psaParam[2];
+			ReturnType rType = ReturnType.ELEMENT;
 
 			return null;
 
@@ -149,9 +239,15 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetFunctionExcelTemplateFieldList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 4) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
+			
+			String xName = "FieldValueIndex";
+			String fac_id = psaParam[0];
+			String func_id = psaParam[1];
+			String func_template_id = psaParam[2];
+			ReturnType rType = ReturnType.ELEMENT;
 
 			return null;
 
@@ -163,10 +259,19 @@ public class ClsDSNMapDesigner {
 	public java.lang.String[] GetDynamicQueryS2(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length == 0) {
-				throw new RemoteException("ArgumentException: There are no variable(String[] psaParam) parameters.");
+			if (psaParam.length < 0 && psaParam.length > 7) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
-
+			
+			String xName = "RESULT";
+			String fac_id = psaParam[0];
+			String function_id = psaParam[1];
+			String spread_id = psaParam[2];
+			String param = psaParam[3];
+			String cond_param = psaParam[4];
+			String psGeneratedQuery = psaParam[5];
+			ReturnType rType = ReturnType.ELEMENT;
+			
 			return null;
 
 		} catch (Exception e) {

@@ -16,6 +16,7 @@ import org.springframework.jdbc.object.StoredProcedure;
 
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ResultSetUtils;
+import com.mesplus.util.TypeConvert;
 import com.mesplus.util.XmlConvert;
 
 public class DynamicS2Rt extends StoredProcedure {
@@ -34,6 +35,8 @@ public class DynamicS2Rt extends StoredProcedure {
 	private static ReturnType RTYPE = ReturnType.NONE;
 
 	private static final String SPROC_NAME = "P_DYNAMIC_S2_RT";
+	
+	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
 	public DynamicS2Rt(DataSource dataSource, ReturnType rType) throws Exception {
 		super(dataSource, SPROC_NAME);
@@ -87,11 +90,11 @@ public class DynamicS2Rt extends StoredProcedure {
 				}
 
 				if (pairs.getKey().equals(SQLTEXT_PARAM)) {
-					el = XmlConvert.makeElement(Integer.toString(i), value, "VARCHAR2");
+					el = XmlConvert.makeElement(Integer.toString(i), value, TypeConvert.getChangeType("VARCHAR2", typeMap));
 				} else if (pairs.getKey().equals(OUT_NEW_ID_PARAM)) {
-					el = XmlConvert.makeElement(Integer.toString(i), value, "VARCHAR2");
+					el = XmlConvert.makeElement(Integer.toString(i), value, TypeConvert.getChangeType("VARCHAR2", typeMap));
 				} else if (pairs.getKey().equals(RETURN_MSG_PARAM)) {
-					el = XmlConvert.makeElement(Integer.toString(i), value, "VARCHAR2");
+					el = XmlConvert.makeElement(Integer.toString(i), value, TypeConvert.getChangeType("VARCHAR2", typeMap));
 				}
 				returnMap.put(key, el);
 				i++;
