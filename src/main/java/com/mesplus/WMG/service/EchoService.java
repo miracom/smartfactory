@@ -2,8 +2,6 @@ package com.mesplus.WMG.service;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
 
 import org.cometd.bayeux.server.BayeuxServer;
 import org.cometd.bayeux.server.ServerMessage;
@@ -31,14 +29,13 @@ public class EchoService {
 
 	@PostConstruct
 	public void init() {
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% " + "Echo Service Initialized" + " %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + ":" + this + ":" + ":" + bayeuxServer);
 	}
 
 	@Listener("/echo")
 	public void echo(ServerSession remote, ServerMessage.Mutable message) {
 		String channel = message.getChannel();
 		Object data = message.getData();
-		logger.info("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% " + data + " %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + ":" + this + ":" + bayeuxServer);
-		remote.deliver(serverSession, channel, "껄껄껄", null);
+
+		remote.deliver(serverSession, channel, data, null);
 	}
 }

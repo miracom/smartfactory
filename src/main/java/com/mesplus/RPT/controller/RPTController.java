@@ -29,9 +29,6 @@ public class RPTController {
 	public @ResponseBody
 	List<Report> reports(HttpServletRequest request,
 			HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-
-		logger.info("factory : " + factory);
 		
 		return reportDao.selectReports();
 	}
@@ -40,10 +37,8 @@ public class RPTController {
 	public @ResponseBody
 	Report report(HttpServletRequest request,
 			HttpServletResponse response) {
-		String factory = request.getParameter("factory");
 		String rpt_id = request.getParameter("rpt_id");
 
-		logger.info("factory : " + factory);
 		logger.info("rpt_id : " + rpt_id);
 		
 		Report ret = reportDao.findReport(rpt_id);

@@ -28,7 +28,7 @@ Ext.define('MBI.store.FormDesign', {
 			func_id : 107,
 			spd_id : '',
 			lang_flag : 1,
-			admin_user : SmartFactory.user(),
+			admin_user : SmartFactory.login.id(),
 			func_template_id : 1,
 			grp_user_id : ''
 		},

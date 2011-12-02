@@ -7,6 +7,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Element;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +23,16 @@ import com.mesplus.CMN.dao.FavoriteDao;
 import com.mesplus.CMN.dao.MenuDao;
 import com.mesplus.CMN.model.Favorite;
 import com.mesplus.CMN.model.Menu;
+import com.mesplus.SEC.model.CustomUserDetails;
 import com.mesplus.smartfactory.HomeController;
+import com.mesplus.util.SessionUtils;
 
 @Controller
 public class CMNController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
+	@Autowired
+	private CacheManager cacheManager;
 
 	@Autowired
 	private MenuDao menuDao;
@@ -33,28 +42,36 @@ public class CMNController {
 	@RequestMapping(value = "module/CMN/data/menus.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Menu> menus(HttpServletRequest request, HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-		String user = request.getParameter("user");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
 
 		Map<String, Object> params = new HashMap<String, Object>();
-		
-		params.put("factory", factory);
-		params.put("user", user);
 
-		return Menu.buildHierarchy(menuDao.selectMenus(params));
+		params.put("factory", user.getFactory());
+		params.put("user", user.getUser_id());
+
+		Cache menusCache = cacheManager.getCache("menus");
+		Element element = menusCache.get(params);
+
+		if (element != null)
+			return (List<Menu>) element.getValue();
+
+		List<Menu> menus = Menu.buildHierarchy(menuDao.selectMenus(params));
+
+		menusCache.putIfAbsent(new Element(params, menus));
+
+		return menus;
 	}
-	
+
 	@RequestMapping(value = "module/CMN/data/favorites.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Favorite> favorites(HttpServletRequest request, HttpServletResponse response) {
-		String factory = request.getParameter("factory");
-		String user = request.getParameter("user");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
 
 		Map<String, Object> params = new HashMap<String, Object>();
-		
-		params.put("factory", factory);
-		params.put("user", user);
-		
+
+		params.put("factory", user.getFactory());
+		params.put("user", user.getUser_id());
+
 		return favoriteDao.selectFavorites(params);
 	}
 }

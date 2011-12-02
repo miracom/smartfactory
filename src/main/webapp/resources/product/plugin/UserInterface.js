@@ -36,15 +36,22 @@ Ext.define('plugin.UserInterface', {
 	},
 
 	addContentView : function(view) {
-		// console.log(view);
 		this.showBusy();
+		var comp;
+
 		if (typeof (view) === 'string') {
-			Ext.getCmp('content').add(Ext.create(view, {
+			comp = Ext.create(view, {
 				closable : true
-			})).show();
+			});
 		} else {
-			Ext.getCmp('content').add(view).show();
+			comp = view;
 		}
+		
+		comp = Ext.getCmp('content').add(comp);
+		if(comp.supplement)
+			Ext.getCmp('east').add(comp.supplement);
+		comp.show();
+		
 		this.clearStatus();
 	},
 

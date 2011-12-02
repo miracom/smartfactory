@@ -1,7 +1,7 @@
 Ext.define('plugin.User', function() {
 	var current_user = login.username;
 	var current_factory = login.factory;
-	
+
 	function currentFactory(factory) {
 		if (factory !== undefined)
 			current_factory = factory;
@@ -15,7 +15,10 @@ Ext.define('plugin.User', function() {
 	}
 
 	return {
-		user : currentUser,
-		factory : currentFactory
+		login : {
+			id : currentUser,
+			name : currentUser,
+			factory : currentFactory
+		}
 	};
 }());

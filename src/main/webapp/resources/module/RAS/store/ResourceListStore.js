@@ -10,10 +10,6 @@ Ext.define('RAS.store.ResourceListStore', {
 	proxy: {
 		type: 'ajax',
 		url : 'module/RAS/data/resources.json',
-		extraParams : {
-			factory : SmartFactory.factory(),
-			user : SmartFactory.user()
-		},
 		reader: {
 			type: 'json'
 		}
