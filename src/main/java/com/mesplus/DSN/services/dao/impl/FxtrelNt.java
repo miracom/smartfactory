@@ -25,8 +25,8 @@ public class FxtrelNt extends StoredProcedure {
 
 	private static final String SPROC_NAME = "P_ADSNFXTREL_NT";
 
-	private static ReturnType RTYPE = ReturnType.NONE;
-	
+	private ReturnType RTYPE = ReturnType.NONE;
+
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
 	public FxtrelNt(DataSource dataSource, ReturnType rType) throws SQLException {

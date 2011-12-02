@@ -26,8 +26,8 @@ public class GrpcolNt extends StoredProcedure {
 
 	private static final String SPROC_NAME = "P_ADSNGRPCOL_NT";
 
-	private static ReturnType RTYPE = ReturnType.NONE;
-	
+	private ReturnType RTYPE = ReturnType.NONE;
+
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
 	public GrpcolNt(DataSource dataSource, ReturnType rType) throws SQLException {

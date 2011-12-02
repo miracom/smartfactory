@@ -8,11 +8,13 @@ import org.springframework.jdbc.core.RowMapper;
 
 public final class ElementMapper implements RowMapper<Map<String, Object>> {
 	
-	private static Map<String, String> chgngeTypeMap = null;
+	private Map<String, String> chgngeTypeMap = null;
+	
 	public ElementMapper(Map<String, String> typeMap)
 	{
 		this.chgngeTypeMap = typeMap;
 	}
+	
 	@Override
     public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
     	return ResultSetUtils.convertResultSetToMapElement(rs, chgngeTypeMap);

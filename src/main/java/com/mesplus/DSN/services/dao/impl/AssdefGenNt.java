@@ -23,10 +23,10 @@ public class AssdefGenNt extends StoredProcedure {
 	private static final String FUNC_ID_PARAM = "func_id";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_ADSNASSDEF_GEN_NT";
+	private final static String SPROC_NAME = "P_ADSNASSDEF_GEN_NT";
 
-	private static ReturnType RTYPE = ReturnType.NONE;
-	
+	private ReturnType RTYPE = ReturnType.NONE;
+
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
 	public AssdefGenNt(DataSource dataSource, ReturnType rType) throws SQLException {

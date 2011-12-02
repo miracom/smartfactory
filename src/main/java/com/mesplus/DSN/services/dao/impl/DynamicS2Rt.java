@@ -15,7 +15,6 @@ import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.StoredProcedure;
 
 import com.mesplus.util.Enums.ReturnType;
-import com.mesplus.util.ResultSetUtils;
 import com.mesplus.util.TypeConvert;
 import com.mesplus.util.XmlConvert;
 
@@ -32,10 +31,10 @@ public class DynamicS2Rt extends StoredProcedure {
 	public static final String OUT_NEW_ID_PARAM = "out_new_id";
 	public static final String RETURN_MSG_PARAM = "return_msg";
 
-	private static ReturnType RTYPE = ReturnType.NONE;
-
 	private static final String SPROC_NAME = "P_DYNAMIC_S2_RT";
-	
+
+	private ReturnType RTYPE = ReturnType.NONE;
+
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
 	public DynamicS2Rt(DataSource dataSource, ReturnType rType) throws Exception {

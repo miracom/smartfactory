@@ -15,6 +15,15 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 public class XmlConvert {
+	/**
+	 * key, value, type의 attribute 정보를 가진 add Element를 생성
+	 * @author Jinho
+	 * @param key
+	 * @param value
+	 * @param type
+	 * @return Element
+	 * @throws SQLException
+	 */
 	public final static Element makeElement(String key, String value, String type) throws SQLException {
 
 		if (CommonUtils.isNullorEmpty(key) || value == null || CommonUtils.isNullorEmpty(type)) {
@@ -30,6 +39,14 @@ public class XmlConvert {
 		return el;
 	}
 
+	/**
+	 * List<Map<String, Object(Element형태)>>를 최종 DataTable 변환 형식의 Element로 변환
+	 * @author Jinho
+	 * @param mapList
+	 * @param tableName
+	 * @return Element
+	 * @throws Exception
+	 */
 	public final static Element mapListToDataTableElement(List<Map<String, Object>> mapList, String tableName) throws Exception {
 		if (mapList.size() == 0) {
 			throw new IllegalArgumentException("Parameters(mapList) should not be 0 size.");
@@ -73,6 +90,13 @@ public class XmlConvert {
 		}
 	}
 
+	/**
+	 * List<Map<String, Object(Element형태)>>를 최종 ArrayList 변환 형식의 Element로 변환
+	 * @author Jinho
+	 * @param map
+	 * @return Element
+	 * @throws Exception
+	 */
 	public final static Element mapToArrayListElement(Map<String, Object> map) throws Exception {
 		if (map.size() == 0) {
 			throw new IllegalArgumentException("Parameters(map) should not be 0 size.");
@@ -109,6 +133,13 @@ public class XmlConvert {
 		}
 	}
 
+	/**
+	 * DataTable 변환 형식의 Element를 합하여 DataSet 변환 형식의 Element로 변환
+	 * @author Jinho
+	 * @param elList
+	 * @return Element
+	 * @throws Exception
+	 */
 	public final static Element groupElement(List<Element> elList) throws Exception {
 
 		if (elList.size() == 0) {
@@ -132,6 +163,13 @@ public class XmlConvert {
 
 	}
 
+	/**
+	 * Element를 String인 XML형태로 변환
+	 * @author Jinho
+	 * @param el
+	 * @return String
+	 * @throws Exception
+	 */
 	public final static String elementToXML(Element el) throws Exception {
 		if (el == null) {
 			throw new IllegalArgumentException("Parameters(el) should not be 0 size.");
@@ -142,6 +180,13 @@ public class XmlConvert {
 		}
 	}
 
+	/**
+	 * Xml 문자를 ArrayList로 변환
+	 * @author Jinho
+	 * @param xmlStr
+	 * @return List<String>
+	 * @throws Exception
+	 */
 	public final static List<String> xmlToArrayList(String xmlStr) throws Exception {
 		if (CommonUtils.isNullorEmpty(xmlStr)) {
 			throw new IllegalArgumentException("Parameters(xmlStr) should not be null.");

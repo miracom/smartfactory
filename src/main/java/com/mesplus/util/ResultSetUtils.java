@@ -9,6 +9,14 @@ import java.util.Map;
 import org.jdom.Element;
 
 public class ResultSetUtils {
+	
+	/**
+	 * RowMapper에서 ResultSet을 받아 Map<String, Object> 변환
+	 * @author Jinho
+	 * @param rs
+	 * @return Map<String, Object>
+	 * @throws SQLException
+	 */
 	public final static Map<String, Object> convertResultSetToMapObject(ResultSet rs) throws SQLException {
 		Map<String, Object> map = new HashMap<String, Object>();
 
@@ -22,6 +30,14 @@ public class ResultSetUtils {
 		return map;
 	}
 
+	/**
+	 * RowMapper에서 ResultSet을 받아 Map<String, Element> 변환
+	 * @author Jinho
+	 * @param rs
+	 * @param typeMap
+	 * @return Map<String, Object>
+	 * @throws SQLException
+	 */
 	public final static Map<String, Object> convertResultSetToMapElement(ResultSet rs, Map<String, String> typeMap) throws SQLException {
 		Map<String, Object> map = new HashMap<String, Object>();
 

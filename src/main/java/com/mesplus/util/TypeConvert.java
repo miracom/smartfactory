@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TypeConvert {
+	/**
+	 * C#과 ORACLE의 Type의 Mapping 정보를 가지고 있는 Map 생성
+	 * @author Jinho
+	 * @return Map<String,String>
+	 */
 	public final static Map<String,String> getMappingType() 
 	{	
 		//참고: Oracle Native Types Supported by ODP.NET   
@@ -34,6 +39,14 @@ public class TypeConvert {
 		return typeMap;
 	}
 	
+	/**
+	 * Type의 Mapping 정보에서 ORACLE의 Type 정보를 찾아 C# Type으로 변환
+	 * @author Jinho
+	 * @param typeValue
+	 * @param mappingType
+	 * @return String
+	 * @throws SQLException
+	 */
 	public final static String getChangeType(String typeValue, Map<String, String> mappingType) throws SQLException
 	{
 		if(mappingType.size() == 0)
