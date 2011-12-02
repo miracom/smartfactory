@@ -250,4 +250,27 @@ public class MBIController {
 		return formDao.dynamicS2NtDao(fac_id, func_id, spd_id, col_param,cond_param,lang_flag);
 	}
 	
+	@RequestMapping(value = "module/MBI/data/tbldat_nt.json", method = RequestMethod.GET) 
+	public @ResponseBody 
+	List<Map<String, Object>> tbldatNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String a_fac_id = request.getParameter("a_fac_id");
+		String a_tbl_code = request.getParameter("a_tbl_code");
+		String a_lang_flag = request.getParameter("a_lang_flag");
+		String a_params = request.getParameter("a_params");
+		
+		return formDao.tbldatNtDao(a_fac_id, a_tbl_code, a_lang_flag, a_params);
+	}
+	
+	@RequestMapping(value = "module/MBI/data/selectresult_nt.json", method = RequestMethod.GET) 
+	public @ResponseBody  
+	List<Map<String, Object>> selectresultNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String a_sql_txt1 = request.getParameter("a_sql_txt1");
+		String a_sql_txt2 = request.getParameter("a_sql_txt2");
+		String a_sql_txt3 = request.getParameter("a_sql_txt3");
+		String a_sql_txt4 = request.getParameter("a_sql_txt4");
+		String a_sql_txt5 = request.getParameter("a_sql_txt5");
+		
+		return formDao.selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5);
+	}
+	
 }
