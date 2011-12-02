@@ -30,6 +30,9 @@ import com.mesplus.smartfactory.HomeController;
 public class FileController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	/*
+	 * TODO 아래는 브라우저 엔진별로 재구성해야함. ex)webkit, ..
+	 */
 	private String getBrowser(HttpServletRequest request) {
 		String ua = request.getHeader("User-Agent");
 		if(ua.indexOf("MSIE") > -1)
