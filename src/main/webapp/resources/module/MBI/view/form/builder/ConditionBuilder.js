@@ -13,7 +13,6 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 
 		return Ext.create('Ext.form.Panel',{
 		//return Ext.create('Ext.container.Container',{
-			
 			bodyStyle:'padding:3px 3px 0',
 			//fieldDefaults: {
 		    //    msgTarget: 'side',
@@ -23,9 +22,18 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 	        	 type: 'vbox',
 	        	 align : 'stretch'	        		 
 	        },
-		    items: fieldSet
-		    
-		    
+		    items: fieldSet,
+		    buttons : [ {
+				text : 'View',
+				handler : function() {
+					
+				}
+			}, {
+				text : 'Reset',
+				handler : function() {
+					
+				}
+			} ]
 		});
-	},
+	}
 });

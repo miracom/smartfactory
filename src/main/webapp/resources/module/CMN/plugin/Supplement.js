@@ -14,48 +14,56 @@ Ext.define('CMN.plugin.Supplement', {
 		/*
 		 * Sample
 		 */
-		function handlerButtonView() {
-			console.log(client.store);
-			if(client.store)
-				client.store.load();
-			console.log(client);
+
+		if (!client.getSupplement) {
+			client.getSupplement = function() {
+				return this.supplement;
+			};
 		}
 
-		function handlerButtonReset() {
-			console.log(this);
+		if (!client.setSupplement) {
+			client.setSupplement = this.setSupplement;
 		}
 
-		client.supplement = Ext.create('CMN.view.common.Supplement', {
-			// title : client.title
-			buttons : [ {
-				text : 'View',
-				handler : handlerButtonView
-			}, {
-				text : 'Reset',
-				handler : handlerButtonReset
-			} ]
-		});
+		if(!client.getSupplement()) {
 
+
+			client.supplement = Ext.create('CMN.view.common.Supplement', {
+				// title : client.title
+				
+			});
+		}
+		
 		client.on('activate', this.onActivate, client);
 		client.on('destroy', this.onDestroy, client);
 		client.on('render', this.onRender, client);
-
 	},
 
-	onRender : function() {
-		if (this.supplement) {
-			Ext.getCmp('east').add(this.supplement);
-			this.supplement.doLayout();
+	setSupplement : function(supplement) {
+		if (this.getSupplement())
+			Ext.getCmp('east').remove(this.getSupplement());
+
+		this.supplement = supplement;
+		
+		if (this.getSupplement()) {
+			Ext.getCmp('east').add(this.getSupplement());
+			Ext.getCmp('east').getLayout().setActiveItem(this.getSupplement());
+			this.getSupplement().doLayout();
 		}
+	},
+	
+	onRender : function() {
+		if(this.getSupplement())
+			this.setSupplement(this.getSupplement());
 	},
 
 	onActivate : function() {
-		if (this.supplement)
-			Ext.getCmp('east').getLayout().setActiveItem(this.supplement);
+		if (this.getSupplement())
+			Ext.getCmp('east').getLayout().setActiveItem(this.getSupplement());
 	},
 
 	onDestroy : function() {
-		if (this.supplement)
-			Ext.getCmp('east').remove(this.supplement);
+		if (this.getSupplement())
+			Ext.getCmp('east').remove(this.getSupplement());
 	}
 });

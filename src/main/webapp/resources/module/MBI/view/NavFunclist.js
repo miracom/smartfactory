@@ -1,3 +1,5 @@
+Ext.require('MBI.view.form.builder.BaseFormBuilder');
+
 Ext.define('MBI.view.NavFunclist', {
 	extend: 'Ext.view.View',
 	
@@ -8,12 +10,8 @@ Ext.define('MBI.view.NavFunclist', {
 			view.store.load();
 		},
 		itemclick: function(view, record, item, index, e, opt) {
-			SmartFactory.addContentView({
-				xtype : 'mbi.baselayoutview',
-				title : record.get('func_name1'),
-				funcData : record,
-				closable: true
-			});
+			var form = MBI.view.form.builder.BaseFormBuilder.buildForm(record);
+			SmartFactory.addContentView(form);
 		}
 	},
 	
