@@ -12,12 +12,13 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
         }).getFieldSet();
 
 		return Ext.create('Ext.form.Panel',{
-		//return Ext.create('Ext.container.Container',{
-			bodyStyle:'padding:3px 3px 0',
-			//fieldDefaults: {
-		    //    msgTarget: 'side',
-		    //    labelWidth: 80
-		    //},
+
+			bodyStyle : 'padding:5px',
+
+			defaults : {
+				labelAlign : 'top'
+			},
+			
 	        layout: {
 	        	 type: 'vbox',
 	        	 align : 'stretch'	        		 
@@ -31,14 +32,14 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 			}, {
 				text : 'Reset',
 				handler : function() {
-					
+					this.up('form').getForm().reset();
 				}
 			} ]
 		});
 	},
 	
 	handlerButtonView : function() {
-		var form = this.findParentByType('form');
+		var form = this.up('form');
 		this.viewHandler.apply(this.client, [form.getValues()]);
 	}
 });

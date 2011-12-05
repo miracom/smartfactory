@@ -47,11 +47,18 @@ Ext.define('MBI.view.form.BaseForm1G', {
 	},
 
 	buildCondParam : function(params) {
-		return null;//"1`^2|2`^222";
+		var mapconGenNt = this.store.data.get(0).data.mapconGenNt;
+		var con_params = '';
+
+		for(var i in mapconGenNt){
+			con_params += mapconGenNt[i].con_seq +'`^' + params[mapconGenNt[i].display_text.toLowerCase()] + '|';
+		};
+		
+		return con_params; //ex: '1`^1|2`^|3`^|';
 	},
 
 	onView : function(params) {
-		console.log(params);
+		//console.log(params);
 		var extraParam = {
 			fac_id : this.facId,
 			func_id : this.funcId,
