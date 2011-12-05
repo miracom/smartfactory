@@ -31,6 +31,9 @@ $tab-font-weight-active: bold !default;
 $tab-closable-icon-top: 6px !default;
 $tab-spacing: 1px;
 
+//form
+$form-field-empty-color:#999999;
+
 //buttons
 $button-default-border-color:#b0b0b0;
 $button-default-border-color-over:#b5ccdd;
@@ -46,6 +49,7 @@ $loadmask-backgorund: #000 !default;
 
 //window
 $window-header-color:#333;
+$panel-header-color:#ced9ea;
 
 //separator
 $toolbar-separator-color: #ccc !default;
