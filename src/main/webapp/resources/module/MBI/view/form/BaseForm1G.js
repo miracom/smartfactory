@@ -19,23 +19,25 @@ Ext.define('MBI.view.form.BaseForm1G', {
 			formInfoData : this.store.data,
 			facId : this.facId,
 			funcId : this.funcId,
-			langFlag : this.langFlag
+			langFlag : this.langFlag,
+			client : this,
+			viewHandler : this.onView
 		}).buildCondition());
 
-		var storeInfo = Ext.create('MBI.view.form.builder.StoreBuilder', {
+		this.storeInfo = Ext.create('MBI.view.form.builder.StoreBuilder', {
 			formInfoData : this.store.data,
 			facId : this.facId,
 			funcId : this.funcId,
 			langFlag : this.langFlag
 		}).buildStore();
-		storeInfo.load();
+		this.storeInfo.load();
 		// console.log('return : storeInfo = StoreBuilder =>');
 		// console.log(storeInfo);
 
 		var view_grid = Ext.create('MBI.view.form.builder.GridBuilder', {
 			formInfoData : this.store.data,
 			langFlag : this.langFlag,
-			store : storeInfo
+			store : this.storeInfo
 		}).buildGrid();
 		// console.log('return : view_grid = GridBuilder =>');
 		// console.log(view_grid);
@@ -46,27 +48,20 @@ Ext.define('MBI.view.form.BaseForm1G', {
 	},
 
 	buildCondParam : function(params) {
-		
+		return "1`^2|2`^222";
 	},
-	
-	handlerButtonView : function(params) {
-		for ( var i in this.items) {
-			var item = items[i];
-			if (item.getStore) {
-				var store = item.getStore();
-				if (store) {
-					var extraParam = {
-						fac_id : this.facId,
-						func_id : this.funcId,
-						spd_id : '1', // set input data for base2G
-						param : null,
-						cond_param : this.buildCondParam(params),
-						lang_flag : this.langFlag,
-					};
-					store.load(extraParam);
-				}
-			}
-		}
+
+	onView : function(params) {
+		console.log(params);
+		var extraParam = {
+			fac_id : this.facId,
+			func_id : this.funcId,
+			spd_id : '1', // set input data for base2G
+			param : null,
+			cond_param : this.buildCondParam(params),
+			lang_flag : this.langFlag,
+		};
+		this.storeInfo.load({params : extraParam});
 	}
 
 });

@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.MBI.dao.FormDao;
+import com.mesplus.smartfactory.HomeController;
 
 @Controller
 public class MBIController {
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired
 	private FormDao formDao;
@@ -246,6 +250,8 @@ public class MBIController {
 		String col_param = request.getParameter("col_param");
 		String cond_param = request.getParameter("cond_param");
 		String lang_flag  = request.getParameter("lang_flag");
+		
+		logger.info("CondParam : " + cond_param);
 		
 		return formDao.dynamicS2NtDao(fac_id, func_id, spd_id, col_param,cond_param,lang_flag);
 	}

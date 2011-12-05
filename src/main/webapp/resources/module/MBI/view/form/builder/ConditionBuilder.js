@@ -25,9 +25,9 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 		    items: fieldSet,
 		    buttons : [ {
 				text : 'View',
-				handler : function() {
-					
-				}
+				client : this.client,
+				viewHandler : this.viewHandler,
+				handler : this.handlerButtonView
 			}, {
 				text : 'Reset',
 				handler : function() {
@@ -35,5 +35,10 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 				}
 			} ]
 		});
+	},
+	
+	handlerButtonView : function() {
+		var form = this.findParentByType('form');
+		this.viewHandler.apply(this.client, [form.getValues()]);
 	}
 });
