@@ -39,14 +39,6 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 			type: 'ajax',
 			url : 'module/MBI/data/dynamic_s2_nt.json',
 			
-			extraParams : {
-				fac_id : this.facId,
-				func_id : this.funcId,
-				spd_id : '1', //set input data for base2G 
-				param :this.buildParam() ,
-				cond_param : this.buildCondParam(),
-				lang_flag : this.langFlag,
-			},
 			reader: {
 				type: 'json'
 			}

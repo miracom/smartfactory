@@ -30,7 +30,6 @@ Ext.define('MBI.view.form.BaseForm1G', {
 			funcId : this.funcId,
 			langFlag : this.langFlag
 		}).buildStore();
-		this.storeInfo.load();
 		// console.log('return : storeInfo = StoreBuilder =>');
 		// console.log(storeInfo);
 
@@ -48,7 +47,7 @@ Ext.define('MBI.view.form.BaseForm1G', {
 	},
 
 	buildCondParam : function(params) {
-		return "1`^2|2`^222";
+		return null;//"1`^2|2`^222";
 	},
 
 	onView : function(params) {
