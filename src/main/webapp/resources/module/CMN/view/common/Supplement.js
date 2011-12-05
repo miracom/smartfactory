@@ -171,10 +171,5 @@ Ext.define('CMN.view.common.Supplement', {
 		name : 'files',
 		fieldLabel: 'Files upload',
 		anchor : '100%'
-	} ],
-	buttons : [ {
-		text : 'Search'
-	}, {
-		text : 'Reset'
 	} ]
 });

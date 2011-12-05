@@ -3,6 +3,8 @@ Ext.define('MBI.view.form.BaseForm1G', {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.mbi.baseform1g',
 
+	plugins: [Ext.create('CMN.plugin.Supplement')],
+	
 	layout : {
 		type : 'vbox',
 		align : 'stretch'
@@ -18,7 +20,7 @@ Ext.define('MBI.view.form.BaseForm1G', {
 		//this.removeAll();
 		//console.log('ConditionBuilder');
 		//console.log(this.store.data);
-		this.view_condition = Ext.create('MBI.view.form.builder.ConditionBuilder',{
+		this.supplement = Ext.create('MBI.view.form.builder.ConditionBuilder',{
 			formInfoData : this.store.data,
 			facId : this.facId,
 			funcId : this.funcId,
