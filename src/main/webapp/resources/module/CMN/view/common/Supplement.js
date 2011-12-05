@@ -46,6 +46,16 @@ Ext.define('CMN.view.common.Supplement', {
 	items : [ {
 		xtype : 'textfield',
 		fieldLabel : 'Factory name'
+	},{
+		xtype : 'datefield',
+		fieldLabel: 'Period',
+		name : 'startdt',
+		emptyText: 'From date'
+	}, {
+		xtype : 'datefield',
+		hideLabel: true,
+		name : 'enddt',
+		emptyText: 'To date'
 	},
 	// Ext.create('CMN.view.form.MaskedEditDateTime', {
 	// fieldLabel: 'Start Date(Masked)',
@@ -53,13 +63,25 @@ Ext.define('CMN.view.common.Supplement', {
 	// labelAlign: 'top'
 	// }),
 	{
-		xtype : 'datefield',
-		fieldLabel : 'Start Date',
-		name : 'startdt'
-	}, {
-		xtype : 'datefield',
-		fieldLabel : 'End Date',
-		name : 'enddt'
+		xtype: 'fieldset',
+        title: 'Lot Type',
+        layout: 'anchor',
+        defaults: {
+            anchor: '100%'
+        },
+        items : [{
+            xtype: 'radiogroup',
+            layout: 'anchor',
+            items: [{
+                inputValue: 'Lot type A',
+                boxLabel: 'Lot type A',
+                checked: true
+            }, {
+                inputValue: 'Lot type B',
+                boxLabel: 'Lot type B'
+            }]
+        }	
+                 ]
 	}, {
 		xtype : 'combobox',
 		fieldLabel : 'Product ID',
@@ -92,14 +114,58 @@ Ext.define('CMN.view.common.Supplement', {
 			} ]
 		})
 	}, {
+		xtype : 'fieldcontainer',
+		fieldLabel : 'Time worked',
+		layout : 'hbox',
+		cls : 'hboxLine',
+		items: [
+	                {
+	                    name : 'hours',
+	                    xtype: 'numberfield',
+	                    width: 55,
+	                    allowBlank: false,
+	                    emptyText: 'hour'
+	                },{
+	                    name : 'minutes',
+	                    xtype: 'numberfield',
+	                    width: 55,
+	                    allowBlank: false,
+	                    emptyText: 'min'
+	                },{
+	                    name : 'second',
+	                    xtype: 'numberfield',
+	                    width: 55,
+	                    allowBlank: false,
+	                    emptyText: 'sec'
+	                }
+	             ]
+	}, {
+		xtype: 'fieldset',
+        title: 'Status',
+        layout: 'anchor',
+        defaultType: 'checkbox',
+        defaults: {
+            anchor: '100%'
+        },
+        cls : 'fieldsetCheckbox',
+        items : [{
+        		inputValue: 'Wait',
+                boxLabel: 'Wait',
+                checked: true
+            }, {
+                inputValue: 'Process',
+                boxLabel: 'Process'
+            }
+                 ]
+	},{
 		xtype : 'filefield',
-		name : 'photo',
-		fieldLabel : 'Photo',
+		name : 'file',
+		fieldLabel : 'file upload & download',
 		labelWidth : 50,
 		msgTarget : 'side',
 		allowBlank : false,
 		anchor : '100%',
-		buttonText : 'Photo...'
+		buttonText : 'file...'
 	}, {
 		xtype: 'multifilefield',
 		name : 'files',
