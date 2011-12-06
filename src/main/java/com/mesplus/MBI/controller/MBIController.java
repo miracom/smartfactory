@@ -16,11 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.MBI.dao.FormDao;
-import com.mesplus.smartfactory.HomeController;
 
 @Controller
 public class MBIController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MBIController.class);
 
 	@Autowired
 	private FormDao formDao;

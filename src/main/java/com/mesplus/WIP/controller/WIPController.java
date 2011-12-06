@@ -23,7 +23,7 @@ import com.mesplus.util.SessionUtils;
 
 @Controller
 public class WIPController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(WIPController.class);
 
 	@Autowired
 	private OperationDao operationDao;

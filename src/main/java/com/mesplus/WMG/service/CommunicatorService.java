@@ -44,11 +44,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mesplus.WMG.service.filter.BadWordFilter;
-import com.mesplus.smartfactory.HomeController;
 
 @Service("communicator")
 public class CommunicatorService {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CommunicatorService.class);
 	
 	private final ConcurrentMap<String, Map<String, String>> spaceMembersMap = new ConcurrentHashMap<String, Map<String, String>>();
 	@Inject

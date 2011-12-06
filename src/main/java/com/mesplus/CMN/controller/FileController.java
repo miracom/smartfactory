@@ -24,11 +24,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.CMN.dao.FileDao;
-import com.mesplus.smartfactory.HomeController;
 
 @Controller
 public class FileController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
 	
 	/*
 	 * TODO 아래는 브라우저 엔진별로 재구성해야함. ex)webkit, ..
