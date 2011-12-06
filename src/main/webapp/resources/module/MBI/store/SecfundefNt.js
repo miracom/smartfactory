@@ -41,7 +41,6 @@ Ext.define('MBI.store.SecfundefNt', {
 		type: 'ajax',
 		url : 'module/MBI/data/secfundef_nt.json',
 		extraParams : {
-			fac_id : 83,
 			func_group : 'TEST',
 			func_code : '',
 			func_type : 'G'

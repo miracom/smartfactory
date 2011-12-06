@@ -23,13 +23,9 @@ Ext.define('MBI.view.form.builder.BaseFormBuilder', {
 				type : 'ajax',
 				url : 'module/MBI/data/get_design.json',
 				extraParams : {
-					fac_id : funcData.get('fac_id'),
 					func_id : funcData.get('func_id'),
 					spd_id : '',
-					lang_flag : 1,
-					admin_user : SmartFactory.login.name(),
 					func_template_id : 1,
-					grp_user_id : ''
 				},
 				reader : {
 					type : 'json'
@@ -41,7 +37,6 @@ Ext.define('MBI.view.form.builder.BaseFormBuilder', {
 			title : getViewTitle(),
 			// layout : 'fit',
 			store : store,
-			facId : funcData.get('fac_id'),
 			funcId : funcData.get('func_id'),
 			langFlag : 1,
 			closable : true

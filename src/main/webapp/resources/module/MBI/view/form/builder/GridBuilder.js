@@ -21,19 +21,9 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
                     items : [{
                     	xtype : 'grid',
 						store : this.store,
-						
 						columns : this.buildColumn(),
 						selModel: Ext.create('Ext.selection.CheckboxModel'),
 						columnLines : true
-//						stripeRows : true,
-//						loadMask : { msg : 'loading....'},
-//						
-//						clicksToEdit : 1, // Edit for Cell click
-//						sm : new Ext.grid.RowSelectionModel({
-//							singleSelect : true
-						//}),
-						//view : new
-					
                     }]
                 }]
 			}]
@@ -55,7 +45,6 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 					xtype : 'textfield',
 	    			allowBlank: false
 	    			}
-				//editor: this.buildEditor(mapdefS2Nt[i].save_flag)
 			});
 		};
 		return mapColums;

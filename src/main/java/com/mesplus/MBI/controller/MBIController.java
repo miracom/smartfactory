@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.MBI.dao.FormDao;
+import com.mesplus.SEC.model.CustomUserDetails;
 import com.mesplus.smartfactory.HomeController;
+import com.mesplus.util.SessionUtils;
 
 @Controller
 public class MBIController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
+	// TODO 모든 fac_id를  factory code 수정 , lang_flag 수정
 	@Autowired
 	private FormDao formDao;
 
@@ -30,13 +32,17 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/get_design.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String, Object> getDesign(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
 		String func_template_id = request.getParameter("func_template_id");
-		String lang_flag = request.getParameter("lang_flag");
-		String admin_user = request.getParameter("admin_user");
-		String grp_user_id = request.getParameter("grp_user_id");
+		String lang_flag = "1";
+		String admin_user = user.getUser_id();
+		String grp_user_id = "";
 
 		Map<String, Object> design = new HashMap<String, Object>();
 
@@ -61,7 +67,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/consql_gen_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> consqlGenNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 
 		return formDao.consqlGenNtDao(fac_id, func_id);
@@ -70,7 +79,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/fscrel_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> fscrelNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
 
@@ -80,9 +92,12 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/mapcon_gen_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> mapconGenNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
-		String lang_flag = request.getParameter("lang_flag");
+		String lang_flag = "1";
 
 		return formDao.mapconGenNtDao(fac_id, func_id, lang_flag);
 	}
@@ -90,9 +105,12 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/mapdef_s2_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> mapdefS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
-		String admin_user = request.getParameter("admin_user");
+		String admin_user = user.getUser_id();
 
 		return formDao.mapdefS2NtDao(fac_id, func_id, admin_user);
 	}
@@ -100,7 +118,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/tabvld_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> tabvldNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
 
@@ -110,10 +131,13 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/usrcol_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> usrcolNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
-		String grp_usr_id = request.getParameter("grp_usr_id");
-		String lang_flag = request.getParameter("lang_flag");
+		String grp_usr_id = "";
+		String lang_flag = "1";
 
 		return formDao.usrcolNtDao(fac_id, func_id, grp_usr_id, lang_flag);
 	}
@@ -121,9 +145,12 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/usrmap_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> usrmapNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
-		String grp_usr_id = request.getParameter("grp_usr_id");
+		String grp_usr_id = "";
 
 		return formDao.usrmapNtDao(fac_id, func_id, grp_usr_id);
 	}
@@ -132,7 +159,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/fsprel_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> fsprelNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
 
@@ -144,7 +174,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/ftrfld_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> ftrfldNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 		String func_template_id = request.getParameter("func_template_id");
 
@@ -155,7 +188,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/fxtrel_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> fxtrelNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 
 		return formDao.fxtrelNtDao(fac_id, func_id);
@@ -166,9 +202,12 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/grpcol_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> grpcolNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
-		String lang_falg = request.getParameter("lang_falg");
+		String lang_falg = "1";
 
 		return formDao.grpcolNtDao(fac_id, func_id, lang_falg);
 	}
@@ -177,7 +216,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/grpmap_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> grpmapNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 
 		return formDao.grpmapNtDao(fac_id, func_id);
@@ -186,7 +228,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/assdef_gen_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> assdefGenNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 
 		return formDao.assdefGenNtDao(fac_id, func_id);
@@ -195,7 +240,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/chtinf_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> chtinfNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 
 		return formDao.chtinfNtDao(fac_id, func_id);
@@ -204,7 +252,10 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/secfundef_nt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String, Object>> secfundefNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_group = request.getParameter("func_group");
 		String func_code = request.getParameter("func_code");
 		String func_type = request.getParameter("func_type");
@@ -216,12 +267,15 @@ public class MBIController {
 	@RequestMapping(value = "modul/MBI/data/dynamic_s2_rt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String, Object> dynamicS2Rt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+				
 		String status = request.getParameter("status");
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
-		String fac_id = request.getParameter("fac_id");
-		String user_id = request.getParameter("user_id");
-		String lang_flag = request.getParameter("lang_flag");
+		String user_id = user.getUser_id();
+		String lang_flag = "1";
 		String arrlst = request.getParameter("arrlst");
 		
 		return formDao.dynamicS2RtDao(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst);
@@ -231,11 +285,13 @@ public class MBIController {
 	@RequestMapping(value = "modul/MBI/data/test_rt.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String, Object> testRt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		
 		String lot_id = request.getParameter("lot_id");
 		String fac_id = request.getParameter("fac_id");
 		String mat_id = request.getParameter("mat_id");
 		String order_id = request.getParameter("order_id");
-		String user_id = request.getParameter("user_id");
+		String user_id = user.getUser_id();
 		
 		return formDao.testRtDao(lot_id, fac_id, mat_id, order_id, user_id);
 	}
@@ -244,12 +300,15 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/dynamic_s2_nt.json", method = RequestMethod.GET) 
 	public @ResponseBody
 	List<Map<String, Object>> dynamicS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String fac_id = request.getParameter("fac_id");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
 		String col_param = request.getParameter("col_param");
 		String cond_param = request.getParameter("cond_param");
-		String lang_flag  = request.getParameter("lang_flag");
+		String lang_flag = "1";
 		
 		logger.info("CondParam : " + cond_param);
 		
@@ -259,12 +318,15 @@ public class MBIController {
 	@RequestMapping(value = "module/MBI/data/tbldat_nt.json", method = RequestMethod.GET) 
 	public @ResponseBody 
 	List<Map<String, Object>> tbldatNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String a_fac_id = request.getParameter("a_fac_id");
-		String a_tbl_code = request.getParameter("a_tbl_code");
-		String a_lang_flag = request.getParameter("a_lang_flag");
-		String a_params = request.getParameter("a_params");
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
 		
-		return formDao.tbldatNtDao(a_fac_id, a_tbl_code, a_lang_flag, a_params);
+		String tbl_code = request.getParameter("tbl_code");
+		String lang_flag = "1";
+		String params = request.getParameter("params");
+		
+		return formDao.tbldatNtDao(fac_id, tbl_code, lang_flag, params);
 	}
 	
 	@RequestMapping(value = "module/MBI/data/selectresult_nt.json", method = RequestMethod.GET) 
@@ -278,5 +340,17 @@ public class MBIController {
 		
 		return formDao.selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5);
 	}
-	
+
+	@RequestMapping(value = "module/MBI/data/tbldef_nt.json", method = RequestMethod.GET) 
+	public @ResponseBody 
+	List<Map<String, Object>> tbldefNt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+		// TODO fac_id => factory code	
+		String fac_id = String.valueOf(user.getFac_id());
+		
+		String tbl_grp = request.getParameter("a_tbl_grp");
+		String tbl_code = request.getParameter("a_tbl_code");
+
+		return formDao.tbldefNtDao(fac_id, tbl_grp,tbl_code);
+	}
 }

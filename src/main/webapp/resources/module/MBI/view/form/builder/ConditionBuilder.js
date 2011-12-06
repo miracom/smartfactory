@@ -8,7 +8,8 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 	buildCondition : function(){
 		//console.log('getCondition');
 		var fieldSet = Ext.create('MBI.view.form.builder.FieldBuilder',{
-        	data : this.formInfoData.get(0).data.mapconGenNt
+        	data : this.formInfoData.get(0).data.mapconGenNt,
+        	facId : this.facId
         }).getFieldSet();
 
 		return Ext.create('Ext.form.Panel',{

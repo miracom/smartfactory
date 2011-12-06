@@ -44,7 +44,9 @@ public interface FormDao {
 	public List<Map<String, Object>> dynamicS2NtDao(String fac_id, String func_id, String spd_id, String col_param, String cond_param, String lang_flag)
 			throws SQLException;
 
-	public List<Map<String, Object>> tbldatNtDao(String a_fac_id, String a_tbl_code, String a_lang_flag, String a_params) throws SQLException;
+	public List<Map<String, Object>> tbldatNtDao(String fac_id, String tbl_code, String lang_flag, String params) throws SQLException;
 
 	public List<Map<String, Object>> selectresultNtDao(String a_sql_txt1, String a_sql_txt2, String a_sql_txt3, String a_sql_txt4, String a_sql_txt5) throws SQLException;
+	
+	public List<Map<String, Object>> tbldefNtDao(String fac_id, String tbl_grp, String tbl_code) throws SQLException;
 }

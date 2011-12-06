@@ -5,18 +5,27 @@ Ext.define('CMN.view.form.GCMComboBox', {
 		
 		// tableName, valueField, displayField + fieldsInfo
 		config = Ext.applyIf(config, {
-			fieldLabel : '',
 			store : this.buildStore(config),
-			queryMode : 'local',
-			displayField : '',
-			valueField : ''
 		});
-
 		CMN.view.form.GCMComboBox.superclass.constructor.call(this, config);
 	},
 
 	buildStore : function(config) {
-		// StoreBuilder를 재활용
-		return null;
+		//TODO proxy configs 변경
+		return Ext.create('Ext.data.Store',{
+			autoLoad : true,
+			fields : [config.displayField ,config.valueField],
+			proxy : {
+				type : 'ajax',
+				url : 'module/MBI/data/tbldat_nt.json',
+				extraParams : {
+					tbl_code : config.tableName,
+					params :''
+				},
+				reader : {
+					type : 'json'
+				}
+			}
+		});
 	}
 });
