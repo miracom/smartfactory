@@ -77,6 +77,8 @@ public class CustomJdbcDaoImpl extends JdbcDaoImpl implements IChangePassword {
 				user.setOld_password_5(rs.getString("OLD_PASSWORD_5"));
 				user.setCreate_user_id(rs.getString("CREATE_USER_ID"));
 				user.setUpdate_user_id(rs.getString("UPDATE_USER_ID"));
+				// TODO remove fac_id
+				user.setFac_id(rs.getInt("FAC_ID"));
 
 				try {
 					user.setCreate_time(CustomJdbcDaoImpl.format.parse(rs.getString("CREATE_TIME")));

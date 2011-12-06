@@ -4,6 +4,12 @@
 <head>
 	<title>Smart Factory</title>
 	<link rel="stylesheet" href="css/menu.css"></link>
+    <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+	<script>
+	$(function() {
+		$('.auto-focus:first').focus();
+	});
+	</script>
 </head>
 <body class="welcome">
 	<%-- <jsp:include page="common/header.jsp">
@@ -17,7 +23,7 @@
 
 	<form action="j_spring_security_check" method="post">
 		<label for="j_factory">Factory</label>
-		<input id="j_factory" name="j_factory" maxlength="50" type="text" class="loginInput" />
+		<input id="j_factory" name="j_factory" maxlength="50" type="text" class="loginInput auto-focus" />
 		<label for="j_username">user name</label>
 		<input id="j_username" name="j_username" maxlength="50" type="text" class="loginInput" />
 		<label for="j_password">Password</label>

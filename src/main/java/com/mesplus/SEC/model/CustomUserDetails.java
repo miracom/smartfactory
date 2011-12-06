@@ -26,6 +26,16 @@ public class CustomUserDetails implements UserDetails {
 	private Date create_time;
 	private String update_user_id;
 	private Date update_time;
+	// TODO remove fac_id (Temporary factory code)
+	private int fac_id;
+
+	public int getFac_id() {
+		return fac_id;
+	}
+
+	public void setFac_id(int fac_id) {
+		this.fac_id = fac_id;
+	}
 
 	@Override
 	public Collection<GrantedAuthority> getAuthorities() {

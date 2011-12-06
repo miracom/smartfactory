@@ -9,7 +9,7 @@ Ext.define('plugin.Mixin', {
 				Ext.apply(SmartFactory, clazz);
 			}
 		} catch (e) {
-			console.log(e);
+			console.log(e.stack);
 		}
 	}
 });
