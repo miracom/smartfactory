@@ -1,4 +1,4 @@
-Ext.Loader.setPath('plugin', 'product/plugin/');
+Ext.Loader.setPath('plugin', 'product/plugin');
 
 Ext.define('SmartFactory', {
 	singleton : true,
