@@ -76,17 +76,12 @@ Ext.define('plugin.UserInterface', {
 				}));
 			});
 		} else {
-			SmartFactory.setStatus({
+			SmartFactory.status.set({
 				text : 'View Not Found!',
 				iconCls : 'x-status-error',
 				clear : true
 			// auto-clear after a set interval
 			});
 		}
-	},
-
-	showSelector : function(config) {
-		var selector = Ext.create('CMN.view.common.Selector', config);
-		selector.show();
 	}
 });
