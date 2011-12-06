@@ -130,6 +130,7 @@
 .searchPanel .x-form-cb-label-after{color:#585858;font-size:11px}
 .searchPanel .x-fieldset.fieldsetCheckbox{padding:3px 7px}
 .searchPanel .hboxLine .x-form-item-body{margin-top:0px}
+.x-form-trigger-wrap .x-form-spinner-up-over{background-position:-17px 0}
 /*.textFromTo div{color:#585858;margin-right:5px;width:30px;font-size:11px}*/
 
 /* status bar */
@@ -155,6 +156,10 @@
 .x-box-scroller-left .x-toolbar-scroll-left, .x-box-scroller-left .x-tabbar-scroll-left-hover{background:url('../image/tabNavi.gif') -18px -3px no-repeat;width:18px;}
 .x-box-scroller-right .x-toolbar-scroll-right, .x-box-scroller-right .x-tabbar-scroll-right{background:url('../image/tabNavi.gif') 0 -27px no-repeat;width:18px;}
 .x-box-scroller-right .x-toolbar-scroll-right, .x-box-scroller-right .x-tabbar-scroll-right-hover{background:url('../image/tabNavi.gif') -18px -27px no-repeat;width:18px;}
+.dockNavigation .x-box-scroller-left .x-toolbar-scroll-left, .dockNavigation .x-box-scroller-left .x-tabbar-scroll-left{background:url('../image/tabNavi.gif') 0 1px no-repeat;width:18px;}
+.dockNavigation .x-box-scroller-left .x-toolbar-scroll-left, .dockNavigation .x-box-scroller-left .x-tabbar-scroll-left-hover{background:url('../image/tabNavi.gif') -18px 1px no-repeat;width:18px;}
+.dockNavigation .x-box-scroller-right .x-toolbar-scroll-right,.dockNavigation .x-box-scroller-right .x-tabbar-scroll-right{background:url('../image/tabNavi.gif') 0 -23px no-repeat;width:18px;}
+.dockNavigation .x-box-scroller-right .x-toolbar-scroll-right,.dockNavigation .x-box-scroller-right .x-tabbar-scroll-right-hover{background:url('../image/tabNavi.gif') -18px -23px no-repeat;width:18px;}
 .x-tab-tabmenu-right{background:url('../image/tabNavi.gif') 0 -51px no-repeat !important;width:18px;}
 .x-tab-tabmenu-right:hover{background:url('../image/tabNavi.gif') -18px -51px no-repeat !important;width:18px;}
 .x-panel-default-scroller{margin-top:-5px}
