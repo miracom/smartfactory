@@ -20,8 +20,8 @@ Ext.define('WIP.controller.WIPController', {
 
 		SmartFactory.selector.register('Operation', {
 			title : 'Select Operation',
-			selects : [ 'OPER', 'OPER_DESC' ],
-			filters : [ 'FACTORY', 'OPER' ],
+			selects : [ 'FACTORY', 'OPER', 'OPER_DESC' ],
+			filters : [ 'factory', 'oper' ],
 			orders : [ 'OPER' ],
 			table : 'MWIPOPRDEF',
 			columns : [ {
@@ -37,8 +37,8 @@ Ext.define('WIP.controller.WIPController', {
 
 		SmartFactory.selector.register('Material', {
 			title : 'Select Material',
-			selects : [ 'MAT_ID', 'MAT_VER', 'MAT_DESC' ],
-			filters : [ 'FACTORY', 'MAT_ID', 'MAT_VER' ],
+			selects : [ 'FACTORY', 'MAT_ID', 'MAT_VER', 'MAT_DESC' ],
+			filters : [ 'factory', 'mat_id', 'mat_ver' ],
 			orders : [ 'mat_id' ],
 			table : 'MWIPMATDEF',
 			columns : [ {

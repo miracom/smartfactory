@@ -1,5 +1,6 @@
 package com.mesplus.CMN.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.CMN.dao.SelectorDao;
+import com.mesplus.SEC.model.CustomUserDetails;
+import com.mesplus.util.SessionUtils;
 
 @Controller
 public class SelectorController {
@@ -31,7 +34,14 @@ public class SelectorController {
 		String[] selects = (String[]) request.getParameterValues("selects");
 		String[] filters = (String[]) request.getParameterValues("filters");
 		String[] orders = (String[]) request.getParameterValues("orders");
-		Map<String, Object> params = null;//(Map<String, Object>) request.getParameter("params");
+
+		CustomUserDetails user = SessionUtils.currentUserDetails();
+
+		Map<String, Object> params = new HashMap<String, Object>();
+		
+		params.put("factory", user.getFactory());
+
+		//(Map<String, Object>) request.getParameter("params");
 
 		return selectorDao.select(table, selects, filters, orders, params);
 	}
