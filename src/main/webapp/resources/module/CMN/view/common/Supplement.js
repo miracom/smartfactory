@@ -87,7 +87,7 @@ Ext.define('CMN.view.common.Supplement', {
 		fieldLabel : 'Product ID',
 		listeners : {
 			focus : function() {
-				SmartFactory.selector.show();
+				SmartFactory.selector.show('Material', {FACTORY : SmartFactory.login.factory()});
 			}
 		},
 		store : Ext.create('Ext.data.Store', {
@@ -103,7 +103,7 @@ Ext.define('CMN.view.common.Supplement', {
 		fieldLabel : 'Operation ID',
 		listeners : {
 			focus : function() {
-				SmartFactory.selector.show();
+				SmartFactory.selector.show('Operation', {FACTORY : SmartFactory.login.factory()});
 			}
 		},
 		store : Ext.create('Ext.data.Store', {

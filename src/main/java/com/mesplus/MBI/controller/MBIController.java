@@ -22,9 +22,11 @@ import com.mesplus.util.SessionUtils;
 
 @Controller
 public class MBIController {
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	// TODO 모든 fac_id를  factory code 수정 , lang_flag 수정
-	@Autowired
+
+@Autowired
 	private FormDao formDao;
 
 	// Test URL:
