@@ -104,6 +104,7 @@ Ext.define('CMN.view.common.Supplement', {
 		listeners : {
 			focus : function() {
 				SmartFactory.selector.show('Operation', {FACTORY : SmartFactory.login.factory()});
+				return false;
 			}
 		},
 		store : Ext.create('Ext.data.Store', {
