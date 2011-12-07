@@ -5,12 +5,10 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 	},
 	//[ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" ],
 	//[ "", "CheckBox", "CodeView", "ComboBox", "Date", "DateTo", "DateTime", "DateTimeTo", "RadioButton", "TextBox" ]
-	//controlType : ["textfield", "checkboxfield", "searchfield","comboboxfield", "datefield", "DateTo", "DateTime", "DateTimeTo", "radiofield", "textfield"],
+	//controlType : ["textfield", "checkboxfield", "CodeView","comboboxfield", "datefield", "DateTo", "DateTime", "DateTimeTo", "radiofield", "textfield"],
 
 	getFieldSet : function(){
 		var mapItems = [];
-		//console.log('getFieldSet');
-		//console.log(this.data);
 		for(var i in this.data){
 			mapItems.push(
 				this.getFieldAt(this.data[i])
@@ -31,7 +29,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		  case '6'    : return this.getDateTimeField(rowData);
 		  case '7'    : return this.getDateTimeToField(rowData);
 		  case '8'    : return this.getRadioButtonField(rowData);
-		  default   : return this.getTextBoxField(rowData);
+		  default     : return this.getTextBoxField(rowData);
 		}
 	}, 
 	
@@ -41,10 +39,6 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
     		xtype : 'checkboxfield',
     		boxLabel : rowData.display_text,
     		name : rowData.display_text.toLowerCase()
-    		//id : 'checkbox_'+rowData.display_text.toLowerCase(),
-    		//checked : 'true', //
-    		//boxLabelEI : it's depend on the 'NOTNULL' =>BORD
-    		//boxLabelcls : 
 		};
 	},
 	//no : 2
@@ -53,7 +47,16 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 	},
 	//no : 3
 	getComboBoxField : function(rowData){
-		return {};
+		return Ext.create('CMN.view.form.GCMComboBox', {
+			labelAlign : 'top',
+			fieldLabel : rowData.display_text,
+			name : rowData.display_text.toLowerCase(),
+			queryMode : 'local',
+			displayField : rowData.con_gcm_col.toLowerCase(),
+			valueField : rowData.con_gcm_val.toLowerCase(),
+			tableName : rowData.con_gcm_table_code,
+			value : '' //default value 
+		});
 	},
 	//no : 4
 	getDateField : function(rowData){
@@ -151,17 +154,46 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 	},
 	//no : 8
 	getRadioButtonField : function(rowData){
+		var itemList = this.getRadioItem(rowData);
+		console.log('itemList');
+		console.log(itemList);
 		return {
-			xtype : 'fieldcontainer',
-			fieldLabel : rowData.display_text,
-			defaultType : 'radiofield',
-			//layout : 'hbox',   //??? error
-			//defaults: {
-	        //    flex: 1
-	       // },
-			items : this.getRadioItem(rowData)
+			xtype: 'fieldset',
+	        title: rowData.display_text,
+	        layout: 'anchor',
+	        defaults: {
+	            anchor: '100%'
+	        },
+	        items : [{
+	            xtype: 'radiogroup',
+	            layout: 'anchor',
+	            items: itemList,
+	        }]
 		};
+	},
+	getRadioItem : function(rowData){
+		var dataIndex = 0;
+		var valueIndex = 1;
 		
+		var radioList = [];
+		//a|size|N|b|size|N  ==> label|value|checked
+		//4updatetimea1 ==> con_position + display_text + iIndex(radio no)
+		var s = rowData.con_radio_val;
+		if (s == null) s = '1|1|N|2|2|N';
+		var radioData =  s.split('|');
+
+		for (dataIndex=0; dataIndex<radioData.length ; dataIndex+=3){
+			var value = radioData[valueIndex];
+			radioList.push({
+				boxLabel : radioData[dataIndex],
+				name : rowData.display_text.toLowerCase(),
+				inputValue : radioData[valueIndex],
+				//id : rowData.display_text+'_radio'+dataIndex
+			});
+			console.log(value);
+			valueIndex += 3;
+		};
+		return radioList;
 	},
 	//no : 9
 	getTextBoxField : function(rowData){
@@ -174,28 +206,5 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
     		allowBlank : false
 		};
 	},
-	
-	getRadioItem : function(rowData){
-		var iIndex = 0;
-		var radioList = [];
-		//str.split(" ", 2).length 
-		//a|size|N|b|size|N  ==> label|value|checked
-		//4updatetimea1 ==> con_position + display_text + iIndex(radio no)
-		var s = rowData.con_radio_val;
-		if (s == null) s = '1|1|N|2|2|N';
-		var radioData =  s.split('|');
 
-		for (var rj=0; rj<radioData.length ; rj++){
-			radioList.push({
-				boxLabel : radioData[rj],
-				name : rowData.con_position+rowData.display_text+iIndex,
-				inputVaule : radioData[rj+1],
-				id : rowData.display_text+'_radio'+iIndex
-			});
-			rj++; // inputValue 
-			rj++; //not null checked
-			iIndex++; //index
-		}
-		return radioList;
-	}
 });

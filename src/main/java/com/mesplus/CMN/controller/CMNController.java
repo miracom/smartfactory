@@ -24,12 +24,11 @@ import com.mesplus.CMN.dao.MenuDao;
 import com.mesplus.CMN.model.Favorite;
 import com.mesplus.CMN.model.Menu;
 import com.mesplus.SEC.model.CustomUserDetails;
-import com.mesplus.smartfactory.HomeController;
 import com.mesplus.util.SessionUtils;
 
 @Controller
 public class CMNController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CMNController.class);
 
 	@Autowired
 	private CacheManager cacheManager;

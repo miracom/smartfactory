@@ -1,21 +1,59 @@
 Ext.define('WIP.controller.WIPController', {
-	extend: 'Ext.app.Controller',
-	
-	stores: ['WIP.store.OperationStore'],
-	models: ['WIP.model.Operation'],
-	views: ['WIP.view.oper.Operation'],
-	
-	init: function() {
+	extend : 'Ext.app.Controller',
+
+	stores : [ 'WIP.store.OperationStore' ],
+	models : [ 'WIP.model.Operation' ],
+	views : [ 'WIP.view.oper.Operation' ],
+
+	init : function() {
 		this.control({
-			'viewport': {
-				afterrender: this.onViewportRendered
+			'viewport' : {
+				afterrender : this.onViewportRendered
 			}
 		});
 	},
-	
-	onViewportRendered: function() {
+
+	onViewportRendered : function() {
 		SmartFactory.addDockingNav('WIP.view.NavOperation', {
-			iconCls:'iconsetDockOperation'
+			iconCls : 'iconsetDockOperation'
+		});
+
+		SmartFactory.selector.register('Operation', {
+			title : 'Select Operation',
+			selects : [ 'FACTORY', 'OPER', 'OPER_DESC' ],
+			filters : [ 'factory', 'oper' ],
+			orders : [ 'OPER' ],
+			table : 'MWIPOPRDEF',
+			columns : [ {
+				header : 'Operation',
+				dataIndex : 'OPER',
+				flex : 1
+			}, {
+				header : 'Description',
+				dataIndex : 'OPER_DESC',
+				flex : 2
+			} ]
+		});
+
+		SmartFactory.selector.register('Material', {
+			title : 'Select Material',
+			selects : [ 'FACTORY', 'MAT_ID', 'MAT_VER', 'MAT_DESC' ],
+			filters : [ 'factory', 'mat_id', 'mat_ver' ],
+			orders : [ 'mat_id' ],
+			table : 'MWIPMATDEF',
+			columns : [ {
+				header : 'Material',
+				dataIndex : 'MAT_ID',
+				flex : 2
+			}, {
+				header : 'Version',
+				dataIndex : 'MAT_VER',
+				flex : 1
+			}, {
+				header : 'Description',
+				dataIndex : 'MAT_DESC',
+				flex : 3
+			} ]
 		});
 	}
 });

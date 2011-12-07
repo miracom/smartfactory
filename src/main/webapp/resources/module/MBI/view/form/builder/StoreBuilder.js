@@ -8,7 +8,6 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 		Ext.apply(this, config);
 	},
 	buildStore : function(){
-		//console.log(this.buildFieldInfo());
 		return Ext.create('Ext.data.Store',{
 			autoLoad : false,
 			fields : this.buildFieldInfo(),
@@ -28,14 +27,10 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 				type : this.getTypeToFomat(mapdefS2Nt[i].data_type)
 			});
 		};
-		//console.log('call buildStore/buildFieldInfo :'+mapField);
-		//console.log(mapField);
 		return mapField;
 	},
 	buildProxy : function(){
-		//console.log('call buildStore/buildProxy dynamics2 :'+this.facId+'/'+this.funcId);
-		var result =  
-		 {
+		return {
 			type: 'ajax',
 			url : 'module/MBI/data/dynamic_s2_nt.json',
 			
@@ -43,8 +38,6 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 				type: 'json'
 			}
 		};
-		//console.log(result);
-		return result;
 	},
 	
 	buildParam : function(){

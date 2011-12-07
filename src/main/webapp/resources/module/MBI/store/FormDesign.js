@@ -24,13 +24,9 @@ Ext.define('MBI.store.FormDesign', {
 		type: 'ajax',
 		url : 'module/MBI/data/get_design.json',
 		extraParams : {
-			fac_id : 2,
 			func_id : 107,
 			spd_id : '',
-			lang_flag : 1,
-			admin_user : SmartFactory.login.id(),
 			func_template_id : 1,
-			grp_user_id : ''
 		},
 		reader: {
 			type: 'json'

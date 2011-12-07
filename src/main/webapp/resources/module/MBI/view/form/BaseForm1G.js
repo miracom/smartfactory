@@ -1,5 +1,4 @@
 Ext.define('MBI.view.form.BaseForm1G', {
-	// extend: 'Ext.container.Container',
 	extend : 'Ext.panel.Panel',
 	alias : 'widget.mbi.baseform1g',
 
@@ -13,11 +12,9 @@ Ext.define('MBI.view.form.BaseForm1G', {
 
 	setup : function() {
 		// this.removeAll();
-		// console.log('ConditionBuilder');
-		// console.log(this.store.data);
+
 		this.setSupplement(Ext.create('MBI.view.form.builder.ConditionBuilder', {
 			formInfoData : this.store.data,
-			facId : this.facId,
 			funcId : this.funcId,
 			langFlag : this.langFlag,
 			client : this,
@@ -26,41 +23,39 @@ Ext.define('MBI.view.form.BaseForm1G', {
 
 		this.storeInfo = Ext.create('MBI.view.form.builder.StoreBuilder', {
 			formInfoData : this.store.data,
-			facId : this.facId,
 			funcId : this.funcId,
 			langFlag : this.langFlag
 		}).buildStore();
-		// console.log('return : storeInfo = StoreBuilder =>');
-		// console.log(storeInfo);
 
 		var view_grid = Ext.create('MBI.view.form.builder.GridBuilder', {
 			formInfoData : this.store.data,
 			langFlag : this.langFlag,
 			store : this.storeInfo
 		}).buildGrid();
-		// console.log('return : view_grid = GridBuilder =>');
-		// console.log(view_grid);
-		// view_condition.getForm().
 
-		// this.add(view_condition);
 		this.add(view_grid);
 	},
 
 	buildCondParam : function(params) {
 		var mapconGenNt = this.store.data.get(0).data.mapconGenNt;
 		var con_params = '';
-
+		var value = '';
+		console.log(params);
 		for(var i in mapconGenNt){
-			con_params += mapconGenNt[i].con_seq +'`^' + params[mapconGenNt[i].display_text.toLowerCase()] + '|';
+			if (!params[mapconGenNt[i].display_text.toLowerCase()])
+				 value = '';
+			else
+				value = params[mapconGenNt[i].display_text.toLowerCase()];
+			
+			con_params += mapconGenNt[i].con_seq +'`^' + value + '|';
 		};
-		
+		console.log(con_params);
 		return con_params; //ex: '1`^1|2`^|3`^|';
 	},
 
 	onView : function(params) {
 		//console.log(params);
 		var extraParam = {
-			fac_id : this.facId,
 			func_id : this.funcId,
 			spd_id : '1', // set input data for base2G
 			param : null,

@@ -14,7 +14,6 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 					type: 'ajax',
 					url : 'module/MBI/data/get_design.json',
 					extraParams : {
-						fac_id : this.funcData.get('fac_id'),
 						func_id : this.funcData.get('func_id'),
 						spd_id : '',
 						lang_flag : 1,
@@ -50,7 +49,6 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 			//title : this.getViewTitle(),
 			//layout : 'fit',
 			store : this.store,
-			facId : this.funcData.get('fac_id'),
 			funcId : this.funcData.get('func_id'),
 			langFlag : 1 /// getLangFlag!!!!!!!!!!!!!!
 		});

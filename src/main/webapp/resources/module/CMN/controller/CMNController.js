@@ -18,8 +18,8 @@ Ext.define('CMN.controller.CMNController', {
 			}
 		});
 		
-		SmartFactory.mixin('CMN.mixin.Selector', {});		
-		SmartFactory.mixin('CMN.mixin.Status', {});		
+		SmartFactory.mixin('CMN.mixin.Selector');		
+		SmartFactory.mixin('CMN.mixin.Status');		
 	},
 
 	onViewportRendered : function() {
