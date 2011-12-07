@@ -125,6 +125,8 @@
 .searchPanel .x-form-item-label,.searchPanel .x-fieldset-header{margin-top:3px;color:#5371a7;font-size:11px;}
 .searchPanel .x-form-item-body{margin-top:-2px}
 .searchPanel .x-form-trigger-wrap-focus .x-form-trigger{background-position:-24px 0}
+.searchPanel .x-form-trigger-wrap-focus .x-form-trigger.x-form-spinner-up{background-position:0 0}
+.searchPanel .x-form-trigger-wrap-focus .x-form-trigger.x-form-spinner-down{background-position:0 -11px}
 .searchPanel .x-fieldset{padding:3px;background-color:#f6f6f6}
 .searchPanel fieldset .x-form-item{margin-bottom:1px}
 .searchPanel .x-form-cb-label-after{color:#585858;font-size:11px}
