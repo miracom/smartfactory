@@ -229,8 +229,16 @@ table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
 .x-datepicker-next{background:url('../image/iconBtnSet.gif') 100% 2px repeat-x;width:14px;margin-left:3px}
 
 /* window style*/
-.x-tool-refresh, .x-tool-over .x-tool-refresh{background:url('../image/modalIcons.gif') 0 2px no-repeat;}
-.x-tool-close, .x-tool-over .x-tool-close{background:url('../image/modalIcons.gif') -15px 2px no-repeat;}
+.x-tool-refresh, .x-tool-over .x-tool-refresh{background:url('../image/modalIcons.gif') 0 0px no-repeat;}
+.x-tool-close, .x-tool-over .x-tool-close{background:url('../image/modalIcons.gif') -15px 0px no-repeat;}
+.x-window-header-default-top{background:url('../image/bgDockHeader.gif') 0 -2px repeat-x;height:23px;}
+.x-window-default{padding:0;border-width:0;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;background-color:#57729d}
+.x-window-header-default-top{box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;border:0}
+.x-window-header-text-default{color:#efefef;line-height:15px}
+.x-window-body-default{border:3px solid #57729D}
+.windowSearchField{background:url('../image/bgWindowSearchField.gif') repeat-x;padding:14px 3px 0 3px}
+.x-window .x-panel-body-default{background:transparent;border:0}
+
 
 /* file upload style*/
 .fileUpload{ position:relative; width: 100%;}
