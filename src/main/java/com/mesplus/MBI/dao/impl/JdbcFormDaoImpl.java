@@ -183,7 +183,7 @@ public class JdbcFormDaoImpl implements FormDao {
 
 	public List<Map<String, Object>> secfundefNtDao(String fac_id, String func_group, String func_code, String func_type) throws SQLException {
 		if (fac_id == null) {
-			throw new IllegalArgumentException("Parameters(fac_id, func_group, func_code, func_type) should not be null.");
+			throw new IllegalArgumentException("Parameters(fac_id) should not be null.");
 		}
 
 		SecfundefNt sp = new SecfundefNt(dataSource);

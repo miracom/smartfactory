@@ -22,5 +22,5 @@ Ext.define('MBI.view.NavFunclist', {
 	itemSelector: '.report-list-item',
 	overItemCls: 'report-list-item-hover',
 	
-	tpl:'<tpl for="."><div class="report-list-item">[ {func_id} - {func_code} ]</BR>: {func_name1}</div></tpl>'
+	tpl:'<tpl for="."><div class="report-list-item">[ {func_id}/{func_patn} - {func_code} ]</BR>: {func_name1}</div></tpl>'
 });
