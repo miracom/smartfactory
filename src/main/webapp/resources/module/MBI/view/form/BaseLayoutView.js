@@ -14,7 +14,6 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 					type: 'ajax',
 					url : 'module/MBI/data/get_design.json',
 					extraParams : {
-						fac_id : this.funcData.get('fac_id'),
 						func_id : this.funcData.get('func_id'),
 						spd_id : '',
 						lang_flag : 1,
@@ -31,13 +30,6 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 			this.store.on('datachanged', this.refreshItems, this);
 			this.store.on('clear', this.refreshItems, this);
 			this.store.load();					
-		},
-		activate : function(){
-			if (this.supplement)
-				Ext.getCmp('east').getLayout().setActiveItem(this.supplement);
-		},
-		destory : function(){
-			Ext.getCmp('east').remove(this.supplement);
 		}
 	},
 
@@ -57,12 +49,10 @@ Ext.define('MBI.view.form.BaseLayoutView', {
 			//title : this.getViewTitle(),
 			//layout : 'fit',
 			store : this.store,
-			facId : this.funcData.get('fac_id'),
 			funcId : this.funcData.get('func_id'),
 			langFlag : 1 /// getLangFlag!!!!!!!!!!!!!!
 		});
-		this.supplement = view.view_condition;
-		Ext.getCmp('east').add(this.supplement);
+
 		this.add(view);
 	},
 	

@@ -3,6 +3,8 @@ Ext.define('RPT.view.report.ReportDashBoard2', {
 
 	alias : 'widget.rpt.report.report_dashboard2',
 
+	plugins : [Ext.create('CMN.plugin.Supplement')], 
+
 	layout : {
 		align : 'stretch',
 		type : 'vbox'

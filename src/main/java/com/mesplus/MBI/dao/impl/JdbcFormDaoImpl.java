@@ -260,13 +260,13 @@ public class JdbcFormDaoImpl implements FormDao {
 		return (List<Map<String, Object>>) results.get(DynamicS2Nt.CUR_REFER_PARAM);
 	}
 	
-	public List<Map<String, Object>> tbldatNtDao(String a_fac_id, String a_tbl_code, String a_lang_flag, String a_params) throws SQLException {
-		if (a_fac_id == null || a_tbl_code == null || a_lang_flag == null || a_params == null) {
-			throw new IllegalArgumentException("Parameters(a_fac_id, a_tbl_code, a_lang_flag, a_params) should not be null.");
+	public List<Map<String, Object>> tbldatNtDao(String fac_id, String tbl_code, String lang_flag, String params) throws SQLException {
+		if (fac_id == null || tbl_code == null || lang_flag == null) {
+			throw new IllegalArgumentException("Parameters(fac_id, tbl_code, lang_flag, params) should not be null.");
 		}
 
 		TbldatNt sp = new TbldatNt(dataSource);
-		Map<String, Object> results = sp.execute(a_fac_id, a_tbl_code, a_lang_flag, a_params);
+		Map<String, Object> results = sp.execute(fac_id, tbl_code, lang_flag,params);
 
 		return (List<Map<String, Object>>) results.get(TbldatNt.CUR_REFER_PARAM);
 	}
@@ -280,5 +280,16 @@ public class JdbcFormDaoImpl implements FormDao {
 		Map<String, Object> results = sp.execute(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5);
 
 		return (List<Map<String, Object>>) results.get(SelectresultNt.CUR_REFER_PARAM);
+	}
+	
+	public List<Map<String, Object>> tbldefNtDao(String fac_id, String tbl_grp, String tbl_code) throws SQLException {
+		if (fac_id == null) {
+			throw new IllegalArgumentException("Parameters(fac_id) should not be null.");
+		}
+
+		TbldefNt sp = new TbldefNt(dataSource);
+		Map<String, Object> results = sp.execute(fac_id, tbl_grp, tbl_code);
+
+		return (List<Map<String, Object>>) results.get(TbldefNt.CUR_REFER_PARAM);
 	}
 }

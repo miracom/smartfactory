@@ -24,7 +24,7 @@ Ext.define('CMN.view.viewport.South', {
 		xtype : 'button',
 		text : 'Show Warning & Clear',
 		handler : function() {
-			SmartFactory.setStatus({
+			SmartFactory.status.set({
 				text : 'Oops!',
 				iconCls : 'x-status-error',
 				clear : true
@@ -35,13 +35,13 @@ Ext.define('CMN.view.viewport.South', {
 		xtype : 'button',
 		text : 'Show Busy',
 		handler : function() {
-			SmartFactory.showBusy('나 무지 바빠.');
+			SmartFactory.status.busy('나 무지 바빠.');
 		}
 	}, {
 		xtype : 'button',
 		text : 'Clear status',
 		handler : function() {
-			SmartFactory.clearStatus();
+			SmartFactory.status.clear();
 		}
 	}, {
 		xtype : 'button',

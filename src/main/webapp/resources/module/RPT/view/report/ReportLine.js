@@ -3,6 +3,8 @@ Ext.define('RPT.view.report.ReportLine', {
 
 	alias : 'widget.rpt.report.report_line',
 
+	plugins : [Ext.create('CMN.plugin.Supplement')], 
+
 	layout : {
 		align : 'stretch',
 		type : 'vbox'

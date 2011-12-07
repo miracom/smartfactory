@@ -8,24 +8,39 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 	buildCondition : function(){
 		//console.log('getCondition');
 		var fieldSet = Ext.create('MBI.view.form.builder.FieldBuilder',{
-        	data : this.formInfoData.get(0).data.mapconGenNt
+        	data : this.formInfoData.get(0).data.mapconGenNt,
+        	facId : this.facId
         }).getFieldSet();
 
 		return Ext.create('Ext.form.Panel',{
-		//return Ext.create('Ext.container.Container',{
+
+			bodyStyle : 'padding:5px',
+
+			defaults : {
+				labelAlign : 'top'
+			},
 			
-			bodyStyle:'padding:3px 3px 0',
-			//fieldDefaults: {
-		    //    msgTarget: 'side',
-		    //    labelWidth: 80
-		    //},
 	        layout: {
 	        	 type: 'vbox',
 	        	 align : 'stretch'	        		 
 	        },
-		    items: fieldSet
-		    
-		    
+		    items: fieldSet,
+		    buttons : [ {
+				text : 'View',
+				client : this.client,
+				viewHandler : this.viewHandler,
+				handler : this.handlerButtonView
+			}, {
+				text : 'Reset',
+				handler : function() {
+					this.up('form').getForm().reset();
+				}
+			} ]
 		});
 	},
+	
+	handlerButtonView : function() {
+		var form = this.up('form');
+		this.viewHandler.apply(this.client, [form.getValues()]);
+	}
 });

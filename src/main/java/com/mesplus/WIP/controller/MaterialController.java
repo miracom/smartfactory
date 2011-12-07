@@ -23,7 +23,7 @@ import com.mesplus.util.SessionUtils;
 
 @Controller
 public class MaterialController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MaterialController.class);
 
 	@Autowired
 	private MaterialDao materialDao;

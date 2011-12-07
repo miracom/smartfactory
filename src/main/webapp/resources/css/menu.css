@@ -111,7 +111,8 @@
 .dockNavigation .x-tool-collapse-left,.x-tool-expand-left{background:url('../image/iconBtnSet.gif') 0 2px no-repeat;}
 .x-tool-expand-left{margin-left:3px !important}
 .dockNavigation .x-tool-collapse-right,.x-tool-expand-right{background:url('../image/iconBtnSet.gif') -15px 2px no-repeat;}
-.x-panel-header-default-left, .x-panel-header-default-right{background:url('../image/bgDockCollapsed.gif') no-repeat;width:25px;border-width:0;left:-1px}
+.x-panel-header-default-left, .x-panel-header-default-right{background:url('../image/bgDockCollapsed.gif') 50% 0 no-repeat;width:26px;border-width:0;left:-1px}
+.x-panel-header-default-left{box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none}
 .x-panel-body-default{border-top:1px}
 .navDoctedRefresh{background:url('../image/iconDockedRefreshOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
 .navDoctedClear{background:url('../image/iconDockedClearOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
@@ -121,9 +122,16 @@
 .x-toolbar-default-docked-top .x-btn-default-toolbar-small-hover{border:0}
 
 /*search panel*/
-.searchPanel .x-form-item-label{color:#666;font-size:11px;}
+.searchPanel .x-form-item-label,.searchPanel .x-fieldset-header{margin-top:3px;color:#5371a7;font-size:11px;}
 .searchPanel .x-form-item-body{margin-top:-2px}
 .searchPanel .x-form-trigger-wrap-focus .x-form-trigger{background-position:-24px 0}
+.searchPanel .x-fieldset{padding:3px;background-color:#f6f6f6}
+.searchPanel fieldset .x-form-item{margin-bottom:1px}
+.searchPanel .x-form-cb-label-after{color:#585858;font-size:11px}
+.searchPanel .x-fieldset.fieldsetCheckbox{padding:3px 7px}
+.searchPanel .hboxLine .x-form-item-body{margin-top:0px}
+.x-form-trigger-wrap .x-form-spinner-up-over{background-position:-17px 0}
+/*.textFromTo div{color:#585858;margin-right:5px;width:30px;font-size:11px}*/
 
 /* status bar */
 .x-nlg .appStatusBar,.appStatusBar{background:url('../image/bgAppFooter.gif') repeat-x !important;}
@@ -148,6 +156,10 @@
 .x-box-scroller-left .x-toolbar-scroll-left, .x-box-scroller-left .x-tabbar-scroll-left-hover{background:url('../image/tabNavi.gif') -18px -3px no-repeat;width:18px;}
 .x-box-scroller-right .x-toolbar-scroll-right, .x-box-scroller-right .x-tabbar-scroll-right{background:url('../image/tabNavi.gif') 0 -27px no-repeat;width:18px;}
 .x-box-scroller-right .x-toolbar-scroll-right, .x-box-scroller-right .x-tabbar-scroll-right-hover{background:url('../image/tabNavi.gif') -18px -27px no-repeat;width:18px;}
+.dockNavigation .x-box-scroller-left .x-toolbar-scroll-left, .dockNavigation .x-box-scroller-left .x-tabbar-scroll-left{background:url('../image/tabNavi.gif') 0 1px no-repeat;width:18px;}
+.dockNavigation .x-box-scroller-left .x-toolbar-scroll-left, .dockNavigation .x-box-scroller-left .x-tabbar-scroll-left-hover{background:url('../image/tabNavi.gif') -18px 1px no-repeat;width:18px;}
+.dockNavigation .x-box-scroller-right .x-toolbar-scroll-right,.dockNavigation .x-box-scroller-right .x-tabbar-scroll-right{background:url('../image/tabNavi.gif') 0 -23px no-repeat;width:18px;}
+.dockNavigation .x-box-scroller-right .x-toolbar-scroll-right,.dockNavigation .x-box-scroller-right .x-tabbar-scroll-right-hover{background:url('../image/tabNavi.gif') -18px -23px no-repeat;width:18px;}
 .x-tab-tabmenu-right{background:url('../image/tabNavi.gif') 0 -51px no-repeat !important;width:18px;}
 .x-tab-tabmenu-right:hover{background:url('../image/tabNavi.gif') -18px -51px no-repeat !important;width:18px;}
 .x-panel-default-scroller{margin-top:-5px}
