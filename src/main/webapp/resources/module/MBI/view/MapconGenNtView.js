@@ -6,74 +6,74 @@ Ext.define('MBI.view.MapconGenNtView', {
 	columns : [
 	{
 		xtype : 'gridcolumn',
-		dataIndex : 'auto_create_flag',
+		dataIndex : 'con_seq',
 		align : 'center',
-		text : 'auto_create_flag'
-	}, {
+		text : 'seq'
+	},	{
+		xtype : 'gridcolumn',
+		dataIndex : 'con_display_type',
+		align : 'center',
+		text : 'Field Type'
+	},	{
 		xtype : 'gridcolumn',
 		dataIndex : 'notnull_flag',
 		align : 'center',
-		text : 'notnull_flag'
-	}, {
+		text : '필수항목여부'
+	},	{
 		xtype : 'gridcolumn',
 		dataIndex : 'con_position',
 		align : 'center',
-		text : 'con_position'
-	}, {
-		xtype : 'gridcolumn',
-		dataIndex : 'con_radio_val',
-		align : 'center',
-		text : 'xxd'
-	}, {
-		xtype : 'gridcolumn',
-		dataIndex : 'con_seq',
-		align : 'center',
-		text : 'con_radio_val'
-	}, {
+		text : '입력창 위치'
+	},  {
 		xtype : 'gridcolumn',
 		dataIndex : 'display_text',
 		align : 'center',
-		text : 'display_text'
-	}, {
+		text : 'Label name'
+	},  {
+		xtype : 'gridcolumn',
+		dataIndex : 'con_radio_val',
+		align : 'center',
+		text : 'radio value'
+	},  {
 		xtype : 'gridcolumn',
 		dataIndex : 'con_gcm_table_code',
 		align : 'center',
-		text : 'con_gcm_table_code'
-	}, {
-		xtype : 'gridcolumn',
-		dataIndex : 'con_default_date2',
-		align : 'center',
-		text : 'con_default_date2'
-	}, {
-		xtype : 'gridcolumn',
-		dataIndex : 'con_default_date1',
-		align : 'center',
-		text : 'con_default_date1'
-	}, {
-		xtype : 'gridcolumn',
-		dataIndex : 'con_gcm_val',
-		align : 'center',
-		text : 'con_gcm_val'
-	}, {
-		xtype : 'gridcolumn',
-		dataIndex : 'con_gcm_ref_col',
-		align : 'center',
-		text : 'con_gcm_ref_col'
-	}, {
-		xtype : 'gridcolumn',
-		dataIndex : 'con_ref_col',
-		align : 'center',
-		text : 'con_ref_col'
+		text : 'GCM Table'
 	}, {
 		xtype : 'gridcolumn',
 		dataIndex : 'con_gcm_col',
 		align : 'center',
-		text : 'con_gcm_col'
+		text : 'GCM_column'
+	},	{
+		xtype : 'gridcolumn',
+		dataIndex : 'con_gcm_val',
+		align : 'center',
+		text : 'GCM Value'
 	}, {
 		xtype : 'gridcolumn',
-		dataIndex : 'con_display_align',
+		dataIndex : 'con_gcm_ref_col',
 		align : 'center',
-		text : 'con_display_align'
+		text : 'GCM ref_column'
+	}, {
+		xtype : 'gridcolumn',
+		dataIndex : 'con_ref_col',
+		align : 'center',
+		text : 'ref_column'
+	}, {
+		xtype : 'gridcolumn',
+		dataIndex : 'con_default_date2',
+		align : 'center',
+		text : 'Default date to'
+	}, {
+		xtype : 'gridcolumn',
+		dataIndex : 'con_default_date1',
+		align : 'center',
+		text : 'Default date from'
+	}, {
+		xtype : 'gridcolumn',
+		dataIndex : 'auto_create_flag',
+		align : 'center',
+		text : 'auto_create_flag'
 	}
 	]
 

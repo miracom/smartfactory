@@ -25,5 +25,5 @@ Ext.define('MBI.view.NavFormlist', {
 	itemSelector: '.operation-list-item', //itemselector로 div 지정
 	overItemCls: 'operation-list-item-hover',
 	
-	tpl:'<tpl for="."><div class="operation-list-item">[ MAP: {func_id} - {func_code}]</div></tpl>'
+	tpl:'<tpl for="."><div class="operation-list-item">[ MAP: {func_id}/{func_patn} - {func_code}]</div></tpl>'
 });
