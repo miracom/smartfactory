@@ -1,3 +1,5 @@
+
+
 Ext.define('CMN.view.common.Selector', {
 	extend : 'Ext.window.Window',
 
@@ -33,20 +35,33 @@ Ext.define('CMN.view.common.Selector', {
 
 	initComponent : function() {
 		this.callParent();
-
 		this.store = this.buildStore();
 		this.title = this.selectorOptions.title || 'Select';
 		this.add(this.buildGrid());
 		this.add(this.buildSearch());
+		
+		this.buildAjax();
 	},
-
-	buildStore : function() {
+	buildAjax : function() {
+		Ext.Ajax.request({
+			url : 'module/CMN/data/select.json',	
+			method: 'POST',
+		    params :{sd:"123", fd:"345"},
+		    success: function(response){
+		        var text = response.responseText;
+		        console.log(text);
+		        
+		    }
+		});
+	},
+	buildStore : function() {   
 		return Ext.create('Ext.data.Store', {
 			autoLoad : true,
 			fields : this.selectorOptions.selects,
+			pageSize: 5,
 			proxy : {
 				type : 'ajax',
-				url : 'module/CMN/data/select.json',
+				url : 'module/CMN/data/select.json',	
 				extraParams : {
 					selects : this.selectorOptions.selects,
 					filters : this.selectorOptions.filters,
@@ -55,14 +70,21 @@ Ext.define('CMN.view.common.Selector', {
 					params : this.selectorOptions.params
 				},
 				actionMothods : {
-					create : "POST",
+//					create : "POST",
 					read : "POST",
-					update : "POST",
-					destroy : "POST"
+//					update : "POST",
+//					destroy : "POST"
 				},
 				reader : {
-					type : 'json'
+					type : 'json',
+					root: 'daoResult',
+	                totalProperty: 'total'
 				}
+//				,
+//				read : function(operation, callback, scope){
+//					console.log(operation);
+//					console.log(scope);
+//				}
 			}
 		});
 	},
@@ -72,7 +94,21 @@ Ext.define('CMN.view.common.Selector', {
 			xtype : 'grid',
 			store : this.store,
 			flex : 1,
-			columns : this.selectorOptions.columns
+			columns : this.selectorOptions.columns,
+			bbar: Ext.create('Ext.PagingToolbar', {
+	            store: this.store,
+	            displayInfo: true,
+	            displayMsg: 'Displaying topics {0} - {1} of {2}',
+	            emptyMsg: "No topics to display",
+            	items:[
+                       '-', {
+                       text: 'Button',
+                       enableToggle: true,
+                       toggleHandler: function(btn, pressed) {
+                           
+                       }
+                   }]	
+	        }),
 		};
 	},
 

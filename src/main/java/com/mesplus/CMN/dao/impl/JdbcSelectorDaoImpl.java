@@ -50,14 +50,27 @@ public class JdbcSelectorDaoImpl implements SelectorDao {
 	}
 	
 	@Override
-	public List<Map<String, Object>> select(String from, String[] selects, String[] filters, String[] orders, Map<String, Object> parameters) {
+	public List<Map<String, Object>> select(String table, String[] selects, String[] filters, String[] orders, Map<String, Object> parameters, int start, int limit) {
 		String selectClause = buildSelectClause(selects);
 		String whereClause = buildWhereClause(filters, parameters);
 		String orderbyClause = buildOrderByClause(orders);
+		String pStart = Integer.toString(start);
+		String pLimit = Integer.toString(start + limit);
 		
-		String sql = selectClause + " FROM " + from + whereClause + orderbyClause;
-
+		String sql = selectClause + ", ROWNUM RNUM FROM " + table + whereClause + orderbyClause;
+		sql = selectClause + " FROM " + "(" + sql + ") WHERE RNUM > " + pStart + " AND RNUM <= " + pLimit;
+		
+		//System.out.println(sql);
+		
 		return this.namedParameterJdbcTemplate.queryForList(sql, parameters);
+	}
+	
+	public int selectCount(String table, String[] filters, Map<String, Object> parameters) {
+		String whereClause = buildWhereClause(filters, parameters);
+		
+		String sql = "SELECT COUNT(*) FROM " + table + whereClause;
+	
+		return this.namedParameterJdbcTemplate.queryForInt(sql, parameters);
 	}
 
 	@Override
