@@ -130,7 +130,8 @@ Ext.define('CMN.view.common.Selector', {
 
 		return {
 			xtype : 'panel',
-			height : 30,
+			height : 39,
+			cls : 'windowSearchField',
 			layout : {
 				align : 'stretch',
 				type : 'hbox'
