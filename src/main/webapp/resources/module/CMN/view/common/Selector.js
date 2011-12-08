@@ -1,5 +1,3 @@
-
-
 Ext.define('CMN.view.common.Selector', {
 	extend : 'Ext.window.Window',
 
@@ -14,15 +12,6 @@ Ext.define('CMN.view.common.Selector', {
 	height : 500,
 
 	constructor : function(config) {
-		// var selectorOptions = {
-		// title : '',
-		// table : '',
-		// selectors : [],
-		// filters : [],
-		// orders : [],
-		// columns : [],
-		// params : []
-		// };
 
 		if (!config.selectorOptions)
 			throw new Error('selectorOptions should be configured.');
@@ -35,56 +24,37 @@ Ext.define('CMN.view.common.Selector', {
 
 	initComponent : function() {
 		this.callParent();
-		this.store = this.buildStore();
 		this.title = this.selectorOptions.title || 'Select';
-		this.add(this.buildGrid());
-		this.add(this.buildSearch());
 		
-		this.buildAjax();
+		this.store = this.buildStore();
+
+		this.grid = this.add(this.buildGrid());
+		this.search = this.add(this.buildSearch());
+		
+		this.store.load();
 	},
-	buildAjax : function() {
-		Ext.Ajax.request({
-			url : 'module/CMN/data/select.json',	
-			method: 'POST',
-		    params :{sd:"123", fd:"345"},
-		    success: function(response){
-		        var text = response.responseText;
-		        console.log(text);
-		        
-		    }
-		});
-	},
-	buildStore : function() {   
+	
+	buildStore : function() {
 		return Ext.create('Ext.data.Store', {
-			autoLoad : true,
+			autoLoad : false,
+			remoteFilter : true,
+			filterOnLoad : false,
 			fields : this.selectorOptions.selects,
-			pageSize: 5,
+			sorters : this.selectorOptions.sorters,
+			filters : this.selectorOptions.filters,
+			pageSize : 10,
 			proxy : {
 				type : 'ajax',
-				url : 'module/CMN/data/select.json',	
+				url : 'module/CMN/data/select.json',
 				extraParams : {
 					selects : this.selectorOptions.selects,
-					filters : this.selectorOptions.filters,
-					orders : this.selectorOptions.orders,
 					table : this.selectorOptions.table,
-					params : this.selectorOptions.params
-				},
-				actionMothods : {
-//					create : "POST",
-					read : "POST",
-//					update : "POST",
-//					destroy : "POST"
 				},
 				reader : {
 					type : 'json',
-					root: 'daoResult',
-	                totalProperty: 'total'
+					root : 'result',
+					totalProperty : 'total'
 				}
-//				,
-//				read : function(operation, callback, scope){
-//					console.log(operation);
-//					console.log(scope);
-//				}
 			}
 		});
 	},
@@ -95,20 +65,18 @@ Ext.define('CMN.view.common.Selector', {
 			store : this.store,
 			flex : 1,
 			columns : this.selectorOptions.columns,
-			bbar: Ext.create('Ext.PagingToolbar', {
-	            store: this.store,
-	            displayInfo: true,
-	            displayMsg: 'Displaying topics {0} - {1} of {2}',
-	            emptyMsg: "No topics to display",
-            	items:[
-                       '-', {
-                       text: 'Button',
-                       enableToggle: true,
-                       toggleHandler: function(btn, pressed) {
-                           
-                       }
-                   }]	
-	        }),
+			bbar : Ext.create('Ext.PagingToolbar', {
+				store : this.store,
+				displayInfo : true,
+				displayMsg : 'Displaying topics {0} - {1} of {2}',
+				emptyMsg : "No topics to display",
+				items : [ '-', {
+					text : 'Button',
+					enableToggle : true,
+					toggleHandler : function(btn, pressed) {
+					}
+				} ]
+			}),
 		};
 	},
 
@@ -121,7 +89,31 @@ Ext.define('CMN.view.common.Selector', {
 			var column = columns[i];
 
 			items.push({
+				listeners : {
+					specialkey : function(textfield, e) {
+	                    if (e.getKey() != e.ENTER)
+	                    	return;
+						
+						var selector = textfield.up('window');
+						var filters = [];
+						selector.search.items.each(function(textfield) {
+							var value = textfield.getValue();
+							if(value) {
+								filters.push({
+									property : textfield.getName(),
+									value : value
+								});
+							}
+						}, this);
+						// TODO clear 시에도 조회가 되는 것을 막아야 한다.
+						selector.store.clearFilter(true);
+						// TODO hidden filter 값을 어떻게 할 것인가? 예를 들면 Factory 등..
+						selector.store.filter(filters);
+					}
+				},
+
 				xtype : 'textfield',
+				name : column.dataIndex,
 				hideLabel : true,
 				emptyText : column.header,
 				flex : column.flex

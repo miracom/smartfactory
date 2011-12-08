@@ -1,20 +1,27 @@
 package com.mesplus.CMN.dao.impl;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import com.mesplus.CMN.dao.SelectorDao;
+import com.mesplus.CMN.model.Filter;
+import com.mesplus.CMN.model.Sorter;
 
 @Component
 public class JdbcSelectorDaoImpl implements SelectorDao {
+	private static final Logger logger = LoggerFactory.getLogger(JdbcSelectorDaoImpl.class);
+	
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Autowired
@@ -23,64 +30,108 @@ public class JdbcSelectorDaoImpl implements SelectorDao {
 	}
 
 	private static String buildSelectClause(String[] selects) {
-		if(selects == null || selects.length == 0)
+		if (selects == null || selects.length == 0)
 			return "SELECT * ";
 		return "SELECT " + StringUtils.arrayToDelimitedString(selects, ", ");
 	}
-	
-	private static String buildWhereClause(String[] filters, Map<String, Object> parameters) {
-		if(filters == null || filters.length == 0 || parameters == null || parameters.size() == 0)
+
+	private static String buildWhereClause(List<Filter> filters) {
+		if (filters == null || filters.size() == 0)
 			return "";
-		
-		ArrayList<String> clause = new ArrayList<String>();
-		for(String field : filters) {
-			if(parameters.containsKey(field.toLowerCase()))
-				clause.add(field + "=:" + field);
+
+		String[] clause = new String[filters.size()];
+
+		if (filters != null) {
+			Iterator<Filter> it = filters.iterator();
+			int i = 0;
+			while (it.hasNext()) {
+				Filter filter = it.next();
+				clause[i++] = filter.getProperty() + "=:" + filter.getProperty();
+			}
 		}
-		if(clause.isEmpty())
-			return "";
-		return " WHERE " + StringUtils.arrayToDelimitedString(clause.toArray(), " AND ");
+
+		return " WHERE " + StringUtils.arrayToDelimitedString(clause, " AND ");
 	}
-	
-	private static String buildOrderByClause(String[] orders) {
-		if(orders == null || orders.length == 0)
+
+	private static String buildOrderByClause(List<Sorter> sorters) {
+		if (sorters == null || sorters.size() == 0)
 			return "";
-		
-		return " ORDER BY " + StringUtils.arrayToDelimitedString(orders, ", ");
+
+		String[] clause = new String[sorters.size()];
+
+		if (sorters != null) {
+			Iterator<Sorter> it = sorters.iterator();
+			int i = 0;
+			while (it.hasNext()) {
+				Sorter sorter = it.next();
+				clause[i++] = sorter.getProperty() + " " + sorter.getDirection();
+			}
+		}
+		return " ORDER BY " + StringUtils.arrayToDelimitedString(clause, ", ");
 	}
-	
+
 	@Override
-	public List<Map<String, Object>> select(String table, String[] selects, String[] filters, String[] orders, Map<String, Object> parameters, int start, int limit) {
+	public List<Map<String, Object>> select(String table, String[] selects, List<Filter> filters, List<Sorter> orders, int start, int limit) {
 		String selectClause = buildSelectClause(selects);
-		String whereClause = buildWhereClause(filters, parameters);
+		String whereClause = buildWhereClause(filters);
 		String orderbyClause = buildOrderByClause(orders);
 		String pStart = Integer.toString(start);
 		String pLimit = Integer.toString(start + limit);
-		
+
 		String sql = selectClause + ", ROWNUM RNUM FROM " + table + whereClause + orderbyClause;
 		sql = selectClause + " FROM " + "(" + sql + ") WHERE RNUM > " + pStart + " AND RNUM <= " + pLimit;
-		
-		//System.out.println(sql);
-		
-		return this.namedParameterJdbcTemplate.queryForList(sql, parameters);
+
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		if (filters != null) {
+			Iterator<Filter> it = filters.iterator();
+			while (it.hasNext()) {
+				Filter filter = it.next();
+				params.put(filter.getProperty(), filter.getValue());
+			}
+		}
+
+		return this.namedParameterJdbcTemplate.queryForList(sql, params);
 	}
-	
-	public int selectCount(String table, String[] filters, Map<String, Object> parameters) {
-		String whereClause = buildWhereClause(filters, parameters);
-		
+
+	public int selectCount(String table, List<Filter> filters) {
+		String whereClause = buildWhereClause(filters);
+
 		String sql = "SELECT COUNT(*) FROM " + table + whereClause;
-	
-		return this.namedParameterJdbcTemplate.queryForInt(sql, parameters);
+		
+		logger.info(sql);
+
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		if (filters != null) {
+			Iterator<Filter> it = filters.iterator();
+			while (it.hasNext()) {
+				Filter filter = it.next();
+				params.put(filter.getProperty(), filter.getValue());
+			}
+		}
+
+		return this.namedParameterJdbcTemplate.queryForInt(sql, params);
 	}
 
 	@Override
-	public Map<String, Object> find(String from, String[] selects, String[] filters, Map<String, Object> parameters) {
+	public Map<String, Object> find(String from, String[] selects, List<Filter> filters) {
 		String selectClause = buildSelectClause(selects);
-		String whereClause = buildWhereClause(filters, parameters);
-		
+		String whereClause = buildWhereClause(filters);
+
 		String sql = selectClause + " FROM " + from + whereClause;
 
-		return this.namedParameterJdbcTemplate.queryForMap(sql, parameters);
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		if (filters != null) {
+			Iterator<Filter> it = filters.iterator();
+			while (it.hasNext()) {
+				Filter filter = it.next();
+				params.put(filter.getProperty(), filter.getValue());
+			}
+		}
+
+		return this.namedParameterJdbcTemplate.queryForMap(sql, params);
 	}
 
 }
