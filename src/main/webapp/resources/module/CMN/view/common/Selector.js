@@ -105,8 +105,7 @@ Ext.define('CMN.view.common.Selector', {
 								});
 							}
 						}, this);
-						// TODO clear 시에도 조회가 되는 것을 막아야 한다.
-						selector.store.clearFilter(true);
+						selector.store.filters.clear();
 						// TODO hidden filter 값을 어떻게 할 것인가? 예를 들면 Factory 등..
 						selector.store.filter(filters);
 					}
