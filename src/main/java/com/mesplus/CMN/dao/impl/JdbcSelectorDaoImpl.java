@@ -46,7 +46,7 @@ public class JdbcSelectorDaoImpl implements SelectorDao {
 			int i = 0;
 			while (it.hasNext()) {
 				Filter filter = it.next();
-				clause[i++] = filter.getProperty() + "=:" + filter.getProperty();
+				clause[i++] = filter.getProperty() + " LIKE :" + filter.getProperty();
 			}
 		}
 
@@ -87,7 +87,7 @@ public class JdbcSelectorDaoImpl implements SelectorDao {
 			Iterator<Filter> it = filters.iterator();
 			while (it.hasNext()) {
 				Filter filter = it.next();
-				params.put(filter.getProperty(), filter.getValue());
+				params.put(filter.getProperty(), filter.getValue() + "%");
 			}
 		}
 
@@ -107,7 +107,7 @@ public class JdbcSelectorDaoImpl implements SelectorDao {
 			Iterator<Filter> it = filters.iterator();
 			while (it.hasNext()) {
 				Filter filter = it.next();
-				params.put(filter.getProperty(), filter.getValue());
+				params.put(filter.getProperty(), filter.getValue() + "%");
 			}
 		}
 
