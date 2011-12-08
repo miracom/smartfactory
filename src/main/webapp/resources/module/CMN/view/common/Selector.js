@@ -40,20 +40,20 @@ Ext.define('CMN.view.common.Selector', {
 		this.add(this.buildGrid());
 		this.add(this.buildSearch());
 		
-		this.buildAjax();
+		//this.buildAjax();
 	},
-	buildAjax : function() {
-		Ext.Ajax.request({
-			url : 'module/CMN/data/select.json',	
-			method: 'POST',
-		    params :{sd:"123", fd:"345"},
-		    success: function(response){
-		        var text = response.responseText;
-		        console.log(text);
-		        
-		    }
-		});
-	},
+//	buildAjax : function() {
+//		Ext.Ajax.request({
+//			url : 'module/CMN/data/select.json',	
+//			method: 'POST',
+//		    params :{sd:"123", fd:"345"},
+//		    success: function(response){
+//		        var text = response.responseText;
+//		        console.log(text);
+//		        
+//		    }
+//		});
+//	},
 	buildStore : function() {   
 		return Ext.create('Ext.data.Store', {
 			autoLoad : true,
@@ -69,16 +69,22 @@ Ext.define('CMN.view.common.Selector', {
 					table : this.selectorOptions.table,
 					params : this.selectorOptions.params
 				},
-				actionMothods : {
-//					create : "POST",
+				actionMethods : {
+					create : "POST",
 					read : "POST",
-//					update : "POST",
-//					destroy : "POST"
+					update : "POST",
+					destroy : "POST"
 				},
 				reader : {
 					type : 'json',
 					root: 'daoResult',
 	                totalProperty: 'total'
+				},
+				writer: {
+					type : 'json'
+				},
+				headers:{
+					'Content-Type': 'application/json-rpc'
 				}
 //				,
 //				read : function(operation, callback, scope){

@@ -55,18 +55,18 @@ public class SelectorController {
 		return resultMap;
 	}
 	
-	@RequestMapping(value = "module/CMN/data/select.json", method = RequestMethod.POST)
-	public @ResponseBody
-	Map<String, Object> select2(HttpServletRequest request, HttpServletResponse response) {
-		String startDate = (String)request.getAttribute("sd");
-		String startDate2 = (String)request.getAttribute("fd");
-		Map<String, Object> resultMap = new HashMap<String, Object>();
-		resultMap.put("aaaaa", "aaaaa");
-		resultMap.put("table", startDate);
-		resultMap.put("table2", startDate2);
-		
-		return resultMap;
-	}
+//	@RequestMapping(value = "module/CMN/data/select.json", method = RequestMethod.POST)
+//	public @ResponseBody
+//	Map<String, Object> select2(HttpServletRequest request, HttpServletResponse response) {
+//		String startDate = (String)request.getAttribute("sd");
+//		String startDate2 = (String)request.getAttribute("fd");
+//		Map<String, Object> resultMap = new HashMap<String, Object>();
+//		resultMap.put("aaaaa", "aaaaa");
+//		resultMap.put("table", startDate);
+//		resultMap.put("table2", startDate2);
+//		
+//		return resultMap;
+//	}
 	
 //	@RequestMapping(value = "module/CMN/data/select.json", method = RequestMethod.POST)
 //	public @ResponseBody
@@ -79,23 +79,23 @@ public class SelectorController {
 //		return resultMap;
 //	}
 	
-//	@RequestMapping(value = "module/CMN/data/select.json", method = RequestMethod.POST, headers = "Accept=application/json")
-//	public @ResponseBody
-//	Map<String, Object> another_select(@RequestBody Map<String, Object> request, HttpServletResponse response) {
-//		String table = (String) request.get("table");
-//		String[] selects = (String[]) request.get("selects");
-//		String[] filters = (String[]) request.get("filters");
-//		String[] orders = (String[]) request.get("orders");
-//		Map<String, Object> params = (Map<String, Object>) request.get("params");
-//		String start = (String) request.get("start");
-//		String limit = (String) request.get("limit");
-//
-//		Map<String, Object> resultMap = new HashMap<String, Object>();
-//		resultMap.put("total",selectorDao.selectCount(table, filters, params));
-//		resultMap.put("daoResult",selectorDao.select(table, selects, filters, orders, params, Integer.parseInt(start) ,Integer.parseInt(limit)));
-//		
-//		return resultMap;
-//	}
+	@RequestMapping(value = "module/CMN/data/select.json", method = RequestMethod.POST, headers = "Accept=application/json-rpc")
+	public @ResponseBody
+	Map<String, Object> another_select(@RequestBody Map<String, Object> request, HttpServletResponse response) {
+		String table = (String) request.get("table");
+		String[] selects = (String[]) request.get("selects");
+		String[] filters = (String[]) request.get("filters");
+		String[] orders = (String[]) request.get("orders");
+		Map<String, Object> params = (Map<String, Object>) request.get("params");
+		String start = (String) request.get("start");
+		String limit = (String) request.get("limit");
+
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("total",selectorDao.selectCount(table, filters, params));
+		resultMap.put("daoResult",selectorDao.select(table, selects, filters, orders, params, Integer.parseInt(start) ,Integer.parseInt(limit)));
+		
+		return resultMap;
+	}
 
 	@RequestMapping(value = "module/CMN/data/find.json", method = RequestMethod.POST, headers = "Accept=application/json")
 	public @ResponseBody
