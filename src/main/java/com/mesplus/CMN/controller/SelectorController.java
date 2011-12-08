@@ -79,7 +79,7 @@ public class SelectorController {
 //		return resultMap;
 //	}
 	
-	@RequestMapping(value = "module/CMN/data/select.json", method = RequestMethod.POST, headers = "Accept=application/json-rpc")
+	@RequestMapping(value = "module/CMN/data/select.json", method = RequestMethod.POST, headers="Accept=application/json")
 	public @ResponseBody
 	Map<String, Object> another_select(@RequestBody Map<String, Object> request, HttpServletResponse response) {
 		String table = (String) request.get("table");

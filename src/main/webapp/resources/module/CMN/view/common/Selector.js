@@ -73,19 +73,20 @@ Ext.define('CMN.view.common.Selector', {
 					create : "POST",
 					read : "POST",
 					update : "POST",
-					destroy : "POST"
+					destroy : "DELETE"
 				},
 				reader : {
 					type : 'json',
 					root: 'daoResult',
 	                totalProperty: 'total'
-				},
-				writer: {
-					type : 'json'
-				},
-				headers:{
-					'Content-Type': 'application/json-rpc'
 				}
+				
+//				writer: {
+//					type : 'json'
+//				},
+//				headers:{
+//					'Content-Type': 'application/json-rpc'
+//				}
 //				,
 //				read : function(operation, callback, scope){
 //					console.log(operation);
