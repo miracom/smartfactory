@@ -38,7 +38,7 @@ public class SelectorController {
 
 		String jsonFilter = request.getParameter("filter");
 		String jsonSorter = request.getParameter("sort");
-
+		
 		List<Filter> filters = null;
 		List<Sorter> sorters = null;
 		try {

@@ -85,15 +85,14 @@ Ext.define('CMN.view.common.Selector', {
 			}),
 		};
 	},
-
 	buildSearch : function() {
 		var columns = this.selectorOptions.columns;
-
 		var items = [];
-
+		var filter = this.selectorOptions.filters;
+		
 		for ( var i in columns) {
 			var column = columns[i];
-
+			
 			items.push({
 				listeners : {
 					specialkey : function(textfield, e) {
@@ -111,18 +110,22 @@ Ext.define('CMN.view.common.Selector', {
 								});
 							}
 						}, this);
+						
+						//기본조건 filter + 추가조건 filter
+						filters = filters.concat(filter);
+						
 						selector.store.filters.clear();
-						// TODO hidden filter 값을 어떻게 할 것인가? 예를 들면 Factory 등..
 						selector.store.filter(filters);
 					}
 				},
-
+				
 				xtype : 'textfield',
 				name : column.dataIndex,
 				hideLabel : true,
 				emptyText : column.header,
 				flex : column.flex
 			});
+			
 		}
 
 		return {
