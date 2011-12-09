@@ -86,9 +86,10 @@ Ext.define('CMN.view.common.Supplement', {
 		fieldLabel : 'Product ID',
 		listeners : {
 			focus : function() {
-				SmartFactory.selector.show('Material', {
-					FACTORY : SmartFactory.login.factory()
-				});
+				this.selector = SmartFactory.selector.show('Material', [ {
+					property : 'factory',
+					value : SmartFactory.login.factory()
+				} ]);
 			}
 		},
 		store : Ext.create('Ext.data.Store', {
@@ -104,9 +105,10 @@ Ext.define('CMN.view.common.Supplement', {
 		fieldLabel : 'Operation ID',
 		listeners : {
 			focus : function() {
-				SmartFactory.selector.show('Operation', {
-					FACTORY : SmartFactory.login.factory()
-				});
+				this.selector = SmartFactory.selector.show('Operation', [ {
+					property : 'factory',
+					value : SmartFactory.login.factory()
+				} ]);
 			}
 		},
 		store : Ext.create('Ext.data.Store', {
@@ -171,7 +173,7 @@ Ext.define('CMN.view.common.Supplement', {
 		name : 'files',
 		fieldLabel : 'Files upload',
 		anchor : '100%'
-	},{
+	}, {
 		xtype : 'xdatetime',
 		id : 'dtf',
 		fieldLabel : 'Date & Time'
