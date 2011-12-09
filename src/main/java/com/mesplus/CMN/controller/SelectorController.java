@@ -43,12 +43,10 @@ public class SelectorController {
 		List<Sorter> sorters = null;
 		try {
 			if(jsonFilter != null) {
-				filters = new ObjectMapper().readValue(request.getParameter("filter"), new TypeReference<List<Filter>>() {
-				});
+				filters = new ObjectMapper().readValue(request.getParameter("filter"), new TypeReference<List<Filter>>(){ });
 			}
 			if(jsonSorter != null) {
-				sorters = new ObjectMapper().readValue(request.getParameter("sort"), new TypeReference<List<Sorter>>() {
-				});
+				sorters = new ObjectMapper().readValue(request.getParameter("sort"), new TypeReference<List<Sorter>>(){ });
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

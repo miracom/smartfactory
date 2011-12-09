@@ -48,7 +48,7 @@ Ext.define('CMN.view.common.Selector', {
 				extraParams : {
 					selects : this.selectorOptions.selects,
 					table : this.selectorOptions.table,
-					params : this.selectorOptions.params
+					//params : this.selectorOptions.params
 				},
 //				actionMethods : {
 //					create : "POST",
