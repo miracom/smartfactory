@@ -34,7 +34,9 @@ Ext.define('WIP.controller.WIPController', {
 				header : 'Description',
 				dataIndex : 'OPER_DESC',
 				flex : 2
-			} ]
+			} ],
+			valueField : 'OPER',
+			displayField : ['OPER', 'OPER_DESC']
 		});
 
 		SmartFactory.selector.register('Material', {
@@ -57,7 +59,8 @@ Ext.define('WIP.controller.WIPController', {
 				header : 'Description',
 				dataIndex : 'MAT_DESC',
 				flex : 3
-			} ]
+			} ],
+			valueField : ['MAT_ID', 'MAT_VER']
 		});
 	}
 });

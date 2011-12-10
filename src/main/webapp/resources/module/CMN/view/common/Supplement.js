@@ -83,7 +83,7 @@ Ext.define('CMN.view.common.Supplement', {
 		} ]
 	}, {
 		xtype : 'codeview',
-		codeviewname : 'Material',
+		selectorName : 'Material',
 		filter : [ {
 			property : 'factory',
 			value : SmartFactory.login.factory()
@@ -91,7 +91,7 @@ Ext.define('CMN.view.common.Supplement', {
 		fieldLabel : 'Product ID'
 	}, {
 		xtype : 'codeview',
-		codeviewname : 'Operation',
+		selectorName : 'Operation',
 		filter : [ {
 			property : 'factory',
 			value : SmartFactory.login.factory()

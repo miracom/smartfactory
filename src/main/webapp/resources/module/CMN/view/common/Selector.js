@@ -32,7 +32,8 @@ Ext.define('CMN.view.common.Selector', {
 		this.search = this.add(this.buildSearch());
 		
 		this.store.load();
-	},	
+	},
+	
 	buildStore : function() {
 		return Ext.create('Ext.data.Store', {
 			autoLoad : false,
@@ -47,15 +48,8 @@ Ext.define('CMN.view.common.Selector', {
 				url : 'module/CMN/data/select.json',
 				extraParams : {
 					selects : this.selectorOptions.selects,
-					table : this.selectorOptions.table,
-					//params : this.selectorOptions.params
+					table : this.selectorOptions.table
 				},
-//				actionMethods : {
-//					create : "POST",
-//					read : "POST",
-//					update : "POST",
-//					destroy : "DELETE"
-//				},
 				reader : {
 					type : 'json',
 					root : 'result',
@@ -66,6 +60,7 @@ Ext.define('CMN.view.common.Selector', {
 	},
 
 	buildGrid : function() {
+		var selector = this;
 		return {
 			xtype : 'grid',
 			store : this.store,
@@ -83,12 +78,22 @@ Ext.define('CMN.view.common.Selector', {
 					}
 				} ]
 			}),
+			listeners : {
+				select : function(rowModel, record, index, eOpts ) {
+					selector.selectorOptions.callback.call(selector, selector.selectorOptions.client, record);
+					selector.selectorOptions.client.focus();
+					Ext.defer(function() {
+						selector.destroy();
+					}, 1);
+					return false;
+				}
+			}
 		};
 	},
+	
 	buildSearch : function() {
 		var columns = this.selectorOptions.columns;
 		var items = [];
-		var filter = this.selectorOptions.filters;
 		
 		for ( var i in columns) {
 			var column = columns[i];
@@ -112,7 +117,7 @@ Ext.define('CMN.view.common.Selector', {
 						}, this);
 						
 						//기본조건 filter + 추가조건 filter
-						filters = filters.concat(filter);
+						filters = filters.concat(selector.selectorOptions.filters);
 						
 						selector.store.filters.clear();
 						selector.store.filter(filters);
@@ -148,22 +153,4 @@ Ext.define('CMN.view.common.Selector', {
 			window.store.load();
 		}
 	} ]
-
-/*
- * config model
- * 
- * 1. entitiy - table - query - service 2. showing fields - searching record
- * field list 3. condition - fetch conditions - field-condition mapping 4.
- * afterAction - select result mapping - field-record_field mapping
- * 
- * Ex)
- * 
- * type : store || table || url params : { material : '$F{material}', flow :
- * '$F{flow}' } search_fields: ['material, 'description', 'version']
- * after_mapping: { material: '$F{material}', description: '$F{description}' }
- * after_action: function() { ... }
- * 
- * 
- */
-
 });
