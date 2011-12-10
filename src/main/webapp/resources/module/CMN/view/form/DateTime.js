@@ -255,9 +255,9 @@ Ext.define('CMN.view.form.DateTime', {
     ,beforeDestroy:function() {
         if(this.isRendered) {
 //            this.removeAllListeners();
-            this.wrap.removeAllListeners();
-            this.wrap.remove();
-            this.tableEl.remove();
+//            this.wrap.removeAllListeners();
+//            this.wrap.remove();
+//            this.tableEl.remove();
             this.df.destroy();
             this.tf.destroy();
         }
