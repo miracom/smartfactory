@@ -1,9 +1,16 @@
 package com.mesplus.DSN.services;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.jws.WebService;
 
+import org.jdom.Element;
+
+import com.mesplus.DSN.services.dao.impl.JdbcFormDaoImpl;
+import com.mesplus.util.XmlConvert;
 import com.mesplus.util.Enums.ReturnType;
 
 @WebService
@@ -228,8 +235,33 @@ public class ClsDSNMapDesigner {
 			String func_id = psaParam[1];
 			String admin_user = psaParam[2];
 			ReturnType rType = ReturnType.ELEMENT;
-
-			return null;
+			
+			
+			List<Map<String, Object>> mapList1 = 
+					JdbcFormDaoImpl.getGlobalFormDao().mapdefS2NtDao(fac_id, func_id, admin_user, rType);
+			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName1);
+			
+			List<Map<String, Object>> mapList2 = 
+					JdbcFormDaoImpl.getGlobalFormDao().mapconNtDao(fac_id, func_id, admin_user, rType);
+			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, xName2);
+					
+			List<Map<String, Object>> mapList3 = 
+					JdbcFormDaoImpl.getGlobalFormDao().mapdefSplNtDao(fac_id, func_id, rType);
+			Element el3 = XmlConvert.mapListToDataTableElement(mapList3, xName3);
+			
+			List<Map<String, Object>> mapList4 = 
+					JdbcFormDaoImpl.getGlobalFormDao().fxtrelNtDao(fac_id, func_id, rType);
+			Element el4 = XmlConvert.mapListToDataTableElement(mapList4, xName4);
+			
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el1);
+			elList.add(el2);
+			elList.add(el3);
+			elList.add(el4);
+			
+			Element gpElement = XmlConvert.groupElement(elList);
+			
+			return XmlConvert.elementToXML(gpElement);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

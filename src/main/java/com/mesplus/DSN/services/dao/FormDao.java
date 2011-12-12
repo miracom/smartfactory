@@ -11,6 +11,14 @@ public interface FormDao {
 	// NT
 	public List<Map<String, Object>> tbldatNtDao(String a_fac_id, String a_tbl_code, String a_lang_flag, String a_params, ReturnType rType) throws SQLException;
 
+	public List<Map<String, Object>> fundefNtDao(String fac_id, String func_group, String func_code, String function_type, ReturnType rType) throws SQLException;
+	
+	public List<Map<String, Object>> mapconNtDao(String fac_id, String func_id, String admin_user , ReturnType rType) throws SQLException;
+	
+	public List<Map<String, Object>> mapdefSplNtDao(String fac_id, String func_id, ReturnType rType) throws SQLException;
+	/*
+	 * division line
+	 */
 	public List<Map<String, Object>> mapconGenNtDao(String fac_id, String func_id, String lang_flag, ReturnType rType) throws SQLException;
 
 	public List<Map<String, Object>> mapdefS2NtDao(String fac_id, String func_id, String admin_user, ReturnType rType) throws SQLException;

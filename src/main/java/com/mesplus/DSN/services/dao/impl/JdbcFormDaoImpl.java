@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.mesplus.DSN.services.dao.FormDao;
+import com.mesplus.DSN.services.dao.impl.adsn.FxtrelNt;
+import com.mesplus.DSN.services.dao.impl.adsn.MapdefS2Nt;
 import com.mesplus.DSN.services.dao.impl.agcm.TbldatNt;
 import com.mesplus.util.Enums.ReturnType;
 
@@ -38,6 +40,7 @@ public class JdbcFormDaoImpl implements FormDao {
 		return jdbcTemplate;
 	}
 
+	//AGCM
 	public List<Map<String, Object>> tbldatNtDao(String a_fac_id, String a_tbl_code, String a_lang_flag, String a_params, ReturnType rType) throws SQLException {
 		if (a_fac_id == null || a_tbl_code == null || a_lang_flag == null || a_params == null) {
 			throw new IllegalArgumentException("Parameters(a_fac_id, a_tbl_code, a_lang_flag, a_params) should not be null.");
@@ -48,8 +51,67 @@ public class JdbcFormDaoImpl implements FormDao {
 
 		return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
 	}
+	
+	//ASEC
+	public List<Map<String, Object>> fundefNtDao(String fac_id, String func_group, String func_code, String function_type, ReturnType rType) throws SQLException {
+		if (fac_id == null || func_group == null || func_code == null || function_type == null) {
+			throw new IllegalArgumentException("Parameters(fac_id, func_group, func_code, function_type) should not be null.");
+		}
 
-	// division line
+		TbldatNt sp = new TbldatNt(dataSource, rType);
+		Map<String, Object> results = sp.execute(fac_id, func_group, func_code, function_type);
+
+		return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
+	}
+	
+	//ADSN
+	public List<Map<String, Object>> fxtrelNtDao(String fac_id, String func_id, ReturnType rType) throws SQLException {
+		if (fac_id == null || func_id == null) {
+			throw new IllegalArgumentException("Parameters(fac_id, func_id) should not be null.");
+		}
+
+		FxtrelNt sp = new FxtrelNt(dataSource, rType);
+		Map<String, Object> results = sp.execute(fac_id, func_id);
+
+		return (List<Map<String, Object>>) results.get(FxtrelNt.CUR_REFER_PARAM);
+	}
+	
+	public List<Map<String, Object>> mapconNtDao(String fac_id, String func_id, String admin_user , ReturnType rType) throws SQLException {
+		if (fac_id == null || func_id == null || admin_user == null) {
+			throw new IllegalArgumentException("Parameters(fac_id, func_id, admin_user ) should not be null.");
+		}
+
+		TbldatNt sp = new TbldatNt(dataSource, rType);
+		Map<String, Object> results = sp.execute(fac_id, func_id, admin_user);
+
+		return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
+	}
+	
+	public List<Map<String, Object>> mapdefS2NtDao(String fac_id, String func_id, String admin_user, ReturnType rType) throws SQLException {
+		if (fac_id == null || func_id == null || admin_user == null) {
+			throw new IllegalArgumentException("Parameters(fac_id, func_id, admin_user) should not be null.");
+		}
+
+		MapdefS2Nt sp = new MapdefS2Nt(dataSource, rType);
+		Map<String, Object> results = sp.execute(fac_id, func_id, admin_user);
+
+		return (List<Map<String, Object>>) results.get(MapdefS2Nt.CUR_REFER_PARAM);
+	}
+	
+	public List<Map<String, Object>> mapdefSplNtDao(String fac_id, String func_id, ReturnType rType) throws SQLException {
+		if (fac_id == null || func_id == null) {
+			throw new IllegalArgumentException("Parameters(fac_id, func_id) should not be null.");
+		}
+
+		TbldatNt sp = new TbldatNt(dataSource, rType);
+		Map<String, Object> results = sp.execute(fac_id, func_id);
+
+		return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
+	}
+
+	/*
+	 * division line
+	 */
 	public List<Map<String, Object>> assdefGenNtDao(String fac_id, String func_id, ReturnType rType) throws SQLException {
 		if (fac_id == null || func_id == null) {
 			throw new IllegalArgumentException("Parameters(fac_id, func_id) should not be null.");
@@ -116,17 +178,6 @@ public class JdbcFormDaoImpl implements FormDao {
 		return (List<Map<String, Object>>) results.get(FtrfldNt.CUR_REFER_PARAM);
 	}
 
-	public List<Map<String, Object>> fxtrelNtDao(String fac_id, String func_id, ReturnType rType) throws SQLException {
-		if (fac_id == null || func_id == null) {
-			throw new IllegalArgumentException("Parameters(fac_id, func_id) should not be null.");
-		}
-
-		FxtrelNt sp = new FxtrelNt(dataSource, rType);
-		Map<String, Object> results = sp.execute(fac_id, func_id);
-
-		return (List<Map<String, Object>>) results.get(FxtrelNt.CUR_REFER_PARAM);
-	}
-
 	public List<Map<String, Object>> grpcolNtDao(String fac_id, String func_id, String lang_falg, ReturnType rType) throws SQLException {
 		if (fac_id == null || func_id == null || lang_falg == null) {
 			throw new IllegalArgumentException("Parameters(fac_id, func_id, lang_falg) should not be null.");
@@ -158,17 +209,6 @@ public class JdbcFormDaoImpl implements FormDao {
 		Map<String, Object> results = sp.execute(fac_id, func_id, lang_flag);
 
 		return (List<Map<String, Object>>) results.get(MapconGenNt.CUR_REFER_PARAM);
-	}
-
-	public List<Map<String, Object>> mapdefS2NtDao(String fac_id, String func_id, String admin_user, ReturnType rType) throws SQLException {
-		if (fac_id == null || func_id == null || admin_user == null) {
-			throw new IllegalArgumentException("Parameters(fac_id, func_id, admin_user) should not be null.");
-		}
-
-		MapdefS2Nt sp = new MapdefS2Nt(dataSource, rType);
-		Map<String, Object> results = sp.execute(fac_id, func_id, admin_user);
-
-		return (List<Map<String, Object>>) results.get(MapdefS2Nt.CUR_REFER_PARAM);
 	}
 
 	public List<Map<String, Object>> tabvldNtDao(String fac_id, String func_id, String spd_id, ReturnType rType) throws SQLException {
