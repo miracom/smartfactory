@@ -82,6 +82,7 @@ Ext.define('CMN.view.common.Selector', {
 				select : function(rowModel, record, index, eOpts ) {
 					selector.selectorOptions.callback.call(selector, selector.selectorOptions.client, record);
 					selector.selectorOptions.client.focus();
+					//처리도중 destroy 하면 오류가 발생하여 wait time 추가
 					Ext.defer(function() {
 						selector.destroy();
 					}, 1);

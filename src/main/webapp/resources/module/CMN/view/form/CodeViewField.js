@@ -24,6 +24,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 	 * The third parameter 'selector' is the object which registered in selectors registry. 
 	 */
 	selectedCallback : function(field, record) {
+		console.log(field.selectorName);
 		var selector = SmartFactory.selector.get(field.selectorName);
 		field.record = record;
 		
@@ -39,7 +40,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 			field.setRawValue(record.get(displayField));
 		}
 	},
-	
+	//display
 	rawToValue : function(raw) {
 		var selector = SmartFactory.selector.get(this.selectorName);
 		if(this.record) {
@@ -58,7 +59,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 		
 		return null;
 	},
-	
+	//value
 	valueToRaw : function(value) {
 		var selector = SmartFactory.selector.get(this.selectorName);
 		if(this.record) {
@@ -78,13 +79,22 @@ Ext.define('CMN.view.form.CodeViewField', {
 		return null;
 	},
 	
+//	setValue: function(value) {
+//	        var me = this;
+//	        t.setRawValue(me.valueToRaw(value));
+//	        return me.mixins.field.setValue.call(me, value);
+//    },
+    
+	
 	listeners : {
+/* Text = Enable: Enter event 삭제
 		specialkey: function(field, e){
             if (e.getKey() == e.ENTER) {
             	SmartFactory.selector.show(field.selectorName, field.filter, field.selectedCallback, field);
             }
             return false;
         },
+*/
         render: function(field){
         	field.getEl().on('click',function(e){
             	SmartFactory.selector.show(field.selectorName, field.filter, field.selectedCallback, field);
