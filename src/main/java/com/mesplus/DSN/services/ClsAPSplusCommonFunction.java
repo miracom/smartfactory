@@ -99,6 +99,7 @@ public class ClsAPSplusCommonFunction {
 				throw new RemoteException("IllegalArgumentException: Parameters(sSqlText) should not be " + sSqlText.length + " size");
 			}
 
+			String xName = "ArrayList";
 			String a_sql_txt1 = sSqlText[0];
 			String a_sql_txt2 = sSqlText[1];
 			String a_sql_txt3 = sSqlText[2];
@@ -107,8 +108,11 @@ public class ClsAPSplusCommonFunction {
 			ReturnType rType = ReturnType.ELEMENT;
 
 			// XML: ArrayList
-
-			return null;
+			Map<String, Object> map =
+					JdbcFormDaoImpl.getGlobalFormDao().selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5, rType);
+			Element el = XmlConvert.mapToArrayListElement(map);
+			
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

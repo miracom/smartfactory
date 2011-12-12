@@ -11,9 +11,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.mesplus.DSN.services.dao.FormDao;
-import com.mesplus.DSN.services.dao.impl.adsn.FxtrelNt;
-import com.mesplus.DSN.services.dao.impl.adsn.MapdefS2Nt;
-import com.mesplus.DSN.services.dao.impl.agcm.TbldatNt;
+import com.mesplus.DSN.services.dao.impl.adsn.*;
+import com.mesplus.DSN.services.dao.impl.agcm.*;
+import com.mesplus.DSN.services.dao.impl.asec.*;
+import com.mesplus.DSN.services.dao.impl.get.*;
 import com.mesplus.util.Enums.ReturnType;
 
 //<context:component-scan> 태그를 사용하면 @Component 어노테이션이 적용된 컨트롤러 클래스를 검색하여 Bean으로 등록
@@ -58,7 +59,7 @@ public class JdbcFormDaoImpl implements FormDao {
 			throw new IllegalArgumentException("Parameters(fac_id, func_group, func_code, function_type) should not be null.");
 		}
 
-		TbldatNt sp = new TbldatNt(dataSource, rType);
+		FundefNt sp = new FundefNt(dataSource, rType);
 		Map<String, Object> results = sp.execute(fac_id, func_group, func_code, function_type);
 
 		return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
@@ -81,7 +82,7 @@ public class JdbcFormDaoImpl implements FormDao {
 			throw new IllegalArgumentException("Parameters(fac_id, func_id, admin_user ) should not be null.");
 		}
 
-		TbldatNt sp = new TbldatNt(dataSource, rType);
+		MapconNt sp = new MapconNt(dataSource, rType);
 		Map<String, Object> results = sp.execute(fac_id, func_id, admin_user);
 
 		return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
@@ -103,10 +104,23 @@ public class JdbcFormDaoImpl implements FormDao {
 			throw new IllegalArgumentException("Parameters(fac_id, func_id) should not be null.");
 		}
 
-		TbldatNt sp = new TbldatNt(dataSource, rType);
+		MapdefSplNt sp = new MapdefSplNt(dataSource, rType);
 		Map<String, Object> results = sp.execute(fac_id, func_id);
 
 		return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
+	}
+	
+	//GET
+	public Map<String, Object> selectresultNtDao(String a_sql_txt1, String a_sql_txt2, String a_sql_txt3, String a_sql_txt4, String a_sql_txt5, ReturnType rType) throws SQLException {
+		if (a_sql_txt1 == null || a_sql_txt2 == null || a_sql_txt3 == null || a_sql_txt4 == null || a_sql_txt5 == null) {
+			throw new IllegalArgumentException("Parameters(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5) should not be null.");
+		}
+
+		SelectresultNt sp = new SelectresultNt(dataSource, rType);
+		Map<String, Object> results = sp.execute(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5);
+
+		//return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
+		return results;
 	}
 
 	/*

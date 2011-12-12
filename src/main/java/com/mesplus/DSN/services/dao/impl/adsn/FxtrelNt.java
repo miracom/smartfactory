@@ -36,7 +36,7 @@ public class FxtrelNt extends StoredProcedure {
 		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
 
 		RTYPE = rType;
-
+		
 		if (RTYPE == ReturnType.OBJECT) {
 			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ObjcetMapper()));
 		} else if (RTYPE == ReturnType.ELEMENT) {
