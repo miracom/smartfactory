@@ -4,12 +4,20 @@ Ext.define('CMN.mixin.Selector', {
 		
 		return {
 			selector : {
-				show : function(selector, params) {
+				show : function(selector, filters, callback, client) {
+					/*
+					 * selector, filters, callback, client are mandatory parameters
+					 */
 					var selectorOptions = SmartFactory.selector.get(selector);
-					selectorOptions.params = params;
-					Ext.create('CMN.view.common.Selector', {
+					selectorOptions.filters = filters;
+					selectorOptions.callback = callback;
+					selectorOptions.client = client;
+
+					var selector = Ext.create('CMN.view.common.Selector', {
 						selectorOptions : selectorOptions
-					}).show();
+					});
+					selector.show();
+					return selector;
 				},
 				register : function(name, selector) {
 					registry[name] = selector;

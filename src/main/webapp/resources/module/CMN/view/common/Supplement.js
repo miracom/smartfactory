@@ -82,40 +82,21 @@ Ext.define('CMN.view.common.Supplement', {
 			} ]
 		} ]
 	}, {
-		xtype : 'combobox',
-		fieldLabel : 'Product ID',
-		listeners : {
-			focus : function() {
-				SmartFactory.selector.show('Material', {
-					FACTORY : SmartFactory.login.factory()
-				});
-			}
-		},
-		store : Ext.create('Ext.data.Store', {
-			fields : [ 'name', 'value' ],
-			data : [ {
-				name : 'Mr',
-				value : 'mr'
-			} ]
-		})
+		xtype : 'codeview',
+		selectorName : 'Material',
+		filter : [ {
+			property : 'factory',
+			value : SmartFactory.login.factory()
+		} ],
+		fieldLabel : 'Product ID'
 	}, {
-		xtype : 'combobox',
-		cls : 'resourceSelector',
-		fieldLabel : 'Operation ID',
-		listeners : {
-			focus : function() {
-				SmartFactory.selector.show('Operation', {
-					FACTORY : SmartFactory.login.factory()
-				});
-			}
-		},
-		store : Ext.create('Ext.data.Store', {
-			fields : [ 'name', 'value' ],
-			data : [ {
-				name : 'Mr',
-				value : 'mr'
-			} ]
-		})
+		xtype : 'codeview',
+		selectorName : 'Operation',
+		filter : [ {
+			property : 'factory',
+			value : SmartFactory.login.factory()
+		}],
+		fieldLabel : 'Operation ID'
 	}, {
 		xtype : 'fieldcontainer',
 		fieldLabel : 'Time worked',
@@ -171,7 +152,7 @@ Ext.define('CMN.view.common.Supplement', {
 		name : 'files',
 		fieldLabel : 'Files upload',
 		anchor : '100%'
-	},{
+	}, {
 		xtype : 'xdatetime',
 		id : 'dtf',
 		fieldLabel : 'Date & Time'

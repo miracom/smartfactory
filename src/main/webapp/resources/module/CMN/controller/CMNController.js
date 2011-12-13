@@ -9,7 +9,8 @@ Ext.define('CMN.controller.CMNController', {
 			'CMN.view.viewport.West', 'CMN.view.common.Menu',
 			'CMN.view.common.SystemMenu', 'CMN.view.common.Toolbar',
 			'CMN.view.common.NavMenu', 'CMN.view.common.NavFavorite',
-			'CMN.view.common.SearchField', 'CMN.view.form.DateTime' ],
+			'CMN.view.common.SearchField', 'CMN.view.form.DateTime'
+			,'CMN.view.form.CodeViewField'],
 
 	init : function() {
 		this.control({
