@@ -22,72 +22,101 @@ Ext.define('CMN.view.form.CodeViewField', {
 	/*
 	 * selectedCallback will be called back when a record selected on Selector window.
 	 * The third parameter 'selector' is the object which registered in selectors registry. 
-	 */
-	selectedCallback : function(field, record) {
-		var selector = SmartFactory.selector.get(field.selectorName);
-		field.record = record;
-		
-		var displayField = selector.displayField || selector.valueField;
-		if(displayField instanceof Array) {
-			var value = '';
-			for(var i in displayField) {
-				value += '[' + record.get(displayField[i]) + ']';
-			}
-			
-			field.setRawValue(value);
-		} else {
-			field.setRawValue(record.get(displayField));
-		}
-	},
+	*/
+//	selectedCallback : function(field, record) {
+//		var selector = SmartFactory.selector.get(field.selectorName);
+//		field.record = record;
+//		
+//		var displayField = selector.displayField || selector.valueField;
+//		if(displayField instanceof Array) {
+//			var value = '';
+//			for(var i in displayField) {
+//				value += '[' + record.get(displayField[i]) + ']';
+//			}
+//			field.setRawValue(value);
+//		} else {
+//			field.setRawValue(record.get(displayField));
+//		}
+//	},
 	
+	//value Convert
 	rawToValue : function(raw) {
 		var selector = SmartFactory.selector.get(this.selectorName);
-		if(this.record) {
-			var field = selector.valueField;
-			if(field instanceof Array) {
-				var value = '';
-				for(var i in field) {
-					value += '[' + record.get(field[i]) + ']';
+		if(raw) {
+			var valueField = selector.valueField;
+			if(valueField instanceof Array) {
+				var values = '';
+				for(var i in valueField) {
+					values += '[' + raw.get(valueField[i]) + ']';
 				}
 				
-				return field.setRawValue(value);
+				return values;
 			} else {
-				return field.setRawValue(record.get(field));
+				return raw.get(valueField);
 			}			
 		}
 		
 		return null;
 	},
 	
+	//display Convert
 	valueToRaw : function(value) {
 		var selector = SmartFactory.selector.get(this.selectorName);
-		if(this.record) {
-			var field = selector.displayField || selector.valueField;
-			if(field instanceof Array) {
-				var value = '';
-				for(var i in field) {
-					value += '[' + record.get(field[i]) + ']';
+		if(value) {
+			var displayField = selector.displayField || selector.valueField;
+			if(displayField instanceof Array) {
+				var values = '';
+				for(var i in displayField) {
+					values += '[' + value.get(displayField[i]) + ']';
 				}
-				
-				return field.setRawValue(value);
+				return values;
 			} else {
-				return field.setRawValue(record.get(field));
+				return record.get(field);
 			}			
 		}
-
+		
 		return null;
 	},
 	
+    setRawValue: function(value) {
+        value = Ext.value(value, '');
+        this.rawValue = value;
+
+        // Some Field subclasses may not render an inputEl
+        if (this.inputEl) {
+        	this.inputEl.dom.value = value;
+        }
+        return value;
+    },
+    
+    getRawValue: function() {
+        v = (this.inputEl ? this.inputEl.getValue() : Ext.value(this.rawValue, ''));
+        this.rawValue = v;
+        return v;
+    },
+    
+	setValue: function(value) {
+		this.value = value;
+        this.setRawValue(this.valueToRaw(value));
+    },
+    
+    getValue: function() {
+    	return this.rawToValue(this.value);
+    },
+    
 	listeners : {
+/* Text = Enable: Enter event 삭제
 		specialkey: function(field, e){
             if (e.getKey() == e.ENTER) {
             	SmartFactory.selector.show(field.selectorName, field.filter, field.selectedCallback, field);
             }
             return false;
         },
+*/
         render: function(field){
         	field.getEl().on('click',function(e){
-            	SmartFactory.selector.show(field.selectorName, field.filter, field.selectedCallback, field);
+            	//SmartFactory.selector.show(field.selectorName, field.filter, field.selectedCallback, field);
+        		SmartFactory.selector.show(field.selectorName, field.filter, field);
                 return false;
             });
         }

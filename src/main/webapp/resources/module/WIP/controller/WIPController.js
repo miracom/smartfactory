@@ -35,8 +35,8 @@ Ext.define('WIP.controller.WIPController', {
 				dataIndex : 'OPER_DESC',
 				flex : 2
 			} ],
-			valueField : 'OPER',
-			displayField : ['OPER', 'OPER_DESC']
+			valueField : 'OPER',  //submit value
+			displayField : ['OPER', 'OPER_DESC'] //display value
 		});
 
 		SmartFactory.selector.register('Material', {

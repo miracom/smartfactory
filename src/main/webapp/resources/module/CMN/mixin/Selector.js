@@ -4,15 +4,17 @@ Ext.define('CMN.mixin.Selector', {
 		
 		return {
 			selector : {
-				show : function(selector, filters, callback, client) {
+				//show : function(selector, filters, callback, client) {
+				show : function(selector, filters, client) {
 					/*
 					 * selector, filters, callback, client are mandatory parameters
-					 */
-					var selectorOptions = SmartFactory.selector.get(selector);
-					selectorOptions.filters = filters;
-					selectorOptions.callback = callback;
-					selectorOptions.client = client;
+					 */				
+					var selectorOptions = SmartFactory.selector.get(selector); //get selector
+					selectorOptions.filters = filters; //where
+					//selectorOptions.callback = callback; //지정한 callback 함수
+					selectorOptions.client = client; //show 함수를 호출한 control
 
+					//selectorOptions 생성자로 view.Selector 호출
 					var selector = Ext.create('CMN.view.common.Selector', {
 						selectorOptions : selectorOptions
 					});
