@@ -1,4 +1,4 @@
-Ext.define('MBI.view.form.BaseForm1G', {
+Ext.define('MBI.view.form.BaseForm1GA', {
 	extend : 'Ext.panel.Panel',
 	alias : 'widget.mbi.baseform1g',
 
@@ -9,10 +9,9 @@ Ext.define('MBI.view.form.BaseForm1G', {
 		align : 'stretch'
 	},
 	autoScroll : true,// false,
-
 	setup : function() {
 		// this.removeAll();
-
+		
 		this.setSupplement(Ext.create('MBI.view.form.builder.ConditionBuilder', {
 			formInfoData : this.store.data,
 			funcId : this.funcId,
@@ -27,13 +26,25 @@ Ext.define('MBI.view.form.BaseForm1G', {
 			langFlag : this.langFlag
 		}).buildStore();
 
+		var view_chart = Ext.create('MBI.view.form.builder.ChartBuilder',{
+			//TODO input config info
+			formInfoData : this.store.data,
+			langFlag : this.langFlag,
+			store : this.storeInfo,
+			layoutType : 'hbox',
+			flex : 2
+		}).buildChart(1);
+		
 		var view_grid = Ext.create('MBI.view.form.builder.GridBuilder', {
 			formInfoData : this.store.data,
 			langFlag : this.langFlag,
 			store : this.storeInfo,
 			flex : 1
 		}).buildGrid();
-
+		this.add(view_chart);
+//		this.add({
+//	        xtype: 'splitter'   // A splitter between the two child items
+//	    });
 		this.add(view_grid);
 	},
 
@@ -50,7 +61,7 @@ Ext.define('MBI.view.form.BaseForm1G', {
 			
 			con_params += mapconGenNt[i].con_seq +'`^' + value + '|';
 		};
-		//console.log(con_params);
+		console.log(con_params);
 		return con_params; //ex: '1`^1|2`^|3`^|';
 	},
 

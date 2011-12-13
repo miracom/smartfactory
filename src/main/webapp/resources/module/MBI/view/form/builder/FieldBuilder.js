@@ -155,8 +155,6 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 	//no : 8
 	getRadioButtonField : function(rowData){
 		var itemList = this.getRadioItem(rowData);
-		console.log('itemList');
-		console.log(itemList);
 		return {
 			xtype: 'fieldset',
 	        title: rowData.display_text,
@@ -190,7 +188,6 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 				inputValue : radioData[valueIndex],
 				//id : rowData.display_text+'_radio'+dataIndex
 			});
-			console.log(value);
 			valueIndex += 3;
 		};
 		return radioList;
