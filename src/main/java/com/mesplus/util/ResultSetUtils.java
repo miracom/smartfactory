@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.jdom.Element;
@@ -18,7 +19,7 @@ public class ResultSetUtils {
 	 * @throws SQLException
 	 */
 	public final static Map<String, Object> convertResultSetToMapObject(ResultSet rs) throws SQLException {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
 
 		ResultSetMetaData meta = rs.getMetaData();
 
@@ -39,7 +40,7 @@ public class ResultSetUtils {
 	 * @throws SQLException
 	 */
 	public final static Map<String, Object> convertResultSetToMapElement(ResultSet rs, Map<String, String> typeMap) throws SQLException {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new LinkedHashMap<String, Object>();
 
 		ResultSetMetaData meta = rs.getMetaData();
 
