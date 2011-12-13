@@ -17,7 +17,7 @@ public final class ElementMapper implements RowMapper<Map<String, Object>> {
 	
 	@Override
     public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
-    	return ResultSetUtils.convertResultSetToMapElement(rs, chgngeTypeMap);
+		return ResultSetUtils.convertResultSetToMapElement(rs, chgngeTypeMap);
     }
 
 }

@@ -49,7 +49,22 @@ public class XmlConvert {
 	 */
 	public final static Element mapListToDataTableElement(List<Map<String, Object>> mapList, String tableName) throws Exception {
 		if (mapList.size() == 0) {
-			throw new IllegalArgumentException("Parameters(mapList) should not be 0 size.");
+			//throw new IllegalArgumentException("Parameters(mapList) should not be 0 size.");
+			Element rootEl = new Element(tableName);
+
+			Element rowCountEl = new Element("add");
+			rowCountEl.setAttribute("key", "rows");
+			rowCountEl.setAttribute("value", "0");
+			Element columnCountEl = new Element("add");
+			columnCountEl.setAttribute("key", "columns");
+			columnCountEl.setAttribute("value", "0");
+			Element rowEl = new Element("ROW0");
+
+			rootEl.addContent(rowCountEl);
+			rootEl.addContent(columnCountEl);
+			rootEl.addContent(rowEl);
+			
+			return rootEl;
 		} else if (CommonUtils.isNullorEmpty(tableName)) {
 			throw new IllegalArgumentException("Parameters(tableName) should not be nullorEmpty.");
 		} else {

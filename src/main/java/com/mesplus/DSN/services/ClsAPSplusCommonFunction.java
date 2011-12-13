@@ -31,13 +31,13 @@ public class ClsAPSplusCommonFunction {
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			// XML: DataTable
-			List<Map<String, Object>> mapList =
-			JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(a_fac_id, a_tbl_code, a_lang_flag, a_params, rType);
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			//List<Map<String, Object>> mapList =
+			//JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(a_fac_id, a_tbl_code, a_lang_flag, a_params, rType);
+			//Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 		
-			return XmlConvert.elementToXML(el);
+			//return XmlConvert.elementToXML(el);
 
-			/*
+			
 			List<Map<String, Object>> mapList = JdbcFormDaoImpl.getGlobalFormDao().grpcolNtDao(a_fac_id, a_tbl_code, a_lang_flag, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 
@@ -51,7 +51,7 @@ public class ClsAPSplusCommonFunction {
 			Element gEl = XmlConvert.groupElement(elList);
 
 			return XmlConvert.elementToXML(gEl);
-
+			/*
 			 Map<String, Object> map =
 			 JdbcFormDaoImpl.getGlobalFormDao().dynamicS2RtDao("U", "1024",
 			 "1", "83", "ADMIN", "1", "LOT0001`^55555`^A`^xxxxx", rType);
