@@ -43,7 +43,16 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 	},
 	//no : 2
 	getCodeViewField : function(rowData){
-		return {};
+		return {
+			xtype : 'codeview',
+			selectorName : 'Operation',
+			filter : [ {
+				property : 'factory',
+				value : SmartFactory.login.factory()
+			}],
+			fieldLabel : 'Operation ID',
+			name: 'Operation'
+		};
 	},
 	//no : 3
 	getComboBoxField : function(rowData){

@@ -88,10 +88,6 @@ Ext.define('CMN.view.common.Selector', {
 						selector.destroy();
 					}, 1);
 					
-					//TODO Test Get Value
-					var v = selector.selectorOptions.client.getValue();
-					console.log(v);
-					
 					return false;
 				}
 			}

@@ -3,7 +3,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 	alias: 'widget.codeview',
 	cls : 'resourceSelector',
 	
-	disabled : true,
+	//disabled : true,
 	
 	/*
 	 * mandatory config fields : valueField, selectorName
@@ -79,20 +79,17 @@ Ext.define('CMN.view.form.CodeViewField', {
 	},
 	
     setRawValue: function(value) {
-        value = Ext.value(value, '');
-        this.rawValue = value;
-
+    	this.rawValue = value;
+    	
         // Some Field subclasses may not render an inputEl
         if (this.inputEl) {
         	this.inputEl.dom.value = value;
         }
-        return value;
     },
     
     getRawValue: function() {
-        v = (this.inputEl ? this.inputEl.getValue() : Ext.value(this.rawValue, ''));
-        this.rawValue = v;
-        return v;
+    	v = (this.getValue() ? this.getValue() : Ext.value(this.rawValue, ''));    
+    	return v;
     },
     
 	setValue: function(value) {
