@@ -31,9 +31,52 @@ Ext.define('CMN.view.common.Selector', {
 		this.grid = this.add(this.buildGrid());
 		this.search = this.add(this.buildSearch());
 		
-		this.store.load();
+		this.loadStore(this.selectorOptions.client.bInitFilter);
 	},
-	
+	loadStore : function(bInitfilter)
+	{
+		if(bInitfilter)
+		{
+			var filters = [];
+			var txtField = this.selectorOptions.client.txtFieldName;
+			
+			if(txtField instanceof Array) {
+				for(var i in txtField) {	
+					var field = this.selectorOptions.client.getChildByElement(txtField[i]);
+					var value = field.getValue();
+					
+					if(value)
+					{
+						filters.push({
+							property : field.getName(),
+							value : value
+						});
+					}
+				}
+			} else {
+				var field = this.selectorOptions.client.getChildByElement(txtField);
+				var value = field.getValue();
+				
+				if(value)
+				{
+					filters.push({
+						property : field.getName(),
+						value : value
+					});
+				}
+			}
+			
+			//기본조건 filter + 추가조건 filter
+			filters = filters.concat(this.selectorOptions.filters);
+
+			this.store.filters.clear();
+			this.store.filter(filters);
+		}
+		else
+		{
+			this.store.load();
+		}
+	},
 	buildStore : function() {
 		return Ext.create('Ext.data.Store', {
 			autoLoad : false,
@@ -80,9 +123,9 @@ Ext.define('CMN.view.common.Selector', {
 			}),
 			listeners : {
 				select : function(rowModel, record, index, eOpts ) {
-					//selector.selectorOptions.callback.call(selector, selector.selectorOptions.client, record);
-					selector.selectorOptions.client.setValue(record);
-					selector.selectorOptions.client.focus();
+					selector.selectorOptions.callback.call(selector, selector.selectorOptions.client, record);
+					//selector.selectorOptions.client.setValue(record);
+					//selector.selectorOptions.client.focus();
 					//처리도중 destroy 하면 오류가 발생하여 wait time 추가
 					Ext.defer(function() {
 						selector.destroy();
@@ -99,8 +142,20 @@ Ext.define('CMN.view.common.Selector', {
 		var items = [];
 		
 		for ( var i in columns) {
-			var column = columns[i];
 			
+			var column = columns[i];
+			var txtValue = "";
+			
+			if(this.selectorOptions.client.getChildByElement(column.dataIndex))
+			{
+				var txtfield = this.selectorOptions.client.getChildByElement(column.dataIndex);
+				if(txtfield.getValue())
+				{
+					txtValue = txtfield.getValue();
+				}
+			}
+			
+			//column.dataIndex 컬럼명
 			items.push({
 				listeners : {
 					specialkey : function(textfield, e) {
@@ -129,11 +184,11 @@ Ext.define('CMN.view.common.Selector', {
 				
 				xtype : 'textfield',
 				name : column.dataIndex,
+				value : txtValue,
 				hideLabel : true,
 				emptyText : column.header,
 				flex : column.flex
 			});
-			
 		}
 
 		return {

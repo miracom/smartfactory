@@ -1,121 +1,84 @@
 Ext.define('CMN.view.form.CodeViewField', {
-	extend : 'Ext.form.field.Text',
+	extend : 'Ext.panel.Panel',
 	alias: 'widget.codeview',
-	cls : 'resourceSelector',
+	height: 60,
 	
-	//disabled : true,
-	
-	/*
-	 * mandatory config fields : valueField, selectorName
-	 * optional config fields : displayField (if not configured, valueField will be used to display)
-	 */
-//	constructor : function(config) {
-//		
-//		config = Ext.applyIf(config, {
-//			valueField : '',
-//			displayField : ''
-//		});
-//
-//		CMN.view.form.CodeViewField.superclass.constructor.call(this, config);
-//	},
-	
-	/*
-	 * selectedCallback will be called back when a record selected on Selector window.
-	 * The third parameter 'selector' is the object which registered in selectors registry. 
-	*/
-//	selectedCallback : function(field, record) {
-//		var selector = SmartFactory.selector.get(field.selectorName);
-//		field.record = record;
-//		
-//		var displayField = selector.displayField || selector.valueField;
-//		if(displayField instanceof Array) {
-//			var value = '';
-//			for(var i in displayField) {
-//				value += '[' + record.get(displayField[i]) + ']';
-//			}
-//			field.setRawValue(value);
-//		} else {
-//			field.setRawValue(record.get(displayField));
-//		}
-//	},
-	
-	//value Convert
-	rawToValue : function(raw) {
-		var selector = SmartFactory.selector.get(this.selectorName);
-		if(raw) {
-			var valueField = selector.valueField;
-			if(valueField instanceof Array) {
-				var values = '';
-				for(var i in valueField) {
-					values += '[' + raw.get(valueField[i]) + ']';
-				}
-				
-				return values;
-			} else {
-				return raw.get(valueField);
-			}			
-		}
-		
-		return null;
+	layout: {
+        type: 'hbox',
+        padding:'5',
+        align:'middle'
+    },
+    
+    defaults:{margins:'0 5 0 0'},
+    
+    constructor : function(config) {
+    	CMN.view.form.CodeViewField.superclass.constructor.apply(this, arguments);
 	},
 	
-	//display Convert
-	valueToRaw : function(value) {
-		var selector = SmartFactory.selector.get(this.selectorName);
-		if(value) {
-			var displayField = selector.displayField || selector.valueField;
-			if(displayField instanceof Array) {
-				var values = '';
-				for(var i in displayField) {
-					values += '[' + value.get(displayField[i]) + ']';
-				}
-				return values;
-			} else {
-				return record.get(field);
-			}			
+	initComponent : function() {
+		this.callParent();
+	
+		this.add(this.txtfield());
+		this.add(this.btserach());
+		
+	},
+
+	txtfield : function()
+	{
+		var items = [];
+		var txtField = this.txtFieldName;
+		var txtWidth = this.txtFieldWidth;
+		
+		if(txtField instanceof Array) {
+			for(var i in txtField) {
+				items.push({
+					xtype: 'textfield',
+					name: txtField[i],
+					id: txtField[i],
+					flex: txtWidth[i]
+				});
+			}
+		} else {
+			items.push({
+				xtype: 'textfield',
+				name: txtField,
+				id: txtField,
+				flex: txtWidth
+			});
 		}
 		
-		return null;
+		return items;
 	},
 	
-    setRawValue: function(value) {
-    	this.rawValue = value;
-    	
-        // Some Field subclasses may not render an inputEl
-        if (this.inputEl) {
-        	this.inputEl.dom.value = value;
-        }
-    },
-    
-    getRawValue: function() {
-    	v = (this.getValue() ? this.getValue() : Ext.value(this.rawValue, ''));    
-    	return v;
-    },
-    
-	setValue: function(value) {
-		this.value = value;
-        this.setRawValue(this.valueToRaw(value));
-    },
-    
-    getValue: function() {
-    	return this.rawToValue(this.value);
-    },
-    
-	listeners : {
-/* Text = Enable: Enter event 삭제
-		specialkey: function(field, e){
-            if (e.getKey() == e.ENTER) {
-            	SmartFactory.selector.show(field.selectorName, field.filter, field.selectedCallback, field);
-            }
-            return false;
-        },
-*/
-        render: function(field){
-        	field.getEl().on('click',function(e){
-            	//SmartFactory.selector.show(field.selectorName, field.filter, field.selectedCallback, field);
-        		SmartFactory.selector.show(field.selectorName, field.filter, field);
-                return false;
-            });
-        }
+	btserach : function()
+	{
+		return {
+			xtype: 'button',
+			text: '...',
+			handler: function(){
+				var panel = this.up('panel');
+				SmartFactory.selector.show(panel.selectorName, panel.filter, panel.selectedCallback, panel);
+				//panel.getChildByElement('name');
+			}
+		};
+	},
+	
+	selectedCallback : function(field, record) {
+		var selector = SmartFactory.selector.get(field.selectorName);
+
+		var displayField = selector.displayField || selector.valueField;
+		if(displayField instanceof Array) {
+			for(var i in displayField) {
+				if(field.getChildByElement(displayField[i]))
+				{
+					field.getChildByElement(displayField[i]).setRawValue(record.get(displayField[i]));
+				}
+			}
+		} else {
+			if(field.getChildByElement(displayField))
+			{
+				field.getChildByElement(displayField).setRawValue(record.get(displayField));
+			}
+		}
 	}
 });

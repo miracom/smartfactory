@@ -45,13 +45,15 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 	getCodeViewField : function(rowData){
 		return {
 			xtype : 'codeview',
-			selectorName : 'Operation',
+			selectorName : 'Material',
 			filter : [ {
 				property : 'factory',
 				value : SmartFactory.login.factory()
-			}],
-			fieldLabel : 'Operation ID',
-			name: 'Operation'
+			} ],
+			txtFieldName : ['MAT_ID', 'MAT_VER'], //displayField와 동일하게 사용
+			txtFieldWidth : [2, 1],
+			bInitFilter: false,
+			title : 'Product ID'
 		};
 	},
 	//no : 3

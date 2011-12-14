@@ -11,6 +11,8 @@ Ext.define('CMN.view.common.Supplement', {
 	},
 
 	bodyStyle : 'padding:5px',
+	
+	//defaults:{},
 
 	defaults : {
 		labelAlign : 'top'
@@ -43,7 +45,7 @@ Ext.define('CMN.view.common.Supplement', {
 	// }
 	// },
 
-	items : [ {
+	items : [{
 		xtype : 'textfield',
 		fieldLabel : 'Factory name'
 	}, {
@@ -88,15 +90,21 @@ Ext.define('CMN.view.common.Supplement', {
 			property : 'factory',
 			value : SmartFactory.login.factory()
 		} ],
-		fieldLabel : 'Product ID'
+		txtFieldName : ['MAT_ID', 'MAT_VER'], //displayField와 동일하게 사용
+		txtFieldWidth : [2,1],
+		bInitFilter: false,
+		title : 'Product ID'
 	}, {
 		xtype : 'codeview',
 		selectorName : 'Operation',
 		filter : [ {
 			property : 'factory',
 			value : SmartFactory.login.factory()
-		}],
-		fieldLabel : 'Operation ID'
+		} ],
+		txtFieldName : 'OPER', //displayField와 동일하게 사용
+		txtFieldWidth : 1,
+		bInitFilter: true,
+		title : 'Operation ID'
 	}, {
 		xtype : 'fieldcontainer',
 		fieldLabel : 'Time worked',
@@ -169,5 +177,5 @@ Ext.define('CMN.view.common.Supplement', {
 			altFormats : 'Y-m-d|Y-n-d',
 			allowBlank : true
 		}
-	} ]
+	}]
 });
