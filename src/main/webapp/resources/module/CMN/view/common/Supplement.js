@@ -90,9 +90,9 @@ Ext.define('CMN.view.common.Supplement', {
 			property : 'factory',
 			value : SmartFactory.login.factory()
 		} ],
-		txtFieldName : ['MAT_ID', 'MAT_VER'], //displayField와 동일하게 사용
-		txtFieldWidth : [2,1],
-		bInitFilter: false,
+		txtFieldName : ['MAT_ID', 'MAT_VER'], 
+		txtFieldFlex : [2,1],
+		bInitFilter: true,
 		title : 'Product ID'
 	}, {
 		xtype : 'codeview',
@@ -101,8 +101,8 @@ Ext.define('CMN.view.common.Supplement', {
 			property : 'factory',
 			value : SmartFactory.login.factory()
 		} ],
-		txtFieldName : 'OPER', //displayField와 동일하게 사용
-		txtFieldWidth : 1,
+		txtFieldName : 'OPER',
+		txtFieldFlex : 1,
 		bInitFilter: true,
 		title : 'Operation ID'
 	}, {

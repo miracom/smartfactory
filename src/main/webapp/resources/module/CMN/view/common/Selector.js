@@ -38,30 +38,30 @@ Ext.define('CMN.view.common.Selector', {
 		if(bInitfilter)
 		{
 			var filters = [];
-			var txtField = this.selectorOptions.client.txtFieldName;
+			var fieldset = this.selectorOptions.client;
+			var txtField = fieldset.txtFieldName;
+			
 			
 			if(txtField instanceof Array) {
 				for(var i in txtField) {	
-					var field = this.selectorOptions.client.getChildByElement(txtField[i]);
-					var value = field.getValue();
+					var field = fieldset.getComponent(txtField[i]);
 					
-					if(value)
+					if(field.getValue())
 					{
 						filters.push({
-							property : field.getName(),
-							value : value
+							property : field.itemId,
+							value : field.getValue()
 						});
 					}
 				}
 			} else {
-				var field = this.selectorOptions.client.getChildByElement(txtField);
-				var value = field.getValue();
-				
-				if(value)
+				var field = fieldset.getComponent(txtField);
+
+				if(field.getValue())
 				{
 					filters.push({
-						property : field.getName(),
-						value : value
+						property : field.itemId,
+						value : field.getValue()
 					});
 				}
 			}
@@ -139,6 +139,7 @@ Ext.define('CMN.view.common.Selector', {
 	
 	buildSearch : function() {
 		var columns = this.selectorOptions.columns;
+		var fieldset = this.selectorOptions.client;
 		var items = [];
 		
 		for ( var i in columns) {
@@ -146,13 +147,11 @@ Ext.define('CMN.view.common.Selector', {
 			var column = columns[i];
 			var txtValue = "";
 			
-			if(this.selectorOptions.client.getChildByElement(column.dataIndex))
+			//txtfield
+			var field = fieldset.getComponent(column.dataIndex);
+			if(field && field.itemId == column.dataIndex)
 			{
-				var txtfield = this.selectorOptions.client.getChildByElement(column.dataIndex);
-				if(txtfield.getValue())
-				{
-					txtValue = txtfield.getValue();
-				}
+				txtValue =  field.getValue();
 			}
 			
 			//column.dataIndex 컬럼명

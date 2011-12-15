@@ -50,9 +50,9 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 				property : 'factory',
 				value : SmartFactory.login.factory()
 			} ],
-			txtFieldName : ['MAT_ID', 'MAT_VER'], //displayField와 동일하게 사용
-			txtFieldWidth : [2, 1],
-			bInitFilter: false,
+			txtFieldName : ['MAT_ID'], //displayField와 동일하게 사용
+			txtFieldFlex : [1],
+			bInitFilter: true,
 			title : 'Product ID'
 		};
 	},

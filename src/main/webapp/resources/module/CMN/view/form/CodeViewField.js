@@ -1,12 +1,11 @@
 Ext.define('CMN.view.form.CodeViewField', {
-	extend : 'Ext.panel.Panel',
+	extend : 'Ext.form.FieldSet',
 	alias: 'widget.codeview',
-	height: 60,
-	
+		
 	layout: {
         type: 'hbox',
         padding:'5',
-        align:'middle'
+        align:'top'
     },
     
     defaults:{margins:'0 5 0 0'},
@@ -18,31 +17,46 @@ Ext.define('CMN.view.form.CodeViewField', {
 	initComponent : function() {
 		this.callParent();
 	
-		this.add(this.txtfield());
-		this.add(this.btserach());
-		
+		this.add(this.buildTxtfield());
+		this.add(this.buildSerach());
 	},
 
-	txtfield : function()
+	buildTxtfield : function()
 	{
 		var items = [];
 		var txtField = this.txtFieldName;
-		var txtWidth = this.txtFieldWidth;
+		var txtWidth = this.txtFieldFlex;
 		
 		if(txtField instanceof Array) {
 			for(var i in txtField) {
 				items.push({
+					listeners : {
+						specialkey : function(textfield, e) {
+		                    if (e.getKey() != e.ENTER)
+		                    	return;
+		                    	var fieldset = this.up('fieldset');
+		                    	SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
+		                    }
+					},
 					xtype: 'textfield',
 					name: txtField[i],
-					id: txtField[i],
+					itemId: txtField[i],
 					flex: txtWidth[i]
 				});
 			}
 		} else {
 			items.push({
+				listeners : {
+					specialkey : function(textfield, e) {
+	                    if (e.getKey() != e.ENTER)
+	                    	return;
+	                    	var fieldset = this.up('fieldset');
+	                    	SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
+	                    }
+				},
 				xtype: 'textfield',
 				name: txtField,
-				id: txtField,
+				itemId: txtField,
 				flex: txtWidth
 			});
 		}
@@ -50,35 +64,41 @@ Ext.define('CMN.view.form.CodeViewField', {
 		return items;
 	},
 	
-	btserach : function()
+	buildSerach : function()
 	{
 		return {
 			xtype: 'button',
 			text: '...',
 			handler: function(){
-				var panel = this.up('panel');
-				SmartFactory.selector.show(panel.selectorName, panel.filter, panel.selectedCallback, panel);
-				//panel.getChildByElement('name');
+				var fieldset = this.up('fieldset');
+				
+				SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
 			}
 		};
 	},
 	
-	selectedCallback : function(field, record) {
-		var selector = SmartFactory.selector.get(field.selectorName);
-
-		var displayField = selector.displayField || selector.valueField;
-		if(displayField instanceof Array) {
-			for(var i in displayField) {
-				if(field.getChildByElement(displayField[i]))
+	selectedCallback : function(fieldset, record) {
+		var selector = SmartFactory.selector.get(fieldset.selectorName);
+		var txtField = selector.client.txtFieldName;
+		
+		if(txtField instanceof Array) {
+			for(var i in txtField) 
+			{	
+				var field = fieldset.getComponent(txtField[i]);
+				
+				if(field && field.itemId == txtField[i])
 				{
-					field.getChildByElement(displayField[i]).setRawValue(record.get(displayField[i]));
+					field.setRawValue(record.get(txtField[i]));
 				}
 			}
 		} else {
-			if(field.getChildByElement(displayField))
+			var field = fieldset.getComponent(txtField);
+
+			if(field && field.itemId == txtField)
 			{
-				field.getChildByElement(displayField).setRawValue(record.get(displayField));
+				field.setRawValue(record.get(txtField));
 			}
 		}
 	}
 });
+
