@@ -51,7 +51,6 @@ $loadmask-backgorund: #000 !default;
 $window-header-color:#333;
 $panel-header-color:#ced9ea;
 $window-border-width:0px;
-$window-inner-border-width:none;
 
 //separator
 $toolbar-separator-color: #ccc !default;
@@ -59,6 +58,10 @@ $toolbar-separator-color: #ccc !default;
 //toolbar
 $toolbar-background-color:#ffffff;
 $toolbar-background-gradient:#ffffff;
+
+//accordion
+$accordion-header-color: #1B4C86 !default;
+
 
 @import 'compass';
 @import 'ext4/default/all';

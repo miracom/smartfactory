@@ -74,6 +74,7 @@ Ext.define('CMN.view.common.Supplement', {
 		items : [ {
 			xtype : 'radiogroup',
 			layout : 'anchor',
+			cls : 'fieldsetRadioGroup',
 			items : [ {
 				inputValue : 'Lot type A',
 				boxLabel : 'Lot type A',
@@ -93,7 +94,7 @@ Ext.define('CMN.view.common.Supplement', {
 		txtFieldName : ['MAT_ID', 'MAT_VER'], 
 		txtFieldFlex : [2,1],
 		bInitFilter: true,
-		title : 'Product ID'
+		fieldLabel : 'Product ID'
 	}, {
 		xtype : 'codeview',
 		selectorName : 'Operation',
@@ -104,7 +105,7 @@ Ext.define('CMN.view.common.Supplement', {
 		txtFieldName : 'OPER',
 		txtFieldFlex : 1,
 		bInitFilter: true,
-		title : 'Operation ID'
+		fieldLabel : 'Operation ID'
 	}, {
 		xtype : 'fieldcontainer',
 		fieldLabel : 'Time worked',
@@ -163,10 +164,10 @@ Ext.define('CMN.view.common.Supplement', {
 	}, {
 		xtype : 'xdatetime',
 		id : 'dtf',
-		fieldLabel : 'Date & Time'
-		// ,width:360
+		cls : 'datetime',
+		fieldLabel : 'Date & Time',
+		width:185
 		,
-		anchor : '-18',
 		timeFormat : 'H:i:s',
 		timeConfig : {
 			altFormats : 'H:i:s',

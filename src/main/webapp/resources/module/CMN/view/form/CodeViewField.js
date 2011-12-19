@@ -1,14 +1,15 @@
 Ext.define('CMN.view.form.CodeViewField', {
-	extend : 'Ext.form.FieldSet',
+	extend : 'Ext.form.FieldContainer',
 	alias: 'widget.codeview',
-		
+	
+	cls :'hboxLine',
+	
 	layout: {
         type: 'hbox',
-        padding:'5',
         align:'top'
     },
     
-    defaults:{margins:'0 5 0 0'},
+    defaults:{margins:'0 3 0 0'},
     
     constructor : function(config) {
     	CMN.view.form.CodeViewField.superclass.constructor.apply(this, arguments);
@@ -68,7 +69,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 	{
 		return {
 			xtype: 'button',
-			text: '...',
+			iconCls:'btnCodeView',
 			handler: function(){
 				var fieldset = this.up('fieldset');
 				

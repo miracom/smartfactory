@@ -25,8 +25,7 @@
     font-weight: bold;
     font-size: 15px;
 }
-#msg-div .msg p {
-    margin: 0;
+#msg-div .msg p {margin: 0;
 }
 
 /* app menu */
@@ -120,6 +119,7 @@
 .navDoctedClear:hover{background:url('../image/iconDockedClearOn.png') no-repeat !important;}
 .x-toolbar-default-docked-top .x-btn-default-toolbar-small{border:0}
 .x-toolbar-default-docked-top .x-btn-default-toolbar-small-hover{border:0}
+.x-toolbar-default-docked-bottom{ background-color:#dbeafd;border-width:1px 0 0 0}
 
 /*search panel*/
 .searchPanel .x-form-item-label,.searchPanel .x-fieldset-header{margin-top:3px;color:#5371a7;font-size:11px;}
@@ -131,9 +131,10 @@
 .searchPanel fieldset .x-form-item{margin-bottom:1px}
 .searchPanel .x-form-cb-label-after{color:#585858;font-size:11px}
 .searchPanel .x-fieldset.fieldsetCheckbox{padding:3px 7px}
-.searchPanel .hboxLine .x-form-item-body{margin-top:0px}
+.searchPanel .fieldsetRadioGroup{padding-left:3px}
+.searchPanel .hboxLine .x-form-item-body,.searchPanel .datetime .x-form-item-body{margin-top:0px}
+.searchPanel .datetime{height:50px;width:90%}
 .x-form-trigger-wrap .x-form-spinner-up-over{background-position:-17px 0}
-/*.textFromTo div{color:#585858;margin-right:5px;width:30px;font-size:11px}*/
 
 /* status bar */
 .x-nlg .appStatusBar,.appStatusBar{background:url('../image/bgAppFooter.gif') repeat-x !important;}
@@ -171,7 +172,7 @@
 .x-tree-icon-parent{background:url('../image/folder.gif') no-repeat;}
 .x-grid-tree-node-expanded .x-tree-icon-parent{background:url('../image/folder-open.gif') no-repeat;}
 .x-tree-icon-leaf{background:url('../image/leaf.gif') no-repeat;}
-.x-tree-elbow-plus{background:url('../image/elbow-plus.gif') no-repeat;}
+.x-tree-lines .x-tree-elbow-plus{background:url('../image/elbow-plus.gif') no-repeat;}
 .x-tree-lines .x-tree-elbow-end-plus{background:url('../image/elbow-end-plus.gif') no-repeat;}
 .x-tree-lines .x-grid-tree-node-expanded .x-tree-elbow-end-plus{background:url('../image/elbow-end-minus.gif') no-repeat;}
 .x-tree-lines .x-grid-tree-node-expanded .x-tree-elbow-plus{background:url('../image/elbow-minus.gif') no-repeat;}
@@ -187,6 +188,7 @@
 }
 .x-boundlist-item{background:url('../image/arrowRightGray.gif') 4px 8px no-repeat;padding-left:11px;color:#333;font-size:11px;border-bottom:1px dotted #ccc}
 .x-boundlist-item-over{background:url('../image/arrowRightBlue.gif') 4px 8px no-repeat;background-color:#fff;padding-left:11px}
+
 
 
 /* x progress bar style*/
@@ -224,6 +226,9 @@
 .x-btn-default-small{background:url('../image/bgBtn.gif') repeat-x;padding:1px}
 .x-btn-default-small-over{background:url('../image/bgBtnOver.gif') repeat-x;padding:1px}
 .x-toolbar-footer-docked-bottom{border:1px solid #cfcfcf;border-width:1px 1px 0px 1px !important;height:27px;background-color:#f0f0f0}
+.btnCodeView{background:url('../image/iconCodeView.gif') -4px 2px no-repeat;height:21px !important}
+.x-over .btnCodeView{background:url('../image/iconCodeView.gif') -29px 2px no-repeat;height:21px !important}
+.searchPanel .x-btn-default-small-icon button{height:18px}
 
 /* picker style*/
 table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
@@ -231,8 +236,8 @@ table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
 .x-datepicker-next{background:url('../image/iconBtnSet.gif') 100% 2px repeat-x;width:14px;margin-left:3px}
 
 /* window style*/
-.x-tool-refresh, .x-tool-over .x-tool-refresh{background:url('../image/modalIcons.gif') 0 0px no-repeat;}
-.x-tool-close, .x-tool-over .x-tool-close{background:url('../image/modalIcons.gif') -15px 0px no-repeat;}
+.x-tool-refresh, .x-tool-over .x-tool-refresh,.x-tool img.x-tool-refresh{background:url('../image/modalIcons.gif') 0 0px no-repeat;}
+.x-tool-close, .x-tool-over .x-tool-close,.x-tool img.x-tool-close{background:url('../image/modalIcons.gif') -15px 0px no-repeat;}
 .x-window-header-default-top{background:url('../image/bgDockHeader.gif') 0 -2px repeat-x;height:23px;}
 .x-window-default{padding:0;border-width:0;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;background-color:#57729d}
 .x-window-header-default-top{box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;border:0}
@@ -263,6 +268,9 @@ table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
 .uploadDelete{background:url('../image/tab-default-close.gif') 50% 50% no-repeat;width:20px;height:18px;display:inline-block;cursor:pointer}
 .uploadFailed {display:none;color:#ef4e16}
 .qq-upload-fail .uploadFailed{display:inline;}
+
+/*accordion*/
+.x-accordion-hd{background:url('../image/bgAccordion.gif') repeat-x !important;padding:4px 7px 3px 7px}
 
 /* menu icon style */
 .icon_FAV1001{background:url('../image/menuIcon/1_1_14_Favorite_Setup_16.png') no-repeat;}
