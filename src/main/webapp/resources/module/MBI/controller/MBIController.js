@@ -18,8 +18,5 @@ Ext.define('MBI.controller.MBIController', {
 		SmartFactory.addDockingNav('MBI.view.NavFormlist', {
 			iconCls:'iconsetDockReport'
 		});
-		SmartFactory.addDockingNav('MBI.view.NavFunclist', {
-			iconCls:'iconsetDockReport'
-		});
 	}
 });
