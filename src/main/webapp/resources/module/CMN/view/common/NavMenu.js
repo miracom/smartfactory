@@ -33,8 +33,11 @@ Ext.define('CMN.view.common.NavMenu', {
 			click : function(button) {
 				var store = Ext.StoreManager.lookup('CMN.store.MenuStore');
 
-				/* store.load()와 store.setRootNode(null)은 동일하게 자동 reload처럼 동작한다. */
-				store.load();
+				/* 
+				 * store.load()와 store.setRootNode(null)은 동일하게 자동 reload처럼 동작한다.(4.0)
+				 * store.load()는 노드들을 완전히 제거하지 못한다. (4.0.7) 따라서, setRootNode(null)을 사용한다. 
+				 */
+				store.setRootNode(null);
 			}
 		}
 	} ],
