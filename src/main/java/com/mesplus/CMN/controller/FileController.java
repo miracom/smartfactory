@@ -25,6 +25,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.CMN.dao.FileDao;
 
+
+/**
+ * 파일의 업로드, 다운로드 기능을 관리하는 컨트롤러
+ * @author Jinho
+ * @since 1.0
+ */
 @Controller
 public class FileController {
 	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
@@ -76,6 +82,18 @@ public class FileController {
     private static final String DESTINATION_DIR_PATH = "files";
     private static String realPath;
     
+    /**
+     * 파일을 업로드한다.
+	 * <ul>
+	 * 	<li>접속 주소: module/CMN/file_upload</li>
+	 *  <li>접속 방법: POST</li>
+	 * </ul>
+     * @param request GET/POST로 전송받은 실제파일 정보
+     * @param response GET/POST로 전송할 성공여부
+     * @throws FileNotFoundException 파일을 찾지 못해서 발생한 에러정보
+     * @throws IOException 업드로 실패 에러정보
+     * @return <code>success: true</code> 업로드 성공 <code>success: false</code> 업로드 실패
+     */
     @RequestMapping(value = "module/CMN/file_upload", method = RequestMethod.POST)
 	public @ResponseBody
 	Map<String, Object> upload(HttpServletRequest request, HttpServletResponse response) {
@@ -130,6 +148,16 @@ public class FileController {
 		return null;
 	}
 
+    /**
+     * 파일을 다운로드한다.
+	 * <ul>
+	 * 	<li>접속 주소: module/CMN/file_download</li>
+	 *  <li>접속 방법: POST</li>
+	 * </ul>
+     * @param request GET/POST로 전송받은 실제파일 정보
+     * @param response GET/POST로 전송할 성공여부
+     * @exception Exception 다운로드 실패 에러정보
+     */
     @RequestMapping(value = "module/CMN/file_download", method = RequestMethod.POST)
 	public void download(HttpServletRequest request, HttpServletResponse response) {
     	try {
@@ -158,6 +186,16 @@ public class FileController {
     	}
     }
 
+    /**
+     * 파일을 다운로드한다.
+	 * <ul>
+	 * 	<li>접속 주소: module/CMN/file_download</li>
+	 *  <li>접속 방법: GET</li>
+	 * </ul>
+     * @param request GET/POST로 전송받은 실제파일 정보
+     * @param response GET/POST로 전송할 성공여부
+     * @exception Exception 다운로드 실패 에러정보
+     */
     @RequestMapping(value = "module/CMN/file_download", method = RequestMethod.GET)
 	public void view(HttpServletRequest request, HttpServletResponse response) {
     	try {

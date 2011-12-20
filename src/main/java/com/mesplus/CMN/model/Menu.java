@@ -5,6 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * 메뉴에 정보를 정의하는 모델
+ * @author Jinho
+ * @since 1.0
+ */
 public class Menu {
 	private String func_name;
 	private String func_desc;
@@ -20,6 +25,10 @@ public class Menu {
 	
 	private List<Menu> children;
 	
+	/**
+	 * child를 children(List<Menu>)에 저장한다.
+	 * @param child 트리에 추가할 객체정보
+	 */
 	public void add(Menu child) {
 		if(children == null)
 			children = new LinkedList<Menu>();
@@ -85,18 +94,38 @@ public class Menu {
 		return children;
 	}
 
+	/**
+	 * Function 아이디를 반환
+	 * @return Function 아이디
+	 */
 	public String getFunc_name() {
 		return func_name;
 	}
+	
+	/**
+	 * Function 아이디를 저장
+	 * @param func_name Function 아이디
+	 */
 	public void setFunc_name(String func_name) {
 		this.func_name = func_name;
 	}
+	
+	/**
+	 * Function 설명을 반환
+	 * @return Function 설명
+	 */
 	public String getFunc_desc() {
 		return func_desc;
 	}
+	
+	/**
+	 * Function 설명을 저장
+	 * @param func_desc Function 설명
+	 */
 	public void setFunc_desc(String func_desc) {
 		this.func_desc = func_desc;
 	}
+	
 	public String getFunc_type_flag() {
 		return func_type_flag;
 	}

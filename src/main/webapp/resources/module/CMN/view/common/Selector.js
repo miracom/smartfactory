@@ -31,6 +31,8 @@ Ext.define('CMN.view.common.Selector', {
 		this.grid = this.add(this.buildGrid());
 		this.search = this.add(this.buildSearch());
 		
+		//Ext.apply(this.store,{});
+		
 		this.loadStore(this.selectorOptions.client.bInitFilter);
 	},
 	loadStore : function(bInitfilter)
@@ -104,6 +106,7 @@ Ext.define('CMN.view.common.Selector', {
 
 	buildGrid : function() {
 		var selector = this;
+		
 		return {
 			xtype : 'grid',
 			store : this.store,
@@ -122,7 +125,10 @@ Ext.define('CMN.view.common.Selector', {
 				} ]
 			}),
 			listeners : {
-				select : function(rowModel, record, index, eOpts ) {
+				select : function(rowModel, record, index, eOpts ) {	
+					//var a = Ext.get(this.up('window').grid.id);
+					//console.log(a.getHeight());
+					
 					selector.selectorOptions.callback.call(selector, selector.selectorOptions.client, record);
 					//selector.selectorOptions.client.setValue(record);
 					//selector.selectorOptions.client.focus();
