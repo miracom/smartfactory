@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,47 +33,6 @@ import com.mesplus.CMN.dao.FileDao;
 @Controller
 public class FileController {
 	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
-	
-	/*
-	 * TODO 아래는 브라우저 엔진별로 재구성해야함. ex)webkit, ..
-	 */
-	private String getBrowser(HttpServletRequest request) {
-		String ua = request.getHeader("User-Agent");
-		if(ua.indexOf("MSIE") > -1)
-			return "MSIE";
-		if(ua.indexOf("Chrome") > -1)
-			return "Chrome";
-		if(ua.indexOf("Opera") > -1)
-			return "Opera";
-		return "Firefox";
-	}
-	
-	private void setDispositionHeader(HttpServletRequest request, HttpServletResponse response, String filename) throws Exception {
-		String browser = getBrowser(request);
-		String encoded = null;
-		if(browser.equals("MSIE"))
-			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
-		else if(browser.equals("Chrome")) {
-			StringBuffer sb = new StringBuffer();
-			for(int i = 0;i < filename.length();i++) {
-				char c = filename.charAt(i);
-				if(c > '~') {
-					sb.append(URLEncoder.encode("" + c, "UTF-8"));
-				} else {
-					sb.append(c);
-				}
-			}
-			encoded = sb.toString();
-		}
-		else if(browser.equals("Opera"))
-			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
-		else if(browser.equals("Firefox"))
-			encoded = new String(filename.getBytes("UTF-8"), "8859_1");
-		else
-			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
-		
-		response.setHeader("Content-Disposition","attachment;filename=\"" + encoded + "\"");
-	}
 	
 	@Autowired
 	private FileDao fileDao;
@@ -161,8 +119,8 @@ public class FileController {
     @RequestMapping(value = "module/CMN/file_download", method = RequestMethod.POST)
 	public void download(HttpServletRequest request, HttpServletResponse response) {
     	try {
-        	request.setCharacterEncoding("utf-8");
-        	response.setCharacterEncoding("utf-8");
+//        	request.setCharacterEncoding("utf-8");
+//        	response.setCharacterEncoding("utf-8");
 
         	realPath = request.getServletContext().getRealPath(DESTINATION_DIR_PATH) + "/";
         	
@@ -176,7 +134,9 @@ public class FileController {
         	FileInputStream is = new FileInputStream(realPath + filename);
         	
         	response.setContentType("application/octet-stream");
-        	setDispositionHeader(request, response, filename);
+    		String encoded = new String(filename.getBytes(), response.getCharacterEncoding());
+    		
+    		response.setHeader("Content-Disposition","attachment;filename=\"" + encoded + "\"");
         	
         	response.setContentLength((int)file.length());
         	IOUtils.copy(is, response.getOutputStream());
