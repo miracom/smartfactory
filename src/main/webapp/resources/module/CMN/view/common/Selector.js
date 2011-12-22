@@ -33,6 +33,8 @@ Ext.define('CMN.view.common.Selector', {
 		
 		//Ext.apply(this.store,{});
 		
+		//Ext.apply(this.store,{});
+		
 		this.loadStore(this.selectorOptions.client.bInitFilter);
 	},
 	loadStore : function(bInitfilter)
