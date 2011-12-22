@@ -2,8 +2,25 @@ Ext.require('Ext.ux.GMapPanel');
 
 Ext.define('CMN.view.map.Map', {
 	extend : 'Ext.panel.Panel',
+	plugins : [Ext.create('CMN.plugin.Supplement')],
 	
 	title : 'Common Map',
+	
+	supplement : Ext.create('Ext.form.Panel', {
+		layout : {
+			type : 'vbox',
+			align : 'stretch'
+		},
+		items : [{
+			xtype : 'textfield',
+			fieldLabel : 'Latitude',
+			name : 'latitude'
+		}, {
+			xtype : 'textfield',
+			fieldLabel : 'Longitude',
+			name : 'langitude'
+		}] 
+	}),
 	
 	layout : 'fit',
 	
@@ -20,7 +37,7 @@ Ext.define('CMN.view.map.Map', {
         },
         maplisteners: {
         	click: function(mevt){
-        		Ext.Msg.alert('Lat/Lng of Click', mevt.latLng.lat() + ' / ' + mevt.latLng.lng());
+        		SmartFactory.msg('Lat/Lng of Click', mevt.latLng.lat() + ' / ' + mevt.latLng.lng());
         		var input = Ext.get('ac').dom,
 	    			sw = new google.maps.LatLng(39.26940,-76.64323),
 	    			ne = new google.maps.LatLng(39.38904,-76.54848),
