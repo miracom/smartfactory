@@ -80,21 +80,14 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
     	}
      	return arrList;
     },
-//    SmartFactory.selector.register('GcmCodeView', {
-//		title : 'Gcm List',
-//		selects : [],
-//		columns : []
-//	});
-//	filter : [ {
-//		property : 'factory',
-//		value : SmartFactory.login.factory()
-//	} ],
+
 	getCodeViewField : function(rowData){
 		var gcmInfo = this.builderGcmInfo(rowData.gcm_col_names); //TEST_ID,TEST_NAEM.....
 		var gridColumns = this.getGcmColumn(gcmInfo,rowData.con_gcm_col);//0|1 => TEST_ID,TEST_NAME
 		return {
 			xtype : 'codeview',
 			selectorName : 'GcmCodeView',
+			fieldLabel : rowData.display_text,
 			//'$1'==> :X1
 			filter : [],
 			table : rowData.con_gcm_table_code,
@@ -105,15 +98,10 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 			title : rowData.display_text,
 			columns : this.buildGridColumns(gridColumns),
 			selects : gridColumns,
-//			sqlparams : [{
-//				param : '1',
-//				value : 		
-//			}],
+
 			name : 'C'+rowData.con_seq,
 			refGcmCol : gcmInfo[rowData.con_gcm_ref_col].column,
 			refField : 'C'+rowData.con_ref_col
-			//rowData.con_gcm_ref_col
-			//rowData.con_ref_col
 		};
 	},
 	//no : 3

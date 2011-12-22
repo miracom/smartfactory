@@ -41,7 +41,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 						specialkey : function(textfield, e) {
 		                    if (e.getKey() != e.ENTER)
 		                    	return;
-		                    	var fieldset = this.up('fieldset');
+		                    	var fieldset = this.up('fieldcontainer');
 		                    	SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
 		                    }
 					},
@@ -60,7 +60,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 					specialkey : function(textfield, e) {
 	                    if (e.getKey() != e.ENTER)
 	                    	return;
-	                    	var fieldset = this.up('fieldset');
+	                    	var fieldset = this.up('fieldcontainer');
 	                    	SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
 	                    }
 				},
@@ -80,7 +80,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 			xtype: 'button',
 			iconCls:'btnCodeView',
 			handler: function(){
-				var fieldset = this.up('fieldset');
+				var fieldset = this.up('fieldcontainer');
             	//var refVal = fieldset.up('form').getValues();
             	
 				SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
