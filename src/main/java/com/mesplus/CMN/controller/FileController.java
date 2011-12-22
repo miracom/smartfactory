@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,50 +24,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.CMN.dao.FileDao;
 
+
+/**
+ * 파일의 업로드, 다운로드 기능을 관리하는 컨트롤러
+ * @author Jinho
+ * @since 1.0
+ */
 @Controller
 public class FileController {
 	private static final Logger logger = LoggerFactory.getLogger(FileController.class);
-	
-	/*
-	 * TODO 아래는 브라우저 엔진별로 재구성해야함. ex)webkit, ..
-	 */
-	private String getBrowser(HttpServletRequest request) {
-		String ua = request.getHeader("User-Agent");
-		if(ua.indexOf("MSIE") > -1)
-			return "MSIE";
-		if(ua.indexOf("Chrome") > -1)
-			return "Chrome";
-		if(ua.indexOf("Opera") > -1)
-			return "Opera";
-		return "Firefox";
-	}
-	
-	private void setDispositionHeader(HttpServletRequest request, HttpServletResponse response, String filename) throws Exception {
-		String browser = getBrowser(request);
-		String encoded = null;
-		if(browser.equals("MSIE"))
-			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
-		else if(browser.equals("Chrome")) {
-			StringBuffer sb = new StringBuffer();
-			for(int i = 0;i < filename.length();i++) {
-				char c = filename.charAt(i);
-				if(c > '~') {
-					sb.append(URLEncoder.encode("" + c, "UTF-8"));
-				} else {
-					sb.append(c);
-				}
-			}
-			encoded = sb.toString();
-		}
-		else if(browser.equals("Opera"))
-			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
-		else if(browser.equals("Firefox"))
-			encoded = new String(filename.getBytes("UTF-8"), "8859_1");
-		else
-			encoded = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
-		
-		response.setHeader("Content-Disposition","attachment;filename=\"" + encoded + "\"");
-	}
 	
 	@Autowired
 	private FileDao fileDao;
@@ -76,6 +40,18 @@ public class FileController {
     private static final String DESTINATION_DIR_PATH = "files";
     private static String realPath;
     
+    /**
+     * 파일을 업로드한다.
+	 * <ul>
+	 * 	<li>접속 주소: module/CMN/file_upload</li>
+	 *  <li>접속 방법: POST</li>
+	 * </ul>
+     * @param request GET/POST로 전송받은 실제파일 정보
+     * @param response GET/POST로 전송할 성공여부
+     * @throws FileNotFoundException 파일을 찾지 못해서 발생한 에러정보
+     * @throws IOException 업드로 실패 에러정보
+     * @return <code>success: true</code> 업로드 성공 <code>success: false</code> 업로드 실패
+     */
     @RequestMapping(value = "module/CMN/file_upload", method = RequestMethod.POST)
 	public @ResponseBody
 	Map<String, Object> upload(HttpServletRequest request, HttpServletResponse response) {
@@ -130,11 +106,21 @@ public class FileController {
 		return null;
 	}
 
+    /**
+     * 파일을 다운로드한다.
+	 * <ul>
+	 * 	<li>접속 주소: module/CMN/file_download</li>
+	 *  <li>접속 방법: POST</li>
+	 * </ul>
+     * @param request GET/POST로 전송받은 실제파일 정보
+     * @param response GET/POST로 전송할 성공여부
+     * @exception Exception 다운로드 실패 에러정보
+     */
     @RequestMapping(value = "module/CMN/file_download", method = RequestMethod.POST)
 	public void download(HttpServletRequest request, HttpServletResponse response) {
     	try {
-        	request.setCharacterEncoding("utf-8");
-        	response.setCharacterEncoding("utf-8");
+//        	request.setCharacterEncoding("utf-8");
+//        	response.setCharacterEncoding("utf-8");
 
         	realPath = request.getServletContext().getRealPath(DESTINATION_DIR_PATH) + "/";
         	
@@ -148,7 +134,9 @@ public class FileController {
         	FileInputStream is = new FileInputStream(realPath + filename);
         	
         	response.setContentType("application/octet-stream");
-        	setDispositionHeader(request, response, filename);
+    		String encoded = new String(filename.getBytes(), response.getCharacterEncoding());
+    		
+    		response.setHeader("Content-Disposition","attachment;filename=\"" + encoded + "\"");
         	
         	response.setContentLength((int)file.length());
         	IOUtils.copy(is, response.getOutputStream());
@@ -158,6 +146,16 @@ public class FileController {
     	}
     }
 
+    /**
+     * 파일을 다운로드한다.
+	 * <ul>
+	 * 	<li>접속 주소: module/CMN/file_download</li>
+	 *  <li>접속 방법: GET</li>
+	 * </ul>
+     * @param request GET/POST로 전송받은 실제파일 정보
+     * @param response GET/POST로 전송할 성공여부
+     * @exception Exception 다운로드 실패 에러정보
+     */
     @RequestMapping(value = "module/CMN/file_download", method = RequestMethod.GET)
 	public void view(HttpServletRequest request, HttpServletResponse response) {
     	try {

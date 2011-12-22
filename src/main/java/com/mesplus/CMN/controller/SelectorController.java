@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +23,14 @@ import com.mesplus.CMN.model.Filter;
 import com.mesplus.CMN.model.Sorter;
 import com.mesplus.CMN.model.Sqlparams;
 
+/**
+ * DB 조회 기능을 관리하는 컨트롤러
+ * @author Jinho
+ * @since 1.0
+ */
 @Controller
 public class SelectorController {
-	private static final Logger logger = LoggerFactory.getLogger(SelectorController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(SelectorController.class);
 
 	@Autowired
 	private GcmDefineDao gcmdefineDao;
@@ -36,6 +39,28 @@ public class SelectorController {
 	@Autowired
 	private GcmDataDao gcmdataDao;
 
+	/**
+	 * 입력받은 조건으로 쿼리를 생성하여 데이타를 조회
+	 * <ul>
+	 * 	<li>접속 주소: module/CMN/data/select.json</li>
+	 *  <li>접속 방법: GET</li>
+	 * </ul>
+	 * @param request GET/POST로 전송받은 쿼리조건 정보
+	 * <pre>
+	 * 		<code>(String)request.getParameter("table") - </code> 검색할 테이블명
+	 * 		<code>(String[])request.getParameter("selects") - </code> 검색하여 출력할 컬럼명
+	 * 		<code>(String)request.getParameter("start") - </code> 검색할 시작범위(ROWNUM)
+	 * 		<code>(String)request.getParameter("limit") - </code> 검색할 끝 범위(ROWNUM)
+	 * 		<code>(String)request.getParameter("filter") - </code> 검색할 검색조건
+	 * 		<code>(String)request.getParameter("sort") - </code> 검색할 정렬조건
+	 * </pre>
+	 * @param response GET/POST로 전송할 조회된 데이타 정보
+	 * @return DB에서 검색된 데이타를 Map<String, Object>형식의 데이타로 반환한다.
+	 * <pre>	
+	 * 		<code>Key = total - </code> start, limit 제외한 조건으로 검색된 총 데이타 개수
+	 *		<code>Key = result - </code> 검색 데이타
+	 * </pre>
+	 */
 	@RequestMapping(value = "module/CMN/data/select.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String, Object> select(HttpServletRequest request, HttpServletResponse response) {
@@ -48,8 +73,6 @@ public class SelectorController {
 		String jsonSqlparams = request.getParameter("sqlparams");
 		String jsonFilter = request.getParameter("filter");
 		String jsonSorter = request.getParameter("sort");
-		
-		System.out.println(jsonFilter);
 		
 		List<Filter> filters = null;
 		List<Sorter> sorters = null;
