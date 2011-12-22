@@ -29,6 +29,12 @@ Ext.define('CMN.view.form.CodeViewField', {
 		
 		if(txtField instanceof Array) {
 			for(var i in txtField) {
+				var fieldName = txtField[i];
+				if(this.name instanceof Array)
+					fieldName = this.name[i];
+				else if(this.name && i<1)
+					fieldName = this.name;
+				
 				items.push({
 					listeners : {
 						specialkey : function(textfield, e) {
@@ -39,12 +45,15 @@ Ext.define('CMN.view.form.CodeViewField', {
 		                    }
 					},
 					xtype: 'textfield',
-					name: txtField[i],
+					//name: txtField[i],
+					name : fieldName,
 					itemId: txtField[i],
 					flex: txtWidth[i]
 				});
 			}
 		} else {
+			var fieldName = txtField;
+			if (this.name) fieldName = this.name;
 			items.push({
 				listeners : {
 					specialkey : function(textfield, e) {
@@ -55,7 +64,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 	                    }
 				},
 				xtype: 'textfield',
-				name: txtField,
+				name: fieldName,
 				itemId: txtField,
 				flex: txtWidth
 			});
@@ -71,7 +80,8 @@ Ext.define('CMN.view.form.CodeViewField', {
 			text: '...',
 			handler: function(){
 				var fieldset = this.up('fieldset');
-				
+            	//var refVal = fieldset.up('form').getValues();
+            	
 				SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
 			}
 		};

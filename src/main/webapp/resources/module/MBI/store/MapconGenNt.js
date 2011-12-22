@@ -43,5 +43,8 @@ Ext.define('MBI.store.MapconGenNt', {
 	}, {
 		name : 'con_display_type',
 		type : 'string'
-	} ]
+	}, {
+		name : 'gcm_col_names',
+		type : 'string'
+	}]
 });

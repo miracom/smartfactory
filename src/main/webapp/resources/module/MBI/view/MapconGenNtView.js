@@ -74,6 +74,11 @@ Ext.define('MBI.view.MapconGenNtView', {
 		dataIndex : 'auto_create_flag',
 		align : 'center',
 		text : 'auto_create_flag'
+	}, {
+		xtype : 'gridcolumn',
+		dataIndex : 'gcm_col_names',
+		align : 'center',
+		text : 'gcm_col_names'
 	}
 	]
 

@@ -16,8 +16,8 @@ Ext.define('CMN.view.common.Selector', {
 		if (!config.selectorOptions)
 			throw new Error('selectorOptions should be configured.');
 
-		if (!config.selectorOptions.table || !config.selectorOptions.columns || config.selectorOptions.columns.length <= 0)
-			throw new Error('selectorOptions[table, columns] should be configured.');
+		if (!config.selectorOptions.table || !config.selectorOptions.columns || !config.selectorOptions.selects || config.selectorOptions.columns.length <= 0)
+			throw new Error('selectorOptions[table, columns, selects] should be configured.');
 
 		CMN.view.common.Selector.superclass.constructor.apply(this, arguments);
 	},
@@ -27,7 +27,7 @@ Ext.define('CMN.view.common.Selector', {
 		this.title = this.selectorOptions.title || 'Select';
 		
 		this.store = this.buildStore();
-
+		
 		this.grid = this.add(this.buildGrid());
 		this.search = this.add(this.buildSearch());
 		
@@ -40,8 +40,6 @@ Ext.define('CMN.view.common.Selector', {
 			var filters = [];
 			var fieldset = this.selectorOptions.client;
 			var txtField = fieldset.txtFieldName;
-			
-			
 			if(txtField instanceof Array) {
 				for(var i in txtField) {	
 					var field = fieldset.getComponent(txtField[i]);
@@ -55,8 +53,8 @@ Ext.define('CMN.view.common.Selector', {
 					}
 				}
 			} else {
+				
 				var field = fieldset.getComponent(txtField);
-
 				if(field.getValue())
 				{
 					filters.push({
@@ -65,7 +63,13 @@ Ext.define('CMN.view.common.Selector', {
 					});
 				}
 			}
-			
+			if (fieldset.refField){
+				var formValue = fieldset.up('form').getValues();
+				filters.push({
+					property : fieldset.refGcmCol,
+					value : formValue[fieldset.refField]
+				});
+			}
 			//기본조건 filter + 추가조건 filter
 			filters = filters.concat(this.selectorOptions.filters);
 
@@ -91,7 +95,9 @@ Ext.define('CMN.view.common.Selector', {
 				url : 'module/CMN/data/select.json',
 				extraParams : {
 					selects : this.selectorOptions.selects,
-					table : this.selectorOptions.table
+					table : this.selectorOptions.table,
+					viewType : this.selectorOptions.viewType,
+					sqlparams : this.selectorOptions.sqlparams
 				},
 				reader : {
 					type : 'json',
@@ -141,12 +147,12 @@ Ext.define('CMN.view.common.Selector', {
 		var columns = this.selectorOptions.columns;
 		var fieldset = this.selectorOptions.client;
 		var items = [];
-		
+
 		for ( var i in columns) {
 			
 			var column = columns[i];
 			var txtValue = "";
-			
+
 			//txtfield
 			var field = fieldset.getComponent(column.dataIndex);
 			if(field && field.itemId == column.dataIndex)

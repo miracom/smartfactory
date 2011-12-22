@@ -38,22 +38,82 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return {
     		xtype : 'checkboxfield',
     		boxLabel : rowData.display_text,
-    		name : rowData.display_text.toLowerCase()
+    		name : 'C'+rowData.con_seq
 		};
 	},
 	//no : 2
+	//module/CMN/data/gcmdefine.json
+	builderGcmInfo : function(colNames){
+    	var arrList = [], rtnArr =[];
+    	
+   		arrList = colNames.split('|');
+
+		for(var i in arrList){
+			var arr = arrList[i].split('^');
+			rtnArr.push({
+				index : arr[0],
+				column : arr[1]
+				});
+		}
+    	return rtnArr;
+    },
+	buildGridColumns : function(gridColumns){
+		var rtnColumns=[];
+		for(var i in gridColumns){
+			rtnColumns.push(
+				{
+					header : gridColumns[i],
+					dataIndex : gridColumns[i],//index,
+					flex : 1
+				}
+			);
+		}
+		return rtnColumns;
+	},
+    getGcmColumn : function(gcmInfo,indexs){
+    	var arrList = [];
+    	var arrIndex = indexs.split('|');
+    	var index = 0;
+    	for(var i in arrIndex){
+    		index = arrIndex[i];
+			arrList.push(gcmInfo[index].column);
+    	}
+     	return arrList;
+    },
+//    SmartFactory.selector.register('GcmCodeView', {
+//		title : 'Gcm List',
+//		selects : [],
+//		columns : []
+//	});
+//	filter : [ {
+//		property : 'factory',
+//		value : SmartFactory.login.factory()
+//	} ],
 	getCodeViewField : function(rowData){
+		var gcmInfo = this.builderGcmInfo(rowData.gcm_col_names); //TEST_ID,TEST_NAEM.....
+		var gridColumns = this.getGcmColumn(gcmInfo,rowData.con_gcm_col);//0|1 => TEST_ID,TEST_NAME
 		return {
 			xtype : 'codeview',
-			selectorName : 'Material',
-			filter : [ {
-				property : 'factory',
-				value : SmartFactory.login.factory()
-			} ],
-			txtFieldName : ['MAT_ID'], //displayField와 동일하게 사용
+			selectorName : 'GcmCodeView',
+			//'$1'==> :X1
+			filter : [],
+			table : rowData.con_gcm_table_code,
+			txtFieldName : gcmInfo[rowData.con_gcm_val].column, //displayField와 동일하게 사용
+			//txtFieldName : ['TEST_ID','TEST_NAME'], //displayField와 동일하게 사용
 			txtFieldFlex : [1],
 			bInitFilter: true,
-			title : 'Product ID'
+			title : rowData.display_text,
+			columns : this.buildGridColumns(gridColumns),
+			selects : gridColumns,
+//			sqlparams : [{
+//				param : '1',
+//				value : 		
+//			}],
+			name : 'C'+rowData.con_seq,
+			refGcmCol : gcmInfo[rowData.con_gcm_ref_col].column,
+			refField : 'C'+rowData.con_ref_col
+			//rowData.con_gcm_ref_col
+			//rowData.con_ref_col
 		};
 	},
 	//no : 3
@@ -61,7 +121,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return Ext.create('CMN.view.form.GCMComboBox', {
 			labelAlign : 'top',
 			fieldLabel : rowData.display_text,
-			name : rowData.display_text.toLowerCase(),
+			name : 'C'+rowData.con_seq,
 			queryMode : 'local',
 			displayField : rowData.con_gcm_col.toLowerCase(),
 			valueField : rowData.con_gcm_val.toLowerCase(),
@@ -74,7 +134,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return {
     		xtype : 'datefield',
     		fieldLabel : rowData.display_text,
-    		name : rowData.display_text.toLowerCase(),
+    		name : 'C'+rowData.con_seq,
     		//id : 'date_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		format : 'Y-m-d',
@@ -87,7 +147,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return [{
     		xtype : 'datefield',
     		fieldLabel : rowData.display_text +' From',
-    		name : rowData.display_text.toLowerCase()+'_from',
+    		name : 'C'+rowData.con_seq+'_from',
     		//id : 'datefrom_'+rowData.display_text.toLowerCase(),
     		
     		anchor : '100%',
@@ -97,7 +157,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		},{
     		xtype : 'datefield',
     		fieldLabel : rowData.display_text + ' To',
-    		name : rowData.display_text.toLowerCase()+'_to',
+    		name : 'C'+rowData.con_seq+'_to',
     		//id : 'dateto_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		format : 'Y-m-d',
@@ -109,7 +169,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return [{
     		xtype : 'datefield',
     		fieldLabel : rowData.display_text +' Date',
-    		name : rowData.display_text.toLowerCase() + '_date',
+    		name : 'C'+rowData.con_seq + '_date',
     		//id : 'date_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		format : 'Y-m-d',
@@ -118,7 +178,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		},{
     		xtype : 'timefield',
     		fieldLabel : rowData.display_text+' Time',
-    		name : rowData.display_text.toLowerCase() + '_time',
+    		name : 'C'+rowData.con_seq + '_time',
     		//id : 'time_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		format : 'H:i',
@@ -130,7 +190,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return [{
     		xtype : 'datefield',
     		fieldLabel : rowData.display_text +' Date Form',
-    		name : rowData.display_text.toLowerCase() + '_dateform',
+    		name : 'C'+rowData.con_seq + '_dateform',
     		//id : 'dateform_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		format : 'Y-m-d',
@@ -139,7 +199,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		},{
     		xtype : 'timefield',
     		fieldLabel : rowData.display_text+' Time Form',
-    		name : rowData.display_text.toLowerCase() + '_timeform',
+    		name : 'C'+rowData.con_seq + '_timeform',
     		//id : 'timeform_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		format : 'H:i',
@@ -147,7 +207,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		},{
     		xtype : 'datefield',
     		fieldLabel : rowData.display_text +' Date To',
-    		name : rowData.display_text.toLowerCase() + '_dateto',
+    		name : 'C'+rowData.con_seq + '_dateto',
     		//id : 'dateto_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		format : 'Y-m-d',
@@ -156,7 +216,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		},{
     		xtype : 'timefield',
     		fieldLabel : rowData.display_text+' Time To',
-    		name : rowData.display_text.toLowerCase() + '_timeto',
+    		name : 'C'+rowData.con_seq + '_timeto',
     		//id : 'timeto_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		format : 'H:i',
@@ -195,7 +255,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 			var value = radioData[valueIndex];
 			radioList.push({
 				boxLabel : radioData[dataIndex],
-				name : rowData.display_text.toLowerCase(),
+				name : 'C'+rowData.con_seq,
 				inputValue : radioData[valueIndex],
 				//id : rowData.display_text+'_radio'+dataIndex
 			});
@@ -208,7 +268,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return {
     		xtype : 'textfield',
     		fieldLabel : rowData.display_text,
-    		name : rowData.display_text.toLowerCase(),
+    		name : 'C'+rowData.con_seq,
     		//id : 'date_'+rowData.display_text.toLowerCase(),
     		anchor : '100%',
     		allowBlank : false
