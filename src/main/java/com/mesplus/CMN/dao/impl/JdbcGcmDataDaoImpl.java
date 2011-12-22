@@ -18,7 +18,6 @@ import org.springframework.util.StringUtils;
 import com.mesplus.CMN.dao.GcmDataDao;
 import com.mesplus.CMN.model.Filter;
 import com.mesplus.CMN.model.Sorter;
-import com.mesplus.CMN.model.Sqlparams;
 import com.mesplus.SEC.model.CustomUserDetails;
 import com.mesplus.util.SessionUtils;
 
@@ -120,7 +119,7 @@ public class JdbcGcmDataDaoImpl implements GcmDataDao {
 	}
 
 	@Override
-	public List<Map<String, Object>> select(String table, String[] selects, List<Filter> filters, int start, int limit, Map<String,Object> gcmDef, List<Sqlparams> sqlparams) {
+	public List<Map<String, Object>> select(String table, String[] selects, List<Filter> filters, int start, int limit, Map<String,Object> gcmDef) {
 		String sql = "";
 		String selectClause = buildSelectClause(gcmDef,0);
 		String selectClauseAs = "";
