@@ -21,7 +21,6 @@ import com.mesplus.CMN.dao.GcmDefineDao;
 import com.mesplus.CMN.dao.SelectorDao;
 import com.mesplus.CMN.model.Filter;
 import com.mesplus.CMN.model.Sorter;
-import com.mesplus.CMN.model.Sqlparams;
 
 /**
  * DB 조회 기능을 관리하는 컨트롤러
@@ -70,13 +69,12 @@ public class SelectorController {
 		String start = request.getParameter("start");
 		String limit = request.getParameter("limit");
 
-		String jsonSqlparams = request.getParameter("sqlparams");
 		String jsonFilter = request.getParameter("filter");
 		String jsonSorter = request.getParameter("sort");
 		
 		List<Filter> filters = null;
 		List<Sorter> sorters = null;
-		List<Sqlparams> sqlparams = null;
+
 		try {
 			if(jsonFilter != null) {
 				filters = new ObjectMapper().readValue(request.getParameter("filter"), new TypeReference<List<Filter>>(){ });
@@ -84,9 +82,7 @@ public class SelectorController {
 			if(jsonSorter != null) {
 				sorters = new ObjectMapper().readValue(request.getParameter("sort"), new TypeReference<List<Sorter>>(){ });
 			}
-			if(jsonSqlparams != null) {
-				sqlparams = new ObjectMapper().readValue(request.getParameter("sqlparams"), new TypeReference<List<Sqlparams>>(){ });
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -111,7 +107,7 @@ public class SelectorController {
 				}
 			}
 			resultMap.put("total", gcmdataDao.selectCount(table, filters, gcmDef));
-			resultMap.put("result", gcmdataDao.select(table, selects, filters, Integer.parseInt(start), Integer.parseInt(limit),gcmDef,sqlparams));
+			resultMap.put("result", gcmdataDao.select(table, selects, filters, Integer.parseInt(start), Integer.parseInt(limit),gcmDef));
 		}
 		return resultMap;
 	}
