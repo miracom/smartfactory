@@ -35,6 +35,8 @@ Ext.define('CMN.controller.CMNController', {
 		SmartFactory.addSystemMenu('CMN.view.common.SearchField', {
 			store : Ext.create('CMN.store.SearchStore')
 		});
+		
+		SmartFactory.addContentView('CMN.view.map.Map');
 	}
 
 });

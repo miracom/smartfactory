@@ -2,7 +2,8 @@ Ext.Loader.setConfig({
 	enabled : true,
 	paths : {
 		'SmartFactory' : 'product/SmartFactory.js',
-		'Ext.ux' : 'js/ux'
+		'Ext.ux' : 'js/ux',
+		'Ext.ux.GMapPanel' : 'js/ux/map/GMapPanel3.js'
 	}
 });
 
