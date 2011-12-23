@@ -48,7 +48,13 @@ Ext.define('MBI.view.form.BaseForm1G', {
 			else
 				value = params['C'+mapconGenNt[i].con_seq];
 			
-			con_params += mapconGenNt[i].con_seq +'`^' + value + '|';
+			if(value instanceof Array) {
+				con_params += mapconGenNt[i].con_seq +'`^';
+				for(var j in value)
+					con_params += value[j] + '|';
+			}
+			else
+				con_params += mapconGenNt[i].con_seq +'`^' + value + '|';
 		};
 		console.log(con_params);
 		return con_params; //ex: '1`^1|2`^|3`^|';

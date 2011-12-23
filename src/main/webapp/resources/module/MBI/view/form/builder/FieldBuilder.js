@@ -38,7 +38,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return {
     		xtype : 'checkboxfield',
     		boxLabel : rowData.display_text,
-    		name : 'C'+rowData.con_seq
+    		name : 'C'+rowData.con_seq,
 		};
 	},
 	//no : 2
@@ -120,96 +120,41 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 	//no : 4
 	getDateField : function(rowData){
 		return {
-    		xtype : 'datefield',
-    		fieldLabel : rowData.display_text,
-    		name : 'C'+rowData.con_seq,
-    		//id : 'date_'+rowData.display_text.toLowerCase(),
-    		anchor : '100%',
-    		format : 'Y-m-d',
-    		maxValue : new Date(), // limited to the current date or prior
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
+			xtype : 'datetimex',
+			fieldLabel : rowData.display_text,
+			name : 'C'+rowData.con_seq,
+    		type : 'date'
+    		//maxValue : new Date(), // limited to the current date or prior
+    		//value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
 		};
 	},
 	//no : 5
 	getDateToField : function(rowData){
-		return [{
-    		xtype : 'datefield',
-    		fieldLabel : rowData.display_text +' From',
-    		name : 'C'+rowData.con_seq+'_from',
-    		//id : 'datefrom_'+rowData.display_text.toLowerCase(),
-    		
-    		anchor : '100%',
-    		format : 'Y-m-d',
-    		maxValue : new Date(), // limited to the current date or prior
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
-		},{
-    		xtype : 'datefield',
-    		fieldLabel : rowData.display_text + ' To',
-    		name : 'C'+rowData.con_seq+'_to',
-    		//id : 'dateto_'+rowData.display_text.toLowerCase(),
-    		anchor : '100%',
-    		format : 'Y-m-d',
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date2) //defaults to today
-		}];
+		return {
+			xtype : 'dateperiod',
+			fieldLabel : rowData.display_text,
+			name : 'C'+rowData.con_seq,
+    		//value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
+		};
 	},
 	//no : 6
 	getDateTimeField : function(rowData){
-		return [{
-    		xtype : 'datefield',
-    		fieldLabel : rowData.display_text +' Date',
-    		name : 'C'+rowData.con_seq + '_date',
-    		//id : 'date_'+rowData.display_text.toLowerCase(),
-    		anchor : '100%',
-    		format : 'Y-m-d',
-    		maxValue : new Date(), // limited to the current date or prior
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
-		},{
-    		xtype : 'timefield',
-    		fieldLabel : rowData.display_text+' Time',
-    		name : 'C'+rowData.con_seq + '_time',
-    		//id : 'time_'+rowData.display_text.toLowerCase(),
-    		anchor : '100%',
-    		format : 'H:i',
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
-		}];
+		return {
+			xtype : 'datetimex',
+			fieldLabel : rowData.display_text,
+			name : 'C'+rowData.con_seq,
+    		type : 'datetime'
+    		//value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
+		};
 	},
 	//no : 7
 	getDateTimeToField : function(rowData){
-		return [{
-    		xtype : 'datefield',
-    		fieldLabel : rowData.display_text +' Date Form',
-    		name : 'C'+rowData.con_seq + '_dateform',
-    		//id : 'dateform_'+rowData.display_text.toLowerCase(),
-    		anchor : '100%',
-    		format : 'Y-m-d',
-    		maxValue : new Date(), // limited to the current date or prior
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
-		},{
-    		xtype : 'timefield',
-    		fieldLabel : rowData.display_text+' Time Form',
-    		name : 'C'+rowData.con_seq + '_timeform',
-    		//id : 'timeform_'+rowData.display_text.toLowerCase(),
-    		anchor : '100%',
-    		format : 'H:i',
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
-		},{
-    		xtype : 'datefield',
-    		fieldLabel : rowData.display_text +' Date To',
-    		name : 'C'+rowData.con_seq + '_dateto',
-    		//id : 'dateto_'+rowData.display_text.toLowerCase(),
-    		anchor : '100%',
-    		format : 'Y-m-d',
-    		maxValue : new Date(), // limited to the current date or prior
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
-		},{
-    		xtype : 'timefield',
-    		fieldLabel : rowData.display_text+' Time To',
-    		name : 'C'+rowData.con_seq + '_timeto',
-    		//id : 'timeto_'+rowData.display_text.toLowerCase(),
-    		anchor : '100%',
-    		format : 'H:i',
-    		value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
-		}];
+		return {
+			xtype : 'datetimeperiod',
+			fieldLabel : rowData.display_text,
+			name : 'C'+rowData.con_seq,
+    		//value : Ext.Date.add(new Date(), Ext.Date.DAY, rowData.con_default_date1) //defaults to today
+		};
 	},
 	//no : 8
 	getRadioButtonField : function(rowData){
