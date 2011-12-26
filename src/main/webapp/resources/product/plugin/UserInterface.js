@@ -35,7 +35,7 @@ Ext.define('plugin.UserInterface', {
 		}
 	},
 
-	addContentView : function(view) {
+	addContentView : function(view) {		
 		this.showBusy();
 		var comp;
 
@@ -48,6 +48,43 @@ Ext.define('plugin.UserInterface', {
 		}
 		
 		Ext.getCmp('content').add(comp).show();
+	
+		this.clearStatus();
+	},
+	
+	//같은 tab은 새로 생성하지않고 active 하는걸로 addContentView 변경함
+	addActiveContentView : function(view) {		
+		this.showBusy();
+		var comp;
+
+		if (typeof (view) === 'string') {
+			comp = Ext.create(view, {
+				closable : true
+			});
+		} else {
+			comp = view;
+		}
+		
+		var tabActive = false;
+		var tabpanel = Ext.getCmp('content');
+		for(var i in tabpanel.items.items) {
+			if(view.title == tabpanel.items.items[i].title)
+			{
+				tabActive = true;
+				comp = tabpanel.items.items[i];
+			}
+		}
+		
+		if(tabActive)
+		{
+			console.log(comp);
+			tabpanel.setActiveTab(comp);
+		}
+		else
+		{
+			tabpanel.add(comp).show();
+		}
+		
 		
 		this.clearStatus();
 	},

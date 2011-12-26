@@ -16,7 +16,7 @@ Ext.define('MBI.controller.MBIController', {
 	
 	onViewportRendered: function() {
 		SmartFactory.addDockingNav('MBI.view.NavFormlist', {
-			iconCls:'iconsetDockReport'
+			iconCls:'iconsetDockFavor'
 		});
 	}
 });

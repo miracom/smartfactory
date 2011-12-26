@@ -9,6 +9,7 @@
 	<import resource="cometd-context.xml"/>	
 	<import resource="cache-context.xml"/>	
 	<import resource="test-file-context.xml"/>	
+	<import resource="archive-context.xml"/>
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 </beans>
