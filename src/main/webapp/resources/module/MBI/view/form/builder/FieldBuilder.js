@@ -84,6 +84,9 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 	getCodeViewField : function(rowData){
 		var gcmInfo = this.builderGcmInfo(rowData.gcm_col_names); //TEST_ID,TEST_NAEM.....
 		var gridColumns = this.getGcmColumn(gcmInfo,rowData.con_gcm_col);//0|1 => TEST_ID,TEST_NAME
+		var refGcmCol = (rowData.con_gcm_ref_col?gcmInfo[rowData.con_gcm_ref_col].column:'');
+		var refField = (rowData.con_gcm_ref_col?'C'+rowData.con_ref_col:'');
+
 		return {
 			xtype : 'codeview',
 			selectorName : 'GcmCodeView',
@@ -98,10 +101,9 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 			title : rowData.display_text,
 			columns : this.buildGridColumns(gridColumns),
 			selects : gridColumns,
-
 			name : 'C'+rowData.con_seq,
-			refGcmCol : gcmInfo[rowData.con_gcm_ref_col].column,
-			refField : 'C'+rowData.con_ref_col
+			refGcmCol : refGcmCol,
+			refField : refField
 		};
 	},
 	//no : 3
