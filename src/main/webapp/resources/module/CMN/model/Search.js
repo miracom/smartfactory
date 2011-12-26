@@ -2,22 +2,19 @@ Ext.define('CMN.model.Search', {
 	extend : 'Ext.data.Model',
 
 	fields : [ {
-		name : 'factory',
+		name : 'kind',
 		type : 'string'
 	}, {
-		name : 'program_id',
+		name : 'key',
 		type : 'string'
 	}, {
-		name : 'user_id',
+		name : 'name',
 		type : 'string'
 	}, {
-		name : 'seq_num',
+		name : 'desc',
 		type : 'string'
 	}, {
-		name : 'func_name',
-		type : 'string'
-	}, {
-		name : 'user_func_desc',
-		type : 'string'
+		name : 'handler',
+		type : 'function'
 	} ]
 });

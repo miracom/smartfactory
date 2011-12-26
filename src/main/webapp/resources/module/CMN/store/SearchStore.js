@@ -6,14 +6,23 @@ Ext.define('CMN.store.SearchStore', {
 	autoLoad : false,
 
 	model : 'CMN.model.Search',
-	
-	pageSize: 10,
 
-	proxy : {
-		type : 'ajax',
-		url : 'module/CMN/data/searches.json',
-		reader : {
-			type : 'json'
-		}
-	}
+	groupers : [{
+        property : 'kind',
+        direction: 'ASC'
+	}],
+	
+	sorters : [{
+        property : 'key',
+        direction: 'ASC'
+	}]
+//	pageSize: 10,
+//
+//	proxy : {
+//		type : 'ajax',
+//		url : 'module/CMN/data/searches.json',
+//		reader : {
+//			type : 'json'
+//		}
+//	}
 });
