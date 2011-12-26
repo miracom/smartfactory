@@ -35,6 +35,7 @@ Ext.define('CMN.plugin.Supplement', {
 		}
 		
 		client.on('activate', this.onActivate, client);
+		client.on('deactivate', this.onDeactivate, client);
 		client.on('destroy', this.onDestroy, client);
 		client.on('render', this.onRender, client);
 	},
@@ -60,6 +61,11 @@ Ext.define('CMN.plugin.Supplement', {
 	onActivate : function() {
 		if (this.getSupplement())
 			Ext.getCmp('east').getLayout().setActiveItem(this.getSupplement());
+	},
+
+	onDeactivate : function() {
+		if (this.getSupplement())
+			Ext.getCmp('east').getLayout().setActiveItem('base');
 	},
 
 	onDestroy : function() {
