@@ -15,23 +15,26 @@ Ext.define('CMN.view.form.ValueRangeField', {
     	CMN.view.form.ValueRangeField.superclass.constructor.apply(this, arguments);
 	},
 	initComponent:function() {
+		this.fieldLabel = this.fieldLabel + '  (FROM ~ TO)';
 		this.items = this.buildItems();
 		CMN.view.form.ValueRangeField.superclass.initComponent.call(this);
 	},
 	buildItems : function(){
 		var fieldId = 'valueField'; // + 1
 		var items= [];
-		
+		items.push(this.buildField(fieldId,'from'));
+		items.push({html : "~"});
+		items.push(this.buildField(fieldId,'to'));
 		return items;
 	},
-	buildValue : function(fieldId){
+	buildField : function(fieldId,pos){
 		return {
 			xtype : 'textfield',
 			hidden : true,
 			name : this.name,
-			itemId : fieldId,
-			value : this.defaultValue
+			itemId : fieldId+pos,
+			value : this.defaultValue,
+			flex: 1
 		};
-	},
-	
+	}
 });
