@@ -1,9 +1,9 @@
 Ext.define('WMG.controller.WMGController', {
 	extend : 'Ext.app.Controller',
 
-	stores : ['WMG.store.CommunicatorStore'],
-	models : ['WMG.model.Communicator'],
-	views : [],
+	stores : ['WMG.store.CommunicatorStore', 'WMG.store.NotificationStore'],
+	models : ['WMG.model.Communicator', 'WMG.model.Notification'],
+	views : ['WMG.view.Notification'],
 
 	init : function() {
 		this.control({
@@ -17,6 +17,7 @@ Ext.define('WMG.controller.WMGController', {
 		SmartFactory.mixin('WMG.plugin.Communicator', {
 			messageNoticed : function(message) {
 				console.dir(message);
+				Ext.getStore('WMG.store.NotificationStore').add(message.data);
 				SmartFactory.msg(message.data.title, message.data.message);
 			},
 			memberJoinedIn : function(message) {
@@ -34,9 +35,7 @@ Ext.define('WMG.controller.WMGController', {
 
 	onViewportRendered : function() {
 		SmartFactory.addDockingNav('WMG.view.NavCommunicator', {
-    		iconCls : 'iconsetDockCommunicator',
-			itemId : 'navCommunicator',
-			title : 'communicator'
+    		iconCls : 'iconsetDockCommunicator'
 		});
 	},
 	
