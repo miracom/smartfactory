@@ -39,11 +39,14 @@
 		
 		<script src="module/CMN/module.js"></script>
 		<script src="module/SEC/module.js"></script>
+		<script src="module/ARC/module.js"></script>
+		<!-- 
 		<script src="module/RPT/module.js"></script>
 		<script src="module/WIP/module.js"></script>
 		<script src="module/RAS/module.js"></script>
 		<script src="module/MBI/module.js"></script>
 		<script src="module/WMG/module.js"></script>
+		 -->
 		
 		<script type="text/javascript">
 		var login = {
