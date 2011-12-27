@@ -19,6 +19,12 @@ Ext.define('ARC.view.task.TaskMaster', {
 		me.add(me.buildConditionOneField());
 		me.add(me.buildConditionField());
 		me.add(me.buildKeyFieldPanel());
+		
+		this.taskInfoStore.on('datachanged',this.onStoreChanged);
+	},
+	
+	onStoreChanged : function() {
+		//alert('TaskMaster');
 	},
 
 	listeners : {

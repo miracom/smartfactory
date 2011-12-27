@@ -2,7 +2,7 @@ Ext.define('ARC.controller.ARCController', {
 	extend : 'Ext.app.Controller',
 
 	stores : ['ARC.store.MenuStore'],
-	models : [],
+	models : ['ARC.model.Basic'],
 	views : [],
 
 	init : function() {

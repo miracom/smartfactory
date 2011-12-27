@@ -10,12 +10,6 @@ Ext.define('ARC.view.task.TaskBasic', {
 	initComponent : function() {
 		
 		this.callParent();
-
-		this.basicStore = this.buildBasicStore();
-		this.basicStore.setParams({
-			dbName : this.dbName,
-			taskId : this.taskId
-		});
 		
 		this.add(this.buildPeriodField());
 		this.add(this.buildBackupMethodField());
@@ -23,16 +17,17 @@ Ext.define('ARC.view.task.TaskBasic', {
 		this.add(this.buildOverWriteField());
 		this.add(this.buildMdeletionField());
 		this.add(this.buildSdeltionField());
+		
+		this.taskInfoStore.on('datachanged',this.onStoreDataChanged);
 	},
 	
-	buildBasicStore : function() {
-		return Ext.create('ARC.store.BasicStore');
+	onStoreDataChanged : function() {
+		//alert('TaskBasic');
 	},
-	
+
 	listeners : {
 		activate : function(tab) {
-			// store load
-			this.basicStore.load();
+			// store load ?
 		}
 	},
 

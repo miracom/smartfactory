@@ -40,7 +40,6 @@ public class ARCController {
 		System.out.println("taskId : " + taskId);
 		
 		Map<String,Object> infoMap = new LinkedHashMap<String, Object>();
-		
 		infoMap.put("taskBasic", taskDao.getTaskBasic(dbName, taskId));
 		infoMap.put("taskMaster", taskDao.getTaskMaster(dbName, taskId));
 		infoMap.put("taskSlave", taskDao.getTaskSlave(dbName, taskId));

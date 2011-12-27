@@ -10,15 +10,21 @@ Ext.define('ARC.view.task.TaskInfo', {
 	bodyPadding : 10,
 	
 	initComponent : function() {
-		var me = this;
-
-		me.callParent();
+		this.callParent();
 		
-		me.add(me.buildBasicGrid());
-		me.add(me.buildMasterGrid());
-		me.add(me.buildConditionField());
-		me.add(me.buildSlaveGrid());
+		this.add(this.buildBasicGrid());
+		this.add(this.buildMasterGrid());
+		this.add(this.buildConditionField());
+		this.add(this.buildSlaveGrid());
+		
+		
+		this.taskInfoStore.on('datachanged',this.onStoreChanged);
 	},
+	
+	onStoreChanged : function() {
+		//alert('TaskInfo');
+	},
+	
 	listeners : {
 		activate : function(tab) {
 			// store load ?
@@ -29,6 +35,7 @@ Ext.define('ARC.view.task.TaskInfo', {
 		text : 'DELETE',
 		listeners : {
 			click: function() {
+				//this.up().up()
 	            alert('DELETE');
 	        }
 		}

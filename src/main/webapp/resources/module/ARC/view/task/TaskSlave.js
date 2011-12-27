@@ -13,6 +13,12 @@ Ext.define('ARC.view.task.TaskSlave', {
 
 		me.add(me.buildlistNamePanel());
 		me.add(me.buildlistDescPanel());
+		
+		this.taskInfoStore.on('datachanged',this.onStoreChanged);
+	},
+	
+	onStoreChanged : function() {
+		//alert('TaskSlave');
 	},
 
 	listeners : {
