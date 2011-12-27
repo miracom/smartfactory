@@ -9,7 +9,18 @@ Ext.define('plugin.UserInterface', {
 		};
 
 		try {
-			Ext.getCmp('docked_nav').add(Ext.create(view, Ext.merge(defaults, config)));
+			var navView = Ext.create(view, Ext.merge(defaults, config));
+			Ext.getCmp('docked_nav').add(navView);
+			var searchStore = Ext.getStore('cmn.search_store');
+			searchStore.add({
+				kind : 'nav',
+				key : config.itemId,
+				name : config.title,
+				desc : config.title,
+				handler : function(searchRecord) {
+					Ext.getCmp('docked_nav').setActiveTab(navView);
+				}
+			});
 		} catch (e) {
 			console.log(e);
 			console.trace();

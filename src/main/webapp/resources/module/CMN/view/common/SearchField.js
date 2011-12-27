@@ -16,10 +16,9 @@ Ext.define('CMN.view.common.SearchField', {
 		emptyText : 'No matching functions found.',
 
 		getInnerTpl : function() {
-			return '<div>{key} - {name}</div>'; 
+			return '<div class="appSearchItem"><span class="kind">{kind}</span> <span class="key">{key}</span>: {name}</div>'; 
 		}, 
-		minWidth : 300,
-		minHeight : 400
+		minWidth : 200
 	},
 	
 	listeners : {

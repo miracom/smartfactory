@@ -17,7 +17,9 @@ Ext.define('MBI.controller.MBIController', {
 	onViewportRendered: function() {
 		
 		SmartFactory.addDockingNav('MBI.view.NavFormlist', {
-			iconCls:'iconsetDockReport'
+			iconCls:'iconsetDockReport',
+			itemId : 'navReport',
+			title : 'report'
 		});
 
 		SmartFactory.selector.register('GcmCodeView', {

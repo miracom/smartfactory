@@ -46,6 +46,9 @@
 .x-menu-scroll-top-disabled,.x-box-scroller-bottom{display:none}
 #system_menu .x-form-trigger{background:url('../image/inputSearch.gif') no-repeat;margin-left:-3px;border-bottom:0}
 #system_menu .x-form-trigger-over{background:url('../image/inputSearch.gif') -24px 0 no-repeat;margin-left:-3px;border-bottom:0}
+.appSearchItem{color:#666;font-size:10px}
+.appSearchItem .kind{color:#1B4C86}
+.appSearchItem .key{margin-right:4px;font-weight:bold;color:#333}
 
 /* dock bar */
 .operation-list-item {
@@ -167,6 +170,12 @@
 .x-tab-tabmenu-right:hover{background:url('../image/tabNavi.gif') -18px -51px no-repeat !important;width:18px;}
 .x-panel-default-scroller{margin-top:-5px}
 .x-nlg .x-tab-bar{background:url('../image/bgTabbarForIE.gif') repeat-x !important;}
+#content-body .x-tabpanel-child .x-tab-bar-body{border:0;background:url('../image/bgInnerTabbarBg.gif') 0 100% repeat-x;}
+#content-body .x-tab{border:1px solid #cfcfcf;border-width:1px 1px 0 1px}
+#content-body .x-tab-bar-top .x-tab-bar-body{padding-top:5px;height:24px}
+#content-body .x-tab-default-top{padding:1px 4px 0 4px}
+#content-body .x-tab-active button{color:#333 !important}
+#content-body .x-tab-default-top{background-color:#d0d0d0 !important;backbround-image:none}
 
 /* tree style*/
 .x-tree-icon-parent{background:url('../image/folder.gif') no-repeat;}
@@ -186,8 +195,8 @@
 .resourceSelector .x-form-trigger-over,.resourceSelector .x-form-trigger-click,.resourceSelector .x-form-trigger-pressed{
 	background:url('../image/selector-trigger.gif') -24px 0 no-repeat;margin-left:-1px;width:24px
 }
-.x-boundlist-item{background:url('../image/arrowRightGray.gif') 4px 8px no-repeat;padding-left:11px;color:#333;font-size:11px;border-bottom:1px dotted #ccc}
-.x-boundlist-item-over{background:url('../image/arrowRightBlue.gif') 4px 8px no-repeat;background-color:#fff;padding-left:11px}
+.x-boundlist-item{background:url('../image/arrowRightGray.gif') 4px 8px no-repeat;padding:4px 4px 4px 11px;color:#333;font-size:11px;border-bottom:1px dotted #ccc;}
+.x-boundlist-item-over{background:url('../image/arrowRightBlue.gif') 4px 8px no-repeat;background-color:#fff;padding:4px 4px 4px 11px}
 
 
 

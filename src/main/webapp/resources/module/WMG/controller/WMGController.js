@@ -34,7 +34,9 @@ Ext.define('WMG.controller.WMGController', {
 
 	onViewportRendered : function() {
 		SmartFactory.addDockingNav('WMG.view.NavCommunicator', {
-    		iconCls : 'iconsetDockCommunicator'
+    		iconCls : 'iconsetDockCommunicator',
+			itemId : 'navCommunicator',
+			title : 'communicator'
 		});
 	},
 	
