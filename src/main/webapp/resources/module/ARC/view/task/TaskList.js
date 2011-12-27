@@ -90,6 +90,8 @@ Ext.define('ARC.view.task.TaskList', {
 
 						var info = Ext.create('ARC.view.task.TaskTab', {
 							title : r.get('TASK_ID'),
+							dbName : r.get('DB_NAME'),
+							taskId : r.get('TASK_ID'),
 							closable : true
 						});
 

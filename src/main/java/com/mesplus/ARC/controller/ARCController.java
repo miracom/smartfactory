@@ -1,5 +1,6 @@
 package com.mesplus.ARC.controller;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,19 +22,29 @@ public class ARCController {
 	@Autowired
 	private TaskDao taskDao;
 
+	//http://localhost:8080/smartfactory/module/ARC/data/taskList.json
 	@RequestMapping(value = "module/ARC/data/taskList.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String,Object>> taskList(HttpServletRequest request, HttpServletResponse response) {
 		return taskDao.getTaskList();
 	}
 	
+	//http://localhost:8080/smartfactory/module/ARC/data/taskInfo.json?dbName=MES&taskId=LOTS
 	@RequestMapping(value = "module/ARC/data/taskInfo.json", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Map<String,Object>> taskInfo(HttpServletRequest request, HttpServletResponse response) {
-		String start = request.getParameter("start");
-		String limit = request.getParameter("limit");
+	Map<String,Object> taskInfo(HttpServletRequest request, HttpServletResponse response) {
+		String dbName = request.getParameter("dbName");
+		String taskId = request.getParameter("taskId");
 		
+		System.out.println("dbName : " + dbName);
+		System.out.println("taskId : " + taskId);
 		
-		return taskDao.getTaskList();
+		Map<String,Object> infoMap = new LinkedHashMap<String, Object>();
+		
+		infoMap.put("taskBasic", taskDao.getTaskBasic(dbName, taskId));
+		infoMap.put("taskMaster", taskDao.getTaskMaster(dbName, taskId));
+		infoMap.put("taskSlave", taskDao.getTaskSlave(dbName, taskId));
+		
+		return infoMap;
 	}
 }

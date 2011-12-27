@@ -8,20 +8,31 @@ Ext.define('ARC.view.task.TaskBasic', {
 	bodyPadding : 10,
 
 	initComponent : function() {
-		var me = this;
+		
+		this.callParent();
 
-		me.callParent();
-
-		me.add(me.buildPeriodField());
-		me.add(me.buildBackupMethodField());
-		me.add(me.buildLogField());
-		me.add(me.buildOverWriteField());
-		me.add(me.buildMdeletionField());
-		me.add(me.buildSdeltionField());
+		this.basicStore = this.buildBasicStore();
+		this.basicStore.setParams({
+			dbName : this.dbName,
+			taskId : this.taskId
+		});
+		
+		this.add(this.buildPeriodField());
+		this.add(this.buildBackupMethodField());
+		this.add(this.buildLogField());
+		this.add(this.buildOverWriteField());
+		this.add(this.buildMdeletionField());
+		this.add(this.buildSdeltionField());
 	},
+	
+	buildBasicStore : function() {
+		return Ext.create('ARC.store.BasicStore');
+	},
+	
 	listeners : {
 		activate : function(tab) {
-			// store load ?
+			// store load
+			this.basicStore.load();
 		}
 	},
 
@@ -51,7 +62,7 @@ Ext.define('ARC.view.task.TaskBasic', {
 				margin : '2, 10, 0, 5'
 			}, {
 				xtype : 'textfield',
-				value : 0
+				values : 0,
 			}, {
 				xtype : 'label',
 				text : 'Day',

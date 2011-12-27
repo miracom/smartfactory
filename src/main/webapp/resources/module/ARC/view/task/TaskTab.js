@@ -2,37 +2,43 @@ Ext.define('ARC.view.task.TaskTab', {
 	extend : 'Ext.tab.Panel',
 
 	initComponent : function() {
-		var me = this;
+		this.callParent();
 
-		me.callParent();
-
-		this.infoTab = me.add(me.buildTabInfo());
-		this.basicTab = me.add(me.buildTabBasic());
-		this.masterTab = me.add(me.buildTabMaster());
-		this.slaveTab = me.add(me.buildTabSlave());
+		this.infoTab = this.add(this.buildTabInfo());
+		this.basicTab = this.add(this.buildTabBasic());
+		this.masterTab = this.add(this.buildTabMaster());
+		this.slaveTab = this.add(this.buildTabSlave());
 
 		// active info tab
-		me.setActiveTab(this.infoTab);
+		this.setActiveTab(this.infoTab);
 	},
 
 	buildTabInfo : function() {
 		return Ext.create('ARC.view.task.TaskInfo', {
-			title : 'Info'
+			title : 'Info',
+			dbName : this.dbName,
+			taskId : this.taskId
 		});
 	},
 	buildTabBasic : function() {
 		return Ext.create('ARC.view.task.TaskBasic', {
-			title : 'Basic'
+			title : 'Basic',
+			dbName : this.dbName,
+			taskId : this.taskId
 		});
 	},
 	buildTabMaster : function() {
 		return Ext.create('ARC.view.task.TaskMaster', {
-			title : 'Master'
+			title : 'Master',
+			dbName : this.dbName,
+			taskId : this.taskId
 		});
 	},
 	buildTabSlave : function() {
 		return Ext.create('ARC.view.task.TaskSlave', {
-			title : 'Slave'
+			title : 'Slave',
+			dbName : this.dbName,
+			taskId : this.taskId
 		});
 	}
 });
