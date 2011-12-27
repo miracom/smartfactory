@@ -1,6 +1,8 @@
 Ext.define('WMG.view.Notification', {
 	extend : 'Ext.panel.Panel',
 	plugins : [Ext.create('CMN.plugin.Supplement')],
+	
+	alias : 'widget.wmg.notification',
 
 	supplement : {
 		xtype : 'form',

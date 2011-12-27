@@ -16,7 +16,6 @@ Ext.define('WMG.controller.WMGController', {
 
 		SmartFactory.mixin('WMG.plugin.Communicator', {
 			messageNoticed : function(message) {
-				console.dir(message);
 				Ext.getStore('WMG.store.NotificationStore').add(message.data);
 				SmartFactory.msg(message.data.title, message.data.message);
 			},

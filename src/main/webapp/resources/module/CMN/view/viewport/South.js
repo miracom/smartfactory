@@ -44,12 +44,21 @@ Ext.define('CMN.view.viewport.South', {
 			SmartFactory.status.clear();
 		}
 	}, {
+		/*
+		 * TODO 이 아이템은 WMG 모듈로 옮겨야 함.
+		 */
 		xtype : 'button',
 		cls : 'noticeCount',
 		iconCls : 'noticeIcon',
 		text : '3',
 		handler : function() {
         	SmartFactory.communicator.notice('notice', 'notice message...');
+        	
+        	SmartFactory.addContentView({
+        		xtype : 'wmg.notification',
+        		title : 'Notification',
+        		itemId : 'wmg.notification'
+        	});
         }
 	}],
 
