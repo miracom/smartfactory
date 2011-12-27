@@ -12,15 +12,17 @@ Ext.define('plugin.UserInterface', {
 			var navView = Ext.create(view, Ext.merge(defaults, config));
 			Ext.getCmp('docked_nav').add(navView);
 			var searchStore = Ext.getStore('cmn.search_store');
-			searchStore.add({
-				kind : 'nav',
-				key : config.itemId,
-				name : config.title,
-				desc : config.title,
-				handler : function(searchRecord) {
-					Ext.getCmp('docked_nav').setActiveTab(navView);
-				}
-			});
+			if(searchStore) {
+				searchStore.add({
+					kind : 'nav',
+					key : config.itemId,
+					name : config.title,
+					desc : config.title,
+					handler : function(searchRecord) {
+						Ext.getCmp('docked_nav').setActiveTab(navView);
+					}
+				});
+			}
 		} catch (e) {
 			console.log(e);
 			console.trace();
@@ -61,6 +63,7 @@ Ext.define('plugin.UserInterface', {
 			} 
 			
 			if(!comp) {
+				view.closable = true;
 				comp = Ext.getCmp('content').add(view);
 			}
 		}

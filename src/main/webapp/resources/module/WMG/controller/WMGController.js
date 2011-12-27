@@ -36,6 +36,23 @@ Ext.define('WMG.controller.WMGController', {
 		SmartFactory.addDockingNav('WMG.view.NavCommunicator', {
     		iconCls : 'iconsetDockCommunicator'
 		});
+		
+		var searchStore = Ext.getStore('cmn.search_store');
+		if(searchStore) {
+			searchStore.add({
+				kind : 'msg',
+				key : 'notification',
+				name : 'Notification',
+				desc : 'Notification',
+				handler : function(searchRecord) {
+		        	SmartFactory.addContentView({
+		        		xtype : 'wmg.notification',
+		        		title : 'Notification',
+		        		itemId : 'wmg.notification'
+		        	});
+				}
+			});
+		}
 	},
 	
 	joinIn : function(user) {
