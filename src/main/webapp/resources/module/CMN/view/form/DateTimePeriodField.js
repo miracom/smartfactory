@@ -77,6 +77,7 @@ Ext.define('CMN.view.form.DateTimePeriodField', {
 			name :  this.name+'_date',
 			value : this.defaultValue,
 			itemId : 'date'+fieldId+pos,
+			emptyText : pos+' date',
 			flex: 3
 		},{
 			listeners : {
@@ -105,6 +106,7 @@ Ext.define('CMN.view.form.DateTimePeriodField', {
 			name : this.name+'_time',
 			value : this.defaultValue,
 			itemId : 'time'+fieldId+pos,
+			emptyText : 'time',
 			flex: 2
 		}];
 	},

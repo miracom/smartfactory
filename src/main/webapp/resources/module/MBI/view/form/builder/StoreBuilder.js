@@ -21,11 +21,12 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 		var mapField = [];
 		
 		for(var i in mapdefS2Nt){
-			
-			mapField.push({
-				name : mapdefS2Nt[i].col_code.toLowerCase(),//mapdefS2Nt[i].col_code,
-				type : this.getTypeToFomat(mapdefS2Nt[i].data_type)
-			});
+			if (mapdefS2Nt[i].spread_id == this.spreadId && mapdefS2Nt[i].col_code){  
+				mapField.push({
+					name : mapdefS2Nt[i].col_code.toLowerCase(),//mapdefS2Nt[i].col_code,
+					type : this.getTypeToFomat(mapdefS2Nt[i].data_type)
+				});
+			}
 		};
 		return mapField;
 	},

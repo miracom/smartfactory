@@ -41,7 +41,6 @@ Ext.define('MBI.view.form.builder.ConditionBuilder',{
 	
 	handlerButtonView : function() {
 		var form = this.up('form');
-		console.log(form.getValues());
 		this.viewHandler.apply(this.client, [form.getValues()]);
 	}
 });

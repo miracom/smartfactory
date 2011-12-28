@@ -24,19 +24,24 @@ Ext.define('MBI.view.form.BaseForm1G', {
 		this.storeInfo = Ext.create('MBI.view.form.builder.StoreBuilder', {
 			formInfoData : this.store.data,
 			funcId : this.funcId,
-			langFlag : this.langFlag
+			langFlag : this.langFlag,
+			spreadId : 1
 		}).buildStore();
 
 		var view_grid = Ext.create('MBI.view.form.builder.GridBuilder', {
 			formInfoData : this.store.data,
 			langFlag : this.langFlag,
 			store : this.storeInfo,
-			flex : 1
+			flex : 1,
+			spreadId : 1,
+			clickRecord : this.onClickGrid
 		}).buildGrid();
 
 		this.add(view_grid);
 	},
-
+	onClickGrid : function(selModel, selected) {
+    	//alert('record :'+selected[0].data.test_id); 
+    },
 	buildCondParam : function(params) {
 		var mapconGenNt = this.store.data.get(0).data.mapconGenNt;
 		var con_params = '';
