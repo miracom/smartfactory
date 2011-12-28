@@ -21,6 +21,7 @@ Ext.define('WIP.controller.WIPController', {
 		});
 
 		SmartFactory.codeview.register('Operation', {
+			viewType : '0', // 0:Table, 1:GCM
 			title : 'Select Operation',
 			selects : [ 'FACTORY', 'OPER', 'OPER_DESC' ],
 			sorters : [ {
@@ -42,6 +43,7 @@ Ext.define('WIP.controller.WIPController', {
 		});
 
 		SmartFactory.codeview.register('Material', {
+			viewType : '0', // 0:Table, 1:GCM
 			title : 'Select Material',
 			selects : [ 'FACTORY', 'MAT_ID', 'MAT_VER', 'MAT_DESC' ],
 			sorters : [ {
