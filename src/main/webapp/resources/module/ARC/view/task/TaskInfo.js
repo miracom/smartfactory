@@ -12,6 +12,8 @@ Ext.define('ARC.view.task.TaskInfo', {
 	initComponent : function() {
 		this.callParent();
 		
+		this.store = this.bulidStore();
+	
 		this.basicGrid = this.add(this.buildBasicGrid());
 		//this.MasterGrid = this.add(this.buildMasterGrid());
 		//this.conditionField = this.add(this.buildConditionField());
@@ -20,15 +22,26 @@ Ext.define('ARC.view.task.TaskInfo', {
 		this.taskInfoStore.on('datachanged',this.onStoreChanged, this);
 	},
 	
-	listeners : {
-		activate : function(tab) {
-			// store load ?
-			//this.basicGrid.store = this.taskInfoStore.basicStore;
-			//this.taskInfoStore.basicStore.load();
-		}
-	},	
+	bulidStore : function()
+	{
+		//var me = this;
+		return Ext.create('Ext.data.Store', {
+		    model : 'ARC.model.Basic',
+			//fields : ['BACKUP_METHOD','DAYS','LOG_TYPE','MASTER_DELETION','OVERWRITE_FLAG','SLAVE_DELETION','TERM'],
+		    //data : me.taskInfoStore.getAt(0).data['taskBasic'],
+		    proxy: {
+		        type: 'memory',
+		        reader: {
+		            type: 'json'
+		        }
+		    },
+		});
+	},
 	
 	onStoreChanged : function() {
+		//console.log(this.taskInfoStore.getAt(0).data['taskBasic']);
+		this.store.loadData(this.taskInfoStore.getAt(0).data['taskBasic']);
+		//this.store.data = this.getAt(0).data['taskBasic'];
 		//this.basicGrid.store = this.taskInfoStore.basicStore;
 		//xxx = this.taskInfoStore;
 		//console.log(this.basicGrid);
@@ -64,6 +77,7 @@ Ext.define('ARC.view.task.TaskInfo', {
 			cls : 'dockNavigation',
 			title : 'Basic Task Option',
 			margins : '0 0 5 0',
+			store : this.store,
 			flex : 2,
 			columns : [ {
 				header : 'DB',

@@ -10,24 +10,20 @@ Ext.define('ARC.view.task.TaskTab', {
 			taskId : this.taskId
 		});
 		
+		this.taskInfoStore.load();
 		
-		this.basicTab = this.add(this.buildTabBasic());
+		this.taskInfoStore.on('load',this.onStoreLoad, this);
+		
 		this.infoTab = this.add(this.buildTabInfo());
+		this.basicTab = this.add(this.buildTabBasic());
 		this.masterTab = this.add(this.buildTabMaster());
 		this.slaveTab = this.add(this.buildTabSlave());
 		// active info tab
-		this.setActiveTab(this.basicTab);
-
-		this.taskInfoStore.load({
-			callback: function(r,options,success) {
-		         if(success == true) {
-		        	 this.setSubStores();
-		          }
-		          else {
-		              alert("failed");
-		          }
-		     }
-		});
+		this.setActiveTab(this.infoTab);
+	},
+	
+	onStoreLoad : function() {
+		
 	},
 	
 	buildtaskInfoStore : function() {
