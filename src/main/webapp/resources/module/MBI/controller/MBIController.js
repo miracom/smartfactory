@@ -22,7 +22,7 @@ Ext.define('MBI.controller.MBIController', {
 			title : 'report'
 		});
 
-		SmartFactory.selector.register('GcmCodeView', {
+		SmartFactory.codeview.register('GcmCodeView', {
 			viewType : '1', // 0:Table, 1:GCM
 			title : 'Gcm List',
 			selects : [],

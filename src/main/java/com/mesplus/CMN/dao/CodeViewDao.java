@@ -11,7 +11,7 @@ import com.mesplus.CMN.model.Sorter;
  * @author Jinho
  * @since 1.0
  */
-public interface SelectorDao {
+public interface CodeViewDao {
 	
 	/**
 	 * 입력받은 parameter를 조합하여 쿼리로 생성하여 DB에서 조건에 맞는 데이타를 조회한다.

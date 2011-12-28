@@ -14,13 +14,13 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.mesplus.CMN.dao.SelectorDao;
+import com.mesplus.CMN.dao.CodeViewDao;
 import com.mesplus.CMN.model.Filter;
 import com.mesplus.CMN.model.Sorter;
 
 @Component
-public class JdbcSelectorDaoImpl implements SelectorDao {
-	private static final Logger logger = LoggerFactory.getLogger(JdbcSelectorDaoImpl.class);
+public class JdbcCodeViewDaoImpl implements CodeViewDao {
+	private static final Logger logger = LoggerFactory.getLogger(JdbcCodeViewDaoImpl.class);
 	
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 

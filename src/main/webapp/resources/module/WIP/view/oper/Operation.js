@@ -38,7 +38,7 @@ Ext.define('WIP.view.oper.Operation', {
 	{ 
 		text: 'Save',
 		handler: function(button) {
-			SmartFactory.showSelector({});
+			SmartFactory.showCodeView({});
 		}
 	}
 	],

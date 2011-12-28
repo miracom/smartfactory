@@ -37,7 +37,9 @@ Ext.define('WMG.controller.WMGController', {
 
 	onViewportRendered : function() {
 		SmartFactory.addNav('WMG.view.NavCommunicator', {
-    		iconCls : 'iconsetDockCommunicator'
+    		iconCls : 'iconsetDockCommunicator',
+			itemId : 'navCommunicator',
+			title : 'Communicator'
 		});
 		
 		var searchStore = Ext.getStore('cmn.appsearch_store');

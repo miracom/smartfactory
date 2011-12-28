@@ -20,7 +20,7 @@ Ext.define('WIP.controller.WIPController', {
 			title : 'operation'
 		});
 
-		SmartFactory.selector.register('Operation', {
+		SmartFactory.codeview.register('Operation', {
 			title : 'Select Operation',
 			selects : [ 'FACTORY', 'OPER', 'OPER_DESC' ],
 			sorters : [ {
@@ -41,7 +41,7 @@ Ext.define('WIP.controller.WIPController', {
 			displayField : ['OPER', 'OPER_DESC'] //display value
 		});
 
-		SmartFactory.selector.register('Material', {
+		SmartFactory.codeview.register('Material', {
 			title : 'Select Material',
 			selects : [ 'FACTORY', 'MAT_ID', 'MAT_VER', 'MAT_DESC' ],
 			sorters : [ {

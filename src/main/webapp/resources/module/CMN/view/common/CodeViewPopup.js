@@ -1,4 +1,4 @@
-Ext.define('CMN.view.common.Selector', {
+Ext.define('CMN.view.common.CodeViewPopup', {
 	extend : 'Ext.window.Window',
 
 	layout : {
@@ -13,18 +13,18 @@ Ext.define('CMN.view.common.Selector', {
 
 	constructor : function(config) {
 
-		if (!config.selectorOptions)
-			throw new Error('selectorOptions should be configured.');
+		if (!config.codeviewOptions)
+			throw new Error('codeviewOptions should be configured.');
 
-		if (!config.selectorOptions.table || !config.selectorOptions.columns || !config.selectorOptions.selects || config.selectorOptions.columns.length <= 0)
-			throw new Error('selectorOptions[table, columns, selects] should be configured.');
+		if (!config.codeviewOptions.table || !config.codeviewOptions.columns || !config.codeviewOptions.selects || config.codeviewOptions.columns.length <= 0)
+			throw new Error('codeviewOptions[table, columns, selects] should be configured.');
 
-		CMN.view.common.Selector.superclass.constructor.apply(this, arguments);
+		CMN.view.common.CodeViewPopup.superclass.constructor.apply(this, arguments);
 	},
 
 	initComponent : function() {
 		this.callParent();
-		this.title = this.selectorOptions.title || 'Select';
+		this.title = this.codeviewOptions.title || 'CodeView';
 		
 		this.store = this.buildStore();
 		
@@ -35,14 +35,14 @@ Ext.define('CMN.view.common.Selector', {
 		
 		//Ext.apply(this.store,{});
 		
-		this.loadStore(this.selectorOptions.client.bInitFilter);
+		this.loadStore(this.codeviewOptions.client.bInitFilter);
 	},
 	loadStore : function(bInitfilter)
 	{
 		if(bInitfilter)
 		{
 			var filters = [];
-			var fieldset = this.selectorOptions.client;
+			var fieldset = this.codeviewOptions.client;
 			var txtField = fieldset.txtFieldName;
 			if(txtField instanceof Array) {
 				for(var i in txtField) {	
@@ -75,7 +75,7 @@ Ext.define('CMN.view.common.Selector', {
 				});
 			}
 			//기본조건 filter + 추가조건 filter
-			filters = filters.concat(this.selectorOptions.filters);
+			filters = filters.concat(this.codeviewOptions.filters);
 
 			this.store.filters.clear();
 			this.store.filter(filters);
@@ -90,18 +90,18 @@ Ext.define('CMN.view.common.Selector', {
 			autoLoad : false,
 			remoteFilter : true,
 			filterOnLoad : false,
-			fields : this.selectorOptions.selects,
-			sorters : this.selectorOptions.sorters,
-			filters : this.selectorOptions.filters,
+			fields : this.codeviewOptions.selects,
+			sorters : this.codeviewOptions.sorters,
+			filters : this.codeviewOptions.filters,
 			pageSize : 10,
 			proxy : {
 				type : 'ajax',
-				url : 'module/CMN/data/select.json',
+				url : 'module/CMN/data/codeview.json',
 				extraParams : {
-					selects : this.selectorOptions.selects,
-					table : this.selectorOptions.table,
-					viewType : this.selectorOptions.viewType,
-					sqlparams : this.selectorOptions.sqlparams
+					selects : this.codeviewOptions.selects,
+					table : this.codeviewOptions.table,
+					viewType : this.codeviewOptions.viewType,
+					sqlparams : this.codeviewOptions.sqlparams
 				},
 				reader : {
 					type : 'json',
@@ -113,13 +113,13 @@ Ext.define('CMN.view.common.Selector', {
 	},
 
 	buildGrid : function() {
-		var selector = this;
+		var codeview = this;
 		
 		return {
 			xtype : 'grid',
 			store : this.store,
 			flex : 1,
-			columns : this.selectorOptions.columns,
+			columns : this.codeviewOptions.columns,
 			bbar : Ext.create('Ext.PagingToolbar', {
 				store : this.store,
 				displayInfo : true,
@@ -137,12 +137,12 @@ Ext.define('CMN.view.common.Selector', {
 					//var a = Ext.get(this.up('window').grid.id);
 					//console.log(a.getHeight());
 					
-					selector.selectorOptions.callback.call(selector, selector.selectorOptions.client, record);
-					//selector.selectorOptions.client.setValue(record);
-					//selector.selectorOptions.client.focus();
+					codeview.codeviewOptions.callback.call(codeview, codeview.codeviewOptions.client, record);
+					//codeview.codeviewOptions.client.setValue(record);
+					//codeview.codeviewOptions.client.focus();
 					//처리도중 destroy 하면 오류가 발생하여 wait time 추가
 					Ext.defer(function() {
-						selector.destroy();
+						codeview.destroy();
 					}, 1);
 					
 					return false;
@@ -152,8 +152,8 @@ Ext.define('CMN.view.common.Selector', {
 	},
 	
 	buildSearch : function() {
-		var columns = this.selectorOptions.columns;
-		var fieldset = this.selectorOptions.client;
+		var columns = this.codeviewOptions.columns;
+		var fieldset = this.codeviewOptions.client;
 		var items = [];
 
 		for ( var i in columns) {
@@ -175,9 +175,9 @@ Ext.define('CMN.view.common.Selector', {
 	                    if (e.getKey() != e.ENTER)
 	                    	return;
 						
-						var selector = textfield.up('window');
+						var codeview = textfield.up('window');
 						var filters = [];
-						selector.search.items.each(function(textfield) {
+						codeview.search.items.each(function(textfield) {
 							var value = textfield.getValue();
 							if(value) {
 								filters.push({
@@ -188,10 +188,10 @@ Ext.define('CMN.view.common.Selector', {
 						}, this);
 						
 						//기본조건 filter + 추가조건 filter
-						filters = filters.concat(selector.selectorOptions.filters);
+						filters = filters.concat(codeview.codeviewOptions.filters);
 						
-						selector.store.filters.clear();
-						selector.store.filter(filters);
+						codeview.store.filters.clear();
+						codeview.store.filter(filters);
 					}
 				},
 				

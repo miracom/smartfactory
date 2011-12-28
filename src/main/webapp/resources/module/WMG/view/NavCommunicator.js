@@ -25,8 +25,6 @@ Ext.define('WMG.view.NavCommunicator', {
 		store : Ext.StoreManager.lookup('WMG.store.CommunicatorStore'),
 		autoScroll : true,
 
-		itemSelector : 'div',
-
 		cls : 'communicator-list',
 		itemSelector : '.communicator-list-item', // itemselector로 div 지정
 		overItemCls : 'operation-list-item-hover',

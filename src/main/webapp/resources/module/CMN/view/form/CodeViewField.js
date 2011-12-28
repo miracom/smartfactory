@@ -42,7 +42,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 		                    if (e.getKey() != e.ENTER)
 		                    	return;
 		                    var fieldset = this.up('fieldcontainer');
-		                    SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
+		                    SmartFactory.codeview.show(fieldset.codeviewName, fieldset.filter, fieldset.selectedCallback, fieldset);
 						}
 					},
 					xtype: 'textfield',
@@ -61,7 +61,7 @@ Ext.define('CMN.view.form.CodeViewField', {
 	                    if (e.getKey() != e.ENTER)
 	                    	return;
 	                    var fieldset = this.up('fieldcontainer');
-	                    SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
+	                    SmartFactory.codeview.show(fieldset.codeviewName, fieldset.filter, fieldset.selectedCallback, fieldset);
 	            	}
 				},
 				xtype: 'textfield',
@@ -83,14 +83,14 @@ Ext.define('CMN.view.form.CodeViewField', {
 				var fieldset = this.up('fieldcontainer');
             	//var refVal = fieldset.up('form').getValues();
             	
-				SmartFactory.selector.show(fieldset.selectorName, fieldset.filter, fieldset.selectedCallback, fieldset);
+				SmartFactory.codeview.show(fieldset.codeviewName, fieldset.filter, fieldset.selectedCallback, fieldset);
 			}
 		};
 	},
 	
 	selectedCallback : function(fieldset, record) {
-		var selector = SmartFactory.selector.get(fieldset.selectorName);
-		var txtField = selector.client.txtFieldName;
+		var codeview = SmartFactory.codeview.get(fieldset.codeviewName);
+		var txtField = codeview.client.txtFieldName;
 		
 		if(txtField instanceof Array) {
 			for(var i in txtField) 
