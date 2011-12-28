@@ -2,12 +2,12 @@ Ext.define('ARC.model.Basic', {
 	extend: 'Ext.data.Model',
 	
 	fields: [
-		{ name: 'TERM', type: 'auto' },
-		{ name: 'DAYS', type: 'auto' },
-		{ name: 'OVERWRITE_FLAG', type: 'auto' },
-		{ name: 'MASTER_DELETION', type: 'auto' },
-		{ name: 'SLAVE_DELETION', type: 'auto' },
-		{ name: 'BACKUP_METHOD', type: 'auto' },
-		{ name: 'LOG_TYPE', type: 'auto' }
+		{ name: 'TERM', type: 'int' },
+		{ name: 'DAYS', type: 'int' },
+		{ name: 'OVERWRITE_FLAG', type: 'string' },
+		{ name: 'MASTER_DELETION', type: 'string' },
+		{ name: 'SLAVE_DELETION', type: 'string' },
+		{ name: 'BACKUP_METHOD', type: 'string' },
+		{ name: 'LOG_TYPE', type: 'string' }
     ]
 });

@@ -12,25 +12,28 @@ Ext.define('ARC.view.task.TaskInfo', {
 	initComponent : function() {
 		this.callParent();
 		
-		this.add(this.buildBasicGrid());
-		this.add(this.buildMasterGrid());
-		this.add(this.buildConditionField());
-		this.add(this.buildSlaveGrid());
+		this.basicGrid = this.add(this.buildBasicGrid());
+		//this.MasterGrid = this.add(this.buildMasterGrid());
+		//this.conditionField = this.add(this.buildConditionField());
+		//this.SlaveGrid = this.add(this.buildSlaveGrid());
 		
-		
-		this.taskInfoStore.on('datachanged',this.onStoreChanged);
-	},
-	
-	onStoreChanged : function() {
-		//alert('TaskInfo');
+		this.taskInfoStore.on('datachanged',this.onStoreChanged, this);
 	},
 	
 	listeners : {
 		activate : function(tab) {
 			// store load ?
+			//this.basicGrid.store = this.taskInfoStore.basicStore;
+			//this.taskInfoStore.basicStore.load();
 		}
-	},
+	},	
 	
+	onStoreChanged : function() {
+		//this.basicGrid.store = this.taskInfoStore.basicStore;
+		//xxx = this.taskInfoStore;
+		//console.log(this.basicGrid);
+	},
+
 	buttons : [ {
 		text : 'DELETE',
 		listeners : {
@@ -64,25 +67,22 @@ Ext.define('ARC.view.task.TaskInfo', {
 			flex : 2,
 			columns : [ {
 				header : 'DB',
-				dataIndex : 'dbId',
+				dataIndex : 'DAYS',
 			}, {
 				header : 'Task',
-				dataIndex : 'taskId'
+				dataIndex : 'OVERWRITE_FLAG'
 			}, {
 				header : 'Master',
-				dataIndex : 'masterTable'
+				dataIndex : 'MASTER_DELETION'
 			}, {
 				header : 'Over',
-				dataIndex : 'overWriteFlag',
+				dataIndex : 'SLAVE_DELETION',
 			}, {
 				header : 'S-Del',
-				dataIndex : 'slaveTableDeletion'
+				dataIndex : 'BACKUP_METHOD'
 			}, {
 				header : 'M-Del',
-				dataIndex : 'masterTableDeletion'
-			}, {
-				header : 'Method',
-				dataIndex : 'backupType'
+				dataIndex : 'LOG_TYPE'
 			} ]
 		};
 	},

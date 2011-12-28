@@ -10,12 +10,13 @@ Ext.define('ARC.view.task.TaskTab', {
 			taskId : this.taskId
 		});
 		
-		this.infoTab = this.add(this.buildTabInfo());
+		
 		this.basicTab = this.add(this.buildTabBasic());
+		this.infoTab = this.add(this.buildTabInfo());
 		this.masterTab = this.add(this.buildTabMaster());
 		this.slaveTab = this.add(this.buildTabSlave());
 		// active info tab
-		this.setActiveTab(this.infoTab);
+		this.setActiveTab(this.basicTab);
 
 		this.taskInfoStore.load({
 			callback: function(r,options,success) {

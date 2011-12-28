@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/webapp/WEB-INF/spring/servlet-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/test-file-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/archive-context.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

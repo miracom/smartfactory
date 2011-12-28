@@ -30,7 +30,6 @@ Ext.define('ARC.view.task.TaskMaster', {
 	listeners : {
 		activate : function(tab) {
 			// store load ?
-			this.store.load();
 		}
 	},
 
