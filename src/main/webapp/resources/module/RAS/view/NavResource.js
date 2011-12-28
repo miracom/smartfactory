@@ -2,7 +2,7 @@ Ext.define('RAS.view.NavResource', {
 	extend: 'Ext.panel.Panel',
 	
 	tbar : [ {
-		cls : 'navDoctedRefresh',
+		cls : 'navRefreshBtn',
 		listeners : {
 			click : function(button) {
 				var panel = button.up('panel');
@@ -10,7 +10,7 @@ Ext.define('RAS.view.NavResource', {
 			}
 		}
 	}, {
-		cls : 'navDoctedClear',
+		cls : 'navClearBtn',
 		listeners : {
 			click : function(button) {
 				var panel = button.up('panel');

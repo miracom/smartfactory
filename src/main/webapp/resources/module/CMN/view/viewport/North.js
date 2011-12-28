@@ -1,7 +1,7 @@
 Ext.define('CMN.view.viewport.North', {
 	extend : 'Ext.panel.Panel',
 
-	cls : 'noBoardPanel',
+	cls : 'noBorderPanel',
 
 	id : 'menu_toolbar',
 
@@ -27,7 +27,7 @@ Ext.define('CMN.view.viewport.North', {
 		} ]
 	}, {
 		xtype : 'cmn.toolbar',
-		cls : 'appQuickIcon',
+		cls : 'appTool',
 		flex : 1
 	} ]
 });

@@ -2,7 +2,7 @@ Ext.define('WIP.view.NavOperation', {
 	extend: 'Ext.panel.Panel',
 	
 	tbar : [ {
-		cls : 'navDoctedRefresh',
+		cls : 'navRefreshBtn',
 		listeners : {
 			click : function(button) {
 				var panel = button.up('panel');
@@ -10,7 +10,7 @@ Ext.define('WIP.view.NavOperation', {
 			}
 		}
 	}, {
-		cls : 'navDoctedClear',
+		cls : 'navClearBtn',
 		listeners : {
 			click : function(button) {
 				var panel = button.up('panel');

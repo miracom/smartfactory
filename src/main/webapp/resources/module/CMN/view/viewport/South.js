@@ -48,7 +48,7 @@ Ext.define('CMN.view.viewport.South', {
 		 * TODO 이 아이템은 WMG 모듈로 옮겨야 함.
 		 */
 		xtype : 'button',
-		cls : 'noticeCount',
+		cls : 'trayNotice',
 		iconCls : 'noticeIcon',
 		text : '3',
 		handler : function() {

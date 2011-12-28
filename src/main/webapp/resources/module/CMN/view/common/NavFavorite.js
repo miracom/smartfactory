@@ -24,7 +24,7 @@ Ext.define('CMN.view.common.NavFavorite', {
 	},
 
 	tbar : [ {
-		cls : 'navDoctedRefresh',
+		cls : 'navRefreshBtn',
 		listeners : {
 			click : function(button) {
 				var store = Ext.StoreManager.lookup('CMN.store.FavoriteStore');
@@ -32,7 +32,7 @@ Ext.define('CMN.view.common.NavFavorite', {
 			}
 		}
 	}, {
-		cls : 'navDoctedClear',
+		cls : 'navClearBtn',
 		listeners : {
 			click : function() {
 				var store = Ext.StoreManager.lookup('CMN.store.FavoriteStore');

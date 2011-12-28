@@ -3,7 +3,7 @@ Ext.define('CMN.view.viewport.East', {
 
 	alias : 'widget.viewport.east',
 	id : 'east',
-	cls : 'dockNavigation searchPanel',
+	cls : 'nav supplement',
 	title :'Search',
 	
 	layout : 'card',

@@ -3,7 +3,7 @@ Ext.require('CMN.view.form.MultiFileField');
 Ext.define('CMN.view.common.Supplement', {
 	extend : 'Ext.panel.Panel',
 
-	cls : 'dockNavigation searchPanel',
+	cls : 'nav supplement',
 
 	layout : {
 		align : 'stretch',

@@ -5,7 +5,7 @@ Ext.define('CMN.view.viewport.West', {
 
 	id : 'docked_nav',
 
-	cls : 'dockNavigation',
+	cls : 'nav',
 
 	tabPosition : 'bottom'
 });
