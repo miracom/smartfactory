@@ -23,7 +23,7 @@ Ext.define('MBI.view.NavFormlist', {
 	},
 
 	tbar : [ {
-		cls : 'navDoctedRefresh',
+		cls : 'navRefreshBtn',
 		listeners : {
 			click : function(button) {
 				var tabpanel = button.up('tabpanel');
@@ -31,7 +31,7 @@ Ext.define('MBI.view.NavFormlist', {
 			}
 		}
 	}, {
-		cls : 'navDoctedClear',
+		cls : 'navClearBtn',
 		listeners : {
 			click : function(button) {
 				var tabpanel = button.up('tabpanel');

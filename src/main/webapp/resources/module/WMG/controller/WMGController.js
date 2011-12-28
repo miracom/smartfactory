@@ -16,7 +16,10 @@ Ext.define('WMG.controller.WMGController', {
 
 		SmartFactory.mixin('WMG.plugin.Communicator', {
 			messageNoticed : function(message) {
-				Ext.getStore('WMG.store.NotificationStore').add(message.data);
+				var noticeStore = Ext.getStore('WMG.store.NotificationStore');
+				noticeStore.add(message.data);
+				Ext.getCmp('wmg.tray_notice').setText(noticeStore.count());
+
 				SmartFactory.msg(message.data.title, message.data.message);
 			},
 			memberJoinedIn : function(message) {
@@ -33,11 +36,13 @@ Ext.define('WMG.controller.WMGController', {
 	},
 
 	onViewportRendered : function() {
-		SmartFactory.addDockingNav('WMG.view.NavCommunicator', {
-    		iconCls : 'iconsetDockCommunicator'
+		SmartFactory.addNav('WMG.view.NavCommunicator', {
+    		iconCls : 'iconsetDockCommunicator',
+			itemId : 'navCommunicator',
+			title : 'Communicator'
 		});
 		
-		var searchStore = Ext.getStore('cmn.search_store');
+		var searchStore = Ext.getStore('cmn.appsearch_store');
 		if(searchStore) {
 			searchStore.add({
 				kind : 'msg',

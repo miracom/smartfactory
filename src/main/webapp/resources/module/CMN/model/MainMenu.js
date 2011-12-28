@@ -1,4 +1,4 @@
-Ext.define('CMN.model.Menu', {
+Ext.define('CMN.model.MainMenu', {
 	extend : 'Ext.data.Model',
 
 	fields : [ {

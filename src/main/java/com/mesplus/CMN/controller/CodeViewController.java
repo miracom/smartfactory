@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mesplus.CMN.dao.GcmDataDao;
 import com.mesplus.CMN.dao.GcmDefineDao;
-import com.mesplus.CMN.dao.SelectorDao;
+import com.mesplus.CMN.dao.CodeViewDao;
 import com.mesplus.CMN.model.Filter;
 import com.mesplus.CMN.model.Sorter;
 
@@ -28,20 +28,20 @@ import com.mesplus.CMN.model.Sorter;
  * @since 1.0
  */
 @Controller
-public class SelectorController {
-	//private static final Logger logger = LoggerFactory.getLogger(SelectorController.class);
+public class CodeViewController {
+	//private static final Logger logger = LoggerFactory.getLogger(CodeViewController.class);
 
 	@Autowired
 	private GcmDefineDao gcmdefineDao;
 	@Autowired
-	private SelectorDao selectorDao;
+	private CodeViewDao codeViewDao;
 	@Autowired
 	private GcmDataDao gcmdataDao;
 
 	/**
 	 * 입력받은 조건으로 쿼리를 생성하여 데이타를 조회
 	 * <ul>
-	 * 	<li>접속 주소: module/CMN/data/select.json</li>
+	 * 	<li>접속 주소: module/CMN/data/codeview.json</li>
 	 *  <li>접속 방법: GET</li>
 	 * </ul>
 	 * @param request GET/POST로 전송받은 쿼리조건 정보
@@ -60,7 +60,7 @@ public class SelectorController {
 	 *		<code>Key = result - </code> 검색 데이타
 	 * </pre>
 	 */
-	@RequestMapping(value = "module/CMN/data/select.json", method = RequestMethod.GET)
+	@RequestMapping(value = "module/CMN/data/codeview.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String, Object> select(HttpServletRequest request, HttpServletResponse response) {
 		String viewType = (String) request.getParameter("viewType");
@@ -91,8 +91,8 @@ public class SelectorController {
 
 		if (viewType.equals("0"))
 		{
-			resultMap.put("total", selectorDao.selectCount(table, filters));
-			resultMap.put("result", selectorDao.select(table, selects, filters, sorters, Integer.parseInt(start), Integer.parseInt(limit)));
+			resultMap.put("total", codeViewDao.selectCount(table, filters));
+			resultMap.put("result", codeViewDao.select(table, selects, filters, sorters, Integer.parseInt(start), Integer.parseInt(limit)));
 		}
 		else if (viewType.equals("1"))
 		{

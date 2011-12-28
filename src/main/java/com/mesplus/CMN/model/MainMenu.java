@@ -10,7 +10,7 @@ import java.util.Stack;
  * @author Jinho
  * @since 1.0
  */
-public class Menu {
+public class MainMenu {
 	private String func_name;
 	private String func_desc;
 	private String func_type_flag;
@@ -23,25 +23,25 @@ public class Menu {
 	private String separator;
 	private String add_tool_bar;
 	
-	private List<Menu> children;
+	private List<MainMenu> children;
 	
 	/**
-	 * child를 children(List<Menu>)에 저장한다.
+	 * child를 children(List<MainMenu>)에 저장한다.
 	 * @param child 트리에 추가할 객체정보
 	 */
-	public void add(Menu child) {
+	public void add(MainMenu child) {
 		if(children == null)
-			children = new LinkedList<Menu>();
+			children = new LinkedList<MainMenu>();
 		children.add(child);
 	}
 	
-	public static List<Menu> buildHierarchy(List<Menu> menus) {
-		Stack<Menu> parents = new Stack<Menu>();
-		Menu root = new Menu();
+	public static List<MainMenu> buildHierarchy(List<MainMenu> menus) {
+		Stack<MainMenu> parents = new Stack<MainMenu>();
+		MainMenu root = new MainMenu();
 		parents.push(root);
 		
-		for(Menu menu : menus) {
-			Menu parent = null;
+		for(MainMenu menu : menus) {
+			MainMenu parent = null;
 			
 			try {
 				parent = parents.peek();
@@ -53,14 +53,14 @@ public class Menu {
 					int compared = menu.disp_level.length() - parent.disp_level.length();
 					if(compared == 0) {
 						try {
-							Menu last = parents.pop();
+							MainMenu last = parents.pop();
 							parents.peek().add(last);
 						} catch(EmptyStackException e) {
 						}
 						break;
 					} else if(compared < 0){
 						try {
-							Menu last = parents.pop();
+							MainMenu last = parents.pop();
 							parent = parents.peek();
 							parent.add(last);
 						} catch(EmptyStackException e) {
@@ -90,7 +90,7 @@ public class Menu {
 		return func_desc;
 	}
 
-	public List<Menu> getChildren() {
+	public List<MainMenu> getChildren() {
 		return children;
 	}
 

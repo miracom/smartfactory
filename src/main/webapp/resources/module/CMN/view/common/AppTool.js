@@ -1,8 +1,8 @@
-Ext.define('CMN.view.common.Toolbar', {
+Ext.define('CMN.view.common.AppTool', {
 	extend : 'Ext.toolbar.Toolbar',
 	
-	alias : 'widget.cmn.toolbar',
-	id : 'favorites_toolbar',
+	alias : 'widget.cmn.apptool',
+	id : 'apptool',
 	
 	listeners : {
 		render : function(comp, obj) {

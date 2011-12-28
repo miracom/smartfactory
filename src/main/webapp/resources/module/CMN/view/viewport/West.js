@@ -3,9 +3,9 @@ Ext.define('CMN.view.viewport.West', {
 
 	alias : 'widget.viewport.west',
 
-	id : 'docked_nav',
+	id : 'nav',
 
-	cls : 'dockNavigation',
+	cls : 'nav',
 
 	tabPosition : 'bottom'
 });

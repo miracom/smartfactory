@@ -3,9 +3,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mesplus.CMN.dao.MenuDao">
+<mapper namespace="com.mesplus.CMN.dao.MainMenuDao">
 
-	<resultMap id="MenuMap" type="com.mesplus.CMN.model.Menu">
+	<resultMap id="MainMenuMap" type="com.mesplus.CMN.model.MainMenu">
 		<result property="func_name" />
 		<result property="func_desc" />
 		<result property="func_type_flag" />
@@ -20,7 +20,7 @@
 		<result property="add_tool_bar" />
 	</resultMap>
 
-	<select id="selectMenus" parameterType="map" resultMap="MenuMap">
+	<select id="selectMainMenus" parameterType="map" resultMap="MainMenuMap">
 		SELECT DEF.FUNC_NAME, DEF.FUNC_DESC, DEF.FUNC_TYPE_FLAG, DEF.FUNC_GROUP,
 		DEF.ASSEMBLY_FILE, DEF.ASSEMBLY_NAME, DEF.SHORT_CUT, DEF.ICON_INDEX,
 		GRP.DISP_LEVEL, GRP.SEPARATOR, GRP.ADD_TOOL_BAR

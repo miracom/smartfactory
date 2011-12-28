@@ -2,7 +2,7 @@ Ext.define('WIP.view.NavOperation', {
 	extend: 'Ext.panel.Panel',
 	
 	tbar : [ {
-		cls : 'navDoctedRefresh',
+		cls : 'navRefreshBtn',
 		listeners : {
 			click : function(button) {
 				var panel = button.up('panel');
@@ -10,7 +10,7 @@ Ext.define('WIP.view.NavOperation', {
 			}
 		}
 	}, {
-		cls : 'navDoctedClear',
+		cls : 'navClearBtn',
 		listeners : {
 			click : function(button) {
 				var panel = button.up('panel');
@@ -22,7 +22,6 @@ Ext.define('WIP.view.NavOperation', {
 	items : [{
 		xtype : 'dataview', 
 		store: 'WIP.store.OperationStore',
-		itemSelector: 'div',
 		
 		listeners: {
 			render: function(view) {
@@ -41,7 +40,7 @@ Ext.define('WIP.view.NavOperation', {
 		autoScroll: true,
 		
 		cls: 'operation-list',
-		itemSelector: '.operation-list-item', //itemselector로 div 지정 
+		itemSelector: '.operation-list-item',
 		overItemCls: 'operation-list-item-hover',
 		tpl:'<tpl for="."><div class="operation-list-item">{oper_id} - {desc}</div></tpl>'
 	}]

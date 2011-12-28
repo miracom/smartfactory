@@ -1,5 +1,0 @@
-[
-	{ func_name: "detention" , user_func_desc: "detention-desc"},
-	{ func_name: "homework", user_func_desc: "homework-desc" },
-	{ func_name: "buy lottery tickets", user_func_desc: "buy lottery tickets" }
-]

@@ -14,7 +14,7 @@ Ext.define('RPT.controller.RPTController', {
 	},
 
 	onViewportRendered : function() {
-		SmartFactory.addDockingNav('RPT.view.NavReport', {
+		SmartFactory.addNav('RPT.view.NavReport', {
 			iconCls : 'iconsetDockReport',
 			itemId : 'navReportSample',
 			title : 'report sample'

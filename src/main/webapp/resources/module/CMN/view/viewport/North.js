@@ -1,9 +1,7 @@
 Ext.define('CMN.view.viewport.North', {
-	extend : 'Ext.panel.Panel',
+	extend : 'Ext.Container',
 
-	cls : 'noBoardPanel',
-
-	id : 'menu_toolbar',
+	cls : 'noBorderPanel',
 
 	alias : 'widget.viewport.north',
 
@@ -14,20 +12,21 @@ Ext.define('CMN.view.viewport.North', {
 
 	items : [ {
 		layout : 'hbox',
-		items : [ {
-			xtype : 'cmn.menu',
+		defaults : {
 			cls : 'appMenu',
+		},
+		items : [ {
+			xtype : 'cmn.mainmenu',
 			height : 27,
 			flex : 1
 		}, {
-			xtype : 'cmn.system_menu',
-			cls : 'appMenu',
+			xtype : 'cmn.sidemenu',
 			minWidth : 100,
 			height : 27
 		} ]
 	}, {
-		xtype : 'cmn.toolbar',
-		cls : 'appQuickIcon',
+		xtype : 'cmn.apptool',
+		cls : 'appTool',
 		flex : 1
 	} ]
 });

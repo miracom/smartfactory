@@ -3,7 +3,7 @@ Ext.define('WMG.view.NavCommunicator', {
 
 	tbar : [ {
 
-		cls : 'navDoctedRefresh',
+		cls : 'navRefreshBtn',
 		listeners : {
 			click : function(button) {
 				var store = Ext.StoreManager.lookup('WMG.store.CommunicatorStore');
@@ -11,7 +11,7 @@ Ext.define('WMG.view.NavCommunicator', {
 			}
 		}
 	}, {
-		cls : 'navDoctedClear',
+		cls : 'navClearBtn',
 		listeners : {
 			click : function() {
 				var store = Ext.StoreManager.lookup('WMG.store.CommunicatorStore');
@@ -24,8 +24,6 @@ Ext.define('WMG.view.NavCommunicator', {
 		xtype : 'dataview',
 		store : Ext.StoreManager.lookup('WMG.store.CommunicatorStore'),
 		autoScroll : true,
-
-		itemSelector : 'div',
 
 		cls : 'communicator-list',
 		itemSelector : '.communicator-list-item', // itemselector로 div 지정

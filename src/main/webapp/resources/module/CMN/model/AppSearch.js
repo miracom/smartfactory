@@ -1,4 +1,4 @@
-Ext.define('CMN.model.Search', {
+Ext.define('CMN.model.AppSearch', {
 	extend : 'Ext.data.Model',
 
 	fields : [ {

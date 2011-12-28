@@ -92,7 +92,7 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 
 		return {
 			xtype : 'codeview',
-			selectorName : 'GcmCodeView',
+			codeviewName : 'GcmCodeView',
 			fieldLabel : rowData.display_text,
 			//'$1'==> :X1
 			filter : [],

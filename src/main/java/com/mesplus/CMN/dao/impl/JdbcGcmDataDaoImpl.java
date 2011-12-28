@@ -23,7 +23,7 @@ import com.mesplus.util.SessionUtils;
 
 @Component
 public class JdbcGcmDataDaoImpl implements GcmDataDao {
-	private static final Logger logger = LoggerFactory.getLogger(JdbcSelectorDaoImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(JdbcCodeViewDaoImpl.class);
 	
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 

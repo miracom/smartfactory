@@ -1,7 +1,7 @@
 Ext.define('CMN.view.viewport.South', {
 	extend : 'Ext.ux.statusbar.StatusBar',
 
-	id : 'statusbar',
+	id : 'status',
 
 	cls:'appStatusBar noBoardPanel',
 
@@ -48,9 +48,9 @@ Ext.define('CMN.view.viewport.South', {
 		 * TODO 이 아이템은 WMG 모듈로 옮겨야 함.
 		 */
 		xtype : 'button',
-		cls : 'noticeCount',
-		iconCls : 'noticeIcon',
-		text : '3',
+		id : 'wmg.tray_notice',
+		cls : 'trayNotice',
+		iconCls : 'trayNoticeIcon',
 		handler : function() {
         	SmartFactory.communicator.notice('notice', 'notice message...');
         	

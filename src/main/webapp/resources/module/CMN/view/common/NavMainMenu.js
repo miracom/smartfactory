@@ -1,9 +1,9 @@
-Ext.define('CMN.view.common.NavMenu', {
+Ext.define('CMN.view.common.NavMainMenu', {
 	extend : 'Ext.tree.Panel',
 
-	alias : 'widget.cmn.nav_menu',
+	alias : 'widget.cmn.nav_mainmenu',
 
-	id : 'cmn.view.nav_menu',
+	id : 'cmn.view.nav_mainmenu',
 
 	rootVisible : false,
 
@@ -28,10 +28,10 @@ Ext.define('CMN.view.common.NavMenu', {
 	},
 
 	tbar : [ {
-		cls : 'navDoctedRefresh',
+		cls : 'navRefreshBtn',
 		listeners : {
 			click : function(button) {
-				var store = Ext.StoreManager.lookup('CMN.store.MenuStore');
+				var store = Ext.StoreManager.lookup('CMN.store.MainMenuStore');
 
 				/* 
 				 * store.load()와 store.setRootNode(null)은 동일하게 자동 reload처럼 동작한다.(4.0)
@@ -42,7 +42,7 @@ Ext.define('CMN.view.common.NavMenu', {
 		}
 	} ],
 
-	store : 'CMN.store.MenuStore',
+	store : 'CMN.store.MainMenuStore',
 
 	store_changed : function(store) {
 		console.log(store);

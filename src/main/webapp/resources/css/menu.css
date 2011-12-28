@@ -31,13 +31,13 @@
 /* app menu */
 .appMenu .x-btn-default-toolbar-small .x-btn-inner{color:#d7d7d7}
 .appMenu .x-btn-default-toolbar-small-over,.appMenu .x-btn-default-toolbar-small-menu-active,
-.appQuickIcon .x-btn-default-toolbar-large-over,.appQuickIcon .x-btn-default-toolbar-large-menu-over,
-.appQuickIcon x-btn-default-toolbar-large-pressed{
+.appTool .x-btn-default-toolbar-large-over,.appTool .x-btn-default-toolbar-large-menu-over,
+.appTool x-btn-default-toolbar-large-pressed{
 	background:url('../image/bgBlackGradient.png') repeat-x;
 }
 .appMenu .x-btn-default-toolbar-small-over,.appMenu .x-btn-default-toolbar-small-menu-active{border-color:#111}
-.appQuickIcon .x-btn-default-toolbar-large-over,.appQuickIcon .x-btn-default-toolbar-large-menu-over{border-color:#474c59}
-.appQuickIcon .x-btn-default-toolbar-large-pressed{border-color:#5f93d4}
+.appTool .x-btn-default-toolbar-large-over,.appTool .x-btn-default-toolbar-large-menu-over{border-color:#474c59}
+.appTool .x-btn-default-toolbar-large-pressed{border-color:#5f93d4}
 .appMenu .x-panel-body-default{border-color:#9DA8B2}
 .x-menu-body{margin-top:2px;border:1px solid #9ea8b3 !important}
 .appMenu .x-btn-arrow-right{background:url('../image/arrowDownDefault.gif') 102% 5px no-repeat;}
@@ -97,56 +97,56 @@
 .iconsetDockCommunicator{background:url('../image/iconCommunicator16.png') -1px 0 no-repeat;}
 .communicator-list-item.off{background:url('../image/statusOff.png') 1px 2px no-repeat;}
 .communicator-list-item.on{background:url('../image/statusOn.png') 1px 2px no-repeat;}
-.noBoardPanel .x-panel-body-default,.noBoardPanel{border:0}
+.noBorderPanel .x-panel-body-default,.noBorderPanel{border:0}
 
-.x-toolbar.appmenu,.x-toolbar.appQuickIcon{border:0}
+.x-toolbar.appmenu,.x-toolbar.appTool{border:0}
 .x-nlg .x-toolbar.appmenu,.x-toolbar.appmenu{background:url('../image/bgAppMenu.gif') repeat-x !important;}
-.x-nlg .x-toolbar.appQuickIcon,.x-toolbar.appQuickIcon{background:url('../image/bgAppQuickIcon.gif') repeat-x !important;}
-.appQuickIcon .x-toolbar-item{margin:0 5px}
+.x-nlg .x-toolbar.appTool,.x-toolbar.appTool{background:url('../image/bgAppQuickIcon.gif') repeat-x !important;}
+.appTool .x-toolbar-item{margin:0 5px}
 .x-tab em{padding-top:1px;padding-left:4px}
 .x-toolbar-default-docked-top{background:url('../image/bgDockedTop.png') repeat-x !important;height:22px;top:-1px}
 
-.dockNavigation .x-panel-header-text-default{color:#efefef;}
-.dockNavigation .x-panel-header-default{background:url('../image/bgDockHeader.gif') repeat-x;background-color:#5875a0;border:none;height:27px}
-.dockNavigation .x-panel-header-default-top{box-shadow:none}
-.dockNavigation .x-tab button{overflow-x:hidden}
-.dockNavigation .x-tool-collapse-left,.x-tool-expand-left{background:url('../image/iconBtnSet.gif') 0 2px no-repeat;}
+.nav .x-panel-header-text-default{color:#efefef;}
+.nav .x-panel-header-default{background:url('../image/bgDockHeader.gif') repeat-x;background-color:#5875a0;border:none;height:27px}
+.nav .x-panel-header-default-top{box-shadow:none}
+.nav .x-tab button{overflow-x:hidden}
+.nav .x-tool-collapse-left,.x-tool-expand-left{background:url('../image/iconBtnSet.gif') 0 2px no-repeat;}
 .x-tool-expand-left{margin-left:3px !important}
-.dockNavigation .x-tool-collapse-right,.x-tool-expand-right{background:url('../image/iconBtnSet.gif') -15px 2px no-repeat;}
+.nav .x-tool-collapse-right,.x-tool-expand-right{background:url('../image/iconBtnSet.gif') -15px 2px no-repeat;}
 .x-panel-header-default-left, .x-panel-header-default-right{background:url('../image/bgDockCollapsed.gif') 50% 0 no-repeat;width:26px;border-width:0;left:-1px}
 .x-panel-header-default-left{box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none}
 .x-panel-body-default{border-top:1px}
-.navDoctedRefresh{background:url('../image/iconDockedRefreshOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
-.navDoctedClear{background:url('../image/iconDockedClearOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
-.navDoctedRefresh:hover{background:url('../image/iconDockedRefreshOn.png') no-repeat !important;}
-.navDoctedClear:hover{background:url('../image/iconDockedClearOn.png') no-repeat !important;}
+.navRefreshBtn{background:url('../image/iconDockedRefreshOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
+.navClearBtn{background:url('../image/iconDockedClearOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
+.navRefreshBtn:hover{background:url('../image/iconDockedRefreshOn.png') no-repeat !important;}
+.navClearBtn:hover{background:url('../image/iconDockedClearOn.png') no-repeat !important;}
 .x-toolbar-default-docked-top .x-btn-default-toolbar-small{border:0}
 .x-toolbar-default-docked-top .x-btn-default-toolbar-small-hover{border:0}
 .x-toolbar-default-docked-bottom{ background-color:#dbeafd;border-width:1px 0 0 0}
 
 /*search panel*/
-.searchPanel .x-form-item-label,.searchPanel .x-fieldset-header{margin-top:3px;color:#5371a7;font-size:11px;}
-.searchPanel .x-form-item-body{margin-top:-2px}
-.searchPanel .x-form-trigger-wrap-focus .x-form-trigger{background-position:-24px 0}
-.searchPanel .x-form-trigger-wrap-focus .x-form-trigger.x-form-spinner-up{background-position:0 0}
-.searchPanel .x-form-trigger-wrap-focus .x-form-trigger.x-form-spinner-down{background-position:0 -11px}
-.searchPanel .x-fieldset{padding:3px;background-color:#f6f6f6}
-.searchPanel fieldset .x-form-item{margin-bottom:1px}
-.searchPanel .x-form-cb-label-after{color:#585858;font-size:11px}
-.searchPanel .x-fieldset.fieldsetCheckbox{padding:3px 7px}
-.searchPanel .fieldsetRadioGroup{padding-left:3px}
-.searchPanel .hboxLine .x-form-item-body,.searchPanel .datetime .x-form-item-body{margin-top:0px}
-.searchPanel .datetime{height:50px;width:90%}
+.supplement .x-form-item-label,.supplement .x-fieldset-header{margin-top:3px;color:#5371a7;font-size:11px;}
+.supplement .x-form-item-body{margin-top:-2px}
+.supplement .x-form-trigger-wrap-focus .x-form-trigger{background-position:-24px 0}
+.supplement .x-form-trigger-wrap-focus .x-form-trigger.x-form-spinner-up{background-position:0 0}
+.supplement .x-form-trigger-wrap-focus .x-form-trigger.x-form-spinner-down{background-position:0 -11px}
+.supplement .x-fieldset{padding:3px;background-color:#f6f6f6}
+.supplement fieldset .x-form-item{margin-bottom:1px}
+.supplement .x-form-cb-label-after{color:#585858;font-size:11px}
+.supplement .x-fieldset.fieldsetCheckbox{padding:3px 7px}
+.supplement .fieldsetRadioGroup{padding-left:3px}
+.supplement .hboxLine .x-form-item-body,.supplement .datetime .x-form-item-body{margin-top:0px}
+.supplement .datetime{height:50px;width:90%}
 .x-form-trigger-wrap .x-form-spinner-up-over{background-position:-17px 0}
 
 /* status bar */
 .x-nlg .appStatusBar,.appStatusBar{background:url('../image/bgAppFooter.gif') repeat-x !important;}
-.noticeCount{
+.trayNotice{
 	background:url('../image/bgStatusBarCount.gif') repeat-x !important;border:1px solid #efefef;height:19px;
 	-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;margin-right:5px
 }
-.noticeCount.x-btn-default-toolbar-small .x-btn-inner{color:#7ac4fe !important;line-height:12px !important}
-.noticeCount .noticeIcon{background:url('../image/iconStatusBarNotice.gif') no-repeat;width:15px;height:12px;margin:1px 0 0 1px}
+.trayNotice.x-btn-default-toolbar-small .x-btn-inner{color:#7ac4fe !important;line-height:12px !important}
+.trayNotice .noticeIcon{background:url('../image/iconStatusBarNotice.gif') no-repeat;width:15px;height:12px;margin:1px 0 0 1px}
 
 /* splitter handle*/
 .x-splitter-vertical{background:url('../image/bgSplitterVertical.gif') repeat-y;}
@@ -162,10 +162,10 @@
 .x-box-scroller-left .x-toolbar-scroll-left, .x-box-scroller-left .x-tabbar-scroll-left-hover{background:url('../image/tabNavi.gif') -18px -3px no-repeat;width:18px;}
 .x-box-scroller-right .x-toolbar-scroll-right, .x-box-scroller-right .x-tabbar-scroll-right{background:url('../image/tabNavi.gif') 0 -27px no-repeat;width:18px;}
 .x-box-scroller-right .x-toolbar-scroll-right, .x-box-scroller-right .x-tabbar-scroll-right-hover{background:url('../image/tabNavi.gif') -18px -27px no-repeat;width:18px;}
-.dockNavigation .x-box-scroller-left .x-toolbar-scroll-left, .dockNavigation .x-box-scroller-left .x-tabbar-scroll-left{background:url('../image/tabNavi.gif') 0 1px no-repeat;width:18px;}
-.dockNavigation .x-box-scroller-left .x-toolbar-scroll-left, .dockNavigation .x-box-scroller-left .x-tabbar-scroll-left-hover{background:url('../image/tabNavi.gif') -18px 1px no-repeat;width:18px;}
-.dockNavigation .x-box-scroller-right .x-toolbar-scroll-right,.dockNavigation .x-box-scroller-right .x-tabbar-scroll-right{background:url('../image/tabNavi.gif') 0 -23px no-repeat;width:18px;}
-.dockNavigation .x-box-scroller-right .x-toolbar-scroll-right,.dockNavigation .x-box-scroller-right .x-tabbar-scroll-right-hover{background:url('../image/tabNavi.gif') -18px -23px no-repeat;width:18px;}
+.nav .x-box-scroller-left .x-toolbar-scroll-left, .nav .x-box-scroller-left .x-tabbar-scroll-left{background:url('../image/tabNavi.gif') 0 1px no-repeat;width:18px;}
+.nav .x-box-scroller-left .x-toolbar-scroll-left, .nav .x-box-scroller-left .x-tabbar-scroll-left-hover{background:url('../image/tabNavi.gif') -18px 1px no-repeat;width:18px;}
+.nav .x-box-scroller-right .x-toolbar-scroll-right,.nav .x-box-scroller-right .x-tabbar-scroll-right{background:url('../image/tabNavi.gif') 0 -23px no-repeat;width:18px;}
+.nav .x-box-scroller-right .x-toolbar-scroll-right,.nav .x-box-scroller-right .x-tabbar-scroll-right-hover{background:url('../image/tabNavi.gif') -18px -23px no-repeat;width:18px;}
 .x-tab-tabmenu-right{background:url('../image/tabNavi.gif') 0 -51px no-repeat !important;width:18px;}
 .x-tab-tabmenu-right:hover{background:url('../image/tabNavi.gif') -18px -51px no-repeat !important;width:18px;}
 .x-panel-default-scroller{margin-top:-5px}
@@ -191,10 +191,7 @@
 .x-form-trigger-over{background:url('../image/trigger.gif') -24px 0 no-repeat}
 .x-form-date-trigger{background:url('../image/date-trigger.gif') no-repeat;margin-left:-1px;width:24px}
 .x-form-date-trigger-over,.x-form-date-trigger-click,.x-form-date-trigger-pressed{background:url('../image/date-trigger.gif') -24px 0 no-repeat;margin-left:-1px;width:24px}
-.resourceSelector .x-form-trigger{background:url('../image/selector-trigger.gif') no-repeat;margin-left:-1px;width:24px}
-.resourceSelector .x-form-trigger-over,.resourceSelector .x-form-trigger-click,.resourceSelector .x-form-trigger-pressed{
-	background:url('../image/selector-trigger.gif') -24px 0 no-repeat;margin-left:-1px;width:24px
-}
+
 .x-boundlist-item{background:url('../image/arrowRightGray.gif') 4px 8px no-repeat;padding:4px 4px 4px 11px;color:#333;font-size:11px;border-bottom:1px dotted #ccc;}
 .x-boundlist-item-over{background:url('../image/arrowRightBlue.gif') 4px 8px no-repeat;background-color:#fff;padding:4px 4px 4px 11px}
 
@@ -237,7 +234,7 @@
 .x-toolbar-footer-docked-bottom{border:1px solid #cfcfcf;border-width:1px 1px 0px 1px !important;height:27px;background-color:#f0f0f0}
 .btnCodeView{background:url('../image/iconCodeView.gif') -4px 2px no-repeat;height:21px !important}
 .x-over .btnCodeView{background:url('../image/iconCodeView.gif') -29px 2px no-repeat;height:21px !important}
-.searchPanel .x-btn-default-small-icon button{height:18px}
+.supplement .x-btn-default-small-icon button{height:18px}
 
 /* picker style*/
 table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
@@ -433,147 +430,147 @@ table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
 .icon_BOM2004{background:url('../image/menuIcon/3_3_4_Delete_BOM_History_16.png') no-repeat;}
 
 /* toolbar icon style */
-.appQuickIcon .icon_FAV1001{background:url('../image/menuIcon/1_1_14_Favorite_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_MSG1001{background:url('../image/menuIcon/2_1_1_Message_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_SEC1002{background:url('../image/menuIcon/2_2_2_Security_Group_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_SEC1003{background:url('../image/menuIcon/2_2_4_Function_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_SEC1004{background:url('../image/menuIcon/2_2_3_Assign_Function_to_Security_Group_32.png') no-repeat;}
-.appQuickIcon .icon_SEC1006{background:url('../image/menuIcon/2_2_6_Privilege_Group_User_Relation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_SEC1007{background:url('../image/menuIcon/2_2_7_Privilege_Definition_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_GCM1001{background:url('../image/menuIcon/2_3_1_General_Code_Table_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_GCM1002{background:url('../image/menuIcon/2_3_2_General_Code_Data_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_ALM1001{background:url('../image/menuIcon/2_10_1_Alarm_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_ALM1002{background:url('../image/menuIcon/2_10_2_Attach_Alarm_to_MFOResource_32.png') no-repeat;}
-.appQuickIcon .icon_BAS1001{background:url('../image/menuIcon/2_12_1_Attribute_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_BAS1002{background:url('../image/menuIcon/2_12_2_Global_Option_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1000{background:url('../image/menuIcon/2_12_2_Global_Option_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1001{background:url('../image/menuIcon/2_6_1_Resource_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1003{background:url('../image/menuIcon/2_6_2_Resource_Group_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1015{background:url('../image/menuIcon/2_6_3_Resource_Resource_Group_Relation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1016{background:url('../image/menuIcon/2_6_4_Resource_MFO_Relation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1004{background:url('../image/menuIcon/2_6_6_Resource_Event_Relation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1018{background:url('../image/menuIcon/2_6_16_Carrier_Group_Relation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1008{background:url('../image/menuIcon/2_6_14_Carrier_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1022{background:url('../image/menuIcon/2_6_17_Carrier_Event_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1005{background:url('../image/menuIcon/2_6_7_Resource_Labor_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1007{background:url('../image/menuIcon/2_6_9_PM_Security_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1010{background:url('../image/menuIcon/2_6_19_Tool_Event_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1012{background:url('../image/menuIcon/2_6_20_Tool_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1013{background:url('../image/menuIcon/2_6_21_Tool_Event_Relation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RAS1020{background:url('../image/menuIcon/2_6_12_Attach_Query_to_Check_List_32.png') no-repeat;}
-.appQuickIcon .icon_BOM1001{background:url('../image/menuIcon/2_5_1_BOM_Set_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_BOM1002{background:url('../image/menuIcon/2_5_2_Attach_Material_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_BOM1003{background:url('../image/menuIcon/2_5_3_Approval_and_Release_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_EDC1001{background:url('../image/menuIcon/2_7_1_Character_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_EDC1002{background:url('../image/menuIcon/2_7_2_Collection_Set_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_EDC1003{background:url('../image/menuIcon/2_7_3_Attach_Character_32.png') no-repeat;}
-.appQuickIcon .icon_EDC1004{background:url('../image/menuIcon/2_7_4_Attach_Collection_Set_to_MFO_32.png') no-repeat;}
-.appQuickIcon .icon_EDC1005{background:url('../image/menuIcon/2_7_5_Approval_and_Release_32.png') no-repeat;}
-.appQuickIcon .icon_RTD1001{background:url('../image/menuIcon/2_9_3_Dispatcher_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RTD1002{background:url('../image/menuIcon/2_9_1_Dispatcher_Rule_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RTD1003{background:url('../image/menuIcon/2_9_5_Dispatcher_Relation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RTD1004{background:url('../image/menuIcon/2_9_4_Dispatcher_Simulation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RTD1005{background:url('../image/menuIcon/2_9_2_Dispatcher_Rule_Item_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RTD1006{background:url('../image/menuIcon/2_9_6_Reference_Operation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RTD1007{background:url('../image/menuIcon/2_9_7_Dispatch_Event_Configuration_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_QCM1001{background:url('../image/menuIcon/2_11_1_Sampling_Procedure_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_QCM1002{background:url('../image/menuIcon/2_11_2_Inspection_Item_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_QCM1003{background:url('../image/menuIcon/2_11_3_Inspection_Set_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_QCM1004{background:url('../image/menuIcon/2_11_4_Attach_Inspection_Item_to_Version_32.png') no-repeat;}
-.appQuickIcon .icon_QCM1005{background:url('../image/menuIcon/2_11_5_Approval_and_Release_Inspection_Set_Version_32.png') no-repeat;}
-.appQuickIcon .icon_QCM1006{background:url('../image/menuIcon/2_11_6_Inspection_Material_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_POP1001{background:url('../image/menuIcon/2_13_1_Label_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_POP1002{background:url('../image/menuIcon/2_13_2_Label_Design_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_POP1003{background:url('../image/menuIcon/2_13_3_Material_Label_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_POP1004{background:url('../image/menuIcon/2_13_4_Image_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2001{background:url('../image/menuIcon/3_1_1_Create_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2003{background:url('../image/menuIcon/3_1_3_Multi_Start_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2060,.appQuickIcon .icon_WIP2062{background:url('../image/menuIcon/3_1_2_Start_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2004,.appQuickIcon .icon_WIP2063,.appQuickIcon .icon_WIP2061{background:url('../image/menuIcon/3_1_4_End_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2005{background:url('../image/menuIcon/3_1_5_Multi_End_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2006{background:url('../image/menuIcon/3_1_6_Move_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2022{background:url('../image/menuIcon/3_1_18_Ship_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2007{background:url('../image/menuIcon/3_1_8_Rework_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2024{background:url('../image/menuIcon/3_1_10_Repair_End_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2025{background:url('../image/menuIcon/3_1_11_Local_Repair_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2009{background:url('../image/menuIcon/3_1_13_Merge_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2010{background:url('../image/menuIcon/3_1_14_Combine_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2013{background:url('../image/menuIcon/3_1_17_Release_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2014{background:url('../image/menuIcon/3_1_18_Ship_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2015{background:url('../image/menuIcon/3_1_19_Receive_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2017{background:url('../image/menuIcon/3_1_21_Loss_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2018{background:url('../image/menuIcon/3_1_22_Bonus_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2026{background:url('../image/menuIcon/3_1_23_Store_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2049{background:url('../image/menuIcon/3_1_35_Multi_Terminate_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2019,.appQuickIcon .icon_WIP2059{background:url('../image/menuIcon/3_1_25_Delete_Lot_History_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2054{background:url('../image/menuIcon/3_1_37_Unreserve_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2021{background:url('../image/menuIcon/3_1_27_Close_Return_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2029{background:url('../image/menuIcon/3_1_29_Release_Batch_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2050{background:url('../image/menuIcon/3_1_38_Make_SubLot_Batch_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2051{background:url('../image/menuIcon/3_1_39_Reserve_Lot_Batch_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2052{background:url('../image/menuIcon/3_1_40_Reserve_SubLot_Batch_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2030{background:url('../image/menuIcon/3_1_30_Start_Batch_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2031{background:url('../image/menuIcon/3_1_31_End_Batch_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2033{background:url('../image/menuIcon/3_1_33_Clean_Lot_Defect_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2035{background:url('../image/menuIcon/3_6_1_Start_Sub_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2036{background:url('../image/menuIcon/3_6_2_End_Sub_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2037{background:url('../image/menuIcon/3_6_3_Rework_Sub_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2040{background:url('../image/menuIcon/3_6_7_Merge_Extension_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2041{background:url('../image/menuIcon/3_6_8_Combine_Extension_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2034,.appQuickIcon .icon_WIP2043{background:url('../image/menuIcon/3_6_10_Sort_Extension_32.png') no-repeat;}
-.appQuickIcon .icon_WIP2044{background:url('../image/menuIcon/3_6_11_Change_CMF_Value_WIP_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2001{background:url('../image/menuIcon/3_4_1_Event_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2002{background:url('../image/menuIcon/3_4_3_Delete_Resource_History_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2010{background:url('../image/menuIcon/3_4_4_Delete_Sub_Resource_History_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2003{background:url('../image/menuIcon/3_4_5_Clean_Carrier_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2004{background:url('../image/menuIcon/3_4_6_Attach_Lot_to_Carrier_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2008{background:url('../image/menuIcon/3_4_7_Attach_Carrier_to_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2009{background:url('../image/menuIcon/3_4_8_Assign_Sublot_to_Carrier_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2012{background:url('../image/menuIcon/3_4_9_Carrier_ChangeExchange_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2006{background:url('../image/menuIcon/3_4_12_Delete_Tool_History_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2014{background:url('../image/menuIcon/3_4_14_Change_Transfer_State_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2015{background:url('../image/menuIcon/3_4_15_Change_Association_State_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2016{background:url('../image/menuIcon/3_4_16_Change_Access_Mode_State_32.png') no-repeat;}
-.appQuickIcon .icon_RAS2017{background:url('../image/menuIcon/3_4_17_Change_Reservation_State_32.png') no-repeat;}
-.appQuickIcon .icon_EDC2001{background:url('../image/menuIcon/3_5_1_Collect_Lot_Data_32.png') no-repeat;}
-.appQuickIcon .icon_EDC2002{background:url('../image/menuIcon/3_5_2_Change_Lot_Data_32.png') no-repeat;}
-.appQuickIcon .icon_EDC2003{background:url('../image/menuIcon/3_5_3_Change_Resource_Data_32.png') no-repeat;}
-.appQuickIcon .icon_EDC2004{background:url('../image/menuIcon/3_5_4_Delete_Lot_Data_History_32.png') no-repeat;}
-.appQuickIcon .icon_EDC2005{background:url('../image/menuIcon/3_5_5_Delete_Resource_Data_History_32.png') no-repeat;}
-.appQuickIcon .icon_INV2001{background:url('../image/menuIcon/3_2_1_In_Store_32.png') no-repeat;}
-.appQuickIcon .icon_INV2002{background:url('../image/menuIcon/3_2_2_Out_Store_32.png') no-repeat;}
-.appQuickIcon .icon_INV2003{background:url('../image/menuIcon/3_2_3_Transfer_Store_32.png') no-repeat;}
-.appQuickIcon .icon_INV2004{background:url('../image/menuIcon/3_2_4_Convert_Inventory_Type_to_Lot_32.png') no-repeat;}
-.appQuickIcon .icon_INV2005{background:url('../image/menuIcon/3_2_5_Convert_Lot_to_Inventory_Type_32.png') no-repeat;}
-.appQuickIcon .icon_INV2006{background:url('../image/menuIcon/3_2_6_Consume_32.png') no-repeat;}
-.appQuickIcon .icon_INV2007{background:url('../image/menuIcon/3_2_7_Scrap_32.png') no-repeat;}
-.appQuickIcon .icon_INV2008{background:url('../image/menuIcon/3_2_8_Delete_Inventory_History_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1001{background:url('../image/menuIcon/2_4_1_Factory_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1002{background:url('../image/menuIcon/2_4_2_Material_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1003{background:url('../image/menuIcon/2_4_3_Flow_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1004{background:url('../image/menuIcon/2_4_4_Operation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1005{background:url('../image/menuIcon/2_4_5_Rework_Flow_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1006{background:url('../image/menuIcon/2_4_7_Cycle_Time_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1007{background:url('../image/menuIcon/2_4_8_Calendar_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1008{background:url('../image/menuIcon/2_4_9_Calendar_Setup_Detail_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1009{background:url('../image/menuIcon/2_4_6_Repair_Operation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1010{background:url('../image/menuIcon/2_4_11_Future_Action_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1011{background:url('../image/menuIcon/2_4_12_Queue_Time_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1013{background:url('../image/menuIcon/2_4_10_SubLot_Option_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1016{background:url('../image/menuIcon/2_4_14_MFO_Option_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1017{background:url('../image/menuIcon/2_4_15_Yield_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1018{background:url('../image/menuIcon/2_4_16_ID_Generator_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1019{background:url('../image/menuIcon/2_4_17_ID_Generator_Relation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1020{background:url('../image/menuIcon/2_4_18_Batch_Creation_Rule_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1021{background:url('../image/menuIcon/2_4_19_Batch_Creation_Rule_Relation_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WIP1012{background:url('../image/menuIcon/2_4_13_Batch_Keep_Flag_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RCP1001{background:url('../image/menuIcon/2_8_1_Recipe_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RCP1002{background:url('../image/menuIcon/2_8_2_Recipe_Version_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RCP1003{background:url('../image/menuIcon/2_8_3_Approval_and_Release_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_RCP1004{background:url('../image/menuIcon/2_8_4_Attach_Recipe_To_MFO_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_SVM1002{background:url('../image/menuIcon/2_14_2_Member_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_SVM1001{background:url('../image/menuIcon/2_14_1_Service_Member_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_SVM1003{background:url('../image/menuIcon/2_14_3_Active_Service_Version_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_SVM1004{background:url('../image/menuIcon/2_14_4_Service_User_Routine_Setup_32.png') no-repeat;}
-.appQuickIcon .icon_WFM1000{background:url('../image/menuIcon/2_15_1_WIP_Modeler_32.png') no-repeat;}
-.appQuickIcon .icon_WFM2000{background:url('../image/menuIcon/2_15_2_RAS_Modeler_32.png') no-repeat;}
+.appTool .icon_FAV1001{background:url('../image/menuIcon/1_1_14_Favorite_Setup_32.png') no-repeat;}
+.appTool .icon_MSG1001{background:url('../image/menuIcon/2_1_1_Message_Setup_32.png') no-repeat;}
+.appTool .icon_SEC1002{background:url('../image/menuIcon/2_2_2_Security_Group_Setup_32.png') no-repeat;}
+.appTool .icon_SEC1003{background:url('../image/menuIcon/2_2_4_Function_Setup_32.png') no-repeat;}
+.appTool .icon_SEC1004{background:url('../image/menuIcon/2_2_3_Assign_Function_to_Security_Group_32.png') no-repeat;}
+.appTool .icon_SEC1006{background:url('../image/menuIcon/2_2_6_Privilege_Group_User_Relation_Setup_32.png') no-repeat;}
+.appTool .icon_SEC1007{background:url('../image/menuIcon/2_2_7_Privilege_Definition_Setup_32.png') no-repeat;}
+.appTool .icon_GCM1001{background:url('../image/menuIcon/2_3_1_General_Code_Table_Setup_32.png') no-repeat;}
+.appTool .icon_GCM1002{background:url('../image/menuIcon/2_3_2_General_Code_Data_Setup_32.png') no-repeat;}
+.appTool .icon_ALM1001{background:url('../image/menuIcon/2_10_1_Alarm_Setup_32.png') no-repeat;}
+.appTool .icon_ALM1002{background:url('../image/menuIcon/2_10_2_Attach_Alarm_to_MFOResource_32.png') no-repeat;}
+.appTool .icon_BAS1001{background:url('../image/menuIcon/2_12_1_Attribute_Setup_32.png') no-repeat;}
+.appTool .icon_BAS1002{background:url('../image/menuIcon/2_12_2_Global_Option_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1000{background:url('../image/menuIcon/2_12_2_Global_Option_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1001{background:url('../image/menuIcon/2_6_1_Resource_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1003{background:url('../image/menuIcon/2_6_2_Resource_Group_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1015{background:url('../image/menuIcon/2_6_3_Resource_Resource_Group_Relation_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1016{background:url('../image/menuIcon/2_6_4_Resource_MFO_Relation_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1004{background:url('../image/menuIcon/2_6_6_Resource_Event_Relation_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1018{background:url('../image/menuIcon/2_6_16_Carrier_Group_Relation_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1008{background:url('../image/menuIcon/2_6_14_Carrier_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1022{background:url('../image/menuIcon/2_6_17_Carrier_Event_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1005{background:url('../image/menuIcon/2_6_7_Resource_Labor_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1007{background:url('../image/menuIcon/2_6_9_PM_Security_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1010{background:url('../image/menuIcon/2_6_19_Tool_Event_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1012{background:url('../image/menuIcon/2_6_20_Tool_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1013{background:url('../image/menuIcon/2_6_21_Tool_Event_Relation_Setup_32.png') no-repeat;}
+.appTool .icon_RAS1020{background:url('../image/menuIcon/2_6_12_Attach_Query_to_Check_List_32.png') no-repeat;}
+.appTool .icon_BOM1001{background:url('../image/menuIcon/2_5_1_BOM_Set_Setup_32.png') no-repeat;}
+.appTool .icon_BOM1002{background:url('../image/menuIcon/2_5_2_Attach_Material_Setup_32.png') no-repeat;}
+.appTool .icon_BOM1003{background:url('../image/menuIcon/2_5_3_Approval_and_Release_Setup_32.png') no-repeat;}
+.appTool .icon_EDC1001{background:url('../image/menuIcon/2_7_1_Character_Setup_32.png') no-repeat;}
+.appTool .icon_EDC1002{background:url('../image/menuIcon/2_7_2_Collection_Set_Setup_32.png') no-repeat;}
+.appTool .icon_EDC1003{background:url('../image/menuIcon/2_7_3_Attach_Character_32.png') no-repeat;}
+.appTool .icon_EDC1004{background:url('../image/menuIcon/2_7_4_Attach_Collection_Set_to_MFO_32.png') no-repeat;}
+.appTool .icon_EDC1005{background:url('../image/menuIcon/2_7_5_Approval_and_Release_32.png') no-repeat;}
+.appTool .icon_RTD1001{background:url('../image/menuIcon/2_9_3_Dispatcher_Setup_32.png') no-repeat;}
+.appTool .icon_RTD1002{background:url('../image/menuIcon/2_9_1_Dispatcher_Rule_Setup_32.png') no-repeat;}
+.appTool .icon_RTD1003{background:url('../image/menuIcon/2_9_5_Dispatcher_Relation_Setup_32.png') no-repeat;}
+.appTool .icon_RTD1004{background:url('../image/menuIcon/2_9_4_Dispatcher_Simulation_Setup_32.png') no-repeat;}
+.appTool .icon_RTD1005{background:url('../image/menuIcon/2_9_2_Dispatcher_Rule_Item_Setup_32.png') no-repeat;}
+.appTool .icon_RTD1006{background:url('../image/menuIcon/2_9_6_Reference_Operation_Setup_32.png') no-repeat;}
+.appTool .icon_RTD1007{background:url('../image/menuIcon/2_9_7_Dispatch_Event_Configuration_Setup_32.png') no-repeat;}
+.appTool .icon_QCM1001{background:url('../image/menuIcon/2_11_1_Sampling_Procedure_Setup_32.png') no-repeat;}
+.appTool .icon_QCM1002{background:url('../image/menuIcon/2_11_2_Inspection_Item_Setup_32.png') no-repeat;}
+.appTool .icon_QCM1003{background:url('../image/menuIcon/2_11_3_Inspection_Set_Setup_32.png') no-repeat;}
+.appTool .icon_QCM1004{background:url('../image/menuIcon/2_11_4_Attach_Inspection_Item_to_Version_32.png') no-repeat;}
+.appTool .icon_QCM1005{background:url('../image/menuIcon/2_11_5_Approval_and_Release_Inspection_Set_Version_32.png') no-repeat;}
+.appTool .icon_QCM1006{background:url('../image/menuIcon/2_11_6_Inspection_Material_Setup_32.png') no-repeat;}
+.appTool .icon_POP1001{background:url('../image/menuIcon/2_13_1_Label_Setup_32.png') no-repeat;}
+.appTool .icon_POP1002{background:url('../image/menuIcon/2_13_2_Label_Design_Setup_32.png') no-repeat;}
+.appTool .icon_POP1003{background:url('../image/menuIcon/2_13_3_Material_Label_Setup_32.png') no-repeat;}
+.appTool .icon_POP1004{background:url('../image/menuIcon/2_13_4_Image_Setup_32.png') no-repeat;}
+.appTool .icon_WIP2001{background:url('../image/menuIcon/3_1_1_Create_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2003{background:url('../image/menuIcon/3_1_3_Multi_Start_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2060,.appTool .icon_WIP2062{background:url('../image/menuIcon/3_1_2_Start_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2004,.appTool .icon_WIP2063,.appTool .icon_WIP2061{background:url('../image/menuIcon/3_1_4_End_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2005{background:url('../image/menuIcon/3_1_5_Multi_End_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2006{background:url('../image/menuIcon/3_1_6_Move_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2022{background:url('../image/menuIcon/3_1_18_Ship_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2007{background:url('../image/menuIcon/3_1_8_Rework_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2024{background:url('../image/menuIcon/3_1_10_Repair_End_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2025{background:url('../image/menuIcon/3_1_11_Local_Repair_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2009{background:url('../image/menuIcon/3_1_13_Merge_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2010{background:url('../image/menuIcon/3_1_14_Combine_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2013{background:url('../image/menuIcon/3_1_17_Release_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2014{background:url('../image/menuIcon/3_1_18_Ship_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2015{background:url('../image/menuIcon/3_1_19_Receive_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2017{background:url('../image/menuIcon/3_1_21_Loss_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2018{background:url('../image/menuIcon/3_1_22_Bonus_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2026{background:url('../image/menuIcon/3_1_23_Store_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2049{background:url('../image/menuIcon/3_1_35_Multi_Terminate_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2019,.appTool .icon_WIP2059{background:url('../image/menuIcon/3_1_25_Delete_Lot_History_32.png') no-repeat;}
+.appTool .icon_WIP2054{background:url('../image/menuIcon/3_1_37_Unreserve_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2021{background:url('../image/menuIcon/3_1_27_Close_Return_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2029{background:url('../image/menuIcon/3_1_29_Release_Batch_32.png') no-repeat;}
+.appTool .icon_WIP2050{background:url('../image/menuIcon/3_1_38_Make_SubLot_Batch_32.png') no-repeat;}
+.appTool .icon_WIP2051{background:url('../image/menuIcon/3_1_39_Reserve_Lot_Batch_32.png') no-repeat;}
+.appTool .icon_WIP2052{background:url('../image/menuIcon/3_1_40_Reserve_SubLot_Batch_32.png') no-repeat;}
+.appTool .icon_WIP2030{background:url('../image/menuIcon/3_1_30_Start_Batch_32.png') no-repeat;}
+.appTool .icon_WIP2031{background:url('../image/menuIcon/3_1_31_End_Batch_32.png') no-repeat;}
+.appTool .icon_WIP2033{background:url('../image/menuIcon/3_1_33_Clean_Lot_Defect_32.png') no-repeat;}
+.appTool .icon_WIP2035{background:url('../image/menuIcon/3_6_1_Start_Sub_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2036{background:url('../image/menuIcon/3_6_2_End_Sub_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2037{background:url('../image/menuIcon/3_6_3_Rework_Sub_Lot_32.png') no-repeat;}
+.appTool .icon_WIP2040{background:url('../image/menuIcon/3_6_7_Merge_Extension_32.png') no-repeat;}
+.appTool .icon_WIP2041{background:url('../image/menuIcon/3_6_8_Combine_Extension_32.png') no-repeat;}
+.appTool .icon_WIP2034,.appTool .icon_WIP2043{background:url('../image/menuIcon/3_6_10_Sort_Extension_32.png') no-repeat;}
+.appTool .icon_WIP2044{background:url('../image/menuIcon/3_6_11_Change_CMF_Value_WIP_32.png') no-repeat;}
+.appTool .icon_RAS2001{background:url('../image/menuIcon/3_4_1_Event_32.png') no-repeat;}
+.appTool .icon_RAS2002{background:url('../image/menuIcon/3_4_3_Delete_Resource_History_32.png') no-repeat;}
+.appTool .icon_RAS2010{background:url('../image/menuIcon/3_4_4_Delete_Sub_Resource_History_32.png') no-repeat;}
+.appTool .icon_RAS2003{background:url('../image/menuIcon/3_4_5_Clean_Carrier_32.png') no-repeat;}
+.appTool .icon_RAS2004{background:url('../image/menuIcon/3_4_6_Attach_Lot_to_Carrier_32.png') no-repeat;}
+.appTool .icon_RAS2008{background:url('../image/menuIcon/3_4_7_Attach_Carrier_to_Lot_32.png') no-repeat;}
+.appTool .icon_RAS2009{background:url('../image/menuIcon/3_4_8_Assign_Sublot_to_Carrier_32.png') no-repeat;}
+.appTool .icon_RAS2012{background:url('../image/menuIcon/3_4_9_Carrier_ChangeExchange_32.png') no-repeat;}
+.appTool .icon_RAS2006{background:url('../image/menuIcon/3_4_12_Delete_Tool_History_32.png') no-repeat;}
+.appTool .icon_RAS2014{background:url('../image/menuIcon/3_4_14_Change_Transfer_State_32.png') no-repeat;}
+.appTool .icon_RAS2015{background:url('../image/menuIcon/3_4_15_Change_Association_State_32.png') no-repeat;}
+.appTool .icon_RAS2016{background:url('../image/menuIcon/3_4_16_Change_Access_Mode_State_32.png') no-repeat;}
+.appTool .icon_RAS2017{background:url('../image/menuIcon/3_4_17_Change_Reservation_State_32.png') no-repeat;}
+.appTool .icon_EDC2001{background:url('../image/menuIcon/3_5_1_Collect_Lot_Data_32.png') no-repeat;}
+.appTool .icon_EDC2002{background:url('../image/menuIcon/3_5_2_Change_Lot_Data_32.png') no-repeat;}
+.appTool .icon_EDC2003{background:url('../image/menuIcon/3_5_3_Change_Resource_Data_32.png') no-repeat;}
+.appTool .icon_EDC2004{background:url('../image/menuIcon/3_5_4_Delete_Lot_Data_History_32.png') no-repeat;}
+.appTool .icon_EDC2005{background:url('../image/menuIcon/3_5_5_Delete_Resource_Data_History_32.png') no-repeat;}
+.appTool .icon_INV2001{background:url('../image/menuIcon/3_2_1_In_Store_32.png') no-repeat;}
+.appTool .icon_INV2002{background:url('../image/menuIcon/3_2_2_Out_Store_32.png') no-repeat;}
+.appTool .icon_INV2003{background:url('../image/menuIcon/3_2_3_Transfer_Store_32.png') no-repeat;}
+.appTool .icon_INV2004{background:url('../image/menuIcon/3_2_4_Convert_Inventory_Type_to_Lot_32.png') no-repeat;}
+.appTool .icon_INV2005{background:url('../image/menuIcon/3_2_5_Convert_Lot_to_Inventory_Type_32.png') no-repeat;}
+.appTool .icon_INV2006{background:url('../image/menuIcon/3_2_6_Consume_32.png') no-repeat;}
+.appTool .icon_INV2007{background:url('../image/menuIcon/3_2_7_Scrap_32.png') no-repeat;}
+.appTool .icon_INV2008{background:url('../image/menuIcon/3_2_8_Delete_Inventory_History_32.png') no-repeat;}
+.appTool .icon_WIP1001{background:url('../image/menuIcon/2_4_1_Factory_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1002{background:url('../image/menuIcon/2_4_2_Material_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1003{background:url('../image/menuIcon/2_4_3_Flow_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1004{background:url('../image/menuIcon/2_4_4_Operation_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1005{background:url('../image/menuIcon/2_4_5_Rework_Flow_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1006{background:url('../image/menuIcon/2_4_7_Cycle_Time_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1007{background:url('../image/menuIcon/2_4_8_Calendar_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1008{background:url('../image/menuIcon/2_4_9_Calendar_Setup_Detail_32.png') no-repeat;}
+.appTool .icon_WIP1009{background:url('../image/menuIcon/2_4_6_Repair_Operation_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1010{background:url('../image/menuIcon/2_4_11_Future_Action_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1011{background:url('../image/menuIcon/2_4_12_Queue_Time_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1013{background:url('../image/menuIcon/2_4_10_SubLot_Option_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1016{background:url('../image/menuIcon/2_4_14_MFO_Option_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1017{background:url('../image/menuIcon/2_4_15_Yield_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1018{background:url('../image/menuIcon/2_4_16_ID_Generator_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1019{background:url('../image/menuIcon/2_4_17_ID_Generator_Relation_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1020{background:url('../image/menuIcon/2_4_18_Batch_Creation_Rule_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1021{background:url('../image/menuIcon/2_4_19_Batch_Creation_Rule_Relation_Setup_32.png') no-repeat;}
+.appTool .icon_WIP1012{background:url('../image/menuIcon/2_4_13_Batch_Keep_Flag_Setup_32.png') no-repeat;}
+.appTool .icon_RCP1001{background:url('../image/menuIcon/2_8_1_Recipe_Setup_32.png') no-repeat;}
+.appTool .icon_RCP1002{background:url('../image/menuIcon/2_8_2_Recipe_Version_Setup_32.png') no-repeat;}
+.appTool .icon_RCP1003{background:url('../image/menuIcon/2_8_3_Approval_and_Release_Setup_32.png') no-repeat;}
+.appTool .icon_RCP1004{background:url('../image/menuIcon/2_8_4_Attach_Recipe_To_MFO_Setup_32.png') no-repeat;}
+.appTool .icon_SVM1002{background:url('../image/menuIcon/2_14_2_Member_Setup_32.png') no-repeat;}
+.appTool .icon_SVM1001{background:url('../image/menuIcon/2_14_1_Service_Member_Setup_32.png') no-repeat;}
+.appTool .icon_SVM1003{background:url('../image/menuIcon/2_14_3_Active_Service_Version_Setup_32.png') no-repeat;}
+.appTool .icon_SVM1004{background:url('../image/menuIcon/2_14_4_Service_User_Routine_Setup_32.png') no-repeat;}
+.appTool .icon_WFM1000{background:url('../image/menuIcon/2_15_1_WIP_Modeler_32.png') no-repeat;}
+.appTool .icon_WFM2000{background:url('../image/menuIcon/2_15_2_RAS_Modeler_32.png') no-repeat;}

@@ -3,8 +3,8 @@ Ext.define('CMN.view.viewport.East', {
 
 	alias : 'widget.viewport.east',
 	id : 'east',
-	cls : 'dockNavigation searchPanel',
-	title :'Search',
+	cls : 'nav supplement',
+	title :'Supplement',
 	
 	layout : 'card',
 	
@@ -43,7 +43,7 @@ Ext.define('CMN.view.viewport.East', {
 	 */
 	
 	items : [{
-		xtype : 'panel',
+		xtype : 'box',
 		itemId : 'base',
 		html : '이 화면은 디폴트 화면입니다.'
 	}]

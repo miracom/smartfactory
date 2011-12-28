@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
     <defaultCache eternal="true" maxElementsInMemory="100" overflowToDisk="false" />
-    <cache name="menus" maxElementsInMemory="100" eternal="true" overflowToDisk="false" timeToLiveSeconds="60" />
+    <cache name="mainmenus" maxElementsInMemory="100" eternal="true" overflowToDisk="false" timeToLiveSeconds="60" />
     <cache name="favorites" maxElementsInMemory="100" eternal="true" overflowToDisk="false" timeToLiveSeconds="60" />
 </ehcache>
