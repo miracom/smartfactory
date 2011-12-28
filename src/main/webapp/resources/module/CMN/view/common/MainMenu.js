@@ -1,13 +1,13 @@
-Ext.define('CMN.view.common.Menu', {
+Ext.define('CMN.view.common.MainMenu', {
 	extend : 'Ext.toolbar.Toolbar',
 
-	alias : 'widget.cmn.menu',
+	alias : 'widget.cmn.mainmenu',
 
-	id : 'menu',
+	id : 'mainmenu',
 
 	listeners : {
 		render : function(comp, obj) {
-			var store = Ext.StoreManager.lookup('CMN.store.MenuStore');
+			var store = Ext.StoreManager.lookup('CMN.store.MainMenuStore');
 			/* 이미 로딩되어있을 수 있으므로, 먼저 로드를 한 번하고, 리스너를 연결한다. */
 			this.reloadToolbarItems(store);
 			store.on('load', this.reloadToolbarItems, this);

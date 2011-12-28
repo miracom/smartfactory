@@ -1,5 +1,5 @@
 Ext.define('plugin.UserInterface', {
-	addDockingNav : function(view, config) {
+	addNav : function(view, config) {
 		var defaults = {
 			tabConfig : {
 				width : 29,
@@ -10,8 +10,8 @@ Ext.define('plugin.UserInterface', {
 
 		try {
 			var navView = Ext.create(view, Ext.merge(defaults, config));
-			Ext.getCmp('docked_nav').add(navView);
-			var searchStore = Ext.getStore('cmn.search_store');
+			Ext.getCmp('nav').add(navView);
+			var searchStore = Ext.getStore('cmn.appsearch_store');
 			if(searchStore) {
 				searchStore.add({
 					kind : 'nav',
@@ -19,7 +19,7 @@ Ext.define('plugin.UserInterface', {
 					name : config.title,
 					desc : config.title,
 					handler : function(searchRecord) {
-						Ext.getCmp('docked_nav').setActiveTab(navView);
+						Ext.getCmp('nav').setActiveTab(navView);
 					}
 				});
 			}
@@ -29,20 +29,20 @@ Ext.define('plugin.UserInterface', {
 		}
 	},
 
-	addSystemMenu : function(view, config) {
+	addSideMenu : function(view, config) {
 		try {
-			var system_menu = Ext.getCmp('system_menu');
+			var sidemenu = Ext.getCmp('sidemenu');
 			var menu = Ext.create(view, config);
 
-			system_menu.insert(0, menu);
+			sidemenu.insert(0, menu);
 
 			var width = 6; // TODO should be more systemic.
 
-			system_menu.items.each(function(el) {
+			sidemenu.items.each(function(el) {
 				width += el.getWidth();
 			});
 
-			system_menu.setSize(width, system_menu.getHeight());
+			sidemenu.setSize(width, sidemenu.getHeight());
 		} catch (e) {
 			// console.log(e);
 		}
@@ -74,15 +74,15 @@ Ext.define('plugin.UserInterface', {
 	},
 
 	setStatus : function(state) {
-		Ext.getCmp('statusbar').setStatus(state);
+		Ext.getCmp('status').setStatus(state);
 	},
 
 	showBusy : function(o) {
-		Ext.getCmp('statusbar').showBusy(o);
+		Ext.getCmp('status').showBusy(o);
 	},
 
 	clearStatus : function() {
-		Ext.getCmp('statusbar').clearStatus();
+		Ext.getCmp('status').clearStatus();
 	},
 
 	doMenu : function(menu) {

@@ -14,7 +14,7 @@ Ext.define('WIP.controller.WIPController', {
 	},
 
 	onViewportRendered : function() {
-		SmartFactory.addDockingNav('WIP.view.NavOperation', {
+		SmartFactory.addNav('WIP.view.NavOperation', {
 			iconCls : 'iconsetDockOperation',
 			itemId : 'navOperation',
 			title : 'operation'

@@ -1,7 +1,7 @@
-Ext.define('CMN.view.common.SearchField', {
+Ext.define('CMN.view.common.AppSearchField', {
 	extend : 'Ext.form.field.ComboBox',
 
-	alias : 'widget.cmn.searchfield',
+	alias : 'widget.cmn.appsearchfield',
 	
 	queryMode : 'local',
 	

@@ -1,20 +1,20 @@
-Ext.define('CMN.store.MenuStore', {
+Ext.define('CMN.store.MainMenuStore', {
 	extend : 'Ext.data.TreeStore',
 
-	storeId : 'cmn.menu_store',
+	storeId : 'cmn.mainmenu_store',
 
 	autoLoad : false,
 
-	model : 'CMN.model.Menu',
+	model : 'CMN.model.MainMenu',
 
 	root : {
-		text : 'Menu',
+		text : 'MainMenu',
 		expanded : true
 	},
 
 	proxy : {
 		type : 'ajax',
-		url : 'module/CMN/data/menus.json',
+		url : 'module/CMN/data/mainmenus.json',
 		reader : {
 			type : 'json'
 		}
@@ -27,7 +27,7 @@ Ext.define('CMN.store.MenuStore', {
 			/* 
 			 * 이미 SearchStore에 등록되어있는 메뉴들을 다 제거한다.
 			 */
-			var searchStore = Ext.getStore('cmn.search_store');
+			var searchStore = Ext.getStore('cmn.appsearch_store');
 			searchStore.each(function(record) {
 				if (record.get('kind') === 'menu')
 					this.remove(record);
