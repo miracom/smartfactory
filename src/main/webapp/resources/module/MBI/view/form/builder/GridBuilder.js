@@ -5,6 +5,8 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 	},
 	buildGrid : function(){
 		//return Ext.create('Ext.panel.Panel',{
+		var storeDetail = this.store;
+		//this.storeDetailInfo
 		return Ext.create('Ext.container.Container',{
 			bodyPadding: 3,
 			layout : {
@@ -12,25 +14,26 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 				align : 'stretch'
 			},
 			flex : this.flex,
-			items :[{
+			items :{
                 xtype: 'tabpanel',
                 flex : 1,
                 plain: true,
-                items: [{
-                    title: this.getTitle(1),
-                    bodyPadding: 3,
-                    items : [{
-                    	xtype : 'grid',
-						store : this.store,
+                items:this.buildTab(storeDetail) 
+            },
+		});
+	},
+	buildTab : function(storeDetail){
+		var items = [];
+		if(this.spreadId instanceof Array) {
+			for(var i in this.spreadId){
+				items.push({
+	                title: this.getTitle(1,this.spreadId[i]),
+	                bodyPadding: 3,
+	                items : [{
+	                	xtype : 'grid',
+						store : storeDetail[i],
 						selModel: Ext.create('Ext.selection.CheckboxModel'),
-//					    selModel: Ext.create('Ext.selection.CheckboxModel',{ 
-//					    	listeners:{ 
-//					    		selectionchange: function(selModel, selected) {
-//					    			if (selected.length) alert('record :'+selected[0]);
-//			                	}
-//					    	}
-//			            }),
-						columns : this.buildColumn(),
+						columns : this.buildColumn(this.spreadId[i]),
 						columnLines : true,
 						autoScroll : true,
 				        viewConfig: {
@@ -39,22 +42,54 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 				        split: true,
 				        height : '100%',
 				        clickRecord : this.clickRecord,
+				        panelId : this.panelId,
 						listeners: {
 			                selectionchange: function(selModel, selected) {
 			                	if (selected.length){
+			                		var panel = Ext.getCmp(this.panelId);
+			                		console.log(panel);
 			                		this.clickRecord.apply(this.client, [selModel, selected]);
 			                	}
 			            	}
 			            }
-                    }]
+	                }]
+				});
+			}
+		}
+		else{
+			items.push({
+                title: this.getTitle(1,this.spreadId),
+                bodyPadding: 3,
+                items : [{
+                	xtype : 'grid',
+					store : this.store,
+					selModel: Ext.create('Ext.selection.CheckboxModel'),
+					columns : this.buildColumn(this.spreadId),
+					columnLines : true,
+					autoScroll : true,
+			        viewConfig: {
+			            forceFit: true
+			        },
+			        split: true,
+			        height : '100%',
+			        clickRecord : this.clickRecord,
+			        panelId : this.panelId,
+					listeners: {
+		                selectionchange: function(selModel, selected) {
+		                	if (selected.length){
+		                		var panel = Ext.getCmp(this.panelId);
+		                		panel.onClickGrid(selModel, selected);
+		                	}
+		            	}
+		            }
                 }]
-			}]
-		});
+			});
+		}
+		return items;
 	},
-
 	//Display_Type = { "0", "1", "2", "3", "4", "5", "6", "7", "8" }
 	//{ "CodeView", "CheckBox", "ComboBox", "Date", "DateTime", "Edit", "Int", "Number", "Time" }
-	buildColumn : function(){
+	buildColumn : function(spreadId){
 		//var map = this.formInfoData.get(0).data;
 		var mapdefS2Nt = this.formInfoData.get(0).data.mapdefS2Nt;
 		var mapColums = [];
@@ -64,7 +99,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 		// hidden flag 추가
 		for(var i in mapdefS2Nt){
 			//if (mapdefS2Nt[i].spread_level == this.spreadLevel){
-			if (mapdefS2Nt[i].spread_id == this.spreadId && mapdefS2Nt[i].col_code){
+			if (mapdefS2Nt[i].spread_id == spreadId && mapdefS2Nt[i].col_code){
 					
 				if (mapdefS2Nt[i].display_type == 4 ){
 					mapColums.push({
@@ -92,12 +127,20 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 		};
 		return mapColums;
 	},
-	getTitle : function(lang_flag){
-		var mapdefS2Nt =  this.formInfoData.get(0).data.mapdefS2Nt;
+	getTitle : function(lang_flag,spreadId){
+		//var mapdefS2Nt =  this.formInfoData.get(0).data.mapdefS2Nt;
+		var mapdefS2Nt = new Ext.util.MixedCollection();
+		mapdefS2Nt.addAll(this.formInfoData.get(0).data.mapdefS2Nt);
 		//if (lang_flag == 2) return 	mapdefS2Nt[0].tab_text2;
 		//if (lang_flag == 3) return 	mapdefS2Nt[0].tab_text3;
 		//else return 	mapdefS2Nt[0].tab_text1;
-		return '[ '+mapdefS2Nt[0].tab_text1+' ]';
+		var spdFilter = new Ext.util.Filter({
+			property : 'spread_id',
+			value : spreadId
+		});
+		mapdefS2Nt = mapdefS2Nt.filter(spdFilter);
+		
+		return mapdefS2Nt.items[0].tab_text1;
 	}
 	
 });

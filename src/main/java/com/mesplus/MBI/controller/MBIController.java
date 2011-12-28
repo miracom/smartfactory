@@ -308,11 +308,11 @@ public class MBIController {
 		
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
-		String col_param = request.getParameter("col_param");
+		String col_param = request.getParameter("param");
 		String cond_param = request.getParameter("cond_param");
 		String lang_flag = "1";
 		
-		logger.info("CondParam : " + cond_param);
+		logger.info("params : " +func_id +"/" +spd_id+"/" +col_param+"/" +cond_param);
 		
 		return formDao.dynamicS2NtDao(fac_id, func_id, spd_id, col_param,cond_param,lang_flag);
 	}
