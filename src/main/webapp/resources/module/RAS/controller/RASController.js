@@ -15,7 +15,9 @@ Ext.define('RAS.controller.RASController', {
 
 	onViewportRendered : function() {
 		SmartFactory.addDockingNav('RAS.view.NavResource', {
-			iconCls : 'iconsetDockResource'
+			iconCls : 'iconsetDockResource',
+			itemId : 'navResource',
+			title : 'resource'
 		});
 	}
 });

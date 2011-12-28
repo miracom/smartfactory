@@ -26,16 +26,20 @@ Ext.define('CMN.controller.CMNController', {
 	},
 
 	onViewportRendered : function() {
+		SmartFactory.addSystemMenu('CMN.view.common.SearchField', {
+			store : Ext.create('CMN.store.SearchStore')
+		});
+		
 		SmartFactory.addDockingNav('CMN.view.common.NavMenu', {
-    		iconCls : 'iconsetDockMenu'
+    		iconCls : 'iconsetDockMenu',
+			itemId : 'navMenu',
+			title : 'menu'
 		});
 		
 		SmartFactory.addDockingNav('CMN.view.common.NavFavorite', {
-    		iconCls : 'iconsetDockFavor'
-		});
-		
-		SmartFactory.addSystemMenu('CMN.view.common.SearchField', {
-			store : Ext.create('CMN.store.SearchStore')
+    		iconCls : 'iconsetDockFavor',
+			itemId : 'navFavor',
+			title : 'favorite'
 		});
 		
 		SmartFactory.addContentView('CMN.view.map.Map');

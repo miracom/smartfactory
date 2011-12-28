@@ -6,7 +6,8 @@ Ext.define('CMN.view.map.Map', {
 	
 	title : 'Common Map',
 	
-	supplement : Ext.create('Ext.form.Panel', {
+	supplement : {
+		xtype : 'form',
 		layout : {
 			type : 'vbox',
 			align : 'stretch'
@@ -20,7 +21,7 @@ Ext.define('CMN.view.map.Map', {
 			fieldLabel : 'Longitude',
 			name : 'langitude'
 		}] 
-	}),
+	},
 	
 	layout : 'fit',
 	

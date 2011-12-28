@@ -3,7 +3,11 @@ Ext.define('CMN.view.common.SearchField', {
 
 	alias : 'widget.cmn.searchfield',
 	
-	displayField: 'func_name',
+	queryMode : 'local',
+	
+	displayField: 'key',
+	
+	matchFieldWidth : false,
 
     typeAhead: true,
 	
@@ -12,7 +16,16 @@ Ext.define('CMN.view.common.SearchField', {
 		emptyText : 'No matching functions found.',
 
 		getInnerTpl : function() {
-			return '<div>{func_name} - {user_func_desc}</div>'; 
+			return '<div class="appSearchItem"><span class="kind">{kind}</span> <span class="key">{key}</span>: {name}</div>'; 
+		}, 
+		minWidth : 200
+	},
+	
+	listeners : {
+		'select' : function(combo, records, eOpts) {
+			var record = records[0];
+			record.get('handler').call(this, record);
+			combo.setValue('');
 		}
 	}
 });
