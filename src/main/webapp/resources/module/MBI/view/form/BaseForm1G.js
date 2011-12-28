@@ -34,6 +34,7 @@ Ext.define('MBI.view.form.BaseForm1G', {
 			store : this.storeInfo,
 			flex : 1,
 			spreadId : 1,
+			panelId : this.id,
 			clickRecord : this.onClickGrid
 		}).buildGrid();
 
