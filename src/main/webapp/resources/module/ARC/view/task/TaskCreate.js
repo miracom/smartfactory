@@ -1,5 +1,5 @@
 Ext.define('ARC.view.task.TaskCreate', {
-	extend : 'Ext.panel.Panel',
+	extend : 'Ext.form.Panel',
 	layout : {
 		align : 'stretch',
 		type : 'hbox'
@@ -7,27 +7,45 @@ Ext.define('ARC.view.task.TaskCreate', {
 	bodyPadding : 10,
 	initComponent : function() {
 		this.callParent();
-		
+
 		this.tableListStore = this.bulidTableListStore();
-		
-		this.add(this.buildlistNamePanel());
-		this.add(this.buildlistDescPanel());
-		
+		this.dbListStore = this.bulidDbListStore();
+
+		this.leftPanel = this.add(this.buildLeftPanel());
+		this.rightPanel = this.add(this.buildRightPanel());
+
 		this.tableListStore.load();
+		this.dbListStore.load();
 	},
-	
-	bulidTableListStore : function()
-	{
+
+	bulidDbListStore : function() {
+		return Ext.create('ARC.store.DbListStore');
+	},
+
+	bulidTableListStore : function() {
 		return Ext.create('ARC.store.TableListStore');
 	},
 
 	buttons : [ {
 		text : 'CREATE',
-		listeners : {
-			click : function() {
-				alert('CREATE');
-			}
-		}
+		formBind: true, //only enabled once the form is valid
+        disabled: true,
+        handler: function() {
+            var form = this.up('form').getForm();
+            if (form.isValid()) {
+            	console.log(form.getValues()); 
+            	//전송시 item의 name을 key로 전송
+                form.submit({	
+                	url: 'module/ARC/data/taskCreate.json',
+                	success: function(form, action) {
+                       Ext.Msg.alert('Success', action.result.msg);
+                    },
+                    failure: function(form, action) {
+                        Ext.Msg.alert('Failed', action.result.msg);
+                    }
+                });
+            }
+        }
 	}, {
 		text : 'CANCEL',
 		listeners : {
@@ -37,7 +55,7 @@ Ext.define('ARC.view.task.TaskCreate', {
 		}
 	} ],
 
-	buildlistNamePanel : function() {
+	buildLeftPanel : function() {
 		return {
 			xtype : 'fieldset',
 			title : 'Task Info',
@@ -50,31 +68,31 @@ Ext.define('ARC.view.task.TaskCreate', {
 			items : [ {
 				xtype : 'combobox',
 				fieldLabel : 'DB Name',
-				store : Ext.create('Ext.data.Store', {
-					fields : [ 'abbr', 'name' ],
-					data : [ {
-						"abbr" : "LOT_DEL_TIME",
-						"name" : "LOT_DEL_TIME"
-					} ]
-				}),
+				store : this.dbListStore,
 				queryMode : 'local',
-				displayField : 'name',
-				valueField : 'abbr',
+				displayField : 'DB_NAME',
+				valueField : 'DB_NAME',
+				name: 'cbdbname'
 			}, {
 				xtype : 'textfield',
 				fieldLabel : 'Archive Task',
+				name: 'txttask'
 			}, {
 				xtype : 'textfield',
 				fieldLabel : 'Master Table',
-			},{
+				itemId : 'txtmaster',
+				name: 'txtmaster'
+			}, {
+				xtype : 'textareafield',
 				fieldLabel : '[Task Description]',
 				labelSeparator : '',
 				labelAlign : 'top',
-				xtype : 'textareafield'
+				name: 'txtdescription'
 			} ]
 		};
 	},
-	buildlistDescPanel : function() {
+
+	buildRightPanel : function() {
 
 		return {
 			xtype : 'container',
@@ -83,12 +101,15 @@ Ext.define('ARC.view.task.TaskCreate', {
 				align : 'stretch',
 				type : 'vbox'
 			},
-			items : [ this.buildKeyFieldPanel() ]
+			items : [ this.buildTableGrid() ]
 		};
 
 	},
 
-	buildKeyFieldPanel : function() {
+	buildTableGrid : function() {
+		
+		var me = this;
+		
 		return {
 			xtype : 'container',
 			flex : 1,
@@ -97,8 +118,48 @@ Ext.define('ARC.view.task.TaskCreate', {
 				type : 'vbox'
 			},
 			items : [ {
-				xtype : 'textfield',
-				fieldLabel : 'Table Name',
+				xtype : 'container',
+				layout : {
+					align : 'top',
+					type : 'hbox'
+				},
+				height : 30,
+				items : [ {
+					xtype : 'textfield',
+					itemId : 'txtserach',
+					name: 'txtserach',
+					fieldLabel : 'Table Name',
+					flex : 1,
+					margins : '0 5 0 0',
+					enableKeyEvents : true, // textfield의 KeyEvent 사용여부
+					listeners : {
+						keydown : function(t, e) {
+							if (e.keyCode == 13) {
+								//like 검색
+								me.tableListStore.clearFilter(true);
+								me.tableListStore.filter([ {
+									property : "TABLE_NAME",
+									value : t.getValue()
+								}, ]);
+							}
+						}
+					}
+				}, {
+					xtype : 'button',
+					text : 'SERACH',
+					listeners : {
+						click : function(t, e) {
+							var txtserach = this.up().down('#txtserach');	
+							
+							//like 검색
+							me.tableListStore.clearFilter(true);
+							me.tableListStore.filter([ {
+								property : "TABLE_NAME",
+								value : txtserach.getValue()
+							}, ]);
+						}
+					}
+				} ]
 			}, {
 				xtype : 'gridpanel',
 				flex : 1,
@@ -115,7 +176,13 @@ Ext.define('ARC.view.task.TaskCreate', {
 					dataIndex : 'COMMENTS',
 					text : 'COMMENTS',
 					flex : 2
-				} ]
+				} ],
+				listeners : {
+					itemdblclick : function(model, record, index, eOpts) {
+						var txtmaster = me.leftPanel.down('#txtmaster');
+						txtmaster.setValue(record.get('TABLE_NAME'));
+					}
+				}
 			} ]
 		};
 	}

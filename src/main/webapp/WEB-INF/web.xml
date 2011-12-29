@@ -56,7 +56,7 @@
         </init-param>
         <init-param>
             <param-name>logLevel</param-name>
-            <param-value>3</param-value>
+            <param-value>0</param-value>
         </init-param>
         <init-param>
             <param-name>services</param-name>

@@ -1,5 +1,7 @@
 package com.mesplus.ARC.controller;
 
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,10 @@ public class ARCController {
 	@Autowired
 	private OriginalDao originalDao;
 
+	/*
+	 * Archive
+	 */
+	
 	//http://localhost:8080/smartfactory/module/ARC/data/taskList.json
 	@RequestMapping(value = "module/ARC/data/taskList.json", method = RequestMethod.GET)
 	public @ResponseBody
@@ -49,6 +55,18 @@ public class ARCController {
 		return infoMap;
 	}
 	
+	//http://localhost:8080/smartfactory/module/ARC/data/dbList.json
+	@RequestMapping(value = "module/ARC/data/dbList.json", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Map<String,Object>> dbList(HttpServletRequest request, HttpServletResponse response) {
+		
+		return taskDao.getDbList();
+	}
+	
+	/*
+	 * Orginal
+	 */
+	
 	//http://localhost:8080/smartfactory/module/ARC/data/columnList.json?tableName=MRASRESHIS
 	@RequestMapping(value = "module/ARC/data/columnList.json", method = RequestMethod.GET)
 	public @ResponseBody
@@ -65,6 +83,29 @@ public class ARCController {
 		//String tableName = request.getParameter("owner");
 		
 		return originalDao.getTableList("MESMGR");
+	}
+	
+	@RequestMapping(value = "module/ARC/data/taskCreate.json", method = RequestMethod.POST)
+	public @ResponseBody
+	Map<String,Object> taskCreate(HttpServletRequest request, HttpServletResponse response) {
+
+		
+		//TODO : request까지 받았어요~~~
+		System.out.println("============================");
+		Enumeration e = request.getParameterNames();
+		while(e.hasMoreElements()) {
+			String name = (String) e.nextElement();
+	      	String value = request.getParameter(name);
+	      
+	      	System.out.println(String.format("name = %s, value = %s ", name,value));
+		}
+		System.out.println("============================");
+		
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("success", true);
+		resultMap.put("msg", "Consignment updated");
+		
+		return resultMap;
 	}
 	
 }

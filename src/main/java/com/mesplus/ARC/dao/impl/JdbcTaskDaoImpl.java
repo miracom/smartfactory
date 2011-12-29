@@ -25,7 +25,7 @@ public class JdbcTaskDaoImpl implements TaskDao {
 	}
 
 	public List<Map<String, Object>> getTaskList() {
-		String TaskListQuery = " SELECT " + " 	MARCOPTDEF.TASK_ID AS TASK_ID, " + "	MARCOPTMAS.MASTER_TABLE AS MASTER_TABLE, "
+		String taskListSelectQuery = " SELECT " + " 	MARCOPTDEF.TASK_ID AS TASK_ID, " + "	MARCOPTMAS.MASTER_TABLE AS MASTER_TABLE, "
 				+ "	DECODE(MARCOPTDEF.OVERWRITE_FLAG, '0', 'NO' ,'1' ,'YES') OVERWRITE_FLAG, "
 				+ "	DECODE(MARCOPTDEF.MASTER_DELETION, '0', 'NO', '1', 'YES') MASTER_DELETION, "
 				+ "	DECODE(MARCOPTDEF.SLAVE_DELETION, '0', 'NO', '1', 'YES') SLAVE_DELETION, "
@@ -38,11 +38,11 @@ public class JdbcTaskDaoImpl implements TaskDao {
 
 		Map<String, Object> params = new HashMap<String, Object>();
 
-		return this.namedParameterJdbcTemplate.queryForList(TaskListQuery, params);
+		return this.namedParameterJdbcTemplate.queryForList(taskListSelectQuery, params);
 	}
 
 	public List<Map<String, Object>> getTaskBasic(String dbName, String taskId) {
-		String TaskBasicQuery = " SELECT " 
+		String taskBasicSelectQuery = " SELECT " 
 				+ "	TASK.TERM TERM, TASK.DAYS DAYS, "
 				+ "	DECODE(TASK.OVERWRITE_FLAG, '0', 'NO' ,'1' ,'YES') OVERWRITE_FLAG, "
 				+ "	DECODE(TASK.MASTER_DELETION, '0', 'NO', '1', 'YES') MASTER_DELETION, "
@@ -59,13 +59,13 @@ public class JdbcTaskDaoImpl implements TaskDao {
 		params.put("TASK_ID", taskId);
 		params.put("DB_NAME", dbName);
 		
-		return this.namedParameterJdbcTemplate.queryForList(TaskBasicQuery, params);
+		return this.namedParameterJdbcTemplate.queryForList(taskBasicSelectQuery, params);
 	}
 	
 	public List<Map<String, Object>> getTaskMaster(String dbName, String taskId) {
 		
 		// Source Master Table 정보 취득 SQL
-		String TaskMasterQuery = " SELECT " 
+		String taskMasterSelectQuery = " SELECT " 
 				+ "	TASK_ID, MASTER_TABLE, KEY_FIELD1, KEY_FIELD2, KEY_FIELD3, " 
 				+ "	KEY_FIELD4, KEY_FIELD5, TERM_FIELD "
 				+ " FROM "
@@ -78,12 +78,12 @@ public class JdbcTaskDaoImpl implements TaskDao {
 		params.put("TASK_ID", taskId);
 		params.put("DB_NAME", dbName);
 		
-		return this.namedParameterJdbcTemplate.queryForList(TaskMasterQuery, params);
+		return this.namedParameterJdbcTemplate.queryForList(taskMasterSelectQuery, params);
 	}
 	
 	public List<Map<String, Object>> getTaskSlave(String dbName, String taskId) {
 		
-		String TaskSlaveQuery = " SELECT "
+		String taskSlaveSelectQuery = " SELECT "
 				+ "	TASK_ID, MASTER_TABLE, SLAVE_TABLE, "
 				+ "	SLAVE_KEY_FIELD1, SLAVE_KEY_FIELD2, "
 				+ "	SLAVE_KEY_FIELD3, SLAVE_KEY_FIELD4, "
@@ -96,11 +96,11 @@ public class JdbcTaskDaoImpl implements TaskDao {
 		params.put("TASK_ID", taskId);
 		params.put("DB_NAME", dbName);
 		
-		return this.namedParameterJdbcTemplate.queryForList(TaskSlaveQuery, params);
+		return this.namedParameterJdbcTemplate.queryForList(taskSlaveSelectQuery, params);
 	}
 	
 	public List<Map<String, Object>> getMasterCondition(String dbName, String taskId) {
-		String TaskMasterConditionQuery = "SELECT " 
+		String taskMasterConditionQuery = "SELECT " 
 				+ " TASK_ID, CONDITION_TYPE, COLUMN_NAME, CONDITION, CONDITION_VALUE " 
 				+ " FROM MARCOPTCON "
 				+ " WHERE TASK_ID= :TASK_ID "
@@ -110,6 +110,18 @@ public class JdbcTaskDaoImpl implements TaskDao {
 		params.put("TASK_ID", taskId);
 		params.put("DB_NAME", dbName);
 		
-		return this.namedParameterJdbcTemplate.queryForList(TaskMasterConditionQuery, params);
+		return this.namedParameterJdbcTemplate.queryForList(taskMasterConditionQuery, params);
+	}
+	
+	public List<Map<String, Object>> getDbList() {
+		
+		String dbListSelectQuery = "SELECT DB_NAME, ORIGINAL_DRIVERNAME, ORIGINAL_URL, ORIGINAL_USERNAME, ORIGINAL_PASSWORD, " 
+				+ " BACKUP_DRIVERNAME, BACKUP_URL, BACKUP_USERNAME, BACKUP_PASSWORD "
+				+ " FROM MARCOPTDBC"
+				+ " ORDER BY DB_NAME";
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		
+		return this.namedParameterJdbcTemplate.queryForList(dbListSelectQuery, params);
 	}
 }

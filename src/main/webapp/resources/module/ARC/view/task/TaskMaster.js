@@ -42,10 +42,9 @@ Ext.define('ARC.view.task.TaskMaster', {
 		
 		//"CONDITION_TYPE = D" Grid 출력
 		this.mConditionStore.filter([
-		              {property: "CONDITION_TYPE", value: "D"}
+		              {property: "ONDITION_TYPE", value: "D"}
 		          ]);
-		
-		
+	
 		this.columnStore.setParams({
 			tableName : masterData[0]['MASTER_TABLE']
 		});

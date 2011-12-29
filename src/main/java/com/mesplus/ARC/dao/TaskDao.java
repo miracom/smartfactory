@@ -13,4 +13,6 @@ public interface TaskDao {
 	public List<Map<String, Object>> getTaskSlave(String dbName, String taskId);
 	
 	public List<Map<String, Object>> getMasterCondition(String dbName, String taskId);
+	
+	public List<Map<String, Object>> getDbList();
 }

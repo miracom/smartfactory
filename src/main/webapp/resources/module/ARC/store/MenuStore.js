@@ -1,7 +1,7 @@
 Ext.define('ARC.store.MenuStore', {
 	extend : 'Ext.data.Store',
 
-	storeId : 'arc.menu_store',
+	//storeId : 'arc.menu_store',
 
 	autoLoad : false,
 
