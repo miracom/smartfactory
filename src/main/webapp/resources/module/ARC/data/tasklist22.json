@@ -1,0 +1,12 @@
+{
+ 	total : 7,
+	result : [
+		{ "taskId": "LOTS1", "dbId": "MES", "masterTable": "TEST", "overWriteFlag": "NO", "slaveTableDeletion": "YES", "masterTableDeletion": "YES", "backupType": "DB+FILE"},
+		{ "taskId": "LOTS2", "dbId": "MES", "masterTable": "TEST", "overWriteFlag": "NO", "slaveTableDeletion": "YES", "masterTableDeletion": "YES", "backupType": "DB+FILE"},
+		{ "taskId": "LOTS3", "dbId": "MES", "masterTable": "TEST", "overWriteFlag": "NO", "slaveTableDeletion": "YES", "masterTableDeletion": "YES", "backupType": "DB+FILE"},
+		{ "taskId": "LOTS4", "dbId": "MES", "masterTable": "TEST", "overWriteFlag": "NO", "slaveTableDeletion": "YES", "masterTableDeletion": "YES", "backupType": "DB+FILE"},
+		{ "taskId": "LOTS5", "dbId": "MES", "masterTable": "TEST", "overWriteFlag": "NO", "slaveTableDeletion": "YES", "masterTableDeletion": "YES", "backupType": "DB+FILE"},
+		{ "taskId": "LOTS6", "dbId": "MES", "masterTable": "TEST", "overWriteFlag": "NO", "slaveTableDeletion": "YES", "masterTableDeletion": "YES", "backupType": "DB+FILE"},
+		{ "taskId": "LOTS7", "dbId": "MES", "masterTable": "TEST", "overWriteFlag": "NO", "slaveTableDeletion": "YES", "masterTableDeletion": "YES", "backupType": "DB+FILE"}
+	]
+}
