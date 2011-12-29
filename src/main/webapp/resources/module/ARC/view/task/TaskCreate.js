@@ -6,18 +6,19 @@ Ext.define('ARC.view.task.TaskCreate', {
 	},
 	bodyPadding : 10,
 	initComponent : function() {
-		var me = this;
-
-		me.callParent();
-
-		me.add(me.buildlistNamePanel());
-		me.add(me.buildlistDescPanel());
+		this.callParent();
+		
+		this.tableListStore = this.bulidTableListStore();
+		
+		this.add(this.buildlistNamePanel());
+		this.add(this.buildlistDescPanel());
+		
+		this.tableListStore.load();
 	},
-
-	listeners : {
-		activate : function(tab) {
-			// store load ?
-		}
+	
+	bulidTableListStore : function()
+	{
+		return Ext.create('ARC.store.TableListStore');
 	},
 
 	buttons : [ {
@@ -101,16 +102,19 @@ Ext.define('ARC.view.task.TaskCreate', {
 			}, {
 				xtype : 'gridpanel',
 				flex : 1,
+				store : this.tableListStore,
 				cls : 'dockNavigation',
 				title : 'Key field',
 				columns : [ {
 					xtype : 'gridcolumn',
-					dataIndex : 'dbId',
-					text : 'dbId'
+					dataIndex : 'TABLE_NAME',
+					text : 'TABLE_NAME',
+					flex : 1
 				}, {
 					xtype : 'gridcolumn',
-					dataIndex : 'taskId',
-					text : 'taskId'
+					dataIndex : 'COMMENTS',
+					text : 'COMMENTS',
+					flex : 2
 				} ]
 			} ]
 		};

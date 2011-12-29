@@ -1,11 +1,11 @@
-Ext.define('ARC.store.TaskStore', {
+Ext.define('ARC.store.TaskListStore', {
 	extend : 'Ext.data.Store',
 
 	storeId : 'arc.archivetask_store',
 
 	autoLoad : false,
 
-	model : 'ARC.model.Task',
+	model : 'ARC.model.TaskList',
 
 	proxy : {
 		type : 'ajax',

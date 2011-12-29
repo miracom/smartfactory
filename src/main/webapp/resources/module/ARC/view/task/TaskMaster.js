@@ -30,7 +30,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 	
 	bulidColumnStore : function()
 	{
-		return Ext.create('ARC.store.ColumnStore');
+		return Ext.create('ARC.store.ColumnListStore');
 	},
 	
 	onStoreChanged : function() {
@@ -310,13 +310,13 @@ Ext.define('ARC.view.task.TaskMaster', {
 					dataIndex : 'DATA_LENGTH',
 					text : 'LENGTH',
 					flex : 1,
-					algin : 'center'
+					align : 'center'
 				}, {
 					xtype : 'gridcolumn',
 					dataIndex : 'CONSTRAINT_TYPE',
 					text : 'CONSTRAINT',
 					flex : 1,
-					algin : 'center'
+					align : 'center'
 				}]
 			} ]
 		};

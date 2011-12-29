@@ -1,8 +1,4 @@
 [
-	{ "id": "001", "name": "TEST1"},
-	{ "id": "002", "name": "TEST2"},
-	{ "id": "003", "name": "TEST3"},
-	{ "id": "004", "name": "TEST4"},
-	{ "id": "005", "name": "TEST5"}
+	{ "id": "001", "name": "TASK"},
 ]
 

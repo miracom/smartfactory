@@ -1,4 +1,4 @@
-Ext.define('ARC.model.Task', {
+Ext.define('ARC.model.TaskList', {
 	extend: 'Ext.data.Model',
 	
 	fields: [

@@ -26,7 +26,7 @@ Ext.define('ARC.view.task.TaskList', {
 
 	},
 	buildStore : function() {
-		return Ext.create('ARC.store.TaskStore');
+		return Ext.create('ARC.store.TaskListStore');
 	},
 
 	buildGridPanel : function() {

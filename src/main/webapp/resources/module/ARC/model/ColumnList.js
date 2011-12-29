@@ -1,4 +1,4 @@
-Ext.define('ARC.model.Column', {
+Ext.define('ARC.model.ColumnList', {
 	extend: 'Ext.data.Model',
 	
 	fields: [
