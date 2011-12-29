@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mesplus.ARC.dao.OriginalDao;
 import com.mesplus.ARC.dao.TaskDao;
 
 @Controller
@@ -21,6 +22,9 @@ public class ARCController {
 
 	@Autowired
 	private TaskDao taskDao;
+	
+	@Autowired
+	private OriginalDao originalDao;
 
 	//http://localhost:8080/smartfactory/module/ARC/data/taskList.json
 	@RequestMapping(value = "module/ARC/data/taskList.json", method = RequestMethod.GET)
@@ -36,14 +40,22 @@ public class ARCController {
 		String dbName = request.getParameter("dbName");
 		String taskId = request.getParameter("taskId");
 		
-		System.out.println("dbName : " + dbName);
-		System.out.println("taskId : " + taskId);
-		
 		Map<String,Object> infoMap = new LinkedHashMap<String, Object>();
 		infoMap.put("taskBasic", taskDao.getTaskBasic(dbName, taskId));
 		infoMap.put("taskMaster", taskDao.getTaskMaster(dbName, taskId));
+		infoMap.put("taskMasterCondition", taskDao.getMasterCondition(dbName, taskId));
 		infoMap.put("taskSlave", taskDao.getTaskSlave(dbName, taskId));
 		
 		return infoMap;
 	}
+	
+	//http://localhost:8080/smartfactory/module/ARC/data/columnList.json?tableName=MRASRESHIS
+	@RequestMapping(value = "module/ARC/data/columnList.json", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Map<String,Object>> columnList(HttpServletRequest request, HttpServletResponse response) {
+		String tableName = request.getParameter("tableName");
+		
+		return originalDao.getColumnList(tableName);
+	}
+	
 }

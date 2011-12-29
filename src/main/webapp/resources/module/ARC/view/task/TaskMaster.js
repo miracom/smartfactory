@@ -1,5 +1,5 @@
 Ext.define('ARC.view.task.TaskMaster', {
-	extend : 'Ext.panel.Panel',
+	extend : 'Ext.form.Panel',
 	layout : {
 		align : 'stretch',
 		type : 'vbox'
@@ -8,29 +8,36 @@ Ext.define('ARC.view.task.TaskMaster', {
 	bodyPadding : 10,
 
 	initComponent : function() {
-		var me = this;
-
-		me.callParent();
-
-		me.store = me.buildStore();
-
-		me.add(me.buildTableField());
-		me.add(me.buildTermField());
-		me.add(me.buildConditionOneField());
-		me.add(me.buildConditionField());
-		me.add(me.buildKeyFieldPanel());
 		
-		this.taskInfoStore.on('datachanged',this.onStoreChanged);
+		this.callParent();
+		
+		this.mConditionStore = this.bulidmConditionStore();
+		
+		this.tableNameField =  this.add(this.buildTableField());
+		this.termField =  this.add(this.buildTermField());
+		this.conditionGrid =  this.add(this.buildConditionGrid());
+		this.conditionFiled =  this.add(this.buildConditionField());
+		//this.keyFieldPanel =  this.add(this.buildKeyFieldPanel());
+		
+		this.taskInfoStore.on('datachanged',this.onStoreChanged, this);
+	},
+	
+	bulidmConditionStore : function()
+	{
+		return Ext.create('ARC.store.MconditionStore');
 	},
 	
 	onStoreChanged : function() {
-		//alert('TaskMaster');
-	},
-
-	listeners : {
-		activate : function(tab) {
-			// store load ?
-		}
+		
+		var masterData = this.taskInfoStore.getAt(0).data['taskMaster'];
+		this.tableNameField.down('#mastertable').setText(masterData[0]['MASTER_TABLE']);
+		
+		this.mConditionStore.loadData(this.taskInfoStore.getAt(0).data['taskMasterCondition']);
+		
+		//"CONDITION_TYPE = D" Grid 출력
+		this.mConditionStore.filter([
+		              {property: "CONDITION_TYPE", value: "D"}
+		          ]);
 	},
 
 	buttons : [ {
@@ -42,12 +49,6 @@ Ext.define('ARC.view.task.TaskMaster', {
 		}
 	} ],
 
-	buildStore : function() {
-		return Ext.create('ARC.store.ArchiveTaskStore', {
-			pageSize : 5
-		});
-	},
-
 	buildTableField : function() {
 		return {
 			xtype : 'fieldset',
@@ -55,6 +56,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 			height : 40,
 			items : [ {
 				xtype : 'label',
+				itemId : 'mastertable',
 				text : 'Master Table'
 			} ]
 		};
@@ -81,7 +83,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 		};
 	},
 
-	buildConditionOneField : function() {
+	buildConditionGrid : function() {
 
 		var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
 			clicksToMoveEditor : 1,
@@ -92,17 +94,17 @@ Ext.define('ARC.view.task.TaskMaster', {
 
 		return {
 			xtype : 'gridpanel',
-			store : this.store,
 			flex : 1,
 			selModel : sm,
+			store : this.mConditionStore,
 			plugins : [ rowEditing ],
 			frame : true,
 			columnLines : true,
 			title : 'additional Condition Option 1',
 			columns : [
 					{
-						header : 'dbId',
-						dataIndex : 'dbId',
+						header : 'COLUMN_NAME',
+						dataIndex : 'COLUMN_NAME',
 						flex : 1,
 						editor : {
 							xtype : 'combobox',
@@ -119,8 +121,8 @@ Ext.define('ARC.view.task.TaskMaster', {
 						}
 					},
 					{
-						header : 'taskId',
-						dataIndex : 'taskId',
+						header : 'CONDITION',
+						dataIndex : 'CONDITION',
 						flex : 1,
 						editor : {
 							xtype : 'combobox',
@@ -136,8 +138,8 @@ Ext.define('ARC.view.task.TaskMaster', {
 							lazyRender : true
 						}
 					}, {
-						header : 'Master',
-						dataIndex : 'masterTable',
+						header : 'CONDITION_VALUE',
+						dataIndex : 'CONDITION_VALUE',
 						flex : 1,
 						editor : {
 							xtype : 'textfield',
@@ -148,33 +150,33 @@ Ext.define('ARC.view.task.TaskMaster', {
 			tbar : [ {
 				text : 'Add',
 				handler : function() {
-					rowEditing.cancelEdit();
-
-					var r = Ext.create('ARC.store.ArchiveTaskStore', {
-						dbId : 'AAA',
-						taskId : 'TASK1',
-						masterTable : 'AAA',
-						active : true
-					});
-
-					// get gridpanel store
-					this.up().up().store.insert(0, r);
-					rowEditing.startEdit(0, 0);
+//					rowEditing.cancelEdit();
+//
+//					var r = Ext.create('ARC.store.ArchiveTaskStore', {
+//						dbId : 'AAA',
+//						taskId : 'TASK1',
+//						masterTable : 'AAA',
+//						active : true
+//					});
+//
+//					// get gridpanel store
+//					this.up().up().store.insert(0, r);
+//					rowEditing.startEdit(0, 0);
 				}
 			}, {
-				itemId : 'removeEmployee',
+				itemId : 'remove',
 				text : 'Remove',
 				handler : function() {
-					var sm = this.up().up().getSelectionModel();
-					
-					rowEditing.cancelEdit();
-					this.up().up().store.remove(sm.getSelection());
+//					var sm = this.up().up().getSelectionModel();
+//					
+//					rowEditing.cancelEdit();
+//					this.up().up().store.remove(sm.getSelection());
 				},
 				disabled : true
 			} ],
 			listeners: {
 	            'selectionchange': function(view, records) {
-	            	this.up().up().down('#removeEmployee').setDisabled(!records.length);
+	            	this.up().up().down('#remove').setDisabled(!records.length);
 	            }
 	        }
 		};
@@ -277,7 +279,6 @@ Ext.define('ARC.view.task.TaskMaster', {
 				itemId : 'columnList',
 				cls : 'dockNavigation',
 				title : 'Column List',
-				store : this.store,
 				flex : 2,
 				selModel : sm,
 				columns : [ {

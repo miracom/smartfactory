@@ -98,5 +98,18 @@ public class JdbcTaskDaoImpl implements TaskDao {
 		
 		return this.namedParameterJdbcTemplate.queryForList(TaskSlaveQuery, params);
 	}
-
+	
+	public List<Map<String, Object>> getMasterCondition(String dbName, String taskId) {
+		String TaskMasterConditionQuery = "SELECT " 
+				+ " TASK_ID, CONDITION_TYPE, COLUMN_NAME, CONDITION, CONDITION_VALUE " 
+				+ " FROM MARCOPTCON "
+				+ " WHERE TASK_ID= :TASK_ID "
+				+ " AND DB_NAME= :DB_NAME";
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("TASK_ID", taskId);
+		params.put("DB_NAME", dbName);
+		
+		return this.namedParameterJdbcTemplate.queryForList(TaskMasterConditionQuery, params);
+	}
 }

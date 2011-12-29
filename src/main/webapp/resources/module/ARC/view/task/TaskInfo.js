@@ -1,5 +1,5 @@
 Ext.define('ARC.view.task.TaskInfo', {
-	extend : 'Ext.panel.Panel',
+	extend : 'Ext.form.Panel',
 	layout : {
 		align : 'stretch',
 		type : 'vbox'
@@ -12,39 +12,38 @@ Ext.define('ARC.view.task.TaskInfo', {
 	initComponent : function() {
 		this.callParent();
 		
-		this.store = this.bulidStore();
+		this.basicStore = this.bulidBasicStore();
+		this.masterStore = this.bulidMasterStore();
+		this.slaveStore = this.bulidSlaveStore();
 	
 		this.basicGrid = this.add(this.buildBasicGrid());
-		//this.MasterGrid = this.add(this.buildMasterGrid());
-		//this.conditionField = this.add(this.buildConditionField());
-		//this.SlaveGrid = this.add(this.buildSlaveGrid());
+		this.MasterGrid = this.add(this.buildMasterGrid());
+		this.conditionField = this.add(this.buildConditionField());
+		this.SlaveGrid = this.add(this.buildSlaveGrid());
 		
+		//TaskInfoStore Data Change 발생시 onStoreChanged 함수호출
 		this.taskInfoStore.on('datachanged',this.onStoreChanged, this);
 	},
 	
-	bulidStore : function()
+	bulidBasicStore : function()
 	{
-		//var me = this;
-		return Ext.create('Ext.data.Store', {
-		    model : 'ARC.model.Basic',
-			//fields : ['BACKUP_METHOD','DAYS','LOG_TYPE','MASTER_DELETION','OVERWRITE_FLAG','SLAVE_DELETION','TERM'],
-		    //data : me.taskInfoStore.getAt(0).data['taskBasic'],
-		    proxy: {
-		        type: 'memory',
-		        reader: {
-		            type: 'json'
-		        }
-		    },
-		});
+		return Ext.create('ARC.store.BasicStore');
+	},
+	
+	bulidMasterStore : function()
+	{
+		return Ext.create('ARC.store.MasterStore');
+	},
+	
+	bulidSlaveStore : function()
+	{
+		return Ext.create('ARC.store.SlaveStore');
 	},
 	
 	onStoreChanged : function() {
-		//console.log(this.taskInfoStore.getAt(0).data['taskBasic']);
-		this.store.loadData(this.taskInfoStore.getAt(0).data['taskBasic']);
-		//this.store.data = this.getAt(0).data['taskBasic'];
-		//this.basicGrid.store = this.taskInfoStore.basicStore;
-		//xxx = this.taskInfoStore;
-		//console.log(this.basicGrid);
+		this.basicStore.loadData(this.taskInfoStore.getAt(0).data['taskBasic']);
+		this.masterStore.loadData(this.taskInfoStore.getAt(0).data['taskMaster']);
+		this.slaveStore.loadData(this.taskInfoStore.getAt(0).data['taskSlave']);
 	},
 
 	buttons : [ {
@@ -77,26 +76,52 @@ Ext.define('ARC.view.task.TaskInfo', {
 			cls : 'dockNavigation',
 			title : 'Basic Task Option',
 			margins : '0 0 5 0',
-			store : this.store,
+			store : this.basicStore,
 			flex : 2,
 			columns : [ {
-				header : 'DB',
-				dataIndex : 'DAYS',
+				xtype: 'templatecolumn',
+				header : 'Period',
+				tpl:'{TERM} / {DAYS}',
+				flex : 1,
+				align : 'center'
 			}, {
-				header : 'Task',
-				dataIndex : 'OVERWRITE_FLAG'
+				header : 'Backup Method',
+				dataIndex : 'BACKUP_METHOD',
+				flex : 1,
+				align : 'center'
 			}, {
-				header : 'Master',
-				dataIndex : 'MASTER_DELETION'
+				header : 'Overwrite Flag',
+				dataIndex : 'OVERWRITE_FLAG',
+				flex : 1,
+				align : 'center'
 			}, {
-				header : 'Over',
+				header : 'MasterTable Deletion',
+				dataIndex : 'MASTER_DELETION',
+				flex : 1,
+				align : 'center'
+			}, {
+				header : 'SlaveTable Deletion',
 				dataIndex : 'SLAVE_DELETION',
+				flex : 1,
+				align : 'center'
 			}, {
-				header : 'S-Del',
-				dataIndex : 'BACKUP_METHOD'
+				header : 'Log Type',
+				dataIndex : 'LOG_TYPE',
+				flex : 1,
+				align : 'center'
 			}, {
-				header : 'M-Del',
-				dataIndex : 'LOG_TYPE'
+				xtype : 'actioncolumn',
+				header : 'EDIT',
+				align : 'center',
+				flex : 1,
+				items : [ {
+					icon : 'image/iconMenu16.png',
+					tooltip : 'EDIT',
+					handler : function(grid, rowIndex, colIndex) {
+						var rec = grid.getStore().getAt(rowIndex);
+						alert(rec.get('taskId'));
+					}
+				} ]
 			} ]
 		};
 	},
@@ -107,29 +132,50 @@ Ext.define('ARC.view.task.TaskInfo', {
 			cls : 'dockNavigation',
 			title : 'Master Task Option',
 			flex : 2,
+			store : this.masterStore,
 
 			columns : [ {
-				header : 'DB',
-				dataIndex : 'dbId',
+				header : 'Table Name',
+				dataIndex : 'MASTER_TABLE',
+				flex : 2
 			}, {
-				header : 'Task',
-				dataIndex : 'taskId'
+				header : 'Key Field1',
+				dataIndex : 'KEY_FIELD1',
+				flex : 2
 			}, {
-				header : 'Master',
-				dataIndex : 'masterTable'
+				header : 'Key Field2',
+				dataIndex : 'KEY_FIELD2',
+				flex : 2
 			}, {
-				header : 'Over',
-				dataIndex : 'overWriteFlag',
+				header : 'Key Field3',
+				dataIndex : 'KEY_FIELD3',
+				flex : 2
 			}, {
-				header : 'S-Del',
-				dataIndex : 'slaveTableDeletion'
+				header : 'Key Field4',
+				dataIndex : 'KEY_FIELD4',
+				flex : 2
 			}, {
-				header : 'M-Del',
-				dataIndex : 'masterTableDeletion'
+				header : 'Key Field5',
+				dataIndex : 'KEY_FIELD5',
+				flex : 2
 			}, {
-				header : 'Method',
-				dataIndex : 'backupType'
-			} ]
+				header : 'Term Field',
+				dataIndex : 'TERM_FIELD',
+				flex : 2
+			}, {
+				xtype : 'actioncolumn',
+				header : 'EDIT',
+				align : 'center',
+				flex : 1,
+				items : [ {
+					icon : 'image/iconMenu16.png',
+					tooltip : 'EDIT',
+					handler : function(grid, rowIndex, colIndex) {
+						var rec = grid.getStore().getAt(rowIndex);
+						alert(rec.get('taskId'));
+					}
+				} ]
+			}  ]
 		};
 	},
 
@@ -146,36 +192,53 @@ Ext.define('ARC.view.task.TaskInfo', {
 			} ]
 		};
 	},
-
+			
 	buildSlaveGrid : function() {
 		return {
 			xtype : 'gridpanel',
 			cls : 'dockNavigation',
 			title : 'Slave Task Option',
 			flex : 6,
+			store : this.slaveStore,
 
 			columns : [ {
-				header : 'DB',
-				dataIndex : 'dbId',
+				header : 'Table Name',
+				dataIndex : 'SLAVE_TABLE',
+				flex : 2
 			}, {
-				header : 'Task',
-				dataIndex : 'taskId'
+				header : 'Key Field1',
+				dataIndex : 'SLAVE_KEY_FIELD1',
+				flex : 2
 			}, {
-				header : 'Master',
-				dataIndex : 'masterTable'
+				header : 'Key Field2',
+				dataIndex : 'SLAVE_KEY_FIELD2',
+				flex : 2
 			}, {
-				header : 'Over',
-				dataIndex : 'overWriteFlag',
+				header : 'Key Field3',
+				dataIndex : 'SLAVE_KEY_FIELD3',
+				flex : 2
 			}, {
-				header : 'S-Del',
-				dataIndex : 'slaveTableDeletion'
+				header : 'Key Field4',
+				dataIndex : 'SLAVE_KEY_FIELD4',
+				flex : 2
 			}, {
-				header : 'M-Del',
-				dataIndex : 'masterTableDeletion'
+				header : 'Key Field5',
+				dataIndex : 'SLAVE_KEY_FIELD5',
+				flex : 2
 			}, {
-				header : 'Method',
-				dataIndex : 'backupType'
-			} ]
+				xtype : 'actioncolumn',
+				header : 'EDIT',
+				align : 'center',
+				flex : 1,
+				items : [ {
+					icon : 'image/iconMenu16.png',
+					tooltip : 'EDIT',
+					handler : function(grid, rowIndex, colIndex) {
+						var rec = grid.getStore().getAt(rowIndex);
+						alert(rec.get('taskId'));
+					}
+				} ]
+			}   ]
 		};
 	}
 });

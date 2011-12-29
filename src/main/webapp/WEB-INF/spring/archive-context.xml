@@ -17,5 +17,12 @@
 		<property name="username" value="archive"/>
 		<property name="password" value="archive"/>
     </bean>
+    
+    <bean id="originalDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@192.168.100.128:1521:ORAMES"/>
+		<property name="username" value="mesmgr"/>
+		<property name="password" value="mesmgr"/>
+    </bean>
 
  </beans>

@@ -1,5 +1,5 @@
 Ext.define('ARC.view.task.TaskSlave', {
-	extend : 'Ext.panel.Panel',
+	extend : 'Ext.form.Panel',
 	layout : {
 		align : 'stretch',
 		type : 'hbox'
@@ -7,24 +7,23 @@ Ext.define('ARC.view.task.TaskSlave', {
 
 	bodyPadding : 10,
 	initComponent : function() {
-		var me = this;
-
-		me.callParent();
-
-		me.add(me.buildlistNamePanel());
-		me.add(me.buildlistDescPanel());
+		this.callParent();
 		
-		this.taskInfoStore.on('datachanged',this.onStoreChanged);
+		this.slaveStore = this.bulidSlaveStore();
+
+		this.add(this.buildlistNamePanel());
+		this.add(this.buildlistDescPanel());
+		
+		this.taskInfoStore.on('datachanged',this.onStoreChanged, this);
+	},
+	
+	bulidSlaveStore : function()
+	{
+		return Ext.create('ARC.store.SlaveStore');
 	},
 	
 	onStoreChanged : function() {
-		//alert('TaskSlave');
-	},
-
-	listeners : {
-		activate : function(tab) {
-			// store load ?
-		}
+		this.slaveStore.loadData(this.taskInfoStore.getAt(0).data['taskSlave']);
 	},
 
 	buttons : [ {
@@ -50,29 +49,19 @@ Ext.define('ARC.view.task.TaskSlave', {
 			margins : '0 20 0 0',
 			items : [ {
 				xtype : 'dataview',
-				store : 'ARC.store.MenuStore',
+				store : this.slaveStore,
 				listeners : {
-					render : function(view) {
-						view.store.load();
-					},
-					itemclick : function(view, record, item,
-							index, e, opt) {
-						// var list =
-						// Ext.create('ARC.view.task.TaskList',
-						// {
-						// title: 'Archive Task List',
-						// closable: true
-						// });
-						// SmartFactory.addContentView(list);
+					itemclick : function(view, record, item, index, e, opt) {
+						alert(record.get('SLAVE_TABLE'));
 					}
 				},
 
 				autoScroll : true,
 
-				cls : 'report-list',
-				itemSelector : '.report-list-item',
-				overItemCls : 'report-list-item-hover',
-				tpl : '<tpl for="."><div class="report-list-item">{id} - {name}</div></tpl>'
+				cls : 'operation-list',
+				itemSelector: '.operation-list-item',
+				overItemCls: 'operation-list-item-hover',
+				tpl : '<tpl for="."><div class="operation-list-item">{SLAVE_TABLE}</div></tpl>'
 			} ],
 			buttons : [ {
 				text : 'ADD',
