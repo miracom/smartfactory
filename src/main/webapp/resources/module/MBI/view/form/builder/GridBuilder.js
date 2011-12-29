@@ -4,7 +4,6 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 		Ext.apply(this, config);
 	},
 	buildGrid : function(){
-		//return Ext.create('Ext.panel.Panel',{
 		var storeDetail = this.store;
 		//this.storeDetailInfo
 		return Ext.create('Ext.container.Container',{
@@ -18,6 +17,11 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
                 xtype: 'tabpanel',
                 flex : 1,
                 plain: true,
+    			layout : {
+    				type : 'vbox',
+    				align : 'stretch'
+    			},
+			
                 items:this.buildTab(storeDetail) 
             },
 		});
@@ -26,9 +30,10 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 		var items = [];
 		if(this.spreadId instanceof Array) {
 			for(var i in this.spreadId){
-				items.push({
-	                title: this.getTitle(1,this.spreadId[i]),
+				items.push({   
+					title: this.getTitle(1,this.spreadId[i]),
 	                bodyPadding: 3,
+	                layout : 'fit',
 	                items : [{
 	                	xtype : 'grid',
 						store : storeDetail[i],
@@ -36,11 +41,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 						columns : this.buildColumn(this.spreadId[i]),
 						columnLines : true,
 						autoScroll : true,
-				        viewConfig: {
-				            forceFit: true
-				        },
 				        split: true,
-				        height : '100%',
 				        clickRecord : this.clickRecord,
 				        panelId : this.panelId,
 						listeners: {
@@ -57,21 +58,18 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 			}
 		}
 		else{
-			items.push({
-                title: this.getTitle(1,this.spreadId),
-                bodyPadding: 3,
-                items : [{
-                	xtype : 'grid',
+			items.push({   
+				title: this.getTitle(1,this.spreadId),
+	            bodyPadding: 3,
+	            layout : 'fit',
+	            items : [{
+	            	xtype : 'grid',
 					store : this.store,
 					selModel: Ext.create('Ext.selection.CheckboxModel'),
 					columns : this.buildColumn(this.spreadId),
 					columnLines : true,
 					autoScroll : true,
-			        viewConfig: {
-			            forceFit: true
-			        },
 			        split: true,
-			        height : '100%',
 			        clickRecord : this.clickRecord,
 			        panelId : this.panelId,
 					listeners: {
@@ -82,7 +80,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 		                	}
 		            	}
 		            }
-                }]
+	            }]
 			});
 		}
 		return items;

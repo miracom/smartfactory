@@ -9,18 +9,22 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 	//chtinfNt
 	buildChart : function(cnt){
 		var chtinfNt = this.formInfoData.get(0).data.chtinfNt;
-		//return Ext.create('Ext.panel.Panel',{
-		return Ext.create('Ext.container.Container',{
-			bodyPadding: 3,
-			//autoScroll : true,
-			title : chtinfNt[0].chart_title,
-			layout : {
-				type : this.layoutType, //'hbox'
-				align : 'stretch'
-			},
-			flex : this.flex,
-			items : this.getChartItems(chtinfNt,cnt)
-		});
+
+		if (chtinfNt.length > 0){ 
+			return Ext.create('Ext.container.Container',{
+				bodyPadding: 3,
+				//autoScroll : true,
+				title : chtinfNt[0].chart_title,
+				layout : {
+					type : this.layoutType, //'hbox'
+					align : 'stretch'
+				},
+				flex : this.flex,
+				items : this.getChartItems(chtinfNt,cnt)
+			});
+		}
+		else
+			return '';
 	},
 
 	getChartItems : function(chtinfNt,cnt){

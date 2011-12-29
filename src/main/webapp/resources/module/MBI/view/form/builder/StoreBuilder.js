@@ -10,6 +10,9 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 	buildStore : function(){
 		return Ext.create('Ext.data.Store',{
 			autoLoad : false,
+			remoteFilter : true,
+			filterOnLoad : false,
+			pageSize : 100,
 			fields : this.buildFieldInfo(),
 			proxy : this.buildProxy()
 		});

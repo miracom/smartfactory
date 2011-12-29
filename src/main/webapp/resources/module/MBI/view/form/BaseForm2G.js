@@ -170,10 +170,14 @@ Ext.define('MBI.view.form.BaseForm2G', {
 			cond_param : this.buildCondParam(params),
 			lang_flag : this.langFlag,
 		};
-		this.storeInfo.load({params : extraParam});
-
-		var record = this.storeInfo.data.items[0];
-		//console.log(record);
-		this.onClickGrid('',[record]);
+		this.storeInfo.load({
+			params : extraParam,
+			scope  : this,
+			callback: function(records, operation, success) {
+				if (success && records.length>0){
+					this.onClickGrid('',[records[0]]);
+				}
+			}
+		});
 	}
 });
