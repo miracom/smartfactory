@@ -9,6 +9,7 @@ Ext.define('MBI.view.form.BaseForm1GA', {
 		align : 'stretch'
 	},
 	autoScroll : true,// false,
+	
 	setup : function() {
 		// this.removeAll();
 		
@@ -23,31 +24,40 @@ Ext.define('MBI.view.form.BaseForm1GA', {
 		this.storeInfo = Ext.create('MBI.view.form.builder.StoreBuilder', {
 			formInfoData : this.store.data,
 			funcId : this.funcId,
-			langFlag : this.langFlag
+			langFlag : this.langFlag,
+			spreadId : 1
 		}).buildStore();
-
+		
 		var view_chart = Ext.create('MBI.view.form.builder.ChartBuilder',{
 			//TODO input config info
 			formInfoData : this.store.data,
 			langFlag : this.langFlag,
 			store : this.storeInfo,
 			layoutType : 'hbox',
-			flex : 2
+			flex : 2,
+			spreadId : 1,
 		}).buildChart(1);
 		
 		var view_grid = Ext.create('MBI.view.form.builder.GridBuilder', {
 			formInfoData : this.store.data,
 			langFlag : this.langFlag,
 			store : this.storeInfo,
-			flex : 1
+			flex : 1,
+			spreadId : 1,
+			panelId : this.id,
+			clickRecord : this.onClickGrid
 		}).buildGrid();
-		this.add(view_chart);
+
+		if (view_chart)
+			this.add(view_chart);
 //		this.add({
 //	        xtype: 'splitter'   // A splitter between the two child items
 //	    });
 		this.add(view_grid);
 	},
-
+	onClickGrid : function(selModel, selected) {
+    	//alert('record :'+selected[0].data.test_id); 
+    },
 	buildCondParam : function(params) {
 		var mapconGenNt = this.store.data.get(0).data.mapconGenNt;
 		var con_params = '';
