@@ -12,12 +12,13 @@ Ext.define('ARC.view.task.TaskMaster', {
 		this.callParent();
 		
 		this.mConditionStore = this.bulidmConditionStore();
+		this.columnStore = this.bulidColumnStore();
 		
 		this.tableNameField =  this.add(this.buildTableField());
-		this.termField =  this.add(this.buildTermField());
+		//this.termField =  this.add(this.buildTermField());
 		this.conditionGrid =  this.add(this.buildConditionGrid());
-		this.conditionFiled =  this.add(this.buildConditionField());
-		//this.keyFieldPanel =  this.add(this.buildKeyFieldPanel());
+		//this.conditionFiled =  this.add(this.buildConditionField());
+		this.keyFieldPanel =  this.add(this.buildKeyFieldPanel());
 		
 		this.taskInfoStore.on('datachanged',this.onStoreChanged, this);
 	},
@@ -25,6 +26,11 @@ Ext.define('ARC.view.task.TaskMaster', {
 	bulidmConditionStore : function()
 	{
 		return Ext.create('ARC.store.MconditionStore');
+	},
+	
+	bulidColumnStore : function()
+	{
+		return Ext.create('ARC.store.ColumnStore');
 	},
 	
 	onStoreChanged : function() {
@@ -38,6 +44,14 @@ Ext.define('ARC.view.task.TaskMaster', {
 		this.mConditionStore.filter([
 		              {property: "CONDITION_TYPE", value: "D"}
 		          ]);
+		
+		
+		this.columnStore.setParams({
+			tableName : masterData[0]['MASTER_TABLE']
+		});
+		
+		this.columnStore.load();
+		
 	},
 
 	buttons : [ {
@@ -103,7 +117,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 			title : 'additional Condition Option 1',
 			columns : [
 					{
-						header : 'COLUMN_NAME',
+						header : 'COLUMN',
 						dataIndex : 'COLUMN_NAME',
 						flex : 1,
 						editor : {
@@ -138,7 +152,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 							lazyRender : true
 						}
 					}, {
-						header : 'CONDITION_VALUE',
+						header : 'VALUE',
 						dataIndex : 'CONDITION_VALUE',
 						flex : 1,
 						editor : {
@@ -203,17 +217,17 @@ Ext.define('ARC.view.task.TaskMaster', {
 		var sm = Ext.create('Ext.selection.CheckboxModel');
 		
 		
-		Ext.define('KeyField', {
-			extend: 'Ext.data.Model',
-			fields: [
-			    { name: 'dbId', type: 'string' },
-				{ name: 'taskId', type: 'string' }
-		    ]
-		});
-		
-		var myStore = Ext.create('Ext.data.Store', {
-		    model: 'KeyField',
-		});
+//		Ext.define('KeyField', {
+//			extend: 'Ext.data.Model',
+//			fields: [
+//			    { name: 'dbId', type: 'string' },
+//				{ name: 'taskId', type: 'string' }
+//		    ]
+//		});
+//		
+//		var myStore = Ext.create('Ext.data.Store', {
+//		    model: 'KeyField',
+//		});
 		
 		return {
 			xtype : 'container',
@@ -226,7 +240,6 @@ Ext.define('ARC.view.task.TaskMaster', {
 				xtype : 'gridpanel',
 				cls : 'dockNavigation',
 				title : 'Key field',
-				store : myStore,
 				flex : 1,
 				columns : [ {
 					xtype : 'gridcolumn',
@@ -276,6 +289,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 				} ]
 			}, {
 				xtype : 'gridpanel',
+				store : this.columnStore,
 				itemId : 'columnList',
 				cls : 'dockNavigation',
 				title : 'Column List',
@@ -283,13 +297,27 @@ Ext.define('ARC.view.task.TaskMaster', {
 				selModel : sm,
 				columns : [ {
 					xtype : 'gridcolumn',
-					dataIndex : 'dbId',
-					text : 'dbId'
+					dataIndex : 'COLUMN_NAME',
+					text : 'COLUMN',
+					flex : 3
 				}, {
 					xtype : 'gridcolumn',
-					dataIndex : 'taskId',
-					text : 'taskId'
-				} ]
+					dataIndex : 'DATA_TYPE',
+					text : 'TYPE',
+					flex : 2
+				} , {
+					xtype : 'gridcolumn',
+					dataIndex : 'DATA_LENGTH',
+					text : 'LENGTH',
+					flex : 1,
+					algin : 'center'
+				}, {
+					xtype : 'gridcolumn',
+					dataIndex : 'CONSTRAINT_TYPE',
+					text : 'CONSTRAINT',
+					flex : 1,
+					algin : 'center'
+				}]
 			} ]
 		};
 	}

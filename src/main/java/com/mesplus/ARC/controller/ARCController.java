@@ -58,4 +58,13 @@ public class ARCController {
 		return originalDao.getColumnList(tableName);
 	}
 	
+	//http://localhost:8080/smartfactory/module/ARC/data/tableList.json
+	@RequestMapping(value = "module/ARC/data/tableList.json", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Map<String,Object>> tableList(HttpServletRequest request, HttpServletResponse response) {
+		//String tableName = request.getParameter("owner");
+		
+		return originalDao.getTableList("MESMGR");
+	}
+	
 }

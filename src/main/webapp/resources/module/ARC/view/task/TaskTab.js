@@ -20,7 +20,7 @@ Ext.define('ARC.view.task.TaskTab', {
 		this.basicTab = this.add(this.buildTabBasic());
 		this.masterTab = this.add(this.buildTabMaster());
 		this.slaveTab = this.add(this.buildTabSlave());
-		// active info tab
+		
 		this.setActiveTab(this.infoTab);
 	},
 	

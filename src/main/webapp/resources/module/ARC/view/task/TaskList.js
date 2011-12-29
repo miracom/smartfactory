@@ -87,15 +87,15 @@ Ext.define('ARC.view.task.TaskList', {
 					tooltip : 'Detail',
 					handler : function(grid, rowIndex, colIndex) {
 						var r = grid.getStore().getAt(rowIndex);
-
-						var info = Ext.create('ARC.view.task.TaskTab', {
+						
+						var taskTab = Ext.create('ARC.view.task.TaskTab', {
 							title : r.get('TASK_ID'),
 							dbName : r.get('DB_NAME'),
 							taskId : r.get('TASK_ID'),
 							closable : true
 						});
 
-						SmartFactory.addActiveContentView(info);
+						SmartFactory.addActiveContentView(taskTab);
 					}
 				} ]
 

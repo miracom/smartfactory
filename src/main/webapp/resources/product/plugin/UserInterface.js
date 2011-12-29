@@ -72,6 +72,41 @@ Ext.define('plugin.UserInterface', {
 		
 		this.clearStatus();
 	},
+	
+	addActiveContentView : function(view) {		
+		this.showBusy();
+		var comp;
+
+		if (typeof (view) === 'string') {
+			comp = Ext.create(view, {
+				closable : true
+			});
+		} else {
+			comp = view;
+		}
+		
+		var tabActive = false;
+		var tabpanel = Ext.getCmp('content');
+		for(var i in tabpanel.items.items) {
+			if(view.title == tabpanel.items.items[i].title)
+			{
+				tabActive = true;
+				comp = tabpanel.items.items[i];
+			}
+		}
+		
+		if(tabActive)
+		{
+			tabpanel.setActiveTab(comp);
+		}
+		else
+		{
+			tabpanel.add(comp).show();
+		}
+		
+		
+		this.clearStatus();
+	},
 
 	setStatus : function(state) {
 		Ext.getCmp('status').setStatus(state);

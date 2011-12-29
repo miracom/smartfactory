@@ -1,13 +1,13 @@
-Ext.define('ARC.store.ColumnStore', {
+Ext.define('ARC.store.TaskInfoStore', {
 	extend : 'Ext.data.Store',
 	
 	autoLoad : false,
 
-	model : 'ARC.model.Column',
+	model : 'ARC.model.TaskInfo',
 
 	proxy : {
 		type : 'ajax',
-		url : 'module/ARC/data/columnList.json',
+		url : 'module/ARC/data/taskInfo.json',
 		reader : {
 			type : 'json',
 			//root : 'taskBasic',
