@@ -43,7 +43,7 @@
 	<logger name="org.cometd">
 		<level value="warn" />
 	</logger>
-	
+	 
 	<logger name="net.sf.ehcache">
 		<level value="debug" />
 	</logger>
