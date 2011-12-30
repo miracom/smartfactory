@@ -67,7 +67,7 @@ Ext.define('CMN.view.form.DatePeriodField', {
 			name : this.name+'_date',
 			value : this.defaultValue,
 			itemId : 'date'+fieldId+pos,
-			emptyText : pos+' date',
+			emptyText : pos+' date'
 			
 		}];
 	},

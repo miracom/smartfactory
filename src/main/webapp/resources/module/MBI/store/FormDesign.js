@@ -26,7 +26,7 @@ Ext.define('MBI.store.FormDesign', {
 		extraParams : {
 			func_id : 107,
 			spd_id : '',
-			func_template_id : 1,
+			func_template_id : 1
 		},
 		reader: {
 			type: 'json'

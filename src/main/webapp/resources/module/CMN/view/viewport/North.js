@@ -13,7 +13,7 @@ Ext.define('CMN.view.viewport.North', {
 	items : [ {
 		layout : 'hbox',
 		defaults : {
-			cls : 'appMenu',
+			cls : 'appMenu'
 		},
 		items : [ {
 			xtype : 'cmn.mainmenu',

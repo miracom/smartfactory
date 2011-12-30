@@ -28,7 +28,7 @@ Ext.define('MBI.controller.MBIController', {
 			selects : [],
 			sorters : [],
 			table : '',
-			columns : [],
+			columns : []
 		});
 	}
 });
