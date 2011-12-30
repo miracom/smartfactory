@@ -98,6 +98,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 
 	buildConditionGrid : function() {
 
+		var me = this;
 		var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
 			clicksToMoveEditor : 1,
 			autoCancel : false
@@ -109,7 +110,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 			xtype : 'gridpanel',
 			flex : 1,
 			selModel : sm,
-			store : this.mConditionStore,
+			store : me.mConditionStore,
 			plugins : [ rowEditing ],
 			frame : true,
 			columnLines : true,
@@ -175,6 +176,8 @@ Ext.define('ARC.view.task.TaskMaster', {
 //					// get gridpanel store
 //					this.up().up().store.insert(0, r);
 //					rowEditing.startEdit(0, 0);
+					
+					xxx = me.mConditionStore;
 				}
 			}, {
 				itemId : 'remove',

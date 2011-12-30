@@ -7,7 +7,7 @@ Ext.define('ARC.store.TableListStore', {
 
 	proxy : {
 		type : 'ajax',
-		url : 'module/ARC/data/tableList.json',
+		url : 'module/ARC/data/tablelist.json',
 		reader : {
 			type : 'json',
 			//root : 'taskBasic',

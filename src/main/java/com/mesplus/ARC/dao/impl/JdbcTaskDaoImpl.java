@@ -1,5 +1,6 @@
 package com.mesplus.ARC.dao.impl;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -123,5 +124,24 @@ public class JdbcTaskDaoImpl implements TaskDao {
 		Map<String, Object> params = new HashMap<String, Object>();
 		
 		return this.namedParameterJdbcTemplate.queryForList(dbListSelectQuery, params);
+	}
+	
+	public Boolean createOrReplaceTask(HashMap<String, String> params) throws SQLException{
+
+		String masterInsertQuery = 
+				" INSERT INTO MARCOPTMAS ( " +
+				"	TASK_ID, MASTER_TABLE, CREATE_USER, CREATE_TIME, DB_NAME " +
+				" ) VALUES (:txttask, :txtmaster, 'TESTUSER', CURRENT_TIMESTAMP, :cbdbname) ";
+		
+		
+		String taskInsertQuery =
+				" INSERT INTO MARCOPTDEF ( " +
+				"	TASK_ID, TASK_DESC, CREATE_USER, CREATE_TIME, DB_NAME " + 
+				" ) VALUES (:txttask, :txtdescription, 'TESTUSER', CURRENT_TIMESTAMP, :cbdbname)";
+		
+		this.namedParameterJdbcTemplate.update(taskInsertQuery, params);
+		this.namedParameterJdbcTemplate.update(masterInsertQuery, params);
+		
+		return true;
 	}
 }

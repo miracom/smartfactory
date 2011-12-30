@@ -9,7 +9,7 @@ Ext.define('ARC.store.DbListStore', {
 
 	proxy : {
 		type : 'ajax',
-		url : 'module/ARC/data/dbList.json',
+		url : 'module/ARC/data/dblist.json',
 		reader : {
 			type : 'json'
 			//root : 'result',

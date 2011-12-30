@@ -7,7 +7,7 @@ Ext.define('ARC.store.TaskInfoStore', {
 
 	proxy : {
 		type : 'ajax',
-		url : 'module/ARC/data/taskInfo.json',
+		url : 'module/ARC/data/taskinfo.json',
 		reader : {
 			type : 'json',
 			//root : 'taskBasic',

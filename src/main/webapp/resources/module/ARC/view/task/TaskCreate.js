@@ -28,15 +28,17 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 	buttons : [ {
 		text : 'CREATE',
+		disabled: true,
 		formBind: true, //only enabled once the form is valid
-        disabled: true,
         handler: function() {
             var form = this.up('form').getForm();
             if (form.isValid()) {
-            	console.log(form.getValues()); 
-            	//전송시 item의 name을 key로 전송
+            	form.setValues({processtype: 'C'}); //처리 TYPE 입력
+            	
+            	//console.log(form.getValues());
                 form.submit({	
-                	url: 'module/ARC/data/taskCreate.json',
+                	url: 'module/ARC/data/createorreplacetask.json',
+                	waitMsg: 'Saving Data...', //save processbar
                 	success: function(form, action) {
                        Ext.Msg.alert('Success', action.result.msg);
                     },
@@ -64,6 +66,9 @@ Ext.define('ARC.view.task.TaskCreate', {
 				align : 'stretch',
 				type : 'vbox'
 			},
+//			fieldDefaults: {
+//				xtype : 'textfield'를 명시하면 items에 xtype를 명시하지 않아도 기본 xtype는 textfield 이다. 
+//			},
 			margins : '0 20 0 0',
 			items : [ {
 				xtype : 'combobox',
@@ -72,22 +77,32 @@ Ext.define('ARC.view.task.TaskCreate', {
 				queryMode : 'local',
 				displayField : 'DB_NAME',
 				valueField : 'DB_NAME',
-				name: 'cbdbname'
+				name: 'cbdbname', // name : 폼데이터가 서버에 보내질때 매개변수 이름으로 사용
+				allowBlank: false, //(유효성검증) 필수값 체크
+				emptyText : 'select Items..', //값이 없을경우 출력할 text
+				editable : false
 			}, {
 				xtype : 'textfield',
 				fieldLabel : 'Archive Task',
-				name: 'txttask'
+				name: 'txttask',
+				allowBlank : false,
+				blankText : 'Enter Task Name..'
 			}, {
 				xtype : 'textfield',
 				fieldLabel : 'Master Table',
 				itemId : 'txtmaster',
-				name: 'txtmaster'
+				name: 'txtmaster',
+				allowBlank : false,
+				blankText : 'Enter Master Table..'
 			}, {
 				xtype : 'textareafield',
 				fieldLabel : '[Task Description]',
 				labelSeparator : '',
 				labelAlign : 'top',
 				name: 'txtdescription'
+			},{
+				xtype : 'hidden',
+				name: 'processtype'
 			} ]
 		};
 	},

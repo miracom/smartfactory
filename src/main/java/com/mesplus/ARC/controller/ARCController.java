@@ -1,5 +1,6 @@
 package com.mesplus.ARC.controller;
 
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -33,14 +34,14 @@ public class ARCController {
 	 */
 	
 	//http://localhost:8080/smartfactory/module/ARC/data/taskList.json
-	@RequestMapping(value = "module/ARC/data/taskList.json", method = RequestMethod.GET)
+	@RequestMapping(value = "module/ARC/data/tasklist.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String,Object>> taskList(HttpServletRequest request, HttpServletResponse response) {
 		return taskDao.getTaskList();
 	}
 	
 	//http://localhost:8080/smartfactory/module/ARC/data/taskInfo.json?dbName=MES&taskId=LOTS
-	@RequestMapping(value = "module/ARC/data/taskInfo.json", method = RequestMethod.GET)
+	@RequestMapping(value = "module/ARC/data/taskinfo.json", method = RequestMethod.GET)
 	public @ResponseBody
 	Map<String,Object> taskInfo(HttpServletRequest request, HttpServletResponse response) {
 		String dbName = request.getParameter("dbName");
@@ -56,11 +57,67 @@ public class ARCController {
 	}
 	
 	//http://localhost:8080/smartfactory/module/ARC/data/dbList.json
-	@RequestMapping(value = "module/ARC/data/dbList.json", method = RequestMethod.GET)
+	@RequestMapping(value = "module/ARC/data/dblist.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String,Object>> dbList(HttpServletRequest request, HttpServletResponse response) {
 		
 		return taskDao.getDbList();
+	}
+	
+	@RequestMapping(value = "module/ARC/data/createorreplacetask.json", method = RequestMethod.POST)
+	public @ResponseBody
+	Map<String,Object> taskCreateOrReplace(HttpServletRequest request, HttpServletResponse response) {
+		
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		try
+		{
+			HashMap<String, String> params = new HashMap<String, String>();
+			Enumeration<String> e = request.getParameterNames();
+			while(e.hasMoreElements()) {
+				String key = (String) e.nextElement();
+		      	String value = request.getParameter(key);
+		      
+		      	params.put(key, value);
+			}
+			
+			if(params.get("processtype") == null || params.get("processtype") == "")
+			{
+				resultMap.put("success", false);
+				resultMap.put("msg", "processtype cannot be found.");
+			}
+			else if(params.get("processtype").equals("C")) //등록
+			{
+				taskDao.createOrReplaceTask(params);
+				resultMap.put("success", true);
+				resultMap.put("msg", "Sucess Create");
+			}
+			else if(params.get("processtype").equals("U")) //수정
+			{
+				resultMap.put("success", true);
+				resultMap.put("msg", "Sucess Update");
+			}
+			else if(params.get("processtype").equals("D")) //삭제
+			{
+				resultMap.put("success", true);
+				resultMap.put("msg", "Sucess Delete");
+			}
+			else
+			{
+				resultMap.put("success", false);
+				resultMap.put("msg", "processtype = " + params.get("processtype") + "has been wrongly installed.");
+			}
+		}
+		catch(SQLException sx)
+		{
+			resultMap.put("success", false);
+			resultMap.put("msg", "SQLException : " + sx.toString());
+		}
+		catch (Exception ex) {
+			resultMap.put("success", false);
+			resultMap.put("msg", "Exception : " + ex.toString());
+		}
+		
+		return resultMap;
 	}
 	
 	/*
@@ -68,7 +125,7 @@ public class ARCController {
 	 */
 	
 	//http://localhost:8080/smartfactory/module/ARC/data/columnList.json?tableName=MRASRESHIS
-	@RequestMapping(value = "module/ARC/data/columnList.json", method = RequestMethod.GET)
+	@RequestMapping(value = "module/ARC/data/columnlist.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String,Object>> columnList(HttpServletRequest request, HttpServletResponse response) {
 		String tableName = request.getParameter("tableName");
@@ -77,35 +134,11 @@ public class ARCController {
 	}
 	
 	//http://localhost:8080/smartfactory/module/ARC/data/tableList.json
-	@RequestMapping(value = "module/ARC/data/tableList.json", method = RequestMethod.GET)
+	@RequestMapping(value = "module/ARC/data/tablelist.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String,Object>> tableList(HttpServletRequest request, HttpServletResponse response) {
 		//String tableName = request.getParameter("owner");
 		
 		return originalDao.getTableList("MESMGR");
 	}
-	
-	@RequestMapping(value = "module/ARC/data/taskCreate.json", method = RequestMethod.POST)
-	public @ResponseBody
-	Map<String,Object> taskCreate(HttpServletRequest request, HttpServletResponse response) {
-
-		
-		//TODO : request까지 받았어요~~~
-		System.out.println("============================");
-		Enumeration e = request.getParameterNames();
-		while(e.hasMoreElements()) {
-			String name = (String) e.nextElement();
-	      	String value = request.getParameter(name);
-	      
-	      	System.out.println(String.format("name = %s, value = %s ", name,value));
-		}
-		System.out.println("============================");
-		
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		resultMap.put("success", true);
-		resultMap.put("msg", "Consignment updated");
-		
-		return resultMap;
-	}
-	
 }

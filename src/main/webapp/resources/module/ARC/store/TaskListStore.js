@@ -9,7 +9,7 @@ Ext.define('ARC.store.TaskListStore', {
 
 	proxy : {
 		type : 'ajax',
-		url : 'module/ARC/data/taskList.json',
+		url : 'module/ARC/data/tasklist.json',
 		reader : {
 			type : 'json'
 			//root : 'result',

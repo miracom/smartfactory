@@ -7,7 +7,7 @@ Ext.define('ARC.store.ColumnListStore', {
 
 	proxy : {
 		type : 'ajax',
-		url : 'module/ARC/data/columnList.json',
+		url : 'module/ARC/data/columnlist.json',
 		reader : {
 			type : 'json',
 			//root : 'taskBasic',
