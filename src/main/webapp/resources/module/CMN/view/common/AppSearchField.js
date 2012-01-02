@@ -11,6 +11,8 @@ Ext.define('CMN.view.common.AppSearchField', {
 
     typeAhead: true,
     
+    emptyText : 'Alt+Q',
+    
     initComponent : function() {
     	this.callParent();
     	
