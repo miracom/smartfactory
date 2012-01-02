@@ -3,15 +3,21 @@ Ext.define('CMN.mixin.Status', {
 		return {
 			status : {
 				set : function(state) {
-					Ext.getCmp('statusbar').setStatus(state);
+					Ext.getCmp('status').setStatus(state);
 				},
 
 				busy : function(o) {
-					Ext.getCmp('statusbar').showBusy(o);
+					Ext.getCmp('status').showBusy(o);
 				},
 
 				clear : function() {
-					Ext.getCmp('statusbar').clearStatus();
+					Ext.getCmp('status').clearStatus({
+						useDefaults : true
+					});
+				},
+
+				tray : function(tray) {
+					Ext.getCmp('status').add(tray);
 				}
 			}
 		};

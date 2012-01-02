@@ -36,28 +36,40 @@ Ext.define('WMG.controller.WMGController', {
 	},
 
 	onViewportRendered : function() {
+		SmartFactory.status.tray({
+			xtype : 'button',
+			id : 'wmg.tray_notice',
+			cls : 'trayNotice',
+			iconCls : 'trayNoticeIcon',
+			handler : function() {
+	        	SmartFactory.communicator.notice('notice', 'notice message...');
+	        	
+	        	SmartFactory.addContentView({
+	        		xtype : 'wmg.notification',
+	        		title : 'Notification',
+	        		itemId : 'wmg.notification'
+	        	});
+	        }
+		});
+		
 		SmartFactory.addNav('WMG.view.NavCommunicator', {
     		iconCls : 'iconsetDockCommunicator',
 			itemId : 'navCommunicator',
 			title : 'Communicator'
 		});
 		
-		var searchStore = Ext.getStore('cmn.appsearch_store');
-		if(searchStore) {
-			searchStore.add({
-				kind : 'msg',
-				key : 'notification',
-				name : 'Notification',
-				desc : 'Notification',
-				handler : function(searchRecord) {
-		        	SmartFactory.addContentView({
-		        		xtype : 'wmg.notification',
-		        		title : 'Notification',
-		        		itemId : 'wmg.notification'
-		        	});
-				}
-			});
-		}
+		SmartFactory.search.register({
+			kind : 'msg',
+			key : 'notification',
+			name : 'Notification',
+			handler : function(searchRecord) {
+	        	SmartFactory.addContentView({
+	        		xtype : 'wmg.notification',
+	        		title : 'Notification',
+	        		itemId : 'wmg.notification'
+	        	});
+			}
+		});
 	},
 	
 	joinIn : function(user) {

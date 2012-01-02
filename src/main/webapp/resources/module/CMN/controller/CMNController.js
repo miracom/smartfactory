@@ -22,7 +22,8 @@ Ext.define('CMN.controller.CMNController', {
 		});
 		
 		SmartFactory.mixin('CMN.mixin.CodeView');		
-		SmartFactory.mixin('CMN.mixin.Status');		
+		SmartFactory.mixin('CMN.mixin.Status');
+		SmartFactory.mixin('CMN.mixin.Search');
 	},
 
 	onViewportRendered : function() {
