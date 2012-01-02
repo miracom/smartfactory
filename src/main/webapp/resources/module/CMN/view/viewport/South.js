@@ -1,5 +1,5 @@
 Ext.define('CMN.view.viewport.South', {
-	extend : 'Ext.ux.statusbar.StatusBar',
+	extend : 'CMN.view.common.StatusBar',
 
 	id : 'status',
 
@@ -8,7 +8,7 @@ Ext.define('CMN.view.viewport.South', {
 	alias : 'widget.viewport.south',
 
 	// defaults to use when the status is cleared:
-	defaultText : 'Default status text',
+	defaultText : 'Ready',
 	// defaultIconCls: 'default-icon',
 
 	// values to set initially:
@@ -17,10 +17,6 @@ Ext.define('CMN.view.viewport.South', {
 
 	// any standard Toolbar items:
 	items : [ {
-		xtype : 'progressbar',
-		id : 'main-progressbar',
-		width : 150
-	}, {
 		xtype : 'button',
 		text : 'Show Warning & Clear',
 		handler : function() {
@@ -43,24 +39,7 @@ Ext.define('CMN.view.viewport.South', {
 		handler : function() {
 			SmartFactory.status.clear();
 		}
-	}, {
-		/*
-		 * TODO 이 아이템은 WMG 모듈로 옮겨야 함.
-		 */
-		xtype : 'button',
-		id : 'wmg.tray_notice',
-		cls : 'trayNotice',
-		iconCls : 'trayNoticeIcon',
-		handler : function() {
-        	SmartFactory.communicator.notice('notice', 'notice message...');
-        	
-        	SmartFactory.addContentView({
-        		xtype : 'wmg.notification',
-        		title : 'Notification',
-        		itemId : 'wmg.notification'
-        	});
-        }
-	}],
+	} ],
 
 	initComponent : function() {
 		this.callParent();

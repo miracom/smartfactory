@@ -16,6 +16,28 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 		this.tableListStore.load();
 		this.dbListStore.load();
+
+		Ext.apply(Ext.form.field.VTypes, {
+			// vtype validation function
+			task : function(val, field) {
+				var err = 0;
+				for ( var i = 0; i < val.length; i++) {
+					var chk = val.substring(i, i + 1);
+					//영문자 a~z, A~Z, 숫자, 특수문자 -, _ 입력가능
+					if (!chk.match(/^[a-zA-Z0-9_-]/)) {
+						err = err + 1;
+					}
+				}
+				if (err > 0) {
+					// validation function returns false
+					return false;
+				}
+
+				return true;
+			},
+			// vtype Text property: The error text to display when the
+			taskText : 'Not a valid task.'
+		});
 	},
 
 	bulidDbListStore : function() {
@@ -28,31 +50,46 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 	buttons : [ {
 		text : 'CREATE',
-		disabled: true,
-		formBind: true, //only enabled once the form is valid
-        handler: function() {
-            var form = this.up('form').getForm();
-            if (form.isValid()) {
-            	form.setValues({processtype: 'C'}); //처리 TYPE 입력
-            	
-            	//console.log(form.getValues());
-                form.submit({	
-                	url: 'module/ARC/data/createorreplacetask.json',
-                	waitMsg: 'Saving Data...', //save processbar
-                	success: function(form, action) {
-                       Ext.Msg.alert('Success', action.result.msg);
-                    },
-                    failure: function(form, action) {
-                        Ext.Msg.alert('Failed', action.result.msg);
-                    }
-                });
-            }
-        }
+		disabled : true,
+		formBind : true, // only enabled once the form is valid
+		handler : function() {
+			var me = this.up('form');
+			var form = me.getForm();
+
+			Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function showResult(btn) {
+				if (btn == 'yes') {
+					if (form.isValid()) {
+						form.setValues({
+							processtype : 'C'
+						}); // 처리 TYPE 입력
+
+						// console.log(form.getValues());
+						form.submit({
+							url : 'module/ARC/data/createorreplacetask.json',
+							waitMsg : 'Saving Data...', // save processbar
+							success : function(form, action) {
+								Ext.Msg.alert('Success', action.result.msg);
+								me.taskListStore.load(); // list refresh
+							},
+							failure : function(form, action) {
+								Ext.Msg.alert('Failed', action.result.msg);
+							}
+						});
+					}
+				}
+			});
+		}
 	}, {
 		text : 'CANCEL',
 		listeners : {
 			click : function() {
-				alert('CANCEL');
+				var me = this.up('form');
+
+				Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function showResult(btn) {
+					if (btn == 'yes') {
+						me.close();
+					}
+				});
 			}
 		}
 	} ],
@@ -66,9 +103,10 @@ Ext.define('ARC.view.task.TaskCreate', {
 				align : 'stretch',
 				type : 'vbox'
 			},
-//			fieldDefaults: {
-//				xtype : 'textfield'를 명시하면 items에 xtype를 명시하지 않아도 기본 xtype는 textfield 이다. 
-//			},
+			// fieldDefaults: {
+			// xtype : 'textfield'를 명시하면 items에 xtype를 명시하지 않아도 기본 xtype는
+			// textfield 이다.
+			// },
 			margins : '0 20 0 0',
 			items : [ {
 				xtype : 'combobox',
@@ -77,32 +115,36 @@ Ext.define('ARC.view.task.TaskCreate', {
 				queryMode : 'local',
 				displayField : 'DB_NAME',
 				valueField : 'DB_NAME',
-				name: 'cbdbname', // name : 폼데이터가 서버에 보내질때 매개변수 이름으로 사용
-				allowBlank: false, //(유효성검증) 필수값 체크
-				emptyText : 'select Items..', //값이 없을경우 출력할 text
-				editable : false
+				name : 'cbdbname', // name : 폼데이터가 서버에 보내질때 매개변수 이름으로 사용
+				allowBlank : false, // (유효성검증) 필수값 체크
+				emptyText : 'select Items..', // 값이 없을경우 출력할 text
+				editable : false,
+				msgTarget : 'side' // (유효성검증) 메시지 출력위치
 			}, {
 				xtype : 'textfield',
 				fieldLabel : 'Archive Task',
-				name: 'txttask',
+				name : 'txttask',
 				allowBlank : false,
-				blankText : 'Enter Task Name..'
+				vtype : 'task',
+				blankText : 'Enter Task Name..',
+				msgTarget : 'side'
 			}, {
 				xtype : 'textfield',
 				fieldLabel : 'Master Table',
 				itemId : 'txtmaster',
-				name: 'txtmaster',
+				name : 'txtmaster',
 				allowBlank : false,
-				blankText : 'Enter Master Table..'
+				blankText : 'Enter Master Table..',
+				msgTarget : 'side'
 			}, {
 				xtype : 'textareafield',
 				fieldLabel : '[Task Description]',
 				labelSeparator : '',
 				labelAlign : 'top',
-				name: 'txtdescription'
-			},{
+				name : 'txtdescription'
+			}, {
 				xtype : 'hidden',
-				name: 'processtype'
+				name : 'processtype'
 			} ]
 		};
 	},
@@ -121,10 +163,24 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 	},
 
+	getSerachfilter : function() {
+		var serachFilter = [];
+		var serachField = this.rightPanel.down().down('#txtserach');
+
+		if (serachField.getValue() != null) {
+			serachFilter.push({
+				property : "TABLE_NAME",
+				value : serachField.getValue()
+			});
+		}
+
+		return serachFilter;
+	},
+
 	buildTableGrid : function() {
-		
+
 		var me = this;
-		
+
 		return {
 			xtype : 'container',
 			flex : 1,
@@ -142,7 +198,7 @@ Ext.define('ARC.view.task.TaskCreate', {
 				items : [ {
 					xtype : 'textfield',
 					itemId : 'txtserach',
-					name: 'txtserach',
+					name : 'txtserach',
 					fieldLabel : 'Table Name',
 					flex : 1,
 					margins : '0 5 0 0',
@@ -150,12 +206,9 @@ Ext.define('ARC.view.task.TaskCreate', {
 					listeners : {
 						keydown : function(t, e) {
 							if (e.keyCode == 13) {
-								//like 검색
+								// like 검색
 								me.tableListStore.clearFilter(true);
-								me.tableListStore.filter([ {
-									property : "TABLE_NAME",
-									value : t.getValue()
-								}, ]);
+								me.tableListStore.filter(me.getSerachfilter());
 							}
 						}
 					}
@@ -164,14 +217,9 @@ Ext.define('ARC.view.task.TaskCreate', {
 					text : 'SERACH',
 					listeners : {
 						click : function(t, e) {
-							var txtserach = this.up().down('#txtserach');	
-							
-							//like 검색
+							// like 검색
 							me.tableListStore.clearFilter(true);
-							me.tableListStore.filter([ {
-								property : "TABLE_NAME",
-								value : txtserach.getValue()
-							}, ]);
+							me.tableListStore.filter(me.getSerachfilter());
 						}
 					}
 				} ]

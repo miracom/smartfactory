@@ -11,18 +11,15 @@ Ext.define('plugin.UserInterface', {
 		try {
 			var navView = Ext.create(view, Ext.merge(defaults, config));
 			Ext.getCmp('nav').add(navView);
-			var searchStore = Ext.getStore('cmn.appsearch_store');
-			if(searchStore) {
-				searchStore.add({
-					kind : 'nav',
-					key : config.itemId,
-					name : config.title,
-					desc : config.title,
-					handler : function(searchRecord) {
-						Ext.getCmp('nav').setActiveTab(navView);
-					}
-				});
-			}
+
+			SmartFactory.search.register({
+				kind : 'nav', 
+				key : config.itemId, 
+				name : config.title, 
+				handler : function(item) {
+					Ext.getCmp('nav').setActiveTab(navView);
+				}
+			});
 		} catch (e) {
 			console.log(e);
 			console.trace();
@@ -49,7 +46,6 @@ Ext.define('plugin.UserInterface', {
 	},
 
 	addContentView : function(view) {
-		this.showBusy();
 		var comp;
 		
 		if (typeof (view) === 'string') {
@@ -69,12 +65,9 @@ Ext.define('plugin.UserInterface', {
 		}
 		
 		comp.show();
-		
-		this.clearStatus();
 	},
 	
 	addActiveContentView : function(view) {		
-		this.showBusy();
 		var comp;
 
 		if (typeof (view) === 'string') {
@@ -103,21 +96,6 @@ Ext.define('plugin.UserInterface', {
 		{
 			tabpanel.add(comp).show();
 		}
-		
-		
-		this.clearStatus();
-	},
-
-	setStatus : function(state) {
-		Ext.getCmp('status').setStatus(state);
-	},
-
-	showBusy : function(o) {
-		Ext.getCmp('status').showBusy(o);
-	},
-
-	clearStatus : function() {
-		Ext.getCmp('status').clearStatus();
 	},
 
 	doMenu : function(menu) {

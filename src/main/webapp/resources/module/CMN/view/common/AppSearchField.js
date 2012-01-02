@@ -10,6 +10,19 @@ Ext.define('CMN.view.common.AppSearchField', {
 	matchFieldWidth : false,
 
     typeAhead: true,
+    
+    emptyText : 'Alt+Q',
+    
+    initComponent : function() {
+    	this.callParent();
+    	
+    	new Ext.util.KeyMap(document, {
+    	    key: 'q',
+    	    alt : true,
+    	    fn: this.focus,
+    	    scope: this
+    	});
+    },
 	
 	listConfig : {
 		loadingText : 'Searching...',
