@@ -1,6 +1,7 @@
-Ext.define('CMN.plugin.Supplement', {
+var supplement = Ext.define('CMN.plugin.Supplement', {
+	extend : 'Ext.Base',
+	
 	init : function(client) {
-
 		if (!client.getSupplement) {
 			client.getSupplement = function() {
 				return this.supplement;
@@ -12,12 +13,7 @@ Ext.define('CMN.plugin.Supplement', {
 		}
 
 		if(!client.getSupplement()) {
-
-
-			client.supplement = Ext.create('CMN.view.common.Supplement', {
-				// title : client.title
-				
-			});
+			;
 		}
 		
 		client.on('activate', this.onActivate, client);
@@ -27,10 +23,11 @@ Ext.define('CMN.plugin.Supplement', {
 	},
 
 	setSupplement : function(supplement) {
-		if (this.getSupplement() && this.getSupplement().itemId !== undefined)
-			Ext.getCmp('east').remove(this.getSupplement());
-
-		this.supplement = supplement;
+		if(Ext.isString(supplement)) {
+			this.supplement = Ext.create(supplement);
+		} else {
+			this.supplement = supplement;
+		}
 		
 		if (this.getSupplement()) {
 			this.supplement = Ext.getCmp('east').add(this.getSupplement());
@@ -59,3 +56,5 @@ Ext.define('CMN.plugin.Supplement', {
 			Ext.getCmp('east').remove(this.getSupplement());
 	}
 });
+
+Ext.preg('supplement', supplement);
