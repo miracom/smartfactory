@@ -14,38 +14,64 @@ Ext.define('ARC.view.serach.TaskSerach', {
 	
 	
 	initComponent : function() {
-		var me = this;
-
-		me.callParent();
+		this.callParent();
 		
-		me.add(me.buildDbCombo());
-		me.add(me.buildMethodCombo());
-		me.add(me.buildOverCombo());
-		me.add(me.buildMdelCombo());
-		me.add(me.buildSdelCombo());
+		this.taskfield = this.add(this.buildtaskfield());
+		this.dbCombo = this.add(this.buildDbCombo());
+		this.methodCombo = this.add(this.buildMethodCombo());
+		this.overCombo = this.add(this.buildOverCombo());
+		this.mdelCombo = this.add(this.buildMdelCombo());
+		this.sdelCombo = this.add(this.buildSdelCombo());
+		
+		this.dbCombo.on('load', function(store, records, options)
+				{
+					this.dbCombo.insert(0, new Ext.data.Record({FluidGroupId:'0', Text:'*'})); 
+					this.dbCombo.setValue(0);
+				}, this, {single: true});
 	},
 	
-	items : [ {
-		xtype : 'textfield',
-		fieldLabel : 'Task ID'
-	}],
-
 	buttons : [ {
 		text : 'SERACH',
 		listeners : {
 			click : function() {
-				alert('SERACH');
+				var me = this.up('form');
+
+				me.taskListStore.clearFilter(true);
+				me.taskListStore.filter(me.getSerachfilter());
 			}
 		}
 	} ],
+	
+	buildtaskfield : function() {
+		return {
+			xtype : 'textfield',
+			fieldLabel : 'Task ID',
+			enableKeyEvents : true, // textfield의 KeyEvent 사용여부
+			listeners : {
+				keydown : function(t, e) {
+					if (e.keyCode == 13) {
+						var me = this.up('form');
+						
+						me.taskListStore.clearFilter(true);
+						me.taskListStore.filter(me.getSerachfilter());
+					}
+				}
+			}
+		};
+	},
+	
 	
 	buildDbCombo : function() {
 		return {
 			xtype : 'combobox',
 			fieldLabel : 'DB',
+			emptyText : 'select Items..',
 			store : Ext.create('Ext.data.Store', {
 				fields : [ 'abbr', 'name' ],
 				data : [ {
+					"abbr" : "ALL",
+					"name" : "ALL"
+				},{
 					"abbr" : "MES",
 					"name" : "MES"
 				} ]
@@ -60,19 +86,23 @@ Ext.define('ARC.view.serach.TaskSerach', {
 		return {
 			xtype : 'combobox',
 			fieldLabel : 'Method',
+			emptyText : 'select Items..',
 			store : Ext.create('Ext.data.Store', {
 				fields : [ 'abbr', 'name' ],
 				data : [ {
-					"abbr" : "0",
+					"abbr" : "ALL",
+					"name" : "ALL"
+				},{
+					"abbr" : "NONE",
 					"name" : "NONE"
 				}, {
-					"abbr" : "1",
+					"abbr" : "DB",
 					"name" : "DB"
 				}, {
-					"abbr" : "2",
+					"abbr" : "FILE",
 					"name" : "FILE"
 				}, {
-					"abbr" : "3",
+					"abbr" : "DB+FILE",
 					"name" : "DB+FILE"
 				} ]
 			}),
@@ -86,9 +116,13 @@ Ext.define('ARC.view.serach.TaskSerach', {
 		return {
 			xtype : 'combobox',
 			fieldLabel : 'OverWrite',
+			emptyText : 'select Items..',
 			store : Ext.create('Ext.data.Store', {
 				fields : [ 'abbr', 'name' ],
 				data : [ {
+					"abbr" : "ALL",
+					"name" : "ALL"
+				},{
 					"abbr" : "Y",
 					"name" : "YES"
 				}, {
@@ -106,9 +140,13 @@ Ext.define('ARC.view.serach.TaskSerach', {
 		return {
 			xtype : 'combobox',
 			fieldLabel : 'M-Del',
+			emptyText : 'select Items..',
 			store : Ext.create('Ext.data.Store', {
 				fields : [ 'abbr', 'name' ],
 				data : [ {
+					"abbr" : "ALL",
+					"name" : "ALL"
+				},{
 					"abbr" : "Y",
 					"name" : "YES"
 				}, {
@@ -126,9 +164,13 @@ Ext.define('ARC.view.serach.TaskSerach', {
 		return {
 			xtype : 'combobox',
 			fieldLabel : 'S-Del',
+			emptyText : 'select Items..',
 			store : Ext.create('Ext.data.Store', {
 				fields : [ 'abbr', 'name' ],
 				data : [ {
+					"abbr" : "ALL",
+					"name" : "ALL"
+				},{
 					"abbr" : "Y",
 					"name" : "YES"
 				}, {
@@ -140,6 +182,78 @@ Ext.define('ARC.view.serach.TaskSerach', {
 			displayField : 'name',
 			valueField : 'abbr',
 		};
+	},
+	
+	getSerachfilter : function()
+	{
+		var serachFilter =  [];
+		
+		if(this.taskfield.getValue() != null)
+		{
+			serachFilter.push({property : "TASK_ID",value : this.taskfield.getValue()});
+		}
+		
+		if(this.dbCombo.getValue() != null && this.dbCombo.getValue() != '')
+		{
+			if(this.dbCombo.getValue() == 'ALL')
+			{
+				serachFilter.push({property : "DB_NAME",value : ''});
+			}
+			else
+			{
+				serachFilter.push({property : "DB_NAME",value : this.dbCombo.getValue()});
+			}
+		}
+		
+		if(this.methodCombo.getValue() != null && this.methodCombo.getValue() != '')
+		{
+			if(this.methodCombo.getValue() == 'ALL')
+			{
+				serachFilter.push({property : "BACKUP_METHOD",value : ''});
+			}
+			else
+			{
+				serachFilter.push({property : "BACKUP_METHOD",value : this.methodCombo.getValue()});
+			}
+		}
+		
+		if(this.overCombo.getValue() != null && this.overCombo.getValue() != '')
+		{
+			if(this.overCombo.getValue() == 'ALL')
+			{
+				serachFilter.push({property : "OVERWRITE_FLAG",value : ''});
+			}
+			else
+			{
+				serachFilter.push({property : "OVERWRITE_FLAG",value : this.overCombo.getValue()});
+			}
+		}
+		
+		if(this.mdelCombo.getValue() != null && this.mdelCombo.getValue() != '')
+		{
+			if(this.mdelCombo.getValue() == 'ALL')
+			{
+				serachFilter.push({property : "MASTER_DELETION",value : ''});
+			}
+			else
+			{
+				serachFilter.push({property : "MASTER_DELETION",value : this.mdelCombo.getValue()});
+			}
+		}
+		
+		if(this.sdelCombo.getValue() != null && this.sdelCombo.getValue() != '')
+		{
+			if(this.sdelCombo.getValue() == 'ALL')
+			{
+				serachFilter.push({property : "SLAVE_DELETION",value : ''});
+			}
+			else
+			{
+				serachFilter.push({property : "SLAVE_DELETION",value : this.sdelCombo.getValue()});
+			}
+		}
+		
+		return serachFilter;
 	}
 
 });

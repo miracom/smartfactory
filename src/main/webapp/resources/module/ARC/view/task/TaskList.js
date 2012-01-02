@@ -12,13 +12,14 @@ Ext.define('ARC.view.task.TaskList', {
 		var me = this;
 
 		me.callParent();
+		
+		me.store = me.buildStore();
 
 		// ADD Search Field
 		me.supplement = Ext.create('ARC.view.serach.TaskSerach', {
-			client : me
+			client : me,
+			taskListStore : me.store
 		});
-
-		me.store = me.buildStore();
 
 		me.add(me.buildGridPanel());
 
@@ -145,9 +146,13 @@ Ext.define('ARC.view.task.TaskList', {
 				text : 'CREATE',
 				listeners : {
 					click : function() {
+						
+						var me = this.up('panel');
+						
 						var create = Ext.create('ARC.view.task.TaskCreate', {
 							title : 'Archive Task Create',
-							closable : true
+							closable : true,
+							taskListStore : me.store
 						});
 
 						SmartFactory.addActiveContentView(create);
