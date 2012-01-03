@@ -1,3 +1,25 @@
+Ext.apply(Ext.form.field.VTypes, {
+	// vtype validation function
+	task : function(val, field) {
+		var err = 0;
+		for ( var i = 0; i < val.length; i++) {
+			var chk = val.substring(i, i + 1);
+			// 영문자 a~z, A~Z, 숫자, 특수문자 -, _ 입력가능
+			if (!chk.match(/^[a-zA-Z0-9_-]/)) {
+				err = err + 1;
+			}
+		}
+		if (err > 0) {
+			// validation function returns false
+			return false;
+		}
+
+		return true;
+	},
+	// vtype Text property: The error text to display when the
+	taskText : 'Not a valid task.'
+});
+
 Ext.define('ARC.view.task.TaskCreate', {
 	extend : 'Ext.form.Panel',
 	layout : {
@@ -16,28 +38,6 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 		this.tableListStore.load();
 		this.dbListStore.load();
-
-		Ext.apply(Ext.form.field.VTypes, {
-			// vtype validation function
-			task : function(val, field) {
-				var err = 0;
-				for ( var i = 0; i < val.length; i++) {
-					var chk = val.substring(i, i + 1);
-					//영문자 a~z, A~Z, 숫자, 특수문자 -, _ 입력가능
-					if (!chk.match(/^[a-zA-Z0-9_-]/)) {
-						err = err + 1;
-					}
-				}
-				if (err > 0) {
-					// validation function returns false
-					return false;
-				}
-
-				return true;
-			},
-			// vtype Text property: The error text to display when the
-			taskText : 'Not a valid task.'
-		});
 	},
 
 	bulidDbListStore : function() {
@@ -54,6 +54,19 @@ Ext.define('ARC.view.task.TaskCreate', {
 		formBind : true, // only enabled once the form is valid
 		handler : function() {
 			var me = this.up('form');
+
+			
+			/* 그리드 데이타는 JSON String으로 변환하여 전송한다.
+			var data = [];
+			newRecords = me.tableListStore.getNewRecords();
+			for(var i=0;i<newRecords.length;i++) {
+			   data.push(newRecords[i].data);
+			}
+			var encodedJson = Ext.encode(data);
+
+			console.log(encodedJson);
+			*/
+			
 			var form = me.getForm();
 
 			Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function showResult(btn) {
@@ -181,6 +194,10 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 		var me = this;
 
+		var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+			clicksToEdit : 1
+		});
+
 		return {
 			xtype : 'container',
 			flex : 1,
@@ -225,15 +242,20 @@ Ext.define('ARC.view.task.TaskCreate', {
 				} ]
 			}, {
 				xtype : 'gridpanel',
+				plugins : [ cellEditing ],
 				flex : 1,
 				store : this.tableListStore,
 				cls : 'dockNavigation',
 				title : 'Key field',
+				itemId : 'tableGrid',
 				columns : [ {
 					xtype : 'gridcolumn',
 					dataIndex : 'TABLE_NAME',
 					text : 'TABLE_NAME',
-					flex : 1
+					flex : 1,
+					editor : {
+						allowBlank : false
+					}
 				}, {
 					xtype : 'gridcolumn',
 					dataIndex : 'COMMENTS',
