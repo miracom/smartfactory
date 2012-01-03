@@ -55,7 +55,6 @@ Ext.define('ARC.view.task.TaskCreate', {
 		handler : function() {
 			var me = this.up('form');
 
-			
 			/* 그리드 데이타는 JSON String으로 변환하여 전송한다.
 			var data = [];
 			newRecords = me.tableListStore.getNewRecords();
@@ -67,13 +66,18 @@ Ext.define('ARC.view.task.TaskCreate', {
 			console.log(encodedJson);
 			*/
 			
+			
+			
+			xx = me.tableListStore;
+			//console.log(me.tableListStore.getUpdatedRecords());
+			
 			var form = me.getForm();
 
 			Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function showResult(btn) {
 				if (btn == 'yes') {
 					if (form.isValid()) {
 						form.setValues({
-							processtype : 'C'
+							processtype : 'Y'
 						}); // 처리 TYPE 입력
 
 						// console.log(form.getValues());
