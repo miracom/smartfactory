@@ -1,6 +1,7 @@
 package com.mesplus.ARC.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -10,6 +11,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,6 +82,10 @@ public class ARCController {
 		      
 		      	params.put(key, value);
 			}
+			
+//			ObjectMapper om = new ObjectMapper();
+//			List<Map<String, Object>> myObjects = om.readValue(params.get("processtype"), new TypeReference<List<Map<String, Object>>>() {});
+//			System.out.println(myObjects.get(0).get("TABLE_NAME"));
 			
 			if(params.get("processtype") == null || params.get("processtype") == "")
 			{
