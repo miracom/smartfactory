@@ -10,6 +10,7 @@
 	<properties>
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.1.0.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.6.9</org.aspectj-version>
 		<org.slf4j-version>1.6.4</org.slf4j-version>
 		<org.cometd-version>2.4.0.RC2</org.cometd-version>
 	</properties>
@@ -79,6 +80,13 @@
 			<version>1.2.0</version>
 		</dependency>
 		
+		<!-- AspectJ -->
+  		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

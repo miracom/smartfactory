@@ -95,6 +95,6 @@ public class CMNController {
 		params.put("factory", user.getFactory());
 		params.put("user", user.getUser_id());
 
-		return favoriteDao.selectFavorites(params);
+		return favoriteDao.select(params);
 	}
 }
