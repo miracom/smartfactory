@@ -1,6 +1,7 @@
 Ext.define('CMN.plugin.Supplement', {
+	extend : 'Ext.Base',
+	
 	init : function(client) {
-
 		if (!client.getSupplement) {
 			client.getSupplement = function() {
 				return this.supplement;
@@ -11,26 +12,38 @@ Ext.define('CMN.plugin.Supplement', {
 			client.setSupplement = this.setSupplement;
 		}
 
-		if(!client.getSupplement()) {
-
-
-			client.supplement = Ext.create('CMN.view.common.Supplement', {
-				// title : client.title
-				
-			});
+		function onRender() {
+			if(this.getSupplement())
+				this.setSupplement(this.getSupplement());
 		}
-		
-		client.on('activate', this.onActivate, client);
-		client.on('deactivate', this.onDeactivate, client);
-		client.on('destroy', this.onDestroy, client);
-		client.on('render', this.onRender, client);
+
+		function onActivate() {
+			if (this.getSupplement())
+				Ext.getCmp('east').getLayout().setActiveItem(this.getSupplement());
+		}
+
+		function onDeactivate() {
+			if (this.getSupplement())
+				Ext.getCmp('east').getLayout().setActiveItem('base');
+		}
+
+		function onDestroy() {
+			if (this.getSupplement())
+				Ext.getCmp('east').remove(this.getSupplement());
+		}
+
+		client.on('activate', onActivate, client);
+		client.on('deactivate', onDeactivate, client);
+		client.on('destroy', onDestroy, client);
+		client.on('render', onRender, client);
 	},
 
 	setSupplement : function(supplement) {
-		if (this.getSupplement() && this.getSupplement().itemId !== undefined)
-			Ext.getCmp('east').remove(this.getSupplement());
-
-		this.supplement = supplement;
+		if(Ext.isString(supplement)) {
+			this.supplement = Ext.create(supplement);
+		} else {
+			this.supplement = supplement;
+		}
 		
 		if (this.getSupplement()) {
 			this.supplement = Ext.getCmp('east').add(this.getSupplement());
@@ -39,23 +52,4 @@ Ext.define('CMN.plugin.Supplement', {
 		}
 	},
 	
-	onRender : function() {
-		if(this.getSupplement())
-			this.setSupplement(this.getSupplement());
-	},
-
-	onActivate : function() {
-		if (this.getSupplement())
-			Ext.getCmp('east').getLayout().setActiveItem(this.getSupplement());
-	},
-
-	onDeactivate : function() {
-		if (this.getSupplement())
-			Ext.getCmp('east').getLayout().setActiveItem('base');
-	},
-
-	onDestroy : function() {
-		if (this.getSupplement())
-			Ext.getCmp('east').remove(this.getSupplement());
-	}
 });

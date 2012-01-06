@@ -42,8 +42,6 @@ Ext.define('CMN.controller.CMNController', {
 			itemId : 'navFavor',
 			title : 'favorite'
 		});
-		
-		SmartFactory.addContentView('CMN.view.map.Map');
 	}
 
 });

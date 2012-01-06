@@ -14,7 +14,7 @@
 		<result property="user_func_desc" />
 	</resultMap>
 
-	<select id="selectFavorites" parameterType="hashmap" resultMap="FavoriteMap">
+	<select id="select" parameterType="hashmap" resultMap="FavoriteMap">
 		SELECT *
 		FROM MSECUSRFUN
 		WHERE FACTORY = #{factory}

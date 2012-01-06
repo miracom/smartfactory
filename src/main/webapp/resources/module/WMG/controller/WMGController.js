@@ -1,9 +1,9 @@
 Ext.define('WMG.controller.WMGController', {
 	extend : 'Ext.app.Controller',
 
-	stores : ['WMG.store.CommunicatorStore', 'WMG.store.NotificationStore'],
-	models : ['WMG.model.Communicator', 'WMG.model.Notification'],
-	views : ['WMG.view.Notification'],
+	stores : [ 'WMG.store.CommunicatorStore', 'WMG.store.NotificationStore' ],
+	models : [ 'WMG.model.Communicator', 'WMG.model.Notification' ],
+	views : [],
 
 	init : function() {
 		this.control({
@@ -11,7 +11,7 @@ Ext.define('WMG.controller.WMGController', {
 				afterrender : this.onViewportRendered
 			}
 		});
-		
+
 		var self = this;
 
 		SmartFactory.mixin('WMG.plugin.Communicator', {
@@ -31,7 +31,7 @@ Ext.define('WMG.controller.WMGController', {
 				SmartFactory.msg('Joined out.', message.data.username);
 			}
 		});
-		
+
 		SmartFactory.communicator.join();
 	},
 
@@ -42,46 +42,45 @@ Ext.define('WMG.controller.WMGController', {
 			cls : 'trayNotice',
 			iconCls : 'trayNoticeIcon',
 			handler : function() {
-	        	SmartFactory.communicator.notice('notice', 'notice message...');
-	        	
-	        	SmartFactory.addContentView({
-	        		xtype : 'wmg.notification',
-	        		title : 'Notification',
-	        		itemId : 'wmg.notification'
-	        	});
-	        }
+				SmartFactory.communicator.notice('notice', 'notice message...');
+
+				SmartFactory.addContentView(Ext.create('WMG.view.Notification', {
+					title : 'Notification',
+					itemId : 'wmg.notification'
+				}));
+			}
 		});
-		
+
 		SmartFactory.addNav('WMG.view.NavCommunicator', {
-    		iconCls : 'iconsetDockCommunicator',
+			iconCls : 'iconsetDockCommunicator',
 			itemId : 'navCommunicator',
 			title : 'Communicator'
 		});
-		
+
 		SmartFactory.search.register({
 			kind : 'msg',
 			key : 'notification',
 			name : 'Notification',
 			handler : function(searchRecord) {
-	        	SmartFactory.addContentView({
-	        		xtype : 'wmg.notification',
-	        		title : 'Notification',
-	        		itemId : 'wmg.notification'
-	        	});
+				SmartFactory.addContentView({
+					xtype : 'wmg.notification',
+					title : 'Notification',
+					itemId : 'wmg.notification'
+				});
 			}
 		});
 	},
-	
+
 	joinIn : function(user) {
 		var store = Ext.getStore('WMG.store.CommunicatorStore');
-		
+
 		var idx = store.findExact('id', user);
-		if(idx !== -1) {
+		if (idx !== -1) {
 			store.getAt(idx).set('status', 'on');
 		} else {
 			store.add({
-				id: user,
-				name: user,
+				id : user,
+				name : user,
 				status : 'on'
 			});
 		}
@@ -89,14 +88,14 @@ Ext.define('WMG.controller.WMGController', {
 
 	joinOut : function(user) {
 		var store = Ext.getStore('WMG.store.CommunicatorStore');
-		
+
 		var idx = store.findExact('id', user);
-		if(idx !== -1) {
+		if (idx !== -1) {
 			store.getAt(idx).set('status', 'off');
 		} else {
 			store.add({
-				id: user,
-				name: user,
+				id : user,
+				name : user,
 				status : 'off'
 			});
 		}

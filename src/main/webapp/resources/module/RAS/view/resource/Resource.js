@@ -7,6 +7,8 @@ Ext.define('RAS.view.resource.Resource', {
 	bodyPadding : 15,
 	plugins : [ Ext.create('CMN.plugin.Supplement') ],
 
+	supplement : 'CMN.view.common.Supplement',
+	
 	defaults : {
 		anchor : '100%'
 	},
