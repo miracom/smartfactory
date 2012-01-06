@@ -251,8 +251,8 @@ Ext.define('RPT.view.report.ReportColumn', {
 			xtype : 'tbfill'
 		}, {
 			xtype : 'exporterbutton',
-			store : 'RPT.store.ReportListStore',
-			target : this.findExportables()
+			store : 'RPT.store.ReportListStore'
+			//target : this.findExportables()
 			//store : EX_store,
 		}]
 	}]
