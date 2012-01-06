@@ -126,19 +126,29 @@ Ext.define('RPT.view.report.ReportColumn', {
 				text : 'Location'
 			}, {
 				xtype : 'gridcolumn',
-				dataIndex : 'lot_id',
 				align : 'center',
-				text : 'Lot No'
-			}, {
-				xtype : 'gridcolumn',
-				dataIndex : 'oper_id',
-				align : 'center',
-				text : 'Operation'
-			}, {
-				xtype : 'gridcolumn',
-				dataIndex : 'oper_desc',
-				align : 'center',
-				text : 'Desription'
+				text : 'xxx',
+				columns : [ {
+					xtype : 'gridcolumn',
+					dataIndex : 'lot_id',
+					align : 'center',
+					text : 'Lot No'
+				},{ 
+					xtype : 'gridcolumn',
+					align : 'center',
+					text : 'xxx33',
+					columns : [ {
+						xtype : 'gridcolumn',
+						dataIndex : 'oper_id',
+						align : 'center',
+						text : 'Operation'
+					}, {
+						xtype : 'gridcolumn',
+						dataIndex : 'oper_desc',
+						align : 'center',
+						text : 'Desription'
+					}]
+				}]
 			}, {
 				xtype : 'gridcolumn',
 				align : 'center',
@@ -148,13 +158,12 @@ Ext.define('RPT.view.report.ReportColumn', {
 					text : 'Code',
 					dataIndex : 'mat_id',
 					align : 'center',
-
 				}, {
 					xtype : 'gridcolumn',
 					text : 'Name',
 					dataIndex : 'mat_desc',
 					align : 'center',
-				}, ]
+				}]
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'oper_sts',
@@ -162,30 +171,47 @@ Ext.define('RPT.view.report.ReportColumn', {
 				text : 'Status'
 			}, {
 				xtype : 'gridcolumn',
-				dataIndex : 'ord_id',
 				align : 'center',
-				text : 'Work Order'
-			}, {
-				xtype : 'numbercolumn',
-				dataIndex : 'plan_qty',
-				align : 'center',
-				text : 'Planned Qty'
-			}, {
-				xtype : 'numbercolumn',
-				dataIndex : 'mat_qty',
-				align : 'center',
-				text : 'Material Qty'
-			}, {
-				xtype : 'numbercolumn',
-				dataIndex : 'finished_qty',
-				align : 'center',
-				text : 'Finished Qty'
-			}, {
+				text : 'group2',
+				columns : [{
+					xtype : 'gridcolumn',
+					align : 'center',
+					text : 'group2-1',
+					columns : [{
+						xtype : 'gridcolumn',
+						dataIndex : 'ord_id',
+						align : 'center',
+						text : 'Work Order'
+					}, {
+						xtype : 'gridcolumn',
+						align : 'center',
+						text : 'group2',
+						columns : [{
+							xtype : 'numbercolumn',
+							dataIndex : 'plan_qty',
+							align : 'center',
+							text : 'Planned Qty'
+						}, {
+							xtype : 'numbercolumn',
+							dataIndex : 'mat_qty',
+							align : 'center',
+							text : 'Material Qty'
+						}]
+					}]
+				}
+				,{
+					xtype : 'numbercolumn',
+					dataIndex : 'finished_qty',
+					align : 'center',
+					text : 'Finished Qty'
+				}]
+			},{
 				xtype : 'gridcolumn',
 				dataIndex : 'insp_id',
 				align : 'center',
 				text : 'Inspection'
-			} ],
+			}],
+			
 			viewConfig : {
 
 			},
@@ -193,6 +219,10 @@ Ext.define('RPT.view.report.ReportColumn', {
 				ftype : 'grouping'
 			} ],
 			listeners : {
+				added : function(self){
+						var form = self.up('form');
+						//form.exportTarget = self;
+				},
 				itemclick : function(grid, record, item, index, e, opt) {
 
 					var report = null;
@@ -208,7 +238,9 @@ Ext.define('RPT.view.report.ReportColumn', {
 				}
 			}
 		} ]
-	}, {
+	}
+
+	, {
 		xtype : 'toolbar',
 		height : 30,
 		layout : {
@@ -219,7 +251,9 @@ Ext.define('RPT.view.report.ReportColumn', {
 			xtype : 'tbfill'
 		}, {
 			xtype : 'exporterbutton',
-			store : EX_store
-		} ]
-	}, ]
+			store : 'RPT.store.ReportListStore',
+			target : this.findExportables()
+			//store : EX_store,
+		}]
+	}]
 });
