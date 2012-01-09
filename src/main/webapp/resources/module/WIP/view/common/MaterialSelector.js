@@ -3,11 +3,22 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	 * 부모 클래스를 정의한다. 
 	 */
 	extend : 'Ext.panel.Panel',
-
+	
+	/*
+	 * plugins을 설정한다. 
+	 */
+	plugins : [],
+	
 	/*
 	 * common 뷰인 경우에는 Alias를 정의한다.
 	 */
 	alias : 'widget.wip_material_selector',
+	
+	/*
+	 * 스타일을 적용한다.
+	 */
+	cls : 'nav supplement',
+	bodyStyle : 'padding:5px',
 
 	/*
 	 * 부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다.
@@ -28,7 +39,8 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		layout : {
 			type : 'vbox',
 			align : 'stretch'
-		}
+		},
+		labelAlign : 'top'
 	},
 
 	/*
@@ -57,24 +69,32 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		 * - 동적인 컴포넌트 추가
 		 * - 리스너 등록
 		 */
-		
+		this.list = this.down('[itemId=list]');
 		
 	},
 	
 	zfilter : {
 		xtype : 'fieldset',
 		itemId : 'filters',
-		layout : 'auto',
+		layout : 'anchor',
 		defaults : {
 			labelWidth : 140,
 			labelSeparator : '',
-			boxLabelAlign : 'after'
+			boxLabelAlign : 'after',
+			anchor : '100%'
 		},
 		items : [ {
 			xtype : 'codeview',
 			labelWidth : 100,
 			fieldLabel : 'Material Type',
-			itemId : 'material_type'
+			itemId : 'material_type',
+			codeviewName : 'MaterialType',
+			txtFieldFlex : [1],
+			txtFieldName : ['GROUP_NAME'],
+			filter : [ {
+				property : 'factory',
+				value : SmartFactory.login.factory()
+			} ]
 		}, {
 			xtype : 'checkbox',
 			fieldLabel : 'Include Deleted Material',

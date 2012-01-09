@@ -12,7 +12,8 @@ Ext.define('CMN.controller.CMNController', {
 			'CMN.view.common.AppSearchField', 'CMN.view.form.DateTime',
 			'CMN.view.form.CodeViewField','CMN.view.form.DateTimeField',
 			'CMN.view.form.TimePeriodField','CMN.view.form.DatePeriodField',
-			'CMN.view.form.DateTimePeriodField','CMN.view.form.ValueRangeField'],
+			'CMN.view.form.DateTimePeriodField','CMN.view.form.ValueRangeField',
+			'CMN.view.common.TransactionButtons'],
 
 	init : function() {
 		this.control({

@@ -66,5 +66,23 @@ Ext.define('WIP.controller.WIPController', {
 			} ],
 			valueField : ['MAT_ID', 'MAT_VER']
 		});
+		
+		SmartFactory.codeview.register('MaterialType', {
+			viewType : '1', // 0:Table, 1:GCM
+			title : 'Select Material Type',
+			selects : [ 'FACTORY', 'GROUP_NAME', 'DESCRIPTION' ],
+			sorters : [],
+			table : 'MATERIAL_GRP_2',
+			columns : [ {
+				header : 'Material Type',
+				dataIndex : 'GROUP_NAME',
+				flex : 2
+			}, {
+				header : 'Description',
+				dataIndex : 'DESCRIPTION',
+				flex : 3
+			} ],
+			valueField : ['GROUP_NAME']
+		});
 	}
 });
