@@ -38,26 +38,27 @@ public class ClsAPSplusCommonFunction {
 			//return XmlConvert.elementToXML(el);
 
 			
-			List<Map<String, Object>> mapList = JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(fac_id, tbl_code, lang_flag, a_params, rType);
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+//List<Map<String, Object>> mapList = JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(fac_id, tbl_code, lang_flag, a_params, rType);
+//Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 
 			/*List<Map<String, Object>> mapList2 = JdbcFormDaoImpl.getGlobalFormDao().fsprelNtDao("83", "904", "1", rType);
 			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, "TEST");*/
 
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el);
+//List<Element> elList = new ArrayList<Element>();
+//elList.add(el);
 			/*elList.add(el2);*/
 
-			Element gEl = XmlConvert.groupElement(elList);
+//Element gEl = XmlConvert.groupElement(elList);
 
-			return XmlConvert.elementToXML(gEl);
-			/*
+//return XmlConvert.elementToXML(gEl);
+			
 			 Map<String, Object> map =
 			 JdbcFormDaoImpl.getGlobalFormDao().dynamicS2RtDao("U", "1024",
 			 "1", "83", "ADMIN", "1", "LOT0001`^55555`^A`^xxxxx", rType);
 			 Element el = XmlConvert.mapToArrayListElement(map);
 			 return XmlConvert.elementToXML(el);
-
+			 
+			 /*
 			 List<String> aa = XmlConvert.xmlToArrayList(a_fac_id); for
 			 (String s : aa) { System.out.println(s); } 
 			 return null;
