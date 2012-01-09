@@ -1,7 +1,5 @@
-Ext.define('WIP.view.oper.Operation', {
+Ext.define('WIP.view.transaction.Operation', {
 	extend: 'Ext.form.Panel',
-	
-	alias: 'widget.wip.oper.operation',
 	
 	title: 'Operation',
 	bodyPadding: 15,

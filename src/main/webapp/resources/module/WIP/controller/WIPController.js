@@ -3,7 +3,7 @@ Ext.define('WIP.controller.WIPController', {
 
 	stores : [ 'WIP.store.OperationStore' ],
 	models : [ 'WIP.model.Operation' ],
-	views : [ 'WIP.view.oper.Operation' ],
+	views : [ 'WIP.view.common.MaterialSelector' ],
 
 	init : function() {
 		this.control({
@@ -14,7 +14,7 @@ Ext.define('WIP.controller.WIPController', {
 	},
 
 	onViewportRendered : function() {
-		SmartFactory.addNav('WIP.view.NavOperation', {
+		SmartFactory.addNav('WIP.view.common.NavOperation', {
 			iconCls : 'iconsetDockOperation',
 			itemId : 'navOperation',
 			title : 'operation'

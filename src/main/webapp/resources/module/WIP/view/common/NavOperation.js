@@ -1,4 +1,4 @@
-Ext.define('WIP.view.NavOperation', {
+Ext.define('WIP.view.common.NavOperation', {
 	extend: 'Ext.panel.Panel',
 	
 	tbar : [ {
@@ -17,6 +17,13 @@ Ext.define('WIP.view.NavOperation', {
 				panel.getComponent(0).store.removeAll(false);
 			}
 		}
+	}, {
+		text : 'M',
+		handler : function(button) {
+			SmartFactory.addContentView(Ext.create('WIP.view.setup.MaterialSetup', {
+				title : 'Material Setup'
+			}));
+		}
 	} ],
 	
 	items : [{
@@ -28,12 +35,12 @@ Ext.define('WIP.view.NavOperation', {
 				view.store.load();
 			},
 			itemclick: function(view, record, item, index, e, opt) {
-				SmartFactory.addContentView({
+				SmartFactory.addContentView(Ext.create('WIP.view.transaction.Operation', {
 					xtype: 'wip.oper.operation',
 					title: 'Oper-' + record.get('oper_id'),
 					data: record,
 					closable: true
-				});
+				}));
 			}
 		},
 		
