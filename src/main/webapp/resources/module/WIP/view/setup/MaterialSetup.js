@@ -5,6 +5,8 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 
 	supplement : 'WIP.view.common.MaterialSelector',
 
+	bodyStyle : 'padding:5px',
+
 	bbar : {
 		xtype : 'cmn_trx_buttons'
 	},
@@ -25,7 +27,8 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 			type : 'vbox',
 			align : 'stretch'
 		},
-		height : 120,
+		padding : 5,
+		height : 64,
 		items : [{
 			xtype : 'container',
 			layout : 'hbox',
@@ -34,29 +37,21 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 				xtype : 'textfield',
 				fieldLabel : 'Material',
 				itemId : 'material',
-				labelWidth : 140,
 				labelSeparator : '',
 				flex : 2
 			}, {
 				xtype : 'textfield',
 				fieldLabel : 'Version',
 				itemId : 'version',
-				labelWidth : 140,
 				labelSeparator : '',
 				flex : 1
 			}]
 		}, {
-			xtype : 'container',
-			layout : 'hbox',
-			flex : 1,
-			items : {
-				xtype : 'textfield',
-				fieldLabel : 'Description',
-				itemId : 'description',
-				labelWidth : 140,
-				labelSeparator : '',
-				flex : 1
-			} 
+			xtype : 'textfield',
+			fieldLabel : 'Description',
+			itemId : 'description',
+			labelSeparator : '',
+			flex : 1
 		}]
 	},
 	

@@ -13,7 +13,7 @@ Ext.define('CMN.view.common.TransactionButtons', {
 	 * 부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다.
 	 */
 	dock : 'bottom',
-	flex : 1,
+	height : 24,
 	
 	/*
 	 * 컨테이너로서의 속성 : layout, defaults, tools, items 등을 정의한다. 
@@ -41,7 +41,7 @@ Ext.define('CMN.view.common.TransactionButtons', {
 		 * 정적인 컴포넌트들을 등록한다.
 		 * Docked Item들을 등록한다.
 		 */
-		this.bbar = [ this.zversionup, this.zcreate, this.zupdate, this.zdelete, this.zclose ];
+		this.items = [ this.zversionup, this.zcreate, this.zupdate, this.zdelete, this.zclose ];
 		
 		/*
 		 * 부모의 컴포넌트 초기화 기본 로직을 호출한다.

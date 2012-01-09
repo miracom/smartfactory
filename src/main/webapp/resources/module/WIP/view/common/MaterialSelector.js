@@ -85,7 +85,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		},
 		items : [ {
 			xtype : 'codeview',
-			labelWidth : 100,
+			labelWidth : 70,
 			fieldLabel : 'Material Type',
 			itemId : 'material_type',
 			codeviewName : 'MaterialType',
@@ -147,11 +147,13 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	
 	zrefresh : {
 		xtype : 'button',
+		text : 'R',
 		width : 18
 	}, 
 
 	zexport : {
 		xtype : 'button',
+		text : 'X',
 		width : 18
 	}
 });
