@@ -1,7 +1,6 @@
 package com.mesplus.ARC.controller;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -11,10 +10,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -141,11 +139,32 @@ public class ARCController {
 	}
 	
 	//http://localhost:8080/smartfactory/module/ARC/data/tableList.json
-	@RequestMapping(value = "module/ARC/data/tablelist.json", method = RequestMethod.GET)
+	@RequestMapping(value = "module/ARC/data/tablelist.json", method = RequestMethod.POST)
 	public @ResponseBody
 	List<Map<String,Object>> tableList(HttpServletRequest request, HttpServletResponse response) {
-		//String tableName = request.getParameter("owner");
+		Enumeration<String> e = request.getParameterNames();
 		
+		HashMap<String, String> params = new HashMap<String, String>();
+		while(e.hasMoreElements()) {
+			String key = (String) e.nextElement();
+	      	String value = request.getParameter(key);
+	      
+	      	System.out.println(String.format("key = %s value = %s", key,value));
+	      	
+	      	params.put(key, value);
+		}
+
 		return originalDao.getTableList("MESMGR");
+	}
+	
+	//http://localhost:8080/smartfactory/module/ARC/data/tableList.json
+	@RequestMapping(value = "module/ARC/data/tableupdate.json", method = RequestMethod.POST)
+	public @ResponseBody
+	List<Map<String,Object>> tableUpdate(@RequestBody List<Map<String, Object>> request, HttpServletResponse response) {
+		
+		System.out.print("TEST");
+		
+		
+		return null;
 	}
 }
