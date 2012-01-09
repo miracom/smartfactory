@@ -8,7 +8,9 @@ Ext.define('RPT.view.report.ReportColumn', {
 	alias : 'widget.rpt.report.report_column',
 
 	plugins : [Ext.create('CMN.plugin.Supplement')], 
-
+	
+	// excel export use flag
+	exportable : true,
 	layout : {
 		align : 'stretch',
 		type : 'vbox'
@@ -106,118 +108,93 @@ Ext.define('RPT.view.report.ReportColumn', {
 		flex : 1,
 		items : [ {
 			xtype : 'gridpanel',
+			exportTo : 'TestGrid1',
 			store : 'RPT.store.ReportListStore',
 			columnLines : true,
-			dockedItems : [ {
-				xtype : 'toolbar',
-				dock : 'bottom',
-				items : [ {
-					xtype : 'tbfill'
-				}, {
-					xtype : 'exporterbutton'
-				} ]
-			} ],
+//			dockedItems : [ {
+//				xtype : 'toolbar',
+//				dock : 'bottom',
+//				items : [ {
+//					xtype : 'tbfill'
+//				}, {
+//					xtype : 'exporterbutton'
+//				} ]
+//			} ],
 			title : 'TestGrid',
 			columns : [ {
-				xtype : 'gridcolumn',
-				autoScroll : true,
-				dataIndex : 'area',
-				align : 'center',
-				text : 'Location'
-			}, {
-				xtype : 'gridcolumn',
-				align : 'center',
-				text : 'xxx',
-				columns : [ {
-					xtype : 'gridcolumn',
-					dataIndex : 'lot_id',
-					align : 'center',
-					text : 'Lot No'
-				},{ 
-					xtype : 'gridcolumn',
-					align : 'center',
-					text : 'xxx33',
-					columns : [ {
-						xtype : 'gridcolumn',
-						dataIndex : 'oper_id',
-						align : 'center',
-						text : 'Operation'
-					}, {
-						xtype : 'gridcolumn',
-						dataIndex : 'oper_desc',
-						align : 'center',
-						text : 'Desription'
-					}]
-				}]
-			}, {
-				xtype : 'gridcolumn',
-				align : 'center',
-				text : 'Product',
-				columns : [ {
-					xtype : 'gridcolumn',
-					text : 'Code',
-					dataIndex : 'mat_id',
-					align : 'center',
-				}, {
-					xtype : 'gridcolumn',
-					text : 'Name',
-					dataIndex : 'mat_desc',
-					align : 'center',
-				}]
-			}, {
-				xtype : 'gridcolumn',
-				dataIndex : 'oper_sts',
-				align : 'center',
-				text : 'Status'
-			}, {
-				xtype : 'gridcolumn',
-				align : 'center',
-				text : 'group2',
-				columns : [{
-					xtype : 'gridcolumn',
-					align : 'center',
-					text : 'group2-1',
-					columns : [{
-						xtype : 'gridcolumn',
-						dataIndex : 'ord_id',
-						align : 'center',
-						text : 'Work Order'
-					}, {
-						xtype : 'gridcolumn',
-						align : 'center',
-						text : 'group2',
-						columns : [{
-							xtype : 'numbercolumn',
-							dataIndex : 'plan_qty',
-							align : 'center',
-							text : 'Planned Qty'
-						}, {
-							xtype : 'numbercolumn',
-							dataIndex : 'mat_qty',
-							align : 'center',
-							text : 'Material Qty'
-						}]
-					}]
-				}
-				,{
-					xtype : 'numbercolumn',
-					dataIndex : 'finished_qty',
-					align : 'center',
-					text : 'Finished Qty'
-				}]
-			},{
-				xtype : 'gridcolumn',
-				dataIndex : 'insp_id',
-				align : 'center',
-				text : 'Inspection'
-			}],
-			
-			viewConfig : {
-
-			},
-			features : [ {
-				ftype : 'grouping'
-			} ],
+				 xtype : 'gridcolumn',
+				 autoScroll : true,
+				 dataIndex : 'area',
+				 align : 'center',
+				 text : 'Location'
+			 	}, {
+				 xtype : 'gridcolumn',
+				 dataIndex : 'lot_id',
+				 align : 'center',
+				 text : 'Lot No'
+			 	}, {
+				 xtype : 'gridcolumn',
+				 dataIndex : 'oper_id',
+				 align : 'center',
+				 text : 'Operation'
+			 	}, {
+				 xtype : 'gridcolumn',
+				 dataIndex : 'oper_desc',
+				 align : 'center',
+				 text : 'Desription'
+			 	}, {
+				 xtype : 'gridcolumn',
+				 align : 'center',
+				 text : 'Product',
+				 columns : [ {
+					 xtype : 'gridcolumn',
+					 text : 'Code',
+					 dataIndex : 'mat_id',
+					 align : 'center',
+				 	}, {
+					 xtype : 'gridcolumn',
+					 text : 'Name',
+					 dataIndex : 'mat_desc',
+					 align : 'center',
+				 	}, ]
+			 	}, {
+				 xtype : 'gridcolumn',
+				 dataIndex : 'oper_sts',
+				 align : 'center',
+				 text : 'Status'
+			 	}, {
+				 xtype : 'gridcolumn',
+				 dataIndex : 'ord_id',
+				 align : 'center',
+				 text : 'Work Order'
+			 	}, {
+				 xtype : 'numbercolumn',
+				 dataIndex : 'plan_qty',
+				 align : 'center',
+				 text : 'Planned Qty'
+			 	}, {
+				 xtype : 'numbercolumn',
+				 dataIndex : 'mat_qty',
+				 align : 'center',
+				 text : 'Material Qty'
+			 	}, {
+				 xtype : 'numbercolumn',
+				 dataIndex : 'finished_qty',
+				 align : 'center',
+				 text : 'Finished Qty'
+			 	}, {
+				 xtype : 'gridcolumn',
+				 dataIndex : 'insp_id',
+				 align : 'center',
+				 text : 'Inspection'
+			 	} ],
+			 	viewConfig : {
+			 		
+			 	},
+			 	features : [ {
+				 ftype : 'grouping'
+			 	} ]
+		 	} ],
 			listeners : {
 				added : function(self){
 						var form = self.up('form');
@@ -237,23 +214,20 @@ Ext.define('RPT.view.report.ReportColumn', {
 					SmartFactory.addContentView(report);
 				}
 			}
-		} ]
-	}
-
-	, {
-		xtype : 'toolbar',
-		height : 30,
-		layout : {
-			type : 'hbox',
-			pack : 'start'
-		},
-		items : [ {
-			xtype : 'tbfill'
-		}, {
-			xtype : 'exporterbutton',
-			store : 'RPT.store.ReportListStore'
-			//target : this.findExportables()
-			//store : EX_store,
+		} , {
+			xtype : 'toolbar',
+			height : 30,
+			layout : {
+				type : 'hbox',
+				pack : 'start'
+			},
+			items : [ {
+				xtype : 'tbfill'
+			}, {
+				xtype : 'exporterbutton',
+				//store : ['RPT.store.ReportListStore'],
+				//  exportTo name
+				targetExports : ['TestGrid1']
+			}]
 		}]
-	}]
 });
