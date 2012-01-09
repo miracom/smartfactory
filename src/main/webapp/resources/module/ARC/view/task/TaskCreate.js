@@ -1,25 +1,3 @@
-Ext.apply(Ext.form.field.VTypes, {
-	// vtype validation function
-	task : function(val, field) {
-		var err = 0;
-		for ( var i = 0; i < val.length; i++) {
-			var chk = val.substring(i, i + 1);
-			// 영문자 a~z, A~Z, 숫자, 특수문자 -, _ 입력가능
-			if (!chk.match(/^[a-zA-Z0-9_-]/)) {
-				err = err + 1;
-			}
-		}
-		if (err > 0) {
-			// validation function returns false
-			return false;
-		}
-
-		return true;
-	},
-	// vtype Text property: The error text to display when the
-	taskText : 'Not a valid task.'
-});
-
 Ext.define('ARC.view.task.TaskCreate', {
 	extend : 'Ext.form.Panel',
 	layout : {
@@ -35,6 +13,10 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 		this.leftPanel = this.add(this.buildLeftPanel());
 		this.rightPanel = this.add(this.buildRightPanel());
+
+		
+//		var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});
+//		myMask.show();
 
 		this.tableListStore.load();
 		this.dbListStore.load();
@@ -65,10 +47,8 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 			console.log(encodedJson);
 			*/
-			
-			
-			
-			xx = me.tableListStore;
+			 
+			me.tableListStore.sync();
 			//console.log(me.tableListStore.getUpdatedRecords());
 			
 			var form = me.getForm();
@@ -201,6 +181,9 @@ Ext.define('ARC.view.task.TaskCreate', {
 		var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
 			clicksToEdit : 1
 		});
+		
+		var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});
+
 
 		return {
 			xtype : 'container',
@@ -271,7 +254,8 @@ Ext.define('ARC.view.task.TaskCreate', {
 						var txtmaster = me.leftPanel.down('#txtmaster');
 						txtmaster.setValue(record.get('TABLE_NAME'));
 					}
-				}
+				},
+				viewConfig: { emptyText : 'There are no items to show in this view.'}
 			} ]
 		};
 	}
