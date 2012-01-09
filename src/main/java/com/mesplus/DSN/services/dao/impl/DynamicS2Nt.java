@@ -31,7 +31,7 @@ public class DynamicS2Nt extends StoredProcedure {
 	private static final String SQLTEXT5_PARAM = "sqltext5";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_DYNAMIC_S2_NT";
+	private static final String SPROC_NAME = "P_DSN_DYNAMIC_S2_NT";
 
 	public DynamicS2Nt(DataSource dataSource) throws SQLException {
 		super(dataSource, SPROC_NAME);

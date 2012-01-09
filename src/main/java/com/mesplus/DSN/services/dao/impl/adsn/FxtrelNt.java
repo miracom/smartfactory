@@ -23,7 +23,7 @@ public class FxtrelNt extends StoredProcedure {
 	private static final String FUNC_ID_PARAM = "func_id";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_ADSNFXTREL_NT";
+	private static final String SPROC_NAME = "P_DSN_FXTREL_NT";
 
 	private ReturnType RTYPE = ReturnType.NONE;
 

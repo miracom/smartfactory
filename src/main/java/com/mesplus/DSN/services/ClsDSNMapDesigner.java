@@ -18,30 +18,110 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetDesignerS2(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 6) {
+			if (psaParam.length < 0 && psaParam.length > 7) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 			
 			String xName1 = "COLINFO";
-			String xName2 = "WHERECLAUSE";
-			String xName3 = "PMAPINFO";
-			String xName4 = "PCOLINFO";
-			String xName5 = "AMAPINFO";
-			String xName6 = "ACOLINFO";
-			String xName7 = "FUNVLDREL";
-			String xName8 = "FUNSPREL";
-			String xName9 = "FUNSVREL";
-			String xName10 = "CHARTINFO";
-			String xName11 = "FunctionTemplate";
-			String xName12 = "FunctionTemplateField";
+			String xName2 = "COLINFO";
+			String xName3 = "WHERECLAUSE";
+			String xName4 = "PMAPINFO";
+			String xName5 = "PCOLINFO";
+			String xName6 = "AMAPINFO";
+			String xName7 = "ACOLINFO";
+			String xName8 = "FUNVLDREL";
+			String xName9 = "FUNSPREL";
+			String xName10 = "FUNSVREL";
+			String xName11 = "CHARTINFO";
+			String xName12 = "ASSIGN";
+			String xName13 = "FunctionTemplate";
+			String xName14 = "FunctionTemplateField";
 			String fac_id = psaParam[0];
 			String func_id = psaParam[1];
-			String grp_user_id = psaParam[2];
-			String lang_flag = psaParam[3];
-			String admin_user = psaParam[4];
+			String spd_id = psaParam[2];
+			String grp_usr_id = psaParam[3];
+			String lang_flag = psaParam[4];
+			String admin_user = psaParam[5];
+			String func_template_id = psaParam[6];
 			ReturnType rType = ReturnType.ELEMENT;
 
-			return null;
+			List<Map<String, Object>> mapList1 = 
+					JdbcFormDaoImpl.getGlobalFormDao().mapdefS2NtDao(fac_id, func_id, admin_user, rType);
+			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName1);
+			
+			List<Map<String, Object>> mapList2 = 
+					JdbcFormDaoImpl.getGlobalFormDao().mapconGenNtDao(fac_id, func_id, lang_flag, rType);
+			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, xName2);
+					
+			List<Map<String, Object>> mapList3 = 
+					JdbcFormDaoImpl.getGlobalFormDao().consqlGenNtDao(fac_id, func_id, rType);
+			Element el3 = XmlConvert.mapListToDataTableElement(mapList3, xName3);
+			
+			List<Map<String, Object>> mapList4 = 
+					JdbcFormDaoImpl.getGlobalFormDao().usrmapNtDao(fac_id, func_id, grp_usr_id, rType);
+			Element el4 = XmlConvert.mapListToDataTableElement(mapList4, xName4);
+			
+			List<Map<String, Object>> mapList5 = 
+					JdbcFormDaoImpl.getGlobalFormDao().usrcolNtDao(fac_id, func_id, grp_usr_id, lang_flag, rType);
+			Element el5 = XmlConvert.mapListToDataTableElement(mapList5, xName5);
+			
+			List<Map<String, Object>> mapList6 = 
+					JdbcFormDaoImpl.getGlobalFormDao().grpmapNtDao(fac_id, func_id, rType);
+			Element el6 = XmlConvert.mapListToDataTableElement(mapList6, xName6);
+			
+			List<Map<String, Object>> mapList7 = 
+					JdbcFormDaoImpl.getGlobalFormDao().grpcolNtDao(fac_id, func_id, lang_flag, rType);
+			Element el7 = XmlConvert.mapListToDataTableElement(mapList7, xName7);
+			
+			List<Map<String, Object>> mapList8 = 
+					JdbcFormDaoImpl.getGlobalFormDao().tabvldNtDao(fac_id, func_id, spd_id, rType);
+			Element el8 = XmlConvert.mapListToDataTableElement(mapList8, xName8);
+			
+			List<Map<String, Object>> mapList9 = 
+					JdbcFormDaoImpl.getGlobalFormDao().FsprelNtDao(fac_id, func_id, spd_id, rType);
+			Element el9 = XmlConvert.mapListToDataTableElement(mapList9, xName9);
+			
+			List<Map<String, Object>> mapList10 = 
+					JdbcFormDaoImpl.getGlobalFormDao().FscrelNtDao(fac_id, func_id, spd_id, rType);
+			Element el10 = XmlConvert.mapListToDataTableElement(mapList10, xName10);
+			
+			List<Map<String, Object>> mapList11 = 
+					JdbcFormDaoImpl.getGlobalFormDao().chtinfNtDao(fac_id, func_id, rType);
+			Element el11 = XmlConvert.mapListToDataTableElement(mapList11, xName11);
+			
+			List<Map<String, Object>> mapList12 = 
+					JdbcFormDaoImpl.getGlobalFormDao().assdefGenNtDao(fac_id, func_id, rType);
+			Element el12 = XmlConvert.mapListToDataTableElement(mapList12, xName12);
+			
+			List<Map<String, Object>> mapList13 = 
+					JdbcFormDaoImpl.getGlobalFormDao().fxtrelNtDao(fac_id, func_id, rType);
+			Element el13 = XmlConvert.mapListToDataTableElement(mapList13, xName13);
+			
+			List<Map<String, Object>> mapList14 = 
+					JdbcFormDaoImpl.getGlobalFormDao().ftrfldNtDao(fac_id, func_id, func_template_id, rType);
+			Element el14 = XmlConvert.mapListToDataTableElement(mapList14, xName14);
+			
+			
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el1);
+			elList.add(el2);
+			elList.add(el3);
+			elList.add(el4);
+			elList.add(el5);
+			elList.add(el6);
+			elList.add(el7);
+			elList.add(el8);
+			elList.add(el9);
+			elList.add(el10);
+			elList.add(el11);
+			elList.add(el12);
+			elList.add(el13);
+			elList.add(el14);
+			
+			Element gpElement = XmlConvert.groupElement(elList);
+			
+			return XmlConvert.elementToXML(gpElement);
+
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -51,7 +131,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetPersonalizationMap(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 4) {
+			if (psaParam.length < 0 && psaParam.length > 3) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
@@ -61,8 +141,16 @@ public class ClsDSNMapDesigner {
 			String grp_usr_id = psaParam[2];
 			ReturnType rType = ReturnType.ELEMENT;
 			
+			List<Map<String, Object>> mapList1 =
+					JdbcFormDaoImpl.getGlobalFormDao().usrmapNtDao(fac_id, func_id, grp_usr_id, rType);
+			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName);
 			
-			return null;
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el1);
+			
+			Element gpElement = XmlConvert.groupElement(elList);
+					
+			return XmlConvert.elementToXML(gpElement);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -72,17 +160,25 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetAdminMap(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 4) {
+			if (psaParam.length < 0 && psaParam.length > 2) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
 			String xName = "AMAPINFO";
 			String fac_id = psaParam[0];
 			String func_id = psaParam[1];
-			String grp_usr_id = psaParam[2];
 			ReturnType rType = ReturnType.ELEMENT;
 			
-			return null;
+			List<Map<String, Object>> mapList1 = 
+					JdbcFormDaoImpl.getGlobalFormDao().grpmapNtDao(fac_id, func_id, rType);
+			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName);
+			
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el1);
+			
+			Element gpElement = XmlConvert.groupElement(elList);
+			
+			return XmlConvert.elementToXML(gpElement);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -153,7 +249,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetFunctionRelationList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 6) {
+			if (psaParam.length < 0 && psaParam.length > 5) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
@@ -163,6 +259,7 @@ public class ClsDSNMapDesigner {
 			String xName4 = "FunctionSPRelationList";
 			String xName5 = "FunctionServiceRelationList";
 			String xName6 = "ChartProperties";
+			String xName7 = "ASSIGN";
 			String fac_id = psaParam[0];
 			String func_id = psaParam[1];
 			String spd_id = psaParam[2];
@@ -170,7 +267,46 @@ public class ClsDSNMapDesigner {
 			String admin_user = psaParam[4];
 			ReturnType rType = ReturnType.ELEMENT;
 		
-			return null;
+			List<Map<String, Object>> mapList1 = 
+					JdbcFormDaoImpl.getGlobalFormDao().ConsqlNtDao(tab_id, admin_user, rType);
+			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName1);
+			
+			List<Map<String, Object>> mapList2 = 
+					JdbcFormDaoImpl.getGlobalFormDao().FtrdefNtDao(fac_id, func_id, spd_id, rType);
+			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, xName2);
+					
+			List<Map<String, Object>> mapList3 = 
+					JdbcFormDaoImpl.getGlobalFormDao().tabvldNtDao(fac_id, func_id, spd_id, rType);
+			Element el3 = XmlConvert.mapListToDataTableElement(mapList3, xName3);
+			
+			List<Map<String, Object>> mapList4 = 
+					JdbcFormDaoImpl.getGlobalFormDao().FsprelNtDao(fac_id, func_id, spd_id, rType);
+			Element el4 = XmlConvert.mapListToDataTableElement(mapList4, xName4);
+			
+			List<Map<String, Object>> mapList5 = 
+					JdbcFormDaoImpl.getGlobalFormDao().FscrelNtDao(fac_id, func_id, spd_id, rType);
+			Element el5 = XmlConvert.mapListToDataTableElement(mapList5, xName5);
+			
+			List<Map<String, Object>> mapList6 = 
+					JdbcFormDaoImpl.getGlobalFormDao().ChtdetNtDao(tab_id, rType);
+			Element el6 = XmlConvert.mapListToDataTableElement(mapList6, xName6);
+			
+			List<Map<String, Object>> mapList7 = 
+					JdbcFormDaoImpl.getGlobalFormDao().AssdefNtDao(tab_id, rType);
+			Element el7 = XmlConvert.mapListToDataTableElement(mapList7, xName7);
+			
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el1);
+			elList.add(el2);
+			elList.add(el3);
+			elList.add(el4);
+			elList.add(el5);
+			elList.add(el6);
+			elList.add(el7);
+			
+			Element gpElement = XmlConvert.groupElement(elList);
+			
+			return XmlConvert.elementToXML(gpElement);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -271,7 +407,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetFunctionExcelTemplateFieldList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 4) {
+			if (psaParam.length < 0 && psaParam.length > 3) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 			
@@ -280,8 +416,17 @@ public class ClsDSNMapDesigner {
 			String func_id = psaParam[1];
 			String func_template_id = psaParam[2];
 			ReturnType rType = ReturnType.ELEMENT;
+			
+			List<Map<String, Object>> mapList1 = 
+					JdbcFormDaoImpl.getGlobalFormDao().ftrfldNtDao(fac_id, func_id, func_template_id, rType);
+			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName);
 
-			return null;
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el1);
+			
+			Element gpElement = XmlConvert.groupElement(elList);
+			
+			return XmlConvert.elementToXML(gpElement);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -340,8 +485,31 @@ public class ClsDSNMapDesigner {
 		return null;
 	}
 
-	public java.lang.String GetServiceMember(java.lang.String psServiceID) throws java.rmi.RemoteException {
-		return null;
+	public java.lang.String GetServiceMember(java.lang.String[] psServiceID) throws java.rmi.RemoteException {
+		try {
+
+			if (psServiceID.length < 0 && psServiceID.length > 3) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psServiceID.length + " size");
+			}
+			
+			String xName = "FieldValueIndex";
+			String fac_id = psServiceID[0];
+			ReturnType rType = ReturnType.ELEMENT;
+			
+			List<Map<String, Object>> mapList1 = 
+					JdbcFormDaoImpl.getGlobalFormDao().SvcmbrNtDao(fac_id, rType);
+			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName);
+
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el1);
+			
+			Element gpElement = XmlConvert.groupElement(elList);
+			
+			return XmlConvert.elementToXML(gpElement);
+
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
 	}
 
 	public java.lang.String CopyMapDesigner(java.lang.String[] psaParam) throws java.rmi.RemoteException {

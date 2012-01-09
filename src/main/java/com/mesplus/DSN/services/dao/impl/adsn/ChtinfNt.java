@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl;
+package com.mesplus.DSN.services.dao.impl.adsn;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -23,7 +23,7 @@ public class ChtinfNt extends StoredProcedure {
 	private static final String FUNC_ID_PARAM = "func_id";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_ADSNCHTINF_NT";
+	private static final String SPROC_NAME = "P_DSN_CHTINF_NT";
 
 	private ReturnType RTYPE = ReturnType.NONE;
 

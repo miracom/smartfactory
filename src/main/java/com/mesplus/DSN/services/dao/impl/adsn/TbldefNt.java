@@ -18,26 +18,32 @@ import com.mesplus.util.TypeConvert;
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ObjcetMapper;
 
-public class MapdefS2Nt extends StoredProcedure {
+public class TbldefNt extends StoredProcedure {
 
 	private static final String FAC_ID_PARAM = "fac_id";
-	private static final String FUNC_ID_PARAM = "func_id";
-	private static final String ADMIN_USER_PARAM = "admin_user";
+	private static final String TBL_GRP_PARAM = "tbl_grp";
+	private static final String TBL_CODE_PARAM = "tbl_code";
+	private static final String PHYSICAL_TABLE_PARAM = "physical_table";
+	private static final String PHYSICAL_VIEW_PARAM = "physical_view";
+	private static final String LOGICAL_VIEW_PARAM = "logical_view";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_DSN_MAPDEF_S2_NT";
+	private static final String SPROC_NAME = "P_DSN_TBLDEF_NT";
 
 	private static ReturnType RTYPE = ReturnType.NONE;
 	
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
-	public MapdefS2Nt(DataSource dataSource, ReturnType rType) throws SQLException {
+	public TbldefNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(ADMIN_USER_PARAM, Types.VARCHAR));
-
+		declareParameter(new SqlParameter(TBL_GRP_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(TBL_CODE_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(PHYSICAL_TABLE_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(PHYSICAL_VIEW_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(LOGICAL_VIEW_PARAM, Types.VARCHAR));
+		
 		RTYPE = rType;
 
 		if (RTYPE == ReturnType.OBJECT) {
@@ -51,11 +57,14 @@ public class MapdefS2Nt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id, String admin_user) {
+	public Map<String, Object> execute(String fac_id, String func_id, String spd_id) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
 		inputs.put(FAC_ID_PARAM, fac_id);
-		inputs.put(FUNC_ID_PARAM, func_id);
-		inputs.put(ADMIN_USER_PARAM, admin_user);
+		inputs.put(TBL_GRP_PARAM, func_id);
+		inputs.put(TBL_CODE_PARAM, spd_id);
+		inputs.put(PHYSICAL_TABLE_PARAM, spd_id);
+		inputs.put(PHYSICAL_VIEW_PARAM, spd_id);
+		inputs.put(LOGICAL_VIEW_PARAM, spd_id);
 
 		return super.execute(inputs);
 	}

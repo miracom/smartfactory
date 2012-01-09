@@ -29,7 +29,7 @@ public class SelectresultNt extends StoredProcedure {
 	private static final String A_SQL_TXT5_PARAM = "a_sql_txt5";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 	
-	private static final String SPROC_NAME = "P_ASECFUNDEF_NT";
+	private static final String SPROC_NAME = "P_DSN_GETSELECTRESULT_NT";
 
 	private static ReturnType RTYPE = ReturnType.NONE;
 	

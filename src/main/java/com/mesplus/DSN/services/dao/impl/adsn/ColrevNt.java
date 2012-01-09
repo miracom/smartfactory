@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl;
+package com.mesplus.DSN.services.dao.impl.adsn;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -18,27 +18,25 @@ import com.mesplus.util.TypeConvert;
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ObjcetMapper;
 
-public class FtrfldNt extends StoredProcedure {
-	private static final String FAC_ID_PARAM = "fac_id";
-	private static final String FUNC_ID_PARAM = "func_id";
-	private static final String FUNC_TEMPLATE_ID_PARAM = "func_template_id";
+public class ColrevNt extends StoredProcedure {
+	private static final String TBL_ID_PARAM = "tbl_id";
+	private static final String TBL_NAME_PARAM = "tbl_name";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_ADSNFTRFLD_NT";
+	private static final String SPROC_NAME = "P_DSN_COLREV_NT";
 
 	private ReturnType RTYPE = ReturnType.NONE;
 
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
-	public FtrfldNt(DataSource dataSource, ReturnType rType) throws SQLException {
+	public ColrevNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
-		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(FUNC_TEMPLATE_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(TBL_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(TBL_NAME_PARAM, Types.VARCHAR));
 
 		RTYPE = rType;
-
+		
 		if (RTYPE == ReturnType.OBJECT) {
 			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ObjcetMapper()));
 		} else if (RTYPE == ReturnType.ELEMENT) {
@@ -50,11 +48,10 @@ public class FtrfldNt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id, String func_template_id) {
+	public Map<String, Object> execute(String tbl_id, String tbl_name) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
-		inputs.put(FAC_ID_PARAM, fac_id);
-		inputs.put(FUNC_ID_PARAM, func_id);
-		inputs.put(FUNC_TEMPLATE_ID_PARAM, func_template_id);
+		inputs.put(TBL_ID_PARAM, tbl_id);
+		inputs.put(TBL_NAME_PARAM, tbl_name);
 
 		return super.execute(inputs);
 	}

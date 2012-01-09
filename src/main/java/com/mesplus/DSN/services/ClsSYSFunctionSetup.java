@@ -17,7 +17,7 @@ public class ClsSYSFunctionSetup {
 	public java.lang.String GetFunctionList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 5) {
+			if (psaParam.length < 0 && psaParam.length > 4) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
@@ -25,12 +25,12 @@ public class ClsSYSFunctionSetup {
 			String fac_id = psaParam[0];
 			String func_group = psaParam[1];
 			String func_code = psaParam[2];
-			String function_type = psaParam[3];
+			String func_type = psaParam[3];
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			// XML: DataTable
 			List<Map<String, Object>> mapList = 
-					JdbcFormDaoImpl.getGlobalFormDao().fundefNtDao(fac_id, func_group, func_code, function_type, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().fundefNtDao(fac_id, func_group, func_code, func_type, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);
@@ -40,7 +40,26 @@ public class ClsSYSFunctionSetup {
 		}
     }
 
-    public java.lang.String SetFunction(java.lang.String psParams) throws java.rmi.RemoteException {
-        return null;
+	public java.lang.String GetFunctionList01(java.lang.String[] psaParam) throws java.rmi.RemoteException {
+		try {
+
+			if (psaParam.length < 0 && psaParam.length > 1) {
+				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
+			}
+
+			String xName = "FACTORYLIST";
+			String func_code = psaParam[0];
+			ReturnType rType = ReturnType.ELEMENT;
+			
+			// XML: DataTable
+			List<Map<String, Object>> mapList = 
+					JdbcFormDaoImpl.getGlobalFormDao().Fundef01NtDao(func_code, rType);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			
+			return XmlConvert.elementToXML(el);
+			
+		} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
     }
 }

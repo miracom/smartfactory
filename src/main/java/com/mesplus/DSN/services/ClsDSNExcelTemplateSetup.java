@@ -1,10 +1,17 @@
 package com.mesplus.DSN.services;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.jws.WebService;
 
+import org.jdom.Element;
+
+import com.mesplus.DSN.services.dao.impl.JdbcFormDaoImpl;
 import com.mesplus.util.Enums.ReturnType;
+import com.mesplus.util.XmlConvert;
 
 @WebService
 public class ClsDSNExcelTemplateSetup {
@@ -35,7 +42,16 @@ public class ClsDSNExcelTemplateSetup {
 			String template_filename = psaParam[1];
 			ReturnType rType = ReturnType.ELEMENT;
 			
-			return null;
+			List<Map<String, Object>> mapList = 
+					JdbcFormDaoImpl.getGlobalFormDao().XtpdefNtDao(template_name, template_filename, rType);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el);
+			
+			Element gEl = XmlConvert.groupElement(elList);
+			
+			return XmlConvert.elementToXML(gEl);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -45,7 +61,7 @@ public class ClsDSNExcelTemplateSetup {
     public java.lang.String GetExcelTemplateSheet(java.lang.String[] psaParam) throws java.rmi.RemoteException {
     	try {
 
-    		if (psaParam.length < 0 && psaParam.length > 2) {
+    		if (psaParam.length < 0 && psaParam.length > 1) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
     		
@@ -53,7 +69,16 @@ public class ClsDSNExcelTemplateSetup {
 			String template_id = psaParam[0];
 			ReturnType rType = ReturnType.ELEMENT;
 
-			return null;
+			List<Map<String, Object>> mapList =
+					JdbcFormDaoImpl.getGlobalFormDao().XtpsheNtDao(template_id, rType);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el);
+			
+			Element gEl = XmlConvert.groupElement(elList);
+
+			return XmlConvert.elementToXML(gEl);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -63,7 +88,7 @@ public class ClsDSNExcelTemplateSetup {
     public java.lang.String GetExcelTemplateField(java.lang.String[] psaParam) throws java.rmi.RemoteException {
     	try {
 
-    		if (psaParam.length < 0 && psaParam.length > 2) {
+    		if (psaParam.length < 0 && psaParam.length > 1) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
@@ -71,8 +96,17 @@ public class ClsDSNExcelTemplateSetup {
 			String sheet_id = psaParam[0];
 			ReturnType rType = ReturnType.ELEMENT;
 			
-			return null;
-
+			List<Map<String, Object>> mapList = 
+					JdbcFormDaoImpl.getGlobalFormDao().XtpfldNtDao(sheet_id, rType);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			
+			List<Element> elList = new ArrayList<Element>();
+			elList.add(el);
+			
+			Element gEl = XmlConvert.groupElement(elList);
+			
+			return XmlConvert.elementToXML(gEl);
+			
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
 		}

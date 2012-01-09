@@ -27,7 +27,7 @@ public class MapconNt extends StoredProcedure {
 	private static final String ADMIN_USER_PARAM = "admin_user";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 	
-	private static final String SPROC_NAME = "P_ADSNMAPCON_NT";
+	private static final String SPROC_NAME = "P_DSN_MAPCON_NT";
 
 	private static ReturnType RTYPE = ReturnType.NONE;
 	

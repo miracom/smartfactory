@@ -71,7 +71,7 @@ public class ClsAPSplusCommonFunction {
 	public java.lang.String GetSQLData(java.lang.String[] sSqlText) throws java.rmi.RemoteException {
 		try {
 
-			if (sSqlText.length < 0 && sSqlText.length > 6) {
+			if (sSqlText.length < 0 && sSqlText.length > 5) {
 				throw new RemoteException("IllegalArgumentException: Parameters(sSqlText) should not be " + sSqlText.length + " size");
 			}
 
@@ -84,8 +84,11 @@ public class ClsAPSplusCommonFunction {
 			ReturnType rType = ReturnType.ELEMENT;
 
 			// XML: DataTable
-
-			return null;
+			Map<String, Object> map =
+					JdbcFormDaoImpl.getGlobalFormDao().selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5, rType);
+			Element el = XmlConvert.mapToArrayListElement(map);
+			
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

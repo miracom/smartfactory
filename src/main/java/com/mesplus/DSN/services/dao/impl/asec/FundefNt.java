@@ -23,7 +23,7 @@ public class FundefNt extends StoredProcedure {
 	private static final String FAC_ID_PARAM = "fac_id";
 	private static final String FUNC_GROUP_PARAM = "func_group";
 	private static final String FUNC_CODE_PARAM = "func_code";
-	private static final String FUNCTION_TYPE_PARAM = "function_type";
+	private static final String FUNC_TYPE_PARAM = "func_type";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 	
 	private static final String SPROC_NAME = "P_ASECFUNDEF_NT";
@@ -38,7 +38,7 @@ public class FundefNt extends StoredProcedure {
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(FUNC_GROUP_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(FUNC_CODE_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(FUNCTION_TYPE_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(FUNC_TYPE_PARAM, Types.VARCHAR));
 
 		RTYPE = rType;
 
@@ -53,12 +53,12 @@ public class FundefNt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_group, String func_code, String function_type) {
+	public Map<String, Object> execute(String fac_id, String func_group, String func_code, String func_type) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
 		inputs.put(FAC_ID_PARAM, fac_id);
 		inputs.put(FUNC_GROUP_PARAM, func_group);
 		inputs.put(FUNC_CODE_PARAM, func_code);
-		inputs.put(FUNCTION_TYPE_PARAM, function_type);
+		inputs.put(FUNC_TYPE_PARAM, func_type);
 
 		return super.execute(inputs);
 	}

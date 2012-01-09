@@ -18,21 +18,18 @@ import com.mesplus.util.TypeConvert;
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ObjcetMapper;
 
-public class MapdefSplNt extends StoredProcedure {
-
-	//FAC_ID, FUNC_ID
-	//fac_id, func_id
+public class AssdefGenNt extends StoredProcedure {
 	private static final String FAC_ID_PARAM = "fac_id";
 	private static final String FUNC_ID_PARAM = "func_id";
 	public static final String CUR_REFER_PARAM = "cur.refer";
-	
-	private static final String SPROC_NAME = "P_DSN_MAPDEF_SPL_NT";
 
-	private static ReturnType RTYPE = ReturnType.NONE;
-	
+	private final static String SPROC_NAME = "P_DSN_ASSDEF_GEN_NT";
+
+	private ReturnType RTYPE = ReturnType.NONE;
+
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
-	public MapdefSplNt(DataSource dataSource, ReturnType rType) throws SQLException {
+	public AssdefGenNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
