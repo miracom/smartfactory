@@ -21,5 +21,5 @@ public interface FavoriteDao {
 	 * @return 즐겨찾기 목록
 	 */
 	@Cacheable(cacheName = "favorites")
-	List<Favorite> selectFavorites(Map<String, Object> params);
+	List<Favorite> select(Map<String, Object> params);
 }

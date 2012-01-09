@@ -1,4 +1,4 @@
-var supplement = Ext.define('CMN.plugin.Supplement', {
+Ext.define('CMN.plugin.Supplement', {
 	extend : 'Ext.Base',
 	
 	init : function(client) {
@@ -12,14 +12,30 @@ var supplement = Ext.define('CMN.plugin.Supplement', {
 			client.setSupplement = this.setSupplement;
 		}
 
-		if(!client.getSupplement()) {
-			;
+		function onRender() {
+			if(this.getSupplement())
+				this.setSupplement(this.getSupplement());
 		}
-		
-		client.on('activate', this.onActivate, client);
-		client.on('deactivate', this.onDeactivate, client);
-		client.on('destroy', this.onDestroy, client);
-		client.on('render', this.onRender, client);
+
+		function onActivate() {
+			if (this.getSupplement())
+				Ext.getCmp('east').getLayout().setActiveItem(this.getSupplement());
+		}
+
+		function onDeactivate() {
+			if (this.getSupplement())
+				Ext.getCmp('east').getLayout().setActiveItem('base');
+		}
+
+		function onDestroy() {
+			if (this.getSupplement())
+				Ext.getCmp('east').remove(this.getSupplement());
+		}
+
+		client.on('activate', onActivate, client);
+		client.on('deactivate', onDeactivate, client);
+		client.on('destroy', onDestroy, client);
+		client.on('render', onRender, client);
 	},
 
 	setSupplement : function(supplement) {
@@ -36,25 +52,4 @@ var supplement = Ext.define('CMN.plugin.Supplement', {
 		}
 	},
 	
-	onRender : function() {
-		if(this.getSupplement())
-			this.setSupplement(this.getSupplement());
-	},
-
-	onActivate : function() {
-		if (this.getSupplement())
-			Ext.getCmp('east').getLayout().setActiveItem(this.getSupplement());
-	},
-
-	onDeactivate : function() {
-		if (this.getSupplement())
-			Ext.getCmp('east').getLayout().setActiveItem('base');
-	},
-
-	onDestroy : function() {
-		if (this.getSupplement())
-			Ext.getCmp('east').remove(this.getSupplement());
-	}
 });
-
-Ext.preg('supplement', supplement);

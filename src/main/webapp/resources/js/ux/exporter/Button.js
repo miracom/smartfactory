@@ -24,10 +24,12 @@ Ext.define("Ext.ux.exporter.Button", {
 
     constructor: function(config) {
       config = config || {};
-
+      if(typeof config.store == 'string'){
+    	  config.store = Ext.getStore(config.store);
+      }
       this.initConfig();
       Ext.ux.exporter.Button.superclass.constructor.call(this, config);
-
+      
       var self = this;
       this.on("afterrender", function() { // We wait for the combo to be rendered, so we can look up to grab the component containing it
           self.setComponent(self.store || self.component || self.up("gridpanel") || self.up("treepanel"), config);
@@ -37,6 +39,9 @@ Ext.define("Ext.ux.exporter.Button", {
     setComponent: function(component, config) {
         this.component = component;
         this.store = !component.is ? component : component.getStore(); // only components or stores, if it doesn't respond to is method, it's a store
+        if(typeof this.store == 'string'){
+        	this.store = Ext.getStore(this.store);
+        }
         this.setDownloadify(config);
     },
 
