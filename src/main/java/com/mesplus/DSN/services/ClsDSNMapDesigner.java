@@ -260,18 +260,18 @@ public class ClsDSNMapDesigner {
 			String xName5 = "FunctionServiceRelationList";
 			String xName6 = "ChartProperties";
 			String xName7 = "ASSIGN";
-			String fac_id = psaParam[0];
-			String func_id = psaParam[1];
-			String spd_id = psaParam[2];
-			String tab_id = psaParam[3];
-			String admin_user = psaParam[4];
+			//String fac_id = psaParam[0];
+			//String func_id = psaParam[1];
+			//String spd_id = psaParam[2];
+			String tab_id = psaParam[0];
+			String admin_user = psaParam[1];
 			ReturnType rType = ReturnType.ELEMENT;
 		
 			List<Map<String, Object>> mapList1 = 
 					JdbcFormDaoImpl.getGlobalFormDao().ConsqlNtDao(tab_id, admin_user, rType);
 			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName1);
 			
-			List<Map<String, Object>> mapList2 = 
+			/*List<Map<String, Object>> mapList2 = 
 					JdbcFormDaoImpl.getGlobalFormDao().FtrdefNtDao(fac_id, func_id, spd_id, rType);
 			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, xName2);
 					
@@ -293,16 +293,16 @@ public class ClsDSNMapDesigner {
 			
 			List<Map<String, Object>> mapList7 = 
 					JdbcFormDaoImpl.getGlobalFormDao().AssdefNtDao(tab_id, rType);
-			Element el7 = XmlConvert.mapListToDataTableElement(mapList7, xName7);
+			Element el7 = XmlConvert.mapListToDataTableElement(mapList7, xName7);*/
 			
 			List<Element> elList = new ArrayList<Element>();
 			elList.add(el1);
-			elList.add(el2);
+			/*elList.add(el2);
 			elList.add(el3);
 			elList.add(el4);
 			elList.add(el5);
 			elList.add(el6);
-			elList.add(el7);
+			elList.add(el7);*/
 			
 			Element gpElement = XmlConvert.groupElement(elList);
 			
