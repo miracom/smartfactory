@@ -18,22 +18,30 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="SetFunction">
+   <element name="GetFunctionList01">
     <complexType>
      <sequence>
-      <element name="psParams" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <element name="SetFunctionResponse">
+   <element name="GetFunctionList01Response">
     <complexType>
      <sequence>
-      <element name="SetFunctionReturn" type="xsd:string"/>
+      <element name="GetFunctionList01Return" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
   </schema>
  </wsdl:types>
+
+   <wsdl:message name="GetFunctionList01Request">
+
+      <wsdl:part element="impl:GetFunctionList01" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
 
    <wsdl:message name="GetFunctionListResponse">
 
@@ -43,25 +51,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="SetFunctionRequest">
-
-      <wsdl:part element="impl:SetFunction" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="SetFunctionResponse">
-
-      <wsdl:part element="impl:SetFunctionResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="GetFunctionListRequest">
 
       <wsdl:part element="impl:GetFunctionList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetFunctionList01Response">
+
+      <wsdl:part element="impl:GetFunctionList01Response" name="parameters">
 
       </wsdl:part>
 
@@ -81,13 +81,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="SetFunction">
+      <wsdl:operation name="GetFunctionList01">
 
-         <wsdl:input message="impl:SetFunctionRequest" name="SetFunctionRequest">
+         <wsdl:input message="impl:GetFunctionList01Request" name="GetFunctionList01Request">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:SetFunctionResponse" name="SetFunctionResponse">
+         <wsdl:output message="impl:GetFunctionList01Response" name="GetFunctionList01Response">
 
        </wsdl:output>
 
@@ -117,17 +117,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="SetFunction">
+      <wsdl:operation name="GetFunctionList01">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="SetFunctionRequest">
+         <wsdl:input name="GetFunctionList01Request">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="SetFunctionResponse">
+         <wsdl:output name="GetFunctionList01Response">
 
             <wsdlsoap:body use="literal"/>
 

@@ -13,10 +13,10 @@
       <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFunctionList" qname="operNS:GetFunctionList" returnQName="retNS:GetFunctionListReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
       </operation>
-      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setFunction" qname="operNS:SetFunction" returnQName="retNS:SetFunctionReturn" returnType="rtns:string" soapAction="">
-        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psParams" type="tns:string"/>
+      <operation xmlns:operNS="http://services.DSN.mesplus.com" xmlns:retNS="http://services.DSN.mesplus.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFunctionList01" qname="operNS:GetFunctionList01" returnQName="retNS:GetFunctionList01Return" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://services.DSN.mesplus.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:psaParam" type="tns:string"/>
       </operation>
-      <parameter name="allowedMethods" value="setFunction getFunctionList"/>
+      <parameter name="allowedMethods" value="getFunctionList01 getFunctionList"/>
 
   </service>
 </deployment>
