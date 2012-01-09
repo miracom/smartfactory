@@ -84,10 +84,9 @@ public class ClsAPSplusCommonFunction {
 			ReturnType rType = ReturnType.ELEMENT;
 
 			// XML: DataTable
-			Map<String, Object> map =
+			List<Map<String, Object>> mapList =
 					JdbcFormDaoImpl.getGlobalFormDao().selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5, rType);
 			
-			List<Map<String, Object>> mapList = (List<Map<String, Object>>) map.get("cur.refer");
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);
@@ -97,6 +96,7 @@ public class ClsAPSplusCommonFunction {
 		}
 	}
 
+	//ArrayList가 복수의 Row를 처리할경우 소스를 변경하여야 한다.
 	public java.lang.String GetSQLDataArrayList(java.lang.String[] sSqlText) throws java.rmi.RemoteException {
 		try {
 
@@ -113,10 +113,10 @@ public class ClsAPSplusCommonFunction {
 			ReturnType rType = ReturnType.ELEMENT;
 
 			// XML: ArrayList
-			Map<String, Object> map =
+			List<Map<String, Object>> mapList =
 					JdbcFormDaoImpl.getGlobalFormDao().selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5, rType);
 			
-			Element el = XmlConvert.mapToArrayListElement(map);
+			Element el = XmlConvert.mapToArrayListElement(mapList.get(0));
 			
 			return XmlConvert.elementToXML(el);
 

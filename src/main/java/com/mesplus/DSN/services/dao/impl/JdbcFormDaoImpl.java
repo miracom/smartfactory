@@ -288,7 +288,7 @@ public class JdbcFormDaoImpl implements FormDao {
 	
 	
 	//GET
-	public Map<String, Object> selectresultNtDao(String a_sql_txt1, String a_sql_txt2, String a_sql_txt3, String a_sql_txt4, String a_sql_txt5, ReturnType rType) throws SQLException {
+	public List<Map<String, Object>> selectresultNtDao(String a_sql_txt1, String a_sql_txt2, String a_sql_txt3, String a_sql_txt4, String a_sql_txt5, ReturnType rType) throws SQLException {
 		if (a_sql_txt1 == null || a_sql_txt2 == null || a_sql_txt3 == null || a_sql_txt4 == null || a_sql_txt5 == null) {
 			throw new IllegalArgumentException("Parameters(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5) should not be null.");
 		}
@@ -296,8 +296,7 @@ public class JdbcFormDaoImpl implements FormDao {
 		SelectresultNt sp = new SelectresultNt(dataSource, rType);
 		Map<String, Object> results = sp.execute(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5);
 
-		//return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
-		return results;
+		return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
 	}
 
 	/*
