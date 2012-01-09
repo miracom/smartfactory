@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.DSN.mesplus.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.DSN.mesplus.com" xmlns:intf="http://services.DSN.mesplus.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.DSN.mesplus.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="GetGCMDataList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="arrParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetGCMDataListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetGCMDataListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="GetGCMDataListResponse">
+
+      <wsdl:part element="impl:GetGCMDataListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GetGCMDataListRequest">
+
+      <wsdl:part element="impl:GetGCMDataList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ClsSYSGCMDataSetup">
+
+      <wsdl:operation name="GetGCMDataList">
+
+         <wsdl:input message="impl:GetGCMDataListRequest" name="GetGCMDataListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetGCMDataListResponse" name="GetGCMDataListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ClsSYSGCMDataSetupSoapBinding" type="impl:ClsSYSGCMDataSetup">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="GetGCMDataList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetGCMDataListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetGCMDataListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ClsSYSGCMDataSetupService">
+
+      <wsdl:port binding="impl:ClsSYSGCMDataSetupSoapBinding" name="ClsSYSGCMDataSetup">
+
+         <wsdlsoap:address location="http://localhost:8080/smartfactory/services/ClsSYSGCMDataSetup"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

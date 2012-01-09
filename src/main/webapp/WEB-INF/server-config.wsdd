@@ -158,15 +158,15 @@
   <ns1:operation name="GetFunctionList" qname="ns31:GetFunctionList" returnQName="ns31:GetFunctionListReturn" returnType="xsd:string" soapAction="" xmlns:ns31="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns31:psaParam" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="SetFunction" qname="ns32:SetFunction" returnQName="ns32:SetFunctionReturn" returnType="xsd:string" soapAction="" xmlns:ns32="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns32:psParams" type="xsd:string"/>
+  <ns1:operation name="GetFunctionList01" qname="ns32:GetFunctionList01" returnQName="ns32:GetFunctionList01Return" returnType="xsd:string" soapAction="" xmlns:ns32="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns32:psaParam" type="xsd:string"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="SetFunction GetFunctionList"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="allowedMethods" value="GetFunctionList01 GetFunctionList"/>
   <ns1:parameter name="wsdlPortType" value="ClsSYSFunctionSetup"/>
-  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsSYSFunctionSetup"/>
-  <ns1:parameter name="wsdlServicePort" value="ClsSYSFunctionSetup"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsSYSFunctionSetup"/>
+  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsSYSFunctionSetup"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
   <ns1:parameter name="wsdlServiceElement" value="ClsSYSFunctionSetupService"/>
  </ns1:service>
@@ -214,15 +214,28 @@
   <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
   <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
  </ns1:service>
- <ns1:service name="ClsDSNColumnSetup" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="GetColumnList" qname="ns39:GetColumnList" returnQName="ns39:GetColumnListReturn" returnType="xsd:string" soapAction="" xmlns:ns39="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns39:psaParam" type="xsd:string"/>
+ <ns1:service name="ClsSYSGCMDataSetup" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="GetGCMDataList" qname="ns39:GetGCMDataList" returnQName="ns39:GetGCMDataListReturn" returnType="xsd:string" soapAction="" xmlns:ns39="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns39:arrParams" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="GetColumnListReverse" qname="ns40:GetColumnListReverse" returnQName="ns40:GetColumnListReverseReturn" returnType="xsd:string" soapAction="" xmlns:ns40="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:parameter name="allowedMethods" value="GetGCMDataList"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ClsSYSGCMDataSetup"/>
+  <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsSYSGCMDataSetup"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsSYSGCMDataSetup"/>
+  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsSYSGCMDataSetupService"/>
+ </ns1:service>
+ <ns1:service name="ClsDSNColumnSetup" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="GetColumnList" qname="ns40:GetColumnList" returnQName="ns40:GetColumnListReturn" returnType="xsd:string" soapAction="" xmlns:ns40="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns40:psaParam" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="SetColumn" qname="ns41:SetColumn" returnQName="ns41:SetColumnReturn" returnType="xsd:string" soapAction="" xmlns:ns41="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns41:psParams" type="xsd:string"/>
+  <ns1:operation name="GetColumnListReverse" qname="ns41:GetColumnListReverse" returnQName="ns41:GetColumnListReverseReturn" returnType="xsd:string" soapAction="" xmlns:ns41="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns41:psaParam" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="SetColumn" qname="ns42:SetColumn" returnQName="ns42:SetColumnReturn" returnType="xsd:string" soapAction="" xmlns:ns42="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns42:psParams" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="GetColumnListReverse GetColumnList SetColumn"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
@@ -238,12 +251,12 @@
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="ClsDSNTableSetup" provider="java:RPC" style="wrapped" use="literal">
-  <ns1:operation name="GetTableList" qname="ns42:GetTableList" returnQName="ns42:GetTableListReturn" returnType="xsd:string" soapAction="" xmlns:ns42="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns42:psaParam" type="xsd:string"/>
+  <ns1:operation name="GetTableList" qname="ns43:GetTableList" returnQName="ns43:GetTableListReturn" returnType="xsd:string" soapAction="" xmlns:ns43="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns43:psaParam" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="GetTableListSync" qname="ns43:GetTableListSync" returnQName="ns43:GetTableListSyncReturn" returnType="xsd:string" soapAction="" xmlns:ns43="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  <ns1:operation name="SetTable" qname="ns44:SetTable" returnQName="ns44:SetTableReturn" returnType="xsd:string" soapAction="" xmlns:ns44="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns44:psParams" type="xsd:string"/>
+  <ns1:operation name="GetTableListSync" qname="ns44:GetTableListSync" returnQName="ns44:GetTableListSyncReturn" returnType="xsd:string" soapAction="" xmlns:ns44="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="SetTable" qname="ns45:SetTable" returnQName="ns45:SetTableReturn" returnType="xsd:string" soapAction="" xmlns:ns45="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns45:psParams" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="GetTableList GetTableListSync SetTable"/>
   <ns1:parameter name="wsdlPortType" value="ClsDSNTableSetup"/>
