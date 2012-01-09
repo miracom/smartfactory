@@ -20,13 +20,13 @@ import com.mesplus.util.ObjcetMapper;
 
 public class TbldatNt extends StoredProcedure {
 
-	private static final String A_FAC_ID_PARAM = "a_fac_id";
-	private static final String A_TBL_CODE_PARAM = "a_tbl_code";
-	private static final String A_LANG_FLAG_PARAM = "a_lang_flag";
+	private static final String FAC_ID_PARAM = "fac_id";
+	private static final String TBL_CODE_PARAM = "tbl_code";
+	private static final String LANG_FLAG_PARAM = "lang_flag";
 	private static final String A_PARAMS_PARAM = "a_params";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_AGCMTBLDAT_NT";
+	private static final String SPROC_NAME = "P_GCM_TBLDAT_NT";
 
 	private static ReturnType RTYPE = ReturnType.NONE;
 	
@@ -35,9 +35,9 @@ public class TbldatNt extends StoredProcedure {
 	public TbldatNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
-		declareParameter(new SqlParameter(A_FAC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(A_TBL_CODE_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(A_LANG_FLAG_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(TBL_CODE_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(LANG_FLAG_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(A_PARAMS_PARAM, Types.VARCHAR));
 
 		RTYPE = rType;
@@ -53,11 +53,11 @@ public class TbldatNt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String a_fac_id, String a_tbl_code, String a_lang_flag, String a_params) {
+	public Map<String, Object> execute(String fac_id, String tbl_code, String lang_flag, String a_params) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
-		inputs.put(A_FAC_ID_PARAM, a_fac_id);
-		inputs.put(A_TBL_CODE_PARAM, a_tbl_code);
-		inputs.put(A_LANG_FLAG_PARAM, a_lang_flag);
+		inputs.put(FAC_ID_PARAM, fac_id);
+		inputs.put(TBL_CODE_PARAM, tbl_code);
+		inputs.put(LANG_FLAG_PARAM, lang_flag);
 		inputs.put(A_PARAMS_PARAM, a_params);
 
 		return super.execute(inputs);

@@ -4,34 +4,6 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://services.DSN.mesplus.com" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="GetDesignerS2">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetDesignerS2Response">
-    <complexType>
-     <sequence>
-      <element name="GetDesignerS2Return" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetPersonalizationMap">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetPersonalizationMapResponse">
-    <complexType>
-     <sequence>
-      <element name="GetPersonalizationMapReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="GetAdminMap">
     <complexType>
      <sequence>
@@ -43,20 +15,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="GetAdminMapReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetPersonalizationCol">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetPersonalizationColResponse">
-    <complexType>
-     <sequence>
-      <element name="GetPersonalizationColReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -74,73 +32,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="GetFunctionSpreadList">
+   <element name="SetAdmin">
     <complexType>
      <sequence>
-      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+      <element name="psParamsMap" type="xsd:string"/>
+      <element name="psParamsCol" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <element name="GetFunctionSpreadListResponse">
+   <element name="SetAdminResponse">
     <complexType>
      <sequence>
-      <element name="GetFunctionSpreadListReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetFunctionRelationList">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetFunctionRelationListResponse">
-    <complexType>
-     <sequence>
-      <element name="GetFunctionRelationListReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetFunctionTableRelationList">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetFunctionTableRelationListResponse">
-    <complexType>
-     <sequence>
-      <element name="GetFunctionTableRelationListReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetFunctionSPRelationList">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetFunctionSPRelationListResponse">
-    <complexType>
-     <sequence>
-      <element name="GetFunctionSPRelationListReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetDesignerFunctionSpreadAll">
-    <complexType>
-     <sequence>
-      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="GetDesignerFunctionSpreadAllResponse">
-    <complexType>
-     <sequence>
-      <element name="GetDesignerFunctionSpreadAllReturn" type="xsd:string"/>
+      <element name="SetAdminReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -169,6 +72,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element maxOccurs="unbounded" name="GetDynamicQueryS2Return" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetDesignerS2">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetDesignerS2Response">
+    <complexType>
+     <sequence>
+      <element name="GetDesignerS2Return" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -212,69 +129,10 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="SetAdmin">
-    <complexType>
-     <sequence>
-      <element name="psParamsMap" type="xsd:string"/>
-      <element name="psParamsCol" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="SetAdminResponse">
-    <complexType>
-     <sequence>
-      <element name="SetAdminReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="SetPersonalizationMap">
-    <complexType>
-     <sequence>
-      <element name="psParams" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="SetPersonalizationMapResponse">
-    <complexType>
-     <sequence>
-      <element name="SetPersonalizationMapReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="SetPersonalizationCol">
-    <complexType>
-     <sequence>
-      <element name="psParams" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="SetPersonalizationColResponse">
-    <complexType>
-     <sequence>
-      <element name="SetPersonalizationColReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="ExecuteStoredProcedure">
-    <complexType>
-     <sequence>
-      <element name="psSPID" type="xsd:string"/>
-      <element name="psSPName" type="xsd:string"/>
-      <element name="psParams" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="ExecuteStoredProcedureResponse">
-    <complexType>
-     <sequence>
-      <element name="ExecuteStoredProcedureReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="GetServiceMember">
     <complexType>
      <sequence>
-      <element name="psServiceID" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="psServiceID" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -329,6 +187,148 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="GetFunctionRelationList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionRelationListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetFunctionRelationListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionSpreadList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionSpreadListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetFunctionSpreadListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetPersonalizationMap">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetPersonalizationMapResponse">
+    <complexType>
+     <sequence>
+      <element name="GetPersonalizationMapReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetPersonalizationCol">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetPersonalizationColResponse">
+    <complexType>
+     <sequence>
+      <element name="GetPersonalizationColReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionTableRelationList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionTableRelationListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetFunctionTableRelationListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionSPRelationList">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetFunctionSPRelationListResponse">
+    <complexType>
+     <sequence>
+      <element name="GetFunctionSPRelationListReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetDesignerFunctionSpreadAll">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="psaParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GetDesignerFunctionSpreadAllResponse">
+    <complexType>
+     <sequence>
+      <element name="GetDesignerFunctionSpreadAllReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetPersonalizationMap">
+    <complexType>
+     <sequence>
+      <element name="psParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetPersonalizationMapResponse">
+    <complexType>
+     <sequence>
+      <element name="SetPersonalizationMapReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetPersonalizationCol">
+    <complexType>
+     <sequence>
+      <element name="psParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SetPersonalizationColResponse">
+    <complexType>
+     <sequence>
+      <element name="SetPersonalizationColReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ExecuteStoredProcedure">
+    <complexType>
+     <sequence>
+      <element name="psSPID" type="xsd:string"/>
+      <element name="psSPName" type="xsd:string"/>
+      <element name="psParams" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ExecuteStoredProcedureResponse">
+    <complexType>
+     <sequence>
+      <element name="ExecuteStoredProcedureReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="SetDynamicTripleQuery">
     <complexType>
      <sequence>
@@ -350,17 +350,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
   </schema>
  </wsdl:types>
 
-   <wsdl:message name="CopyMapDesignerRequest">
+   <wsdl:message name="GetFunctionRelationListResponse">
 
-      <wsdl:part element="impl:CopyMapDesigner" name="parameters">
+      <wsdl:part element="impl:GetFunctionRelationListResponse" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="GetFunctionRelationListResponse">
+   <wsdl:message name="CopyMapDesignerRequest">
 
-      <wsdl:part element="impl:GetFunctionRelationListResponse" name="parameters">
+      <wsdl:part element="impl:CopyMapDesigner" name="parameters">
 
       </wsdl:part>
 
@@ -398,17 +398,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="GetServiceMemberResponse">
+   <wsdl:message name="GetDesignerS2Request">
 
-      <wsdl:part element="impl:GetServiceMemberResponse" name="parameters">
+      <wsdl:part element="impl:GetDesignerS2" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="GetDesignerS2Request">
+   <wsdl:message name="GetServiceMemberResponse">
 
-      <wsdl:part element="impl:GetDesignerS2" name="parameters">
+      <wsdl:part element="impl:GetServiceMemberResponse" name="parameters">
 
       </wsdl:part>
 
@@ -446,14 +446,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="SetDynamicQueryRequest">
-
-      <wsdl:part element="impl:SetDynamicQuery" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="SetPersonalizationMapResponse">
 
       <wsdl:part element="impl:SetPersonalizationMapResponse" name="parameters">
@@ -465,6 +457,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="GetFunctionSPRelationListResponse">
 
       <wsdl:part element="impl:GetFunctionSPRelationListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetDynamicQueryRequest">
+
+      <wsdl:part element="impl:SetDynamicQuery" name="parameters">
 
       </wsdl:part>
 
@@ -518,17 +518,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="GetAdminColRequest">
+   <wsdl:message name="GetDesignerS2Response">
 
-      <wsdl:part element="impl:GetAdminCol" name="parameters">
+      <wsdl:part element="impl:GetDesignerS2Response" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="GetDesignerS2Response">
+   <wsdl:message name="GetAdminColRequest">
 
-      <wsdl:part element="impl:GetDesignerS2Response" name="parameters">
+      <wsdl:part element="impl:GetAdminCol" name="parameters">
 
       </wsdl:part>
 
@@ -574,14 +574,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="SetAdminRequest">
-
-      <wsdl:part element="impl:SetAdmin" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="GetPersonalizationMapResponse">
 
       <wsdl:part element="impl:GetPersonalizationMapResponse" name="parameters">
@@ -590,9 +582,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="GetAdminColResponse">
+   <wsdl:message name="SetAdminRequest">
 
-      <wsdl:part element="impl:GetAdminColResponse" name="parameters">
+      <wsdl:part element="impl:SetAdmin" name="parameters">
 
       </wsdl:part>
 
@@ -606,9 +598,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="SetDynamicMultiQueryRequest">
+   <wsdl:message name="GetAdminColResponse">
 
-      <wsdl:part element="impl:SetDynamicMultiQuery" name="parameters">
+      <wsdl:part element="impl:GetAdminColResponse" name="parameters">
 
       </wsdl:part>
 
@@ -617,6 +609,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="GetFunctionSpreadListResponse">
 
       <wsdl:part element="impl:GetFunctionSpreadListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SetDynamicMultiQueryRequest">
+
+      <wsdl:part element="impl:SetDynamicMultiQuery" name="parameters">
 
       </wsdl:part>
 
@@ -702,14 +702,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="SetDynamicMultiQueryResponse">
-
-      <wsdl:part element="impl:SetDynamicMultiQueryResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="CopyMapDesignerResponse">
 
       <wsdl:part element="impl:CopyMapDesignerResponse" name="parameters">
@@ -718,31 +710,15 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="SetDynamicMultiQueryResponse">
+
+      <wsdl:part element="impl:SetDynamicMultiQueryResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:portType name="ClsDSNMapDesigner">
-
-      <wsdl:operation name="GetDesignerS2">
-
-         <wsdl:input message="impl:GetDesignerS2Request" name="GetDesignerS2Request">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:GetDesignerS2Response" name="GetDesignerS2Response">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetPersonalizationMap">
-
-         <wsdl:input message="impl:GetPersonalizationMapRequest" name="GetPersonalizationMapRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:GetPersonalizationMapResponse" name="GetPersonalizationMapResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
 
       <wsdl:operation name="GetAdminMap">
 
@@ -751,18 +727,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:GetAdminMapResponse" name="GetAdminMapResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetPersonalizationCol">
-
-         <wsdl:input message="impl:GetPersonalizationColRequest" name="GetPersonalizationColRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:GetPersonalizationColResponse" name="GetPersonalizationColResponse">
 
        </wsdl:output>
 
@@ -780,61 +744,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="GetFunctionSpreadList">
+      <wsdl:operation name="SetAdmin">
 
-         <wsdl:input message="impl:GetFunctionSpreadListRequest" name="GetFunctionSpreadListRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:GetFunctionSpreadListResponse" name="GetFunctionSpreadListResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetFunctionRelationList">
-
-         <wsdl:input message="impl:GetFunctionRelationListRequest" name="GetFunctionRelationListRequest">
+         <wsdl:input message="impl:SetAdminRequest" name="SetAdminRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:GetFunctionRelationListResponse" name="GetFunctionRelationListResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetFunctionTableRelationList">
-
-         <wsdl:input message="impl:GetFunctionTableRelationListRequest" name="GetFunctionTableRelationListRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:GetFunctionTableRelationListResponse" name="GetFunctionTableRelationListResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetFunctionSPRelationList">
-
-         <wsdl:input message="impl:GetFunctionSPRelationListRequest" name="GetFunctionSPRelationListRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:GetFunctionSPRelationListResponse" name="GetFunctionSPRelationListResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetDesignerFunctionSpreadAll">
-
-         <wsdl:input message="impl:GetDesignerFunctionSpreadAllRequest" name="GetDesignerFunctionSpreadAllRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:GetDesignerFunctionSpreadAllResponse" name="GetDesignerFunctionSpreadAllResponse">
+         <wsdl:output message="impl:SetAdminResponse" name="SetAdminResponse">
 
        </wsdl:output>
 
@@ -864,6 +780,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="GetDesignerS2">
+
+         <wsdl:input message="impl:GetDesignerS2Request" name="GetDesignerS2Request">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetDesignerS2Response" name="GetDesignerS2Response">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="SetMapDesignerAllS2">
 
          <wsdl:input message="impl:SetMapDesignerAllS2Request" name="SetMapDesignerAllS2Request">
@@ -883,54 +811,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:SetPersonalizationResponse" name="SetPersonalizationResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="SetAdmin">
-
-         <wsdl:input message="impl:SetAdminRequest" name="SetAdminRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:SetAdminResponse" name="SetAdminResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="SetPersonalizationMap">
-
-         <wsdl:input message="impl:SetPersonalizationMapRequest" name="SetPersonalizationMapRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:SetPersonalizationMapResponse" name="SetPersonalizationMapResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="SetPersonalizationCol">
-
-         <wsdl:input message="impl:SetPersonalizationColRequest" name="SetPersonalizationColRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:SetPersonalizationColResponse" name="SetPersonalizationColResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="ExecuteStoredProcedure">
-
-         <wsdl:input message="impl:ExecuteStoredProcedureRequest" name="ExecuteStoredProcedureRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:ExecuteStoredProcedureResponse" name="ExecuteStoredProcedureResponse">
 
        </wsdl:output>
 
@@ -984,6 +864,126 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="GetFunctionRelationList">
+
+         <wsdl:input message="impl:GetFunctionRelationListRequest" name="GetFunctionRelationListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetFunctionRelationListResponse" name="GetFunctionRelationListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetFunctionSpreadList">
+
+         <wsdl:input message="impl:GetFunctionSpreadListRequest" name="GetFunctionSpreadListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetFunctionSpreadListResponse" name="GetFunctionSpreadListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetPersonalizationMap">
+
+         <wsdl:input message="impl:GetPersonalizationMapRequest" name="GetPersonalizationMapRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetPersonalizationMapResponse" name="GetPersonalizationMapResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetPersonalizationCol">
+
+         <wsdl:input message="impl:GetPersonalizationColRequest" name="GetPersonalizationColRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetPersonalizationColResponse" name="GetPersonalizationColResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetFunctionTableRelationList">
+
+         <wsdl:input message="impl:GetFunctionTableRelationListRequest" name="GetFunctionTableRelationListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetFunctionTableRelationListResponse" name="GetFunctionTableRelationListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetFunctionSPRelationList">
+
+         <wsdl:input message="impl:GetFunctionSPRelationListRequest" name="GetFunctionSPRelationListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetFunctionSPRelationListResponse" name="GetFunctionSPRelationListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetDesignerFunctionSpreadAll">
+
+         <wsdl:input message="impl:GetDesignerFunctionSpreadAllRequest" name="GetDesignerFunctionSpreadAllRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:GetDesignerFunctionSpreadAllResponse" name="GetDesignerFunctionSpreadAllResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetPersonalizationMap">
+
+         <wsdl:input message="impl:SetPersonalizationMapRequest" name="SetPersonalizationMapRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SetPersonalizationMapResponse" name="SetPersonalizationMapResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetPersonalizationCol">
+
+         <wsdl:input message="impl:SetPersonalizationColRequest" name="SetPersonalizationColRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SetPersonalizationColResponse" name="SetPersonalizationColResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ExecuteStoredProcedure">
+
+         <wsdl:input message="impl:ExecuteStoredProcedureRequest" name="ExecuteStoredProcedureRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ExecuteStoredProcedureResponse" name="ExecuteStoredProcedureResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="SetDynamicTripleQuery">
 
          <wsdl:input message="impl:SetDynamicTripleQueryRequest" name="SetDynamicTripleQueryRequest">
@@ -1002,42 +1002,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="GetDesignerS2">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="GetDesignerS2Request">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="GetDesignerS2Response">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetPersonalizationMap">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="GetPersonalizationMapRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="GetPersonalizationMapResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="GetAdminMap">
 
          <wsdlsoap:operation soapAction=""/>
@@ -1049,24 +1013,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="GetAdminMapResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetPersonalizationCol">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="GetPersonalizationColRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="GetPersonalizationColResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -1092,89 +1038,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="GetFunctionSpreadList">
+      <wsdl:operation name="SetAdmin">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="GetFunctionSpreadListRequest">
+         <wsdl:input name="SetAdminRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="GetFunctionSpreadListResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetFunctionRelationList">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="GetFunctionRelationListRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="GetFunctionRelationListResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetFunctionTableRelationList">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="GetFunctionTableRelationListRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="GetFunctionTableRelationListResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetFunctionSPRelationList">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="GetFunctionSPRelationListRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="GetFunctionSPRelationListResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="GetDesignerFunctionSpreadAll">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="GetDesignerFunctionSpreadAllRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="GetDesignerFunctionSpreadAllResponse">
+         <wsdl:output name="SetAdminResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -1218,6 +1092,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="GetDesignerS2">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetDesignerS2Request">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetDesignerS2Response">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="SetMapDesignerAllS2">
 
          <wsdlsoap:operation soapAction=""/>
@@ -1247,78 +1139,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="SetPersonalizationResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="SetAdmin">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="SetAdminRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="SetAdminResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="SetPersonalizationMap">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="SetPersonalizationMapRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="SetPersonalizationMapResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="SetPersonalizationCol">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="SetPersonalizationColRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="SetPersonalizationColResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="ExecuteStoredProcedure">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="ExecuteStoredProcedureRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="ExecuteStoredProcedureResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -1391,6 +1211,186 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="SetDynamicMultiQueryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetFunctionRelationList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetFunctionRelationListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetFunctionRelationListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetFunctionSpreadList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetFunctionSpreadListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetFunctionSpreadListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetPersonalizationMap">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetPersonalizationMapRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetPersonalizationMapResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetPersonalizationCol">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetPersonalizationColRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetPersonalizationColResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetFunctionTableRelationList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetFunctionTableRelationListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetFunctionTableRelationListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetFunctionSPRelationList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetFunctionSPRelationListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetFunctionSPRelationListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="GetDesignerFunctionSpreadAll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="GetDesignerFunctionSpreadAllRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="GetDesignerFunctionSpreadAllResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetPersonalizationMap">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SetPersonalizationMapRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SetPersonalizationMapResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SetPersonalizationCol">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SetPersonalizationColRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SetPersonalizationColResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ExecuteStoredProcedure">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ExecuteStoredProcedureRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ExecuteStoredProcedureResponse">
 
             <wsdlsoap:body use="literal"/>
 

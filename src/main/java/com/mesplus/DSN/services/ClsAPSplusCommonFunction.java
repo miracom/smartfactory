@@ -24,9 +24,9 @@ public class ClsAPSplusCommonFunction {
 			}
 
 			String xName = "GCMDATALIST";
-			String a_fac_id = arrParams[0];
-			String a_tbl_code = arrParams[1];
-			String a_lang_flag = arrParams[2];
+			String fac_id = arrParams[0];
+			String tbl_code = arrParams[1];
+			String lang_flag = arrParams[2];
 			String a_params = arrParams[3];
 			ReturnType rType = ReturnType.ELEMENT;
 			
@@ -38,15 +38,15 @@ public class ClsAPSplusCommonFunction {
 			//return XmlConvert.elementToXML(el);
 
 			
-			List<Map<String, Object>> mapList = JdbcFormDaoImpl.getGlobalFormDao().grpcolNtDao(a_fac_id, a_tbl_code, a_lang_flag, rType);
+			List<Map<String, Object>> mapList = JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(fac_id, tbl_code, lang_flag, a_params, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 
-			List<Map<String, Object>> mapList2 = JdbcFormDaoImpl.getGlobalFormDao().fsprelNtDao("83", "904", "1", rType);
-			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, "TEST");
+			/*List<Map<String, Object>> mapList2 = JdbcFormDaoImpl.getGlobalFormDao().fsprelNtDao("83", "904", "1", rType);
+			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, "TEST");*/
 
 			List<Element> elList = new ArrayList<Element>();
-			elList.add(el2);
 			elList.add(el);
+			/*elList.add(el2);*/
 
 			Element gEl = XmlConvert.groupElement(elList);
 
@@ -86,9 +86,10 @@ public class ClsAPSplusCommonFunction {
 			// XML: DataTable
 			Map<String, Object> map =
 					JdbcFormDaoImpl.getGlobalFormDao().selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5, rType);
-			Element el = XmlConvert.mapToArrayListElement(map);
+			//Element el = XmlConvert.map(map);
 			
-			return XmlConvert.elementToXML(el);
+			//return XmlConvert.elementToXML(el);
+			return null;
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -113,9 +114,11 @@ public class ClsAPSplusCommonFunction {
 			// XML: ArrayList
 			Map<String, Object> map =
 					JdbcFormDaoImpl.getGlobalFormDao().selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5, rType);
-			Element el = XmlConvert.mapToArrayListElement(map);
+			//Element el = XmlConvert.(map);
 			
-			return XmlConvert.elementToXML(el);
+			//return XmlConvert.elementToXML(el);
+			
+			return null;
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

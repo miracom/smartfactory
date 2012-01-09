@@ -9,7 +9,7 @@ import com.mesplus.util.Enums.ReturnType;
 public interface FormDao {
 
 	// NT
-	public List<Map<String, Object>> tbldatNtDao(String a_fac_id, String a_tbl_code, String a_lang_flag, String a_params, ReturnType rType) throws SQLException;
+	public List<Map<String, Object>> tbldatNtDao(String fac_id, String tbl_code, String lang_flag, String a_params, ReturnType rType) throws SQLException;
 
 	public List<Map<String, Object>> fundefNtDao(String fac_id, String func_group, String func_code, String function_type, ReturnType rType) throws SQLException;
 	
