@@ -16,8 +16,8 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	width : 180,
 	
 	/*
-	 * 컨테이너로서의 속성 : layout, defaults 등을 정의한다. 
-	 * 단, items, docked items(lbar, bbar, tbar, rbar, tools) 등은 initComponent에서 등록을 권장한다.
+	 * 컨테이너로서의 속성 : layout, defaults, tools, items 등을 정의한다. 
+	 * 단, 복잡한 items, docked items 등은 initComponent에서 등록을 권장한다.
 	 */
 	layout : {
 		type : 'vbox',
@@ -74,13 +74,11 @@ Ext.define('WIP.view.common.MaterialSelector', {
 			xtype : 'codeview',
 			labelWidth : 100,
 			fieldLabel : 'Material Type',
-			itemId : 'material_type',
-			boxLabelAlign : 'after'
+			itemId : 'material_type'
 		}, {
 			xtype : 'checkbox',
 			fieldLabel : 'Include Deleted Material',
-			itemId : 'include_deleted',
-			boxLabelAlign : 'after'
+			itemId : 'include_deleted'
 		}, {
 			xtype : 'checkbox',
 			fieldLabel : 'Include Deactive Material',
