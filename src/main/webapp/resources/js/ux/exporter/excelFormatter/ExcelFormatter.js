@@ -20,4 +20,11 @@ Ext.define("Ext.ux.exporter.excelFormatter.ExcelFormatter", {
 
       return workbook.render();
     }
+//	formats: function(stores, configs) {
+//		//info : store, config
+//	    var workbook = new Ext.ux.exporter.excelFormatter.Workbook(config);
+//	    workbook.addWorksheet(store, config || {});
+//	
+//	    return workbook.render();
+//	  }
 });
