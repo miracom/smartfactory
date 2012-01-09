@@ -86,10 +86,11 @@ public class ClsAPSplusCommonFunction {
 			// XML: DataTable
 			Map<String, Object> map =
 					JdbcFormDaoImpl.getGlobalFormDao().selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5, rType);
-			//Element el = XmlConvert.map(map);
 			
-			//return XmlConvert.elementToXML(el);
-			return null;
+			List<Map<String, Object>> mapList = (List<Map<String, Object>>) map.get("cur.refer");
+			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -114,11 +115,10 @@ public class ClsAPSplusCommonFunction {
 			// XML: ArrayList
 			Map<String, Object> map =
 					JdbcFormDaoImpl.getGlobalFormDao().selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5, rType);
-			//Element el = XmlConvert.(map);
 			
-			//return XmlConvert.elementToXML(el);
+			Element el = XmlConvert.mapToArrayListElement(map);
 			
-			return null;
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

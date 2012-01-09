@@ -31,7 +31,7 @@ public class DynamicS2Rt extends StoredProcedure {
 	public static final String OUT_NEW_ID_PARAM = "out_new_id";
 	public static final String RETURN_MSG_PARAM = "return_msg";
 
-	private static final String SPROC_NAME = "P_DYNAMIC_S2_RT";
+	private static final String SPROC_NAME = "P_DSN_DYNAMIC_S2_RT";
 
 	private ReturnType RTYPE = ReturnType.NONE;
 
@@ -74,6 +74,7 @@ public class DynamicS2Rt extends StoredProcedure {
 			Map<String, Object> returnMap = new HashMap<String, Object>();
 
 			Map<String, Object> map = super.execute(inputs);
+			
 			Iterator<Entry<String, Object>> it = map.entrySet().iterator();
 
 			int i = 0;

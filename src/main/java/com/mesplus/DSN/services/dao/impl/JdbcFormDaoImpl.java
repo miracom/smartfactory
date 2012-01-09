@@ -296,8 +296,7 @@ public class JdbcFormDaoImpl implements FormDao {
 		SelectresultNt sp = new SelectresultNt(dataSource, rType);
 		Map<String, Object> results = sp.execute(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5);
 
-		//return (List<Map<String, Object>>) results.get(SelectresultNt.CUR_REFER_PARAM);
-		
+		//return (List<Map<String, Object>>) results.get(AssdefGenNt.CUR_REFER_PARAM);
 		return results;
 	}
 
