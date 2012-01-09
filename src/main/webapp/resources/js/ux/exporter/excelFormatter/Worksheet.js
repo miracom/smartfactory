@@ -118,7 +118,6 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 								list[x].mdown = mdown;
 							cells.push(Ext.String.format('<ss:Cell ss:StyleID="headercell" ss:Index="{1}" ss:MergeAcross="{2}" ss:MergeDown="{3}"><ss:Data ss:Type="String">{0}</ss:Data><ss:NamedCell ss:Name="Print_Titles" /></ss:Cell>'
 									,list[x].title, list[x].index, list[x].macross, list[x].mdown));
-							//console.log(list[x].parent+':'+list[x].title);
 						}
 					}
 				}	
@@ -128,7 +127,6 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 					list[x].mdown = mdown;
 				cells.push(Ext.String.format('<ss:Cell ss:StyleID="headercell" ss:Index="{1}" ss:MergeAcross="{2}" ss:MergeDown="{3}"><ss:Data ss:Type="String">{0}</ss:Data><ss:NamedCell ss:Name="Print_Titles" /></ss:Cell>'
 						,list[x].title, list[x].index, list[x].macross, list[x].mdown));
-				//console.log(list[x].parent+':'+list[x].title);
 			}
 		}
 		
@@ -149,7 +147,6 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
   buildHeaderIndex: function(){
 	  var cols  = this.columns;
 	  var list = [[]];
-	  var list2 = [[]];
 	  var sublist = [];
 	  var tot = cols.length;
 	  var totColCnt = tot;
@@ -192,9 +189,6 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 							list[step].push(list[step-1][cnt]);
 							index++;
 						}
-						else{
-							list[step-1][cnt].index = index-list[step-1][cnt].child;
-						}
 						readStart++;
 					}
 					else
@@ -214,7 +208,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 		  else
 			  parent = '';
 
-		  var info = {
+		  list[step].push({
 				  title : title,
 				  dataname : dataname,
 				  width : subCol.width,
@@ -224,9 +218,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 				  parent : parent,
 				  macross : macross,
 				  mdown : 0
-			  };
-		  list[step].push(info);
-		  list2[step].push(info);
+			  });
 		  index++;
 		  
 		  if(i==tot-1){
@@ -237,9 +229,6 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 						list[step].push(list[step-1][cnt]);
 						index++;
 					}
-					else{
-						list[step-1][cnt].index = index-list[step-1][cnt].child;
-					}
 				  }
 			  }
 			  
@@ -249,16 +238,12 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 				  step++;
 				  cols = sublist;
 				  list.push([]);
-				  list2.push([]);
 				  sublist = [];
 				  index = 1;
 				  readStart=0;
 			  }
 		  }
 	  }
-	  console.log('-----');
-	  //console.log(list);
-	  //console.log(list2);
 	  return {
 		  list : list,
 		  colCnt : totColCnt,

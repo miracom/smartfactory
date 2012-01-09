@@ -96,9 +96,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Workbook", {
    */
   addWorksheet: function(store, config) {
     var worksheet = new Ext.ux.exporter.excelFormatter.Worksheet(store, config);
-
     this.worksheets.push(worksheet);
-
     return worksheet;
   },
 

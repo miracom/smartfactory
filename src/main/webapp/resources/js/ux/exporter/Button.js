@@ -29,13 +29,53 @@ Ext.define("Ext.ux.exporter.Button", {
       }
       this.initConfig();
       Ext.ux.exporter.Button.superclass.constructor.call(this, config);
-      
-      var self = this;
-      this.on("afterrender", function() { // We wait for the combo to be rendered, so we can look up to grab the component containing it
-          self.setComponent(self.store || self.component || self.up("gridpanel") || self.up("treepanel"), config);
-      });
-    },
 
+      var self = this;
+      var components =[];
+      
+      this.on("afterrender", function() { // We wait for the combo to be rendered, so we can look up to grab the component containing it
+    	  var exportor = self.up('[exportable]');
+   		  self.findExportables(exportor);
+
+    	  if(!self.exportables){
+    		  self.setComponent(self.store || self.component || self.up("gridpanel") || self.up("treepanel"), config);
+    	  }   
+    	  else{
+    		  if(!self.targetExports){
+    			  for(var i in self.exportables){
+    				  components.push(self.exportables[i]);
+    			  }
+    		  }
+    		  else{
+    			  for(var i in self.targetExports){
+    				  components.push(self.exportables[self.targetExports[i]]);
+    			  }
+    		  }
+    		  self.setComponent(components[0], config);
+    	  }
+      });
+      
+    },
+    findExportable : function(exportor,sheet) {
+		if(exportor['exportTo'] === sheet)
+			return exportor;
+		return exportor.down('[exportTo=' + sheet + ']');
+	},
+	
+	findExportables : function(exportor) {
+		this.exportables = {};
+		if(!exportor){
+			console.log('error');
+			return null;
+		}
+		exportor.cascade(function(comp) {
+			var sheet = comp['exportTo'];
+			if(sheet) {
+				this.exportables[sheet] = comp;
+			};
+		}, this);
+		return this.exportables;
+	},
     setComponent: function(component, config) {
         this.component = component;
         this.store = !component.is ? component : component.getStore(); // only components or stores, if it doesn't respond to is method, it's a store
@@ -44,7 +84,6 @@ Ext.define("Ext.ux.exporter.Button", {
         }
         this.setDownloadify(config);
     },
-
     setDownloadify: function(config) {
         var self = this;     
         Downloadify.create(this.el.down('p').id,{

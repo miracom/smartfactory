@@ -34,6 +34,33 @@ Ext.define("Ext.ux.exporter.Exporter", {
          * @param {Ext.grid.GridPanel} grid The grid to export from
          * @param {Object} config Optional config settings for the formatter
          */
+//        exportGrids: function(grids) {
+//        	var stores = [];
+//        	var configs = [];
+//        	for(item in grids){
+//        		var grid = grids[item].grid;
+//        		var formatter = grids[item].formatter;
+//        		var config = grids[item].config;
+//        		
+//        		config = config || {};
+//                formatter = this.getFormatterByName(formatter);
+//
+//                var columns = Ext.Array.filter(grids[item].grid.columns, function(col) {
+//                    return !col.hidden; // && (!col.xtype || col.xtype != "actioncolumn");
+//                });
+//                var title = grid.exportTo;
+//                if(!grid.title &&	config.exportTo)
+//              	  title = config.exportTo;
+//
+//                Ext.applyIf(config, {
+//                  title  : title,
+//                  columns: columns
+//                });
+//                stores.push(grid.store);
+//                configs.push(config);
+//        	}
+//            return formatter.formats(stores,configs);
+//          },
         exportGrid: function(grid, formatter, config) {
           config = config || {};
           formatter = this.getFormatterByName(formatter);
@@ -41,12 +68,15 @@ Ext.define("Ext.ux.exporter.Exporter", {
           var columns = Ext.Array.filter(grid.columns, function(col) {
               return !col.hidden; // && (!col.xtype || col.xtype != "actioncolumn");
           });
+          var title = grid.exportTo;
+          if(!grid.title &&	config.exportTo)
+        	  title = config.exportTo;
 
           Ext.applyIf(config, {
-            title  : grid.title,
+            title  : title,
             columns: columns
           });
-
+          
           return formatter.format(grid.store, config);
         },
 
