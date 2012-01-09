@@ -15,7 +15,7 @@ import com.mesplus.util.XmlConvert;
 
 @WebService
 public class ClsAPSplusCommonFunction {
-
+	
 	public java.lang.String GetGCMDataList(java.lang.String[] arrParams) throws java.rmi.RemoteException {
 
 		try {
