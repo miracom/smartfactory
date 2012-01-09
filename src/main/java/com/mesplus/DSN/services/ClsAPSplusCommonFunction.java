@@ -37,7 +37,7 @@ public class ClsAPSplusCommonFunction {
 		
 			//return XmlConvert.elementToXML(el);
 
-			
+			/*
 			List<Map<String, Object>> mapList = JdbcFormDaoImpl.getGlobalFormDao().grpcolNtDao(a_fac_id, a_tbl_code, a_lang_flag, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 
@@ -51,17 +51,17 @@ public class ClsAPSplusCommonFunction {
 			Element gEl = XmlConvert.groupElement(elList);
 
 			return XmlConvert.elementToXML(gEl);
-			/*
-			 Map<String, Object> map =
-			 JdbcFormDaoImpl.getGlobalFormDao().dynamicS2RtDao("U", "1024",
-			 "1", "83", "ADMIN", "1", "LOT0001`^55555`^A`^xxxxx", rType);
+			*/
+			
+			 Map<String, Object> map = JdbcFormDaoImpl.getGlobalFormDao().dynamicS2RtDao("U", "1024", "1", "83", "ADMIN", "1", "LOT0001`^55555`^A`^xxxxx", rType);
 			 Element el = XmlConvert.mapToArrayListElement(map);
 			 return XmlConvert.elementToXML(el);
 
+			 /*
 			 List<String> aa = XmlConvert.xmlToArrayList(a_fac_id); for
 			 (String s : aa) { System.out.println(s); } 
 			 return null;
-			 */
+			*/
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

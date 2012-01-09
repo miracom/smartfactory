@@ -38,6 +38,67 @@ public class XmlConvert {
 
 		return el;
 	}
+	
+	/**
+	 * List<Map<String, Object(Element형태)>>를 최종 DataTable 변환 형식의 Element로 변환
+	 * @author Jinho
+	 * @param mapList
+	 * @param tableName
+	 * @return Element
+	 * @throws Exception
+	 */
+	public final static Element mapToDataTableElement(Map<String, Object> map, String tableName) throws Exception {
+		if (map.size() == 0) {
+			//throw new IllegalArgumentException("Parameters(mapList) should not be 0 size.");
+			Element rootEl = new Element(tableName);
+
+			Element rowCountEl = new Element("add");
+			rowCountEl.setAttribute("key", "rows");
+			rowCountEl.setAttribute("value", "0");
+			Element columnCountEl = new Element("add");
+			columnCountEl.setAttribute("key", "columns");
+			columnCountEl.setAttribute("value", "0");
+			Element rowEl = new Element("ROW0");
+
+			rootEl.addContent(rowCountEl);
+			rootEl.addContent(columnCountEl);
+			rootEl.addContent(rowEl);
+			
+			return rootEl;
+		} else if (CommonUtils.isNullorEmpty(tableName)) {
+			throw new IllegalArgumentException("Parameters(tableName) should not be nullorEmpty.");
+		} else {
+			Element rootEl = new Element(tableName);
+
+			Element rowCountEl = new Element("add");
+			rowCountEl.setAttribute("key", "rows");
+			rowCountEl.setAttribute("value", "1");
+			Element columnCountEl = new Element("add");
+			columnCountEl.setAttribute("key", "columns");
+			columnCountEl.setAttribute("value", Integer.toString(map.size()));
+
+			rootEl.addContent(rowCountEl);
+			rootEl.addContent(columnCountEl);
+
+			Element rowEl = new Element("ROW1");
+			rootEl.addContent(rowEl);
+
+			Iterator<Entry<String, Object>> it = map.entrySet().iterator();
+
+			while (it.hasNext()) {
+
+				Map.Entry<String, Object> pairs = (Map.Entry<String, Object>) it.next();
+
+				if (pairs.getValue() instanceof Element) {
+					rowEl.addContent((Element) pairs.getValue());
+				} else {
+					throw new Exception("Map FormatException: " + pairs.getKey());
+				}
+			}
+
+			return rootEl;
+		}
+	}
 
 	/**
 	 * List<Map<String, Object(Element형태)>>를 최종 DataTable 변환 형식의 Element로 변환
@@ -114,7 +175,22 @@ public class XmlConvert {
 	 */
 	public final static Element mapToArrayListElement(Map<String, Object> map) throws Exception {
 		if (map.size() == 0) {
-			throw new IllegalArgumentException("Parameters(map) should not be 0 size.");
+			//throw new IllegalArgumentException("Parameters(map) should not be 0 size.");
+			Element rootEl = new Element("ArrayList");
+
+			Element rowCountEl = new Element("add");
+			rowCountEl.setAttribute("key", "rows");
+			rowCountEl.setAttribute("value", "0");
+			Element columnCountEl = new Element("add");
+			columnCountEl.setAttribute("key", "columns");
+			columnCountEl.setAttribute("value", "0");
+			Element rowEl = new Element("ROW0");
+
+			rootEl.addContent(rowCountEl);
+			rootEl.addContent(columnCountEl);
+			rootEl.addContent(rowEl);
+			
+			return rootEl;
 		} else {
 			Element rootEl = new Element("ArrayList");
 
