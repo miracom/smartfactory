@@ -1,7 +1,7 @@
 Ext.define('WIP.controller.WIPController', {
 	extend : 'Ext.app.Controller',
 
-	stores : [ 'WIP.store.OperationStore' ],
+	stores : [ 'WIP.store.OperationStore', 'WIP.store.MaterialStore' ],
 	models : [ 'WIP.model.Operation' ],
 	views : [ 'WIP.view.common.MaterialSelector' ],
 

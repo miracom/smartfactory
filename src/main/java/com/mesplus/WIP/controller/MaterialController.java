@@ -21,7 +21,7 @@ import com.mesplus.WIP.dao.MaterialDao;
 import com.mesplus.smartfactory.HomeController;
 import com.mesplus.util.SessionUtils;
 
-@Controller
+//@Controller
 public class MaterialController {
 	private static final Logger logger = LoggerFactory.getLogger(MaterialController.class);
 

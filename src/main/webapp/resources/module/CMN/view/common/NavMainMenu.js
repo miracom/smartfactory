@@ -45,7 +45,6 @@ Ext.define('CMN.view.common.NavMainMenu', {
 	store : 'CMN.store.MainMenuStore',
 
 	store_changed : function(store) {
-		console.log(store);
 		this.getView().refresh();
 	}
 });

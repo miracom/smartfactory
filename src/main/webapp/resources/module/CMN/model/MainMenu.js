@@ -7,8 +7,7 @@ Ext.define('CMN.model.MainMenu', {
 	}, {
 		name : 'leaf',
 		type : 'boolean'
-	},
-	{
+	}, {
 		name : 'func_name',
 		type : 'string'
 	}, {
