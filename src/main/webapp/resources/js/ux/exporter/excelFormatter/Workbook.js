@@ -94,8 +94,8 @@ Ext.define("Ext.ux.exporter.excelFormatter.Workbook", {
    * @param {Object} config Optional config object
    * @return {Ext.ux.Exporter.ExcelFormatter.Worksheet} The worksheet
    */
-  addWorksheet: function(store, config) {
-    var worksheet = new Ext.ux.exporter.excelFormatter.Worksheet(store, config);
+  addWorksheet: function(exporter, config) {
+    var worksheet = new Ext.ux.exporter.excelFormatter.Worksheet(exporter, config);
     this.worksheets.push(worksheet);
     return worksheet;
   },
@@ -175,7 +175,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Workbook", {
         {
           name: "Alignment",
           properties: [
-            {name: "Vertical", value: "Top"},
+            {name: "Vertical", value: "Center"},
             {name: "WrapText", value: "1"}
           ]
         },

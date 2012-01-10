@@ -24,9 +24,7 @@ Ext.define("Ext.ux.exporter.Button", {
 
     constructor: function(config) {
       config = config || {};
-      if(typeof config.store == 'string'){
-    	  config.store = Ext.getStore(config.store);
-      }
+
       this.initConfig();
       Ext.ux.exporter.Button.superclass.constructor.call(this, config);
 
@@ -35,9 +33,14 @@ Ext.define("Ext.ux.exporter.Button", {
       
       this.on("afterrender", function() { // We wait for the combo to be rendered, so we can look up to grab the component containing it
     	  var exportor = self.up('[exportable]');
+    	  var components = [];
+    	  
    		  self.findExportables(exportor);
 
-    	  if(!self.exportables){
+    	  if(!self.exportables || self.store){
+            if(typeof this.store == 'string'){
+            	self.store = Ext.getStore(this.store);
+            }
     		  self.setComponent(self.store || self.component || self.up("gridpanel") || self.up("treepanel"), config);
     	  }   
     	  else{
@@ -51,7 +54,7 @@ Ext.define("Ext.ux.exporter.Button", {
     				  components.push(self.exportables[self.targetExports[i]]);
     			  }
     		  }
-    		  self.setComponent(components[0], config);
+    		  self.setComponent(components, config);
     	  }
       });
       
@@ -76,12 +79,12 @@ Ext.define("Ext.ux.exporter.Button", {
 		}, this);
 		return this.exportables;
 	},
-    setComponent: function(component, config) {
-        this.component = component;
-        this.store = !component.is ? component : component.getStore(); // only components or stores, if it doesn't respond to is method, it's a store
-        if(typeof this.store == 'string'){
-        	this.store = Ext.getStore(this.store);
-        }
+    setComponent: function(components, config) {
+    	if(components instanceof Array)
+    		this.components = components;
+    	else
+    		this.components = [components];
+
         this.setDownloadify(config);
     },
     setDownloadify: function(config) {
@@ -91,7 +94,7 @@ Ext.define("Ext.ux.exporter.Button", {
               return self.getDownloadName() + "." + Ext.ux.exporter.Exporter.getFormatterByName(self.formatter).extension;
             },
             data: function() {
-              return Ext.ux.exporter.Exporter.exportAny(self.component, self.formatter, config);
+              return Ext.ux.exporter.Exporter.exportAny(self.components, self.formatter, config);
             },
             transparent: false,
             swf: this.getSwfPath(),

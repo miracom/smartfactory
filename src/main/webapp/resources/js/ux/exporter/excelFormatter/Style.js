@@ -67,6 +67,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Style", {
     var propertiesString = "";
 
     Ext.each(attribute.properties || [], function(property) {
+    	console.log(property.name+':'+property.value);
       propertiesString += Ext.String.format('ss:{0}="{1}" ', property.name, property.value);
     }, this);
 

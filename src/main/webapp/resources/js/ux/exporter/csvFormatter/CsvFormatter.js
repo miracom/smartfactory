@@ -6,51 +6,45 @@
 Ext.define("Ext.ux.exporter.csvFormatter.CsvFormatter", {
     extend: "Ext.ux.exporter.Formatter",
     contentType: 'data:text/csv;base64,',
-    separator: ";",
+    //separator: ";",
+    separator: ",",
     extension: "csv",
 
-    format: function(store, config) {
-        this.columns = config.columns || (store.fields ? store.fields.items : store.model.prototype.fields.items);
-        return this.getHeaders() + "\n" + this.getRows(store);
+    format: function(exporters, config) {
+    	var exporter = exporters[0];
+    	this.store = exporter.store;
+        this.header = exporter.headerInfo.list[exporter.headerInfo.stepCnt-1];
+        return this.getHeaders() + "\n" + this.getRows();
     },
-    getHeaders: function(store) {
-        var columns = [], title;
-        Ext.each(this.columns, function(col) {
-          var title;
-          if (col.text != undefined) {
-            title = col.text;
-          } else if(col.name) {
-            title = col.name.replace(/_/g, " ");
-            title = Ext.String.capitalize(title);
-          }
-
-          columns.push(title);
+    getHeaders: function() {
+        var columns = [];
+        Ext.each(this.header, function(col) {
+          columns.push(col.title);
         }, this);
-
+        
         return columns.join(this.separator);
     },
-    getRows: function(store) {
+    getRows: function() {
         var rows = [];
-        store.each(function(record, index) {
+        this.store.each(function(record, index) {
           rows.push(this.geCell(record, index));
         }, this);
-
         return rows.join("\n");
     },
     geCell: function(record, index) {
         var cells = [];
-        Ext.each(this.columns, function(col) {
-            var name = col.name || col.dataIndex;
+        Ext.each(this.header, function(col) {
+        	var name = col.dataname;
             if(name) {
+            	var value = '';
                 if (Ext.isFunction(col.renderer)) {
-                  var value = col.renderer(record.get(name), null, record);
+                   value = col.renderer(record.get(name), null, record);
                 } else {
-                  var value = record.get(name);
+                   value = record.get(name);
                 }
                 cells.push(value);
             }
         });
-
         return cells.join(this.separator);
     }
 });

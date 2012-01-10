@@ -14,17 +14,11 @@ Ext.define("Ext.ux.exporter.excelFormatter.ExcelFormatter", {
     contentType: 'data:application/vnd.ms-excel;base64,',
     extension: "xls",
 
-    format: function(store, config) {
-      var workbook = new Ext.ux.exporter.excelFormatter.Workbook(config);
-      workbook.addWorksheet(store, config || {});
-
-      return workbook.render();
+    format: function(exporters, config) {
+		var workbook = new Ext.ux.exporter.excelFormatter.Workbook(config);
+		for(var i in exporters){
+			workbook.addWorksheet(exporters[i], config || {});	
+		}
+	    return workbook.render(); 
     }
-//	formats: function(stores, configs) {
-//		//info : store, config
-//	    var workbook = new Ext.ux.exporter.excelFormatter.Workbook(config);
-//	    workbook.addWorksheet(store, config || {});
-//	
-//	    return workbook.render();
-//	  }
 });
