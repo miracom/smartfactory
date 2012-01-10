@@ -43,10 +43,6 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	},
 
 	defaults : {
-		layout : {
-			type : 'vbox',
-			align : 'stretch'
-		},
 		labelAlign : 'top'
 	},
 
@@ -71,9 +67,56 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		/*
 		 * 부가적인 작업을 한다. - 동적인 컴포넌트 추가 - 리스너 등록
 		 */
-		this.list = this.down('[itemId=list]');
+		var self = this;
+		this.getList().store.on('datachanged', function(store) {
+			self.getListCount().setValue(store.count());
+		});
+		this.getList().store.load();
+		
+		this.getSearchField().on('specialkey', function(field, e) {
+			if (e.getKey() == e.ENTER) {
+				self.refreshList(false);
+            }
+		});
 	},
 
+	getList : function() {
+		if(!this.list)
+			this.list = this.down('[itemId=list]');
+		return this.list;
+	},
+	
+	getListCount : function() {
+		if(!this.listCount)
+			this.listCount = this.down('[itemId=listCount]');
+		return this.listCount;
+	},
+	
+	getListLocalFilters : function() {
+        var filters = [];
+        var value = this.getSearchField().getValue();
+        if(value.length > 0) {
+            filters.push({
+            		property : 'MAT_ID',
+            		value : new RegExp(this.getSearchField().getValue())
+            });
+        }
+		return filters;
+	},
+	
+	getSearchField : function() {
+		if(!this.searchField)
+			this.searchField = this.down('[itemId=searchField]');
+		return this.searchField;
+	},
+	
+	refreshList : function(reload) {
+        this.getList().store.filters.clear();
+        this.getList().store.filter(this.getListLocalFilters());
+        if(reload)
+        		this.getList().store.load();
+	},
+	
 	zfilter : {
 		xtype : 'fieldset',
 		itemId : 'filters',
@@ -142,11 +185,6 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		features : Ext.create('Ext.grid.feature.Grouping',{
 	        groupHeaderTpl: '{name} ({rows.length} Version{[values.rows.length > 1 ? "s" : ""]})'
 	    }),
-		listeners : {
-			afterrender : function(list) {
-				list.store.load();
-			} 
-		},
 		columns : [{
 			text : 'V',
 			width : 20,
@@ -169,17 +207,23 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	zcount : {
 		xtype : 'textfield',
 		disabled : true,
+		itemId : 'listCount',
 		width : 30
 	},
 
 	zsearch : {
 		xtype : 'textfield',
+		itemId : 'searchField',
 		flex : 1
 	},
 
 	zrefresh : {
 		xtype : 'button',
 		text : 'R',
+		handler : function(button) {
+			var main = button.up('[refreshList]');
+			main.refreshList(true);
+		},
 		width : 18
 	},
 
