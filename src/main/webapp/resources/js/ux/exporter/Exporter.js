@@ -62,7 +62,7 @@ Ext.define("Ext.ux.exporter.Exporter", {
       	  var list = [[]];
       	  var sublist = [];
       	  var tot = cols.length;
-      	  var totColCnt = tot;
+      	  var totColCnt = 0;
       	  var index = 1;
       	  var step = 0;
       	  var parent = 0;
@@ -74,88 +74,91 @@ Ext.define("Ext.ux.exporter.Exporter", {
       		  var dataname = '';
       		  var child = 0;
       		  var macross = 0;
-      		  if(subCol.text != undefined || subCol.header != undefined){
-      			  dataname = subCol.dataIndex;
-      			  if (subCol.text != undefined)
-      				  title = subCol.text;
-      			  if (subCol.header != undefined)
-      				  title = subCol.header;
-      			  if(!subCol.dataIndex){
-      				  var subItems = subCol.items.items;
-      				  for(var j in subItems){
-      					  Ext.applyIf(subItems[j],{
-      						  parent : title
-      					  });
-      				  }
-      				  sublist = sublist.concat(subItems);
-      				  stepcnt = step+1;
-      				  child = subCol.items.items.length;
-      				  macross = child-1;
-      				  totColCnt = totColCnt+macross;
-      			  }
-      	  
-      			  if(step > 0){//9
-      				  for(var cnt=readStart;cnt<list[step-1].length;cnt++){
-      					if(list[step-1][cnt].title != subCol.parent){
-      						if(list[step-1][cnt].child == 0){
-      							list[step-1][cnt].index = index;
-      							list[step].push(list[step-1][cnt]);
-      							index++;
-      						}
-      						readStart++;
-      					}
-      					else
-      						break;
-      				  }
-      			  }
-      		  }
-      		  else{
-      			//make columns taken from Record fields (e.g. with a col.name) human-readable
-      	          title = subCol.name.replace(/_/g, " ");
-      	          title = Ext.String.capitalize(title);
-      			  dataname = subCol.name;
-      		  }
+      		  if(subCol.dataIndex == undefined || subCol.dataIndex != ''){
+      			if(subCol.text != undefined || subCol.header != undefined){
+        			  dataname = subCol.dataIndex;
+        			  if (subCol.text != undefined)
+        				  title = subCol.text;
+        			  if (subCol.header != undefined)
+        				  title = subCol.header;
+        			  if (!subCol.dataIndex){
+        				  var subItems = subCol.items.items;
+        				  for(var j in subItems){
+        					  Ext.applyIf(subItems[j],{
+        						  parent : title
+        					  });
+        				  }
+        				  sublist = sublist.concat(subItems);
+        				  stepcnt = step+1;
+        				  child = subCol.items.items.length;
+        				  macross = child-1;
+        				  totColCnt = totColCnt+macross;
+        			  }
+        	  
+        			  if(step > 0){//9
+        				  for(var cnt=readStart;cnt<list[step-1].length;cnt++){
+        					if(list[step-1][cnt].title != subCol.parent){
+        						if(list[step-1][cnt].child == 0){
+        							list[step-1][cnt].index = index;
+        							list[step].push(list[step-1][cnt]);
+        							index++;
+        						}
+        						readStart++;
+        					}
+        					else
+        						break;
+        				  }
+        			  }
+        		  }
+        		  else{
+        			//make columns taken from Record fields (e.g. with a col.name) human-readable
+        	          title = subCol.name.replace(/_/g, " ");
+        	          title = Ext.String.capitalize(title);
+        			  dataname = subCol.name;
+        		  }
 
-      		  if(subCol.parent)
-      			  parent = subCol.parent;
-      		  else
-      			  parent = '';
+        		  if(subCol.parent)
+        			  parent = subCol.parent;
+        		  else
+        			  parent = '';
 
-      		  list[step].push({
-      				  title : title,
-      				  dataname : dataname,
-      				  width : subCol.width,
-      				  step : step,
-      				  index : index,
-      				  child : child,
-      				  parent : parent,
-      				  macross : macross,
-      				  mdown : 0
-      			  });
-      		  index++;
-      		  
-      		  if(i==tot-1){
-      			  if(step > 0){
-      				  for(var cnt=readStart;cnt<list[step-1].length;cnt++){
-      					if(list[step-1][cnt].title != subCol.parent){
-      						list[step-1][cnt].index = index;
-      						list[step].push(list[step-1][cnt]);
-      						index++;
-      					}
-      				  }
-      			  }
-      			  
-      			  if(sublist.length>0){
-      				  i = -1;
-      				  tot = sublist.length;
-      				  step++;
-      				  cols = sublist;
-      				  list.push([]);
-      				  sublist = [];
-      				  index = 1;
-      				  readStart=0;
-      			  }
-      		  }
+        		  list[step].push({
+        				  title : title,
+        				  dataname : dataname,
+        				  width : subCol.width,
+        				  step : step,
+        				  index : index,
+        				  child : child,
+        				  parent : parent,
+        				  macross : macross,
+        				  mdown : 0
+        			  });
+        		  index++;
+        		  
+        		  if(i==tot-1){
+        			  if(step > 0){
+        				  for(var cnt=readStart;cnt<list[step-1].length;cnt++){
+        					if(list[step-1][cnt].title != subCol.parent){
+        						list[step-1][cnt].index = index;
+        						list[step].push(list[step-1][cnt]);
+        						index++;
+        					}
+        				  }
+        			  }
+        			  totColCnt = totColCnt+index-1;
+        			  if(sublist.length>0){
+        				  i = -1;
+        				  tot = sublist.length;
+        				  step++;
+        				  cols = sublist;
+        				  list.push([]);
+        				  sublist = [];
+        				  index = 1;
+        				  readStart=0;
+        				  totColCnt = 0;
+        			  }
+        		  }
+      		  } 
       	  }
       	  
       	  return {

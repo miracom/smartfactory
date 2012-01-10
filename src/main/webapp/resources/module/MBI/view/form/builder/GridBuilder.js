@@ -36,6 +36,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 	                layout : 'fit',
 	                items : [{
 	                	xtype : 'grid',
+	                	exportTo : this.getTitle(1,this.spreadId[i]),
 						store : storeDetail[i],
 						selModel: Ext.create('Ext.selection.CheckboxModel'),
 						columns : this.buildColumn(this.spreadId[i]),
@@ -64,6 +65,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 	            layout : 'fit',
 	            items : [{
 	            	xtype : 'grid',
+	            	exportTo : this.getTitle(1,this.spreadId),
 					store : this.store,
 					selModel: Ext.create('Ext.selection.CheckboxModel'),
 					columns : this.buildColumn(this.spreadId),
@@ -99,14 +101,14 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 			//if (mapdefS2Nt[i].spread_level == this.spreadLevel){
 			if (mapdefS2Nt[i].spread_id == spreadId && mapdefS2Nt[i].col_code){
 					
-				if (mapdefS2Nt[i].display_type == 4 ){
+				if (mapdefS2Nt[i].display_type == 4 || mapdefS2Nt[i].display_type == 3){
 					mapColums.push({
 						dataIndex : mapdefS2Nt[i].col_code.toLowerCase(),
 						text : mapdefS2Nt[i].col_alias1,
 						width : mapdefS2Nt[i].col_width,
 						align : alignList[mapdefS2Nt[i].align_type],
 						xtype: 'datecolumn',   
-						format:'Y-m-d' 
+						format:'Y-m-d H:i' 
 					});
 				}
 				else{

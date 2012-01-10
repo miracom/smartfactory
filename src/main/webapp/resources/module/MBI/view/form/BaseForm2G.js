@@ -1,9 +1,12 @@
+Ext.require([ 'Ext.ux.exporter.Exporter' ]);
+
 Ext.define('MBI.view.form.BaseForm2G', {
 	extend : 'Ext.panel.Panel',
 	alias : 'widget.mbi.baseform2g',
 
 	plugins : [ Ext.create('CMN.plugin.Supplement') ],
-
+	exportable : true,
+	
 	layout : {
 		type : 'vbox',
 		align : 'stretch'
@@ -81,8 +84,23 @@ Ext.define('MBI.view.form.BaseForm2G', {
 
 		this.add(viewGrid);
 		this.add(viewGridDetail);
+		this.add(this.buildToolbar());
+		
 	},
-
+	buildToolbar : function(){
+		return Ext.create('Ext.toolbar.Toolbar',{
+			height : 30,
+			layout : {
+				type : 'hbox',
+				pack : 'start'
+			},
+			items : [ {
+				xtype : 'tbfill'
+			}, {
+				xtype : 'exporterbutton',
+			}]
+		});
+	},
 	onClickGrid : function(selModel, selected) {
 		//console.log(selected[0].data.test_id);
 		//alert('record 2:'+selected[0]);

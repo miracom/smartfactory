@@ -34,7 +34,7 @@ Ext.define('MBI.store.SecfundefNt', {
 	    	{ name: 'hasdsn', type: 'string' },
 	    	{ name: 'fac_id', type: 'number' },
 	    	{ name: 'shift_flag', type: 'string' },
-	    	{ name: 'func_desc', type: 'string' },
+	    	{ name: 'func_desc', type: 'string'},
 	],
 
 	proxy: {
