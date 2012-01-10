@@ -1,9 +1,12 @@
+Ext.require([ 'Ext.ux.exporter.Exporter' ]);
+
 Ext.define('MBI.view.form.BaseForm1G', {
 	extend : 'Ext.panel.Panel',
 	alias : 'widget.mbi.baseform1g',
 
 	plugins : [ Ext.create('CMN.plugin.Supplement') ],
-
+	// excel export use flag
+	exportable : true,
 	layout : {
 		type : 'vbox',
 		align : 'stretch'
@@ -37,9 +40,26 @@ Ext.define('MBI.view.form.BaseForm1G', {
 			panelId : this.id,
 			clickRecord : this.onClickGrid
 		}).buildGrid();
-
+		
 		this.add(view_grid);
+		this.add(this.buildToolbar());
+			
 	},
+	buildToolbar : function(){
+		return Ext.create('Ext.toolbar.Toolbar',{
+			height : 30,
+			layout : {
+				type : 'hbox',
+				pack : 'start'
+			},
+			items : [ {
+				xtype : 'tbfill'
+			}, {
+				xtype : 'exporterbutton',
+			}]
+		});
+	},
+	
 	onClickGrid : function(selModel, selected) {
     	//alert('record :'+selected[0].data.test_id); 
     },

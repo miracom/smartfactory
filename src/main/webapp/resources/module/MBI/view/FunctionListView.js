@@ -8,6 +8,14 @@ Ext.define('MBI.view.FunctionListView', {
 	listeners: {
 		itemclick: function(view, record, item, index, e, opt) {
 			var form = MBI.view.form.builder.BaseFormBuilder.buildForm(record);
+			if(this.viewflag.value == true){
+				form = {
+						xtype : 'mbi.formdesign',
+						title : 'Form-' + record.get('func_id'),
+						data : record,
+						closable: true
+					};
+			}
 			SmartFactory.addContentView(form);
 		}
 	},

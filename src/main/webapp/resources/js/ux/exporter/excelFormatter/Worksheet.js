@@ -83,7 +83,6 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 	Ext.apply(this,{
 		lastCols : header.lastCols
 	});
-	console.log(header);
 	return this.worksheetTpl.apply({
 	      header  : header.header.join(""),
 	      columns : this.buildColumns().join(""),

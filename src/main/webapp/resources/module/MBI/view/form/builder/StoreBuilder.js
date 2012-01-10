@@ -9,10 +9,10 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 	},
 	buildStore : function(){
 		return Ext.create('Ext.data.Store',{
-			autoLoad : false,
-			remoteFilter : true,
-			filterOnLoad : false,
-			pageSize : 100,
+//			autoLoad : false,
+//			remoteFilter : true,
+//			filterOnLoad : false,
+			//pageSize : 100,
 			fields : this.buildFieldInfo(),
 			proxy : this.buildProxy()
 		});
@@ -22,17 +22,36 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 		var map = this.formInfoData.get(0).data;
 		var mapdefS2Nt = map.mapdefS2Nt;
 		var mapField = [];
-		
+
 		for(var i in mapdefS2Nt){
-			if (mapdefS2Nt[i].spread_id == this.spreadId && mapdefS2Nt[i].col_code){  
-				mapField.push({
-					name : mapdefS2Nt[i].col_code.toLowerCase(),//mapdefS2Nt[i].col_code,
-					type : this.getTypeToFomat(mapdefS2Nt[i].data_type)
-				});
+			if (mapdefS2Nt[i].spread_id == this.spreadId && mapdefS2Nt[i].col_code){
+				var type = this.getTypeToFomat(mapdefS2Nt[i].display_type);
+				if(type == 'date'){
+					mapField.push({
+						name : mapdefS2Nt[i].col_code.toLowerCase(),//mapdefS2Nt[i].col_code,
+						type : type,
+						dateFormat : 'Y-m-d H:i',
+						convert : function(v,rec){
+							var date = new Date();
+							date.setTime(v);
+							//return Ext.Date.format(date,'Y-m-d H:i');
+							return date;
+							
+						}
+					});	
+				}
+				else{
+					mapField.push({
+						name : mapdefS2Nt[i].col_code.toLowerCase(),//mapdefS2Nt[i].col_code,
+						type : type
+					});
+				}
+				
 			}
 		};
 		return mapField;
 	},
+
 	buildProxy : function(){
 		return {
 			type: 'ajax',
@@ -54,16 +73,13 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 	},
 	getTypeToFomat : function(type){
 		
-		if (type == 'A'){
+		if (type == '5'){
 			return 'string';
 		}
-		else if(type == 'N'){
+		else if(type == '6'){
 			return 'float';
 		}
-		else if(type == 'F'){
-			return 'float';
-		}
-		else if(type == 'D'){
+		else if(type == '4' || type == '3'){
 			return 'date';
 		}
 		else

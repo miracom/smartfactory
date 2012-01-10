@@ -29,14 +29,11 @@ Ext.define("Ext.ux.exporter.Button", {
       Ext.ux.exporter.Button.superclass.constructor.call(this, config);
 
       var self = this;
-      var components =[];
-      
+     
       this.on("afterrender", function() { // We wait for the combo to be rendered, so we can look up to grab the component containing it
     	  var exportor = self.up('[exportable]');
     	  var components = [];
-    	  
    		  self.findExportables(exportor);
-
     	  if(!self.exportables || self.store){
             if(typeof this.store == 'string'){
             	self.store = Ext.getStore(this.store);

@@ -1,18 +1,20 @@
 Ext.define('MBI.view.NavFormlist', {
-	extend : 'Ext.tab.Panel',
+	extend: 'Ext.panel.Panel',
+	//extend : 'Ext.tab.Panel',
 
 	store : Ext.getStore('MBI.store.SecfundefNt'),
 
 	initComponent : function() {
 		this.callParent();
 
-		this.add(Ext.create('MBI.view.FormListView', {
-			title : 'Form Model',
-			store : this.store
-		}));
+//		this.add(Ext.create('MBI.view.FormListView', {
+//			title : 'Form Model',
+//			store : this.store
+//		}));
 		this.add(Ext.create('MBI.view.FunctionListView', {
 			title : 'Form View',
-			store : this.store
+			store : this.store ,
+			viewflag : this.down('checkbox')
 		}));
 	},
 
@@ -38,5 +40,8 @@ Ext.define('MBI.view.NavFormlist', {
 				tabpanel.store.removeAll(false);
 			}
 		}
-	} ]
+	},{
+		xtype : 'checkbox',
+		boxLabel : 'Model',
+	}]
 });
