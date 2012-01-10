@@ -25,12 +25,12 @@ public class ClsSYSGCMDataSetup {
 			String fac_id = arrParams[0];
 			String tbl_code = arrParams[1];
 			String lang_flag = arrParams[2];
-			String params = arrParams[3];
+			String a_params = arrParams[3];
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			// XML: DataTable
 			List<Map<String, Object>> mapList = 
-					JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(fac_id, tbl_code, lang_flag, params, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(fac_id, tbl_code, lang_flag, a_params, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);

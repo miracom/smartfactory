@@ -1,0 +1,65 @@
+package com.mesplus.DSN.services.dao.impl.asec;
+
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import oracle.jdbc.OracleTypes;
+
+import org.springframework.jdbc.core.SqlOutParameter;
+import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.jdbc.object.StoredProcedure;
+
+import com.mesplus.util.ElementMapper;
+import com.mesplus.util.TypeConvert;
+import com.mesplus.util.Enums.ReturnType;
+import com.mesplus.util.ObjcetMapper;
+
+public class FundefCtrlNt extends StoredProcedure {
+
+	private static final String FAC_ID_PARAM = "fac_id";
+	private static final String GRP_ID_PARAM = "grp_id";
+	private static final String USR_ID_PARAM = "usr_id";
+	private static final String FUN_ID_PARAM = "fun_id";
+	public static final String CUR_REFER_PARAM = "cur.refer";
+	
+	private static final String SPROC_NAME = "P_SEC_FUNDEF_CTRL_NT";
+
+	private static ReturnType RTYPE = ReturnType.NONE;
+	
+	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
+
+	public FundefCtrlNt(DataSource dataSource, ReturnType rType) throws SQLException {
+		super(dataSource, SPROC_NAME);
+
+		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(GRP_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(USR_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(FUN_ID_PARAM, Types.VARCHAR));
+
+		RTYPE = rType;
+
+		if (RTYPE == ReturnType.OBJECT) {
+			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ObjcetMapper()));
+		} else if (RTYPE == ReturnType.ELEMENT) {
+			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ElementMapper(typeMap)));
+		} else {
+			throw new SQLException("ReturnType Error: " + RTYPE.toString());
+		}
+
+		compile();
+	}
+
+	public Map<String, Object> execute(String fac_id, String grp_id, String usr_id, String fun_id) {
+		Map<String, Object> inputs = new HashMap<String, Object>();
+		inputs.put(FAC_ID_PARAM, fac_id);
+		inputs.put(GRP_ID_PARAM, grp_id);
+		inputs.put(USR_ID_PARAM, usr_id);
+		inputs.put(FUN_ID_PARAM, fun_id);
+
+		return super.execute(inputs);
+	}
+}

@@ -88,6 +88,10 @@ public interface FormDao {
 	
 	public List<Map<String, Object>> Fundef01NtDao(String func_code, ReturnType rType) throws SQLException;
 	
+	public List<Map<String, Object>> FundefCtrlNtDao(String fac_id, String grp_id, String usr_id, String fun_id, ReturnType rType) throws SQLException;
+	
+	public List<Map<String, Object>> GetuserloginNtDao(String fac_id, String grp_code, String user_id, String password, String lang_flag, ReturnType rType) throws SQLException;
+	
 	// RT
 	public Map<String, Object> dynamicS2RtDao(String status, String func_id, String spd_id, String fac_id, String user_id, String lang_flag, String arrlst, ReturnType rType)
 			throws Exception;

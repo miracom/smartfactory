@@ -39,9 +39,7 @@ public class ClsDSNTableSetup {
 			List<Element> elList = new ArrayList<Element>();
 			elList.add(el);
 			
-			Element gpElement = XmlConvert.groupElement(elList);
-			
-			return XmlConvert.elementToXML(gpElement);
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -62,9 +60,7 @@ public class ClsDSNTableSetup {
 			List<Element> elList = new ArrayList<Element>();
 			elList.add(el);
 			
-			Element gpElement = XmlConvert.groupElement(elList);
-			
-			return XmlConvert.elementToXML(gpElement);
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

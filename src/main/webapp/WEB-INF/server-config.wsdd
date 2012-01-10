@@ -193,7 +193,7 @@
   <ns1:parameter name="wsdlServicePort" value="ClsSYSFunctionSetup"/>
   <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
-  <ns1:parameter name="wsdlServiceElement" value="ClsSYSFunctionSetupService"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsSYSFunctionSetup"/>
  </ns1:service>
  <ns1:service name="ClsDSNDatabaseSynchronization" provider="java:RPC" style="wrapped" use="literal">
   <ns1:operation name="GetCompareDB" qname="ns38:GetCompareDB" returnQName="ns38:GetCompareDBReturn" returnType="xsd:string" soapAction="" xmlns:ns38="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -244,7 +244,7 @@
   <ns1:parameter name="wsdlServicePort" value="ClsSYSGCMDataSetup"/>
   <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsSYSGCMDataSetup"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
-  <ns1:parameter name="wsdlServiceElement" value="ClsSYSGCMDataSetupService"/>
+  <ns1:parameter name="wsdlServiceElement" value="ClsSYSGCMDataSetup"/>
  </ns1:service>
  <ns1:service name="ClsDSNTableSetup" provider="java:RPC" style="wrapped" use="literal">
   <ns1:operation name="GetTableList" qname="ns43:GetTableList" returnQName="ns43:GetTableListReturn" returnType="xsd:string" soapAction="" xmlns:ns43="http://services.DSN.mesplus.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">

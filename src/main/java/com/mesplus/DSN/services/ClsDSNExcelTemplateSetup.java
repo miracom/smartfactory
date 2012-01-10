@@ -46,12 +46,7 @@ public class ClsDSNExcelTemplateSetup {
 					JdbcFormDaoImpl.getGlobalFormDao().XtpdefNtDao(template_name, template_filename, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el);
-			
-			Element gEl = XmlConvert.groupElement(elList);
-			
-			return XmlConvert.elementToXML(gEl);
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -73,12 +68,7 @@ public class ClsDSNExcelTemplateSetup {
 					JdbcFormDaoImpl.getGlobalFormDao().XtpsheNtDao(template_id, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el);
-			
-			Element gEl = XmlConvert.groupElement(elList);
-
-			return XmlConvert.elementToXML(gEl);
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -100,12 +90,7 @@ public class ClsDSNExcelTemplateSetup {
 					JdbcFormDaoImpl.getGlobalFormDao().XtpfldNtDao(sheet_id, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el);
-			
-			Element gEl = XmlConvert.groupElement(elList);
-			
-			return XmlConvert.elementToXML(gEl);
+			return XmlConvert.elementToXML(el);
 			
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

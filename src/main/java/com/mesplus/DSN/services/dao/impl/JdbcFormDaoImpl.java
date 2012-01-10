@@ -76,6 +76,28 @@ public class JdbcFormDaoImpl implements FormDao {
 		return (List<Map<String, Object>>) results.get(Fundef01Nt.CUR_REFER_PARAM);
 	}
 	
+	public List<Map<String, Object>> FundefCtrlNtDao(String fac_id, String grp_id, String usr_id, String fun_id, ReturnType rType) throws SQLException {
+		if (fac_id == null || grp_id == null || usr_id == null || fun_id == null) {
+			throw new IllegalArgumentException("Parameters(fac_id, grp_id, usr_id, fun_id) should not be null.");
+		}
+
+		FundefCtrlNt sp = new FundefCtrlNt(dataSource, rType);
+		Map<String, Object> results = sp.execute(fac_id, grp_id, usr_id, fun_id);
+
+		return (List<Map<String, Object>>) results.get(FundefCtrlNt.CUR_REFER_PARAM);
+	}
+
+	public List<Map<String, Object>> GetuserloginNtDao(String fac_id, String grp_code, String user_id, String password, String lang_flag, ReturnType rType) throws SQLException {
+		if (fac_id == null || grp_code == null || user_id == null || password == null || lang_flag == null) {
+			throw new IllegalArgumentException("Parameters(fac_id, grp_code, user_id, password, lang_flag) should not be null.");
+		}
+
+		GetuserloginNt sp = new GetuserloginNt(dataSource, rType);
+		Map<String, Object> results = sp.execute(fac_id, grp_code, user_id, password, lang_flag);
+
+		return (List<Map<String, Object>>) results.get(GetuserloginNt.CUR_REFER_PARAM);
+	}
+	
 	//ADSN
 	public List<Map<String, Object>> fxtrelNtDao(String fac_id, String func_id, ReturnType rType) throws SQLException {
 		if (fac_id == null || func_id == null) {

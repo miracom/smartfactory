@@ -41,16 +41,16 @@ public class ClsAPSplusCommonFunction {
 			List<Map<String, Object>> mapList = JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(fac_id, tbl_code, lang_flag, a_params, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
-			List<Map<String, Object>> mapList2 = JdbcFormDaoImpl.getGlobalFormDao().fsprelNtDao("83", "904", "1", rType);
-			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, "TEST");
+			/*List<Map<String, Object>> mapList2 = JdbcFormDaoImpl.getGlobalFormDao().fsprelNtDao("83", "904", "1", rType);
+			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, "TEST");*/
 			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el);
-			elList.add(el2);
+			//List<Element> elList = new ArrayList<Element>();
+			//elList.add(el);
+			//elList.add(el2);
 			
-			Element gEl = XmlConvert.groupElement(elList);
+			//Element gEl = XmlConvert.groupElement(elList);
 			
-			return XmlConvert.elementToXML(gEl);
+			return XmlConvert.elementToXML(el);
 						
 			 /*
 			 Map<String, Object> map = JdbcFormDaoImpl.getGlobalFormDao().dynamicS2RtDao("U", "1024", "1", "83", "ADMIN", "1", "LOT0001`^55555`^A`^xxxxx", rType);
@@ -133,16 +133,20 @@ public class ClsAPSplusCommonFunction {
 			}
 
 			String xName = "FUNCTIONCONTROL";
-			String a_fac_id = arrParams[0];
-			String a_grp_id = arrParams[1];
-			String a_usr_id = arrParams[2];
-			String a_fun_id = arrParams[3];
+			String fac_id = arrParams[0];
+			String grp_id = arrParams[1];
+			String usr_id = arrParams[2];
+			String fun_id = arrParams[3];
 			ReturnType rType = ReturnType.ELEMENT;
 
 			// XML: DataTable
-
-			return null;
-
+			List<Map<String, Object>> mapList =
+					JdbcFormDaoImpl.getGlobalFormDao().FundefCtrlNtDao(fac_id, grp_id, usr_id, fun_id, rType);
+			
+			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			
+			return XmlConvert.elementToXML(el);
+			
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
 		}
