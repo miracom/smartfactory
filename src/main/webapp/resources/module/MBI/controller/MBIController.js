@@ -19,7 +19,7 @@ Ext.define('MBI.controller.MBIController', {
 		SmartFactory.addNav('MBI.view.NavFormlist', {
 			iconCls:'iconsetDockReport',
 			itemId : 'navReport',
-			title : 'report'
+			title : 'Report Forms'
 		});
 
 		SmartFactory.codeview.register('GcmCodeView', {

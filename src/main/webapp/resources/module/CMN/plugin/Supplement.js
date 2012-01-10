@@ -1,6 +1,6 @@
 Ext.define('CMN.plugin.Supplement', {
 	extend : 'Ext.Base',
-	
+
 	init : function(client) {
 		if (!client.getSupplement) {
 			client.getSupplement = function() {
@@ -13,18 +13,26 @@ Ext.define('CMN.plugin.Supplement', {
 		}
 
 		function onRender() {
-			if(this.getSupplement())
+			if (this.getSupplement())
 				this.setSupplement(this.getSupplement());
 		}
 
 		function onActivate() {
-			if (this.getSupplement())
-				Ext.getCmp('east').getLayout().setActiveItem(this.getSupplement());
+			if (this.getSupplement()) {
+				var container = Ext.getCmp('east');
+				container.getLayout().setActiveItem(this.getSupplement());
+				if(this.getSupplement().isPanel && this.getSupplement().title) {
+					container.setTitle(this.getSupplement().title);
+				} else if(client.isPanel){
+					container.setTitle(client.title);
+				}
+			}
 		}
 
 		function onDeactivate() {
-			if (this.getSupplement())
-				Ext.getCmp('east').getLayout().setActiveItem('base');
+			var container = Ext.getCmp('east');
+			container.getLayout().setActiveItem('base');
+			container.setTitle(container.getComponent('base').title);
 		}
 
 		function onDestroy() {
@@ -39,17 +47,26 @@ Ext.define('CMN.plugin.Supplement', {
 	},
 
 	setSupplement : function(supplement) {
-		if(Ext.isString(supplement)) {
+		if (Ext.isString(supplement)) {
 			this.supplement = Ext.create(supplement);
 		} else {
 			this.supplement = supplement;
 		}
-		
+
 		if (this.getSupplement()) {
 			this.supplement = Ext.getCmp('east').add(this.getSupplement());
-			Ext.getCmp('east').getLayout().setActiveItem(this.getSupplement());
-			this.getSupplement().doLayout();
+			if (this.supplement.isPanel) {
+				this.supplement.preventHeader = true;
+				if (this.supplement.rendered) {
+					this.supplement.updateHeader();
+				}
+
+				if (this.supplement.isPanel) {
+					this.supplement.setBorder(false);
+				}
+			}
+			Ext.getCmp('east').getLayout().setActiveItem(this.supplement);
+			this.supplement.doLayout();
 		}
-	},
-	
+	}
 });

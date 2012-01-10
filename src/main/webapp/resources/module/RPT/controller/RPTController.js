@@ -17,7 +17,7 @@ Ext.define('RPT.controller.RPTController', {
 		SmartFactory.addNav('RPT.view.NavReport', {
 			iconCls : 'iconsetDockReport',
 			itemId : 'navReportSample',
-			title : 'report sample'
+			title : 'Report Samples'
 		});
 	}
 

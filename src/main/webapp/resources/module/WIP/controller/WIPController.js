@@ -17,7 +17,7 @@ Ext.define('WIP.controller.WIPController', {
 		SmartFactory.addNav('WIP.view.common.NavOperation', {
 			iconCls : 'iconsetDockOperation',
 			itemId : 'navOperation',
-			title : 'operation'
+			title : 'Operations'
 		});
 
 		SmartFactory.codeview.register('Operation', {
