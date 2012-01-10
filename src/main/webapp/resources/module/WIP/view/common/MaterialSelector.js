@@ -15,13 +15,20 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	alias : 'widget.wip_material_selector',
 
 	/*
-	 * 스타일을 적용한다.
+	 * 컴포넌트 Identification과 관련된 속성을 정의한다.
+	 * id, title
+	 */
+	title : 'Find Material',
+	
+	/*
+	 * 컴포턴트 스타일을 적용한다.
 	 */
 	cls : 'nav supplement',
 	bodyStyle : 'padding:5px',
 
 	/*
 	 * 부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다.
+	 * id, title, flex, width, 
 	 */
 	flex : 1,
 	width : 180,
@@ -65,7 +72,6 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		 * 부가적인 작업을 한다. - 동적인 컴포넌트 추가 - 리스너 등록
 		 */
 		this.list = this.down('[itemId=list]');
-
 	},
 
 	zfilter : {
@@ -127,16 +133,37 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	},
 
 	zlist : {
-		xtype : 'treepanel',
+		xtype : 'grid',
 		itemId : 'list',
 		flex : 1,
 		autoScroll : true,
+		hideHeaders : true,
 		store : 'WIP.store.MaterialStore',
-		root : {
-			text : 'Materials',
-			expanded : true
+		features : Ext.create('Ext.grid.feature.Grouping',{
+	        groupHeaderTpl: '{name} ({rows.length} Version{[values.rows.length > 1 ? "s" : ""]})'
+	    }),
+		listeners : {
+			afterrender : function(list) {
+				list.store.load();
+			} 
 		},
-		rootVisible : false
+		columns : [{
+			text : 'V',
+			width : 20,
+			dataIndex : 'MAT_VER'
+		}, {
+			text : 'Desc',
+			flex : 4,
+			dataIndex : 'MAT_DESC'
+		}, {
+			text : 'D',
+			width : 20,
+			dataIndex : 'DELETE_FLAG'
+		}, {
+			text : 'A',
+			width : 20,
+			dataIndex : 'DEACTIVE_FLAG'
+		}]
 	},
 
 	zcount : {

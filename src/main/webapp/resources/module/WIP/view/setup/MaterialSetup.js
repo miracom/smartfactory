@@ -7,7 +7,7 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 
 	bodyStyle : 'padding:5px',
 
-	bbar : {
+	buttons : {
 		xtype : 'cmn_trx_buttons'
 	},
 
@@ -21,7 +21,7 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 	},
 		
 	zbasic : {
-		xtype : 'fieldset',
+		xtype : 'container',
 		itemId : 'zbasic',
 		layout : {
 			type : 'vbox',

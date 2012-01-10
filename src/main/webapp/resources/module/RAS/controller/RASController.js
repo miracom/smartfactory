@@ -17,7 +17,7 @@ Ext.define('RAS.controller.RASController', {
 		SmartFactory.addNav('RAS.view.NavResource', {
 			iconCls : 'iconsetDockResource',
 			itemId : 'navResource',
-			title : 'resource'
+			title : 'Resources'
 		});
 	}
 });

@@ -35,13 +35,13 @@ Ext.define('CMN.controller.CMNController', {
 		SmartFactory.addNav('CMN.view.common.NavMainMenu', {
     		iconCls : 'iconsetDockMenu',
 			itemId : 'navMainMenu',
-			title : 'mainmenu'
+			title : 'Main Menu'
 		});
 		
 		SmartFactory.addNav('CMN.view.common.NavFavorite', {
     		iconCls : 'iconsetDockFavor',
 			itemId : 'navFavor',
-			title : 'favorite'
+			title : 'Favorites'
 		});
 	}
 

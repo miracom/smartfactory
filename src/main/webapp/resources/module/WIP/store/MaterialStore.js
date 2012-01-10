@@ -1,20 +1,25 @@
 Ext.define('WIP.store.MaterialStore', {
-	extend : 'Ext.data.TreeStore',
+	extend : 'Ext.data.Store',
 
 	autoLoad : false,
-
+	
+	groupField: 'MAT_ID',
+	
 	fields : [ {
-		name : 'text',
+		name : 'MAT_ID',
 		type : 'string'
 	}, {
-		name : 'leaf',
-		type : 'boolean'
-	}, {
-		name : 'id',
-		type : 'string'
-	}, {
-		name : 'version',
+		name : 'MAT_VER',
 		type : 'number'
+	}, {
+		name : 'MAT_DESC',
+		type : 'string'
+	}, {
+		name : 'DELETE_FLAG',
+		type : 'string'
+	}, {
+		name : 'DEACTIVE_FLAG',
+		type : 'string'
 	} ],
 
 	proxy : {

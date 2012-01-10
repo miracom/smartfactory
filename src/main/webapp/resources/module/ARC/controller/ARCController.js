@@ -15,7 +15,8 @@ Ext.define('ARC.controller.ARCController', {
 
 	onViewportRendered : function() {
 		SmartFactory.addNav('ARC.view.TaskMenu', {
-    		iconCls : 'iconsetDockReport'
+    			iconCls : 'iconsetDockReport',
+    			title : 'Archive Tasks'
 		});
 	}
 
