@@ -23,7 +23,7 @@ public class Fundef01Nt extends StoredProcedure {
 	private static final String FUNC_CODE_PARAM = "func_code";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 	
-	private static final String SPROC_NAME = "P_ASECFUNDEF_NT";
+	private static final String SPROC_NAME = "P_SEC_FUNDEF01_NT";
 
 	private static ReturnType RTYPE = ReturnType.NONE;
 	

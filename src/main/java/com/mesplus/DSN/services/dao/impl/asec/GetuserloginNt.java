@@ -27,7 +27,7 @@ public class GetuserloginNt extends StoredProcedure {
 	private static final String LANG_FLAG_PARAM = "lang_flag";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 	
-	private static final String SPROC_NAME = "P_ASECFUNDEF_NT";
+	private static final String SPROC_NAME = "P_SEC_GETUSERLOGIN_NT";
 
 	private static ReturnType RTYPE = ReturnType.NONE;
 	
