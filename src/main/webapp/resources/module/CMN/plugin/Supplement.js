@@ -32,7 +32,7 @@ Ext.define('CMN.plugin.Supplement', {
 		function onDeactivate() {
 			var container = Ext.getCmp('east');
 			container.getLayout().setActiveItem('base');
-			container.getComponent('base').title;
+			container.setTitle(container.getComponent('base').title);
 		}
 
 		function onDestroy() {
