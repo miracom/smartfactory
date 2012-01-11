@@ -68,9 +68,11 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		 * 부가적인 작업을 한다. - 동적인 컴포넌트 추가 - 리스너 등록
 		 */
 		var self = this;
+		
 		this.getList().store.on('datachanged', function(store) {
 			self.getListCount().setValue(store.count());
 		});
+		
 		this.getList().store.load();
 		
 		this.getSearchField().on('specialkey', function(field, e) {
@@ -78,12 +80,22 @@ Ext.define('WIP.view.common.MaterialSelector', {
 				self.refreshList(false);
             }
 		});
+		
+		this.getRefreshButton().on('click', function() {
+			self.refreshList(true);
+		});
 	},
 
 	getList : function() {
 		if(!this.list)
 			this.list = this.down('[itemId=list]');
 		return this.list;
+	},
+	
+	getRefreshButton : function() {
+		if(!this.refreshButton)
+			this.refreshButton = this.down('button[itemId=refresh]');
+		return this.refreshButton;
 	},
 	
 	getListCount : function() {
@@ -220,10 +232,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	zrefresh : {
 		xtype : 'button',
 		text : 'R',
-		handler : function(button) {
-			var main = button.up('[refreshList]');
-			main.refreshList(true);
-		},
+		itemId : 'refresh',
 		width : 18
 	},
 
