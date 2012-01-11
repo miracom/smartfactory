@@ -32,14 +32,14 @@
 	"MAT_ID" : "M04D2006",
 	"MAT_VER" : 1,
 	"MAT_DESC" : "4G DDR2 #006",
-	"DELETE_FLAG" : "N",
-	"DEACTIVE_FLAG" : "N"
+	"DELETE_FLAG" : "Y",
+	"DEACTIVE_FLAG" : "Y"
 }, {
 	"MAT_ID" : "M04D2006",
 	"MAT_VER" : 2,
 	"MAT_DESC" : "4G DDR2 #006",
 	"DELETE_FLAG" : "N",
-	"DEACTIVE_FLAG" : "N"
+	"DEACTIVE_FLAG" : "Y"
 }, {
 	"MAT_ID" : "M04D2006",
 	"MAT_VER" : 3,
