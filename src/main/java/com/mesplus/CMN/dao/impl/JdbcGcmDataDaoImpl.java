@@ -44,6 +44,7 @@ public class JdbcGcmDataDaoImpl implements GcmDataDao {
 			if (!val.trim().equals("")){
 				collist.add(val);
 				namelist.add("KEY_"+i+" AS "+val);
+				//namelist.add("KEY_"+i);
 			}
 		}
 		for(int i =1; i< 11; i++){
@@ -51,6 +52,7 @@ public class JdbcGcmDataDaoImpl implements GcmDataDao {
 			if (!val.trim().equals("")){
 				collist.add(val);
 				namelist.add("DATA_"+i+" AS "+val);
+				//namelist.add("DATA_"+i);
 			}
 		}
 		String[] selects = new String[namelist.size()];

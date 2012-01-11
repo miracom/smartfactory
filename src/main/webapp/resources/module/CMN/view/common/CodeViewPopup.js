@@ -15,9 +15,13 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 
 		if (!config.codeviewOptions)
 			throw new Error('codeviewOptions should be configured.');
-
-		if (!config.codeviewOptions.table || !config.codeviewOptions.columns || !config.codeviewOptions.selects || config.codeviewOptions.columns.length <= 0)
-			throw new Error('codeviewOptions[table, columns, selects] should be configured.');
+		
+		if (!config.codeviewOptions.table)
+			throw new Error('codeviewOptions[table] should be configured.');
+		if (config.codeviewOptions.gcmdefuse=='true'){
+			if(!config.codeviewOptions.selects <=0 || config.codeviewOptions.columns.length <= 0)
+				throw new Error('codeviewOptions[columns, selects] should be configured.');	
+		}
 
 		CMN.view.common.CodeViewPopup.superclass.constructor.apply(this, arguments);
 	},
@@ -30,11 +34,7 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 		
 		this.grid = this.add(this.buildGrid());
 		this.search = this.add(this.buildSearch());
-		
-		//Ext.apply(this.store,{});
-		
-		//Ext.apply(this.store,{});
-		
+
 		this.loadStore(this.codeviewOptions.client.bInitFilter);
 	},
 	loadStore : function(bInitfilter)
@@ -44,6 +44,7 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 			var filters = [];
 			var fieldset = this.codeviewOptions.client;
 			var txtField = fieldset.txtFieldName;
+			console.log(fieldset);
 			if(txtField instanceof Array) {
 				for(var i in txtField) {	
 					var field = fieldset.getComponent(txtField[i]);
@@ -76,7 +77,6 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 			}
 			//기본조건 filter + 추가조건 filter
 			filters = filters.concat(this.codeviewOptions.filters);
-
 			this.store.filters.clear();
 			this.store.filter(filters);
 		}

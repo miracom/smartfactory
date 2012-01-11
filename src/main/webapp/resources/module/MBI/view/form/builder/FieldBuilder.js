@@ -93,20 +93,17 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 		return {
 			xtype : 'codeview',
 			codeviewName : 'GcmCodeView',
+			title : rowData.display_text,
 			fieldLabel : rowData.display_text,
 			//'$1'==> :X1
-			filter : [],
 			table : rowData.con_gcm_table_code,
 			txtFieldName : gcmInfo[rowData.con_gcm_val].column, //displayField와 동일하게 사용
 			//txtFieldName : ['TEST_ID','TEST_NAME'], //displayField와 동일하게 사용
-			txtFieldFlex : [1],
-			bInitFilter: true,
-			title : rowData.display_text,
 			columns : this.buildGridColumns(gridColumns),
 			selects : gridColumns,
 			name : 'C'+rowData.con_seq,
-			refGcmCol : refGcmCol,
-			refField : refField
+			refGcmCol : refGcmCol, ////option
+			refField : refField //option
 		};
 	},
 	//no : 3
