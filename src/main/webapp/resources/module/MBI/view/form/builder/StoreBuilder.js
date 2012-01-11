@@ -1,15 +1,11 @@
 Ext.define('MBI.view.form.builder.StoreBuilder',{
-	//formInfoData : {},
-	//facId : '',
-	//funcId : '',
-	//langFlag : '1',
-	
+
 	constructor : function(config) {
 		Ext.apply(this, config);
 	},
 	buildStore : function(){
 		return Ext.create('Ext.data.Store',{
-//			autoLoad : false,
+			autoLoad : false,
 //			remoteFilter : true,
 //			filterOnLoad : false,
 			//pageSize : 100,
@@ -30,14 +26,8 @@ Ext.define('MBI.view.form.builder.StoreBuilder',{
 					mapField.push({
 						name : mapdefS2Nt[i].col_code.toLowerCase(),//mapdefS2Nt[i].col_code,
 						type : type,
-						dateFormat : 'Y-m-d H:i',
-						convert : function(v,rec){
-							var date = new Date();
-							date.setTime(v);
-							//return Ext.Date.format(date,'Y-m-d H:i');
-							return date;
-							
-						}
+						dateFormat : 'time'
+
 					});	
 				}
 				else{
