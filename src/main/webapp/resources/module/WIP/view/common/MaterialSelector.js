@@ -1,3 +1,5 @@
+Ext.require('Ext.ux.exporter.Exporter');
+
 Ext.define('WIP.view.common.MaterialSelector', {
 	/*
 	 * 부모 클래스를 정의한다.
@@ -8,6 +10,11 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	 * plugins을 설정한다.
 	 */
 	plugins : [],
+	
+	/*
+	 * 컴포넌트의 기능 관련된 설정을 한다.
+	 */
+	exportable : true,
 
 	/*
 	 * common 뷰인 경우에는 Alias를 정의한다.
@@ -55,7 +62,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		 * 정적인 컴포넌트들을 등록한다. Docked Item들을 등록한다.
 		 */
 		this.items = [ this.zfilter, this.zviewmode, this.zlist ];
-		this.bbar = [ this.zcount, this.zsearch, this.zrefresh, this.zexport ];
+		this.buttons = [ this.zcount, this.zsearch, this.zrefresh, this.zexport ];
 
 		/*
 		 * 부모의 컴포넌트 초기화 기본 로직을 호출한다.
@@ -278,6 +285,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	zlist : {
 		xtype : 'grid',
 		itemId : 'list',
+		exportTo : 'Materials',
 		flex : 1,
 		autoScroll : true,
 		store : 'WIP.store.MaterialStore',
@@ -308,8 +316,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	},
 
 	zexport : {
-		xtype : 'button',
-		text : 'X',
+		xtype : 'exporterbutton',
 		width : 18
 	}
 });
