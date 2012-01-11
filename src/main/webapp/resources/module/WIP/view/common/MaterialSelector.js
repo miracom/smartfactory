@@ -15,11 +15,10 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	alias : 'widget.wip_material_selector',
 
 	/*
-	 * 컴포넌트 Identification과 관련된 속성을 정의한다.
-	 * id, title
+	 * 컴포넌트 Identification과 관련된 속성을 정의한다. id, title
 	 */
 	title : 'Find Material',
-	
+
 	/*
 	 * 컴포턴트 스타일을 적용한다.
 	 */
@@ -27,8 +26,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	bodyStyle : 'padding:5px',
 
 	/*
-	 * 부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다.
-	 * id, title, flex, width, 
+	 * 부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다. id, title, flex, width,
 	 */
 	flex : 1,
 	width : 180,
@@ -68,67 +66,157 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		 * 부가적인 작업을 한다. - 동적인 컴포넌트 추가 - 리스너 등록
 		 */
 		var self = this;
-		
+
+		this.on('render', function() {
+			self.refreshList(true);
+		});
+
 		this.getList().store.on('datachanged', function(store) {
 			self.getListCount().setValue(store.count());
 		});
-		
-		this.getList().store.load();
-		
+
 		this.getSearchField().on('specialkey', function(field, e) {
 			if (e.getKey() == e.ENTER) {
 				self.refreshList(false);
-            }
+			}
 		});
-		
+
 		this.getRefreshButton().on('click', function() {
+			self.refreshList(true);
+		});
+
+		this.getViewModeRadio().on('change', function() {
+			self.refreshList(false);
+		});
+
+		this.getDeletedItemFilter().on('change', function(check, value) {
+			self.refreshList(true);
+		});
+
+		this.getDeactiveItemFilter().on('change', function(check, value) {
 			self.refreshList(true);
 		});
 	},
 
 	getList : function() {
-		if(!this.list)
+		if (!this.list)
 			this.list = this.down('[itemId=list]');
 		return this.list;
 	},
-	
+
 	getRefreshButton : function() {
-		if(!this.refreshButton)
+		if (!this.refreshButton)
 			this.refreshButton = this.down('button[itemId=refresh]');
 		return this.refreshButton;
 	},
-	
+
 	getListCount : function() {
-		if(!this.listCount)
+		if (!this.listCount)
 			this.listCount = this.down('[itemId=listCount]');
 		return this.listCount;
 	},
-	
+
 	getListLocalFilters : function() {
-        var filters = [];
-        var value = this.getSearchField().getValue();
-        if(value.length > 0) {
-            filters.push({
-            		property : 'MAT_ID',
-            		value : new RegExp(this.getSearchField().getValue())
-            });
-        }
+		var filters = [];
+		var value = this.getSearchField().getValue();
+		if (value.length > 0) {
+			filters.push({
+				property : 'MAT_ID',
+				value : new RegExp(this.getSearchField().getValue())
+			});
+		}
+		if (this.getDeletedItemFilter().getValue()) {
+			filters.push({
+				property : 'DELETE_FLAG',
+				value : 'N'
+			});
+		}
+		if (this.getDeactiveItemFilter().getValue()) {
+			filters.push({
+				property : 'DEACTIVE_FLAG',
+				value : 'N'
+			});
+		}
 		return filters;
 	},
-	
+
 	getSearchField : function() {
-		if(!this.searchField)
+		if (!this.searchField)
 			this.searchField = this.down('[itemId=searchField]');
 		return this.searchField;
 	},
-	
-	refreshList : function(reload) {
-        this.getList().store.filters.clear();
-        this.getList().store.filter(this.getListLocalFilters());
-        if(reload)
-        		this.getList().store.load();
+
+	getViewModeRadio : function() {
+		if (!this.viewModeRadio)
+			this.viewModeRadio = this.down('[itemId=viewmode]');
+		return this.viewModeRadio;
 	},
-	
+
+	getDeletedItemFilter : function() {
+		if (!this.deletedItemFilter)
+			this.deletedItemFilter = this.down('[itemId=include_deleted]');
+		return this.deletedItemFilter;
+	},
+
+	getDeactiveItemFilter : function() {
+		if (!this.deactiveItemFilter)
+			this.deactiveItemFilter = this.down('[itemId=include_deactive]');
+		return this.deactiveItemFilter;
+	},
+
+	refreshList : function(reload) {
+		var store = this.getList().store;
+
+		if (this.getViewModeRadio().getValue().viewmode != 2) {
+			store.clearGrouping();
+			this.getList().reconfigure(null, [ {
+				text : 'MAT ID',
+				flex : 1,
+				dataIndex : 'MAT_ID'
+			}, {
+				text : 'V',
+				width : 20,
+				dataIndex : 'MAT_VER'
+			}, {
+				text : 'Desc',
+				flex : 1,
+				dataIndex : 'MAT_DESC'
+			}, {
+				text : 'D',
+				width : 20,
+				dataIndex : 'DELETE_FLAG'
+			}, {
+				text : 'A',
+				width : 20,
+				dataIndex : 'DEACTIVE_FLAG'
+			} ]);
+		} else {
+			store.group('MAT_ID');
+			this.getList().reconfigure(null, [ {
+				text : 'V',
+				width : 20,
+				dataIndex : 'MAT_VER'
+			}, {
+				text : 'Desc',
+				flex : 1,
+				dataIndex : 'MAT_DESC'
+			}, {
+				text : 'D',
+				width : 20,
+				dataIndex : 'DELETE_FLAG'
+			}, {
+				text : 'A',
+				width : 20,
+				dataIndex : 'DEACTIVE_FLAG'
+			} ]);
+		}
+
+		store.clearFilter(true);
+		store.filter(this.getListLocalFilters());
+		if (reload)
+			store.load();
+	},
+
 	zfilter : {
 		xtype : 'fieldset',
 		itemId : 'filters',
@@ -192,28 +280,11 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		itemId : 'list',
 		flex : 1,
 		autoScroll : true,
-		hideHeaders : true,
 		store : 'WIP.store.MaterialStore',
-		features : Ext.create('Ext.grid.feature.Grouping',{
-	        groupHeaderTpl: '{name} ({rows.length} Version{[values.rows.length > 1 ? "s" : ""]})'
-	    }),
-		columns : [{
-			text : 'V',
-			width : 20,
-			dataIndex : 'MAT_VER'
-		}, {
-			text : 'Desc',
-			flex : 4,
-			dataIndex : 'MAT_DESC'
-		}, {
-			text : 'D',
-			width : 20,
-			dataIndex : 'DELETE_FLAG'
-		}, {
-			text : 'A',
-			width : 20,
-			dataIndex : 'DEACTIVE_FLAG'
-		}]
+		features : Ext.create('Ext.grid.feature.Grouping', {
+			groupHeaderTpl : '{name} ({rows.length} Version{[values.rows.length > 1 ? "s" : ""]})'
+		}),
+		columns : []
 	},
 
 	zcount : {
