@@ -44,7 +44,7 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 			var filters = [];
 			var fieldset = this.codeviewOptions.client;
 			var txtField = fieldset.txtFieldName;
-			console.log(fieldset);
+			
 			if(txtField instanceof Array) {
 				for(var i in txtField) {	
 					var field = fieldset.getComponent(txtField[i]);
