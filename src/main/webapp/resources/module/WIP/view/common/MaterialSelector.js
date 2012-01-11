@@ -61,13 +61,20 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		/*
 		 * 정적인 컴포넌트들을 등록한다. Docked Item들을 등록한다.
 		 */
-		this.items = [ this.zfilter, this.zviewmode, this.zlist ];
+		this.items = [ this.zfilter, this.zviewmode, this.zgrid ];
 		this.buttons = [ this.zcount, this.zsearch, this.zrefresh, this.zexport ];
 
 		/*
 		 * 부모의 컴포넌트 초기화 기본 로직을 호출한다.
 		 */
 		this.callParent();
+		
+		/*
+		 * Observable 관련 등록 (이벤트 등록 등)
+		 */
+		this.addEvents({
+            "materialselected" : true
+        });
 
 		/*
 		 * 부가적인 작업을 한다. - 동적인 컴포넌트 추가 - 리스너 등록
@@ -75,40 +82,44 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		var self = this;
 
 		this.on('render', function() {
-			self.refreshList(true);
+			self.refreshGrid(true);
 		});
 
-		this.getList().store.on('datachanged', function(store) {
-			self.getListCount().setValue(store.count());
+		this.getGrid().store.on('datachanged', function(store) {
+			self.getGridCount().setValue(store.count());
 		});
 
 		this.getSearchField().on('specialkey', function(field, e) {
 			if (e.getKey() == e.ENTER) {
-				self.refreshList(false);
+				self.refreshGrid(false);
 			}
 		});
 
 		this.getRefreshButton().on('click', function() {
-			self.refreshList(true);
+			self.refreshGrid(true);
 		});
 
 		this.getViewModeRadio().on('change', function() {
-			self.refreshList(false);
+			self.refreshGrid(false);
 		});
 
 		this.getDeletedItemFilter().on('change', function(check, value) {
-			self.refreshList(true);
+			self.refreshGrid(true);
 		});
 
 		this.getDeactiveItemFilter().on('change', function(check, value) {
-			self.refreshList(true);
+			self.refreshGrid(true);
+		});
+		
+		this.getGrid().on('itemclick', function(grid, record) {
+			self.fireEvent('materialselected', record);
 		});
 	},
 
-	getList : function() {
-		if (!this.list)
-			this.list = this.down('[itemId=list]');
-		return this.list;
+	getGrid : function() {
+		if (!this.grid)
+			this.grid = this.down('[itemId=grid]');
+		return this.grid;
 	},
 
 	getRefreshButton : function() {
@@ -117,13 +128,13 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		return this.refreshButton;
 	},
 
-	getListCount : function() {
-		if (!this.listCount)
-			this.listCount = this.down('[itemId=listCount]');
-		return this.listCount;
+	getGridCount : function() {
+		if (!this.gridCount)
+			this.gridCount = this.down('[itemId=gridCount]');
+		return this.gridCount;
 	},
 
-	getListLocalFilters : function() {
+	getGridLocalFilters : function() {
 		var filters = [];
 		var value = this.getSearchField().getValue();
 		if (value.length > 0) {
@@ -171,12 +182,12 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		return this.deactiveItemFilter;
 	},
 
-	refreshList : function(reload) {
-		var store = this.getList().store;
+	refreshGrid : function(reload) {
+		var store = this.getGrid().store;
 
 		if (this.getViewModeRadio().getValue().viewmode != 2) {
 			store.clearGrouping();
-			this.getList().reconfigure(null, [ {
+			this.getGrid().reconfigure(null, [ {
 				text : 'MAT ID',
 				flex : 1,
 				dataIndex : 'MAT_ID'
@@ -199,7 +210,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 			} ]);
 		} else {
 			store.group('MAT_ID');
-			this.getList().reconfigure(null, [ {
+			this.getGrid().reconfigure(null, [ {
 				text : 'V',
 				width : 20,
 				dataIndex : 'MAT_VER'
@@ -219,7 +230,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		}
 
 		store.clearFilter(true);
-		store.filter(this.getListLocalFilters());
+		store.filter(this.getGridLocalFilters());
 		if (reload)
 			store.load();
 	},
@@ -282,9 +293,9 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		} ]
 	},
 
-	zlist : {
+	zgrid : {
 		xtype : 'grid',
-		itemId : 'list',
+		itemId : 'grid',
 		exportTo : 'Materials',
 		flex : 1,
 		autoScroll : true,
@@ -298,7 +309,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	zcount : {
 		xtype : 'textfield',
 		disabled : true,
-		itemId : 'listCount',
+		itemId : 'gridCount',
 		width : 30
 	},
 
