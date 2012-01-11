@@ -13,22 +13,13 @@ Ext.define('MBI.controller.MBIController', {
 			}
 		});
 	},
-	
+	//한글한글
 	onViewportRendered: function() {
 		
 		SmartFactory.addNav('MBI.view.NavFormlist', {
 			iconCls:'iconsetDockReport',
 			itemId : 'navReport',
 			title : 'Report Forms'
-		});
-
-		SmartFactory.codeview.register('GcmCodeView', {
-			viewType : '1', // 0:Table, 1:GCM
-			title : 'Gcm List',
-			selects : [],
-			sorters : [],
-			table : '',
-			columns : []
 		});
 	}
 });

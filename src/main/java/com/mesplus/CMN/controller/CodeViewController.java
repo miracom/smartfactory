@@ -89,17 +89,17 @@ public class CodeViewController {
 
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 
-		if (viewType.equals("0"))
+		if (viewType.equals("table"))
 		{
 			resultMap.put("total", codeViewDao.selectCount(table, filters));
 			resultMap.put("result", codeViewDao.select(table, selects, filters, sorters, Integer.parseInt(start), Integer.parseInt(limit)));
 		}
-		else if (viewType.equals("1"))
+		else if (viewType.equals("gcm"))
 		{
 			
 			Map<String, Object> gcmDef = gcmdefineDao.select(table); 
 			
-			if (filters != null && gcmDef.get("USE_SQL_FLAG").toString().equals("N")) {
+			if (filters != null && !gcmDef.get("USE_SQL_FLAG").toString().equals("Y")) {
 				Iterator<Filter> it = filters.iterator();
 				while (it.hasNext()) {
 					Filter filter = it.next();

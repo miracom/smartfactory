@@ -12,6 +12,11 @@ Ext.define('CMN.view.form.CodeViewField', {
     defaults:{margins:'0 3 0 0'},
     
     constructor : function(config) {
+    	Ext.applyIf(this,{
+    		filter : [],
+    		txtFieldFlex : [ 1 ],
+    		bInitFilter: true
+    	});
     	CMN.view.form.CodeViewField.superclass.constructor.apply(this, arguments);
 	},
 	
@@ -82,7 +87,6 @@ Ext.define('CMN.view.form.CodeViewField', {
 			handler: function(){
 				var fieldset = this.up('fieldcontainer');
             	//var refVal = fieldset.up('form').getValues();
-            	
 				SmartFactory.codeview.show(fieldset.codeviewName, fieldset.filter, fieldset.selectedCallback, fieldset);
 			}
 		};
