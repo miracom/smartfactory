@@ -36,28 +36,13 @@ Ext.define('ARC.view.task.TaskCreate', {
 		formBind : true, // only enabled once the form is valid
 		handler : function() {
 			var me = this.up('form');
-
-			/* 그리드 데이타는 JSON String으로 변환하여 전송한다.
-			var data = [];
-			newRecords = me.tableListStore.getNewRecords();
-			for(var i=0;i<newRecords.length;i++) {
-			   data.push(newRecords[i].data);
-			}
-			var encodedJson = Ext.encode(data);
-
-			console.log(encodedJson);
-			*/
-			 
-			me.tableListStore.sync();
-			//console.log(me.tableListStore.getUpdatedRecords());
-			
 			var form = me.getForm();
 
 			Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function showResult(btn) {
 				if (btn == 'yes') {
 					if (form.isValid()) {
 						form.setValues({
-							processtype : 'Y'
+							processtype : 'C'
 						}); // 처리 TYPE 입력
 
 						// console.log(form.getValues());

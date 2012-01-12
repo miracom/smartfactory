@@ -8,16 +8,16 @@ Ext.define('ARC.store.TableListStore', {
 	proxy : {
 		type : 'ajax',
 		api : { // read, sync에 따른 URL 변경
-			read : 'module/ARC/data/tablelist.json',
-			create: 'module/ARC/data/tableupdate.json',
-			update: 'module/ARC/data/tableupdate.json',
-			destroy: 'module/ARC/data/tableupdate.json'
+			read : 'module/ARC/data/tablelist.json'
+			//create: 'module/ARC/data/tableupdate.json',
+			//update: 'module/ARC/data/tableupdate.json',
+			//destroy: 'module/ARC/data/tableupdate.json'
 		},
 		actionMethods : { // Post방식으로 변경..
-			read : 'POST',
-			create : 'POST',
-			update : 'POST',
-			destroy : 'DELETE'
+			read : 'POST'
+			//create : 'POST',
+			//update : 'POST',
+			//destroy : 'DELETE'
 		},
 		reader : {
 			type : 'json',

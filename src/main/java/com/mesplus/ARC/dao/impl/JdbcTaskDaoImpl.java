@@ -128,19 +128,42 @@ public class JdbcTaskDaoImpl implements TaskDao {
 	
 	public Boolean createOrReplaceTask(HashMap<String, String> params) throws SQLException{
 
-		String masterInsertQuery = 
-				" INSERT INTO MARCOPTMAS ( " +
-				"	TASK_ID, MASTER_TABLE, CREATE_USER, CREATE_TIME, DB_NAME " +
-				" ) VALUES (:txttask, :txtmaster, 'TESTUSER', CURRENT_TIMESTAMP, :cbdbname) ";
-		
-		
-		String taskInsertQuery =
-				" INSERT INTO MARCOPTDEF ( " +
-				"	TASK_ID, TASK_DESC, CREATE_USER, CREATE_TIME, DB_NAME " + 
-				" ) VALUES (:txttask, :txtdescription, 'TESTUSER', CURRENT_TIMESTAMP, :cbdbname)";
-		
-		this.namedParameterJdbcTemplate.update(taskInsertQuery, params);
-		this.namedParameterJdbcTemplate.update(masterInsertQuery, params);
+		if(params.get("processtype").equals("C")) //등록
+		{
+			String masterInsertQuery = 
+					" INSERT INTO MARCOPTMAS ( " +
+					"	TASK_ID, MASTER_TABLE, CREATE_USER, CREATE_TIME, DB_NAME " +
+					" ) VALUES (:txttask, :txtmaster, 'TESTUSER', CURRENT_TIMESTAMP, :cbdbname) ";
+			
+			
+			String taskInsertQuery =
+					" INSERT INTO MARCOPTDEF ( " +
+					"	TASK_ID, TASK_DESC, CREATE_USER, CREATE_TIME, DB_NAME " + 
+					" ) VALUES (:txttask, :txtdescription, 'TESTUSER', CURRENT_TIMESTAMP, :cbdbname)";
+			
+			this.namedParameterJdbcTemplate.update(taskInsertQuery, params);
+			this.namedParameterJdbcTemplate.update(masterInsertQuery, params);
+		}
+//		else if(params.get("processtype").equals("U")) //수정
+//		{
+//			
+//		}
+		else if(params.get("processtype").equals("D")) //삭제
+		{
+			// 1. TargetSlave 삭제
+			String slaveDeleteQuery = " DELETE FROM MARCOPTSLA WHERE TASK_ID = :txttask AND DB_NAME = :cbdbname";
+			// 2. TargetMaster 삭제
+			String masterDeleteQuery = " DELETE FROM MARCOPTMAS WHERE TASK_ID = :txttask AND DB_NAME = :cbdbname";						
+			// 3.Archive Task 상세조건삭제
+			String detailConditionDeleteQuery = " DELETE FROM MARCOPTCON WHERE TASK_ID = :txttask AND DB_NAME = :cbdbname";			
+			// 4. Archive Task 삭제
+			String taskDeleteQuery = " DELETE FROM MARCOPTDEF WHERE TASK_ID = :txttask AND DB_NAME = :cbdbname";
+			
+			this.namedParameterJdbcTemplate.update(slaveDeleteQuery, params);
+			this.namedParameterJdbcTemplate.update(masterDeleteQuery, params);
+			this.namedParameterJdbcTemplate.update(detailConditionDeleteQuery, params);
+			this.namedParameterJdbcTemplate.update(taskDeleteQuery, params);
+		}
 		
 		return true;
 	}

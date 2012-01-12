@@ -3,6 +3,7 @@ package com.mesplus.ARC.controller;
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,11 +81,7 @@ public class ARCController {
 		      
 		      	params.put(key, value);
 			}
-			
-//			ObjectMapper om = new ObjectMapper();
-//			List<Map<String, Object>> myObjects = om.readValue(params.get("processtype"), new TypeReference<List<Map<String, Object>>>() {});
-//			System.out.println(myObjects.get(0).get("TABLE_NAME"));
-			
+						
 			if(params.get("processtype") == null || params.get("processtype") == "")
 			{
 				resultMap.put("success", false);
@@ -96,11 +93,11 @@ public class ARCController {
 				resultMap.put("success", true);
 				resultMap.put("msg", "Sucess Create");
 			}
-			else if(params.get("processtype").equals("U")) //수정
-			{
-				resultMap.put("success", true);
-				resultMap.put("msg", "Sucess Update");
-			}
+//			else if(params.get("processtype").equals("U")) //수정
+//			{
+//				resultMap.put("success", true);
+//				resultMap.put("msg", "Sucess Update");
+//			}
 			else if(params.get("processtype").equals("D")) //삭제
 			{
 				resultMap.put("success", true);
@@ -142,29 +139,33 @@ public class ARCController {
 	@RequestMapping(value = "module/ARC/data/tablelist.json", method = RequestMethod.POST)
 	public @ResponseBody
 	List<Map<String,Object>> tableList(HttpServletRequest request, HttpServletResponse response) {
-		Enumeration<String> e = request.getParameterNames();
+		//String owner = request.getParameter("owner");
 		
-		HashMap<String, String> params = new HashMap<String, String>();
-		while(e.hasMoreElements()) {
-			String key = (String) e.nextElement();
-	      	String value = request.getParameter(key);
-	      
-	      	System.out.println(String.format("key = %s value = %s", key,value));
-	      	
-	      	params.put(key, value);
-		}
-
 		return originalDao.getTableList("MESMGR");
 	}
 	
-	//http://localhost:8080/smartfactory/module/ARC/data/tableList.json
+	/*
 	@RequestMapping(value = "module/ARC/data/tableupdate.json", method = RequestMethod.POST)
 	public @ResponseBody
 	List<Map<String,Object>> tableUpdate(@RequestBody List<Map<String, Object>> request, HttpServletResponse response) {
 		
-		System.out.print("TEST");
-		
+		for (Map<String, Object> map : request) {
+			Iterator<String> ii = map.keySet().iterator();
+		        
+	        StringBuffer result = new StringBuffer();
+	        while( ii.hasNext() )
+	        {
+	            String key = (String)ii.next();
+	            result.append( " " );
+	            result.append( key );
+	            result.append( " - " );
+	            result.append( map.get(key) );
+	            result.append( "\n" );
+	        }
+	        System.out.println( result );
+		}
 		
 		return null;
 	}
+	*/
 }

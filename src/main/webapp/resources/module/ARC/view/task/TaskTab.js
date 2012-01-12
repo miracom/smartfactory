@@ -35,7 +35,9 @@ Ext.define('ARC.view.task.TaskTab', {
 	buildTabInfo : function() {
 		return Ext.create('ARC.view.task.TaskInfo', {
 			title : 'Info',
-			taskInfoStore : this.taskInfoStore
+			taskInfoStore : this.taskInfoStore,
+			dbName : this.dbName,
+			taskId : this.taskId
 		});
 	},
 

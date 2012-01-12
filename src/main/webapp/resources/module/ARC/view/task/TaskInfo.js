@@ -50,8 +50,22 @@ Ext.define('ARC.view.task.TaskInfo', {
 		text : 'DELETE',
 		listeners : {
 			click: function() {
-				//this.up().up()
-	            alert('DELETE');
+				var me = this.up('form');
+				//console.log(me.dbName);
+				//console.log(me.taskId);
+				//TODO: 김진호 작업중
+				Ext.Ajax.request({
+				    url: 'module/ARC/data/createorreplacetask.json22',
+				    method: 'POST',
+				    success: function(response, opts) {
+				        var obj = Ext.decode(response.responseText);
+				        console.dir(obj);
+				    },
+				    failure: function(response, opts) {
+				        console.log('server-side failure with status code ' + response.status);
+				    }
+				});
+				 
 	        }
 		}
 	},{
