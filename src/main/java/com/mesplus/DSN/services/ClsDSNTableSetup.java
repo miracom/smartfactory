@@ -32,7 +32,7 @@ public class ClsDSNTableSetup {
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			List<Map<String, Object>> mapList = 
-					JdbcFormDaoImpl.getGlobalFormDao().TbldefNtDao(fac_id, tbl_grp, tbl_code, physical_table, physical_view, logical_view, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().tbldefNtDao(fac_id, tbl_grp, tbl_code, physical_table, physical_view, logical_view, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			
@@ -53,7 +53,7 @@ public class ClsDSNTableSetup {
 			ReturnType rType = ReturnType.ELEMENT;
 
 			List<Map<String, Object>> mapList = 
-					JdbcFormDaoImpl.getGlobalFormDao().TblsynNtDao(rType);
+					JdbcFormDaoImpl.getGlobalFormDao().tblsynNtDao(rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			

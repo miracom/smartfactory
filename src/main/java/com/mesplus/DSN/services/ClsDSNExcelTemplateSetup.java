@@ -43,7 +43,7 @@ public class ClsDSNExcelTemplateSetup {
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			List<Map<String, Object>> mapList = 
-					JdbcFormDaoImpl.getGlobalFormDao().XtpdefNtDao(template_name, template_filename, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().xtpdefNtDao(template_name, template_filename, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);
@@ -65,7 +65,7 @@ public class ClsDSNExcelTemplateSetup {
 			ReturnType rType = ReturnType.ELEMENT;
 
 			List<Map<String, Object>> mapList =
-					JdbcFormDaoImpl.getGlobalFormDao().XtpsheNtDao(template_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().xtpsheNtDao(template_id, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);
@@ -87,7 +87,7 @@ public class ClsDSNExcelTemplateSetup {
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			List<Map<String, Object>> mapList = 
-					JdbcFormDaoImpl.getGlobalFormDao().XtpfldNtDao(sheet_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().xtpfldNtDao(sheet_id, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);

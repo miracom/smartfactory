@@ -141,7 +141,7 @@ public class ClsAPSplusCommonFunction {
 
 			// XML: DataTable
 			List<Map<String, Object>> mapList =
-					JdbcFormDaoImpl.getGlobalFormDao().FundefCtrlNtDao(fac_id, grp_id, usr_id, fun_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().fundefCtrlNtDao(fac_id, grp_id, usr_id, fun_id, rType);
 			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			

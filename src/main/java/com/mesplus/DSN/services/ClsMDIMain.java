@@ -32,7 +32,7 @@ public class ClsMDIMain {
 			
 			// XML: DataTable
 			List<Map<String, Object>> mapList = 
-					JdbcFormDaoImpl.getGlobalFormDao().GetuserloginNtDao(fac_id, grp_code, user_id, password, lang_flag, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().getuserloginNtDao(fac_id, grp_code, user_id, password, lang_flag, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			List<Element> elList = new ArrayList<Element>();
