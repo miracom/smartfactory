@@ -1,6 +1,7 @@
 package com.mesplus.DSN.services.dao.impl;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -493,24 +494,15 @@ public class JdbcFormDaoImpl implements FormDao {
 		return (List<Map<String, Object>>) results.get(MtbldatNt.CUR_REFER_PARAM);
 	}
 
-	public List<Map<String, Object>> dynamicS2NtDao(String fac_id, String func_id, String spd_id, String col_param, String cond_param, String lang_flag)
-			throws SQLException {
+	public Map<String, Object> DynamicS2NtDao(String fac_id, String func_id, String spd_id, String col_param, String cond_param, String lang_flag, ReturnType rType)
+			throws Exception {
 		if (fac_id == null || func_id == null || spd_id == null || col_param == null || cond_param == null || lang_flag == null) {
 			throw new IllegalArgumentException("Parameters(fac_id, func_id, spd_id, col_param, cond_param, lang_flag) should not be null.");
 		}
 
-		DynamicS2Nt sp = new DynamicS2Nt(dataSource);
+		DynamicS2Nt sp = new DynamicS2Nt(dataSource, rType);
 		Map<String, Object> results = sp.execute(fac_id, func_id, spd_id, col_param, cond_param, lang_flag);
 
-		// Map<String, Object> params = new HashMap<String, Object>();
-		//
-		// params.put("sqltext1", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-		// params.put("sqltext2", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-		// params.put("sqltext3", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-		// params.put("sqltext4", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-		// params.put("sqltext5", results.get(DynamicS2Nt.SQLTEXT1_PARAM));
-		//
-		// results.put("sqltext", params);
-		return (List<Map<String, Object>>) results.get(DynamicS2Nt.CUR_REFER_PARAM);
+		return results;
 	}
 }

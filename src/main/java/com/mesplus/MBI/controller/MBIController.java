@@ -235,7 +235,7 @@ public class MBIController {
 		String cond_param = request.getParameter("cond_param");
 		String lang_flag  = request.getParameter("lang_flag");
 		
-		return formDao.dynamicS2NtDao(fac_id, func_id, spd_id, col_param,cond_param,lang_flag);
+		return formDao.dynamicS2NtDao(fac_id, func_id, spd_id, col_param,cond_param,lang_flag, ReturnType.OBJECT);
 	}
 	
 }

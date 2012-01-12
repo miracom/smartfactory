@@ -442,15 +442,37 @@ public class ClsDSNMapDesigner {
 			
 			String xName = "RESULT";
 			String fac_id = psaParam[0];
-			String function_id = psaParam[1];
-			String spread_id = psaParam[2];
-			String param = psaParam[3];
+			String func_id = psaParam[1];
+			String spd_id = psaParam[2];
+			String col_param = psaParam[3];
 			String cond_param = psaParam[4];
-			String psGeneratedQuery = psaParam[5];
+			String lang_flag = psaParam[5];
 			ReturnType rType = ReturnType.ELEMENT;
 			
-			return null;
-
+			Map<String, Object> mapList1 = 
+					JdbcFormDaoImpl.getGlobalFormDao().DynamicS2NtDao(fac_id, func_id, spd_id, col_param, cond_param, lang_flag, rType);
+			
+			//String 배열 형태로 반환하기 위한 로직 구현 부분입니다.
+			/*String SQLTEXT1_PARAM = (String)mapList1.get("SQLTEXT1_PARAM");
+			String SQLTEXT2_PARAM = (String)mapList1.get("SQLTEXT2_PARAM");
+			String SQLTEXT3_PARAM = (String)mapList1.get("SQLTEXT3_PARAM");
+			String SQLTEXT4_PARAM = (String)mapList1.get("SQLTEXT4_PARAM");
+			String SQLTEXT5_PARAM = (String)mapList1.get("SQLTEXT5_PARAM");
+			
+			
+			String[] arr = new String[5];
+			arr[0]= SQLTEXT1_PARAM;
+			arr[1]= SQLTEXT1_PARAM;
+			arr[2]= SQLTEXT1_PARAM;
+			arr[3]= SQLTEXT1_PARAM;
+			arr[4]= SQLTEXT1_PARAM;*/
+			
+			//Element el1 = XmlConvert.mapToArrayListElement(mapList1);
+			
+//			return arr;
+			
+			return psaParam;
+			
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
 		}
