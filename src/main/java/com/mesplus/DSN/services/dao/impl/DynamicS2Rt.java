@@ -69,6 +69,12 @@ public class DynamicS2Rt extends StoredProcedure {
 		inputs.put(ARRLST_PARAM, arrlst);
 
 		if (RTYPE == ReturnType.OBJECT) {
+//			DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+//			def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+//			PlatformTransactionManager transactionManager = new org.springframework.jdbc.datasource.DataSourceTransactionManager(super.getJdbcTemplate().getDataSource());
+//			TransactionStatus ts = transactionManager.getTransaction(def);
+//			transactionManager.commit(ts);
+//			transactionManager.rollback(ts);
 			return super.execute(inputs);
 		} else if (RTYPE == ReturnType.ELEMENT) {
 			Map<String, Object> returnMap = new HashMap<String, Object>();
