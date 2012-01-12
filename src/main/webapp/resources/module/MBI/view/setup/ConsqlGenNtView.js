@@ -1,4 +1,4 @@
-Ext.define('MBI.view.ConsqlGenNtView', {
+Ext.define('MBI.view.setup.ConsqlGenNtView', {
 	extend: 'Ext.grid.Panel',
 	
 	autoScroll : true,

@@ -1,20 +1,50 @@
 Ext.require([ 'Ext.ux.exporter.Exporter' ]);
 
+/**
+ * @class MBI.view.form.BaseForm1G
+ * @extends Ext.panel.Panel
+ * one grid인 Base로 화면을 구성.
+ * 
+ * **include** : Ext.ux.exporter.Exporter
+ * @cfg {Function} setup 화면에 필요한 기능별 panel을 만든다.
+ */
 Ext.define('MBI.view.form.BaseForm1G', {
+	/***
+	 * 부모 클래스를 정의한다.
+	 */
 	extend : 'Ext.panel.Panel',
-	alias : 'widget.mbi.baseform1g',
 
+	/***
+	 * plugins을 설정한다.
+	 */
 	plugins : [ Ext.create('CMN.plugin.Supplement') ],
-	// excel export use flag
+	
+	/***
+	 * 컴포넌트의 기능 관련된 설정을 한다.
+	 */
 	exportable : true,
+	
+	/***
+	 * 부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다. id, title, flex, width,
+	 */
+	autoScroll : true,// false,
+	
+	/***
+	 * 컨테이너로서의 속성 : layout, defaults, tools, items 등을 정의한다. 단, 복잡한 items, docked
+	 * items 등은 initComponent에서 등록을 권장한다.
+	 */
 	layout : {
 		type : 'vbox',
 		align : 'stretch'
 	},
-	autoScroll : true,// false,
 
+	/**
+	 * @property initComponent
+	 * Init Component 메쏘드를 오버라이드 한다.
+	 * 1. items (정적인 컴포넌트)를 등록한다. 2. docked item들을 등록한다. 3. callParent()를 호출한다.
+	 * 4. 동적인 컴포넌트와 리스너들을 등록한다.
+	 */
 	setup : function() {
-		// this.removeAll();
 
 		this.setSupplement(Ext.create('MBI.view.form.builder.ConditionBuilder', {
 			formInfoData : this.store.data,
@@ -41,8 +71,9 @@ Ext.define('MBI.view.form.BaseForm1G', {
 			clickRecord : this.onClickGrid
 		}).buildGrid();
 		
+		var view_control = Ext.create('MBI.view.form.builder.ControlBuilder');
 		this.add(view_grid);
-		this.add(this.buildToolbar());
+		this.add(view_control);
 			
 	},
 	buildToolbar : function(){

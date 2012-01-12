@@ -1,7 +1,6 @@
-Ext.define('MBI.view.GrpcolNtView', {
+Ext.define('MBI.view.setup.GrpcolNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('test'),
 	autoScroll : true,
 	
 	columns : [ {

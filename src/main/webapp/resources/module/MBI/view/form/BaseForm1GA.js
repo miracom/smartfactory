@@ -1,3 +1,16 @@
+Ext.require([ 'Ext.ux.exporter.Exporter' ]);
+
+/**
+ * @class MBI.view.form.BaseForm1GA
+ * @extends Ext.panel.Panel
+ * @author kyunghyang.
+ * Form Design Function List 표시
+ * 
+ * **include** : MBI.view.common.BaseFormBuilder
+ * @cfg {String[]} tbar refresh,clear등 이벤트 버튼설정
+ * @cfg {String[]} items 표시할 ListView설정
+ * @cfg {String} itemId 외부참조의 편리성을 위해 포든 item에 itemId를 부여하여 한다.
+ */
 Ext.define('MBI.view.form.BaseForm1GA', {
 	extend : 'Ext.panel.Panel',
 	alias : 'widget.mbi.baseform1g',
