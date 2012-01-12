@@ -227,6 +227,7 @@ Ext.define('RPT.view.report.ReportColumn', {
 				xtype : 'exporterbutton',
 				//store : ['RPT.store.ReportListStore'],
 				//  exportTo name
+				formatter : 'csv',
 				targetExports : ['TestGrid1']
 			}]
 		}]

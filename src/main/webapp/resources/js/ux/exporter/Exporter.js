@@ -13,101 +13,159 @@ Ext.define("Ext.ux.exporter.Exporter", {
     ],
 
     statics: {
-        exportAny: function(component, formatter, config) {
-            var func = "export";
-            if(!component.is) {
-                func = func + "Store";
-            } else if(component.is("gridpanel")) {
-                func = func + "Grid";
-            } else if (component.is("treepanel")) {
-                func = func + "Tree";
-            } else {
-                func = func + "Store";
-                component = component.getStore();
-            }
-
-            return this[func](component, this.getFormatterByName(formatter), config);
-        },
-
         /**
          * Exports a grid, using the .xls formatter by default
          * @param {Ext.grid.GridPanel} grid The grid to export from
          * @param {Object} config Optional config settings for the formatter
          */
-//        exportGrids: function(grids) {
-//        	var stores = [];
-//        	var configs = [];
-//        	for(item in grids){
-//        		var grid = grids[item].grid;
-//        		var formatter = grids[item].formatter;
-//        		var config = grids[item].config;
-//        		
-//        		config = config || {};
-//                formatter = this.getFormatterByName(formatter);
-//
-//                var columns = Ext.Array.filter(grids[item].grid.columns, function(col) {
-//                    return !col.hidden; // && (!col.xtype || col.xtype != "actioncolumn");
-//                });
-//                var title = grid.exportTo;
-//                if(!grid.title &&	config.exportTo)
-//              	  title = config.exportTo;
-//
-//                Ext.applyIf(config, {
-//                  title  : title,
-//                  columns: columns
-//                });
-//                stores.push(grid.store);
-//                configs.push(config);
-//        	}
-//            return formatter.formats(stores,configs);
-//          },
-        exportGrid: function(grid, formatter, config) {
-          config = config || {};
-          formatter = this.getFormatterByName(formatter);
+        exportAny: function(components, formatter, config) {
+        	var exporters =[];
 
-          var columns = Ext.Array.filter(grid.columns, function(col) {
-              return !col.hidden; // && (!col.xtype || col.xtype != "actioncolumn");
-          });
-          var title = grid.exportTo;
-          if(!grid.title &&	config.exportTo)
-        	  title = config.exportTo;
+        	for(var i in components){
+            	var store = null; 
+            	var columns = [];
+            	var title = components[i].title!=undefined ? components[i].title : (components[i].exportTo != undefined ? components[i].exportTo :'Sheet'+i);
+            	if(!components[i].is) {
+            		console.log('Error : There is no store!');
+            		return;
+                } else if(components[i].is("gridpanel")) {
+                	store = components[i].store;
+                	columns = Ext.Array.filter(components[i].columns, function(col) {
+                        return !col.hidden;
+                    });
+                } else if (components[i].is("treepanel")) {
+                	store = components[i].store;
+                	columns= store.fields ? store.fields.items : store.model.prototype.fields.items;
+                } else {
+                	columns= store.fields ? store.fields.items : store.model.prototype.fields.items;
+                    store = components[i];
+                }
 
-          Ext.applyIf(config, {
-            title  : title,
-            columns: columns
-          });
-          
-          return formatter.format(grid.store, config);
-        },
-
-        exportStore: function(store, formatter, config) {
-           config = config || {};
-           formatter = this.getFormatterByName(formatter);
-
-           Ext.applyIf(config, {
-             columns: store.fields ? store.fields.items : store.model.prototype.fields.items
-           });
-
-           return formatter.format(store, config);
-        },
-
-        exportTree: function(tree, formatter, config) {
-          config    = config || {};
-          formatter = this.getFormatterByName(formatter);
-
-          var store = tree.store || config.store;
-
-          Ext.applyIf(config, {
-            title: tree.title
-          });
-
-          return formatter.format(store, config);
+            	exporters.push({
+            		store : store,
+            		columns : columns,
+            		headerInfo : this.getHeaderInfo(columns), 
+            		title : title
+            	});
+        	}
+            formatter = this.getFormatterByName(formatter);
+            return formatter.format(exporters,config);
         },
 
         getFormatterByName: function(formatter) {
             formatter = formatter ? formatter : "excel";
             formatter = !Ext.isString(formatter) ? formatter : Ext.create("Ext.ux.exporter." + formatter + "Formatter." + Ext.String.capitalize(formatter) + "Formatter");
             return formatter;
+        },
+        getHeaderInfo: function(columns){
+      	  var cols  = columns;
+      	  var list = [[]];
+      	  var sublist = [];
+      	  var tot = cols.length;
+      	  var totColCnt = 0;
+      	  var index = 1;
+      	  var step = 0;
+      	  var parent = 0;
+      	  var readStart=0;
+
+      	  for(var i=0; i<tot;i++){
+      		  var subCol = cols[i];
+      		  var title = '';
+      		  var dataname = '';
+      		  var child = 0;
+      		  var macross = 0;
+      		  if(subCol.dataIndex == undefined || subCol.dataIndex != ''){
+      			if(subCol.text != undefined || subCol.header != undefined){
+        			  dataname = subCol.dataIndex;
+        			  if (subCol.text != undefined)
+        				  title = subCol.text;
+        			  if (subCol.header != undefined)
+        				  title = subCol.header;
+        			  if (!subCol.dataIndex){
+        				  var subItems = subCol.items.items;
+        				  for(var j in subItems){
+        					  Ext.applyIf(subItems[j],{
+        						  parent : title
+        					  });
+        				  }
+        				  sublist = sublist.concat(subItems);
+        				  stepcnt = step+1;
+        				  child = subCol.items.items.length;
+        				  macross = child-1;
+        				  totColCnt = totColCnt+macross;
+        			  }
+        	  
+        			  if(step > 0){//9
+        				  for(var cnt=readStart;cnt<list[step-1].length;cnt++){
+        					if(list[step-1][cnt].title != subCol.parent){
+        						if(list[step-1][cnt].child == 0){
+        							list[step-1][cnt].index = index;
+        							list[step].push(list[step-1][cnt]);
+        							index++;
+        						}
+        						readStart++;
+        					}
+        					else
+        						break;
+        				  }
+        			  }
+        		  }
+        		  else{
+        			//make columns taken from Record fields (e.g. with a col.name) human-readable
+        	          title = subCol.name.replace(/_/g, " ");
+        	          title = Ext.String.capitalize(title);
+        			  dataname = subCol.name;
+        		  }
+
+        		  if(subCol.parent)
+        			  parent = subCol.parent;
+        		  else
+        			  parent = '';
+
+        		  list[step].push({
+        				  title : title,
+        				  dataname : dataname,
+        				  width : subCol.width,
+        				  step : step,
+        				  index : index,
+        				  child : child,
+        				  parent : parent,
+        				  macross : macross,
+        				  mdown : 0
+        			  });
+        		  index++;
+        		  
+        		  if(i==tot-1){
+        			  if(step > 0){
+        				  for(var cnt=readStart;cnt<list[step-1].length;cnt++){
+        					if(list[step-1][cnt].title != subCol.parent){
+        						list[step-1][cnt].index = index;
+        						list[step].push(list[step-1][cnt]);
+        						index++;
+        					}
+        				  }
+        			  }
+        			  totColCnt = totColCnt+index-1;
+        			  if(sublist.length>0){
+        				  i = -1;
+        				  tot = sublist.length;
+        				  step++;
+        				  cols = sublist;
+        				  list.push([]);
+        				  sublist = [];
+        				  index = 1;
+        				  readStart=0;
+        				  totColCnt = 0;
+        			  }
+        		  }
+      		  } 
+      	  }
+      	  
+      	  return {
+      		  list : list,
+      		  colCnt : totColCnt,
+      		  stepCnt : step+1 
+      	  };
         }
     }
 });

@@ -6,18 +6,21 @@
  */
 Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 
-  constructor: function(store, config) {
+  /**
+   * Constructor the Worksheet XML
+   * @param {Object} exporter has store, columns, title
+   */
+  constructor: function(exporter, config) {
     config = config || {};
 
-    this.store = store;
-
+    this.store = exporter.store;
+    this.columns = exporter.columns;
+    this.title = exporter.title;
+    this.headerInfo = exporter.headerInfo;
     Ext.applyIf(config, {
       hasTitle   : true,
       hasHeadings: true,
       stripeRows : true,
-
-      title      : "Workbook",
-      columns    : store.fields == undefined ? {} : store.fields.items
     });
 
     Ext.apply(this, config);
@@ -76,23 +79,22 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
    * @param {Ext.data.Store} store The store to build from
    */
   render: function(store) {
-	var headerInfo = this.buildHeaderInfo();
+	var header = this.buildHeader(this.headerInfo);
 	Ext.apply(this,{
-		lastCols : headerInfo.lastCols
+		lastCols : header.lastCols
 	});
 	return this.worksheetTpl.apply({
-	      header  : headerInfo.header.join(""),
+	      header  : header.header.join(""),
 	      columns : this.buildColumns().join(""),
 	      rows    : this.buildRows().join(""),
-	      colCount: headerInfo.colCnt,
-	      rowCount: this.store.getCount()+headerInfo.stepCnt+1,
+	      colCount: header.colCnt,
+	      rowCount: this.store.getCount()+header.stepCnt+1,
 	      title   : this.title
 	    }); 
   },
 
 
-  buildHeaderInfo : function(){
-	var headerInfo = this.buildHeaderIndex();
+  buildHeader : function(headerInfo){
 	var baselist = headerInfo.list;
 	var rowlist = [];
 	var mdown = 0;
@@ -143,135 +145,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
 		lastCols : headerInfo.list[headerInfo.stepCnt-1] //add
 	};
   },
-  
-  buildHeaderIndex: function(){
-	  var cols  = this.columns;
-	  var list = [[]];
-	  var sublist = [];
-	  var tot = cols.length;
-	  var totColCnt = tot;
-	  var index = 1;
-	  var step = 0;
-	  var parent = 0;
-	  var readStart=0;
-	  
-	  for(var i=0; i<tot;i++){
-		  var subCol = cols[i];
-		  var title = '';
-		  var dataname = '';
-		  var child = 0;
-		  var macross = 0;
-		  if(subCol.text != undefined || subCol.header != undefined){
-			  dataname = subCol.dataIndex;
-			  if (subCol.text != undefined)
-				  title = subCol.text;
-			  if (subCol.header != undefined)
-				  title = subCol.header;
-			  if(!subCol.dataIndex){
-				  var subItems = subCol.items.items;
-				  for(var j in subItems){
-					  Ext.applyIf(subItems[j],{
-						  parent : title
-					  });
-				  }
-				  sublist = sublist.concat(subItems);
-				  stepcnt = step+1;
-				  child = subCol.items.items.length;
-				  macross = child-1;
-				  totColCnt = totColCnt+macross;
-			  }
-	  
-			  if(step > 0){//9
-				  for(var cnt=readStart;cnt<list[step-1].length;cnt++){
-					if(list[step-1][cnt].title != subCol.parent){
-						if(list[step-1][cnt].child == 0){
-							list[step-1][cnt].index = index;
-							list[step].push(list[step-1][cnt]);
-							index++;
-						}
-						readStart++;
-					}
-					else
-						break;
-				  }
-			  }
-		  }
-		  else{
-			//make columns taken from Record fields (e.g. with a col.name) human-readable
-	          title = subCol.name.replace(/_/g, " ");
-	          title = Ext.String.capitalize(title);
-			  dataname = subCol.name;
-		  }
-
-		  if(subCol.parent)
-			  parent = subCol.parent;
-		  else
-			  parent = '';
-
-		  list[step].push({
-				  title : title,
-				  dataname : dataname,
-				  width : subCol.width,
-				  step : step,
-				  index : index,
-				  child : child,
-				  parent : parent,
-				  macross : macross,
-				  mdown : 0
-			  });
-		  index++;
-		  
-		  if(i==tot-1){
-			  if(step > 0){
-				  for(var cnt=readStart;cnt<list[step-1].length;cnt++){
-					if(list[step-1][cnt].title != subCol.parent){
-						list[step-1][cnt].index = index;
-						list[step].push(list[step-1][cnt]);
-						index++;
-					}
-				  }
-			  }
-			  
-			  if(sublist.length>0){
-				  i = -1;
-				  tot = sublist.length;
-				  step++;
-				  cols = sublist;
-				  list.push([]);
-				  sublist = [];
-				  index = 1;
-				  readStart=0;
-			  }
-		  }
-	  }
-	  return {
-		  list : list,
-		  colCnt : totColCnt,
-		  stepCnt : step+1 
-	  };
-  },
-  
-  buildHeaderxx: function() {
-    var cells = [];
-    Ext.each(this.columns, function(col) {
-      var title='';
-
-      //if(col.dataIndex) {
-          if (col.text != undefined) {
-            title = col.text;
-          } else if(col.name) {
-            //make columns taken from Record fields (e.g. with a col.name) human-readable
-            title = col.name.replace(/_/g, " ");
-            title = Ext.String.capitalize(title);
-          }
-
-          cells.push(Ext.String.format('<ss:Cell ss:StyleID="headercell"><ss:Data ss:Type="String">{0}</ss:Data><ss:NamedCell ss:Name="Print_Titles" /></ss:Cell>', title));
-      //}
-    }, this);
-
-    return cells.join("");
-  },
-
+ 
   buildColumns: function() {
     var cols = [];
     var collist = this.columns;
@@ -296,14 +170,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
     this.store.each(function(record, index) {
         rows.push(this.buildRow(record, index));
     }, this);
-    //    this.store.data.items
-//    var storeData = this.store.data.items;
-//    console.log(this.lastCols);
-//    console.log(this.store);
-//    
-//    for(var i in storeData){
-//   		rows.push(this.buildRow(storeData[i],i));
-//    }
+
     return rows;
   },
   

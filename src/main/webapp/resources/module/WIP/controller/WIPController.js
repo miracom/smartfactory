@@ -17,11 +17,10 @@ Ext.define('WIP.controller.WIPController', {
 		SmartFactory.addNav('WIP.view.common.NavOperation', {
 			iconCls : 'iconsetDockOperation',
 			itemId : 'navOperation',
-			title : 'operation'
+			title : 'Operations'
 		});
 
 		SmartFactory.codeview.register('Operation', {
-			viewType : '0', // 0:Table, 1:GCM
 			title : 'Select Operation',
 			selects : [ 'FACTORY', 'OPER', 'OPER_DESC' ],
 			sorters : [ {
@@ -43,7 +42,6 @@ Ext.define('WIP.controller.WIPController', {
 		});
 
 		SmartFactory.codeview.register('Material', {
-			viewType : '0', // 0:Table, 1:GCM
 			title : 'Select Material',
 			selects : [ 'FACTORY', 'MAT_ID', 'MAT_VER', 'MAT_DESC' ],
 			sorters : [ {
@@ -68,21 +66,19 @@ Ext.define('WIP.controller.WIPController', {
 		});
 		
 		SmartFactory.codeview.register('MaterialType', {
-			viewType : '1', // 0:Table, 1:GCM
-			title : 'Select Material Type',
-			selects : [ 'FACTORY', 'GROUP_NAME', 'DESCRIPTION' ],
-			sorters : [],
-			table : 'MATERIAL_GRP_2',
-			columns : [ {
+			viewType : 'gcm', 
+			title : 'Select Material Type',//override
+			selects : [ 'FACTORY', 'GROUP_NAME', 'MODEL_DESC_S' ],//override
+			table : 'MATERIAL_GRP_2', //override
+			columns : [ {//override
 				header : 'Material Type',
 				dataIndex : 'GROUP_NAME',
 				flex : 2
 			}, {
 				header : 'Description',
-				dataIndex : 'DESCRIPTION',
+				dataIndex : 'MODEL_DESC_S',
 				flex : 3
 			} ],
-			valueField : ['GROUP_NAME']
 		});
 	}
 });

@@ -1,10 +1,12 @@
+Ext.require([ 'Ext.ux.exporter.Exporter' ]);
+
 Ext.define('RPT.view.report.ReportDashBoard2', {
 	extend : 'Ext.form.Panel',
 
 	alias : 'widget.rpt.report.report_dashboard2',
 
 	plugins : [Ext.create('CMN.plugin.Supplement')], 
-
+	exportable : true,
 	layout : {
 		align : 'stretch',
 		type : 'vbox'
@@ -58,6 +60,7 @@ Ext.define('RPT.view.report.ReportDashBoard2', {
 	        		 items : [
 	        		          {
 	        		        	  xtype : 'gridpanel',
+	        		        	  exportTo : 'TestGrid1',
 	        		        	  flex : 1,
 	        		        	  margin : '0 0 1 0',
 	        		        	  store : 'RPT.store.ReportListStore',
@@ -139,6 +142,7 @@ Ext.define('RPT.view.report.ReportDashBoard2', {
 	        		          },
 	        		          {
 	        		        	  xtype : 'gridpanel',
+	        		        	  exportTo : 'TestGrid2',
 	        		        	  flex : 1,
 	        		        	  margin : '0 0 1 0',
 	        		        	  store : 'RPT.store.ReportListStore',
@@ -220,6 +224,7 @@ Ext.define('RPT.view.report.ReportDashBoard2', {
 	        		          },
 	        		          {
 	        		        	  xtype : 'gridpanel',
+	        		        	  exportTo : 'TestGrid3',
 	        		        	  flex : 1,
 	        		        	  store : 'RPT.store.ReportListStore',
 	        		        	  columnLines : true,
@@ -378,5 +383,25 @@ Ext.define('RPT.view.report.ReportDashBoard2', {
 	        			 }]
 	        		 }]
 	        	 } ]
-	         } ]
+	         }
+	         ,{
+	 			xtype : 'toolbar',
+				height : 30,
+				layout : {
+					type : 'hbox',
+					pack : 'start'
+				},
+				items : [ {
+					xtype : 'tbfill'
+				}, {
+					xtype : 'exporterbutton',
+					//store : ['RPT.store.ReportListStore'],
+					//  exportTo name
+					//formatter : 'csv',
+					//targetExports : ['TestGrid1']
+				}]
+			}
+	         
+	         
+	         ]
 });
