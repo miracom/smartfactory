@@ -78,11 +78,11 @@ public class ClsDSNMapDesigner {
 			Element el8 = XmlConvert.mapListToDataTableElement(mapList8, xName8);
 			
 			List<Map<String, Object>> mapList9 = 
-					JdbcFormDaoImpl.getGlobalFormDao().FsprelNtDao(fac_id, func_id, spd_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().fsprelNtDao(fac_id, func_id, spd_id, rType);
 			Element el9 = XmlConvert.mapListToDataTableElement(mapList9, xName9);
 			
 			List<Map<String, Object>> mapList10 = 
-					JdbcFormDaoImpl.getGlobalFormDao().FscrelNtDao(fac_id, func_id, spd_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().fscrelNtDao(fac_id, func_id, spd_id, rType);
 			Element el10 = XmlConvert.mapListToDataTableElement(mapList10, xName10);
 			
 			List<Map<String, Object>> mapList11 = 
@@ -268,11 +268,11 @@ public class ClsDSNMapDesigner {
 			ReturnType rType = ReturnType.ELEMENT;
 		
 			List<Map<String, Object>> mapList1 = 
-					JdbcFormDaoImpl.getGlobalFormDao().ConsqlNtDao(tab_id, admin_user, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().consqlNtDao(tab_id, admin_user, rType);
 			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName1);
 			
 			List<Map<String, Object>> mapList2 = 
-					JdbcFormDaoImpl.getGlobalFormDao().FtrdefNtDao(fac_id, func_id, spd_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().ftrdefNtDao(fac_id, func_id, spd_id, rType);
 			Element el2 = XmlConvert.mapListToDataTableElement(mapList2, xName2);
 					
 			List<Map<String, Object>> mapList3 = 
@@ -280,19 +280,19 @@ public class ClsDSNMapDesigner {
 			Element el3 = XmlConvert.mapListToDataTableElement(mapList3, xName3);
 			
 			List<Map<String, Object>> mapList4 = 
-					JdbcFormDaoImpl.getGlobalFormDao().FsprelNtDao(fac_id, func_id, spd_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().fsprelNtDao(fac_id, func_id, spd_id, rType);
 			Element el4 = XmlConvert.mapListToDataTableElement(mapList4, xName4);
 			
 			List<Map<String, Object>> mapList5 = 
-					JdbcFormDaoImpl.getGlobalFormDao().FscrelNtDao(fac_id, func_id, spd_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().fscrelNtDao(fac_id, func_id, spd_id, rType);
 			Element el5 = XmlConvert.mapListToDataTableElement(mapList5, xName5);
 			
 			List<Map<String, Object>> mapList6 = 
-					JdbcFormDaoImpl.getGlobalFormDao().ChtdetNtDao(tab_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().chtdetNtDao(tab_id, rType);
 			Element el6 = XmlConvert.mapListToDataTableElement(mapList6, xName6);
 			
 			List<Map<String, Object>> mapList7 = 
-					JdbcFormDaoImpl.getGlobalFormDao().AssdefNtDao(tab_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().assdefNtDao(tab_id, rType);
 			Element el7 = XmlConvert.mapListToDataTableElement(mapList7, xName7);
 			
 			List<Element> elList = new ArrayList<Element>();
@@ -442,15 +442,37 @@ public class ClsDSNMapDesigner {
 			
 			String xName = "RESULT";
 			String fac_id = psaParam[0];
-			String function_id = psaParam[1];
-			String spread_id = psaParam[2];
-			String param = psaParam[3];
+			String func_id = psaParam[1];
+			String spd_id = psaParam[2];
+			String col_param = psaParam[3];
 			String cond_param = psaParam[4];
-			String psGeneratedQuery = psaParam[5];
+			String lang_flag = psaParam[5];
 			ReturnType rType = ReturnType.ELEMENT;
 			
-			return null;
-
+			Map<String, Object> mapList1 = 
+					JdbcFormDaoImpl.getGlobalFormDao().dynamicS2NtDao(fac_id, func_id, spd_id, col_param, cond_param, lang_flag, rType);
+			
+			//String 배열 형태로 반환하기 위한 로직 구현 부분입니다.
+			/*String SQLTEXT1_PARAM = (String)mapList1.get("SQLTEXT1_PARAM");
+			String SQLTEXT2_PARAM = (String)mapList1.get("SQLTEXT2_PARAM");
+			String SQLTEXT3_PARAM = (String)mapList1.get("SQLTEXT3_PARAM");
+			String SQLTEXT4_PARAM = (String)mapList1.get("SQLTEXT4_PARAM");
+			String SQLTEXT5_PARAM = (String)mapList1.get("SQLTEXT5_PARAM");
+			
+			
+			String[] arr = new String[5];
+			arr[0]= SQLTEXT1_PARAM;
+			arr[1]= SQLTEXT1_PARAM;
+			arr[2]= SQLTEXT1_PARAM;
+			arr[3]= SQLTEXT1_PARAM;
+			arr[4]= SQLTEXT1_PARAM;*/
+			
+			//Element el1 = XmlConvert.mapToArrayListElement(mapList1);
+			
+//			return arr;
+			
+			return psaParam;
+			
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
 		}
@@ -497,7 +519,7 @@ public class ClsDSNMapDesigner {
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			List<Map<String, Object>> mapList1 = 
-					JdbcFormDaoImpl.getGlobalFormDao().SvcmbrNtDao(service_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().svcmbrNtDao(service_id, rType);
 			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName);
 
 			List<Element> elList = new ArrayList<Element>();

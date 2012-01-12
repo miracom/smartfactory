@@ -15,13 +15,14 @@ import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.StoredProcedure;
 
+import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ResultSetUtils;
 
 public class DynamicS2Nt extends StoredProcedure {
 	private static final String FAC_ID_PARAM = "fac_id";
 	private static final String FUNC_ID_PARAM = "func_id";
 	private static final String SPD_ID_PARAM = "spd_id";
-	private static final String COL_PARAM_PARAM = "col_param";
+	private static final String A_PARAM_PARAM = "a_param";
 	private static final String COND_PARAM_PARAM = "cond_param";
 	private static final String LANG_FLAG_PARAM = "lang_flag";
 	private static final String SQLTEXT1_PARAM = "sqltext1";
@@ -33,13 +34,13 @@ public class DynamicS2Nt extends StoredProcedure {
 
 	private static final String SPROC_NAME = "P_DSN_DYNAMIC_S2_NT";
 
-	public DynamicS2Nt(DataSource dataSource) throws SQLException {
+	public DynamicS2Nt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(SPD_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(COL_PARAM_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(A_PARAM_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(COND_PARAM_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(LANG_FLAG_PARAM, Types.VARCHAR));
 
@@ -58,12 +59,13 @@ public class DynamicS2Nt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id, String spd_id, String col_param, String cond_param, String lang_flag) {
+	public Map<String, Object> execute(String fac_id, String func_id, String spd_id, String a_param, String cond_param, String lang_flag) // {
+			throws Exception {
 		Map<String, Object> inputs = new HashMap<String, Object>();
 		inputs.put(FAC_ID_PARAM, fac_id);
 		inputs.put(FUNC_ID_PARAM, func_id);
 		inputs.put(SPD_ID_PARAM, spd_id);
-		inputs.put(COL_PARAM_PARAM, col_param);
+		inputs.put(A_PARAM_PARAM, a_param);
 		inputs.put(COND_PARAM_PARAM, cond_param);
 		inputs.put(LANG_FLAG_PARAM, lang_flag);
 

@@ -29,15 +29,10 @@ public class ClsDSNColumnSetup {
 
 			//XML: DataTable 
 			List<Map<String, Object>> mapList =
-					JdbcFormDaoImpl.getGlobalFormDao().ColdefNtDao(fac_id, tbl_id, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().coldefNtDao(fac_id, tbl_id, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
-			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el);
-			
-			Element gEl = XmlConvert.groupElement(elList);
-			
-			return XmlConvert.elementToXML(gEl);
+						
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -59,15 +54,10 @@ public class ClsDSNColumnSetup {
 			//XML: DataTable 
 			
 			List<Map<String, Object>> mapList =
-					JdbcFormDaoImpl.getGlobalFormDao().ColrevNtDao(tbl_id, tbl_name, rType);
+					JdbcFormDaoImpl.getGlobalFormDao().colrevNtDao(tbl_id, tbl_name, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
-			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el);
-			
-			Element gEl = XmlConvert.groupElement(elList);
-			
-			return XmlConvert.elementToXML(gEl);
+						
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

@@ -227,7 +227,7 @@ public class MBIController {
 	//http://localhost:8080/smartfactory/home/module/MBI/data/dynamic_s2_nt.json?fac_id=83&func_id=1062&spd_id=1&param=''&cond_param=''&lang_flag=1
 	@RequestMapping(value = "module/MBI/data/dynamic_s2_nt.json", method = RequestMethod.GET) 
 	public @ResponseBody
-	List<Map<String, Object>> dynamicS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	Map<String, Object> dynamicS2Nt(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String fac_id = request.getParameter("fac_id");
 		String func_id = request.getParameter("func_id");
 		String spd_id = request.getParameter("spd_id");
@@ -235,7 +235,7 @@ public class MBIController {
 		String cond_param = request.getParameter("cond_param");
 		String lang_flag  = request.getParameter("lang_flag");
 		
-		return formDao.dynamicS2NtDao(fac_id, func_id, spd_id, col_param,cond_param,lang_flag);
+		return formDao.dynamicS2NtDao(fac_id, func_id, spd_id, col_param,cond_param,lang_flag, ReturnType.OBJECT);
 	}
 	
 }
