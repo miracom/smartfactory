@@ -1,25 +1,23 @@
 Ext.define('MBI.view.form.builder.ControlBuilder',{
-	/***
-	 * 부모 클래스를 정의한다.
+	/*부모 클래스를 정의한다.*/
+	/**
+	 * @cfg {String} 부모 클래스를 정의한다.
 	 */
 	extend : 'Ext.toolbar.Toolbar',
 	
-	/***
-	 * 부모에서 호출될때 초기값 설정
-	 */
-//	constructor : function(config) {
-//		Ext.apply(this, config);
-//	},
-	
-	/***
-	 * 부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다.
+	/* 부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다. */
+	/**
+	 * @cfg {Object[]} dock toolbar의 위치를 정의한다.
+	 * @cfg {Object[]} height toolbar의 높이를 정의한다.
 	 */
 	dock : 'bottom',
-	height : 24,
+	height : 27,
 
-	/***
-	 * 컨테이너로서의 속성 : layout, defaults, tools, items 등을 정의한다. 단, 복잡한 items, docked
-	 * items 등은 initComponent에서 등록을 권장한다.
+	/* 컨테이너로서의 속성 : layout, defaults, tools, items 등을 정의한다. 단, 복잡한 items, docked
+	 items 등은 initComponent에서 등록을 권장한다. */
+	/**
+	 * @cfg {String/Object} layout 컴포턴트 layout을 적용한다.
+	 * @cfg {Object[]} defaults 컴포넌트에 적용되는 기본 속성을 정의한다.
 	 */
 	layout : {
 		type : 'hbox',
@@ -30,17 +28,17 @@ Ext.define('MBI.view.form.builder.ControlBuilder',{
 
 	},
 	
-	/***
+	/**
 	 * Init Component 메쏘드를 오버라이드 한다.
 	 * 
 	 * 1. items (정적인 컴포넌트)를 등록한다. 2. docked item들을 등록한다. 3. callParent()를 호출한다.
 	 * 4. 동적인 컴포넌트와 리스너들을 등록한다.
 	 */
 	initComponent : function() {
-		/***
+		/**
 		 * 정적인 컴포넌트들을 등록한다. Docked Item들을 등록한다.
 		 */
-		this.items = [{xtype : 'tbfill'},this.zupdate, this.zdelete, this.zclose,this.zexport];
+		this.items = [this.zexport,{xtype : 'tbfill'},this.zupdate, this.zdelete, this.zclose];
 		
 		/***
 		 * 부모의 컴포넌트 초기화 기본 로직을 호출한다.

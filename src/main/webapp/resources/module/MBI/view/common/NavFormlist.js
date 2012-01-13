@@ -1,23 +1,27 @@
+/*include할 class를 선언한다.*/
 Ext.require('MBI.view.common.BaseFormBuilder');
 
 /**
- * @class MBI.controller.MBIController
- * @extends Ext.panel.Panel
- * @author kyunghyang.
+ * @class MBI.view.common.NavFormlist
  * Form Design Function List 표시
  * 
  * **include** : MBI.view.common.BaseFormBuilder
- * @cfg {String[]} tbar refresh,clear등 이벤트 버튼설정
- * @cfg {String[]} items 표시할 ListView설정
- * @cfg {String} itemId 외부참조의 편리성을 위해 포든 item에 itemId를 부여하여 한다.
+ * 
+ * @extends Ext.panel.Panel
+ * @author kyunghyang.
+ * 
+ * @cfg {String} itemId
+ * An itemId can be used as an alternative way to get a reference to a component when no object reference is available.
  */
 Ext.define('MBI.view.common.NavFormlist', {
 	extend : 'Ext.panel.Panel',
 
 	/**
-	 * @property initComponent
-	 * 실행시 초기설정
-	 */
+     * The initComponent template method is an important initialization step for a Component. It is intended to be
+     * implemented by each subclass of Ext.Component to provide any needed constructor logic. The
+     * initComponent method of the class being created is called first, with each initComponent method
+     * up the hierarchy to Ext.Component being called thereafter.
+     */
 	initComponent : function() {
 		this.callParent();
 
@@ -49,27 +53,40 @@ Ext.define('MBI.view.common.NavFormlist', {
 		});
 	},
 
-	/**
-	 * getXXX : 설정된 itemId의 component를 반환한다. 
-	 */
+    /**
+     * Get the function list view from this items.
+     * @return {Ext.view.View} listView
+     */
 	getListView : function() {
 		if(!this.listView)
 			this.listView = this.down('[itemId=list]');
 		return this.listView;
 	},
 	
+    /**
+     * Get the refresh button component.
+     * @return {Ext.button.Button} refreshButton
+     */
 	getRefreshButton : function() {
 		if(!this.refreshButton)
 			this.refreshButton = this.down('[itemId=refresh]');
 		return this.refreshButton;
 	},
 	
+    /**
+     * Get the clear button component.
+     * @return {Ext.button.Button} clearButton
+     */
 	getClearButton : function() {
 		if(!this.clearButton)
 			this.clearButton = this.down('[itemId=clear]');
 		return this.clearButton;
 	},
 	
+    /**
+     * Get the model checkbox component.
+     * @return {Ext.form.field.Checkbox} modelCheck
+     */
 	getModelCheck : function() {
 		if(!this.modelCheck)
 			this.modelCheck = this.down('[itemId=model]');
@@ -77,9 +94,9 @@ Ext.define('MBI.view.common.NavFormlist', {
 	},
 	
 	/**
-	 * @property tbar
-	 * 상단부 bar 부분에 refresh,clear,model선택 기능버튼을 설정한다.
-	 */
+    * @cfg {Object/Object[]} tbar
+    * Convenience config. Short for 'Top Bar'.
+    */
 	tbar : [ {
 		cls : 'navRefreshBtn',
 		itemId : 'refresh'
@@ -93,9 +110,8 @@ Ext.define('MBI.view.common.NavFormlist', {
 	} ],
 	
 	/**
-	 * @property items
-	 * 화면에 표시될 item을 설정한다.
-	 * function list 표시
+     * @cfg {Object/Object[]} items
+     * A single item, or an array of child Components to be added to this container.
 	 */
 	items : [ {
 		xtype : 'dataview',
