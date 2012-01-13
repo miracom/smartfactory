@@ -111,11 +111,17 @@
 .supplement .x-form-trigger-wrap-focus .x-form-trigger.x-form-spinner-down{background-position:0 -11px}
 .supplement .x-fieldset{padding:3px;background-color:#f6f6f6}
 .supplement fieldset .x-form-item{margin-bottom:1px}
+.supplement fieldset .x-form-item .x-form-cb-wrap{padding-top:10px}
+.supplement .x-fieldset-body .x-form-item-label{color:#585858}
 .supplement .x-form-cb-label-after{color:#585858;font-size:11px}
 .supplement .x-fieldset.fieldsetCheckbox{padding:3px 7px}
 .supplement .fieldsetRadioGroup{padding-left:3px}
 .supplement .hboxLine .x-form-item-body,.supplement .datetime .x-form-item-body{margin-top:0px}
 .supplement .datetime{height:50px;width:90%}
+.supplement .supplementRefresh{background:url('../image/IconRefresh.png') no-repeat;height:20px;margin-right:4px;border:0;padding:0}
+.supplement .supplementRefresh:hover{background:url('../image/IconRefresh.png') -25px 0 no-repeat;}
+.supplement .x-toolbar-default-docked-bottom{ background-color:#f0f0f0;padding-right:5px}
+.supplement .bottomTextField .x-form-item-body{margin:0 4px 0 0}
 .x-form-trigger-wrap .x-form-spinner-up-over{background-position:-17px 0}
 
 /* status bar */
@@ -149,16 +155,22 @@
 .x-tab-tabmenu-right:hover{background:url('../image/tabNavi.gif') -18px -51px no-repeat !important;width:18px;}
 .x-panel-default-scroller{margin-top:-5px}
 .x-nlg .x-tab-bar{background:url('../image/bgTabbarForIE.gif') repeat-x !important;}
-#content-body .x-tabpanel-child .x-tab-bar-body{border:0;background:url('../image/bgInnerTabbarBg.gif') 0 100% repeat-x;}
-#content-body .x-tab{border:1px solid #cfcfcf;border-width:1px 1px 0 1px}
-#content-body .x-tab-bar-top .x-tab-bar-body{padding-top:5px;height:24px}
-#content-body .x-tab-default-top{padding:1px 4px 0 4px}
-#content-body .x-tab-active button{color:#333 !important}
-#content-body .x-tab-default-top{background-color:#d0d0d0 !important;backbround-image:none}
+#content-body .x-tab-bar{background:url('../image/bgInnerTab.gif') 0 100% repeat-x !important;}
+#content-body .x-tabpanel-child .x-tab-bar-body{border:0;}
+#content-body .x-tab{border:1px solid #a9c5e8;border-width:1px 1px 0 1px}
+#content-body .x-tab-bar-top .x-tab-bar-body{padding-top:5px;height:24px;}
+#content-body .x-tab-default-top{padding:1px 4px 0 4px;background-image:none;background-color:#DBEAFD !important}
+#content-body .x-tab button{color:#6e91bd}
+#content-body .x-tab-active button{color:#5371A7 !important}
+#content-body .x-tab-default-top-active{background-color:#fff !important;backbround-image:none}
 .nav .x-tab-bottom span.x-tab-inner{display:none;}
 .x-nbr .x-tab-top-active .x-frame-ml,.x-nbr .x-tab-top-active .x-frame-mc,.x-nbr .x-tab-top-active .x-frame-mr,
 .x-nbr .x-tab-bottom-active .x-frame-ml,.x-nbr .x-tab-bottom-active .x-frame-mc,.x-nbr .x-tab-bottom-active .x-frame-mr
 {background-image/*\**/:none !important\9;background-color/*\**/:#fff !important\9;}
+#content-body .x-box-scroller-left .x-toolbar-scroll-left,#content-body .x-box-scroller-left .x-tabbar-scroll-left{background:url('../image/tabNaviInContent.gif') no-repeat;width:18px;height:19px}
+#content-body .x-box-scroller-right .x-toolbar-scroll-right,#content-body .x-box-scroller-right .x-tabbar-scroll-right{background:url('../image/tabNaviInContent.gif') 0 -19px no-repeat;width:18px;height:19px}
+#content-body .x-box-scroller-left .x-toolbar-scroll-left-hover,#content-body .x-box-scroller-left .x-tabbar-scroll-left-hover{background:url('../image/tabNaviInContent.gif') -18px 0 no-repeat;width:18px;height:19px}
+#content-body .x-box-scroller-right .x-toolbar-scroll-right-hover,#content-body .x-box-scroller-right .x-tabbar-scroll-right-hover{background:url('../image/tabNaviInContent.gif') -18px -19px no-repeat;width:18px;height:19px}
 
 /* tree style*/
 .x-tree-icon-parent{background:url('../image/folder.gif') no-repeat;}
@@ -177,6 +189,8 @@
 
 .x-boundlist-item{background:url('../image/arrowRightGray.gif') 4px 8px no-repeat;padding:4px 4px 4px 11px;color:#333;font-size:11px;border-bottom:1px dotted #ccc;}
 .x-boundlist-item-over{background:url('../image/arrowRightBlue.gif') 4px 8px no-repeat;background-color:#fff;padding:4px 4px 4px 11px}
+
+.x-form-item-label{color:#585858;padding-left:4px}
 
 /* x progress bar style*/
 .x-progress{border:1px solid #f5f4f5;height:11px;background-color:#2a2a2a;-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;}
