@@ -143,14 +143,10 @@ public class ClsDSNMapDesigner {
 			
 			List<Map<String, Object>> mapList1 =
 					JdbcFormDaoImpl.getGlobalFormDao().usrmapNtDao(fac_id, func_id, grp_usr_id, rType);
-			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName);
 			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el1);
-			
-			Element gpElement = XmlConvert.groupElement(elList);
+			Element el = XmlConvert.mapListToDataTableElement(mapList1, xName);
 					
-			return XmlConvert.elementToXML(gpElement);
+			return XmlConvert.elementToXML(el);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -173,12 +169,7 @@ public class ClsDSNMapDesigner {
 					JdbcFormDaoImpl.getGlobalFormDao().grpmapNtDao(fac_id, func_id, rType);
 			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName);
 			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el1);
-			
-			Element gpElement = XmlConvert.groupElement(elList);
-			
-			return XmlConvert.elementToXML(gpElement);
+			return XmlConvert.elementToXML(el1);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -188,7 +179,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetPersonalizationCol(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 5) {
+			if (psaParam.length < 0 && psaParam.length > 4) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
@@ -209,7 +200,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetAdminCol(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 5) {
+			if (psaParam.length < 0 && psaParam.length > 4) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
@@ -316,7 +307,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetFunctionTableRelationList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 5) {
+			if (psaParam.length < 0 && psaParam.length > 4) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
@@ -338,7 +329,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetFunctionSPRelationList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 5) {
+			if (psaParam.length < 0 && psaParam.length > 4) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
@@ -359,7 +350,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetDesignerFunctionSpreadAll(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 4) {
+			if (psaParam.length < 0 && psaParam.length > 3) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 			
@@ -419,14 +410,10 @@ public class ClsDSNMapDesigner {
 			
 			List<Map<String, Object>> mapList1 = 
 					JdbcFormDaoImpl.getGlobalFormDao().ftrfldNtDao(fac_id, func_id, func_template_id, rType);
+			
 			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName);
 
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el1);
-			
-			Element gpElement = XmlConvert.groupElement(elList);
-			
-			return XmlConvert.elementToXML(gpElement);
+			return XmlConvert.elementToXML(el1);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
@@ -436,7 +423,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String[] GetDynamicQueryS2(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			if (psaParam.length < 0 && psaParam.length > 7) {
+			if (psaParam.length < 0 && psaParam.length > 6) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 			
@@ -458,7 +445,6 @@ public class ClsDSNMapDesigner {
 			String SQLTEXT3_PARAM = (String)mapList1.get("SQLTEXT3_PARAM");
 			String SQLTEXT4_PARAM = (String)mapList1.get("SQLTEXT4_PARAM");
 			String SQLTEXT5_PARAM = (String)mapList1.get("SQLTEXT5_PARAM");
-			
 			
 			String[] arr = new String[5];
 			arr[0]= SQLTEXT1_PARAM;
@@ -510,7 +496,7 @@ public class ClsDSNMapDesigner {
 	public java.lang.String GetServiceMember(java.lang.String[] psServiceID) throws java.rmi.RemoteException {
 		try {
 
-			if (psServiceID.length < 0 && psServiceID.length > 3) {
+			if (psServiceID.length < 0 && psServiceID.length > 1) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psServiceID.length + " size");
 			}
 			
@@ -520,14 +506,10 @@ public class ClsDSNMapDesigner {
 			
 			List<Map<String, Object>> mapList1 = 
 					JdbcFormDaoImpl.getGlobalFormDao().svcmbrNtDao(service_id, rType);
+			
 			Element el1 = XmlConvert.mapListToDataTableElement(mapList1, xName);
 
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el1);
-			
-			Element gpElement = XmlConvert.groupElement(elList);
-			
-			return XmlConvert.elementToXML(gpElement);
+			return XmlConvert.elementToXML(el1);
 
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);

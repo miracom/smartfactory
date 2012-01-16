@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl;
+package com.mesplus.DSN.services.dao.impl.dyna;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

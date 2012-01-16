@@ -31,6 +31,7 @@ public class ClsSYSFunctionSetup {
 			// XML: DataTable
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().fundefNtDao(fac_id, func_group, func_code, func_type, rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);
@@ -54,6 +55,7 @@ public class ClsSYSFunctionSetup {
 			// XML: DataTable
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().fundef01NtDao(func_code, rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);

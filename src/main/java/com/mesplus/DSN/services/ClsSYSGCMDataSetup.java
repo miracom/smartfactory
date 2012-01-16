@@ -31,10 +31,10 @@ public class ClsSYSGCMDataSetup {
 			// XML: DataTable
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(fac_id, tbl_code, lang_flag, a_params, rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);
-			
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
 		}

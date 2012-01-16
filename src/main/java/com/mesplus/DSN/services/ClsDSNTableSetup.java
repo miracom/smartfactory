@@ -1,7 +1,6 @@
 package com.mesplus.DSN.services;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,8 +9,8 @@ import javax.jws.WebService;
 import org.jdom.Element;
 
 import com.mesplus.DSN.services.dao.impl.JdbcFormDaoImpl;
-import com.mesplus.util.XmlConvert;
 import com.mesplus.util.Enums.ReturnType;
+import com.mesplus.util.XmlConvert;
 
 @WebService
 public class ClsDSNTableSetup {
@@ -33,11 +32,8 @@ public class ClsDSNTableSetup {
 			
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().tbldefNtDao(fac_id, tbl_grp, tbl_code, physical_table, physical_view, logical_view, rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
-			
-			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el);
 			
 			return XmlConvert.elementToXML(el);
 
@@ -54,11 +50,8 @@ public class ClsDSNTableSetup {
 
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().tblsynNtDao(rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
-			
-			
-			List<Element> elList = new ArrayList<Element>();
-			elList.add(el);
 			
 			return XmlConvert.elementToXML(el);
 

@@ -1,7 +1,6 @@
 package com.mesplus.DSN.services;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,8 +9,8 @@ import javax.jws.WebService;
 import org.jdom.Element;
 
 import com.mesplus.DSN.services.dao.impl.JdbcFormDaoImpl;
-import com.mesplus.util.XmlConvert;
 import com.mesplus.util.Enums.ReturnType;
+import com.mesplus.util.XmlConvert;
 
 @WebService
 public class ClsDSNColumnSetup {
@@ -30,6 +29,7 @@ public class ClsDSNColumnSetup {
 			//XML: DataTable 
 			List<Map<String, Object>> mapList =
 					JdbcFormDaoImpl.getGlobalFormDao().coldefNtDao(fac_id, tbl_id, rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 						
 			return XmlConvert.elementToXML(el);
@@ -52,9 +52,9 @@ public class ClsDSNColumnSetup {
 			ReturnType rType = ReturnType.ELEMENT;
 
 			//XML: DataTable 
-			
 			List<Map<String, Object>> mapList =
 					JdbcFormDaoImpl.getGlobalFormDao().colrevNtDao(tbl_id, tbl_name, rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 						
 			return XmlConvert.elementToXML(el);

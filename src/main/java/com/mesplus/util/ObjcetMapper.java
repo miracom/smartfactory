@@ -11,6 +11,4 @@ public final class ObjcetMapper implements RowMapper<Map<String, Object>> {
     public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
     	return ResultSetUtils.convertResultSetToMapObject(rs);
     }
-    
-    
 }

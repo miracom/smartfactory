@@ -37,13 +37,14 @@ public class ColrevNt extends StoredProcedure {
 
 		RTYPE = rType;
 		
-		if (RTYPE == ReturnType.OBJECT) {
-			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ObjcetMapper()));
-		} else if (RTYPE == ReturnType.ELEMENT) {
-			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ElementMapper(typeMap)));
-		} else {
-			throw new SQLException("ReturnType Error: " + RTYPE.toString());
-		}
+		declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR));
+//		if (RTYPE == ReturnType.OBJECT) {
+//			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ObjcetMapper()));
+//		} else if (RTYPE == ReturnType.ELEMENT) {
+//			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ElementMapper(typeMap)));
+//		} else {
+//			throw new SQLException("ReturnType Error: " + RTYPE.toString());
+//		}
 
 		compile();
 	}

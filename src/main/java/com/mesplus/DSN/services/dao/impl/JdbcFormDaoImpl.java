@@ -15,6 +15,8 @@ import com.mesplus.DSN.services.dao.FormDao;
 import com.mesplus.DSN.services.dao.impl.adsn.*;
 import com.mesplus.DSN.services.dao.impl.agcm.*;
 import com.mesplus.DSN.services.dao.impl.asec.*;
+import com.mesplus.DSN.services.dao.impl.dyna.DynamicS2Nt;
+import com.mesplus.DSN.services.dao.impl.dyna.DynamicS2Rt;
 import com.mesplus.DSN.services.dao.impl.get.*;
 import com.mesplus.util.Enums.ReturnType;
 

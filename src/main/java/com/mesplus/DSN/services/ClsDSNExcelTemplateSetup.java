@@ -1,7 +1,6 @@
 package com.mesplus.DSN.services;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,9 +19,6 @@ public class ClsDSNExcelTemplateSetup {
 			
 			ReturnType rType = ReturnType.ELEMENT;
 			
-			
-			//string[]
-			
 			return null;
 
 		} catch (Exception e) {
@@ -33,7 +29,7 @@ public class ClsDSNExcelTemplateSetup {
     public java.lang.String GetExcelTemplate(java.lang.String[] psaParam) throws java.rmi.RemoteException {
     	try {
 
-    		if (psaParam.length < 0 && psaParam.length > 3) {
+    		if (psaParam.length < 0 && psaParam.length > 2) {
 				throw new RemoteException("IllegalArgumentException: Parameters(arrParams) should not be " + psaParam.length + " size");
 			}
     		
@@ -44,6 +40,7 @@ public class ClsDSNExcelTemplateSetup {
 			
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().xtpdefNtDao(template_name, template_filename, rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);
@@ -66,6 +63,7 @@ public class ClsDSNExcelTemplateSetup {
 
 			List<Map<String, Object>> mapList =
 					JdbcFormDaoImpl.getGlobalFormDao().xtpsheNtDao(template_id, rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);
@@ -88,6 +86,7 @@ public class ClsDSNExcelTemplateSetup {
 			
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().xtpfldNtDao(sheet_id, rType);
+			
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
 			
 			return XmlConvert.elementToXML(el);

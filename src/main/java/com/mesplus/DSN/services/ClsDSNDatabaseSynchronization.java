@@ -11,7 +11,7 @@ public class ClsDSNDatabaseSynchronization {
 	public java.lang.String GetCompareDB(java.lang.String[] parrParams) throws java.rmi.RemoteException {
 		try {
 
-			if (parrParams.length < 0 && parrParams.length > 3) {
+			if (parrParams.length < 0 && parrParams.length > 2) {
 				throw new RemoteException("IllegalArgumentException: Parameters(parrParams) should not be " + parrParams.length + " size");
 			}
 

@@ -146,11 +146,11 @@
    <ns1:parameter qname="ns30:psFileName" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="ExecuteDDLQueryOnly UploadFile SetSQLData GetFunctionControl GetSQLDataArrayList GetSQLData GetGCMDataList"/>
-  <ns1:parameter name="wsdlPortType" value="ClsAPSplusCommonFunction"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
-  <ns1:parameter name="wsdlServicePort" value="ClsAPSplusCommonFunction"/>
+  <ns1:parameter name="wsdlPortType" value="ClsAPSplusCommonFunction"/>
   <ns1:parameter name="className" value="com.mesplus.DSN.services.ClsAPSplusCommonFunction"/>
+  <ns1:parameter name="wsdlServicePort" value="ClsAPSplusCommonFunction"/>
+  <ns1:parameter name="schemaQualified" value="http://services.DSN.mesplus.com"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://services.DSN.mesplus.com"/>
   <ns1:parameter name="wsdlServiceElement" value="ClsAPSplusCommonFunction"/>
  </ns1:service>
