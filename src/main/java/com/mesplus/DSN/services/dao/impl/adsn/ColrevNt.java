@@ -36,15 +36,13 @@ public class ColrevNt extends StoredProcedure {
 		declareParameter(new SqlParameter(TBL_NAME_PARAM, Types.VARCHAR));
 
 		RTYPE = rType;
-		
-		declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR));
-//		if (RTYPE == ReturnType.OBJECT) {
-//			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ObjcetMapper()));
-//		} else if (RTYPE == ReturnType.ELEMENT) {
-//			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ElementMapper(typeMap)));
-//		} else {
-//			throw new SQLException("ReturnType Error: " + RTYPE.toString());
-//		}
+		if (RTYPE == ReturnType.OBJECT) {
+			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ObjcetMapper()));
+		} else if (RTYPE == ReturnType.ELEMENT) {
+			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ElementMapper(typeMap)));
+		} else {
+			throw new SQLException("ReturnType Error: " + RTYPE.toString());
+		}
 
 		compile();
 	}
@@ -54,6 +52,7 @@ public class ColrevNt extends StoredProcedure {
 		inputs.put(TBL_ID_PARAM, tbl_id);
 		inputs.put(TBL_NAME_PARAM, tbl_name);
 
+		Map<String,Object> aaa = super.execute(inputs);
 		return super.execute(inputs);
 	}
 }

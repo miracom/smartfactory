@@ -17,6 +17,7 @@ import org.jdom.output.XMLOutputter;
 public class XmlConvert {
 	/**
 	 * key, value, type의 attribute 정보를 가진 add Element를 생성
+	 * 
 	 * @author Jinho
 	 * @param key
 	 * @param value
@@ -27,7 +28,7 @@ public class XmlConvert {
 	public final static Element makeElement(String key, String value, String type) throws SQLException {
 
 		if (CommonUtils.isNullorEmpty(key) || value == null || CommonUtils.isNullorEmpty(type)) {
-			throw new IllegalArgumentException("Parameters(key, value, type) should not be null.");
+			throw new IllegalArgumentException("makeElement - Parameters(key, value, type) should not be null.");
 		}
 
 		Element el = new Element("add");
@@ -38,9 +39,10 @@ public class XmlConvert {
 
 		return el;
 	}
-	
+
 	/**
 	 * List<Map<String, Object(Element형태)>>를 최종 DataTable 변환 형식의 Element로 변환
+	 * 
 	 * @author Jinho
 	 * @param mapList
 	 * @param tableName
@@ -48,8 +50,11 @@ public class XmlConvert {
 	 * @throws Exception
 	 */
 	public final static Element mapToDataTableElement(Map<String, Object> map, String tableName) throws Exception {
-		if (map.size() == 0) {
-			//throw new IllegalArgumentException("Parameters(mapList) should not be 0 size.");
+		if (map == null) {
+			throw new IllegalArgumentException("mapToDataTableElement - Parameters(Map<String, Object> map) should not be null.");
+		} else if (map.size() == 0) {
+			// throw new
+			// IllegalArgumentException("Parameters(mapList) should not be 0 size.");
 			Element rootEl = new Element(tableName);
 
 			Element rowCountEl = new Element("add");
@@ -63,10 +68,10 @@ public class XmlConvert {
 			rootEl.addContent(rowCountEl);
 			rootEl.addContent(columnCountEl);
 			rootEl.addContent(rowEl);
-			
+
 			return rootEl;
 		} else if (CommonUtils.isNullorEmpty(tableName)) {
-			throw new IllegalArgumentException("Parameters(tableName) should not be nullorEmpty.");
+			throw new IllegalArgumentException("mapToDataTableElement - Parameters(String tableName) should not be null.");
 		} else {
 			Element rootEl = new Element(tableName);
 
@@ -92,7 +97,7 @@ public class XmlConvert {
 				if (pairs.getValue() instanceof Element) {
 					rowEl.addContent((Element) pairs.getValue());
 				} else {
-					throw new Exception("Map FormatException: " + pairs.getKey());
+					throw new Exception("mapToDataTableElement - Map FormatException: " + pairs.getKey());
 				}
 			}
 
@@ -102,6 +107,7 @@ public class XmlConvert {
 
 	/**
 	 * List<Map<String, Object(Element형태)>>를 최종 DataTable 변환 형식의 Element로 변환
+	 * 
 	 * @author Jinho
 	 * @param mapList
 	 * @param tableName
@@ -109,8 +115,11 @@ public class XmlConvert {
 	 * @throws Exception
 	 */
 	public final static Element mapListToDataTableElement(List<Map<String, Object>> mapList, String tableName) throws Exception {
-		if (mapList.size() == 0) {
-			//throw new IllegalArgumentException("Parameters(mapList) should not be 0 size.");
+		if (mapList == null) {
+			throw new IllegalArgumentException("mapListToDataTableElement - Parameters(List<Map<String, Object>> mapList) should not be null.");
+		} else if (mapList.size() == 0) {
+			// throw new
+			// IllegalArgumentException("Parameters(mapList) should not be 0 size.");
 			Element rootEl = new Element(tableName);
 
 			Element rowCountEl = new Element("add");
@@ -124,10 +133,10 @@ public class XmlConvert {
 			rootEl.addContent(rowCountEl);
 			rootEl.addContent(columnCountEl);
 			rootEl.addContent(rowEl);
-			
+
 			return rootEl;
 		} else if (CommonUtils.isNullorEmpty(tableName)) {
-			throw new IllegalArgumentException("Parameters(tableName) should not be nullorEmpty.");
+			throw new IllegalArgumentException("mapListToDataTableElement - Parameters(tableName) should not be nullorEmpty.");
 		} else {
 			Element rootEl = new Element(tableName);
 
@@ -156,7 +165,7 @@ public class XmlConvert {
 					if (pairs.getValue() instanceof Element) {
 						rowEl.addContent((Element) pairs.getValue());
 					} else {
-						throw new Exception("Map FormatException: " + pairs.getKey());
+						throw new Exception("mapListToDataTableElement - Map FormatException: " + pairs.getKey());
 					}
 				}
 				i++;
@@ -168,14 +177,18 @@ public class XmlConvert {
 
 	/**
 	 * List<Map<String, Object(Element형태)>>를 최종 ArrayList 변환 형식의 Element로 변환
+	 * 
 	 * @author Jinho
 	 * @param map
 	 * @return Element
 	 * @throws Exception
 	 */
 	public final static Element mapToArrayListElement(Map<String, Object> map) throws Exception {
-		if (map.size() == 0) {
-			//throw new IllegalArgumentException("Parameters(map) should not be 0 size.");
+		if (map == null) {
+			throw new IllegalArgumentException("mapToArrayListElement - Parameters(Map<String, Object> map) should not be nullorEmpty.");
+		} else if (map.size() == 0) {
+			// throw new
+			// IllegalArgumentException("Parameters(map) should not be 0 size.");
 			Element rootEl = new Element("ArrayList");
 
 			Element rowCountEl = new Element("add");
@@ -189,7 +202,7 @@ public class XmlConvert {
 			rootEl.addContent(rowCountEl);
 			rootEl.addContent(columnCountEl);
 			rootEl.addContent(rowEl);
-			
+
 			return rootEl;
 		} else {
 			Element rootEl = new Element("ArrayList");
@@ -216,7 +229,7 @@ public class XmlConvert {
 				if (pairs.getValue() instanceof Element) {
 					rowEl.addContent((Element) pairs.getValue());
 				} else {
-					throw new Exception("Map FormatException: " + pairs.getKey());
+					throw new Exception("mapToArrayListElement - Map FormatException: " + pairs.getKey());
 				}
 			}
 
@@ -226,15 +239,17 @@ public class XmlConvert {
 
 	/**
 	 * DataTable 변환 형식의 Element를 합하여 DataSet 변환 형식의 Element로 변환
+	 * 
 	 * @author Jinho
 	 * @param elList
 	 * @return Element
 	 * @throws Exception
 	 */
 	public final static Element groupElement(List<Element> elList) throws Exception {
-
-		if (elList.size() == 0) {
-			throw new IllegalArgumentException("Parameters(elList) should not be 0 size.");
+		if (elList == null) {
+			throw new IllegalArgumentException("groupElement - Parameters(List<Element> elList) should not be nullorEmpty.");
+		} else if (elList == null || elList.size() == 0) {
+			throw new IllegalArgumentException("groupElement - Parameters(List<Element> elList) should not be 0 size.");
 		} else {
 			Element rootEl = new Element("DataSet");
 
@@ -256,6 +271,7 @@ public class XmlConvert {
 
 	/**
 	 * Element를 String인 XML형태로 변환
+	 * 
 	 * @author Jinho
 	 * @param el
 	 * @return String
@@ -263,7 +279,7 @@ public class XmlConvert {
 	 */
 	public final static String elementToXML(Element el) throws Exception {
 		if (el == null) {
-			throw new IllegalArgumentException("Parameters(el) should not be 0 size.");
+			throw new IllegalArgumentException("elementToXML - Parameters(el) should not be 0 size.");
 		} else {
 			XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat().setEncoding("urf-8"));
 
@@ -273,6 +289,7 @@ public class XmlConvert {
 
 	/**
 	 * Xml 문자를 ArrayList로 변환
+	 * 
 	 * @author Jinho
 	 * @param xmlStr
 	 * @return List<String>
@@ -280,7 +297,7 @@ public class XmlConvert {
 	 */
 	public final static List<String> xmlToArrayList(String xmlStr) throws Exception {
 		if (CommonUtils.isNullorEmpty(xmlStr)) {
-			throw new IllegalArgumentException("Parameters(xmlStr) should not be null.");
+			throw new IllegalArgumentException("xmlToArrayList - Parameters(xmlStr) should not be null.");
 		} else {
 			Document doc = new Document();
 			SAXBuilder sb = new SAXBuilder();

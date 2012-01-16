@@ -1,6 +1,5 @@
 package com.mesplus.DSN.services.dao.impl.dyna;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.HashMap;
@@ -10,13 +9,14 @@ import javax.sql.DataSource;
 
 import oracle.jdbc.OracleTypes;
 
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.StoredProcedure;
 
+import com.mesplus.util.ElementMapper;
 import com.mesplus.util.Enums.ReturnType;
-import com.mesplus.util.ResultSetUtils;
+import com.mesplus.util.ObjcetMapper;
+import com.mesplus.util.TypeConvert;
 
 public class DynamicS2Nt extends StoredProcedure {
 	private static final String FAC_ID_PARAM = "fac_id";
@@ -33,6 +33,10 @@ public class DynamicS2Nt extends StoredProcedure {
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
 	private static final String SPROC_NAME = "P_DSN_DYNAMIC_S2_NT";
+	
+	private ReturnType RTYPE = ReturnType.NONE;
+	
+	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
 	public DynamicS2Nt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
@@ -49,17 +53,20 @@ public class DynamicS2Nt extends StoredProcedure {
 		declareParameter(new SqlOutParameter(SQLTEXT3_PARAM, Types.VARCHAR));
 		declareParameter(new SqlOutParameter(SQLTEXT4_PARAM, Types.VARCHAR));
 		declareParameter(new SqlOutParameter(SQLTEXT5_PARAM, Types.VARCHAR));
-		declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new RowMapper<Map<String, Object>>() {
-			@Override
-			public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return ResultSetUtils.convertResultSetToMapObject(rs);
-			}
-		}));
+		
+		RTYPE = rType;
+		if (RTYPE == ReturnType.OBJECT) {
+			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ObjcetMapper()));
+		} else if (RTYPE == ReturnType.ELEMENT) {
+			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ElementMapper(typeMap)));
+		} else {
+			throw new SQLException("ReturnType Error: " + RTYPE.toString());
+		}
 
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id, String spd_id, String a_param, String cond_param, String lang_flag) // {
+	public Map<String, Object> execute(String fac_id, String func_id, String spd_id, String a_param, String cond_param, String lang_flag) 
 			throws Exception {
 		Map<String, Object> inputs = new HashMap<String, Object>();
 		inputs.put(FAC_ID_PARAM, fac_id);

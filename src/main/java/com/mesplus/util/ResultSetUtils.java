@@ -48,8 +48,11 @@ public class ResultSetUtils {
 			String key = meta.getColumnName(i);
 			String type = TypeConvert.getChangeType(meta.getColumnTypeName(i), typeMap);
 			String value = "";
-			if (rs.getObject(i) != null) {
-				value = rs.getObject(i).toString();
+
+			//쿼리중 rs.getObject(i) 두번 입력해서 사용하면 스트림이 종료되어 나왔다는 오류가 발생하여 Object 변수에 담아놓고 처리
+			Object rsObject = rs.getObject(i);
+			if (rsObject != null) {
+				value = rsObject.toString();
 			}
 
 			Element el = XmlConvert.makeElement(key, value, type);
