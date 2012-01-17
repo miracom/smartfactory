@@ -19,25 +19,26 @@ Ext.define('CMN.plugin.Supplement', {
 
 		function onActivate() {
 			if (this.getSupplement()) {
-				var container = Ext.getCmp('east');
-				container.getLayout().setActiveItem(this.getSupplement());
+				var supplementContainer = Ext.getCmp('east');
+				supplementContainer.getLayout().setActiveItem(this.getSupplement());
 				if(this.getSupplement().isPanel && this.getSupplement().title) {
-					container.setTitle(this.getSupplement().title);
+					supplementContainer.setTitle(this.getSupplement().title);
 				} else if(client.isPanel){
-					container.setTitle(client.title);
+					supplementContainer.setTitle(client.title);
 				}
 			}
 		}
 
 		function onDeactivate() {
-			var container = Ext.getCmp('east');
-			container.getLayout().setActiveItem('base');
-			container.setTitle(container.getComponent('base').title);
+			var supplementContainer = Ext.getCmp('east');
+			supplementContainer.getLayout().setActiveItem('base');
+			supplementContainer.setTitle(supplementContainer.getComponent('base').title);
 		}
 
 		function onDestroy() {
 			if (this.getSupplement())
 				Ext.getCmp('east').remove(this.getSupplement());
+			this.setSupplement(null);
 		}
 
 		client.on('activate', onActivate, client);
@@ -52,9 +53,12 @@ Ext.define('CMN.plugin.Supplement', {
 		} else {
 			this.supplement = supplement;
 		}
-
+		
 		if (this.getSupplement()) {
 			this.supplement = Ext.getCmp('east').add(this.getSupplement());
+			this.supplement.getSupplementClient = function() {
+				return this;
+			};
 			if (this.supplement.isPanel) {
 				this.supplement.preventHeader = true;
 				if (this.supplement.rendered) {
