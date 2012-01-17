@@ -3,7 +3,7 @@ Ext.require([ 'Ext.ux.exporter.Exporter' ]);
 
 /**
  * @class MBI.view.form.BaseForm1G
- * It has one grid in this panel.
+ * 하나의 grid를 가지는 화면 구성.
  * 
  * **include** : Ext.ux.exporter.Exporter
  * 

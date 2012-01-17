@@ -1,16 +1,82 @@
+/**
+ * @class CMN.view.form.CodeViewField
+ * 
+ *     @example
+ *     // 특정 테이블 코드팝업기능 필드
+ *     	SmartFactory.codeview.register('MaterialType', {
+ *			viewType : 'gcm', 
+ *			title : 'Select Material Type',//override
+ *			selects : [ 'FACTORY', 'GROUP_NAME', 'MODEL_DESC_S' ]
+ *			table : 'MATERIAL_GRP_2',
+ *			columns : [ {
+ *				header : 'Material Type',
+ *				dataIndex : 'GROUP_NAME',
+ *				flex : 2
+ *			}, {
+ *				header : 'Description',
+ *				dataIndex : 'MODEL_DESC_S',
+ *				flex : 3
+ *			} ],
+ *		});
+ *	
+ *      {
+ *      	xtype : 'codeview',
+ *      	codeviewName : 'MaterialType',
+ *      	filter : [{
+ *      		property : 'factory',
+ *      		value : SmartFactory.login.factory()
+ *      	}],
+ *      	txtFieldName : ['MAT_ID','MAT_VER'],
+ *      	txtFieldFlex : [2,1],
+ *      	bInitFilter : true,
+ *      	fieldLabel : 'Product ID'
+ *      }
+ *
+ *     //상세 설정
+ *     {
+ *			xtype : 'codeview',
+ *			codeviewName : 'GcmCodeView',
+ *			title : 'TEST CODE',
+ *			fieldLabel : 'TEST ID',
+ *			table : 'MWIP',
+ *			txtFieldName : ['TEST_ID','TEST_NAME'], //displayField와 동일하게 사용
+ *			columns : [],
+ *			selects : [],
+ *			name : 'TEST_ID',
+ *			refGcmCol : 'TEST_OWNER', //option
+ *			refField : 'TEST_OWNER' //option
+ *     } 
+ * 
+ */
 Ext.define('CMN.view.form.CodeViewField', {
+	/**
+	 * 
+	 */
 	extend : 'Ext.form.FieldContainer',
+	/**
+	 * 
+	 */
 	alias: 'widget.codeview',
-	
+	/**
+	 * 
+	 */
 	cls :'hboxLine',
-	
+	/**
+	 * 
+	 */
 	layout: {
         type: 'hbox',
         align:'top'
     },
-    
+    /**
+     * 
+     */
     defaults:{margins:'0 3 0 0'},
     
+    /**
+     * 
+     * @param config
+     */
     constructor : function(config) {
     	Ext.applyIf(this,{
     		filter : [],
@@ -20,6 +86,9 @@ Ext.define('CMN.view.form.CodeViewField', {
     	CMN.view.form.CodeViewField.superclass.constructor.apply(this, arguments);
 	},
 	
+	/**
+	 * 
+	 */
 	initComponent : function() {
 		this.callParent();
 	
@@ -27,6 +96,10 @@ Ext.define('CMN.view.form.CodeViewField', {
 		this.add(this.buildSerach());
 	},
 
+	/**
+	 * 
+	 * @returns {Array}
+	 */
 	buildTxtfield : function()
 	{
 		var items = [];
@@ -79,6 +152,10 @@ Ext.define('CMN.view.form.CodeViewField', {
 		return items;
 	},
 	
+	/**
+	 * 
+	 * @returns {___anonymous3037_3332}
+	 */
 	buildSerach : function()
 	{
 		return {
@@ -92,6 +169,11 @@ Ext.define('CMN.view.form.CodeViewField', {
 		};
 	},
 	
+	/**
+	 * 
+	 * @param fieldset
+	 * @param record
+	 */
 	selectedCallback : function(fieldset, record) {
 		var codeview = SmartFactory.codeview.get(fieldset.codeviewName);
 		var txtField = codeview.client.txtFieldName;
