@@ -61,8 +61,8 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		/*
 		 * 정적인 컴포넌트들을 등록한다. Docked Item들을 등록한다.
 		 */
-		this.items = [ this.zfilter, this.zviewmode, this.zgrid ];
-		this.buttons = [ this.zcount, this.zsearch, this.zrefresh, this.zexport ];
+		this.items = [ this.zfilter, this.zviewmode, this.zlist ];
+		this.bbar = [ this.zcount, this.zsearch, this.zrefresh, this.zexport ];
 
 		/*
 		 * 부모의 컴포넌트 초기화 기본 로직을 호출한다.
@@ -309,25 +309,27 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	zcount : {
 		xtype : 'textfield',
 		disabled : true,
-		itemId : 'gridCount',
-		width : 30
+		itemId : 'listCount',
+		cls : 'bottomTextField',
+		flex : 1
 	},
 
 	zsearch : {
 		xtype : 'textfield',
 		itemId : 'searchField',
-		flex : 1
+		cls : 'bottomTextField',
+		flex : 3
 	},
 
 	zrefresh : {
 		xtype : 'button',
-		text : 'R',
+		cls : 'supplementRefresh',
 		itemId : 'refresh',
-		width : 18
+		width : 24
 	},
 
 	zexport : {
 		xtype : 'exporterbutton',
-		width : 18
+		width : 24
 	}
 });

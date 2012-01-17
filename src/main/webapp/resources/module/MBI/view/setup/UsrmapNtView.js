@@ -1,10 +1,9 @@
-Ext.define('MBI.view.UsrmapNtView', {
+Ext.define('MBI.view.setup.UsrmapNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('yyyyy'),
+	autoScroll : true,
 	
-	columns : [
-	{
+	columns : [{
 		dataIndex : 'pnlcntrdtldtl_w',
 		align : 'center',
 		text : 'pnlcntrdtldtl_w'
@@ -92,8 +91,5 @@ Ext.define('MBI.view.UsrmapNtView', {
 		dataIndex : 'pnlcntr_h',
 		align : 'center',
 		text : 'pnlcntr_h'
-	}
-
-	]
-
+	}]
 });

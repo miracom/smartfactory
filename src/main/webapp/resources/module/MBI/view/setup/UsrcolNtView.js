@@ -1,10 +1,9 @@
-Ext.define('MBI.view.UsrcolNtView', {
+Ext.define('MBI.view.setup.UsrcolNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('yyyyy'),
+	autoScroll : true,
 	
-	columns : [
-{
+	columns : [{
 		dataIndex : 'spread_id',
 		align : 'center',
 		text : 'spread_id'
@@ -56,7 +55,5 @@ Ext.define('MBI.view.UsrcolNtView', {
 		dataIndex : 'col_width',
 		align : 'center',
 		text : 'col_width'
-	}
-	]
-
+	}]
 });

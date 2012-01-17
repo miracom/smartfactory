@@ -1,7 +1,4 @@
-
-
-
-Ext.define('MBI.view.FormDesign', {
+Ext.define('MBI.view.common.FormDesign', {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.mbi.formdesign',
 	
@@ -69,7 +66,7 @@ Ext.define('MBI.view.FormDesign', {
 			try {
 				var capitalized = this.capitalize(item);
 				var store_name = 'MBI.store.' + capitalized;
-				var view_name = 'MBI.view.' + capitalized + 'View';
+				var view_name = 'MBI.view.setup.' + capitalized + 'View';
 				//var title = capitalized;
 				var view = Ext.create(view_name, {
 					title : capitalized + ' ['+ mapDesc[item] +']',

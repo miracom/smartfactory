@@ -1,7 +1,6 @@
-Ext.define('MBI.view.FscrelNtView', {
+Ext.define('MBI.view.setup.FscrelNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('test'),
 	autoScroll : true,
 	
 	columns : [ {

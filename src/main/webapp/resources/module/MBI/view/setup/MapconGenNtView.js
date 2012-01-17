@@ -1,7 +1,7 @@
-Ext.define('MBI.view.MapconGenNtView', {
+Ext.define('MBI.view.setup.MapconGenNtView', {
 	extend: 'Ext.grid.Panel',
 	
-	store : Ext.getStore('yyyyy'),
+	autoScroll : true,
 	
 	columns : [
 	{

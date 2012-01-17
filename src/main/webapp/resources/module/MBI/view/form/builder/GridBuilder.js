@@ -6,24 +6,15 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 	buildGrid : function(){
 		var storeDetail = this.store;
 		//this.storeDetailInfo
-		return Ext.create('Ext.container.Container',{
-			bodyPadding: 3,
+		return Ext.create('Ext.tab.Panel',{
+			flex : 1,
+            plain: true,
 			layout : {
 				type : 'vbox',
 				align : 'stretch'
 			},
-			flex : this.flex,
-			items :{
-                xtype: 'tabpanel',
-                flex : 1,
-                plain: true,
-    			layout : {
-    				type : 'vbox',
-    				align : 'stretch'
-    			},
-			
-                items:this.buildTab(storeDetail) 
-            },
+		
+            items:this.buildTab(storeDetail) 
 		});
 	},
 	buildTab : function(storeDetail){
@@ -32,7 +23,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 			for(var i in this.spreadId){
 				items.push({   
 					title: this.getTitle(1,this.spreadId[i]),
-	                bodyPadding: 3,
+	                //bodyPadding: 3,
 	                layout : 'fit',
 	                items : [{
 	                	xtype : 'grid',
@@ -61,7 +52,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 		else{
 			items.push({   
 				title: this.getTitle(1,this.spreadId),
-	            bodyPadding: 3,
+	            //bodyPadding: 3,
 	            layout : 'fit',
 	            items : [{
 	            	xtype : 'grid',

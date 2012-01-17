@@ -1,4 +1,4 @@
-Ext.define('MBI.view.AssdefGenNtView', {
+Ext.define('MBI.view.setup.AssdefGenNtView', {
 	extend: 'Ext.grid.Panel',
 	
 	autoScroll : true,
