@@ -17,7 +17,6 @@ public class ClsDSNTableSetup {
 	public java.lang.String GetTableList(java.lang.String[] psaParam) throws java.rmi.RemoteException {
 		try {
 
-			//TODO: 2010-01-17 김진호 dbtype이 colb일경우 tostring로 받으면 안되고 object를 변경하여 보내야
 			if (psaParam.length < 0 && psaParam.length > 6) {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}

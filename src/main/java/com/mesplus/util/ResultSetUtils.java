@@ -1,5 +1,6 @@
 package com.mesplus.util;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -53,7 +54,23 @@ public class ResultSetUtils {
 			//쿼리중 rs.getObject(i) 두번 입력해서 사용하면 스트림이 종료되어 나왔다는 오류가 발생하여 Object 변수에 담아놓고 처리
 			Object rsObject = rs.getObject(i);
 			if (rsObject != null) {
-				value = rsObject.toString();
+				//clob type일경우 clobToString을 사용하여 string으로 변환하여야 한다.
+				if(rsObject instanceof java.sql.Clob)
+				{
+					java.sql.Clob clob = (java.sql.Clob)rsObject;
+					try
+					{
+						value = CommonUtils.clobToString(clob);
+					}
+					catch(IOException iex)
+					{
+						throw new SQLException("function(clobToString) IOException : ", iex);
+					}
+				}
+				else
+				{
+					value = rsObject.toString();
+				}	
 			}
 
 			Element el = XmlConvert.makeElement(key, value, type);
