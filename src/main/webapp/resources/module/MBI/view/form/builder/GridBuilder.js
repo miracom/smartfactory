@@ -23,7 +23,6 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 			for(var i in this.spreadId){
 				items.push({   
 					title: this.getTitle(1,this.spreadId[i]),
-	                //bodyPadding: 3,
 	                layout : 'fit',
 	                items : [{
 	                	xtype : 'grid',

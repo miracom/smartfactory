@@ -11,7 +11,7 @@ Ext.define('MBI.view.form.builder.ControlBuilder',{
 	 * @cfg {Object[]} height toolbar의 높이를 정의한다.
 	 */
 	dock : 'bottom',
-	height : 27,
+	cls : 'x-toolbar-footer-docked-bottom',
 
 	/* 컨테이너로서의 속성 : layout, defaults, tools, items 등을 정의한다. 단, 복잡한 items, docked
 	 items 등은 initComponent에서 등록을 권장한다. */
@@ -20,8 +20,7 @@ Ext.define('MBI.view.form.builder.ControlBuilder',{
 	 * @cfg {Object[]} defaults 컴포넌트에 적용되는 기본 속성을 정의한다.
 	 */
 	layout : {
-		type : 'hbox',
-		align : 'stretch'
+		type : 'hbox'
 	},
 	
 	defaults : {
@@ -57,7 +56,8 @@ Ext.define('MBI.view.form.builder.ControlBuilder',{
 	
 	zexport : {
 		xtype : 'exporterbutton',
-		itemId : 'export'
+		itemId : 'export',
+		floating:false
 	},
 	zupdate : {
 		xtype : 'button',
