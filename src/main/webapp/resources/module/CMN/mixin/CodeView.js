@@ -1,11 +1,44 @@
+/**
+ * @class CMN.mixin.CodeView
+ * 코드뷰 팝업의 설정정보를 관리한다.
+ * CodeViewfield 정의시 호출되며, 코드뷰버튼을 클릭하면 설정된 정보로 팝업을 생성하여 화면에 표시한다.
+ * 자주 사용하는 codeview는 각 모듈의 컨트롤러 onViewportRendered에 선언하여 사용한다.
+ * 
+ *   @example
+ *   //SmartFactory.codeview.register(코드뷰명,{각 속성 정의})
+ *   //SmartFactory.codeview.show(코드뷰명, filters, callback, client);
+ *   //SmartFactory.codeview.get(코드뷰명)
+ *   SmartFactory.codeview.register('MaterialType', {
+ *		viewType : 'gcm', 
+ *		title : 'Select Material Type',
+ *		selects : [ 'FACTORY', 'GROUP_NAME', 'MODEL_DESC_S' ]
+ *		table : 'MATERIAL_GRP_2', //GCM의 Table 컬럼에 정의되어있는 Table명
+ *		columns : [ {
+ *			header : 'Material Type',
+ *			dataIndex : 'GROUP_NAME',
+ *			flex : 2
+ *		}, {
+ *			header : 'Description',
+ *			dataIndex : 'MODEL_DESC_S',
+ *			flex : 3
+ *		} ],
+ *	 });
+ *
+ *
+ * @cfg show 코드뷰 팝업을 표시한다.
+ * @cfg register 코드뷰설정정보를 등록한다.
+ * @cfg get 등록된 설정정보를 가져온다.
+ * 
+ * @author Kyunghyang
+ */
 Ext.define('CMN.mixin.CodeView', {
 	constructor: function(config) {
 		var registry = {};
 		Ext.applyIf(registry,{
-			'GcmCodeView' : {
+			'BaseCodeView' : {
 				gcmdefuse : false,
 				viewType : 'gcm', // essential 0:Table, 1:GCM
-				title : 'Gcm List', //default-override
+				title : 'Code Select', //default-override
 				selects : ['KEY_1','DATA_1'], //default override
 				columns : [ {
 					header : 'ITEM',

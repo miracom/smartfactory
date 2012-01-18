@@ -12,7 +12,7 @@
  * @cfg {Number} spreadId grid를 구분하기위한 ID
  */
 Ext.define('MBI.view.form.builder.ChartBuilder',{
-	/**
+	/*
 	 * 생성자. 호출자에서 선언한 정볼르 컨태이너에 적용함.
 	 * @param config 호출자가 선언한 구성정보 값.
 	 */

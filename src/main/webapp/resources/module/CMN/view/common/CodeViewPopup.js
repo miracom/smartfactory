@@ -1,47 +1,31 @@
 /**
  * @class CMN.view.common.CodeViewPopup
  * GCM 및 특정 테이블로 부터 코드 정보를 받아 화면에 팝업으로 표시한다.
+ * 아래의 설정값을 받아 팝업을 구성한다.
+ * codeviewOptions : 호출자로 부터 선언된 설정값.
+ *  - table : 검색할 태이블 명 
+ *  - selects : 조회할 테이블의 컬럼 명
+ *  - columns : 팝업의 grid에 표시할 columns 설정 값
+ *  - title : 팝업의 제목
  * 
  * @extends Ext.window.Window
- * @author kyunghyang.
+ * @author kyunghyang
  *
  */
 Ext.define('CMN.view.common.CodeViewPopup', {
-	/*부모 클래스를 정의한다.*/
-	/**
-	 * @cfg {String} extend 부모 클래스를 정의한다.
-	 */
 	extend : 'Ext.window.Window',
-	
-	/*부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다.*/
-	/**
-	 * @cfg {Number} width 컨포넌트의 폭
- 	 * @cfg {Number} height 컨포넌트의 높이
- 	 * @cfg {Boolean} modal 컨포넌트가 표시될때 항상 창으
-	 */
+
 	width : 450,
 	height : 500,
 	modal : true,
 
-	/* 컨테이너로서의 속성 : layout, defaults, tools, items 등을 정의한다. 단, 복잡한 items, docked
-	  items 등은 initComponent에서 등록을 권장한다.*/
-	/**
-	 * @cfg {String/Object} layout 컴포턴트 layout을 적용한다.
-	 * @cfg {Object[]} buttons 컴포턴트에 사용할 button을 서정한다.
-	 */
 	layout : {
 		align : 'stretch',
 		type : 'vbox'
 	},
 	
-	/**
+	/*
 	 * 컨포넌트가 생성될때 필요한 설정값을 정의한다.
-	 * codeviewOptions : 호출자로 부터 선언된 설정값.
-	 *  - table : 검색할 태이블 명 
-	 *  - selects : 조회할 테이블의 컬럼 명
-	 *  - columns : 팝업의 grid에 표시할 columns 설정 값
-	 *  - title : 팝업의 제목
-	 * @param config
 	 */
 	constructor : function(config) {
 
@@ -58,7 +42,7 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 		CMN.view.common.CodeViewPopup.superclass.constructor.apply(this, arguments);
 	},
 
-	/**
+	/*
 	 * 컨포넌트가 실행될때 초기 설정 값을 정의한다.
 	 * - title : 팝업에 표시할 제목
 	 * - store : 조회조건을 설정 후 store를 생성.
@@ -78,7 +62,7 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 		this.loadStore(this.codeviewOptions.client.bInitFilter);
 	},
 	
-	/**
+	/*
 	 * CodeViewField의 값을 팝업 실행시 초기 검색조건으로 추가한 후 컨포넌트의 store를 읽어 온다.
 	 * @param {Boolean} bInitfilter 검색조건 추가 여부
 	 */
@@ -131,9 +115,8 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 		}
 	},
 	
-	/**
+	/*
 	 * 조회 조건에 맞게 설정 후 store를 생성한다.
-	 * @returns {Object} store 생성된 store
 	 */
 	buildStore : function() {
 		return Ext.create('Ext.data.Store', {
@@ -162,10 +145,9 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 		});
 	},
 
-	/**
+	/*
 	 * 팝업 화면에 표시될 gird를 생성한다.
 	 * 해당 코드를 선택시 팝업은 사라지고 해당 코드값은 CodeViewField에 표시된다.
-	 * @returns {Object} grid
 	 */
 	buildGrid : function() {
 		var codeview = this;
@@ -206,10 +188,9 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 		};
 	},
 	
-	/**
+	/*
 	 * 팝업내 특정 컬럼을 조회하는 windowSearchField를 생성한다.
 	 * 기본 조건에 해당 조회 조건을 추가하여 store를 읽어 올때 적용된다.
-	 * @returns {Object} windowSearchField
 	 */
 	buildSearch : function() {
 		var columns = this.codeviewOptions.columns;
@@ -276,11 +257,7 @@ Ext.define('CMN.view.common.CodeViewPopup', {
 		};
 	},
 
-	/**
-	 * @cfg {Object[]/Ext.panel.Tool[]} tools
-	 * 컴포넌트에 추가적인 기능을 설정한다.
-	 * refresh버튼을 클릭시 화면정보가 갱신된다.
-	 */
+	/* refresh버튼을 클릭시 화면정보가 갱신된다.*/
 	tools : [ {
 		type : 'refresh',
 		tooltip : 'Refresh form Data',
