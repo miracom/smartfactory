@@ -37,6 +37,7 @@ public class ResultSetUtils {
 	 * @param typeMap
 	 * @return Map<String, Object>
 	 * @throws SQLException
+	 * rs에 column name이 동일하면 하나만 받아오는 문제발생 (확인필요)
 	 */
 	public final static Map<String, Object> convertResultSetToMapElement(ResultSet rs, Map<String, String> typeMap) throws SQLException {
 		Map<String, Object> map = new LinkedHashMap<String, Object>();

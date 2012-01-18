@@ -26,7 +26,7 @@ public class FundefNt extends StoredProcedure {
 	private static final String FUNC_TYPE_PARAM = "func_type";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 	
-	private static final String SPROC_NAME = "P_ASECFUNDEF_NT";
+	private static final String SPROC_NAME = "P_SEC_FUNDEF_NT";
 
 	private static ReturnType RTYPE = ReturnType.NONE;
 	

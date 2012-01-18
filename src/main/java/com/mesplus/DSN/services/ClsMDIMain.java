@@ -31,6 +31,7 @@ public class ClsMDIMain {
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			// XML: DataTable
+			//2012-01-17 동일한 column name를 사용하면 그중에 하나만 결과값으로 출력하는 문제발
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().getuserloginNtDao(fac_id, grp_code, user_id, password, lang_flag, rType);
 			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
@@ -40,10 +41,7 @@ public class ClsMDIMain {
 			
 			Element gEl = XmlConvert.groupElement(elList);
 			
-			return XmlConvert.elementToXML(gEl);
-			
-			
-						
+			return XmlConvert.elementToXML(gEl);				
 		} catch (Exception e) {
 			throw new RemoteException("Exception", e);
 		}
