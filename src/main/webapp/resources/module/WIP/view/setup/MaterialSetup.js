@@ -26,31 +26,13 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 			 * Supplement에 대한 이벤트리스너 등록은 클라이언트 뷰의 afterrender 이벤트 발생 이후에 해야한다.
 			 */
 			self.getSupplement().on('materialselected', function(record) {
-				self.getMaterialText().setValue(record.get('MAT_ID'));
-				self.getVersionText().setValue(record.get('MAT_VER'));
-				self.getDescText().setValue(record.get('MAT_DESC'));
+				self.sub('material').setValue(record.get('MAT_ID'));
+				self.sub('version').setValue(record.get('MAT_VER'));
+				self.sub('description').setValue(record.get('MAT_DESC'));
 			});
 		});
 	},
 	
-	getMaterialText : function() {
-		if(!this.materialText)
-			this.materialText = this.down('[itemId=material]');
-		return this.materialText;
-	},
-	
-	getVersionText : function() {
-		if(!this.versionText)
-			this.versionText = this.down('[itemId=version]');
-		return this.versionText;
-	},
-	
-	getDescText : function() {
-		if(!this.descText)
-			this.descText = this.down('[itemId=description]');
-		return this.descText;
-	},
-		
 	zbasic : {
 		xtype : 'container',
 		itemId : 'zbasic',
