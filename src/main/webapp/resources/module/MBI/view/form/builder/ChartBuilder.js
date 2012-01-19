@@ -1,12 +1,30 @@
+/**
+ * @class MBI.view.form.builder.ChartBuilder
+ * 설정 벙보로 chart 속성을 설정.
+ * 
+ * @author kyunghyang.
+ * 
+ * @cfg {Object} formInfoData Chart의 구성요소 설정 정보
+ * @cfg {Object} store 조회된 chart data
+ * @cfg {Number} langFlag 표시되는 언어 (1:영어/2:한국어/3:기타언어)
+ * @cfg {String} layoutType layout의 type 속성
+ * @cfg {Number} flex 화면 구성 비율
+ * @cfg {Number} spreadId grid를 구분하기위한 ID
+ */
 Ext.define('MBI.view.form.builder.ChartBuilder',{
-	//formInfoData : this.store.data,
-	//langFlag : this.langFlag,
-	//store : this.storeInfo,
-	
+	/*
+	 * 생성자. 호출자에서 선언한 정볼르 컨태이너에 적용함.
+	 * @param config 호출자가 선언한 구성정보 값.
+	 */
 	constructor : function(config) {
 		Ext.apply(this, config);
 	},
+	
 	//chtinfNt
+	/**
+	 * chart를 표시하기위한 컨테이너 정의.
+	 * @param cnt 컨테이너에 표시되는 chart 수 
+	 */
 	buildChart : function(cnt){
 		var chtinfNt = this.formInfoData.get(0).data.chtinfNt;
 
@@ -27,6 +45,12 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 			return '';
 	},
 
+	/**
+	 * chart 컨포넌르의 속성을 정의
+	 * @param chtinfNt
+	 * @param cnt
+	 * @returns {Array}
+	 */
 	getChartItems : function(chtinfNt,cnt){
 		var chart = [];
 		for(var i = 0 ; i < cnt ; i++){
@@ -51,17 +75,20 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 					}		
 				);	
 		};
-		console.log(chart);
+		//console.log(chart);
 		return chart;
 	},
 
-	//TODO sample modify : title,type, position
+	/**
+	 * Chart 속성중 Axes 속성 정의
+	 * @param chinfNt
+	 */
 	buildAxes : function(chtinfNt){
 		//TODO type name mapping - line,bar,pie,column.....
 		var chartType = chtinfNt[0].chart_type.toLowerCase();
 		var mapAxes = [];
 		// area,bar,column,line,scatter
-		console.log(chartType);
+		//console.log(chartType);
 		switch (chartType) {
 			case 'area'    : { 
 				mapAxes = [
@@ -82,7 +109,6 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 	               this.getAxesNumeric(chtinfNt,'left'),
 	               this.getAxesCategory(chtinfNt, 'bottom')
 		            ];
-				console.log('hhhhh');
 				break;
 			}
 			case 'gauge' :{ //gauge
@@ -112,6 +138,11 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 		return mapAxes;
 	},
+	
+	/**
+	 * Chart 속성중 Series 속성 정의
+	 * @param chinfNt
+	 */
 	buildSeries : function(chtinfNt){
 		var chartType = chtinfNt[0].chart_type.toLowerCase();
 		var mapSeries = [];
@@ -153,6 +184,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		return mapSeries;
 	},
 	
+	/**
+	 * Chart 속성중 Column 속성 정의
+	 * @param chinfNt
+	 */
 	getColumn : function(index){
 		if (index == null) return null;
 		var mapdefS2Nt = this.formInfoData.get(0).data.mapdefS2Nt;
@@ -164,6 +199,11 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 			}
 		}
 	},
+	
+	/**
+	 * Chart 속성중 Field 속성 정의
+	 * @param chinfNt
+	 */
 	getFields : function(records,colName){
 		var fieldData = [];
 		
@@ -196,6 +236,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		return fextractDupArr(fieldData.sort());
 	},
 	
+	/**
+	 * Chart 속성중 Axes의 Numeric Type 속성 정의
+	 * @param chinfNt
+	 */
 	getAxesNumeric : function(records,pos){
 		return {	
 			type : 'Numeric',
@@ -218,6 +262,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
+	/**
+	 * Chart 속성중 Axes의 Category Type 속성 정의
+	 * @param chinfNt
+	 */
 	getAxesCategory :  function(records,pos){
 		return {
 				type : 'Category',
@@ -227,6 +275,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
+	/**
+	 * Chart 속성중 Axes의 Gauge Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getAxesGauge : function(){
 		return {
 				type : 'gauge',
@@ -238,6 +290,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
+	/**
+	 * Chart 속성중 Axes의 Time Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getAxesTime : function(pos){
 		return {
 		    type: 'Time',
@@ -254,6 +310,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
+	/**
+	 * Chart 속성중 Axes의 Radar Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getAxesRadar : function(){
 		return {
 				type : 'Radial',
@@ -264,6 +324,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
+	/**
+	 * Chart 속성중 Axes의 Area Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getSeriesArea : function(records,pos){
 		return [{
 	        type: 'area',
@@ -277,6 +341,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		}];
 	},
 
+	/**
+	 * Chart 속성중 Axes의 Bar Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getSeriesBar : function(records,pos){
 		return [{
 			type: 'bar',
@@ -303,6 +371,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		}];
 	},
 
+	/**
+	 * Chart 속성중 Series의 Column Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getSeriesColumn : function(records,pos){
 		return [{
 			type: 'column',
@@ -320,6 +392,11 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 	            }
 		}];
 	},
+
+	/**
+	 * Chart 속성중 Series의 Gauge Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getSeriesGauge : function(records){
 		return [{
 			type : 'gauge',
@@ -328,6 +405,11 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 			colorSet: ['#F49D10', '#ddd']
 		}];
 	},
+
+	/**
+	 * Chart 속성중 Series의 Line Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getSeriesLine : function(records,pos){
 		var rtnSeries = [];
 		for(var i in records){
@@ -345,6 +427,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		return rtnSeries;
 	},
 	
+	/**
+	 * Chart 속성중 Series의 Pie Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getSeriesPie : function(records,pos){
 		var valueColumn = this.getColumn(records[0].value_col1);
 		var argColumn = this.getColumn(records[0].argument_col);
@@ -379,6 +465,10 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		}];
 	},
 
+	/**
+	 * Chart 속성중 Series의 Radar Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getSeriesRadar : function(records,type){
 		var rtnSeries = [];
 		var fillFlag = 'none';
@@ -409,7 +499,11 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		
 		return rtnSeries;
 	},
-	
+
+	/**
+	 * Chart 속성중 Series의 Scatter Type 속성 정의
+	 * @param chinfNt
+	 */	
 	getSeriesScatter : function(records,pos){
 		var rtnSeries = [];
 		for(var i in records)

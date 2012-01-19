@@ -24,7 +24,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
     });
 
     Ext.apply(this, config);
-
+    //console.log(this.store);
     Ext.ux.exporter.excelFormatter.Worksheet.superclass.constructor.apply(this, arguments);
   },
 
@@ -182,7 +182,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
     	cols = this.lastCols;
     
     if (this.stripeRows === true) style = index % 2 == 0 ? 'even' : 'odd';
-
+    //console.log(this.cols);
     for (var i in cols){
     	var col = cols[i];
     	//var name  = col.name || col.dataIndex;
@@ -206,9 +206,8 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
   },
 
   buildCell: function(value, type, style) {
-    if (type == "DateTime" && Ext.isFunction(value.format)) value = value.format(this.dateFormatString);
+ if (type == "DateTime" && Ext.isFunction(value.format)) value = value.format(this.dateFormatString);    return new Ext.ux.exporter.excelFormatter.Cell({
 
-    return new Ext.ux.exporter.excelFormatter.Cell({
       value: value,
       type : type,
       style: style
@@ -224,6 +223,7 @@ Ext.define("Ext.ux.exporter.excelFormatter.Worksheet", {
     'int'   : "Number",
     'string': "String",
     'float' : "Number",
-    'date'  : "DateTime"
+    'date'  : "String"
+//    'date'  : "DateTime"
   }
 });

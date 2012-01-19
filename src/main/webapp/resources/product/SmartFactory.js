@@ -8,6 +8,7 @@ Ext.define('SmartFactory', {
 		msg : 'plugin.Msg',
 		user : 'plugin.User',
 		mixin : 'plugin.Mixin',
-		ui : 'plugin.UserInterface'
+		ui : 'plugin.UserInterface',
+		subitem : 'plugin.SubItem'
 	}
 });

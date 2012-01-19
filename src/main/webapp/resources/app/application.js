@@ -17,6 +17,15 @@ Ext.module = function() {
 		return modules;
 	}
 
+	function loadResources(module_name) {
+		Text = Text || {};
+		Text.format = Text.format || {};
+		Text.title = Text.title || {};
+		Text.msg = Text.msg || {};
+
+		document.write('<script type="text/javascript" src="module/' + module_name + '/locale/' + login.locale + '.js"></script>');
+	}
+	
 	function registerModule(module_name, controllers) {
 		if (modules[module_name])
 			return;
@@ -25,6 +34,7 @@ Ext.module = function() {
 		modules_order.push(module_name);
 
 		Ext.Loader.setPath(module_name, 'module/' + module_name);
+		loadResources(module_name);
 	}
 
 	function getAllControllers() {

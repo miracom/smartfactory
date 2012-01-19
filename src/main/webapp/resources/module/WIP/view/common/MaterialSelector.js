@@ -9,7 +9,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	/*
 	 * plugins을 설정한다.
 	 */
-	plugins : [],
+	plugins : [ ],
 	
 	/*
 	 * 컴포넌트의 기능 관련된 설정을 한다.
@@ -61,13 +61,20 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		/*
 		 * 정적인 컴포넌트들을 등록한다. Docked Item들을 등록한다.
 		 */
-		this.items = [ this.zfilter, this.zviewmode, this.zlist ];
-		this.buttons = [ this.zcount, this.zsearch, this.zrefresh, this.zexport ];
+		this.items = [ this.zfilter, this.zviewmode, this.zgrid ];
+		this.bbar = [ this.zcount, this.zsearch, this.zrefresh, this.zexport ];
 
 		/*
 		 * 부모의 컴포넌트 초기화 기본 로직을 호출한다.
 		 */
 		this.callParent();
+		
+		/*
+		 * Observable 관련 등록 (이벤트 등록 등)
+		 */
+		this.addEvents({
+            "materialselected" : true
+        });
 
 		/*
 		 * 부가적인 작업을 한다. - 동적인 컴포넌트 추가 - 리스너 등록
@@ -75,70 +82,56 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		var self = this;
 
 		this.on('render', function() {
-			self.refreshList(true);
+			self.refreshGrid(true);
 		});
 
-		this.getList().store.on('datachanged', function(store) {
-			self.getListCount().setValue(store.count());
+		this.sub('grid').store.on('datachanged', function(store) {
+			self.sub('gridCount').setValue(store.count());
 		});
 
-		this.getSearchField().on('specialkey', function(field, e) {
+		this.sub('searchField').on('specialkey', function(field, e) {
 			if (e.getKey() == e.ENTER) {
-				self.refreshList(false);
+				self.refreshGrid(false);
 			}
 		});
 
-		this.getRefreshButton().on('click', function() {
-			self.refreshList(true);
+		this.sub('refresh').on('click', function() {
+			self.refreshGrid(true);
 		});
 
-		this.getViewModeRadio().on('change', function() {
-			self.refreshList(false);
+		this.sub('viewmode').on('change', function() {
+			self.refreshGrid(false);
 		});
 
-		this.getDeletedItemFilter().on('change', function(check, value) {
-			self.refreshList(true);
+		this.sub('include_deleted').on('change', function(check, value) {
+			self.refreshGrid(true);
 		});
 
-		this.getDeactiveItemFilter().on('change', function(check, value) {
-			self.refreshList(true);
+		this.sub('include_deactive').on('change', function(check, value) {
+			self.refreshGrid(true);
+		});
+		
+		this.sub('grid').on('itemclick', function(grid, record) {
+			self.fireEvent('materialselected', record);
 		});
 	},
 
-	getList : function() {
-		if (!this.list)
-			this.list = this.down('[itemId=list]');
-		return this.list;
-	},
-
-	getRefreshButton : function() {
-		if (!this.refreshButton)
-			this.refreshButton = this.down('button[itemId=refresh]');
-		return this.refreshButton;
-	},
-
-	getListCount : function() {
-		if (!this.listCount)
-			this.listCount = this.down('[itemId=listCount]');
-		return this.listCount;
-	},
-
-	getListLocalFilters : function() {
+	getGridLocalFilters : function() {
 		var filters = [];
-		var value = this.getSearchField().getValue();
+		var value = this.sub('searchField').getValue();
 		if (value.length > 0) {
 			filters.push({
 				property : 'MAT_ID',
-				value : new RegExp(this.getSearchField().getValue())
+				value : new RegExp(this.sub('searchField').getValue())
 			});
 		}
-		if (this.getDeletedItemFilter().getValue()) {
+		if (this.sub('include_deleted').getValue()) {
 			filters.push({
 				property : 'DELETE_FLAG',
 				value : 'N'
 			});
 		}
-		if (this.getDeactiveItemFilter().getValue()) {
+		if (this.sub('include_deactive').getValue()) {
 			filters.push({
 				property : 'DEACTIVE_FLAG',
 				value : 'N'
@@ -147,36 +140,12 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		return filters;
 	},
 
-	getSearchField : function() {
-		if (!this.searchField)
-			this.searchField = this.down('[itemId=searchField]');
-		return this.searchField;
-	},
+	refreshGrid : function(reload) {
+		var store = this.sub('grid').store;
 
-	getViewModeRadio : function() {
-		if (!this.viewModeRadio)
-			this.viewModeRadio = this.down('[itemId=viewmode]');
-		return this.viewModeRadio;
-	},
-
-	getDeletedItemFilter : function() {
-		if (!this.deletedItemFilter)
-			this.deletedItemFilter = this.down('[itemId=include_deleted]');
-		return this.deletedItemFilter;
-	},
-
-	getDeactiveItemFilter : function() {
-		if (!this.deactiveItemFilter)
-			this.deactiveItemFilter = this.down('[itemId=include_deactive]');
-		return this.deactiveItemFilter;
-	},
-
-	refreshList : function(reload) {
-		var store = this.getList().store;
-
-		if (this.getViewModeRadio().getValue().viewmode != 2) {
+		if (this.sub('viewmode').getValue().viewmode != 2) {
 			store.clearGrouping();
-			this.getList().reconfigure(null, [ {
+			this.sub('grid').reconfigure(null, [ {
 				text : 'MAT ID',
 				flex : 1,
 				dataIndex : 'MAT_ID'
@@ -199,7 +168,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 			} ]);
 		} else {
 			store.group('MAT_ID');
-			this.getList().reconfigure(null, [ {
+			this.sub('grid').reconfigure(null, [ {
 				text : 'V',
 				width : 20,
 				dataIndex : 'MAT_VER'
@@ -219,7 +188,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		}
 
 		store.clearFilter(true);
-		store.filter(this.getListLocalFilters());
+		store.filter(this.getGridLocalFilters());
 		if (reload)
 			store.load();
 	},
@@ -282,9 +251,9 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		} ]
 	},
 
-	zlist : {
+	zgrid : {
 		xtype : 'grid',
-		itemId : 'list',
+		itemId : 'grid',
 		exportTo : 'Materials',
 		flex : 1,
 		autoScroll : true,
@@ -298,25 +267,27 @@ Ext.define('WIP.view.common.MaterialSelector', {
 	zcount : {
 		xtype : 'textfield',
 		disabled : true,
-		itemId : 'listCount',
-		width : 30
+		itemId : 'gridCount',
+		cls : 'bottomTextField',
+		flex : 1
 	},
 
 	zsearch : {
 		xtype : 'textfield',
 		itemId : 'searchField',
-		flex : 1
+		cls : 'bottomTextField',
+		flex : 3
 	},
 
 	zrefresh : {
 		xtype : 'button',
-		text : 'R',
+		cls : 'supplementRefresh',
 		itemId : 'refresh',
-		width : 18
+		width : 24
 	},
 
 	zexport : {
 		xtype : 'exporterbutton',
-		width : 18
+		width : 24
 	}
 });

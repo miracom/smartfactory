@@ -18,8 +18,21 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 		} ];
 
 		this.callParent();
-	},
 		
+		var self = this;
+		
+		this.on('afterrender', function() {
+			/*
+			 * Supplement에 대한 이벤트리스너 등록은 클라이언트 뷰의 afterrender 이벤트 발생 이후에 해야한다.
+			 */
+			self.getSupplement().on('materialselected', function(record) {
+				self.sub('material').setValue(record.get('MAT_ID'));
+				self.sub('version').setValue(record.get('MAT_VER'));
+				self.sub('description').setValue(record.get('MAT_DESC'));
+			});
+		});
+	},
+	
 	zbasic : {
 		xtype : 'container',
 		itemId : 'zbasic',
