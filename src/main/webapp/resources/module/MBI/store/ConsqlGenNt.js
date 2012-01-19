@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.ConsqlGenNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner SQL Select Where문 조건설정 관련 정보.
+ */
 Ext.define('MBI.store.ConsqlGenNt', {
 	extend: 'Ext.data.Store',
 

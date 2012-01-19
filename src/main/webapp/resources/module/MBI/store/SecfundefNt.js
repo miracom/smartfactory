@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.SecfundefNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner function 설정 정보.
+ */
 Ext.define('MBI.store.SecfundefNt', {
 	extend: 'Ext.data.Store',
 

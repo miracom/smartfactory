@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.FsprelNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner function 이벤트 oracle sp 설정 관련 정보.
+ */
 Ext.define('MBI.store.FsprelNt', {
 	extend: 'Ext.data.Store',
 

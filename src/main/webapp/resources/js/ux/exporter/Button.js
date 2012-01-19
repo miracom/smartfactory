@@ -2,13 +2,53 @@
  * @class Ext.ux.Exporter.Button
  * @extends Ext.Component
  * @author Nige White, with modifications from Ed Spencer, with modifications from iwiznia.
+ *  * **xtype : exporterbutton **
  * Specialised Button class that allows downloading of data via data: urls.
  * Internally, this is just a link.
  * Pass it either an Ext.Component subclass with a 'store' property, or just a store or nothing and it will try to grab the first parent of this button that is a grid or tree panel:
  * new Ext.ux.Exporter.Button({component: someGrid});
  * new Ext.ux.Exporter.Button({store: someStore});
+ * 
+ * 	@example	
+ *	Ext.require([ 'Ext.ux.exporter.Exporter' ]);
+ *
+ *	Ext.define('exportTest,{
+ *	  	extend : 'Ext.form.Panel' ,
+ *	  	exportable : true ,
+ *	  
+ *		initComponent : function() {
+ *			this.items = [ this.zgrid ];
+ *			this.bbar = [ this.zexporter ];
+ *			this.callParent();
+ *		},
+ *	  	zgrid : {
+ *	    	xtype : 'gridpanel',
+ *	    	exportTo : 'sheet-test' ,
+ *	    	columns : [{
+ *	    	xtype : 'gridcolumn',
+ *	        dataIndex : 'area',
+ *	    	align : 'center',
+ *	    	text : 'Location'
+ *	    	}, {
+ *	    	xtype : 'gridcolumn',
+ *	    	dataIndex : 'lot_id',
+ *	    	align : 'center',
+ *	    	text : 'Lot No'
+ *	    }, 
+ *	  	zexporter :{
+ *	    	xtype : 'exporterbutton',
+ *	    	formatter : 'excel', 
+ *	    	targetExports : ['sheet-test']
+ *	  	},
+ *	}); 
+ *
+ * @cfg {String} xtype 'exporterbutton'을 지정한다.
+ * @cfg {String} formatter excel/csv 출력 파일 형식을 지정한다.
+ * default : 'excel'
+ * @cfg {String[]} targetExports 출력할 grid 속성의 exportTo에 선언한 sheet명을 설정한다.
+ * 선언하지 않으면 부모 컨포넌트에 속해있는 컨포넌트의 exportTo가 정의된 grid는 모두 찾아 출력한다. 
  * @cfg {Ext.Component} component The component the store is bound to
- * @cfg {Ext.data.Store} store The store to export (alternatively, pass a component with a getStore method)
+ * @cfg {Ext.data.Store/string} store The store to export (alternatively, pass a component with a getStore method)
  */
 Ext.define("Ext.ux.exporter.Button", {
     extend: "Ext.Component",

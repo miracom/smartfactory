@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.MapconGenNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner condition items 설정 정보.
+ */
 Ext.define('MBI.store.MapconGenNt', {
 	extend: 'Ext.data.Store',
 

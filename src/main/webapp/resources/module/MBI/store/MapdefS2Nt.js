@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.MapconGenNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner map에 사용되는 columns 설정 정보.
+ */
 Ext.define('MBI.store.MapdefS2Nt', {
 	extend: 'Ext.data.Store',
 

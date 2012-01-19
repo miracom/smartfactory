@@ -1,3 +1,9 @@
+/** 
+ * @class CMN.plugin.Supplement
+ * @extends Ext.Base
+ * @author Kyunghyang
+ * FormDesign에서 condition view를 오른쪽 supplement영역에 표시한다. content의 view와 연동되어 생성 및 삭제된다.
+ */
 Ext.define('CMN.plugin.Supplement', {
 	extend : 'Ext.Base',
 

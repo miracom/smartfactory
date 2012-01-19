@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.FtrfldNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner Excel 서식장표설정시 필드 설정 정보.
+ */
 Ext.define('MBI.store.FtrfldNt', {
 	extend: 'Ext.data.Store',
 
