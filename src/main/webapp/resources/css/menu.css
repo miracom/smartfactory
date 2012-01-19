@@ -40,7 +40,7 @@
 .appMenu .x-btn-arrow-right{background:url('../image/arrowDownDefault.gif') 102% 5px no-repeat;background-position/*\**/:98% 5px\9;}
 .appMenu .x-btn-arrow-right:hover{background:url('../image/arrowDownOver.gif') 102% 5px no-repeat;}
 .appMenu .x-btn-default-toolbar-small-icon-text-left .x-btn-inner{padding-left:4px;margin-right:4px}
-.appMenu .x-form-text, textarea.x-form-field{
+.appMenu .x-form-text{
 	border:1px solid #515869;background-color:#202228;background-image:none;
 	-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;
 	color:#a7b6dc
@@ -237,6 +237,7 @@
 .x-btn-default-small-over,#content-body .x-btn-default-toolbar-small-over{background:url('../image/bgBtnOver.gif') repeat-x;padding:1px}
 #content-body .x-btn-default-toolbar-small{border-color:#b0b0b0}
 .x-toolbar-footer-docked-bottom{border:1px solid #cfcfcf;border-width:1px 0 0px 0 !important;height:27px;background-color:#f0f0f0}
+#content-body .x-toolbar-footer-docked-bottom{border:none !important;height:26px}
 .btnCodeView{background:url('../image/iconCodeView.gif') -4px 2px no-repeat;height:21px !important}
 .x-over .btnCodeView{background:url('../image/iconCodeView.gif') -29px 2px no-repeat;height:21px !important}
 .supplement .x-btn-default-small-icon button{height:18px}
@@ -282,6 +283,8 @@ table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
 
 /*accordion*/
 .x-accordion-hd{background:url('../image/bgAccordion.gif') repeat-x !important;padding:4px 7px 3px 7px}
+
+.x-toolbar-footer{margin-top:0}
 
 /* menu icon style */
 .icon_FAV1001{background:url('../image/menuIcon/1_1_14_Favorite_Setup_16.png') no-repeat;}
