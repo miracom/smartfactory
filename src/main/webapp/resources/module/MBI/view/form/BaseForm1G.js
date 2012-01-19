@@ -38,8 +38,7 @@ Ext.define('MBI.view.form.BaseForm1G', {
 	 * @cfg {String} bodyStyle 컴포턴트 스타일을 적용한다.
 	 */
 	autoScroll : true,// false,
-	//bodyStyle : 'padding:5px',
-	
+		
 	/* 컨테이너로서의 속성 : layout, defaults, tools, items 등을 정의한다. 단, 복잡한 items, docked
 	  items 등은 initComponent에서 등록을 권장한다.*/
 	/**
@@ -51,7 +50,8 @@ Ext.define('MBI.view.form.BaseForm1G', {
 		align : 'stretch'
 	},
 	
-	
+	bodyStyle : 'padding:5px',
+	buttons : Ext.create('MBI.view.form.builder.ControlBuilder'),
 	/**
 	 * Init Component 와 같은기능을 한다. 
 	 * store의 Data가 변경시 화면을 다시 출력한다.
@@ -87,26 +87,26 @@ Ext.define('MBI.view.form.BaseForm1G', {
 			clickRecord : this.onClickGrid
 		}).buildGrid();
 		
-		var view_control = Ext.create('MBI.view.form.builder.ControlBuilder');
+		//var view_control = Ext.create('MBI.view.form.builder.ControlBuilder');
 		
 		this.add(view_grid);
-		this.add(view_control);
+		//this.add(view_control);
 			
 	},
-	buildToolbar : function(){
-		return Ext.create('Ext.toolbar.Toolbar',{
-			height : 30,
-			layout : {
-				type : 'hbox',
-				pack : 'start'
-			},
-			items : [ {
-				xtype : 'tbfill'
-			}, {
-				xtype : 'exporterbutton',
-			}]
-		});
-	},
+//	buildToolbar : function(){
+//		return Ext.create('Ext.toolbar.Toolbar',{
+//			height : 30,
+//			layout : {
+//				type : 'hbox',
+//				pack : 'start'
+//			},
+//			items : [ {
+//				xtype : 'tbfill'
+//			}, {
+//				xtype : 'exporterbutton',
+//			}]
+//		});
+//	},
 	
 	/**
 	 * grid의 레코드를 선택시 해당 정보를 조회에 필요한 item에 전달한다. 
