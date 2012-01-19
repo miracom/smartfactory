@@ -14,7 +14,6 @@ Ext.define('ARC.view.task.TaskCreate', {
 		this.leftPanel = this.add(this.buildLeftPanel());
 		this.rightPanel = this.add(this.buildRightPanel());
 
-		
 //		var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});
 //		myMask.show();
 
@@ -51,7 +50,6 @@ Ext.define('ARC.view.task.TaskCreate', {
 							waitMsg : 'Saving Data...', // save processbar
 							success : function(form, action) {
 								Ext.Msg.alert('Success', action.result.msg);
-								me.taskListStore.load(); // list refresh
 							},
 							failure : function(form, action) {
 								Ext.Msg.alert('Failed', action.result.msg);

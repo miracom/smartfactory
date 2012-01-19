@@ -3,7 +3,6 @@ package com.mesplus.ARC.controller;
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -100,6 +98,7 @@ public class ARCController {
 //			}
 			else if(params.get("processtype").equals("D")) //삭제
 			{
+				taskDao.createOrReplaceTask(params);
 				resultMap.put("success", true);
 				resultMap.put("msg", "Sucess Delete");
 			}
