@@ -29,7 +29,7 @@ Ext.define('WMG.plugin.Communicator', {
 
 		Ext.apply(options, config);
 
-		$.cometd.websocketEnabled = false;
+		$.cometd.websocketEnabled = true;
 
 		/*
 		 * subscribe When connection initialized for the first time, following
