@@ -2,25 +2,35 @@ Ext.require([ 'Ext.ux.exporter.Exporter' ]);
 
 /**
  * @class MBI.view.form.BaseForm1GA
+ * 하나의 chart 와 grid를 가지는 화면 구성.
+ * 
+ * **include** : Ext.ux.exporter.Exporter
+ * 
  * @extends Ext.panel.Panel
  * @author kyunghyang.
- * Form Design Function List 표시
  * 
- * **include** : MBI.view.common.BaseFormBuilder
- * @cfg {String[]} tbar refresh,clear등 이벤트 버튼설정
- * @cfg {String[]} items 표시할 ListView설정
- * @cfg {String} itemId 외부참조의 편리성을 위해 포든 item에 itemId를 부여하여 한다.
+ * @cfg {Boolean} exportable excel의 출력여부를 설정한다.
  */
 Ext.define('MBI.view.form.BaseForm1GA', {
+	/*부모 클래스를 정의한다.*/
 	extend : 'Ext.panel.Panel',
-	alias : 'widget.mbi.baseform1g',
-
+	
+	/*외부에서 참조할 plugins를 설정한다.*/
 	plugins : [ Ext.create('CMN.plugin.Supplement') ],
-
+	
+	/*컴포넌트의 기능 관련된 설정을 한다.*/
+	exportable : true,
+	
+	/*부모 레이아웃과 관련된 자신의 컴포넌트 속성을 정의한다. id, title, flex, width*/
+	autoScroll : true,// false,
+		
+	/* 컨테이너로서의 속성 : layout, defaults, tools, items 등을 정의한다. 단, 복잡한 items, docked
+	  items 등은 initComponent에서 등록을 권장한다.*/
 	layout : {
 		type : 'vbox',
 		align : 'stretch'
 	},
+	
 	autoScroll : true,// false,
 	
 	setup : function() {
@@ -87,7 +97,10 @@ Ext.define('MBI.view.form.BaseForm1GA', {
 		console.log(con_params);
 		return con_params; //ex: '1`^1|2`^|3`^|';
 	},
-
+	/**
+	 * conditon form에서 'view' 클릭시 해당조건을 읽어와 store를 다시 읽어 온다.
+	 * @param params
+	 */
 	onView : function(params) {
 		//console.log(params);
 		var extraParam = {

@@ -1,3 +1,7 @@
+/**
+ * @class CMN.mixin.Status
+ * 
+ */
 Ext.define('CMN.mixin.Status', {
 	constructor : function(config) {
 		return {

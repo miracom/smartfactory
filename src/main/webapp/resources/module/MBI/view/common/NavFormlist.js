@@ -9,19 +9,10 @@ Ext.require('MBI.view.common.BaseFormBuilder');
  * 
  * @extends Ext.panel.Panel
  * @author kyunghyang.
- * 
- * @cfg {String} itemId
- * An itemId can be used as an alternative way to get a reference to a component when no object reference is available.
  */
 Ext.define('MBI.view.common.NavFormlist', {
 	extend : 'Ext.panel.Panel',
 
-	/**
-     * The initComponent template method is an important initialization step for a Component. It is intended to be
-     * implemented by each subclass of Ext.Component to provide any needed constructor logic. The
-     * initComponent method of the class being created is called first, with each initComponent method
-     * up the hierarchy to Ext.Component being called thereafter.
-     */
 	initComponent : function() {
 		this.callParent();
 
@@ -53,7 +44,7 @@ Ext.define('MBI.view.common.NavFormlist', {
 		});
 	},
 
-    /**
+    /*
      * Get the function list view from this items.
      * @return {Ext.view.View} listView
      */
@@ -63,7 +54,7 @@ Ext.define('MBI.view.common.NavFormlist', {
 		return this.listView;
 	},
 	
-    /**
+    /*
      * Get the refresh button component.
      * @return {Ext.button.Button} refreshButton
      */
@@ -73,7 +64,7 @@ Ext.define('MBI.view.common.NavFormlist', {
 		return this.refreshButton;
 	},
 	
-    /**
+    /*
      * Get the clear button component.
      * @return {Ext.button.Button} clearButton
      */
@@ -83,7 +74,7 @@ Ext.define('MBI.view.common.NavFormlist', {
 		return this.clearButton;
 	},
 	
-    /**
+    /*
      * Get the model checkbox component.
      * @return {Ext.form.field.Checkbox} modelCheck
      */
@@ -93,10 +84,6 @@ Ext.define('MBI.view.common.NavFormlist', {
 		return this.modelCheck;
 	},
 	
-	/**
-    * @cfg {Object/Object[]} tbar
-    * Convenience config. Short for 'Top Bar'.
-    */
 	tbar : [ {
 		cls : 'navRefreshBtn',
 		itemId : 'refresh'
@@ -109,10 +96,6 @@ Ext.define('MBI.view.common.NavFormlist', {
 		itemId : 'model'
 	} ],
 	
-	/**
-     * @cfg {Object/Object[]} items
-     * A single item, or an array of child Components to be added to this container.
-	 */
 	items : [ {
 		xtype : 'dataview',
 		store : 'MBI.store.SecfundefNt',

@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.FxtrelNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner Excel 서식장표설정시 서식파일 설정 정보.
+ */
 Ext.define('MBI.store.FxtrelNt', {
 	extend: 'Ext.data.Store',
 

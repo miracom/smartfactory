@@ -1,3 +1,25 @@
+/**
+ * @class CMN.view.form.MultiFileField
+ * @author Administrator
+ * **xtype : multifilefield **
+ * 파일을 추가 및 삭제를 할 수 있는 필드이다. 
+ * 
+ *   @example
+ *	 Ext.define('ConditionTest',{
+ *	 	extend : 'Ext.panel.Panel',
+ *	 	title : 'Condition Test',
+ *	 	initComponent : function() {
+ *			this.callParent();
+ *		},
+ *	 	items : [ {
+ *			xtype : 'multifilefield',
+ *			name : 'files',
+ *			fieldLabel : 'Files upload',
+ *			anchor : '100%'
+ *		} ],
+ *	 	renderTo : Ext.getBody()
+ *	 });
+ */
 Ext.define('CMN.view.form.MultiFileField', {
 	extend: 'Ext.form.field.Base',
 	

@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.GrpcolNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner group columns 설정 정보.
+ */
 Ext.define('MBI.store.GrpcolNt', {
 	extend: 'Ext.data.Store',
 

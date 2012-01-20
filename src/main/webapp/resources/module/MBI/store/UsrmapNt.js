@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.UsrmapNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner 사용자 map 설정 정보.
+ */
 Ext.define('MBI.store.UsrmapNt', {
 	extend: 'Ext.data.Store',
 

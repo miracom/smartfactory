@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.TabvldNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner tab 설정 정보.
+ */
 Ext.define('MBI.store.TabvldNt', {
 	extend: 'Ext.data.Store',
 

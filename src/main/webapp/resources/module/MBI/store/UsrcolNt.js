@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.UsrcolNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner 사용자 columns 설정 정보.
+ */
 Ext.define('MBI.store.UsrcolNt', {
 	extend: 'Ext.data.Store',
 
