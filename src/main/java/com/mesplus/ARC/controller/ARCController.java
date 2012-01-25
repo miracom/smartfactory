@@ -135,16 +135,31 @@ public class ARCController {
 	}
 	
 	//http://localhost:8080/smartfactory/module/ARC/data/tableList.json
-	@RequestMapping(value = "module/ARC/data/tablelist.json", method = RequestMethod.POST)
+	@RequestMapping(value = "module/ARC/data/tablelist.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String,Object>> tableList(HttpServletRequest request, HttpServletResponse response) {
 		//String owner = request.getParameter("owner");
 		
+		/*HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("data", originalDao.getTableList("MESMGR"));
+		return resultMap;*/
+		
 		return originalDao.getTableList("MESMGR");
 	}
 	
-	/*
+	
 	@RequestMapping(value = "module/ARC/data/tableupdate.json", method = RequestMethod.POST)
+	public @ResponseBody
+	void tableUpdate(HttpServletRequest request, HttpServletResponse response) {
+		/*HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		
+		resultMap.put("success", false);
+		resultMap.put("msg", "TEST");
+		
+		return null;*/
+	}
+	
+	/*@RequestMapping(value = "module/ARC/data/tableupdate.json", method = RequestMethod.POST)
 	public @ResponseBody
 	List<Map<String,Object>> tableUpdate(@RequestBody List<Map<String, Object>> request, HttpServletResponse response) {
 		
@@ -164,7 +179,7 @@ public class ARCController {
 	        System.out.println( result );
 		}
 		
-		return null;
-	}
-	*/
+		return request;
+	}*/
+	
 }

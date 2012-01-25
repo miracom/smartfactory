@@ -23,6 +23,19 @@ Ext.define('ARC.view.task.TaskList', {
 
 		me.add(me.buildGridPanel());
 	},
+	buttons : [ {
+		text : 'CREATE',
+		listeners : {
+			click : function() {
+				var create = Ext.create('ARC.view.task.TaskCreate', {
+					title : 'Archive Task Create',
+					closable : true
+				});
+
+				SmartFactory.addActiveContentView(create);
+			}
+		}
+	} ],
 	listeners: {
 		show : function()
 		{
@@ -35,7 +48,7 @@ Ext.define('ARC.view.task.TaskList', {
 	buildGridPanel : function() {
 		return {
 			xtype : 'gridpanel',
-			title : 'Archive Task List',
+			//title : 'Archive Task List',
 			flex : 9,
 			store : this.store,
 			columns : [ {
@@ -140,22 +153,7 @@ Ext.define('ARC.view.task.TaskList', {
 						}
 					}
 				} ]
-			} ],
-
-			buttons : [ {
-				text : 'CREATE',
-				listeners : {
-					click : function() {
-						var create = Ext.create('ARC.view.task.TaskCreate', {
-							title : 'Archive Task Create',
-							closable : true
-						});
-
-						SmartFactory.addActiveContentView(create);
-					}
-				}
 			} ]
-
 		// bbar : Ext.create('Ext.PagingToolbar', {
 		// store : this.store,
 		// displayInfo : true,

@@ -44,7 +44,7 @@ Ext.define('ARC.view.task.TaskCreate', {
 							processtype : 'C'
 						}); // 처리 TYPE 입력
 
-						// console.log(form.getValues());
+						//console.log(form.getValues());
 						form.submit({
 							url : 'module/ARC/data/createorreplacetask.json',
 							waitMsg : 'Saving Data...', // save processbar
@@ -161,13 +161,12 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 		var me = this;
 
-		var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+		/*var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
 			clicksToEdit : 1
 		});
 		
-		var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});
-
-
+		var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});*/
+		
 		return {
 			xtype : 'container',
 			flex : 1,
@@ -186,6 +185,7 @@ Ext.define('ARC.view.task.TaskCreate', {
 					xtype : 'textfield',
 					itemId : 'txtserach',
 					name : 'txtserach',
+					submitValue: false, //submit시 vlaue값을 전송시 플러그
 					fieldLabel : 'Table Name',
 					flex : 1,
 					margins : '0 5 0 0',
@@ -212,7 +212,7 @@ Ext.define('ARC.view.task.TaskCreate', {
 				} ]
 			}, {
 				xtype : 'gridpanel',
-				plugins : [ cellEditing ],
+				//plugins : [ cellEditing ],
 				flex : 1,
 				store : this.tableListStore,
 				cls : 'dockNavigation',
