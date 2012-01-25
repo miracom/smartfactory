@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.AssdefGenNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner Assign define 설정 정보.
+ */
 Ext.define('MBI.store.AssdefGenNt', {
 	extend: 'Ext.data.Store',
 	

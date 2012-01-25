@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.GrpmapNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner group map 설정 정보.
+ */
 Ext.define('MBI.store.GrpmapNt', {
 	extend: 'Ext.data.Store',
 

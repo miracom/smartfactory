@@ -1,11 +1,7 @@
 /**
  * @class MBI.view.common.BaseFormBuilder
- * BaseForm의 기준 설정 정보를 읽어와 BaseForm 패턴별 view를 호출한다.
- * 
  * @author kyunghyang.
- * 
- * @cfg {String} itemId
- * An itemId can be used as an alternative way to get a reference to a component when no object reference is available.
+ * BaseForm의 기준 설정 정보를 읽어와 BaseForm 패턴별 view를 호출한다. 
  */
 Ext.define('MBI.view.common.BaseFormBuilder', {
 	/**
@@ -14,7 +10,6 @@ Ext.define('MBI.view.common.BaseFormBuilder', {
 	singleton : true,
 	
 	/**
-	 * buildForm
 	 * Function list 선택시 function 기본정보를 가져온다.
 	 * @param {Object} funcData function 설정정보
 	 * @return from BaseForm of pattern

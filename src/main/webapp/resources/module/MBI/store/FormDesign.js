@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.FormDesign
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner 설정 관련된 14개의 테이블 정보.
+ */
 Ext.define('MBI.store.FormDesign', {
 	extend: 'Ext.data.Store',
 	

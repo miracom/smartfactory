@@ -1,18 +1,47 @@
 /**
  * @class MBI.view.form.builder.GridBuilder
- * 설정 벙보로 grid설정.
- * 
  * @author kyunghyang.
+ * 설정 벙보로 grid를 생성한다.
+ * 
+ *   @example
+ *	 Ext.define('BaseFomeTest',{
+ *	 	extend : 'Ext.panel.Panel',
+ *	 	title : 'Condition Test',
+ *		
+ *	 	initComponent : function() {
+ *			this.callParent();
+ *			this.items : [this.zgrid],
+ *		},
+ *
+ *		onClickGrid : function(selModel, selected) {
+ *   		alert('record :'+selected[0].data.test_id); 
+ *    	},
+ *
+ *	 	zgrid : function(){
+ *			return Ext.create('MBI.view.form.builder.GridBuilder', {
+ *			formInfoData : this.store.data,
+ *			langFlag : this.langFlag,
+ *			store : this.storeInfo,
+ *			flex : 1,
+ *			spreadId : 1,
+ *			panelId : this.id,
+ *			clickRecord : this.onClickGrid
+ *		}).buildGrid();
+ *
+ *
+ *   });
  * 
  * @cfg {Object} formInfoData Chart의 구성요소 설정 정보
  * @cfg {Object} store 조회된 grid data
  * @cfg {Number} langFlag 표시되는 언어 (1:영어/2:한국어/3:기타언어)
- * @cfg {String} layoutType layout의 type 속성
  * @cfg {Number} flex 화면 구성 비율
  * @cfg {Number} spreadId grid를 구분하기위한 ID
+ * @cfg {Number} panelId BaseForm Panel ID
+ * @cfg {Function} clickRecord grid 선택시 이벤트 정의함수
+ * 
  */
 Ext.define('MBI.view.form.builder.GridBuilder',{
-	/**
+	/*
 	 * 생성자. 호출자에서 선언한 정볼르 컨태이너에 적용함.
 	 * @param config 호출자가 선언한 구성정보 값.
 	 */
@@ -21,7 +50,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 	},
 	
 	/**
-	 * grid를 표시하기위한 tabpanel 정의
+	 * grid를 표시하기위한 tabpanel 정의하여 grid를 생성한다.
 	 */
 	buildGrid : function(){
 		var storeDetail = this.store;
@@ -38,7 +67,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 		});
 	},
 	
-	/**
+	/*
 	 * tab 에 구서성될 grid 설정. (tab별 one grid 설정)
 	 * @param storeDetail
 	 * @returns {Array}
@@ -106,7 +135,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 	//Display_Type = { "0", "1", "2", "3", "4", "5", "6", "7", "8" }
 	//{ "CodeView", "CheckBox", "ComboBox", "Date", "DateTime", "Edit", "Int", "Number", "Time" }
 	
-	/**
+	/*
 	 * grid의 column 속성 설정.
 	 * @param {Number} spreadId
 	 * @return {Object} mapColums
@@ -150,7 +179,7 @@ Ext.define('MBI.view.form.builder.GridBuilder',{
 		return mapColums;
 	},
 	
-	/**
+	/*
 	 * lang_flag에 따라 해당 title정보를 가져온다.
 	 * @param lang_flag
 	 * @param spreadId

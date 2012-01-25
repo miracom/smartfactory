@@ -1,3 +1,29 @@
+/**
+ * @class MBI.view.form.builder.FieldBuilder
+ * @author Kyunghyagn
+ * FormDesign에서 설정한 정보로 field생성.
+ * 
+ *   @example
+ *	 Ext.define('BaseFomeTest',{
+ *	 	extend : 'Ext.panel.Panel',
+ *	 	title : 'Condition Test',
+ *		
+ *	 	initComponent : function() {
+ *			this.callParent();
+ *			this.items : [this.zfieldset],
+ *		},
+ *
+ *	 	zfieldset : function(){
+ *			return  Ext.create('MBI.view.form.builder.FieldBuilder',{
+        		data : this.formInfoData.get(0).data.mapconGenNt,
+        		facId : this.facId
+        	}).getFieldSet();
+ *		}
+ *	 });
+ * 
+ * @cfg {Object} funcId function id
+ * @cfg {Object[]} data 'mapconGenNt' Store의 Data(map의 조회조건 설정정보)
+ */
 Ext.define('MBI.view.form.builder.FieldBuilder',{
 	//data[];
 	constructor : function(config) {
@@ -7,6 +33,10 @@ Ext.define('MBI.view.form.builder.FieldBuilder',{
 	//[ "", "CheckBox", "CodeView", "ComboBox", "Date", "DateTo", "DateTime", "DateTimeTo", "RadioButton", "TextBox" ]
 	//controlType : ["textfield", "checkboxfield", "CodeView","comboboxfield", "datefield", "DateTo", "DateTime", "DateTimeTo", "radiofield", "textfield"],
 
+	/**
+	 * 설정된 정보로 type별 필드생성
+	 * @return mapItems
+	 */
 	getFieldSet : function(){
 		var mapItems = [];
 		for(var i in this.data){

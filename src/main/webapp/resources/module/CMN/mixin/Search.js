@@ -1,3 +1,7 @@
+/**
+ * @class CMN.mixin.Search
+ * 
+ */
 Ext.define('CMN.mixin.Search', {
 	constructor: function(config) {
 		var registry = {};

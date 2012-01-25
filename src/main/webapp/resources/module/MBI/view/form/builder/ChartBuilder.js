@@ -1,8 +1,27 @@
 /**
  * @class MBI.view.form.builder.ChartBuilder
- * 설정 벙보로 chart 속성을 설정.
- * 
  * @author kyunghyang.
+ * 설정 벙보로 chart 속성을 설정하여 타입별 chart를 생성한다.
+ * 
+ *   @example
+ *	 Ext.define('BaseFomeTest',{
+ *	 	extend : 'Ext.panel.Panel',
+ *	 	title : 'Condition Test',
+ *	 	initComponent : function() {
+ *			this.callParent();
+ *			this.items : [this.zchart],
+ *		},
+ *		
+ *	 	zchart : function(){
+ *			return Ext.create('MBI.view.form.builder.ChartBuilder',{
+ *				formInfoData : this.store.data,
+ *				langFlag : this.langFlag,
+ *				store : this.storeInfo,
+ *				layoutType : 'hbox',
+ *				flex : 2,
+ *				spreadId : 1,
+ *			}).buildChart(1);
+ *	 });
  * 
  * @cfg {Object} formInfoData Chart의 구성요소 설정 정보
  * @cfg {Object} store 조회된 chart data
@@ -45,7 +64,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 			return '';
 	},
 
-	/**
+	/*
 	 * chart 컨포넌르의 속성을 정의
 	 * @param chtinfNt
 	 * @param cnt
@@ -79,7 +98,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		return chart;
 	},
 
-	/**
+	/*
 	 * Chart 속성중 Axes 속성 정의
 	 * @param chinfNt
 	 */
@@ -139,7 +158,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		return mapAxes;
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Series 속성 정의
 	 * @param chinfNt
 	 */
@@ -184,7 +203,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		return mapSeries;
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Column 속성 정의
 	 * @param chinfNt
 	 */
@@ -200,7 +219,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		}
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Field 속성 정의
 	 * @param chinfNt
 	 */
@@ -236,7 +255,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		return fextractDupArr(fieldData.sort());
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Axes의 Numeric Type 속성 정의
 	 * @param chinfNt
 	 */
@@ -262,7 +281,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Axes의 Category Type 속성 정의
 	 * @param chinfNt
 	 */
@@ -275,7 +294,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Axes의 Gauge Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -290,7 +309,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Axes의 Time Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -310,7 +329,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Axes의 Radar Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -324,7 +343,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		};
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Axes의 Area Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -341,7 +360,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		}];
 	},
 
-	/**
+	/*
 	 * Chart 속성중 Axes의 Bar Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -371,7 +390,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		}];
 	},
 
-	/**
+	/*
 	 * Chart 속성중 Series의 Column Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -393,7 +412,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		}];
 	},
 
-	/**
+	/*
 	 * Chart 속성중 Series의 Gauge Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -406,7 +425,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		}];
 	},
 
-	/**
+	/*
 	 * Chart 속성중 Series의 Line Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -427,7 +446,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		return rtnSeries;
 	},
 	
-	/**
+	/*
 	 * Chart 속성중 Series의 Pie Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -465,7 +484,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		}];
 	},
 
-	/**
+	/*
 	 * Chart 속성중 Series의 Radar Type 속성 정의
 	 * @param chinfNt
 	 */	
@@ -500,7 +519,7 @@ Ext.define('MBI.view.form.builder.ChartBuilder',{
 		return rtnSeries;
 	},
 
-	/**
+	/*
 	 * Chart 속성중 Series의 Scatter Type 속성 정의
 	 * @param chinfNt
 	 */	

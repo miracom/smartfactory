@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.FscrelNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner function service(H101) 설정 관련 정보.
+ */
 Ext.define('MBI.store.FscrelNt', {
 	extend: 'Ext.data.Store',
 

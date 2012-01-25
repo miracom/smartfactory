@@ -1,3 +1,9 @@
+/**
+ * @class MBI.store.ChtinfNt
+ * @extends Ext.data.Store
+ * @author Kyunghyang
+ * FormDesigner chart 관련 설정 정보.
+ */
 Ext.define('MBI.store.ChtinfNt', {
 	extend: 'Ext.data.Store',
 
