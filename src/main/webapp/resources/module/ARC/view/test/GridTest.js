@@ -7,6 +7,8 @@ Ext.define('ARC.view.test.GridTest', {
 	bodyPadding : 10,
 	initComponent : function() {
 		this.callParent();
+		
+		var self = this;
 
 		this.tableListStore = this.bulidTableListStore();
 		
@@ -27,53 +29,64 @@ Ext.define('ARC.view.test.GridTest', {
 			}
 		});
 		
+		this.down('[itmeId=save]').on('click', function(bt, e, eOpts) {
+			if(self.tableListStore.getRemovedRecords() != 0 
+				&& self.tableListStore.getNewRecords() != 0
+				&& self.tableListStore.getUpdatedRecords() != 0)
+			{
+				var form = self.getForm();
+				var removeEncodedJson = self.objectToJson(self.tableListStore.getRemovedRecords());
+				var newEncodedJson = self.objectToJson(self.tableListStore.getNewRecords());
+				var updateEncodedJson = self.objectToJson(self.tableListStore.getUpdatedRecords());
+				
+				/*console.log("RemovedRecords()");
+				console.log(removeEncodedJson );
+				console.log("getNewRecords()");
+				console.log(newEncodedJson);
+				console.log("getUpdatedRecords()");
+				console.log(updateEncodedJson);*/
+				
+				if (form.isValid()) {
+					form.submit({
+						params:{
+							removerecords: removeEncodedJson,
+							newrecords: newEncodedJson,
+							updaterecords: updateEncodedJson
+						},
+						url : 'module/ARC/data/createorreplacegrid.json',
+						waitMsg : 'Saving Data...', // save processbar
+						success : function(form, action) {
+							Ext.Msg.alert('Success', action.result.msg);
+							self.tableListStore.load();
+						},
+						failure : function(form, action) {
+							Ext.Msg.alert('Failed', action.result.msg);
+						}
+					});
+				};
+			}
+		});
+		
 		this.tableListStore.load();	
-		xxx = this.tableListStore;
 	},
-
+	objectToJson : function(object)
+	{
+		var datas = [];
+		
+		for(var i=0;i<object.length;i++) {
+			datas.push(object[i].data);
+		}
+		
+		return  Ext.encode(datas);
+	},
 	bulidTableListStore : function() {
-		return Ext.create('ARC.store.TableListStore');
+		return Ext.create('ARC.store.GridTestListStore');
 	},
-
 	buttons : [ {
 		text : 'SAVE',
 		disabled : true,
 		formBind : true, // only enabled once the form is valid
-		handler : function() {
-			var me = this.up('form');
-			var form = me.getForm();
-			
-			me.sub('tableGrid').getStore().sync();
-			
-			console.log("RemovedRecords()");
-			console.log(me.sub('tableGrid').getStore().getRemovedRecords());
-			console.log("getNewRecords()");
-			console.log(me.sub('tableGrid').getStore().getNewRecords());
-			console.log("getUpdatedRecords()");
-			console.log(me.sub('tableGrid').getStore().getUpdatedRecords());
-
-//			Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function showResult(btn) {
-//				if (btn == 'yes') {
-//					if (form.isValid()) {
-//						form.setValues({
-//							processtype : 'C'
-//						}); // 처리 TYPE 입력
-//
-//						// console.log(form.getValues());
-//						form.submit({
-//							url : 'module/ARC/data/createorreplacetask.json',
-//							waitMsg : 'Saving Data...', // save processbar
-//							success : function(form, action) {
-//								Ext.Msg.alert('Success', action.result.msg);
-//							},
-//							failure : function(form, action) {
-//								Ext.Msg.alert('Failed', action.result.msg);
-//							}
-//						});
-//					}
-//				}
-//			});
-		}
+		itmeId: 'save'
 	}],
 	buildTableGrid : function() {
 		var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
@@ -102,8 +115,8 @@ Ext.define('ARC.view.test.GridTest', {
 				itemId : 'tableGrid',
 				columns : [ {
 					xtype : 'gridcolumn',
-					dataIndex : 'TABLE_NAME',
-					text : 'TABLE_NAME',
+					dataIndex : 'COLUMN1',
+					text : 'COLUMN1',
 					flex : 1,
 					editor : {
 						xtype : 'textfield',
@@ -112,12 +125,42 @@ Ext.define('ARC.view.test.GridTest', {
 					}
 				}, {
 					xtype : 'gridcolumn',
-					dataIndex : 'COMMENTS',
-					text : 'COMMENTS',
-					flex : 2,
+					dataIndex : 'COLUMN2',
+					text : 'COLUMN2',
+					flex : 1,
 					editor : {
 						xtype : 'textfield',
-						flex : 2,
+						flex : 1,
+						allowBlank : true
+					}
+				}, {
+					xtype : 'gridcolumn',
+					dataIndex : 'COLUMN3',
+					text : 'COLUMN3',
+					flex : 1,
+					editor : {
+						xtype : 'textfield',
+						flex : 1,
+						allowBlank : true
+					}
+				}, {
+					xtype : 'gridcolumn',
+					dataIndex : 'COLUMN4',
+					text : 'COLUMN4',
+					flex : 1,
+					editor : {
+						xtype : 'textfield',
+						flex : 1,
+						allowBlank : true
+					}
+				}, {
+					xtype : 'gridcolumn',
+					dataIndex : 'COLUMN5',
+					text : 'COLUMN5',
+					flex : 1,
+					editor : {
+						xtype : 'textfield',
+						flex : 1,
 						allowBlank : true
 					}
 				} ],
@@ -127,8 +170,12 @@ Ext.define('ARC.view.test.GridTest', {
 					handler : function() {
 						rowEditing.cancelEdit();
 						
-						var r = Ext.create('ARC.store.TableListStore', {
-							active : true
+						var r = Ext.create('ARC.model.GridTestList', {
+							COLUMN1 : 'test',
+							COLUMN2 : 'test',
+							COLUMN3 : 'test',
+							COLUMN4 : 'test',
+							COLUMN5 : 'test'
 						});
 						
 						me.tableListStore.insert(0, r);

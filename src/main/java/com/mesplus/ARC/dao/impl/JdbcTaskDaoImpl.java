@@ -167,4 +167,47 @@ public class JdbcTaskDaoImpl implements TaskDao {
 		
 		return true;
 	}
+	
+	//TEST
+	public List<Map<String, Object>> getGridTestList()
+	{
+		String TableSelectQuery = "SELECT * FROM GRIDTEST";
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		
+		return this.namedParameterJdbcTemplate.queryForList(TableSelectQuery, params);
+	}
+	
+	public Boolean testGridCreateOrReplace(List<Map<String, Object>> records, String processType) throws SQLException{
+		String insertQuery = 
+				" INSERT INTO GRIDTEST ( " +
+				"	COLUMN1, COLUMN2, COLUMN3, COLUMN4, COLUMN5 " +
+				" ) VALUES (:COLUMN1,:COLUMN2,:COLUMN3,:COLUMN4,:COLUMN5)";
+		
+		String deleteQuery = " DELETE FROM GRIDTEST WHERE COLUMN1 = :COLUMN1";
+		
+		String updateQuery = " UPDATE GRIDTEST SET " +
+				" COLUMN1=:COLUMN1,COLUMN2=:COLUMN2,COLUMN3=:COLUMN3,COLUMN4=:COLUMN4,COLUMN5=:COLUMN5" +
+				" WHERE COLUMN1=:COLUMN1";
+		
+		if(processType.equals("C")) //등록
+		{
+			for (Map<String, Object> record : records) {
+				this.namedParameterJdbcTemplate.update(insertQuery, record);
+			}
+		}
+		else if(processType.equals("U")) //수정
+		{
+			for (Map<String, Object> record : records) {
+				this.namedParameterJdbcTemplate.update(updateQuery, record);
+			}
+		}
+		else if(processType.equals("D")) //삭제
+		{
+			for (Map<String, Object> record : records) {
+				this.namedParameterJdbcTemplate.update(deleteQuery, record);
+			}
+		}
+		return true;
+	}
 }

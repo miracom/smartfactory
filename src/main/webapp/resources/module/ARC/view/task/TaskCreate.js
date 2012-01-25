@@ -40,12 +40,10 @@ Ext.define('ARC.view.task.TaskCreate', {
 			Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function showResult(btn) {
 				if (btn == 'yes') {
 					if (form.isValid()) {
-						form.setValues({
-							processtype : 'C'
-						}); // 처리 TYPE 입력
-
-						//console.log(form.getValues());
 						form.submit({
+							params:{
+								processtype:"C"
+							},
 							url : 'module/ARC/data/createorreplacetask.json',
 							waitMsg : 'Saving Data...', // save processbar
 							success : function(form, action) {
@@ -122,9 +120,6 @@ Ext.define('ARC.view.task.TaskCreate', {
 				labelSeparator : '',
 				labelAlign : 'top',
 				name : 'txtdescription'
-			}, {
-				xtype : 'hidden',
-				name : 'processtype'
 			} ]
 		};
 	},
