@@ -14,7 +14,6 @@ Ext.define('ARC.view.task.TaskCreate', {
 		this.leftPanel = this.add(this.buildLeftPanel());
 		this.rightPanel = this.add(this.buildRightPanel());
 
-		
 //		var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});
 //		myMask.show();
 
@@ -36,37 +35,19 @@ Ext.define('ARC.view.task.TaskCreate', {
 		formBind : true, // only enabled once the form is valid
 		handler : function() {
 			var me = this.up('form');
-
-			/* 그리드 데이타는 JSON String으로 변환하여 전송한다.
-			var data = [];
-			newRecords = me.tableListStore.getNewRecords();
-			for(var i=0;i<newRecords.length;i++) {
-			   data.push(newRecords[i].data);
-			}
-			var encodedJson = Ext.encode(data);
-
-			console.log(encodedJson);
-			*/
-			 
-			me.tableListStore.sync();
-			//console.log(me.tableListStore.getUpdatedRecords());
-			
 			var form = me.getForm();
 
 			Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', function showResult(btn) {
 				if (btn == 'yes') {
 					if (form.isValid()) {
-						form.setValues({
-							processtype : 'Y'
-						}); // 처리 TYPE 입력
-
-						// console.log(form.getValues());
 						form.submit({
+							params:{
+								processtype:"C"
+							},
 							url : 'module/ARC/data/createorreplacetask.json',
 							waitMsg : 'Saving Data...', // save processbar
 							success : function(form, action) {
 								Ext.Msg.alert('Success', action.result.msg);
-								me.taskListStore.load(); // list refresh
 							},
 							failure : function(form, action) {
 								Ext.Msg.alert('Failed', action.result.msg);
@@ -139,9 +120,6 @@ Ext.define('ARC.view.task.TaskCreate', {
 				labelSeparator : '',
 				labelAlign : 'top',
 				name : 'txtdescription'
-			}, {
-				xtype : 'hidden',
-				name : 'processtype'
 			} ]
 		};
 	},
@@ -178,13 +156,12 @@ Ext.define('ARC.view.task.TaskCreate', {
 
 		var me = this;
 
-		var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+		/*var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
 			clicksToEdit : 1
 		});
 		
-		var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});
-
-
+		var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});*/
+		
 		return {
 			xtype : 'container',
 			flex : 1,
@@ -203,6 +180,7 @@ Ext.define('ARC.view.task.TaskCreate', {
 					xtype : 'textfield',
 					itemId : 'txtserach',
 					name : 'txtserach',
+					submitValue: false, //submit시 vlaue값을 전송시 플러그
 					fieldLabel : 'Table Name',
 					flex : 1,
 					margins : '0 5 0 0',
@@ -229,7 +207,7 @@ Ext.define('ARC.view.task.TaskCreate', {
 				} ]
 			}, {
 				xtype : 'gridpanel',
-				plugins : [ cellEditing ],
+				//plugins : [ cellEditing ],
 				flex : 1,
 				store : this.tableListStore,
 				cls : 'dockNavigation',

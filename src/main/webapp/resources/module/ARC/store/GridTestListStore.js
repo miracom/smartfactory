@@ -1,24 +1,24 @@
-Ext.define('ARC.store.TableListStore', {
+Ext.define('ARC.store.GridTestListStore', {
 	extend : 'Ext.data.Store',
-
+	
 	autoLoad : false,
 	filterOnLoad: true,
 	
-	model : 'ARC.model.TableList',
+	model : 'ARC.model.GridTestList',
 
 	proxy : {
 		type : 'ajax',
 		api : { // read, sync에 따른 URL 변경
-			read : 'module/ARC/data/tablelist.json',
-			create: 'module/ARC/data/tableupdate.json',
-			update: 'module/ARC/data/tableupdate.json',
-			destroy: 'module/ARC/data/tableupdate.json'
+			read : 'module/ARC/data/gridtestlist.json'
+			//create: 'module/ARC/data/tableupdate.json',
+			//update: 'module/ARC/data/tableupdate.json',
+			//destroy: 'module/ARC/data/tableupdate.json'
 		},
 		actionMethods : { // Post방식으로 변경..
-			read : 'GET',
-			create : 'POST',
-			update : 'POST',
-			destroy : 'POST'
+			read : 'GET'
+			//create : 'POST',
+			//update : 'POST',
+			//destroy : 'POST'
 		},
 		reader : {
 			type : 'json'

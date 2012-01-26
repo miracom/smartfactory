@@ -12,6 +12,8 @@ Ext.define('ARC.view.task.TaskInfo', {
 	initComponent : function() {
 		this.callParent();
 		
+		var self = this;
+		
 		this.basicStore = this.bulidBasicStore();
 		this.masterStore = this.bulidMasterStore();
 		this.slaveStore = this.bulidSlaveStore();
@@ -23,7 +25,36 @@ Ext.define('ARC.view.task.TaskInfo', {
 		
 		//TaskInfoStore Data Change 발생시 onStoreChanged 함수호출
 		this.taskInfoStore.on('datachanged',this.onStoreChanged, this);
+		
+		this.down('[itemId=delete]').on('click', function(){
+			Ext.Ajax.request({
+			    url: 'module/ARC/data/createorreplacetask.json',
+			    method: 'POST',
+			    params:  
+		        { 
+			    	txttask:self.taskId, 
+			    	cbdbname:self.dbName,
+			    	processtype:"D"
+		        },        
+			    success: function(response, opts) {
+			        var obj = Ext.decode(response.responseText);
+			        if(obj.success == true)
+		        	{
+			        	Ext.Msg.alert('Success', obj.msg);
+		        	}
+			        else
+		        	{
+			        	Ext.Msg.alert('Failed', obj.msg);
+		        	}
+			    },
+			    failure: function(response, opts) {
+			        console.log('server-side failure with status code ' + response.status);
+			        Ext.Msg.alert('Failed', 'server-side failure with status code ' + response.status);
+			    }
+			});
+		});
 	},
+	
 	
 	bulidBasicStore : function()
 	{
@@ -48,12 +79,13 @@ Ext.define('ARC.view.task.TaskInfo', {
 
 	buttons : [ {
 		text : 'DELETE',
-		listeners : {
+		itemId : 'delete'
+		/*listeners : {
 			click: function() {
-				//this.up().up()
-	            alert('DELETE');
+				
+				 
 	        }
-		}
+		}*/
 	},{
 		text : 'LIST',
 		listeners : {

@@ -1,4 +1,5 @@
 [
-	{ "id": "001", "name": "TASK"},
+	{ "id": "001", "name": "Archive"},
+	{ "id": "002", "name": "DataGrid"}
 ]
 

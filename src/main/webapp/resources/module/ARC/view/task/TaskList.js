@@ -12,7 +12,7 @@ Ext.define('ARC.view.task.TaskList', {
 		var me = this;
 
 		me.callParent();
-		
+
 		me.store = me.buildStore();
 
 		// ADD Search Field
@@ -22,18 +22,33 @@ Ext.define('ARC.view.task.TaskList', {
 		});
 
 		me.add(me.buildGridPanel());
+	},
+	buttons : [ {
+		text : 'CREATE',
+		listeners : {
+			click : function() {
+				var create = Ext.create('ARC.view.task.TaskCreate', {
+					title : 'Archive Task Create',
+					closable : true
+				});
 
-		me.store.load();
-
+				SmartFactory.addActiveContentView(create);
+			}
+		}
+	} ],
+	listeners: {
+		show : function()
+		{
+			this.store.load();
+		}
 	},
 	buildStore : function() {
 		return Ext.create('ARC.store.TaskListStore');
 	},
-
 	buildGridPanel : function() {
 		return {
 			xtype : 'gridpanel',
-			title : 'Archive Task List',
+			//title : 'Archive Task List',
 			flex : 9,
 			store : this.store,
 			columns : [ {
@@ -44,10 +59,10 @@ Ext.define('ARC.view.task.TaskList', {
 				header : 'Task',
 				dataIndex : 'TASK_ID',
 				flex : 3
-//				renderer : function(val)
-//				{
-//					console.log(val);
-//				}
+			// renderer : function(val)
+			// {
+			// console.log(val);
+			// }
 			}, {
 				header : 'Master',
 				dataIndex : 'MASTER_TABLE',
@@ -72,12 +87,12 @@ Ext.define('ARC.view.task.TaskList', {
 				dataIndex : 'BACKUP_METHOD',
 				align : 'center',
 				flex : 1
-			},{
+			}, {
 				header : 'KeyField',
 				dataIndex : 'KEY_FIELD1',
 				align : 'center',
 				flex : 1,
-				hidden: true
+				hidden : true
 			}, {
 				xtype : 'actioncolumn',
 				header : 'Detail',
@@ -88,7 +103,7 @@ Ext.define('ARC.view.task.TaskList', {
 					tooltip : 'Detail',
 					handler : function(grid, rowIndex, colIndex) {
 						var r = grid.getStore().getAt(rowIndex);
-						
+
 						var taskTab = Ext.create('ARC.view.task.TaskTab', {
 							title : r.get('TASK_ID'),
 							dbName : r.get('DB_NAME'),
@@ -113,13 +128,12 @@ Ext.define('ARC.view.task.TaskList', {
 						var rec = grid.getStore().getAt(rowIndex);
 						alert(rec.get('TASK_ID'));
 					},
-					getClass: function(v, meta, rec) {
-						if(rec.get('KEY_FIELD1') == null || rec.get('KEY_FIELD1') == '')
-						{
-							return 'x-hide-display'; //hide column
+					getClass : function(v, meta, rec) {
+						if (rec.get('KEY_FIELD1') == null || rec.get('KEY_FIELD1') == '') {
+							return 'x-hide-display'; // hide column
 						}
 					}
-				}]
+				} ]
 			}, {
 				xtype : 'actioncolumn',
 				header : 'D-Archive',
@@ -132,34 +146,14 @@ Ext.define('ARC.view.task.TaskList', {
 						var rec = grid.getStore().getAt(rowIndex);
 						alert(rec.get('taskId'));
 					},
-					getClass: function(v, meta, rec) {
-						if(rec.get('KEY_FIELD1') == null || rec.get('KEY_FIELD1') == '')
-						{
-							return 'x-hide-display'; //hide column
-							//return 'x-grid-icon'; //show column
+					getClass : function(v, meta, rec) {
+						if (rec.get('KEY_FIELD1') == null || rec.get('KEY_FIELD1') == '') {
+							return 'x-hide-display'; // hide column
+							// return 'x-grid-icon'; //show column
 						}
 					}
 				} ]
-			} ],
-
-			buttons : [ {
-				text : 'CREATE',
-				listeners : {
-					click : function() {
-						
-						var me = this.up('panel');
-						
-						var create = Ext.create('ARC.view.task.TaskCreate', {
-							title : 'Archive Task Create',
-							closable : true,
-							taskListStore : me.store
-						});
-
-						SmartFactory.addActiveContentView(create);
-					}
-				}
 			} ]
-
 		// bbar : Ext.create('Ext.PagingToolbar', {
 		// store : this.store,
 		// displayInfo : true,

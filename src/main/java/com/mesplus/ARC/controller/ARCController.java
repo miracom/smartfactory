@@ -1,5 +1,6 @@
 package com.mesplus.ARC.controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -10,9 +11,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -80,11 +84,7 @@ public class ARCController {
 		      
 		      	params.put(key, value);
 			}
-			
-//			ObjectMapper om = new ObjectMapper();
-//			List<Map<String, Object>> myObjects = om.readValue(params.get("processtype"), new TypeReference<List<Map<String, Object>>>() {});
-//			System.out.println(myObjects.get(0).get("TABLE_NAME"));
-			
+						
 			if(params.get("processtype") == null || params.get("processtype") == "")
 			{
 				resultMap.put("success", false);
@@ -96,13 +96,14 @@ public class ARCController {
 				resultMap.put("success", true);
 				resultMap.put("msg", "Sucess Create");
 			}
-			else if(params.get("processtype").equals("U")) //수정
-			{
-				resultMap.put("success", true);
-				resultMap.put("msg", "Sucess Update");
-			}
+//			else if(params.get("processtype").equals("U")) //수정
+//			{
+//				resultMap.put("success", true);
+//				resultMap.put("msg", "Sucess Update");
+//			}
 			else if(params.get("processtype").equals("D")) //삭제
 			{
+				taskDao.createOrReplaceTask(params);
 				resultMap.put("success", true);
 				resultMap.put("msg", "Sucess Delete");
 			}
@@ -139,32 +140,119 @@ public class ARCController {
 	}
 	
 	//http://localhost:8080/smartfactory/module/ARC/data/tableList.json
-	@RequestMapping(value = "module/ARC/data/tablelist.json", method = RequestMethod.POST)
+	@RequestMapping(value = "module/ARC/data/tablelist.json", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Map<String,Object>> tableList(HttpServletRequest request, HttpServletResponse response) {
-		Enumeration<String> e = request.getParameterNames();
+		//String owner = request.getParameter("owner");
 		
-		HashMap<String, String> params = new HashMap<String, String>();
-		while(e.hasMoreElements()) {
-			String key = (String) e.nextElement();
-	      	String value = request.getParameter(key);
-	      
-	      	System.out.println(String.format("key = %s value = %s", key,value));
-	      	
-	      	params.put(key, value);
-		}
-
+		/*HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("data", originalDao.getTableList("MESMGR"));
+		return resultMap;*/
+		
 		return originalDao.getTableList("MESMGR");
 	}
 	
+	
+	
 	//http://localhost:8080/smartfactory/module/ARC/data/tableList.json
-	@RequestMapping(value = "module/ARC/data/tableupdate.json", method = RequestMethod.POST)
+	@RequestMapping(value = "module/ARC/data/gridtestlist.json", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Map<String,Object>> gridTestList(HttpServletRequest request, HttpServletResponse response) {
+
+		return taskDao.getGridTestList();
+	}
+	
+	@RequestMapping(value = "module/ARC/data/createorreplacegrid.json", method = RequestMethod.POST)
+	public @ResponseBody
+	Map<String,Object> gridCreateOrReplace(HttpServletRequest request, HttpServletResponse response) {
+		
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		try {
+			HashMap<String, String> params = new HashMap<String, String>();
+			Enumeration<String> e = request.getParameterNames();
+			while(e.hasMoreElements()) {
+				String key = (String) e.nextElement();
+		      	String value = request.getParameter(key);
+		      
+		      	params.put(key, value);
+			}
+			
+			ObjectMapper om = new ObjectMapper();	
+			List<Map<String, Object>> removeRecords = om.readValue(params.get("removerecords"), new TypeReference<List<Map<String, Object>>>() {});
+			List<Map<String, Object>> newRecords = om.readValue(params.get("newrecords"), new TypeReference<List<Map<String, Object>>>() {});
+			List<Map<String, Object>> updateRecords = om.readValue(params.get("updaterecords"), new TypeReference<List<Map<String, Object>>>() {});	
+						
+			//작업순서: delete -> update -> insert
+			if(removeRecords.size() > 0)
+			{
+				taskDao.testGridCreateOrReplace(removeRecords,"D");
+			}
+			
+			if(newRecords.size() > 0)
+			{
+				taskDao.testGridCreateOrReplace(newRecords,"C");
+			}
+			
+			if(updateRecords.size() > 0)
+			{
+				taskDao.testGridCreateOrReplace(updateRecords,"U");
+			}
+			
+			resultMap.put("success", true);
+			resultMap.put("msg", "Sucess");
+
+		} catch (JsonParseException e1) {
+			resultMap.put("success", false);
+			resultMap.put("msg", "JsonParseException : " + e1.toString());
+		} catch (JsonMappingException e1) {
+			resultMap.put("success", false);
+			resultMap.put("msg", "JsonMappingException : " + e1.toString());
+		} catch (IOException e1) {
+			resultMap.put("success", false);
+			resultMap.put("msg", "IOException : " + e1.toString());
+		} catch (SQLException e1){
+			resultMap.put("success", false);
+			resultMap.put("msg", "SQLException : " + e1.toString());
+		}
+		
+		return resultMap;
+	}
+	
+	
+	
+	
+	/*@RequestMapping(value = "module/ARC/data/tableupdate.json", method = RequestMethod.POST)
+	public @ResponseBody
+	void tableUpdate(HttpServletRequest request, HttpServletResponse response) {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		
+		resultMap.put("success", false);
+		resultMap.put("msg", "TEST");
+		
+		return null;
+	}*/
+	
+	/*@RequestMapping(value = "module/ARC/data/tableupdate.json", method = RequestMethod.POST)
 	public @ResponseBody
 	List<Map<String,Object>> tableUpdate(@RequestBody List<Map<String, Object>> request, HttpServletResponse response) {
 		
-		System.out.print("TEST");
+		for (Map<String, Object> map : request) {
+			Iterator<String> ii = map.keySet().iterator();
+		        
+	        StringBuffer result = new StringBuffer();
+	        while( ii.hasNext() )
+	        {
+	            String key = (String)ii.next();
+	            result.append( " " );
+	            result.append( key );
+	            result.append( " - " );
+	            result.append( map.get(key) );
+	            result.append( "\n" );
+	        }
+	        System.out.println( result );
+		}
 		
-		
-		return null;
-	}
+		return request;
+	}*/
+	
 }

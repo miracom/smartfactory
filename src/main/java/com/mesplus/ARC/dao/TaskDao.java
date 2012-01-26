@@ -22,4 +22,9 @@ public interface TaskDao {
 	
 	//Insert Or Update Or Delete
 	public Boolean createOrReplaceTask(HashMap<String, String> params) throws SQLException;
+	
+	
+	//Test
+	public List<Map<String, Object>> getGridTestList();
+	public Boolean testGridCreateOrReplace(List<Map<String, Object>> records, String processType) throws SQLException;
 }

@@ -11,9 +11,7 @@ Ext.define('ARC.view.task.TaskTab', {
 		});
 		
 		this.taskInfoStore.load();
-		
-		//TODO : columnList Store 만들기 작업 ㄱㄱ
-		
+
 		//this.taskInfoStore.on('load',this.onStoreLoad, this);
 		
 		this.infoTab = this.add(this.buildTabInfo());
@@ -35,7 +33,9 @@ Ext.define('ARC.view.task.TaskTab', {
 	buildTabInfo : function() {
 		return Ext.create('ARC.view.task.TaskInfo', {
 			title : 'Info',
-			taskInfoStore : this.taskInfoStore
+			taskInfoStore : this.taskInfoStore,
+			dbName : this.dbName,
+			taskId : this.taskId
 		});
 	},
 

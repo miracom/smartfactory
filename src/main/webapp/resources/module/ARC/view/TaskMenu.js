@@ -7,10 +7,23 @@ Ext.define('ARC.view.TaskMenu', {
 			view.store.load();
 		},
 		itemclick: function(view, record, item, index, e, opt) {
-			var list = Ext.create('ARC.view.task.TaskList', {
-				title: 'Archive Task List',
-				closable: true
-			});
+			var list = null;
+			if(record.data['name'] == 'DataGrid')
+			{
+				//grid
+				list = Ext.create('ARC.view.test.GridTest', {
+					title: 'Grid Test',
+					closable: true
+				});
+			}
+			else
+			{
+				list = Ext.create('ARC.view.task.TaskList', {
+					title: 'Archive Task List',
+					closable: true
+				});
+			}
+			
 			SmartFactory.addContentView(list);
 		}
 	},
