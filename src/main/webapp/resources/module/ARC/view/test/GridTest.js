@@ -110,7 +110,6 @@ Ext.define('ARC.view.test.GridTest', {
 				selModel : sm,
 				flex : 1,
 				store : this.tableListStore,
-				cls : 'dockNavigation',
 				title : 'Key field',
 				itemId : 'tableGrid',
 				columns : [ {
@@ -167,6 +166,7 @@ Ext.define('ARC.view.test.GridTest', {
 				viewConfig: { emptyText : 'There are no items to show in this view.'},
 				tbar : [ {
 					text : 'Add',
+					iconCls : 'btnDataGridAdd',
 					handler : function() {
 						rowEditing.cancelEdit();
 						
@@ -184,6 +184,7 @@ Ext.define('ARC.view.test.GridTest', {
 				}, {
 					itemId : 'remove',
 					text : 'Remove',
+					iconCls : 'btnDataGridDel',
 					handler : function() {
 	
 						var seelctRecords = me.sub('tableGrid').getSelectionModel();

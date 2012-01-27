@@ -7,8 +7,7 @@
 	<head>
 		<title>Smart Factory</title>
 		<link rel="stylesheet" href="js/ext-js/resources/css/ext-smartfactory.css"></link>
-		<link rel="stylesheet" href="css/menu.css"></link>
-		<link rel="stylesheet" href="css/fileuploader.css"></link>	
+		<link rel="stylesheet" href="css/smartfactory.css"></link>
 		<link rel="stylesheet" href="js/ux/statusbar/css/statusbar.css"></link>
 		<link rel="stylesheet" href="js/ux/tab/css/TabScrollerMenu.css"></link>
 		

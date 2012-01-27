@@ -30,8 +30,8 @@ Ext.define('ARC.view.TaskMenu', {
 	
 	autoScroll: true,
 	
-	cls: 'report-list',
-	itemSelector: '.report-list-item',
-	overItemCls: 'report-list-item-hover',
-	tpl:'<tpl for="."><div class="report-list-item">{id} - {name}</div></tpl>'		
+	cls: 'archive-list',
+	itemSelector: '.archive-list-item',
+	overItemCls: 'archive-list-item-hover',
+	tpl:'<tpl for="."><div class="archive-list-item">{id} - {name}</div></tpl>'		
 });

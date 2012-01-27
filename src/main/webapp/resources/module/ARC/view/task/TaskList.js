@@ -5,7 +5,6 @@ Ext.define('ARC.view.task.TaskList', {
 		align : 'stretch',
 		type : 'vbox'
 	},
-	bodyPadding : 10,
 	autoScroll : true,
 
 	initComponent : function() {
@@ -99,7 +98,7 @@ Ext.define('ARC.view.task.TaskList', {
 				align : 'center',
 				flex : 1,
 				items : [ {
-					icon : 'image/iconMenu16.png',
+					icon : 'image/iconDetail16.png',
 					tooltip : 'Detail',
 					handler : function(grid, rowIndex, colIndex) {
 						var r = grid.getStore().getAt(rowIndex);
@@ -122,7 +121,7 @@ Ext.define('ARC.view.task.TaskList', {
 				align : 'center',
 				flex : 1,
 				items : [ {
-					icon : 'image/iconMenu16.png',
+					icon : 'image/iconRarchive16.png',
 					tooltip : 'R-Archive',
 					handler : function(grid, rowIndex, colIndex) {
 						var rec = grid.getStore().getAt(rowIndex);
@@ -140,7 +139,7 @@ Ext.define('ARC.view.task.TaskList', {
 				align : 'center',
 				flex : 1,
 				items : [ {
-					icon : 'image/iconMenu16.png',
+					icon : 'image/iconDarchive16.png',
 					tooltip : 'D-Archive',
 					handler : function(grid, rowIndex, colIndex) {
 						var rec = grid.getStore().getAt(rowIndex);

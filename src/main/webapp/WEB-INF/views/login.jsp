@@ -3,7 +3,7 @@
 <html lang='en'>
 <head>
 	<title>Smart Factory</title>
-	<link rel="stylesheet" href="css/menu.css"></link>
+	<link rel="stylesheet" href="css/smartfactory.css"></link>
     <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 	<script>
 	$(function() {

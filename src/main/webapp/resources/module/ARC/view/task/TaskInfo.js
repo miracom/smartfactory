@@ -105,7 +105,6 @@ Ext.define('ARC.view.task.TaskInfo', {
 	buildBasicGrid : function() {
 		return {
 			xtype : 'gridpanel',
-			cls : 'dockNavigation',
 			title : 'Basic Task Option',
 			margins : '0 0 5 0',
 			store : this.basicStore,
@@ -147,7 +146,7 @@ Ext.define('ARC.view.task.TaskInfo', {
 				align : 'center',
 				flex : 1,
 				items : [ {
-					icon : 'image/iconMenu16.png',
+					icon : 'image/iconEdit16.png',
 					tooltip : 'EDIT',
 					handler : function(grid, rowIndex, colIndex) {
 						var rec = grid.getStore().getAt(rowIndex);
@@ -161,7 +160,6 @@ Ext.define('ARC.view.task.TaskInfo', {
 	buildMasterGrid : function() {
 		return {
 			xtype : 'gridpanel',
-			cls : 'dockNavigation',
 			title : 'Master Task Option',
 			flex : 2,
 			store : this.masterStore,
@@ -200,7 +198,7 @@ Ext.define('ARC.view.task.TaskInfo', {
 				align : 'center',
 				flex : 1,
 				items : [ {
-					icon : 'image/iconMenu16.png',
+					icon : 'image/iconEdit16.png',
 					tooltip : 'EDIT',
 					handler : function(grid, rowIndex, colIndex) {
 						var rec = grid.getStore().getAt(rowIndex);
@@ -213,9 +211,10 @@ Ext.define('ARC.view.task.TaskInfo', {
 
 	buildConditionField : function() {
 		return {
-			xtype:'fieldset',
+			xtype:'panel',
 			title: 'additional conditions',
             layout: 'anchor',
+            cls : 'noBorderPanel',
             defaults: {
                 anchor: '100%' 
             },
@@ -228,7 +227,6 @@ Ext.define('ARC.view.task.TaskInfo', {
 	buildSlaveGrid : function() {
 		return {
 			xtype : 'gridpanel',
-			cls : 'dockNavigation',
 			title : 'Slave Task Option',
 			flex : 6,
 			store : this.slaveStore,
@@ -263,7 +261,7 @@ Ext.define('ARC.view.task.TaskInfo', {
 				align : 'center',
 				flex : 1,
 				items : [ {
-					icon : 'image/iconMenu16.png',
+					icon : 'image/iconEdit16.png',
 					tooltip : 'EDIT',
 					handler : function(grid, rowIndex, colIndex) {
 						var rec = grid.getStore().getAt(rowIndex);

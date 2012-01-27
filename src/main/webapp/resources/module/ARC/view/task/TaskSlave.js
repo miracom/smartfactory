@@ -46,7 +46,8 @@ Ext.define('ARC.view.task.TaskSlave', {
 		return {
 			xtype : 'panel', //container
 			flex : 1,
-			margins : '0 20 0 0',
+			cls : 'borderGray',
+			margins : '0 10 0 0',
 			items : [ {
 				xtype : 'dataview',
 				store : this.slaveStore,
@@ -97,8 +98,9 @@ Ext.define('ARC.view.task.TaskSlave', {
 
 	buildTermField : function() {
 		return {
-			xtype : 'fieldset',
-			title : 'Term Field',
+			xtype : 'fieldcontainer',
+			fieldLabel : 'Term Field',
+			labelAlign : 'top',
 			items : [ {
 				xtype : 'combobox',
 				anchor : '50%',
@@ -118,18 +120,12 @@ Ext.define('ARC.view.task.TaskSlave', {
 
 	buildConditionField : function() {
 		return {
-			xtype : 'fieldset',
-			title : 'additional Condition Option 2',
-			layout : 'anchor',
+			xtype : 'textareafield',
+			fieldLabel : 'additional Condition Option 2 - Query',
+			labelAlign : 'top',
 			defaults : {
 				anchor : '100%'
-			},
-			items : [ {
-				fieldLabel : '[Query]',
-				labelSeparator : '',
-				labelAlign : 'top',
-				xtype : 'textareafield'
-			} ]
+			}
 		};
 	},
 	buildKeyFieldPanel : function() {
@@ -175,7 +171,7 @@ Ext.define('ARC.view.task.TaskSlave', {
 				} ]
 			}, {
 				xtype : 'container',
-				width : 100,
+				width : 40,
 				layout : {
 					align : 'center',
 					pack : 'center',
