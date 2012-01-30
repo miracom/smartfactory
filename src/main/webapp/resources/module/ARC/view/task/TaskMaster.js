@@ -112,7 +112,6 @@ Ext.define('ARC.view.task.TaskMaster', {
 			selModel : sm,
 			store : me.mConditionStore,
 			plugins : [ rowEditing ],
-			frame : true,
 			columnLines : true,
 			title : 'additional Condition Option 1',
 			columns : [

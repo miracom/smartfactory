@@ -187,7 +187,7 @@
 .x-tree-lines .x-grid-tree-node-expanded .x-tree-elbow-plus{background:url('../image/elbow-minus.gif') no-repeat;}
 
 /* form */
-.x-form-trigger{background:url('../image/trigger.gif') no-repeat;margin-left:-1px;width:24px}
+.x-form-trigger,#content-body .x-form-trigger-wrap-focus .x-form-trigger{background:url('../image/trigger.gif') no-repeat;margin-left:-1px;width:24px}
 .x-form-trigger-over{background:url('../image/trigger.gif') -24px 0 no-repeat}
 .x-form-date-trigger{background:url('../image/date-trigger.gif') no-repeat;margin-left:-1px;width:24px}
 .x-form-date-trigger-over,.x-form-date-trigger-click,.x-form-date-trigger-pressed{background:url('../image/date-trigger.gif') -24px 0 no-repeat;margin-left:-1px;width:24px}

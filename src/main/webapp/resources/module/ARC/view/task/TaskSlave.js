@@ -180,7 +180,7 @@ Ext.define('ARC.view.task.TaskSlave', {
 				items : [ {
 					xtype : 'button',
 					margins : '0 0 5 0',
-					text : '<<',
+					text : '<',
 					handler : function() {
 						// var sm =
 						// this.up().up().down('#columnList').getSelectionModel();
@@ -202,7 +202,7 @@ Ext.define('ARC.view.task.TaskSlave', {
 					}
 				}, {
 					xtype : 'button',
-					text : '>>',
+					text : '>',
 					handler : function() {
 
 					}
