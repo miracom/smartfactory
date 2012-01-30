@@ -1,7 +1,9 @@
-Ext.define('WIP.store.MaterialStore', {
+Ext.define('WIP.store.MaterialListStore', {
 	extend : 'Ext.data.Store',
 
 	autoLoad : false,
+	
+	groupField: 'MAT_ID',
 	
 	fields : [ {
 		name : 'MAT_ID',
@@ -18,32 +20,12 @@ Ext.define('WIP.store.MaterialStore', {
 	}, {
 		name : 'DEACTIVE_FLAG',
 		type : 'string'
-	}, {
-		name : 'MAT_GRP_1'
-	}, {
-		name : 'MAT_GRP_2'
-	}, {
-		name : 'MAT_GRP_3'
-	}, {
-		name : 'MAT_GRP_4'
-	}, {
-		name : 'MAT_GRP_5'
-	}, {
-		name : 'MAT_GRP_6'
-	}, {
-		name : 'MAT_GRP_7'
-	}, {
-		name : 'MAT_GRP_8'
-	}, {
-		name : 'MAT_GRP_9'
-	}, {
-		name : 'MAT_GRP_10'
 	} ],
 
 	proxy : {
 		type : 'ajax',
 		method : 'GET',
-		url : 'module/WIP/data/view_material.json',
+		url : 'module/WIP/data/materials.json',
 		reader : {
 			type : 'json'
 		}

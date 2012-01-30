@@ -9,10 +9,10 @@
 	"FORMAT": "A",
 	"TABLE_NAME": "MATERIAL_GRP_2"
 },{
-	"PROMPT": "",
-	"OPT": "",
-	"FORMAT": "",
-	"TABLE_NAME": ""
+	"PROMPT": "AA",
+	"OPT": "N",
+	"FORMAT": "A",
+	"TABLE_NAME": "OPER_GRP_1"
 },{
 	"PROMPT": "",
 	"OPT": "",

@@ -3,9 +3,15 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 
 	supplement : 'WIP.view.common.MaterialSelector',
 
+	groupItemName : 'GRP_MATERIAL',
+	
+	groupFieldNamePrefix : 'MAT_GRP_',
+		
 	initComponent : function() {
-		this.callParent();
+		this.store = Ext.create('WIP.store.MaterialStore');
 
+		this.callParent();
+	
 		var self = this;
 
 		this.on('afterrender', function() {
@@ -18,6 +24,8 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 				self.sub('description').setValue(record.get('MAT_DESC'));
 			});
 		});
+		
+		this.store.load();
 	},
 
 	buildBasicForm : function(main) {

@@ -1,0 +1,17 @@
+{
+	"MAT_ID" : "M04D2001",
+	"MAT_VER" : 1,
+	"MAT_DESC" : "4G DDR2 #001",
+	"DELETE_FLAG" : "N",
+	"DEACTIVE_FLAG" : "N",
+	"MAT_GRP_1" : "AAA1",
+	"MAT_GRP_2" : "AAA2",
+	"MAT_GRP_3" : "AAA3",
+	"MAT_GRP_4" : "AAA4",
+	"MAT_GRP_5" : "AAA5",
+	"MAT_GRP_6" : "AAA6",
+	"MAT_GRP_7" : "AAA7",
+	"MAT_GRP_8" : "AAA8",
+	"MAT_GRP_9" : "AAA9",
+	"MAT_GRP_10" : "AAA10"
+}

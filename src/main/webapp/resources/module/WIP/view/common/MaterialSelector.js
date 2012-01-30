@@ -257,7 +257,7 @@ Ext.define('WIP.view.common.MaterialSelector', {
 		exportTo : 'Materials',
 		flex : 1,
 		autoScroll : true,
-		store : 'WIP.store.MaterialStore',
+		store : 'WIP.store.MaterialListStore',
 		features : Ext.create('Ext.grid.feature.Grouping', {
 			groupHeaderTpl : '{name} ({rows.length} Version{[values.rows.length > 1 ? "s" : ""]})'
 		}),

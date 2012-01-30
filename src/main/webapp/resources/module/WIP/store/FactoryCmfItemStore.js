@@ -3,6 +3,9 @@ Ext.define('WIP.store.FactoryCmfItemStore', {
 	autoLoad : true,
 	
 	fields : [ {
+		name : 'FIELD_NAME',
+		type : 'string'
+	}, {
 		name : 'PROMPT',
 		type : 'string'
 	}, {
@@ -14,7 +17,9 @@ Ext.define('WIP.store.FactoryCmfItemStore', {
 	}, {
 		name : 'TABLE_NAME',
 		type : 'string'
-	} ],
+	} , {
+		name : 'VALUE'
+	}],
 
 	proxy : {
 		type : 'ajax',

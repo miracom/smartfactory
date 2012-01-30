@@ -52,7 +52,7 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 		* 
 		*/
 	},
-	
+
 	buildBasicForm : function() {
 		return null;
 	},
@@ -69,8 +69,12 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 	
 	buildGroupSetupTab : function(main) {
 		return {
-			title : 'Group Setup'
+			xtype : 'cmn_groupsetup',
+			itemName : main.groupItemName,
+			fieldNamePrefix : main.groupFieldNamePrefix,
+			valueStore : main.store
 		};
+
 	},
 	
 	buildAttributeSetupTab : function(main) {
