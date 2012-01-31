@@ -97,20 +97,20 @@ Ext.define('ARC.view.task.TaskBasic', {
 
 	buildPeriodField : function() {
 		return {
-			xtype : 'fieldset',
-			title : 'Target Period',
+			xtype : 'fieldcontainer',
 			layout : {
 				align : 'stretchmax',
 				type : 'hbox'
 			},
 			items : [ {
 				xtype : 'textfield',
+				fieldLabel : 'Target Period',
+				labelAlign : 'top',
 				itemId : 'termfield',
 				value : 0
 			}, {
 				xtype : 'label',
 				text : 'Term',
-				margin : '2, 10, 0, 5'
 			}, {
 				xtype : 'textfield',
 				itemId : 'dayfield',
@@ -118,20 +118,19 @@ Ext.define('ARC.view.task.TaskBasic', {
 			}, {
 				xtype : 'label',
 				text : 'Day',
-				margin : '2, 10, 0, 5'
 			}, {
 				xtype : 'label',
 				width : 200,
 				text : '20100101 ~ 20111212',
-				margin : '2, 0, 0, 0'
 			} ]
 		};
 	},
 
 	buildBackupMethodField : function() {
 		return {
-			xtype : 'fieldset',
-			title : 'Backup Method',
+			xtype : 'radiogroup',
+			fieldLabel : 'Backup Method',
+			labelAlign : 'top',
 			layout : {
 				align : 'stretchmax',
 				type : 'hbox'
@@ -140,28 +139,24 @@ Ext.define('ARC.view.task.TaskBasic', {
 				xtype : 'radiofield',
 				itemId : 'raNone',
 				boxLabel : 'NONE',
-				margin : '0, 10, 5, 0',
 				inputValue: 'NONE',
 				name : 'backupmethod'
 			}, {
 				xtype : 'radiofield',
 				itemId : 'raDb',
 				boxLabel : 'DB',
-				margin : '0, 10, 5, 0',
 				inputValue: 'DB',
 				name : 'backupmethod'
 			}, {
 				xtype : 'radiofield',
 				itemId : 'raFile',
 				boxLabel : 'FILE',
-				margin : '0, 10, 5, 0',
 				inputValue: 'FILE',
 				name : 'backupmethod'
 			}, {
 				xtype : 'radiofield',
 				itemId : 'raDbFile',
 				boxLabel : 'DB + FILE',
-				margin : '0, 10, 5, 0',
 				inputValue: 'DB+FILE',
 				name : 'backupmethod'
 			} ]
@@ -170,8 +165,9 @@ Ext.define('ARC.view.task.TaskBasic', {
 
 	buildLogField : function() {
 		return {
-			xtype : 'fieldset',
-			title : 'Log Type',
+			xtype : 'radiogroup',
+			fieldLabel : 'Log Type',
+			labelAlign : 'top',
 			layout : {
 				align : 'stretchmax',
 				type : 'hbox'
@@ -180,14 +176,12 @@ Ext.define('ARC.view.task.TaskBasic', {
 				xtype : 'radiofield',
 				itemId: 'raSample',
 				boxLabel : 'Sample',
-				margin : '0, 10, 5, 0',
 				inputValue: 'Sample',
 				name : 'logtype'
 			}, {
 				xtype : 'radiofield',
 				itemId: 'raDetail',
 				boxLabel : 'Detail',
-				margin : '0, 10, 5, 0',
 				inputValue: 'Detail',
 				name : 'logtype'
 			}]
@@ -196,8 +190,9 @@ Ext.define('ARC.view.task.TaskBasic', {
 
 	buildOverWriteField : function() {
 		return {
-			xtype : 'fieldset',
-			title : 'Overwrite Flag',
+			xtype : 'radiogroup',
+			fieldLabel : 'Overwrite Flag',
+			labelAlign : 'top',
 			layout : {
 				align : 'stretchmax',
 				type : 'hbox'
@@ -206,14 +201,12 @@ Ext.define('ARC.view.task.TaskBasic', {
 				xtype : 'radiofield',
 				itemId: 'raYes',
 				boxLabel : 'YES',
-				margin : '0, 10, 5, 0',
 				inputValue: 'YES',
 				name : 'overwrite'
 			}, {
 				xtype : 'radiofield',
 				itemId: 'raNo',
 				boxLabel : 'NO',
-				margin : '0, 10, 5, 0',
 				inputValue: 'NO',
 				name : 'overwrite'
 			}]
@@ -222,8 +215,9 @@ Ext.define('ARC.view.task.TaskBasic', {
 
 	buildMdeletionField : function() {
 		return {
-			xtype : 'fieldset',
-			title : 'Master Deletion',
+			xtype : 'radiogroup',
+			fieldLabel : 'Master Deletion',
+			labelAlign : 'top',
 			layout : {
 				align : 'stretchmax',
 				type : 'hbox'
@@ -232,14 +226,12 @@ Ext.define('ARC.view.task.TaskBasic', {
 				xtype : 'radiofield',
 				itemId: 'raYes',
 				boxLabel : 'YES',
-				margin : '0, 10, 5, 0',
 				inputValue: 'YES',
 				name : 'masterdeletion'
 			}, {
 				xtype : 'radiofield',
 				itemId: 'raNo',
 				boxLabel : 'NO',
-				margin : '0, 10, 5, 0',
 				inputValue: 'NO',
 				name : 'masterdeletion'
 			}]
@@ -248,8 +240,9 @@ Ext.define('ARC.view.task.TaskBasic', {
 
 	buildSdeltionField : function() {
 		return {
-			xtype : 'fieldset',
-			title : 'Slave Deletion',
+			xtype : 'radiogroup',
+			fieldLabel : 'Slave Deletion',
+			labelAlign : 'top',
 			layout : {
 				align : 'stretchmax',
 				type : 'hbox'
@@ -258,14 +251,12 @@ Ext.define('ARC.view.task.TaskBasic', {
 				xtype : 'radiofield',
 				itemId: 'raYes',
 				boxLabel : 'YES',
-				margin : '0, 10, 5, 0',
 				inputValue: 'YES',
 				name : 'slavedeletion'
 			}, {
 				xtype : 'radiofield',
 				itemId: 'raNo',
 				boxLabel : 'NO',
-				margin : '0, 10, 5, 0',
 				inputValue: 'NO',
 				name : 'slavedeletion'
 			}]

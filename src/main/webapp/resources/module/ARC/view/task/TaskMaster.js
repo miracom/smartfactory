@@ -112,7 +112,6 @@ Ext.define('ARC.view.task.TaskMaster', {
 			selModel : sm,
 			store : me.mConditionStore,
 			plugins : [ rowEditing ],
-			frame : true,
 			columnLines : true,
 			title : 'additional Condition Option 1',
 			columns : [
@@ -163,6 +162,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 					} ],
 			tbar : [ {
 				text : 'Add',
+				iconCls : 'btnDataGridAdd',
 				handler : function() {
 //					rowEditing.cancelEdit();
 //
@@ -182,6 +182,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 			}, {
 				itemId : 'remove',
 				text : 'Remove',
+				iconCls : 'btnDataGridDel',
 				handler : function() {
 //					var sm = this.up().up().getSelectionModel();
 //					
@@ -254,7 +255,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 				} ]
 			}, {
 				xtype : 'container',
-				width : 100,
+				width : 40,
 				layout : {
 					align : 'center',
 					pack : 'center',
@@ -263,7 +264,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 				items : [ {
 					xtype : 'button',
 					margins : '0 0 5 0',
-					text : '<<',
+					text : '>',
 					handler: function() {
 //						var sm = this.up().up().down('#columnList').getSelectionModel();
 //						
@@ -284,7 +285,7 @@ Ext.define('ARC.view.task.TaskMaster', {
 				    }
 				}, {
 					xtype : 'button',
-					text : '>>',
+					text : '<',
 					handler: function() {
 				        
 				    }
@@ -293,7 +294,6 @@ Ext.define('ARC.view.task.TaskMaster', {
 				xtype : 'gridpanel',
 				store : this.columnStore,
 				itemId : 'columnList',
-				cls : 'dockNavigation',
 				title : 'Column List',
 				flex : 2,
 				selModel : sm,

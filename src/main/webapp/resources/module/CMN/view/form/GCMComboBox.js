@@ -44,6 +44,7 @@ Ext.define('CMN.view.form.GCMComboBox', {
 
 	buildStore : function(config) {
 		//TODO proxy configs 변경
+		//TODO MBI 모듈 디펜던시를 제거해야 합니다.
 		return Ext.create('Ext.data.Store',{
 			autoLoad : true,
 			fields : [config.displayField ,config.valueField],

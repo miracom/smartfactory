@@ -292,8 +292,7 @@ Ext.define('ARC.view.test.GridTest', {
 		} ],
 		viewConfig : {
 			emptyText : 'There are no items to show in this view.',
-			getRowClass : function(record, index) { // insert, update, delete에
-				// 따른 row 글자변환
+			getRowClass : function(record, index) { // insert, update, delete 상태 변경에 따른 Row font 변환
 				var icheck = record.get('icheck');
 				var dcheck = record.get('dcheck');
 				var ucheck = record.get('ucheck');

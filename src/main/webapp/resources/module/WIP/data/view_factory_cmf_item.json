@@ -1,0 +1,52 @@
+[{
+	"PROMPT": "PLANT",
+	"OPT": "N",
+	"FORMAT": "A",
+	"TABLE_NAME": "OPER_GRP_1"
+},{
+	"PROMPT": "자재그룹",
+	"OPT": "N",
+	"FORMAT": "A",
+	"TABLE_NAME": "MATERIAL_GRP_2"
+},{
+	"PROMPT": "AA",
+	"OPT": "N",
+	"FORMAT": "A",
+	"TABLE_NAME": "OPER_GRP_1"
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+	
+}]	
