@@ -582,3 +582,7 @@ table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
 .appTool .icon_SVM1004{background:url('../image/menuIcon/2_14_4_Service_User_Routine_Setup_32.png') no-repeat;}
 .appTool .icon_WFM1000{background:url('../image/menuIcon/2_15_1_WIP_Modeler_32.png') no-repeat;}
 .appTool .icon_WFM2000{background:url('../image/menuIcon/2_15_2_RAS_Modeler_32.png') no-repeat;}
+
+.delete-row div{ font-weight:bold; color:#FF4040 !important; } 
+.update-row div{ font-weight:bold; color:#228B22 !important; } 
+.insert-row div{ font-weight:bold; color:#00008B !important; }
