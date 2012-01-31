@@ -1,6 +1,13 @@
 Ext.require('Ext.ux.grid.CheckColumn');
 Ext.require('Ext.ux.grid.CheckColumn2');
 
+
+/* TODO Grid Test 추가 개발목록
+ * 1 : checkcolumn의 display관련부분 정리(sort, group, resize)
+ * 2 : keyfiled가 하나만 가능한데 복수도 가능하도록 변경
+ * 3 : checkcolumn이 roweditor때 화면이 깨지는 부분수정
+ */
+
 Ext.define('ARC.view.test.GridTest', {
 	extend : 'Ext.form.Panel',
 	layout : {
@@ -60,8 +67,8 @@ Ext.define('ARC.view.test.GridTest', {
 			editor.grid.store.each(function(record) {
 				if (e.record.index != record.index) {
 					if (record.data[key] == editor.getEditor().getValues()[key]) {
-
 						validate = true;
+						alert('중복');
 					}
 				}
 			});
@@ -225,20 +232,26 @@ Ext.define('ARC.view.test.GridTest', {
 			xtype : 'checkcolumn2',
 			dataIndex : 'icheck',
 			header : 'I',
-			width : 50,
-			itemId : 'icheck'
+			width : 30,
+			itemId : 'icheck',
+			sortable : false,
+			hideable : false,
+			resizable : false,
+			groupable : false
 		}, {
 			xtype : 'checkcolumn2',
 			dataIndex : 'ucheck',
 			header : 'U',
-			width : 50,
-			itemId : 'ucheck'
+			width : 30,
+			itemId : 'ucheck',
+			sortable : false
 		}, {
 			xtype : 'checkcolumn',
 			dataIndex : 'dcheck',
 			header : 'D',
-			width : 50,
-			itemId : 'dcheck'
+			width : 30,
+			itemId : 'dcheck',
+			sortable : false
 		}, {
 			xtype : 'gridcolumn',
 			dataIndex : 'COLUMN1',
