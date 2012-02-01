@@ -32,7 +32,7 @@ public class DynamicS2Rt extends StoredProcedure {
 	public static final String RETURN_MSG_PARAM = "return_msg";
 
 	private static final String SPROC_NAME = "P_DSN_DYNAMIC_S2_RT";
-
+	
 	private ReturnType RTYPE = ReturnType.NONE;
 
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();

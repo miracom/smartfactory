@@ -17,7 +17,6 @@ public class ClsDSNExcelTemplateSetup {
 	public java.lang.String[] GetTemplateFileList() throws java.rmi.RemoteException {
 		try {
 			
-			ReturnType rType = ReturnType.ELEMENT;
 			
 			return null;
 
@@ -33,7 +32,7 @@ public class ClsDSNExcelTemplateSetup {
 				throw new RemoteException("IllegalArgumentException: Parameters(arrParams) should not be " + psaParam.length + " size");
 			}
     		
-    		String xName = "EXCELTEMPLATE";
+    		String tableName = "EXCELTEMPLATE";
 			String template_name = psaParam[0];
 			String template_filename = psaParam[1];
 			ReturnType rType = ReturnType.ELEMENT;
@@ -41,7 +40,7 @@ public class ClsDSNExcelTemplateSetup {
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().xtpdefNtDao(template_name, template_filename, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 
@@ -57,14 +56,14 @@ public class ClsDSNExcelTemplateSetup {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
     		
-    		String xName = "EXCELTEMPLATESHEET";
+    		String tableName = "EXCELTEMPLATESHEET";
 			String template_id = psaParam[0];
 			ReturnType rType = ReturnType.ELEMENT;
 
 			List<Map<String, Object>> mapList =
 					JdbcFormDaoImpl.getGlobalFormDao().xtpsheNtDao(template_id, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 
@@ -80,14 +79,14 @@ public class ClsDSNExcelTemplateSetup {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
-    		String xName = "EXCELTEMPLATEFIELD";
+    		String tableName = "EXCELTEMPLATEFIELD";
 			String sheet_id = psaParam[0];
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().xtpfldNtDao(sheet_id, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 			

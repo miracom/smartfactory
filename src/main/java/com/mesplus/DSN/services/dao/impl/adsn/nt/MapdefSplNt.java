@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl.adsn;
+package com.mesplus.DSN.services.dao.impl.adsn.nt;
 
 import java.sql.SQLException;
 import java.sql.Types;

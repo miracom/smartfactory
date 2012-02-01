@@ -21,7 +21,7 @@ public class ClsDSNTableSetup {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 			
-			String xName = "TABLELIST";
+			String tableName = "TABLELIST";
 			String fac_id = psaParam[0]; //2510
 			String tbl_grp = psaParam[1]; //""
 			String tbl_code = psaParam[2]; //""
@@ -33,7 +33,7 @@ public class ClsDSNTableSetup {
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().tbldefNtDao(fac_id, tbl_grp, tbl_code, physical_table, physical_view, logical_view, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 
@@ -45,13 +45,13 @@ public class ClsDSNTableSetup {
     public java.lang.String GetTableListSync() throws java.rmi.RemoteException {
     	try {
 
-    		String xName = "TABLELISTSYNC";
+    		String tableName = "TABLELISTSYNC";
 			ReturnType rType = ReturnType.ELEMENT;
 
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().tblsynNtDao(rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 
@@ -61,6 +61,15 @@ public class ClsDSNTableSetup {
     }
 
     public java.lang.String SetTable(java.lang.String psParams) throws java.rmi.RemoteException {
-        return null;
+    	try {
+    		
+    		String methodName = "TABLE"; //Message Name
+    		
+    		List<String> arrParams = XmlConvert.xmlToArrayList(psParams);
+			return JdbcFormDaoImpl.getGlobalFormDao().tbldefRtDao(arrParams,methodName);
+			
+    	} catch (Exception e) {
+			throw new RemoteException("Exception", e);
+		}
     }
 }

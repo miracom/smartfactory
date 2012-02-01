@@ -22,7 +22,7 @@ public class ClsAPSplusCommonFunction {
 				throw new RemoteException("IllegalArgumentException: Parameters(arrParams) should not be " + arrParams.length + " size");
 			}
 
-			String xName = "GCMDATALIST";
+			String tableName = "GCMDATALIST";
 			String fac_id = arrParams[0];
 			String tbl_code = arrParams[1];
 			String lang_flag = arrParams[2];
@@ -31,7 +31,7 @@ public class ClsAPSplusCommonFunction {
 		
 			List<Map<String, Object>> mapList = JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(fac_id, tbl_code, lang_flag, a_params, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 		} catch (Exception e) {
@@ -46,7 +46,7 @@ public class ClsAPSplusCommonFunction {
 				throw new RemoteException("IllegalArgumentException: Parameters(sSqlText) should not be " + sSqlText.length + " size");
 			}
 
-			String xName = "SQLDATA";
+			String tableName = "SQLDATA";
 			String a_sql_txt1 = sSqlText[0];
 			String a_sql_txt2 = sSqlText[1];
 			String a_sql_txt3 = sSqlText[2];
@@ -58,7 +58,7 @@ public class ClsAPSplusCommonFunction {
 			List<Map<String, Object>> mapList =
 					JdbcFormDaoImpl.getGlobalFormDao().selectresultNtDao(a_sql_txt1, a_sql_txt2, a_sql_txt3, a_sql_txt4, a_sql_txt5, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 
@@ -102,7 +102,7 @@ public class ClsAPSplusCommonFunction {
 				throw new RemoteException("IllegalArgumentException: Parameters(arrParams) should not be " + arrParams.length + " size");
 			}
 
-			String xName = "FUNCTIONCONTROL";
+			String tableName = "FUNCTIONCONTROL";
 			String fac_id = arrParams[0];
 			String grp_id = arrParams[1];
 			String usr_id = arrParams[2];
@@ -113,7 +113,7 @@ public class ClsAPSplusCommonFunction {
 			List<Map<String, Object>> mapList =
 					JdbcFormDaoImpl.getGlobalFormDao().fundefCtrlNtDao(fac_id, grp_id, usr_id, fun_id, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 			

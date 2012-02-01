@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl.adsn;
+package com.mesplus.DSN.services.dao.impl.adsn.nt;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -18,32 +18,26 @@ import com.mesplus.util.TypeConvert;
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ObjcetMapper;
 
-public class TbldefNt extends StoredProcedure {
+public class MapconGenNt extends StoredProcedure {
 
 	private static final String FAC_ID_PARAM = "fac_id";
-	private static final String TBL_GRP_PARAM = "tbl_grp";
-	private static final String TBL_CODE_PARAM = "tbl_code";
-	private static final String PHYSICAL_TABLE_PARAM = "physical_table";
-	private static final String PHYSICAL_VIEW_PARAM = "physical_view";
-	private static final String LOGICAL_VIEW_PARAM = "logical_view";
+	private static final String FUNC_ID_PARAM = "func_id";
+	private static final String LANG_FLAG_PARAM = "lang_flag";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_DSN_TBLDEF_NT";
+	private static final String SPROC_NAME = "P_DSN_MAPCON_GEN_NT";
 
 	private static ReturnType RTYPE = ReturnType.NONE;
 	
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
-	public TbldefNt(DataSource dataSource, ReturnType rType) throws SQLException {
+	public MapconGenNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(TBL_GRP_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(TBL_CODE_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(PHYSICAL_TABLE_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(PHYSICAL_VIEW_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(LOGICAL_VIEW_PARAM, Types.VARCHAR));
-		
+		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(LANG_FLAG_PARAM, Types.VARCHAR));
+
 		RTYPE = rType;
 
 		if (RTYPE == ReturnType.OBJECT) {
@@ -57,14 +51,11 @@ public class TbldefNt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id, String spd_id) {
+	public Map<String, Object> execute(String fac_id, String func_id, String lang_flag) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
 		inputs.put(FAC_ID_PARAM, fac_id);
-		inputs.put(TBL_GRP_PARAM, func_id);
-		inputs.put(TBL_CODE_PARAM, spd_id);
-		inputs.put(PHYSICAL_TABLE_PARAM, spd_id);
-		inputs.put(PHYSICAL_VIEW_PARAM, spd_id);
-		inputs.put(LOGICAL_VIEW_PARAM, spd_id);
+		inputs.put(FUNC_ID_PARAM, func_id);
+		inputs.put(LANG_FLAG_PARAM, lang_flag);
 
 		return super.execute(inputs);
 	}

@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl.adsn;
+package com.mesplus.DSN.services.dao.impl.adsn.nt;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -17,26 +17,24 @@ import com.mesplus.util.ElementMapper;
 import com.mesplus.util.TypeConvert;
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ObjcetMapper;
- 
-public class FtrdefNt extends StoredProcedure {
-	private static final String FAC_ID_PARAM = "fac_id";
-	private static final String FUNC_ID_PARAM = "func_id";
-	private static final String SPD_ID_PARAM = "spd_id";
+
+public class ConsqlNt extends StoredProcedure {
+	private static final String TAB_ID_PARAM = "tab_id";
+	private static final String ADMIN_ID_PARAM = "admin_user";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_DSN_FTRDEF_NT";
+	private static final String SPROC_NAME = "P_DSN_CONSQL_NT";
 
 	private ReturnType RTYPE = ReturnType.NONE;
 
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
-	public FtrdefNt(DataSource dataSource, ReturnType rType) throws SQLException {
+	public ConsqlNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
-		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(SPD_ID_PARAM, Types.VARCHAR));
-		
+		declareParameter(new SqlParameter(TAB_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(ADMIN_ID_PARAM, Types.VARCHAR));
+
 		RTYPE = rType;
 		
 		if (RTYPE == ReturnType.OBJECT) {
@@ -50,11 +48,10 @@ public class FtrdefNt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id, String spd_id) {
+	public Map<String, Object> execute(String tab_id, String admin_user) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
-		inputs.put(FAC_ID_PARAM, fac_id);
-		inputs.put(FUNC_ID_PARAM, func_id);
-		inputs.put(SPD_ID_PARAM, spd_id);
+		inputs.put(TAB_ID_PARAM, tab_id);
+		inputs.put(ADMIN_ID_PARAM, admin_user);
 
 		return super.execute(inputs);
 	}
