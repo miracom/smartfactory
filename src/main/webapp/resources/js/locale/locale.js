@@ -20,11 +20,9 @@ function initLocalization(text) {
 					arguments.callee(source[key], value);
 				} else {
 					source[key] = value;
-					console.log(key);
 				}
 			} else {
 				source[key] = value;
-				console.log(key);
 			}
 
 			return source;
