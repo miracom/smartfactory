@@ -33,12 +33,16 @@
 	    <script type="text/javascript" src="js/jquery/comet/jquery.cometd.js"></script>
 	    <script type="text/javascript" src="js/jquery/comet/jquery.cometd-reload.js"></script>
     		
+	    <script type="text/javascript" src="js/locale/locale.js"></script>
+
 		<script type="text/javascript">
 		var login = {
 			username : '<sec:authentication property="principal.username"/>',
 			factory : '<sec:authentication property="principal.factory"/>',
 			locale : 'ko'
 		};
+		
+		initLocalization(this);
 		</script>
 
 		<!-- JavaScripts For ExtJS -->
@@ -56,6 +60,7 @@
 		<script src="module/MBI/module.js"></script>
 		<script src="module/WMG/module.js"></script>
 
+		<script src="module/WIX/module.js"></script>
 	</head>
 	<body>
 	</body>
