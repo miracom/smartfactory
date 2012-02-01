@@ -19,7 +19,7 @@ public class ClsAPSplusCommonFunction {
 
 		try {
 			if (arrParams.length < 0 && arrParams.length > 4) {
-				throw new RemoteException("IllegalArgumentException: Parameters(arrParams) should not be " + arrParams.length + " size");
+				throw new RemoteException("IllegalArgumentException: Parameters(arrParams) should not be " + arrParams.length + " size.");
 			}
 
 			String tableName = "GCMDATALIST";
