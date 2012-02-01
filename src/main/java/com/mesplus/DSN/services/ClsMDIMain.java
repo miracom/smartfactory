@@ -22,7 +22,7 @@ public class ClsMDIMain {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
-			String xName = "GetLoginInformation";
+			String tableName = "GetLoginInformation";
 			String fac_id = psaParam[0];
 			String grp_code = psaParam[1];
 			String user_id = psaParam[2];
@@ -31,10 +31,10 @@ public class ClsMDIMain {
 			ReturnType rType = ReturnType.ELEMENT;
 			
 			// XML: DataTable
-			//2012-01-17 동일한 column name를 사용하면 그중에 하나만 결과값으로 출력하는 문제발
+			//2012-01-17 동일한 column name를 사용하면 그중에 하나만 결과값으로 출력하는 문제발생되어 동일한 column을 사용하지못하도록함
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().getuserloginNtDao(fac_id, grp_code, user_id, password, lang_flag, rType);
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			List<Element> elList = new ArrayList<Element>();
 			elList.add(el);			

@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl.adsn;
+package com.mesplus.DSN.services.dao.impl.adsn.nt;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -18,26 +18,24 @@ import com.mesplus.util.TypeConvert;
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ObjcetMapper;
 
-public class XtpdefNt extends StoredProcedure {
-
-	private static final String TEMPLATE_NAME_PARAM = "template_name";
-	private static final String TEMPLATE_FILENAME_PARAM = "template_filename";
+public class ColrevNt extends StoredProcedure {
+	private static final String TBL_ID_PARAM = "tbl_id";
+	private static final String TBL_NAME_PARAM = "tbl_name";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_DSN_XTPDEF_NT";
+	private static final String SPROC_NAME = "P_DSN_COLREV_NT";
 
-	private static ReturnType RTYPE = ReturnType.NONE;
-	
+	private ReturnType RTYPE = ReturnType.NONE;
+
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
-	
-	public XtpdefNt(DataSource dataSource, ReturnType rType) throws SQLException {
+
+	public ColrevNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
-		declareParameter(new SqlParameter(TEMPLATE_NAME_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(TEMPLATE_FILENAME_PARAM, Types.VARCHAR));
-		
-		RTYPE = rType;
+		declareParameter(new SqlParameter(TBL_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(TBL_NAME_PARAM, Types.VARCHAR));
 
+		RTYPE = rType;
 		if (RTYPE == ReturnType.OBJECT) {
 			declareParameter(new SqlOutParameter(CUR_REFER_PARAM, OracleTypes.CURSOR, new ObjcetMapper()));
 		} else if (RTYPE == ReturnType.ELEMENT) {
@@ -49,12 +47,11 @@ public class XtpdefNt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String template_name, String template_filename) {
+	public Map<String, Object> execute(String tbl_id, String tbl_name) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
-		inputs.put(TEMPLATE_NAME_PARAM, template_name);
-		inputs.put(TEMPLATE_FILENAME_PARAM, template_filename);
-
+		inputs.put(TBL_ID_PARAM, tbl_id);
+		inputs.put(TBL_NAME_PARAM, tbl_name);
+		
 		return super.execute(inputs);
 	}
-
 }

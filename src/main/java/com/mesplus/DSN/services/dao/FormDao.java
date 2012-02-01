@@ -97,4 +97,8 @@ public interface FormDao {
 	// RT
 	public Map<String, Object> dynamicS2RtDao(String status, String func_id, String spd_id, String fac_id, String user_id,
 			String lang_flag, String arrlst, ReturnType rType) throws Exception;
+	
+	public String tbldefRtDao(List<String> arrParams,String methodName) throws Exception;
+	
+	public String coldefRTDao(List<String> arrParams, String methodName) throws Exception;
 }

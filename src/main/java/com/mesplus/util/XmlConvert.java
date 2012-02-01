@@ -316,8 +316,7 @@ public class XmlConvert {
 				Element rowsEl = root.getChild("Row1");
 				Element colCntEl = (Element) rowsEl.getContent(0);
 				int nCols = Integer.parseInt(colCntEl.getAttributeValue("value"));
-				nCols = 3;
-				for (int i = 1; i < nCols; i++) {
+				for (int i = 1; i <= nCols; i++) {
 					Element el = (Element) rowsEl.getContent(i);
 					String item = el.getAttributeValue("value");
 					arrayList.add(item);

@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.mesplus.DSN.services.dao.impl.adsn.rt.TbldefRt;
+
 public class TypeConvert {
 	/**
 	 * C#과 ORACLE의 Type의 Mapping 정보를 가지고 있는 Map 생성
@@ -70,4 +72,36 @@ public class TypeConvert {
 		}
 	}
 	
+	public final static String InnerMessage(String returnValue, String methodName) throws Exception
+	{
+		String rValue = null;
+		String[] returnValues = returnValue.split("\\|");
+		int returnCode = Integer.parseInt(returnValues[0]);
+		
+		if(returnCode == 1)
+		{
+			rValue = "1";
+		}
+		else
+		{
+			
+			if(returnCode < 0)
+			{
+				rValue = methodName + (char)13 + (char)10 + "An error occurred while processing data";
+			}
+			else
+			{
+				rValue = methodName + (char)13 + (char)10 + returnValues[2];
+				
+				/*[C# innerMessage 처리소스] -> 0(처리결과)|9999(Message Code)|errorMessage(Message)
+				returnValue += lOutputParam[i][lOutputParam[i].Length - 1].Split('|')[2].ToString().Replace("\r\n", Environment.NewLine) + Environment.NewLine;
+				if (pbGetDynamicQuery == true)
+	            {
+					returnValue += lOutputParam[i][lOutputParam[i].Length - 3].ToString() + "`^";
+	            }*/
+			}	
+		}
+		
+		return rValue;
+	}
 }

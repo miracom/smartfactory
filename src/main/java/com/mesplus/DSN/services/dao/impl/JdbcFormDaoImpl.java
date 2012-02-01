@@ -1,7 +1,6 @@
 package com.mesplus.DSN.services.dao.impl;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,16 +11,52 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.mesplus.DSN.services.dao.FormDao;
-import com.mesplus.DSN.services.dao.impl.adsn.*;
-import com.mesplus.DSN.services.dao.impl.agcm.*;
-import com.mesplus.DSN.services.dao.impl.asec.*;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.AssdefGenNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.AssdefNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.ChtdetNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.ChtinfNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.ColdefNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.ColrevNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.ConsqlGenNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.ConsqlNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.FscrelNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.FsprelNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.FtrdefNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.FtrfldNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.FxtrelNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.GrpcolNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.GrpmapNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.MapconGenNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.MapconNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.MapdefS2Nt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.MapdefSplNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.SvcmbrNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.TabvldNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.TbldefNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.TblsynNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.UsrcolNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.UsrmapNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.XtpdefNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.XtpfldNt;
+import com.mesplus.DSN.services.dao.impl.adsn.nt.XtpsheNt;
+import com.mesplus.DSN.services.dao.impl.adsn.rt.ColdefRT;
+import com.mesplus.DSN.services.dao.impl.adsn.rt.TbldefRt;
+import com.mesplus.DSN.services.dao.impl.agcm.MtbldatNt;
+import com.mesplus.DSN.services.dao.impl.agcm.TbldatNt;
+import com.mesplus.DSN.services.dao.impl.asec.Fundef01Nt;
+import com.mesplus.DSN.services.dao.impl.asec.FundefCtrlNt;
+import com.mesplus.DSN.services.dao.impl.asec.FundefNt;
+import com.mesplus.DSN.services.dao.impl.asec.GetuserloginNt;
+import com.mesplus.DSN.services.dao.impl.asec.SecfundefNt;
 import com.mesplus.DSN.services.dao.impl.dyna.DynamicS2Nt;
 import com.mesplus.DSN.services.dao.impl.dyna.DynamicS2Rt;
-import com.mesplus.DSN.services.dao.impl.get.*;
+import com.mesplus.DSN.services.dao.impl.get.SelectresultNt;
 import com.mesplus.util.Enums.ReturnType;
+import com.mesplus.util.TypeConvert;
 
 //<context:component-scan> 태그를 사용하면 @Component 어노테이션이 적용된 컨트롤러 클래스를 검색하여 Bean으로 등록
 @Component
+@SuppressWarnings("unchecked")
 public class JdbcFormDaoImpl implements FormDao {
 
 	private static FormDao globalFormDao = null;
@@ -242,11 +277,6 @@ public class JdbcFormDaoImpl implements FormDao {
 	}
 
 	public List<Map<String, Object>> tblsynNtDao(ReturnType rType) throws SQLException {
-		/*
-		 * if () { throw new
-		 * IllegalArgumentException("Parameters() should not be null."); }
-		 */
-
 		TblsynNt sp = new TblsynNt(dataSource, rType);
 		Map<String, Object> results = sp.execute();
 
@@ -436,32 +466,6 @@ public class JdbcFormDaoImpl implements FormDao {
 		return (List<Map<String, Object>>) results.get(UsrmapNt.CUR_REFER_PARAM);
 	}
 
-	// Call function List
-	public List<Map<String, Object>> secfundefNtDao(String fac_id, String func_group, String func_code, String func_type, ReturnType rType)
-			throws SQLException {
-		if (fac_id == null) {
-			throw new IllegalArgumentException("Parameters(fac_id, func_group, func_code, func_type) should not be null.");
-		}
-
-		SecfundefNt sp = new SecfundefNt(dataSource, rType);
-		Map<String, Object> results = sp.execute(fac_id, func_group, func_code, func_type);
-
-		return (List<Map<String, Object>>) results.get(SecfundefNt.CUR_REFER_PARAM);
-	}
-
-	// rt Test
-	public Map<String, Object> dynamicS2RtDao(String status, String func_id, String spd_id, String fac_id, String user_id,
-			String lang_flag, String arrlst, ReturnType rType) throws Exception {
-		if (status == null || func_id == null || spd_id == null || fac_id == null || user_id == null || lang_flag == null || arrlst == null) {
-			throw new IllegalArgumentException("Parameters(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst) should not be null");
-		}
-
-		DynamicS2Rt sp = new DynamicS2Rt(dataSource, rType);
-		Map<String, Object> results = sp.execute(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst);
-
-		return results;
-	}
-
 	public List<Map<String, Object>> mtbldatNtDao(String a_fac_id, String a_tbl_code, String a_lang_flag, String a_params, ReturnType rType)
 			throws SQLException {
 		if (a_fac_id == null || a_tbl_code == null || a_lang_flag == null || a_params == null) {
@@ -482,6 +486,93 @@ public class JdbcFormDaoImpl implements FormDao {
 
 		DynamicS2Nt sp = new DynamicS2Nt(dataSource, rType);
 		Map<String, Object> results = sp.execute(fac_id, func_id, spd_id, col_param, cond_param, lang_flag);
+
+		return results;
+	}
+
+	// Call function List
+	public List<Map<String, Object>> secfundefNtDao(String fac_id, String func_group, String func_code, String func_type, ReturnType rType)
+			throws SQLException {
+		if (fac_id == null) {
+			throw new IllegalArgumentException("Parameters(fac_id, func_group, func_code, func_type) should not be null.");
+		}
+
+		SecfundefNt sp = new SecfundefNt(dataSource, rType);
+		Map<String, Object> results = sp.execute(fac_id, func_group, func_code, func_type);
+
+		return (List<Map<String, Object>>) results.get(SecfundefNt.CUR_REFER_PARAM);
+	}
+
+	// RT
+	public String tbldefRtDao(List<String> arrParams, String methodName) throws Exception {
+		boolean bSuccess = true; //프로시저 복수 실행시 성공여부 flag
+		String returnValue = null;
+		TbldefRt sp = new TbldefRt(dataSource);
+		if(bSuccess)
+		{
+			returnValue =  sp.execute(arrParams, methodName);
+			if (returnValue.equals("1")) {
+				bSuccess = true;
+			}
+			else
+			{
+				bSuccess = false;
+			}
+		}
+		
+		if(bSuccess)
+		{
+			// 처리성공(Commit)
+			dataSource.getConnection().commit();
+		}
+		else
+		{
+			// 처리실패(Rollback)
+			dataSource.getConnection().rollback();
+		}
+		
+		return returnValue;
+	}
+
+	public String coldefRTDao(List<String> arrParams, String methodName) throws Exception {
+		boolean bSuccess = true; //프로시저 복수 실행시 성공여부 flag
+		String returnValue = null;
+		
+		ColdefRT sp = new ColdefRT(dataSource);
+		if(bSuccess)
+		{
+			returnValue =  sp.execute(arrParams, methodName);
+			if (returnValue.equals("1")) {
+				bSuccess = true;
+			}
+			else
+			{
+				bSuccess = false;
+			}
+		}
+		
+		if(bSuccess)
+		{
+			// 처리성공(Commit)
+			dataSource.getConnection().commit();
+		}
+		else
+		{
+			// 처리실패(Rollback)
+			dataSource.getConnection().rollback();
+		}
+		
+		return returnValue;
+	}
+
+	public Map<String, Object> dynamicS2RtDao(String status, String func_id, String spd_id, String fac_id, String user_id,
+			String lang_flag, String arrlst, ReturnType rType) throws Exception {
+		if (status == null || func_id == null || spd_id == null || fac_id == null || user_id == null || lang_flag == null || arrlst == null) {
+			throw new IllegalArgumentException("Parameters(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst) should not be null");
+		}
+
+		DynamicS2Rt sp = new DynamicS2Rt(dataSource, rType);
+		Map<String, Object> results = sp.execute(status, func_id, spd_id, fac_id, user_id, lang_flag, arrlst);
 
 		return results;
 	}

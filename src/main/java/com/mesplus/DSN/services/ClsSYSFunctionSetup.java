@@ -21,7 +21,7 @@ public class ClsSYSFunctionSetup {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
-			String xName = "FACTORYLIST";
+			String tableName = "FACTORYLIST";
 			String fac_id = psaParam[0];
 			String func_group = psaParam[1];
 			String func_code = psaParam[2];
@@ -32,7 +32,7 @@ public class ClsSYSFunctionSetup {
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().fundefNtDao(fac_id, func_group, func_code, func_type, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 			
@@ -48,7 +48,7 @@ public class ClsSYSFunctionSetup {
 				throw new RemoteException("IllegalArgumentException: Parameters(psaParam) should not be " + psaParam.length + " size");
 			}
 
-			String xName = "FACTORYLIST";
+			String tableName = "FACTORYLIST";
 			String func_code = psaParam[0];
 			ReturnType rType = ReturnType.ELEMENT;
 			
@@ -56,7 +56,7 @@ public class ClsSYSFunctionSetup {
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().fundef01NtDao(func_code, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 			

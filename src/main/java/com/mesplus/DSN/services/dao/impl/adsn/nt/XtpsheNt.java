@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl.adsn;
+package com.mesplus.DSN.services.dao.impl.adsn.nt;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -18,28 +18,22 @@ import com.mesplus.util.TypeConvert;
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ObjcetMapper;
 
-public class UsrcolNt extends StoredProcedure {
+public class XtpsheNt extends StoredProcedure {
 
-	private static final String FAC_ID_PARAM = "fac_id";
-	private static final String FUNC_ID_PARAM = "func_id";
-	private static final String GRP_USR_ID_PARAM = "grp_usr_id";
-	private static final String LANG_FLAG_PARAM = "lang_flag";
+	private static final String TEMPLATE_ID_PARAM = "template_id";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_DSN_USRCOL_NT";
+	private static final String SPROC_NAME = "P_DSN_XTPSHE_NT";
 
 	private static ReturnType RTYPE = ReturnType.NONE;
 	
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
-
-	public UsrcolNt(DataSource dataSource, ReturnType rType) throws SQLException {
+	
+	public XtpsheNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
-		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(GRP_USR_ID_PARAM, Types.VARCHAR));
-		declareParameter(new SqlParameter(LANG_FLAG_PARAM, Types.VARCHAR));
-
+		declareParameter(new SqlParameter(TEMPLATE_ID_PARAM, Types.VARCHAR));
+		
 		RTYPE = rType;
 
 		if (RTYPE == ReturnType.OBJECT) {
@@ -53,12 +47,9 @@ public class UsrcolNt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id, String grp_usr_id, String lang_flag) {
+	public Map<String, Object> execute(String template_id) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
-		inputs.put(FAC_ID_PARAM, fac_id);
-		inputs.put(FUNC_ID_PARAM, func_id);
-		inputs.put(GRP_USR_ID_PARAM, grp_usr_id);
-		inputs.put(LANG_FLAG_PARAM, lang_flag);
+		inputs.put(TEMPLATE_ID_PARAM, template_id);
 
 		return super.execute(inputs);
 	}

@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl.adsn;
+package com.mesplus.DSN.services.dao.impl.adsn.nt;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -18,17 +18,17 @@ import com.mesplus.util.TypeConvert;
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ObjcetMapper;
 
-public class AssdefNt extends StoredProcedure {
+public class ChtdetNt extends StoredProcedure {
 	private static final String TAB_ID_PARAM = "tab_id";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_DSN_ASSDEF_NT";
+	private static final String SPROC_NAME = "P_DSN_CHTDET_NT";
 
 	private ReturnType RTYPE = ReturnType.NONE;
 
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
-	public AssdefNt(DataSource dataSource, ReturnType rType) throws SQLException {
+	public ChtdetNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(TAB_ID_PARAM, Types.VARCHAR));

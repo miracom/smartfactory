@@ -1,4 +1,4 @@
-package com.mesplus.DSN.services.dao.impl.adsn;
+package com.mesplus.DSN.services.dao.impl.adsn.nt;
 
 import java.sql.SQLException;
 import java.sql.Types;
@@ -18,22 +18,24 @@ import com.mesplus.util.TypeConvert;
 import com.mesplus.util.Enums.ReturnType;
 import com.mesplus.util.ObjcetMapper;
 
-public class ChtinfNt extends StoredProcedure {
+public class FscrelNt extends StoredProcedure {
 	private static final String FAC_ID_PARAM = "fac_id";
 	private static final String FUNC_ID_PARAM = "func_id";
+	private static final String SPD_ID_PARAM = "spd_id";
 	public static final String CUR_REFER_PARAM = "cur.refer";
 
-	private static final String SPROC_NAME = "P_DSN_CHTINF_NT";
+	private static final String SPROC_NAME = "P_DSN_FSCREL_NT";
 
 	private ReturnType RTYPE = ReturnType.NONE;
-
+	
 	private static final Map<String, String> typeMap = TypeConvert.getMappingType();
 
-	public ChtinfNt(DataSource dataSource, ReturnType rType) throws SQLException {
+	public FscrelNt(DataSource dataSource, ReturnType rType) throws SQLException {
 		super(dataSource, SPROC_NAME);
 
 		declareParameter(new SqlParameter(FAC_ID_PARAM, Types.VARCHAR));
 		declareParameter(new SqlParameter(FUNC_ID_PARAM, Types.VARCHAR));
+		declareParameter(new SqlParameter(SPD_ID_PARAM, Types.VARCHAR));
 
 		RTYPE = rType;
 
@@ -48,12 +50,12 @@ public class ChtinfNt extends StoredProcedure {
 		compile();
 	}
 
-	public Map<String, Object> execute(String fac_id, String func_id) {
+	public Map<String, Object> execute(String fac_id, String func_id, String spd_id) {
 		Map<String, Object> inputs = new HashMap<String, Object>();
 		inputs.put(FAC_ID_PARAM, fac_id);
 		inputs.put(FUNC_ID_PARAM, func_id);
+		inputs.put(SPD_ID_PARAM, spd_id);
 
 		return super.execute(inputs);
-
 	}
 }

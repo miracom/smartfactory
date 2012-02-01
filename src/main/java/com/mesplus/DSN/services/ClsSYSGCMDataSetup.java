@@ -21,7 +21,7 @@ public class ClsSYSGCMDataSetup {
 				throw new RemoteException("IllegalArgumentException: Parameters(arrParams) should not be " + arrParams.length + " size");
 			}
 
-			String xName = "GCMDATALIST";
+			String tableName = "GCMDATALIST";
 			String fac_id = arrParams[0];
 			String tbl_code = arrParams[1];
 			String lang_flag = arrParams[2];
@@ -32,7 +32,7 @@ public class ClsSYSGCMDataSetup {
 			List<Map<String, Object>> mapList = 
 					JdbcFormDaoImpl.getGlobalFormDao().tbldatNtDao(fac_id, tbl_code, lang_flag, a_params, rType);
 			
-			Element el = XmlConvert.mapListToDataTableElement(mapList, xName);
+			Element el = XmlConvert.mapListToDataTableElement(mapList, tableName);
 			
 			return XmlConvert.elementToXML(el);
 		} catch (Exception e) {
