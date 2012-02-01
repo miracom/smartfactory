@@ -92,6 +92,12 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 		};
 	},
 
+	buildPropertiesTab : function(main) {
+		return {
+			title : 'Properties'
+		};	
+	},
+	
 	buildOtherTabs : function() {
 		return {
 			title : 'Attach Flow'

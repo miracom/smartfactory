@@ -15,12 +15,18 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 		xtype : 'cmn_trx_buttons'
 	},
 
+	layout : {
+		type : 'vbox',
+		align : 'stretch'
+	},
+	
 	initComponent : function() {
 		this.callParent();
 		
 		var zbasic = this.add(this.buildBasicForm(this));
 		var ztabpnl = this.add({
-			xtype : 'tabpanel'
+			xtype : 'tabpanel',
+			flex : 1
 		});
 		
 		var tabs = [
@@ -53,19 +59,11 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 		*/
 	},
 
-	buildBasicForm : function() {
-		return null;
-	},
+	buildBasicForm : Ext.emptyFn,
 	
-	buildGeneralTab : function(main) {
-		return null;
-	},
+	buildGeneralTab : Ext.emptyFn,
 	
-	buildPropertiesTab : function(main) {
-		return {
-			title : 'Properties'
-		};	
-	},
+	buildPropertiesTab : Ext.emptyFn,
 	
 	buildGroupSetupTab : function(main) {
 		return {
@@ -89,7 +87,5 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 		};
 	},
 	
-	buildOtherTabs : function(main) {
-		return null;
-	}
+	buildOtherTabs : Ext.emptyFn
 });
