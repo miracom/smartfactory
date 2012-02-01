@@ -70,11 +70,13 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 	buildGroupSetupTab : function(main) {
 		return {
 			xtype : 'cmn_groupsetup',
+			title : 'Group Setup',
 			itemName : main.groupItemName,
 			fieldNamePrefix : main.groupFieldNamePrefix,
-			valueStore : main.store
+			valueStore : main.store,
+			updateSetCnt : main.updateSetCnt,
+			updateUseCnt : main.updateUseCnt
 		};
-
 	},
 	
 	buildAttributeSetupTab : function(main) {
@@ -85,7 +87,13 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 	
 	buildCustomFieldSetupTab : function(main) {
 		return {
-			title : 'Customized Field'
+			xtype : 'cmn_groupsetup',
+			title : 'Customized Field',
+			itemName : main.cmfItemName,
+			fieldNamePrefix : main.cmfFieldNamePrefix,
+			valueStore : main.store,
+			updateSetCnt : main.updateSetCnt,
+			updateUseCnt : main.updateUseCnt
 		};
 	},
 	

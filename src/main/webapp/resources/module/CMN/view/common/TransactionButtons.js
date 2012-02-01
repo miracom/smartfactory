@@ -75,7 +75,8 @@ Ext.define('CMN.view.common.TransactionButtons', {
 		xtype : 'button',
 		width : 80,
 		text : 'Update',
-		itemId : 'update'
+		itemId : 'update',
+		disabled : true
 	},
 
 	zdelete : {

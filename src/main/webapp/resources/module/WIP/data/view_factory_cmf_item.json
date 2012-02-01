@@ -14,8 +14,8 @@
 	"FORMAT": "A",
 	"TABLE_NAME": "OPER_GRP_1"
 },{
-	"PROMPT": "",
-	"OPT": "",
+	"PROMPT": "bb",
+	"OPT": "Y",
 	"FORMAT": "",
 	"TABLE_NAME": ""
 },{

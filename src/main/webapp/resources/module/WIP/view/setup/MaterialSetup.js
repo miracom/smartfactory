@@ -4,12 +4,15 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 	supplement : 'WIP.view.common.MaterialSelector',
 
 	groupItemName : 'GRP_MATERIAL',
+	cmfItemName : 'CMF_MATERIAL',
 	
 	groupFieldNamePrefix : 'MAT_GRP_',
-		
+	cmfFieldNamePrefix : 'MAT_CMF_',
+	
+	updateUse : false,
+	
 	initComponent : function() {
 		this.store = Ext.create('WIP.store.MaterialStore');
-
 		this.callParent();
 	
 		var self = this;
@@ -22,12 +25,23 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 				self.sub('material').setValue(record.get('MAT_ID'));
 				self.sub('version').setValue(record.get('MAT_VER'));
 				self.sub('description').setValue(record.get('MAT_DESC'));
+				self.store.load();
 			});
 		});
 		
 		this.store.load();
+		
+		this.sub('close').on('click', function() {
+			self.close();
+		});
+		this.sub('update').on('click', function() {
+			self.dataUpdate();
+		});
 	},
 
+	dataUpdate : function(){
+		//TODO ... dataupdate
+	},
 	buildBasicForm : function(main) {
 		return {
 			xtype : 'container',

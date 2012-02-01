@@ -38,7 +38,27 @@ Ext.define('WIP.store.MaterialStore', {
 		name : 'MAT_GRP_9'
 	}, {
 		name : 'MAT_GRP_10'
-	} ],
+	},{
+		name : 'MAT_CMF_1'
+	}, {
+		name : 'MAT_CMF_2'
+	}, {
+		name : 'MAT_CMF_3'
+	}, {
+		name : 'MAT_CMF_4'
+	}, {
+		name : 'MAT_CMF_5'
+	}, {
+		name : 'MAT_CMF_6'
+	}, {
+		name : 'MAT_CMF_7'
+	}, {
+		name : 'MAT_CMF_8'
+	}, {
+		name : 'MAT_CMF_9'
+	}, {
+		name : 'MAT_CMF_10'
+	}  ],
 
 	proxy : {
 		type : 'ajax',

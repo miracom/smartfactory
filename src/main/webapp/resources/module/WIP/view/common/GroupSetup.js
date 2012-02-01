@@ -6,51 +6,97 @@
  * 
  */
 Ext.define('WIP.view.common.GroupSetup', {
-	extend : 'Ext.grid.Panel',
+	extend : 'Ext.panel.Panel',
 	plugins : [],
 	alias : 'widget.cmn_groupsetup',
-	title : 'Group Setup',
-
-	defaults : {},
-
-	columns : [ {
-		header : 'Name',
-		dataIndex : 'PROMPT'
-	}, {
-		header : 'Value',
-		dataIndex : 'VALUE'
-	}, {
-		header : 'fieldName',
-		dataIndex : 'FIELD_NAME'
-	} ],
-
+	//layout : 'fit',
+//	layout : 'anchor',
+//	defaults : {
+//		labelSeparator : '',
+//		anchor : '100%'
+//	},
+	layout: {
+        type: 'hbox'
+    },
+    padding : 5,
+	
 	initComponent : function() {
-		// 
-		this.store = Ext.create('WIP.store.FactoryCmfItemStore');
+		this.items = [];
 		this.callParent();
+		this.store = Ext.create('WIP.store.FactoryCmfItemStore');
 		var self = this;
-
-		this.store.load({
-			params : {
-				ITEM_NAME : self.itemName
-			},
-			scope : this,
-			callback : function(records, operation, success) {
-				if (success && records.length > 0) {
-					for ( var i=0; i<records.length;i++) {
-						var record = records[i];
-						var fieldName = self.fieldNamePrefix + i;
-						record.set("FIELD_NAME", fieldName);
-						//record.set("VALUE", self.valueStore.data.get(fieldName));
+		
+		self.valueStore.on('load', function(store) {
+			self.buildOk = false;
+			self.removeAll();
+			self.store.load({
+				params : {
+					ITEM_NAME : self.itemName
+				},
+				scope : self,
+				callback : function(records, operation, success) {
+					if (success && records.length > 0) {
+						self.buildOk = self.buildFieldSet(records,store);
 					}
 				}
-			}
-		});
-
-		this.valueStore.on('load', function(store) {
-			self.store.each(function(record){
-				record.set("VALUE", store.getAt(0).get(record.get("FIELD_NAME")));
 			});
 		});
+	},
+
+	buildFieldSet : function(records,store){
+		var fieldSet1 = [];
+		var fieldSet2 = [];
+		var self = this;
+		for (var i=1; i<records.length+1;i++) {
+			var value = store.getAt(0).get(self.fieldNamePrefix+i);
+			var prompt = records[i-1].get("PROMPT").trim();
+			var opt = records[i-1].get("OPT").trim();
+			if(prompt != ''){
+				var field = {
+						xtype : 'textfield',
+						fieldLabel : prompt,
+						itemId : self.fieldNamePrefix+i,
+						name : self.fieldNamePrefix+i,
+						value : value
+					};
+				if(opt != 'N'){
+					Ext.apply(field,{labelStyle: 'font-weight:bold'});
+				}
+				if(i<11){
+					fieldSet1.push(field);
+				}
+				else{
+					fieldSet2.push(field);
+				}
+			}
+		}
+		this.add({
+			xtype : 'container',
+			itemId : 'group1',
+			layout : 'anchor',
+			padding : 5,
+			flex: 1,
+			defaults : {
+				labelSeparator : '',
+				anchor : '100%'
+			},
+			items : fieldSet1
+		});
+		//if(fieldSet2.length != 0){
+			this.add({
+				xtype : 'container',
+				itemId : 'group2',
+				layout : 'anchor',
+				padding : 5,
+				flex: 1,
+				defaults : {
+					labelSeparator : '',
+					anchor : '100%'
+				},
+				items : fieldSet2
+			});
+		//}
+		return true;
 	}
+
 });

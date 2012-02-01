@@ -13,5 +13,15 @@
 	"MAT_GRP_7" : "AAA7",
 	"MAT_GRP_8" : "AAA8",
 	"MAT_GRP_9" : "AAA9",
-	"MAT_GRP_10" : "AAA10"
+	"MAT_GRP_10" : "AAA10",
+	"MAT_CMF_1" : "CMF1",
+	"MAT_CMF_2" : "CMF2",
+	"MAT_CMF_3" : "CMF3",
+	"MAT_CMF_4" : "CMF4",
+	"MAT_CMF_5" : "CMF5",
+	"MAT_CMF_6" : "CMF6",
+	"MAT_CMF_7" : "CMF7",
+	"MAT_CMF_8" : "CMF8",
+	"MAT_CMF_9" : "CMF9",
+	"MAT_CMF_10" : "CMF10"
 }
