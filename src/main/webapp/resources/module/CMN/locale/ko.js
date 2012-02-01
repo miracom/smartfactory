@@ -1,6 +1,6 @@
 T({
 	favorites : {
-		title : '즐겨찾기',
+		title : '{what} 즐겨찾기',
 		s_title : '즐찾'
 	},
 	msg : {

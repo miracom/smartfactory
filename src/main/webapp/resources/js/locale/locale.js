@@ -47,18 +47,25 @@ function initLocalization(text) {
 
 	text.zz_locale_zz = text.zz_locale_zz || {};
 
-	text.T = function(t) {
+	text.T = function(t, params) {
 		if (t && t.constructor === Object) {
 			return merge(text.zz_locale_zz, t);
 		} else {
 			var attrs = t.split('.');
-			var attr = text.zz_locale_zz;
+			var value = text.zz_locale_zz;
 			for ( var i = 0; i < attrs.length; i++) {
-				attr = attr[attrs[i]];
-				if (attr === undefined)
+				value = value[attrs[i]];
+				if (value === undefined)
 					return '[' + t + ']';
 			}
-			return attr;
+			
+			if(params && params.constructor === Object) {
+				for(var key in params) {
+					value = value.replace('{'+key+'}', params[key]);
+				}
+			}
+
+			return value;
 		}
 	};
 }

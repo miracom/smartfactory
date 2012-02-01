@@ -41,7 +41,9 @@ Ext.define('CMN.controller.CMNController', {
 		SmartFactory.addNav('CMN.view.common.NavFavorite', {
     		iconCls : 'iconsetDockFavor',
 			itemId : 'navFavor',
-			title : T('favorites.title') //'Favorites'
+			title : T('favorites.title', {
+				what : 'Menu'
+			}) //'Favorites'
 		});
 	}
 
