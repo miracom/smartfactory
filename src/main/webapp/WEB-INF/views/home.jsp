@@ -10,6 +10,8 @@
 		<link rel="stylesheet" href="css/smartfactory.css"></link>
 		<link rel="stylesheet" href="js/ux/statusbar/css/statusbar.css"></link>
 		<link rel="stylesheet" href="js/ux/tab/css/TabScrollerMenu.css"></link>
+		<link rel="stylesheet" type="text/css" href="js/ux/grid/css/CheckHeader.css">
+		
 		
 		<!-- JavaScripts For Excel Export -->
 		<script src="js/downloadify/swfobject.js"></script>

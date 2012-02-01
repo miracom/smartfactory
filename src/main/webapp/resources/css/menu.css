@@ -53,29 +53,24 @@
 .appSearchItem .key{margin-right:4px;font-weight:bold;color:#333}
 
 /* dock bar */
-.operation-list div,.resource-list div,.report-list div,.communicator-list div,.archive-list div{margin-top:3px;padding:2px 3px 2px 20px;font-size:11px;cursor:pointer;border:1px solid #fff;border-bottom:1px dotted #A3BAE9;}
-.operation-list-item{background:url('../image/iconOperation16.png') 2px 2px no-repeat;}
-.resource-list-item{background:url('../image/iconResource16.png') 2px 2px no-repeat;}
-.report-list-item{background:url('../image/iconReport16.png') 2px 2px no-repeat;}
-.archive-list-item{background:url('../image/iconArchive16.png') 2px 0 no-repeat;}
-.operation-list,.resource-list,.report-list,.archive-list{padding: 0 3px 0 3px;}
-.operation-list .x-item-selected,.resource-list .x-item-selected,.report-list .x-item-selected,.archive-list .x-item-selected{font-weight: bold;color: #15428B;background-color: #DFE8F6;border: 1px dotted #A3BAE9;}
-.operation-list-item-hover,.resource-list-item-hover,.communicator-list-item-hover,.archive-list-item-hover{background-color: #eee;}
+.operation-list div,.resource-list div,.report-list div,.communicator-list div{margin-top:3px;padding:2px 3px 2px 20px;font-size:11px;cursor:pointer;border:1px solid #fff;border-bottom:1px dotted #A3BAE9;}
+.operation-list-item {background:url('../image/iconOperation16.png') 2px 2px no-repeat;}
+.resource-list-item {background:url('../image/iconResource16.png') 2px 2px no-repeat;}
+.report-list-item {background:url('../image/iconReport16.png') 2px 2px no-repeat;}
+.operation-list,.resource-list,.report-list{padding: 0 3px 0 3px;}
+.operation-list .x-item-selected,.resource-list .x-item-selected,.report-list .x-item-selected{font-weight: bold;color: #15428B;background-color: #DFE8F6;border: 1px dotted #A3BAE9;}
+.operation-list-item-hover,.resource-list-item-hover,.communicator-list-item-hover{background-color: #eee;}
 .iconsetDockMenu{background:url('../image/iconMenu16.png') 0 1px no-repeat;background-position/*\**/:0 0\9;}
 .iconsetDockFavor{background:url('../image/iconFavorit16.png') -1px 1px no-repeat;background-position/*\**/:0 0\9;}
 .iconsetDockResource{background:url('../image/iconResource16.png') 0 1px no-repeat;background-position/*\**/:0 0\9;}
 .iconsetDockOperation{background:url('../image/iconOperation16.png') 0 1px no-repeat;background-position/*\**/:0 0\9;}
 .iconsetDockReport{background:url('../image/iconReport16.png') -1px 0 no-repeat;background-position/*\**/:0 0\9;}
 .iconsetDockCommunicator{background:url('../image/iconCommunicator16.png') -1px 0 no-repeat;background-position/*\**/:0 0\9;}
-.iconsetDockArchive{background:url('../image/iconArchive16.png') 0 1px no-repeat;background-position/*\**/:0 0\9;}
 .communicator-list-item.off{background:url('../image/statusOff.png') 1px 2px no-repeat;}
 .communicator-list-item.on{background:url('../image/statusOn.png') 1px 2px no-repeat;}
 @-moz-document url-prefix()
 {.nav .x-tab button .x-tab-icon,.nav .x-tab a .x-tab-icon{top:-10px}}
 .noBorderPanel .x-panel-body-default,.noBorderPanel{border:0}
-.borderGray{border:1px solid #b4b4b4}
-.borderGray .x-panel-body-default{border-width:0 0 1px 0}
-.overflowAuto{overflow:auto}
 
 .x-toolbar.appMenu,.x-toolbar.appTool{border:0}
 .x-nlg .x-toolbar.appmenu,.x-toolbar.appmenu{background:url('../image/bgAppMenu.gif') repeat-x !important;}
@@ -99,7 +94,7 @@
 .x-panel-header-default-left,.x-panel-header-default-right{background:url('../image/bgDockCollapsed.gif') 50% 0 repeat-y;width:26px;border-width:0;left:-1px}
 .x-nlg .x-panel-header-default-left,.x-nlg .x-panel-header-default-right{background:url('../image/bgDockCollapsed.gif') 50% 0 repeat-y;width:26px;border-width:0;left:-1px}
 .x-panel-header-default-left{box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none}
-.x-panel-body-default{border-top:1px;}
+.x-panel-body-default{border-top:1px}
 .navRefreshBtn{background:url('../image/iconDockedRefreshOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
 .navClearBtn{background:url('../image/iconDockedClearOff.png') 0 1px no-repeat !important;width:19px;height:17px;}
 .navRefreshBtn:hover{background:url('../image/iconDockedRefreshOn.png') no-repeat !important;}
@@ -187,7 +182,7 @@
 .x-tree-lines .x-grid-tree-node-expanded .x-tree-elbow-plus{background:url('../image/elbow-minus.gif') no-repeat;}
 
 /* form */
-.x-form-trigger,#content-body .x-form-trigger-wrap-focus .x-form-trigger{background:url('../image/trigger.gif') no-repeat;margin-left:-1px;width:24px}
+.x-form-trigger{background:url('../image/trigger.gif') no-repeat;margin-left:-1px;width:24px}
 .x-form-trigger-over{background:url('../image/trigger.gif') -24px 0 no-repeat}
 .x-form-date-trigger{background:url('../image/date-trigger.gif') no-repeat;margin-left:-1px;width:24px}
 .x-form-date-trigger-over,.x-form-date-trigger-click,.x-form-date-trigger-pressed{background:url('../image/date-trigger.gif') -24px 0 no-repeat;margin-left:-1px;width:24px}
@@ -196,10 +191,6 @@
 .x-boundlist-item-over{background:url('../image/arrowRightBlue.gif') 4px 8px no-repeat;background-color:#fff;padding:4px 4px 4px 11px}
 
 .x-form-item-label{color:#585858;padding-left:4px}
-#content-body .x-form-item-label{padding-left:0;margin-top:5px;color:#000;font-size:11px}
-#content-body .x-form-cb-label{color:#585858}
-#content-body .x-form-checkboxgroup-body .x-box-inner{background-color:#f6f6f6;border:1px solid #dfdfdf;}
-#content-body .x-form-checkboxgroup-body .x-form-cb-wrap{padding:4px 15px 0 5px;}
 
 /* x progress bar style*/
 .x-progress{border:1px solid #f5f4f5;height:11px;background-color:#2a2a2a;-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;}
@@ -207,17 +198,9 @@
 /* grid style*/
 .x-column-header-align-center,.x-column-header-align-left,.x-column-header-align-right{text-align:center !important}
 #content-body .x-grid-header-ct{border-width:1px 0}
-.btnDataGridAdd{background:url('../image/btnDataGrid.png') 0 1px no-repeat !important;}
-.btnDataGridDel{background:url('../image/btnDataGrid.png') -16px 1px no-repeat !important;}
-#content-body .x-grid .x-toolbar .x-btn-default-toolbar-small{background:none}
-#content-body .x-grid .x-toolbar .x-btn-default-toolbar-small .x-btn-inner{color:#5f79a2;padding-left:18px !important}
-#content-body .x-grid .x-toolbar .x-btn-default-toolbar-small-over .x-btn-inner{color:#333;padding-left:18px !important}
-#content-body .x-grid .x-toolbar-default-docked-top{border:0px}
 
 /* panel style*/
-#content-body .x-panel .x-grid-body{border-width:0;border-bottom:1px solid #ddd}
-#content-body .x-panel-header-default{background:url('../image/dotGreen.gif') 0 8px no-repeat;border:0;border-bottom:2px solid #999 !important;padding-left:14px;}
-#content-body .x-panel-header-text-default{color:#333;font-size:12px;font-weight:normal}
+#content-body .x-panel .x-grid-body{border-width:0}
 
 /*floating panel*/
 .x-boundlist-floating{
@@ -599,7 +582,3 @@ table.x-datepicker-inner .x-datepicker-today a{color:#cc3300}
 .appTool .icon_SVM1004{background:url('../image/menuIcon/2_14_4_Service_User_Routine_Setup_32.png') no-repeat;}
 .appTool .icon_WFM1000{background:url('../image/menuIcon/2_15_1_WIP_Modeler_32.png') no-repeat;}
 .appTool .icon_WFM2000{background:url('../image/menuIcon/2_15_2_RAS_Modeler_32.png') no-repeat;}
-
-.delete-row div{ font-weight:bold; color:#FF4040 !important; } 
-.update-row div{ font-weight:bold; color:#228B22 !important; } 
-.insert-row div{ font-weight:bold; color:#00008B !important; }

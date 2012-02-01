@@ -168,19 +168,10 @@ public class ARCController {
 		
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		try {
-			HashMap<String, String> params = new HashMap<String, String>();
-			Enumeration<String> e = request.getParameterNames();
-			while(e.hasMoreElements()) {
-				String key = (String) e.nextElement();
-		      	String value = request.getParameter(key);
-		      
-		      	params.put(key, value);
-			}
-			
 			ObjectMapper om = new ObjectMapper();	
-			List<Map<String, Object>> removeRecords = om.readValue(params.get("removerecords"), new TypeReference<List<Map<String, Object>>>() {});
-			List<Map<String, Object>> newRecords = om.readValue(params.get("newrecords"), new TypeReference<List<Map<String, Object>>>() {});
-			List<Map<String, Object>> updateRecords = om.readValue(params.get("updaterecords"), new TypeReference<List<Map<String, Object>>>() {});	
+			List<Map<String, Object>> removeRecords = om.readValue(request.getParameter("removerecords"), new TypeReference<List<Map<String, Object>>>() {});
+			List<Map<String, Object>> newRecords = om.readValue(request.getParameter("newrecords"), new TypeReference<List<Map<String, Object>>>() {});
+			List<Map<String, Object>> updateRecords = om.readValue(request.getParameter("updaterecords"), new TypeReference<List<Map<String, Object>>>() {});	
 						
 			//작업순서: delete -> update -> insert
 			if(removeRecords.size() > 0)
@@ -188,14 +179,14 @@ public class ARCController {
 				taskDao.testGridCreateOrReplace(removeRecords,"D");
 			}
 			
-			if(newRecords.size() > 0)
-			{
-				taskDao.testGridCreateOrReplace(newRecords,"C");
-			}
-			
 			if(updateRecords.size() > 0)
 			{
 				taskDao.testGridCreateOrReplace(updateRecords,"U");
+			}
+			
+			if(newRecords.size() > 0)
+			{
+				taskDao.testGridCreateOrReplace(newRecords,"C");
 			}
 			
 			resultMap.put("success", true);
