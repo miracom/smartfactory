@@ -1,9 +1,9 @@
 Ext.define('WIP.controller.WIPController', {
 	extend : 'Ext.app.Controller',
 
-	stores : [ 'WIP.store.OperationStore', 'WIP.store.MaterialListStore' ],
-	models : [ 'WIP.model.Operation' ],
-	views : [ 'WIP.view.common.MaterialSelector' , 'WIP.view.common.GroupSetup'],
+	stores : [ 'WIP.store.OperationListStore', 'WIP.store.MaterialListStore' ],
+	models : [],
+	views : [ 'WIP.view.common.MaterialSelector' , 'WIP.view.common.GroupSetup', 'WIP.view.common.OperationSelector'],
 
 	init : function() {
 		this.control({

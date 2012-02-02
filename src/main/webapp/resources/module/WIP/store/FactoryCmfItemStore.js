@@ -1,6 +1,6 @@
 Ext.define('WIP.store.FactoryCmfItemStore', {
 	extend : 'Ext.data.Store',
-	autoLoad : true,
+	autoLoad : false,
 	
 	fields : [ {
 		name : 'FIELD_NAME',

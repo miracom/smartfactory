@@ -14,7 +14,7 @@
 	"FORMAT": "A",
 	"TABLE_NAME": "OPER_GRP_1"
 },{
-	"PROMPT": "bb",
+	"PROMPT": "",
 	"OPT": "Y",
 	"FORMAT": "",
 	"TABLE_NAME": ""
@@ -47,6 +47,110 @@
 	"PROMPT": "",
 	"OPT": "",
 	"FORMAT": "",
+	"TABLE_NAME": ""	
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
 	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""	
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""
+},{
+	"PROMPT": "",
+	"OPT": "",
+	"FORMAT": "",
+	"TABLE_NAME": ""	
+}]
+
+
+
+
 	
-}]	

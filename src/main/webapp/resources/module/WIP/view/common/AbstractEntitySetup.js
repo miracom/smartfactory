@@ -1,5 +1,5 @@
 Ext.define('WIP.view.common.AbstractEntitySetup', {
-	extend : 'Ext.panel.Panel',
+	extend : 'Ext.form.Panel',
 	
 	plugins : [ Ext.create('CMN.plugin.Supplement') ],
 
@@ -69,11 +69,10 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 		return {
 			xtype : 'cmn_groupsetup',
 			title : 'Group Setup',
+			itemId : 'groupsetup',
 			itemName : main.groupItemName,
 			fieldNamePrefix : main.groupFieldNamePrefix,
-			valueStore : main.store,
-			updateSetCnt : main.updateSetCnt,
-			updateUseCnt : main.updateUseCnt
+			cmfMaxCnt : 10
 		};
 	},
 	
@@ -87,11 +86,10 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 		return {
 			xtype : 'cmn_groupsetup',
 			title : 'Customized Field',
+			itemId : 'cmfsetup',
 			itemName : main.cmfItemName,
 			fieldNamePrefix : main.cmfFieldNamePrefix,
-			valueStore : main.store,
-			updateSetCnt : main.updateSetCnt,
-			updateUseCnt : main.updateUseCnt
+			cmfMaxCnt : main.cmfMaxCnt
 		};
 	},
 	

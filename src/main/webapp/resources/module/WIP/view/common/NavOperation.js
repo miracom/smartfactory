@@ -24,11 +24,18 @@ Ext.define('WIP.view.common.NavOperation', {
 				title : 'Material Setup'
 			}));
 		}
+	}, {
+		text : 'O',
+		handler : function(button) {
+			SmartFactory.addContentView(Ext.create('WIP.view.setup.OperationSetup', {
+				title : 'Operation Setup'
+			}));
+		}
 	} ],
 	
 	items : [{
 		xtype : 'dataview', 
-		store: 'WIP.store.OperationStore',
+		store: 'WIP.store.OperationListStore',
 		
 		listeners: {
 			render: function(view) {
