@@ -16,47 +16,22 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 		this.callParent();
 	
 		var self = this;
-
+		
 		this.on('afterrender', function() {
 			/*
 			 * Supplement에 대한 이벤트리스너 등록은 클라이언트 뷰의 afterrender 이벤트 발생 이후에 해야한다.
 			 */
 			self.getSupplement().on('materialselected', function(record) {
-				self.sub('update').setDisabled(true);
-				self.sub('create').setDisabled(true);
-				self.sub('material').setValue(record.get('MAT_ID'));
-				self.sub('version').setValue(record.get('MAT_VER'));
-				self.sub('description').setValue(record.get('MAT_DESC'));
 				self.store.load();
 			});
-			
-			self.store.on('load', function(store) {
-				self.setFieldValue(store);
-			});
-			
-			self.sub('groupsetup').on('buildOk', function(itemName) {
-				self.setFieldValue(self.store);
-			});
-			self.sub('cmfsetup').on('buildOk', function(itemName) {
-				self.setFieldValue(self.store);
-			});
-		});
-		
-		//this.store.load();
-
-		this.sub('close').on('click', function() {
-			self.close();
-		});
-		this.sub('update').on('click', function() {
-			self.dataUpdate();
 		});
 	},
 
-	dataUpdate : function(){
-		//TODO ... dataupdate
+	onUpdate : function() {
 		var rtn = this.getValues();
 		console.log(rtn);
 	},
+	
 	buildBasicForm : function(main) {
 		return {
 			xtype : 'container',
@@ -136,31 +111,5 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 		return {
 			title : 'Attach Flow'
 		};
-	},
-	
-	setFieldValue : function(store){
-		var record = store.getAt(0);
-		//console.log(record);
-		var self = this;
-		if (record == null) return null;
-		if (this.sub('cmfsetup').buildOk != true) return null;
-		if (this.sub('groupsetup').buildOk != true) return null;
-		
-		for(var i =1; i<this.cmfMaxCnt;i++){
-			var value="";
-			var cmffield = this.sub(self.cmfFieldNamePrefix+i);
-			if (cmffield.isHidden() != true) 
-				value = record.get(self.cmfFieldNamePrefix+i);	
-			cmffield.setValue(value);
-			
-			if (i<11){
-				value = "";
-				var grpfield = this.sub(self.groupFieldNamePrefix+i);
-				if (grpfield.isHidden() != true) 
-					value = record.get(self.groupFieldNamePrefix+i);
-				grpfield.setValue(value);
-			}
-		}
-		this.sub('update').setDisabled(false);
 	}
 });

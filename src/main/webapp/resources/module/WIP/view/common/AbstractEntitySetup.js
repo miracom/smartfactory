@@ -57,7 +57,64 @@ Ext.define('WIP.view.common.AbstractEntitySetup', {
 			});
 		* 
 		*/
+		this.getForm().trackResetOnLoad = true;
+
+		self.sub('update').setDisabled(true);
+		self.sub('create').setDisabled(true);
+		
+		self.store.on('load', function(store) {
+			self.setFieldValue(store);
+		});
+		
+		self.sub('groupsetup').on('buildOk', function(itemName) {
+			self.setFieldValue(self.store);
+		});
+
+		self.sub('cmfsetup').on('buildOk', function(itemName) {
+			self.setFieldValue(self.store);
+		});
+		
+		this.getForm().on('dirtychange', function(form, dirty) {
+			self.sub('update').setDisabled(!dirty);
+		});
+
+		this.sub('close').on('click', function() {
+			self.onClose();
+		});
+
+		this.sub('update').on('click', function() {
+			self.onUpdate();
+		});
+		
+		this.sub('create').on('click', function() {
+			self.onCreate();
+		});
+		
+		this.sub('delete').on('click', function() {
+			self.onDelete();
+		});
+		
 	},
+	
+	setFieldValue : function(store){
+		var record = store.getAt(0);
+
+		if (record == null) return;
+		if (this.sub('cmfsetup').buildOk != true) return;
+		if (this.sub('groupsetup').buildOk != true) return;
+		
+		this.loadRecord(record);
+	},
+
+	onClose : function() {
+		this.close();
+	},
+	
+	onCreate : Ext.emptyFn,
+	
+	onUpdate : Ext.emptyFn,
+	
+	onDelete : Ext.emptyFn,
 
 	buildBasicForm : Ext.emptyFn,
 	
