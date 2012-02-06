@@ -10,6 +10,8 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 	cmfFieldNamePrefix : 'MAT_CMF_',
 	
 	cmfMaxCnt : 30,
+	
+	dirtyCls : 'c-form-dirty',
 
 	initComponent : function() {
 		this.store = Ext.create('WIP.store.MaterialStore');
