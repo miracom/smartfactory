@@ -23,6 +23,7 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 			 */
 			self.getSupplement().on('materialselected', function(record) {
 				self.sub('update').setDisabled(true);
+				self.sub('create').setDisabled(true);
 				self.sub('material').setValue(record.get('MAT_ID'));
 				self.sub('version').setValue(record.get('MAT_VER'));
 				self.sub('description').setValue(record.get('MAT_DESC'));
@@ -41,7 +42,7 @@ Ext.define('WIP.view.setup.MaterialSetup', {
 			});
 		});
 		
-		this.store.load();
+		//this.store.load();
 
 		this.sub('close').on('click', function() {
 			self.close();
